@@ -12,14 +12,18 @@ namespace WindowExplorer
 {
     class ClsTreeListView
     {
+        /// <summary>
+        /// Function tạo treeview - được thể hiện bằng 1 CTDL TreeNode trong code
+        /// </summary>
+        /// <param name="treeView"></param>
         public void CreateTreeView(TreeView treeView)
         {
             TreeNode tnMyComputer;
 
-            // Tạo node mới
+            // Tạo node đầu tiên là My Computer, đây sẽ là node gốc
             tnMyComputer = new TreeNode("My Computer", 0, 0);
 
-            // Xóa TreeView
+            // Thêm node gốc vào treeview
             treeView.Nodes.Clear();
             treeView.Nodes.Add(tnMyComputer);
 
@@ -41,6 +45,13 @@ namespace WindowExplorer
                 nodeCollection.Add(diskTreeNode);
             }
         }
+
+        /// <summary>
+        /// Function show cây thư mục lên treeview
+        /// </summary>
+        /// <param name="treeView"></param>
+        /// <param name="currentNode"></param>
+        /// <returns></returns>
         public bool ShowFolderTree(TreeView treeView, TreeNode currentNode)
         {
             if (currentNode.Text != "My Computer")
@@ -54,6 +65,7 @@ namespace WindowExplorer
                     }
                     else
                     {
+                        // Lần lượt thêm tất cả các directory vào treenode
                         string[] strDirectories = Directory.GetDirectories(GetFullPath(currentNode.FullPath));
 
                         foreach (string stringDir in strDirectories)
@@ -81,15 +93,26 @@ namespace WindowExplorer
             }
             return false;
         }
+
+        /// <summary>
+        /// Function bổ trợ đế lấy full path của một địa chỉ
+        /// </summary>
+        /// <param name="strPath"></param>
+        /// <returns></returns>
         public string GetFullPath(string strPath)
         {
             return strPath.Replace("My Computer\\", "").Replace("\\\\", "\\");
         }
+
+        /// <summary>
+        /// Function bổ trợ để lấy tên file/directory (bỏ bớt đường dẫn)
+        /// </summary>
+        /// <param name="strPath"></param>
+        /// <returns></returns>
         public string GetName(string strPath)
         {
             string[] strSplit = strPath.Split('\\');
             return strSplit[strSplit.Length - 1];
         }
-
     }
 }
