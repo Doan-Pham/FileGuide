@@ -18,16 +18,25 @@ namespace FileGuide
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Khi load form, tạo treeview và listview
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Form1_Load(object sender, EventArgs e)
         {
             clsTreeListView.CreateTreeView(this.treeView);
         }
 
+        /// <summary>
+        /// Load cây thư mục vào treeView
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             TreeNode currentNode = e.Node;
-               clsTreeListView.ShowFolderTree(this.treeView, currentNode);
-            
+               clsTreeListView.ShowFolderTree(this.treeView, currentNode);     
         }
     }
 }

@@ -13,15 +13,20 @@ namespace FileGuide
     class ClsTreeListView
     {
         /// <summary>
-        /// Function tạo treeview - thể hiện bằng 1 CTDL TreeNode trong code
+        /// Function tạo treeview 
         /// </summary>
         /// <param name="treeView"></param>
         public void CreateTreeView(TreeView treeView)
         {
-            TreeNode tnMyComputer;
+            // Tạo các biến const thể hiện cho các thành phần của DriveType Enum - mỗi phần tử của enum thể hiện một loại ổ đĩa
+            const int RemovableDisk = 2;
+            const int LocalDisk = 3;
+            const int NetworkDisk = 4;
+            const int CDDisk = 5;
+
 
             // Tạo node đầu tiên là My Computer, đây sẽ là node gốc
-            tnMyComputer = new TreeNode("My Computer", 0, 0);
+            TreeNode tnMyComputer = new TreeNode("My Computer", 0, 0);
 
             // Thêm node gốc vào treeview
             treeView.Nodes.Clear();
@@ -30,21 +35,61 @@ namespace FileGuide
             // Tập hợp các node của tnMyComputer
             TreeNodeCollection nodeCollection = tnMyComputer.Nodes;
 
-            // Lấy danh sách các ổ đĩa
+            // Lấy danh sách các ổ đĩa và đưu vào một queryCollection
             ManagementObjectSearcher query = new ManagementObjectSearcher("Select * From Win32_LogicalDisk");
             ManagementObjectCollection queryCollection = query.Get();
 
             foreach(ManagementObject mo in queryCollection)
             {
-                TreeNode diskTreeNode;
 
+                // Ứng mỗi loại ổ đĩa, gán imageIndex và selectIndex với index của các icon tương ứng
+                int imageIndex, selectIndex;
+                switch(int.Parse(mo["DriveType"].ToString()))
+                {
+                    case RemovableDisk:
+                        {
+                            imageIndex = 1;
+                            selectIndex = 1;
+                        }
+                        break;
+
+                    case LocalDisk:
+                        {
+                            imageIndex = 2;
+                            selectIndex = 2;
+                        }
+                        break;
+
+                    case CDDisk:
+                        {
+                            imageIndex = 3;
+                            selectIndex = 3;
+                        }
+                        break;
+
+                    case NetworkDisk:
+                        {
+                            imageIndex = 4;
+                            selectIndex = 4;
+                        }
+                        break;
+
+                    default:
+                        {
+                            imageIndex = 5;
+                            selectIndex = 6;
+                        }
+                        break;
+
+                }
                 // Tạo một treenode cho từng ổ đĩa
-                diskTreeNode = new TreeNode(mo["Name"].ToString() + "\\", 0, 0);
+                TreeNode diskTreeNode = new TreeNode(mo["Name"].ToString() + "\\", imageIndex, selectIndex);
 
-                // Thêm treenode ổ đĩa vào Treeview
+                // Thêm treenode ổ đĩa vào node collection của My Computer
                 nodeCollection.Add(diskTreeNode);
             }
         }
+
 
         /// <summary>
         /// Function show cây thư mục lên treeview
@@ -65,14 +110,13 @@ namespace FileGuide
                     }
                     else
                     {
-                        // Lần lượt thêm tất cả các directory vào treenode
+                        // Thêm tất cả directory vào treeView
                         string[] strDirectories = Directory.GetDirectories(GetFullPath(currentNode.FullPath));
 
                         foreach (string stringDir in strDirectories)
                         {
                             string strName = GetName(stringDir);
-                            TreeNode nodeDir;
-                            nodeDir = new TreeNode(strName, 5, 6);
+                            TreeNode nodeDir = new TreeNode(strName, 5, 6);
                             currentNode.Nodes.Add(nodeDir);
                         }          
                     }
@@ -93,6 +137,8 @@ namespace FileGuide
             }
             return false;
         }
+
+
 
         /// <summary>
         /// Function bổ trợ đế lấy full path của một địa chỉ
