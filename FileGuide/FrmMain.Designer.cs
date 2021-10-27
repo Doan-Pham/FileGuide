@@ -1,5 +1,5 @@
 ﻿
-namespace WindowExplorer
+namespace FileGuide
 {
     partial class FrmMain
     {
@@ -29,9 +29,11 @@ namespace WindowExplorer
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.treeView = new System.Windows.Forms.TreeView();
             this.listView = new System.Windows.Forms.ListView();
+            this.imglstTreeView = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -74,6 +76,12 @@ namespace WindowExplorer
             this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
             // 
+            // imglstTreeView
+            // 
+            this.imglstTreeView.ColorDepth = System.Windows.Forms.ColorDepth.Depth32Bit;
+            this.imglstTreeView.ImageSize = new System.Drawing.Size(16, 16);
+            this.imglstTreeView.TransparentColor = System.Drawing.Color.Transparent;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -97,6 +105,7 @@ namespace WindowExplorer
         private System.Windows.Forms.SplitContainer splitContainer;
         private System.Windows.Forms.TreeView treeView;
         private System.Windows.Forms.ListView listView;
+        private System.Windows.Forms.ImageList imglstTreeView;
     }
 }
 

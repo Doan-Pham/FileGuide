@@ -8,12 +8,12 @@ using System.Management;
 using System.IO;
 using System.Diagnostics;
 
-namespace WindowExplorer
+namespace FileGuide
 {
     class ClsTreeListView
     {
         /// <summary>
-        /// Function tạo treeview - được thể hiện bằng 1 CTDL TreeNode trong code
+        /// Function tạo treeview - thể hiện bằng 1 CTDL TreeNode trong code
         /// </summary>
         /// <param name="treeView"></param>
         public void CreateTreeView(TreeView treeView)
