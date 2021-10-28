@@ -298,7 +298,7 @@ namespace FileGuide
                     return 13;
 
                 default:
-                    return 4;
+                    return 3;
 
             }
         }
