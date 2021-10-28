@@ -33,12 +33,14 @@ namespace FileGuide
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.treeView = new System.Windows.Forms.TreeView();
-            this.listView = new System.Windows.Forms.ListView();
             this.imglstTreeView = new System.Windows.Forms.ImageList(this.components);
+            this.listView = new System.Windows.Forms.ListView();
             this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colDateCreated = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colDateModified = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.imglstSmall = new System.Windows.Forms.ImageList(this.components);
+            this.imglstLarge = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -49,7 +51,7 @@ namespace FileGuide
             // 
             this.splitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainer.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer.Name = "splitContainer";
             // 
             // splitContainer.Panel1
@@ -70,29 +72,12 @@ namespace FileGuide
             this.treeView.ImageIndex = 0;
             this.treeView.ImageList = this.imglstTreeView;
             this.treeView.Location = new System.Drawing.Point(0, 0);
-            this.treeView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.treeView.Margin = new System.Windows.Forms.Padding(4);
             this.treeView.Name = "treeView";
             this.treeView.SelectedImageIndex = 0;
             this.treeView.Size = new System.Drawing.Size(300, 644);
             this.treeView.TabIndex = 0;
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
-            // 
-            // listView
-            // 
-            this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colName,
-            this.colSize,
-            this.colDateCreated,
-            this.colDateModified});
-            this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView.HideSelection = false;
-            this.listView.Location = new System.Drawing.Point(0, 0);
-            this.listView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(673, 644);
-            this.listView.TabIndex = 0;
-            this.listView.UseCompatibleStateImageBehavior = false;
-            this.listView.View = System.Windows.Forms.View.Details;
             // 
             // imglstTreeView
             // 
@@ -105,6 +90,25 @@ namespace FileGuide
             this.imglstTreeView.Images.SetKeyName(4, "NetworkDrive.png");
             this.imglstTreeView.Images.SetKeyName(5, "Folder.png");
             this.imglstTreeView.Images.SetKeyName(6, "FolderOpen.png");
+            // 
+            // listView
+            // 
+            this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colName,
+            this.colSize,
+            this.colDateCreated,
+            this.colDateModified});
+            this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView.HideSelection = false;
+            this.listView.LargeImageList = this.imglstLarge;
+            this.listView.Location = new System.Drawing.Point(0, 0);
+            this.listView.Margin = new System.Windows.Forms.Padding(4);
+            this.listView.Name = "listView";
+            this.listView.Size = new System.Drawing.Size(673, 644);
+            this.listView.SmallImageList = this.imglstSmall;
+            this.listView.TabIndex = 0;
+            this.listView.UseCompatibleStateImageBehavior = false;
+            this.listView.View = System.Windows.Forms.View.Details;
             // 
             // colName
             // 
@@ -129,6 +133,44 @@ namespace FileGuide
             this.colDateModified.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.colDateModified.Width = 100;
             // 
+            // imglstSmall
+            // 
+            this.imglstSmall.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglstSmall.ImageStream")));
+            this.imglstSmall.TransparentColor = System.Drawing.Color.Transparent;
+            this.imglstSmall.Images.SetKeyName(0, "database.png");
+            this.imglstSmall.Images.SetKeyName(1, "doc.png");
+            this.imglstSmall.Images.SetKeyName(2, "exe.png");
+            this.imglstSmall.Images.SetKeyName(3, "file.png");
+            this.imglstSmall.Images.SetKeyName(4, "Folder.png");
+            this.imglstSmall.Images.SetKeyName(5, "html.png");
+            this.imglstSmall.Images.SetKeyName(6, "music.png");
+            this.imglstSmall.Images.SetKeyName(7, "pdf.png");
+            this.imglstSmall.Images.SetKeyName(8, "png.png");
+            this.imglstSmall.Images.SetKeyName(9, "ppt.jpg");
+            this.imglstSmall.Images.SetKeyName(10, "rar.jpg");
+            this.imglstSmall.Images.SetKeyName(11, "swf.png");
+            this.imglstSmall.Images.SetKeyName(12, "txt.png");
+            this.imglstSmall.Images.SetKeyName(13, "xls.jpg");
+            // 
+            // imglstLarge
+            // 
+            this.imglstLarge.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglstLarge.ImageStream")));
+            this.imglstLarge.TransparentColor = System.Drawing.Color.Transparent;
+            this.imglstLarge.Images.SetKeyName(0, "database.png");
+            this.imglstLarge.Images.SetKeyName(1, "doc.png");
+            this.imglstLarge.Images.SetKeyName(2, "exe.png");
+            this.imglstLarge.Images.SetKeyName(3, "file.png");
+            this.imglstLarge.Images.SetKeyName(4, "Folder.png");
+            this.imglstLarge.Images.SetKeyName(5, "html.png");
+            this.imglstLarge.Images.SetKeyName(6, "music.png");
+            this.imglstLarge.Images.SetKeyName(7, "pdf.png");
+            this.imglstLarge.Images.SetKeyName(8, "png.png");
+            this.imglstLarge.Images.SetKeyName(9, "ppt.jpg");
+            this.imglstLarge.Images.SetKeyName(10, "rar.jpg");
+            this.imglstLarge.Images.SetKeyName(11, "swf.png");
+            this.imglstLarge.Images.SetKeyName(12, "txt.png");
+            this.imglstLarge.Images.SetKeyName(13, "xls.jpg");
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
@@ -137,7 +179,7 @@ namespace FileGuide
             this.ClientSize = new System.Drawing.Size(978, 644);
             this.Controls.Add(this.splitContainer);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "File Guide";
@@ -160,6 +202,8 @@ namespace FileGuide
         private System.Windows.Forms.ColumnHeader colSize;
         private System.Windows.Forms.ColumnHeader colDateCreated;
         private System.Windows.Forms.ColumnHeader colDateModified;
+        private System.Windows.Forms.ImageList imglstLarge;
+        private System.Windows.Forms.ImageList imglstSmall;
     }
 }
 

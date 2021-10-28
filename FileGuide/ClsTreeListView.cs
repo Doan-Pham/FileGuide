@@ -181,7 +181,10 @@ namespace FileGuide
             item[2] = folder.CreationTime.ToString();
             item[3] = folder.LastWriteTime.ToString();
             item[4] = folder.FullName;
-            return new ListViewItem(item);
+
+            ListViewItem newItem = new ListViewItem(item);
+            newItem.ImageIndex = 4;
+            return newItem;
         }
 
         /// <summary>
@@ -197,19 +200,13 @@ namespace FileGuide
             item[2] = file.CreationTime.ToString();
             item[3] = file.LastWriteTime.ToString();
             item[4] = file.FullName;
-            return new ListViewItem(item);
+
+            ListViewItem newItem = new ListViewItem(item);
+            newItem.ImageIndex = GetImageIndex(file);
+            return newItem;
         }
 
-        public DirectoryInfo GetPathDir(TreeNode currentNode)
-        {
-            string[] strList = currentNode.FullPath.Split('\\');
-            string strPath = strList.GetValue(1).ToString();
-            for (int i = 2; i < strList.Length;i++)
-            {
-                strPath += strList.GetValue(i) + "\\";
-            }
-            return new DirectoryInfo(strPath);
-        }
+        
 
         /// <summary>
         /// Function bổ trợ đế lấy full path của một địa chỉ
@@ -231,5 +228,80 @@ namespace FileGuide
             string[] strSplit = strPath.Split('\\');
             return strSplit[strSplit.Length - 1];
         }
+
+        public DirectoryInfo GetPathDir(TreeNode currentNode)
+        {
+            string[] strList = currentNode.FullPath.Split('\\');
+            string strPath = strList.GetValue(1).ToString();
+            for (int i = 2; i < strList.Length; i++)
+            {
+                strPath += strList.GetValue(i) + "\\";
+            }
+            return new DirectoryInfo(strPath);
+        }
+
+        public int GetImageIndex(FileInfo file)
+        {
+            switch(file.Extension.ToUpper())
+            {
+                case ".MDB":
+                    return 0;
+
+                case ".DOC":
+                case ".DOCX":
+                    return 1;
+
+                case ".EXE":
+                    return 2;
+
+                case ".HTM":
+                case ".HTML":
+                    return 5;
+
+                case ".MP3":
+                case ".WAV":
+                case ".WMV":
+                case ".ASF":
+                case ".MPEG":
+                case ".AVI":
+                    return 6;
+
+                case ".PDF":
+                    return 7;
+
+                case ".JPG":
+                case ".PNG":
+                case ".BMP":
+                case ".GIF":
+                    return 8;
+
+                case ".PPT":
+                case ".PPTX":
+                    return 9;
+
+                case ".RAR":
+                case ".ZIP":
+                    return 10;
+
+                case ".SWF":
+                case ".FLV":
+                case ".FLA":
+                    return 11;
+
+                case ".TXT":
+                case ".DIZ":
+                case ".LOG":
+                    return 12;
+
+                case ".XLS":
+                case ".XLSX":
+                    return 13;
+
+                default:
+                    return 4;
+
+            }
+        }
     }
 }
+
