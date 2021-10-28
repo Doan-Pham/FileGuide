@@ -35,6 +35,10 @@ namespace FileGuide
             this.treeView = new System.Windows.Forms.TreeView();
             this.listView = new System.Windows.Forms.ListView();
             this.imglstTreeView = new System.Windows.Forms.ImageList(this.components);
+            this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colDateCreated = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colDateModified = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -55,8 +59,8 @@ namespace FileGuide
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.Controls.Add(this.listView);
-            this.splitContainer.Size = new System.Drawing.Size(1304, 966);
-            this.splitContainer.SplitterDistance = 400;
+            this.splitContainer.Size = new System.Drawing.Size(978, 644);
+            this.splitContainer.SplitterDistance = 300;
             this.splitContainer.SplitterWidth = 5;
             this.splitContainer.TabIndex = 0;
             // 
@@ -69,20 +73,26 @@ namespace FileGuide
             this.treeView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.treeView.Name = "treeView";
             this.treeView.SelectedImageIndex = 0;
-            this.treeView.Size = new System.Drawing.Size(400, 966);
+            this.treeView.Size = new System.Drawing.Size(300, 644);
             this.treeView.TabIndex = 0;
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             // 
             // listView
             // 
+            this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colName,
+            this.colSize,
+            this.colDateCreated,
+            this.colDateModified});
             this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView.HideSelection = false;
             this.listView.Location = new System.Drawing.Point(0, 0);
             this.listView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(899, 966);
+            this.listView.Size = new System.Drawing.Size(673, 644);
             this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
+            this.listView.View = System.Windows.Forms.View.Details;
             // 
             // imglstTreeView
             // 
@@ -96,12 +106,35 @@ namespace FileGuide
             this.imglstTreeView.Images.SetKeyName(5, "Folder.png");
             this.imglstTreeView.Images.SetKeyName(6, "FolderOpen.png");
             // 
+            // colName
+            // 
+            this.colName.Text = "Name";
+            this.colName.Width = 200;
+            // 
+            // colSize
+            // 
+            this.colSize.Text = "Size";
+            this.colSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.colSize.Width = 80;
+            // 
+            // colDateCreated
+            // 
+            this.colDateCreated.Text = "Date created";
+            this.colDateCreated.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.colDateCreated.Width = 100;
+            // 
+            // colDateModified
+            // 
+            this.colDateModified.Text = "Date modified";
+            this.colDateModified.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.colDateModified.Width = 100;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1304, 966);
+            this.ClientSize = new System.Drawing.Size(978, 644);
             this.Controls.Add(this.splitContainer);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -123,6 +156,10 @@ namespace FileGuide
         private System.Windows.Forms.TreeView treeView;
         private System.Windows.Forms.ListView listView;
         private System.Windows.Forms.ImageList imglstTreeView;
+        private System.Windows.Forms.ColumnHeader colName;
+        private System.Windows.Forms.ColumnHeader colSize;
+        private System.Windows.Forms.ColumnHeader colDateCreated;
+        private System.Windows.Forms.ColumnHeader colDateModified;
     }
 }
 

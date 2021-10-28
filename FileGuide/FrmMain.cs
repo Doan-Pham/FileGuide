@@ -36,7 +36,7 @@ namespace FileGuide
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             TreeNode currentNode = e.Node;
-               clsTreeListView.ShowFolderTree(this.treeView, currentNode);     
+               clsTreeListView.ShowFolderTree(this.treeView,this.listView, currentNode);     
         }
     }
 }

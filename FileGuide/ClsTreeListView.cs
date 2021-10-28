@@ -97,7 +97,7 @@ namespace FileGuide
         /// <param name="treeView"></param>
         /// <param name="currentNode"></param>
         /// <returns></returns>
-        public bool ShowFolderTree(TreeView treeView, TreeNode currentNode)
+        public bool ShowFolderTree(TreeView treeView, ListView listView, TreeNode currentNode)
         {
             if (currentNode.Text != "My Computer")
             {
@@ -118,7 +118,10 @@ namespace FileGuide
                             string strName = GetName(stringDir);
                             TreeNode nodeDir = new TreeNode(strName, 5, 6);
                             currentNode.Nodes.Add(nodeDir);
-                        }          
+                        }
+
+                        // Ánh xạ nội dung của thư mục hiện tại lên listView
+                        ShowContent(listView, currentNode);
                     }
                     return true;
                 }
@@ -138,7 +141,75 @@ namespace FileGuide
             return false;
         }
 
+        public void ShowContent(ListView listView, TreeNode currentNode)
+        {
+            try
+            {
+                listView.Items.Clear();
 
+                ListViewItem item;
+                DirectoryInfo directory = GetPathDir(currentNode);
+
+                foreach (DirectoryInfo folder in directory.GetDirectories())
+                {
+                    item = GetLVItem(folder);
+                    listView.Items.Add(item);
+                }
+
+                foreach (FileInfo file in directory.GetFiles())
+                {
+                    item = GetLVItem(file);
+                    listView.Items.Add(item);
+                };
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Hàm bổ trợ tạo ListViewItem từ folder. 
+        /// </summary>
+        /// <param name="folder"></param>
+        /// <returns></returns>
+        public ListViewItem GetLVItem(DirectoryInfo folder)
+        {
+            string[] item = new string[5];
+            item[0] = folder.Name;
+            item[1] = "Folder";
+            item[2] = folder.CreationTime.ToString();
+            item[3] = folder.LastWriteTime.ToString();
+            item[4] = folder.FullName;
+            return new ListViewItem(item);
+        }
+
+        /// <summary>
+        /// Hàm bổ trợ tạo ListViewItem từ file. 
+        /// </summary>
+        /// <param name="folder"></param>
+        /// <returns></returns>
+        public ListViewItem GetLVItem(FileInfo file)
+        {
+            string[] item = new string[5];
+            item[0] = file.Name;
+            item[1] = (file.Length/1024).ToString() + " KB";
+            item[2] = file.CreationTime.ToString();
+            item[3] = file.LastWriteTime.ToString();
+            item[4] = file.FullName;
+            return new ListViewItem(item);
+        }
+
+        public DirectoryInfo GetPathDir(TreeNode currentNode)
+        {
+            string[] strList = currentNode.FullPath.Split('\\');
+            string strPath = strList.GetValue(1).ToString();
+            for (int i = 2; i < strList.Length;i++)
+            {
+                strPath += strList.GetValue(i) + "\\";
+            }
+            return new DirectoryInfo(strPath);
+        }
 
         /// <summary>
         /// Function bổ trợ đế lấy full path của một địa chỉ
