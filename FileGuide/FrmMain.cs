@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.IO;
 namespace FileGuide
 {
     public partial class FrmMain : Form
@@ -44,9 +44,36 @@ namespace FileGuide
 
         }
 
-        private void tscmbPath_Enter(object sender, EventArgs e)
+        private void tscmbPath_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == 13)
+            {    
+                try
+                {
+                    // Chỉ xử lý khi đường dẫn không trống
+                    if (tscmbPath.Text != "")
+                    {
+                        FileInfo file = new FileInfo(tscmbPath.Text.Trim());
+                        // Kiểm tra 
+                        if (file.Exists)
+                        {
+                            System.Diagnostics.Process.Start(tscmbPath.Text.Trim());
+                            DirectoryInfo parent = file.Directory;
+                            tscmbPath.Text = parent.FullName;
+                        }
+                        // Nếu không tìm thấy đường dẫn thì báo lỗi
+                        else
+                        {
+                            clsTreeListView.ShowContent(this.listView, tscmbPath.Text);
+                        }
+                    }
 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Fuck you");
+                }
+            }
         }
     }
 }

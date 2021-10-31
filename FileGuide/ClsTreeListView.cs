@@ -143,6 +143,7 @@ namespace FileGuide
             return false;
         }
 
+
         /// <summary>
         /// Hàm show nội dung của thư mục đang chọn bên treeView lên listView
         /// </summary>
@@ -156,7 +157,11 @@ namespace FileGuide
 
                 ListViewItem item;
                 DirectoryInfo directory = GetPathDir(currentNode);
-
+                if (!directory.Exists)
+                {
+                    MessageBox.Show("Folder doesn't exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 foreach (DirectoryInfo folder in directory.GetDirectories())
                 {
                     item = GetLVItem(folder);
@@ -174,6 +179,33 @@ namespace FileGuide
                 MessageBox.Show(e.ToString());
             }
         }
+        public void ShowContent(ListView listView, string strPath)
+        {
+            try
+            {
+                if (!strPath.EndsWith("\\"))
+                    strPath += "\\";
+                ListViewItem item;
+                DirectoryInfo directory = new DirectoryInfo(strPath);
+                listView.Items.Clear();
+                foreach (DirectoryInfo folder in directory.GetDirectories())
+                {
+                    item = GetLVItem(folder);
+                    listView.Items.Add(item);
+                }
+
+                foreach (FileInfo file in directory.GetFiles())
+                {
+                    item = GetLVItem(file);
+                    listView.Items.Add(item);
+                };
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
+
 
         /// <summary>
         /// Hàm bổ trợ tạo ListViewItem từ folder. 
@@ -193,6 +225,7 @@ namespace FileGuide
             newItem.ImageIndex = 4;
             return newItem;
         }
+
 
         /// <summary>
         /// Hàm bổ trợ tạo ListViewItem từ file. 
@@ -214,7 +247,6 @@ namespace FileGuide
         }
 
         
-
         /// <summary>
         /// Function bổ trợ đế lấy full path của một địa chỉ
         /// </summary>
@@ -224,6 +256,7 @@ namespace FileGuide
         {
             return strPath.Replace("My Computer\\", "").Replace("\\\\", "\\");
         }
+
 
         /// <summary>
         /// Function bổ trợ để lấy tên file/directory (bỏ bớt đường dẫn)
