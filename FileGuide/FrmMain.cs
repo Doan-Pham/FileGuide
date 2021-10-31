@@ -38,5 +38,15 @@ namespace FileGuide
             TreeNode currentNode = e.Node;
                clsTreeListView.ShowFolderTree(this.treeView,this.listView, currentNode);     
         }
+
+        private void listView_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void tscmbPath_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -24,7 +24,6 @@ namespace FileGuide
             const int NetworkDisk = 4;
             const int CDDisk = 5;
 
-
             // Tạo node đầu tiên là My Computer, đây sẽ là node gốc
             TreeNode tnMyComputer = new TreeNode("My Computer", 0, 0);
 
@@ -44,7 +43,9 @@ namespace FileGuide
 
                 // Ứng mỗi loại ổ đĩa, gán imageIndex và selectIndex với index của các icon tương ứng
                 int imageIndex, selectIndex;
-                switch(int.Parse(mo["DriveType"].ToString()))
+
+                // mo["DriveType"] trả về giá trị kiểu uint, để khỏi rắc rối, ta ép kiểu thành int
+                switch (int.Parse(mo["DriveType"].ToString()))
                 {
                     case RemovableDisk:
                         {
@@ -99,6 +100,7 @@ namespace FileGuide
         /// <returns></returns>
         public bool ShowFolderTree(TreeView treeView, ListView listView, TreeNode currentNode)
         {
+            // Phải xét xem current node có phải My Computer không, bởi vốn dĩ node My Computer đã được tạo lập với các node con là các ổ đĩa trong hàm CreateTreeView, xét lại sẽ gây lỗi
             if (currentNode.Text != "My Computer")
             {
                 try
@@ -141,6 +143,11 @@ namespace FileGuide
             return false;
         }
 
+        /// <summary>
+        /// Hàm show nội dung của thư mục đang chọn bên treeView lên listView
+        /// </summary>
+        /// <param name="listView"></param>
+        /// <param name="currentNode"></param>
         public void ShowContent(ListView listView, TreeNode currentNode)
         {
             try
