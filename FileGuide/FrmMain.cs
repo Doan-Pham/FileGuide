@@ -26,7 +26,6 @@ namespace FileGuide
         private void Form1_Load(object sender, EventArgs e)
         {
             clsTreeListView.CreateTreeView(this.treeView);
-            tscmbPath.Size = new Size(tsPath.Size.Width - 200, 25);
         }
 
         /// <summary>
@@ -84,5 +83,9 @@ namespace FileGuide
             }
         }
 
+        private void FrmMain_Resize(object sender, EventArgs e)
+        {
+            tscmbPath.Size = new Size(tsPath.Size.Width - 200, 25);
+        }
     }
 }
