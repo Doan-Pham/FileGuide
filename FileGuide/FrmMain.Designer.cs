@@ -467,7 +467,9 @@ namespace FileGuide
             // 
             // tscmbPath
             // 
+            this.tscmbPath.AutoSize = false;
             this.tscmbPath.Name = "tscmbPath";
+            this.tscmbPath.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
             this.tscmbPath.Size = new System.Drawing.Size(500, 25);
             this.tscmbPath.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tscmbPath_KeyPress);
             // 
@@ -487,6 +489,7 @@ namespace FileGuide
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "File Guide";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.SizeChanged += new System.EventHandler(this.FrmMain_Resize);
             this.Resize += new System.EventHandler(this.FrmMain_Resize);
             this.splitContainer.Panel1.ResumeLayout(false);
             this.splitContainer.Panel2.ResumeLayout(false);
