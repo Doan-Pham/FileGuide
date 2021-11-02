@@ -42,6 +42,11 @@ namespace FileGuide
             tscmbPath.Text = clsTreeListView.GetFullPath(currentNode.FullPath);
         }
 
+        /// <summary>
+        /// Khi click vào một listView item, thực thi nếu là file, hiển thị nếu là folder
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listView_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             ListViewItem item = this.listView.FocusedItem;
@@ -52,7 +57,25 @@ namespace FileGuide
                 tscmbPath.Text = clsTreeListView.GetFullPath(item.SubItems[4].Text);
             }
         }
+        private void listView_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                ListViewItem item = this.listView.FocusedItem;
+                if (clsTreeListView.ClickItem(this.listView, item))
+                {
+                    // Nếu item là folder thì hiển thị path lên tsPath
+                    if (item.SubItems[1].Text == "Folder")
+                        tscmbPath.Text = clsTreeListView.GetFullPath(item.SubItems[4].Text);
+                }
+            }
+        }
 
+        /// <summary>
+        /// Đi đến đường dẫn trên tsPath, thực thi nếu là file, show content nếu là folder
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tscmbPath_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -95,20 +118,6 @@ namespace FileGuide
         {
             if (this.Width > 400)
             tscmbPath.Width = this.Width - 150;
-        }
-
-        private void listView_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13)
-            {
-                ListViewItem item = this.listView.FocusedItem;
-                if (clsTreeListView.ClickItem(this.listView, item))
-                {
-                    // Nếu item là folder thì hiển thị path lên tsPath
-                    if (item.SubItems[1].Text == "Folder")
-                        tscmbPath.Text = clsTreeListView.GetFullPath(item.SubItems[4].Text);
-                }
-            }    
         }
     }
 }
