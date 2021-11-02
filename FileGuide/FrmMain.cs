@@ -45,8 +45,12 @@ namespace FileGuide
         private void listView_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             ListViewItem item = this.listView.FocusedItem;
-            clsTreeListView.ClickItem(this.listView, item);
-            tscmbPath.Text = clsTreeListView.GetFullPath(item.SubItems[4].Text);
+            if(clsTreeListView.ClickItem(this.listView, item))
+            { 
+                // Nếu item là folder thì hiển thị path lên tsPath
+                if (item.SubItems[1].Text == "Folder")
+                tscmbPath.Text = clsTreeListView.GetFullPath(item.SubItems[4].Text);
+            }
         }
 
         private void tscmbPath_KeyPress(object sender, KeyPressEventArgs e)
@@ -98,8 +102,12 @@ namespace FileGuide
             if (e.KeyChar == 13)
             {
                 ListViewItem item = this.listView.FocusedItem;
-                clsTreeListView.ClickItem(this.listView, item);
-                tscmbPath.Text = clsTreeListView.GetFullPath(item.SubItems[4].Text);
+                if (clsTreeListView.ClickItem(this.listView, item))
+                {
+                    // Nếu item là folder thì hiển thị path lên tsPath
+                    if (item.SubItems[1].Text == "Folder")
+                        tscmbPath.Text = clsTreeListView.GetFullPath(item.SubItems[4].Text);
+                }
             }    
         }
     }
