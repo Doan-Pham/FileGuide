@@ -207,6 +207,56 @@ namespace FileGuide
         }
 
 
+        public bool ClickItem(ListView listView, ListViewItem CurrentItem)
+        {
+            try
+            {
+                string path = CurrentItem.SubItems[4].Text;
+                FileInfo fi = new FileInfo(path);
+
+                // Nếu item được chọn là file, thực thi file
+                if (fi.Exists)
+                {
+                    Process.Start(path);
+                }
+
+                // Nếu item được chọn là thư mục thì mở ra hoặc báo lỗi nếu không tồn tại
+                else
+                {
+                    ListViewItem item;
+                    DirectoryInfo directory = new DirectoryInfo(path + "\\");
+
+                    if (!directory.Exists)
+                    {
+                        MessageBox.Show("Folder not found", "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                        return false;
+                    }
+
+                    // Dọn listview và hiển thị các thành phần trong thư mục lên listView
+                    listView.Items.Clear();
+
+                    foreach (DirectoryInfo folder in directory.GetDirectories())
+                    {
+                        item = GetLVItem(folder);
+                        listView.Items.Add(item);
+                    }
+
+                    foreach (FileInfo file in directory.GetFiles())
+                    {
+                        item = GetLVItem(file);
+                        listView.Items.Add(item);
+                    }
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            return false;
+        }
+
         /// <summary>
         /// Hàm bổ trợ tạo ListViewItem từ folder. 
         /// </summary>
@@ -248,7 +298,7 @@ namespace FileGuide
 
         
         /// <summary>
-        /// Function bổ trợ đế lấy full path của một địa chỉ
+        /// Function bổ trợ sửa path cho phù hợp với việc hiển thị lên màn hình
         /// </summary>
         /// <param name="strPath"></param>
         /// <returns></returns>
@@ -280,6 +330,12 @@ namespace FileGuide
             return new DirectoryInfo(strPath);
         }
 
+
+        /// <summary>
+        /// Function bổ trợ lấy index image ứng với extension của file,folder
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
         public int GetImageIndex(FileInfo file)
         {
             switch(file.Extension.ToUpper())

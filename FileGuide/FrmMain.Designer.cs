@@ -86,7 +86,8 @@ namespace FileGuide
             // splitContainer
             // 
             this.splitContainer.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitContainer.Location = new System.Drawing.Point(0, 89);
+            this.splitContainer.Location = new System.Drawing.Point(0, 134);
+            this.splitContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.splitContainer.Name = "splitContainer";
             // 
             // splitContainer.Panel1
@@ -96,9 +97,8 @@ namespace FileGuide
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.Controls.Add(this.listView);
-            this.splitContainer.Size = new System.Drawing.Size(718, 368);
-            this.splitContainer.SplitterDistance = 220;
-            this.splitContainer.SplitterWidth = 3;
+            this.splitContainer.Size = new System.Drawing.Size(1077, 552);
+            this.splitContainer.SplitterDistance = 330;
             this.splitContainer.TabIndex = 0;
             // 
             // treeView
@@ -107,9 +107,10 @@ namespace FileGuide
             this.treeView.ImageIndex = 0;
             this.treeView.ImageList = this.imglstTreeView;
             this.treeView.Location = new System.Drawing.Point(0, 0);
+            this.treeView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.treeView.Name = "treeView";
             this.treeView.SelectedImageIndex = 0;
-            this.treeView.Size = new System.Drawing.Size(220, 368);
+            this.treeView.Size = new System.Drawing.Size(330, 552);
             this.treeView.TabIndex = 0;
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             // 
@@ -136,12 +137,14 @@ namespace FileGuide
             this.listView.HideSelection = false;
             this.listView.LargeImageList = this.imglstLarge;
             this.listView.Location = new System.Drawing.Point(0, 0);
+            this.listView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(495, 368);
+            this.listView.Size = new System.Drawing.Size(743, 552);
             this.listView.SmallImageList = this.imglstSmall;
             this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
+            this.listView.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listView_KeyPress);
             this.listView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView_MouseDoubleClick);
             // 
             // colName
@@ -204,6 +207,7 @@ namespace FileGuide
             // 
             // menuStrip1
             // 
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuFile,
@@ -212,8 +216,8 @@ namespace FileGuide
             this.menuHelp});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(718, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1077, 33);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -224,28 +228,28 @@ namespace FileGuide
             this.menuDelete,
             this.menuExit});
             this.menuFile.Name = "menuFile";
-            this.menuFile.Size = new System.Drawing.Size(37, 22);
+            this.menuFile.Size = new System.Drawing.Size(54, 29);
             this.menuFile.Text = "&File";
             // 
             // menuRename
             // 
             this.menuRename.Name = "menuRename";
             this.menuRename.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.menuRename.Size = new System.Drawing.Size(136, 22);
+            this.menuRename.Size = new System.Drawing.Size(208, 34);
             this.menuRename.Text = "&Rename";
             // 
             // menuDelete
             // 
             this.menuDelete.Name = "menuDelete";
             this.menuDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.menuDelete.Size = new System.Drawing.Size(136, 22);
+            this.menuDelete.Size = new System.Drawing.Size(208, 34);
             this.menuDelete.Text = "&Delete";
             // 
             // menuExit
             // 
             this.menuExit.Name = "menuExit";
             this.menuExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.menuExit.Size = new System.Drawing.Size(136, 22);
+            this.menuExit.Size = new System.Drawing.Size(208, 34);
             this.menuExit.Text = "E&xit";
             // 
             // menuEdit
@@ -255,28 +259,28 @@ namespace FileGuide
             this.menuCut,
             this.menuPaste});
             this.menuEdit.Name = "menuEdit";
-            this.menuEdit.Size = new System.Drawing.Size(39, 22);
+            this.menuEdit.Size = new System.Drawing.Size(58, 29);
             this.menuEdit.Text = "&Edit";
             // 
             // menuCopy
             // 
             this.menuCopy.Name = "menuCopy";
             this.menuCopy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.menuCopy.Size = new System.Drawing.Size(144, 22);
+            this.menuCopy.Size = new System.Drawing.Size(218, 34);
             this.menuCopy.Text = "&Copy";
             // 
             // menuCut
             // 
             this.menuCut.Name = "menuCut";
             this.menuCut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.menuCut.Size = new System.Drawing.Size(144, 22);
+            this.menuCut.Size = new System.Drawing.Size(218, 34);
             this.menuCut.Text = "&Cut";
             // 
             // menuPaste
             // 
             this.menuPaste.Name = "menuPaste";
             this.menuPaste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.menuPaste.Size = new System.Drawing.Size(144, 22);
+            this.menuPaste.Size = new System.Drawing.Size(218, 34);
             this.menuPaste.Text = "&Paste";
             // 
             // menuView
@@ -287,31 +291,31 @@ namespace FileGuide
             this.menuList,
             this.menuDetails});
             this.menuView.Name = "menuView";
-            this.menuView.Size = new System.Drawing.Size(44, 22);
+            this.menuView.Size = new System.Drawing.Size(65, 29);
             this.menuView.Text = "&View";
             // 
             // menuLarge
             // 
             this.menuLarge.Name = "menuLarge";
-            this.menuLarge.Size = new System.Drawing.Size(134, 22);
+            this.menuLarge.Size = new System.Drawing.Size(204, 34);
             this.menuLarge.Text = "Lar&ge Icons";
             // 
             // menuSmall
             // 
             this.menuSmall.Name = "menuSmall";
-            this.menuSmall.Size = new System.Drawing.Size(134, 22);
+            this.menuSmall.Size = new System.Drawing.Size(204, 34);
             this.menuSmall.Text = "S&mall Icons";
             // 
             // menuList
             // 
             this.menuList.Name = "menuList";
-            this.menuList.Size = new System.Drawing.Size(134, 22);
+            this.menuList.Size = new System.Drawing.Size(204, 34);
             this.menuList.Text = "&List";
             // 
             // menuDetails
             // 
             this.menuDetails.Name = "menuDetails";
-            this.menuDetails.Size = new System.Drawing.Size(134, 22);
+            this.menuDetails.Size = new System.Drawing.Size(204, 34);
             this.menuDetails.Text = "&Details";
             // 
             // menuHelp
@@ -319,13 +323,13 @@ namespace FileGuide
             this.menuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuAbout});
             this.menuHelp.Name = "menuHelp";
-            this.menuHelp.Size = new System.Drawing.Size(44, 22);
+            this.menuHelp.Size = new System.Drawing.Size(65, 29);
             this.menuHelp.Text = "&Help";
             // 
             // menuAbout
             // 
             this.menuAbout.Name = "menuAbout";
-            this.menuAbout.Size = new System.Drawing.Size(107, 22);
+            this.menuAbout.Size = new System.Drawing.Size(164, 34);
             this.menuAbout.Text = "A&bout";
             // 
             // toolBar
@@ -341,10 +345,10 @@ namespace FileGuide
             this.tsbtnDelete,
             this.toolStripSeparator2,
             this.tsDropView});
-            this.toolBar.Location = new System.Drawing.Point(0, 24);
+            this.toolBar.Location = new System.Drawing.Point(0, 33);
             this.toolBar.Name = "toolBar";
-            this.toolBar.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolBar.Size = new System.Drawing.Size(718, 37);
+            this.toolBar.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.toolBar.Size = new System.Drawing.Size(1077, 39);
             this.toolBar.TabIndex = 2;
             this.toolBar.Text = "toolStrip1";
             // 
@@ -353,7 +357,7 @@ namespace FileGuide
             this.tsbtnBack.Image = global::WindowExplorer.Properties.Resources.FolderBack;
             this.tsbtnBack.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnBack.Name = "tsbtnBack";
-            this.tsbtnBack.Size = new System.Drawing.Size(66, 34);
+            this.tsbtnBack.Size = new System.Drawing.Size(82, 34);
             this.tsbtnBack.Text = "Back";
             // 
             // tsbtnRefresh
@@ -361,13 +365,13 @@ namespace FileGuide
             this.tsbtnRefresh.Image = global::WindowExplorer.Properties.Resources.Refresh;
             this.tsbtnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnRefresh.Name = "tsbtnRefresh";
-            this.tsbtnRefresh.Size = new System.Drawing.Size(80, 34);
+            this.tsbtnRefresh.Size = new System.Drawing.Size(104, 34);
             this.tsbtnRefresh.Text = "Refresh";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 37);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
             // 
             // tsbtnCopy
             // 
@@ -375,7 +379,7 @@ namespace FileGuide
             this.tsbtnCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnCopy.Margin = new System.Windows.Forms.Padding(4, 1, 0, 2);
             this.tsbtnCopy.Name = "tsbtnCopy";
-            this.tsbtnCopy.Size = new System.Drawing.Size(69, 34);
+            this.tsbtnCopy.Size = new System.Drawing.Size(88, 36);
             this.tsbtnCopy.Text = "Copy";
             // 
             // tsbtnCut
@@ -383,7 +387,7 @@ namespace FileGuide
             this.tsbtnCut.Image = global::WindowExplorer.Properties.Resources.Cut;
             this.tsbtnCut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnCut.Name = "tsbtnCut";
-            this.tsbtnCut.Size = new System.Drawing.Size(60, 34);
+            this.tsbtnCut.Size = new System.Drawing.Size(73, 34);
             this.tsbtnCut.Text = "Cut";
             // 
             // tsbtnPaste
@@ -391,7 +395,7 @@ namespace FileGuide
             this.tsbtnPaste.Image = global::WindowExplorer.Properties.Resources.Paste;
             this.tsbtnPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnPaste.Name = "tsbtnPaste";
-            this.tsbtnPaste.Size = new System.Drawing.Size(69, 34);
+            this.tsbtnPaste.Size = new System.Drawing.Size(87, 34);
             this.tsbtnPaste.Text = "Paste";
             // 
             // tsbtnDelete
@@ -399,13 +403,13 @@ namespace FileGuide
             this.tsbtnDelete.Image = global::WindowExplorer.Properties.Resources.Delete;
             this.tsbtnDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnDelete.Name = "tsbtnDelete";
-            this.tsbtnDelete.Size = new System.Drawing.Size(74, 34);
+            this.tsbtnDelete.Size = new System.Drawing.Size(96, 34);
             this.tsbtnDelete.Text = "Delete";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 37);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
             // 
             // tsDropView
             // 
@@ -418,31 +422,31 @@ namespace FileGuide
             this.tsDropView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsDropView.Margin = new System.Windows.Forms.Padding(4, 1, 0, 2);
             this.tsDropView.Name = "tsDropView";
-            this.tsDropView.Size = new System.Drawing.Size(75, 34);
+            this.tsDropView.Size = new System.Drawing.Size(97, 36);
             this.tsDropView.Text = "View";
             // 
             // tsMenuLarge
             // 
             this.tsMenuLarge.Name = "tsMenuLarge";
-            this.tsMenuLarge.Size = new System.Drawing.Size(134, 22);
+            this.tsMenuLarge.Size = new System.Drawing.Size(204, 34);
             this.tsMenuLarge.Text = "Large Icons";
             // 
             // tsMenuSmall
             // 
             this.tsMenuSmall.Name = "tsMenuSmall";
-            this.tsMenuSmall.Size = new System.Drawing.Size(134, 22);
+            this.tsMenuSmall.Size = new System.Drawing.Size(204, 34);
             this.tsMenuSmall.Text = "Small Icons";
             // 
             // tsMenuList
             // 
             this.tsMenuList.Name = "tsMenuList";
-            this.tsMenuList.Size = new System.Drawing.Size(134, 22);
+            this.tsMenuList.Size = new System.Drawing.Size(204, 34);
             this.tsMenuList.Text = "List";
             // 
             // tsMenuDetails
             // 
             this.tsMenuDetails.Name = "tsMenuDetails";
-            this.tsMenuDetails.Size = new System.Drawing.Size(134, 22);
+            this.tsMenuDetails.Size = new System.Drawing.Size(204, 34);
             this.tsMenuDetails.Text = "Details";
             // 
             // tsPath
@@ -451,10 +455,10 @@ namespace FileGuide
             this.tsPath.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslbPath,
             this.tscmbPath});
-            this.tsPath.Location = new System.Drawing.Point(0, 61);
+            this.tsPath.Location = new System.Drawing.Point(0, 72);
             this.tsPath.Name = "tsPath";
-            this.tsPath.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.tsPath.Size = new System.Drawing.Size(718, 25);
+            this.tsPath.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.tsPath.Size = new System.Drawing.Size(1077, 33);
             this.tsPath.TabIndex = 3;
             this.tsPath.Text = "toolStrip1";
             // 
@@ -462,7 +466,7 @@ namespace FileGuide
             // 
             this.tslbPath.Margin = new System.Windows.Forms.Padding(60, 1, 0, 2);
             this.tslbPath.Name = "tslbPath";
-            this.tslbPath.Size = new System.Drawing.Size(34, 22);
+            this.tslbPath.Size = new System.Drawing.Size(50, 30);
             this.tslbPath.Text = "Path:";
             // 
             // tscmbPath
@@ -470,21 +474,22 @@ namespace FileGuide
             this.tscmbPath.AutoSize = false;
             this.tscmbPath.Name = "tscmbPath";
             this.tscmbPath.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            this.tscmbPath.Size = new System.Drawing.Size(500, 25);
+            this.tscmbPath.Size = new System.Drawing.Size(748, 33);
             this.tscmbPath.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tscmbPath_KeyPress);
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(718, 457);
+            this.ClientSize = new System.Drawing.Size(1077, 686);
             this.Controls.Add(this.tsPath);
             this.Controls.Add(this.toolBar);
             this.Controls.Add(this.splitContainer);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "File Guide";

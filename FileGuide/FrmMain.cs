@@ -38,12 +38,15 @@ namespace FileGuide
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             TreeNode currentNode = e.Node;
-               clsTreeListView.ShowFolderTree(this.treeView,this.listView, currentNode);     
+               clsTreeListView.ShowFolderTree(this.treeView,this.listView, currentNode);
+            tscmbPath.Text = clsTreeListView.GetFullPath(currentNode.FullPath);
         }
 
         private void listView_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            ListViewItem item = this.listView.FocusedItem;
+            clsTreeListView.ClickItem(this.listView, item);
+            tscmbPath.Text = clsTreeListView.GetFullPath(item.SubItems[4].Text);
         }
 
         private void tscmbPath_KeyPress(object sender, KeyPressEventArgs e)
@@ -55,8 +58,7 @@ namespace FileGuide
                     // Chỉ xử lý khi đường dẫn không trống
                     if (tscmbPath.Text != "")
                     {
-
-                        // Nếu đường dẫn trỏ đến file thì mở file
+                        // Nếu đường dẫn trỏ đến file thì thực thi file
                         if (File.Exists(tscmbPath.Text.Trim()))
                         {
                             FileInfo file = new FileInfo(tscmbPath.Text.Trim());
@@ -89,6 +91,16 @@ namespace FileGuide
         {
             if (this.Width > 400)
             tscmbPath.Width = this.Width - 150;
+        }
+
+        private void listView_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                ListViewItem item = this.listView.FocusedItem;
+                clsTreeListView.ClickItem(this.listView, item);
+                tscmbPath.Text = clsTreeListView.GetFullPath(item.SubItems[4].Text);
+            }    
         }
     }
 }
