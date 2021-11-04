@@ -39,7 +39,8 @@ namespace FileGuide
         {
             TreeNode currentNode = e.Node;
                clsTreeListView.ShowFolderTree(this.treeView,this.listView, currentNode);
-            tscmbPath.Text = clsTreeListView.GetFullPath(currentNode.FullPath);
+            tscmbPath.Text = clsTreeListView.GetApproriatePath(currentNode.FullPath);
+
         }
 
         /// <summary>
@@ -54,7 +55,7 @@ namespace FileGuide
             { 
                 // Nếu item là folder thì hiển thị path lên tsPath
                 if (item.SubItems[1].Text == "Folder")
-                tscmbPath.Text = clsTreeListView.GetFullPath(item.SubItems[4].Text);
+                tscmbPath.Text = clsTreeListView.GetApproriatePath(item.SubItems[4].Text);
             }
         }
         private void listView_KeyPress(object sender, KeyPressEventArgs e)
@@ -66,7 +67,7 @@ namespace FileGuide
                 {
                     // Nếu item là folder thì hiển thị path lên tsPath
                     if (item.SubItems[1].Text == "Folder")
-                        tscmbPath.Text = clsTreeListView.GetFullPath(item.SubItems[4].Text);
+                        tscmbPath.Text = clsTreeListView.GetApproriatePath(item.SubItems[4].Text);
                 }
             }
         }
@@ -97,7 +98,7 @@ namespace FileGuide
                         // Nếu đường dẫn trỏ đến folder thì hiện nội dung folder lên listView
                         else if (Directory.Exists(tscmbPath.Text.Trim()))
                         {
-                            clsTreeListView.ShowContent(this.listView, tscmbPath.Text);
+                            clsTreeListView.ShowListView(this.listView, tscmbPath.Text);
                         }
 
                         // Nếu đường dẫn không tồn tại thì báo lỗi

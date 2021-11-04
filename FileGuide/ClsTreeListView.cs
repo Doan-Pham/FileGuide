@@ -13,7 +13,7 @@ namespace FileGuide
     class ClsTreeListView
     {
         /// <summary>
-        /// Function tạo treeview 
+        /// Function khởi tạo treeView 
         /// </summary>
         /// <param name="treeView"></param>
         public void CreateTreeView(TreeView treeView)
@@ -24,116 +24,108 @@ namespace FileGuide
             const int NetworkDisk = 4;
             const int CDDisk = 5;
 
-            // Tạo node đầu tiên là My Computer, đây sẽ là node gốc
+            // Tạo node đầu tiên là My Computer, đây sẽ là node gốc và thêm node gốc vào treeView
             TreeNode tnMyComputer = new TreeNode("My Computer", 0, 0);
-
-            // Thêm node gốc vào treeview
             treeView.Nodes.Clear();
             treeView.Nodes.Add(tnMyComputer);
 
-            // Tập hợp các node của tnMyComputer
-            TreeNodeCollection nodeCollection = tnMyComputer.Nodes;
-
-            // Lấy danh sách các ổ đĩa và đưu vào một queryCollection
+            // Lấy danh sách các ổ đĩa và đưa vào một collection rồi duyệt qua các ổ đĩa
             ManagementObjectSearcher query = new ManagementObjectSearcher("Select * From Win32_LogicalDisk");
             ManagementObjectCollection queryCollection = query.Get();
 
             foreach(ManagementObject mo in queryCollection)
             {
+                int DiskImageIndex, DiskSelectIndex;
 
-                // Ứng mỗi loại ổ đĩa, gán imageIndex và selectIndex với index của các icon tương ứng
-                int imageIndex, selectIndex;
-
-                // mo["DriveType"] trả về giá trị kiểu uint, để khỏi rắc rối, ta ép kiểu thành int
+                // Gán các image index ứng với từng loại ổ đĩa
                 switch (int.Parse(mo["DriveType"].ToString()))
                 {
                     case RemovableDisk:
                         {
-                            imageIndex = 1;
-                            selectIndex = 1;
+                            DiskImageIndex = 1;
+                            DiskSelectIndex = 1;
                         }
                         break;
 
                     case LocalDisk:
                         {
-                            imageIndex = 2;
-                            selectIndex = 2;
+                            DiskImageIndex = 2;
+                            DiskSelectIndex = 2;
                         }
                         break;
 
                     case CDDisk:
                         {
-                            imageIndex = 3;
-                            selectIndex = 3;
+                            DiskImageIndex = 3;
+                            DiskSelectIndex = 3;
                         }
                         break;
 
                     case NetworkDisk:
                         {
-                            imageIndex = 4;
-                            selectIndex = 4;
+                            DiskImageIndex = 4;
+                            DiskSelectIndex = 4;
                         }
                         break;
 
                     default:
                         {
-                            imageIndex = 5;
-                            selectIndex = 6;
+                            DiskImageIndex = 5;
+                            DiskSelectIndex = 6;
                         }
                         break;
 
                 }
-                // Tạo một treenode cho từng ổ đĩa
-                TreeNode diskTreeNode = new TreeNode(mo["Name"].ToString() + "\\", imageIndex, selectIndex);
 
-                // Thêm treenode ổ đĩa vào node collection của My Computer
-                nodeCollection.Add(diskTreeNode);
+                // Tạo một treenode cho từng ổ đĩa rồi thêm vào node collection của node gốc - My Computer
+                TreeNode diskTreeNode = new TreeNode(mo["Name"].ToString() + "\\", DiskImageIndex, DiskSelectIndex);
+                tnMyComputer.Nodes.Add(diskTreeNode);
             }
         }
 
 
         /// <summary>
-        /// Function show cây thư mục lên treeview
+        /// Function hiển thị cây thư mục lên treeview
         /// </summary>
         /// <param name="treeView"></param>
         /// <param name="currentNode"></param>
         /// <returns></returns>
         public bool ShowFolderTree(TreeView treeView, ListView listView, TreeNode currentNode)
         {
-            // Phải xét xem current node có phải My Computer không, bởi vốn dĩ node My Computer đã được tạo lập với các node con là các ổ đĩa trong hàm CreateTreeView, xét lại sẽ gây lỗi
+            // Phải xét xem current node có phải My Computer không, bởi vốn dĩ node My Computer đã được tạo (với các node con là các ổ đĩa) trong hàm CreateTreeView, xét lại sẽ gây lỗi
             if (currentNode.Text != "My Computer")
             {
                 try
                 {
-                    if (Directory.Exists(GetFullPath(currentNode.FullPath)) == false)
+                    if (!Directory.Exists(GetApproriatePath(currentNode.FullPath)))
                     {
-                        MessageBox.Show("Ổ đĩa hoặc thư mục không tồn tại.");
+                        MessageBox.Show("Directory not found","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                         return false;
                     }
                     else
                     {
-                        // Thêm tất cả directory vào treeView
-                        string[] strDirectories = Directory.GetDirectories(GetFullPath(currentNode.FullPath));
+                        // Thêm tất cả directory con của node hiện tại vào treeView
+                        string[] strDirectories = Directory.GetDirectories(GetApproriatePath(currentNode.FullPath));
 
                         foreach (string stringDir in strDirectories)
                         {
-                            string strName = GetName(stringDir);
+                            string strName = GetFileFolderName(stringDir);
                             TreeNode nodeDir = new TreeNode(strName, 5, 6);
                             currentNode.Nodes.Add(nodeDir);
                         }
 
                         // Ánh xạ nội dung của thư mục hiện tại lên listView
-                        ShowContent(listView, currentNode);
+                        ShowListView(listView, currentNode);
                     }
                     return true;
                 }
                 catch (IOException)
                 {
-                    MessageBox.Show("Ổ đĩa hoặc thư mục không tồn tại.");
+                    MessageBox.Show("Directory does not exist","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (UnauthorizedAccessException)
                 {
-                    MessageBox.Show("Bạn không có quyền truy cập vào ổ đĩa hoặc thư mục này");
+                    MessageBox.Show("You might not have permission to access this directory", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 catch (Exception e)
                 {
@@ -145,32 +137,34 @@ namespace FileGuide
 
 
         /// <summary>
-        /// Hàm show nội dung của thư mục đang chọn bên treeView lên listView
+        /// Function hiển thị nội dung của thư mục lên listView
         /// </summary>
         /// <param name="listView"></param>
         /// <param name="currentNode"></param>
-        public void ShowContent(ListView listView, TreeNode currentNode)
+        public void ShowListView(ListView listView, TreeNode currentNode)
         {
             try
             {
+                // Dọn listView để chừa chỗ hiển thị nội dung
                 listView.Items.Clear();
 
+                // Lấy DirectoryInfo từ node, xét xem directory có tồn tại không, nếu có thì thêm các file, directory con vào listView
                 ListViewItem item;
-                DirectoryInfo directory = GetPathDir(currentNode);
+                DirectoryInfo directory = GetDirectoryInfoFromNode(currentNode);
                 if (!directory.Exists)
                 {
-                    MessageBox.Show("Folder doesn't exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Folder does not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 foreach (DirectoryInfo folder in directory.GetDirectories())
                 {
-                    item = GetLVItem(folder);
+                    item = GetListViewItem(folder);
                     listView.Items.Add(item);
                 }
 
                 foreach (FileInfo file in directory.GetFiles())
                 {
-                    item = GetLVItem(file);
+                    item = GetListViewItem(file);
                     listView.Items.Add(item);
                 };
             }
@@ -179,24 +173,29 @@ namespace FileGuide
                 MessageBox.Show(e.ToString());
             }
         }
-        public void ShowContent(ListView listView, string strPath)
+
+        /// <summary>
+        /// Function hiển thị nội dung của thư mục lên listView
+        /// </summary>
+        /// <param name="listView"></param>
+        /// <param name="strPath"></param>
+        public void ShowListView(ListView listView, string strPath)
         {
             try
             {
-                if (!strPath.EndsWith("\\"))
-                    strPath += "\\";
+                if (!strPath.EndsWith("\\")) strPath += "\\";
                 ListViewItem item;
                 DirectoryInfo directory = new DirectoryInfo(strPath);
                 listView.Items.Clear();
                 foreach (DirectoryInfo folder in directory.GetDirectories())
                 {
-                    item = GetLVItem(folder);
+                    item = GetListViewItem(folder);
                     listView.Items.Add(item);
                 }
 
                 foreach (FileInfo file in directory.GetFiles())
                 {
-                    item = GetLVItem(file);
+                    item = GetListViewItem(file);
                     listView.Items.Add(item);
                 };
             }
@@ -207,6 +206,12 @@ namespace FileGuide
         }
 
 
+        /// <summary>
+        /// Function xử lý item: thực thi nếu là file, mở ra nếu là folder
+        /// </summary>
+        /// <param name="listView"></param>
+        /// <param name="CurrentItem"></param>
+        /// <returns></returns>
         public bool ClickItem(ListView listView, ListViewItem CurrentItem)
         {
             try
@@ -233,18 +238,18 @@ namespace FileGuide
                         return false;
                     }
 
-                    // Dọn listview và hiển thị các thành phần trong thư mục lên listView
+                    // Dọn listview và hiển thị các file, directory con trong thư mục lên listView
                     listView.Items.Clear();
 
                     foreach (DirectoryInfo folder in directory.GetDirectories())
                     {
-                        item = GetLVItem(folder);
+                        item = GetListViewItem(folder);
                         listView.Items.Add(item);
                     }
 
                     foreach (FileInfo file in directory.GetFiles())
                     {
-                        item = GetLVItem(file);
+                        item = GetListViewItem(file);
                         listView.Items.Add(item);
                     }
                 }
@@ -257,12 +262,13 @@ namespace FileGuide
             return false;
         }
 
+
         /// <summary>
-        /// Hàm bổ trợ tạo ListViewItem từ folder. 
+        /// Function bổ trợ tạo ListViewItem từ folder. 
         /// </summary>
         /// <param name="folder"></param>
         /// <returns></returns>
-        public ListViewItem GetLVItem(DirectoryInfo folder)
+        public ListViewItem GetListViewItem(DirectoryInfo folder)
         {
             string[] item = new string[5];
             item[0] = folder.Name;
@@ -278,11 +284,11 @@ namespace FileGuide
 
 
         /// <summary>
-        /// Hàm bổ trợ tạo ListViewItem từ file. 
+        /// Function bổ trợ tạo ListViewItem từ file. 
         /// </summary>
         /// <param name="folder"></param>
         /// <returns></returns>
-        public ListViewItem GetLVItem(FileInfo file)
+        public ListViewItem GetListViewItem(FileInfo file)
         {
             string[] item = new string[5];
             item[0] = file.Name;
@@ -298,28 +304,34 @@ namespace FileGuide
 
         
         /// <summary>
-        /// Function bổ trợ sửa path cho phù hợp với việc hiển thị lên màn hình
+        /// Function bổ trợ sửa path cho phù hợp với việc xử lý và hiển thị
         /// </summary>
         /// <param name="strPath"></param>
         /// <returns></returns>
-        public string GetFullPath(string strPath)
+        public string GetApproriatePath(string strPath)
         {
             return strPath.Replace("My Computer\\", "").Replace("\\\\", "\\");
         }
 
 
         /// <summary>
-        /// Function bổ trợ để lấy tên file/directory (bỏ bớt đường dẫn)
+        /// Function bổ trợ lấy tên file/directory (bỏ bớt các parent directory trong đường dẫn
         /// </summary>
         /// <param name="strPath"></param>
         /// <returns></returns>
-        public string GetName(string strPath)
+        public string GetFileFolderName(string strPath)
         {
             string[] strSplit = strPath.Split('\\');
             return strSplit[strSplit.Length - 1];
         }
 
-        public DirectoryInfo GetPathDir(TreeNode currentNode)
+
+        /// <summary>
+        /// Function bổ trợ tạo một DirectoryInfo từ một treenode trong treeView
+        /// </summary>
+        /// <param name="currentNode"></param>
+        /// <returns></returns>
+        public DirectoryInfo GetDirectoryInfoFromNode(TreeNode currentNode)
         {
             string[] strList = currentNode.FullPath.Split('\\');
             string strPath = strList.GetValue(1).ToString();
@@ -332,7 +344,7 @@ namespace FileGuide
 
 
         /// <summary>
-        /// Function bổ trợ lấy index image ứng với extension của file,folder
+        /// Function bổ trợ lấy index image ứng với extension của file
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
