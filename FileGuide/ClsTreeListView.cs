@@ -219,39 +219,14 @@ namespace FileGuide
                 string path = CurrentItem.SubItems[4].Text;
                 FileInfo fi = new FileInfo(path);
 
-                // Nếu item được chọn là file, thực thi file
+                // Nếu item được chọn là file thì, nếu là folder thì mở ra
                 if (fi.Exists)
                 {
                     Process.Start(path);
                 }
-
-                // Nếu item được chọn là thư mục thì mở ra hoặc báo lỗi nếu không tồn tại
                 else
                 {
-                    ListViewItem item;
-                    DirectoryInfo directory = new DirectoryInfo(path + "\\");
-
-                    if (!directory.Exists)
-                    {
-                        MessageBox.Show("Folder not found", "Error", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                        return false;
-                    }
-
-                    // Dọn listview và hiển thị các file, directory con trong thư mục lên listView
-                    listView.Items.Clear();
-
-                    foreach (DirectoryInfo folder in directory.GetDirectories())
-                    {
-                        item = GetListViewItem(folder);
-                        listView.Items.Add(item);
-                    }
-
-                    foreach (FileInfo file in directory.GetFiles())
-                    {
-                        item = GetListViewItem(file);
-                        listView.Items.Add(item);
-                    }
+                    ShowListView(listView, path);  
                 }
                 return true;
             }
