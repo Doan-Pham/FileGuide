@@ -302,7 +302,7 @@ namespace FileGuide
 
 
         /// <summary>
-        /// Function bổ trợ tạo một DirectoryInfo từ một treenode trong treeView
+        /// Function bổ trợ tạo DirectoryInfo từ một node trong treeView
         /// </summary>
         /// <param name="currentNode"></param>
         /// <returns></returns>

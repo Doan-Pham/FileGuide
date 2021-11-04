@@ -40,7 +40,6 @@ namespace FileGuide
             TreeNode currentNode = e.Node;
                clsTreeListView.ShowFolderTree(this.treeView,this.listView, currentNode);
             tscmbPath.Text = clsTreeListView.GetApproriatePath(currentNode.FullPath);
-
         }
 
         /// <summary>
@@ -51,6 +50,7 @@ namespace FileGuide
         private void listView_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             ListViewItem item = this.listView.FocusedItem;
+
             if(clsTreeListView.ClickItem(this.listView, item))
             { 
                 // Nếu item là folder thì hiển thị path lên tsPath
