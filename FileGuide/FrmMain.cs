@@ -12,6 +12,16 @@ namespace FileGuide
 {
     public partial class FrmMain : Form
     {
+        private bool isCopying = false;
+        private bool isCutting = false;
+        private bool isFolder = false;
+        private bool isListView = false;
+        private ListViewItem itemPaste;
+        private string pathFolder;
+        private string pathFile;
+        private string pathNode;
+        private string currentPath;
+
         private ClsTreeListView clsTreeListView = new ClsTreeListView();
         public FrmMain()
         {
@@ -40,6 +50,8 @@ namespace FileGuide
             TreeNode currentNode = e.Node;
                clsTreeListView.ShowFolderTree(this.treeView,this.listView, currentNode);
             tscmbPath.Text = clsTreeListView.GetApproriatePath(currentNode.FullPath);
+            pathNode = tscmbPath.Text;
+            currentPath = pathNode;
         }
 
         /// <summary>
@@ -55,7 +67,10 @@ namespace FileGuide
             { 
                 // Nếu item là folder thì hiển thị path lên tsPath
                 if (item.SubItems[1].Text == "Folder")
+                { 
                 tscmbPath.Text = clsTreeListView.GetApproriatePath(item.SubItems[4].Text);
+                currentPath = tscmbPath.Text;
+                }
             }
         }
         private void listView_KeyPress(object sender, KeyPressEventArgs e)
@@ -67,7 +82,10 @@ namespace FileGuide
                 {
                     // Nếu item là folder thì hiển thị path lên tsPath
                     if (item.SubItems[1].Text == "Folder")
+                    { 
                         tscmbPath.Text = clsTreeListView.GetApproriatePath(item.SubItems[4].Text);
+                        currentPath = tscmbPath.Text;
+                    }
                 }
             }
         }
@@ -93,12 +111,14 @@ namespace FileGuide
                             System.Diagnostics.Process.Start(tscmbPath.Text.Trim());
                             DirectoryInfo parent = file.Directory;
                             tscmbPath.Text = parent.FullName;
+                            
                         }
 
                         // Nếu đường dẫn trỏ đến folder thì hiện nội dung folder lên listView
                         else if (Directory.Exists(tscmbPath.Text.Trim()))
                         {
-                            clsTreeListView.ShowListView(this.listView, tscmbPath.Text);
+                            clsTreeListView.ShowListView(this.listView, tscmbPath.Text) ;
+                            currentPath = tscmbPath.Text;
                         }
 
                         // Nếu đường dẫn không tồn tại thì báo lỗi
@@ -119,6 +139,139 @@ namespace FileGuide
         {
             if (this.Width > 400)
             tscmbPath.Width = this.Width - 150;
+        }
+
+        private void menuCopy_Click(object sender, EventArgs e)
+        {
+            isCopying = true;
+            if (listView.Focused)
+            {
+                isListView = true;
+
+                itemPaste = listView.FocusedItem;
+
+                if (itemPaste == null)
+                    return;
+
+                if (itemPaste.SubItems[1].Text.Trim() == "Folder")
+                {
+                    isFolder = true;
+                    pathFolder = clsTreeListView.GetApproriatePath(itemPaste.SubItems[4].Text + "\\");
+                }
+                else
+                {
+                    isFolder = false;
+                    pathFile = clsTreeListView.GetApproriatePath(itemPaste.SubItems[4].Text);
+                }
+            }
+            else if (treeView.Focused)
+            {
+                isListView = false;
+                isFolder = true;
+            };
+
+            menuPaste.Enabled = true;
+            tsbtnPaste.Enabled = true;
+        }
+
+        private void menuCut_Click(object sender, EventArgs e)
+        {
+            isCutting = true;
+            if (listView.Focused)
+            {
+                isListView = true;
+
+                itemPaste = listView.FocusedItem;
+
+                if (itemPaste == null)
+                    return;
+
+                if (itemPaste.SubItems[1].Text.Trim() == "Folder")
+                {
+                    isFolder = true;
+                    pathFolder = itemPaste.SubItems[4].Text + "\\";
+                }
+                else
+                {
+                    isFolder = false;
+                    pathFile = itemPaste.SubItems[4].Text;
+                }
+            }
+            else if (treeView.Focused)
+            {
+                isListView = false;
+                isFolder = true;
+            };
+
+            menuPaste.Enabled = true;
+            tsbtnPaste.Enabled = true;
+        }
+
+        private void menuPaste_Click(object sender, EventArgs e)
+        {
+            try 
+            {
+                string pathSource, pathDest;
+                if (isListView)
+                {
+                    if (isFolder)
+                    {
+                        pathSource = pathFolder;
+                        pathDest = currentPath;
+                    }
+                    else
+                    {
+                        pathSource = pathFile;
+                        pathDest = currentPath + "\\" + itemPaste.Text;
+
+                    }
+                }
+                else 
+                {
+                    pathSource = pathNode;
+                    pathDest = currentPath;
+                }
+
+                if (isCopying)
+                {
+                    if (isFolder)
+                    {                 
+                        Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory(pathSource, pathDest);
+                    }
+                    else 
+                    {
+                        Microsoft.VisualBasic.FileIO.FileSystem.CopyFile(pathSource, pathDest);
+                    }
+                    isCopying = false;
+                }
+
+                if (isCutting)
+                {
+                    if (isFolder)
+                    {
+                        Microsoft.VisualBasic.FileIO.FileSystem.MoveDirectory(pathSource, pathDest);
+                    }
+                    else
+                    {
+                        Microsoft.VisualBasic.FileIO.FileSystem.MoveFile(pathSource, pathDest);
+                    }
+                    isCutting = false;
+                }
+
+                string strPath;
+                if (!isFolder)
+                    strPath = clsTreeListView.GetDirectoryPathFromFilePath(pathDest);
+                else strPath = pathDest;
+
+                clsTreeListView.ShowListView(listView, strPath);
+
+                menuPaste.Enabled = false;
+                tsbtnPaste.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

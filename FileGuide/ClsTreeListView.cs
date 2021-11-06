@@ -183,7 +183,7 @@ namespace FileGuide
         {
             try
             {
-                if (!strPath.EndsWith("\\")) strPath += "\\";
+                //if (!strPath.EndsWith("\\")) strPath += "\\";
                 ListViewItem item;
                 DirectoryInfo directory = new DirectoryInfo(strPath);
                 listView.Items.Clear();
@@ -384,6 +384,17 @@ namespace FileGuide
                     return 3;
 
             }
+        }
+
+        public string GetDirectoryPathFromFilePath(string path)
+        {
+            string[] strList = path.Split('\\');
+            string strPath = strList.GetValue(0).ToString();
+            for (int i = 1; i < strList.Length - 1; i++)
+            {
+                strPath += "\\" + strList.GetValue(i);
+            }
+            return strPath;
         }
     }
 }
