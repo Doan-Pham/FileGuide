@@ -308,13 +308,20 @@ namespace FileGuide
                     if (fi.Exists)
                     {
                         Microsoft.VisualBasic.FileIO.FileSystem.RenameFile(path, e.Label);
-                        clsTreeListView.ShowListView(listView, clsTreeListView.GetParentDirectoryPath(path));
                     }
+                    else 
+                    {
+                        Microsoft.VisualBasic.FileIO.FileSystem.RenameDirectory(path, e.Label);
+                    }
+
+                    clsTreeListView.ShowListView(listView, clsTreeListView.GetParentDirectoryPath(path));
+                    e.CancelEdit = true;
+                    isRenaming = false;
                 }
             }
             catch(IOException)
             {
-                MessageBox.Show("File or Folder already exists");
+                MessageBox.Show("File or Folder already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error) ;
             }
             catch(Exception ex)
             {
