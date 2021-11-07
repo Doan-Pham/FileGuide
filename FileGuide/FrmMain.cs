@@ -14,6 +14,7 @@ namespace FileGuide
     {
         private bool isCopying = false;
         private bool isCutting = false;
+        private bool isRenaming = false;
         private bool isFolder = false;
         private bool isListView = false;
         private ListViewItem itemPaste;
@@ -29,7 +30,7 @@ namespace FileGuide
         }
 
         /// <summary>
-        /// Khi load form, tạo treeview và listview
+        /// Create treeView and listView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -41,7 +42,7 @@ namespace FileGuide
         }
 
         /// <summary>
-        /// Load cây thư mục vào treeView
+        /// Load folder tree onto treeView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -55,7 +56,7 @@ namespace FileGuide
         }
 
         /// <summary>
-        /// Khi click vào một listView item, thực thi nếu là file, hiển thị nếu là folder
+        /// Run if a file, show content if a folder
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -91,7 +92,7 @@ namespace FileGuide
         }
 
         /// <summary>
-        /// Đi đến đường dẫn trên tsPath, thực thi nếu là file, show content nếu là folder
+        /// Go to the path on toolStrip Path
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -282,6 +283,38 @@ namespace FileGuide
                 {
                     clsTreeListView.DeleteItem(listView, listView.FocusedItem);
                 }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void menuRename_Click(object sender, EventArgs e)
+        {
+            isRenaming = true;
+            listView.SelectedItems[0].BeginEdit();
+        }
+
+        private void listView_AfterLabelEdit(object sender, LabelEditEventArgs e)
+        {
+            try 
+            {
+                if (isRenaming)
+                {
+                    string path = listView.FocusedItem.SubItems[4].Text;
+                    if (e.Label == null) return;
+                    FileInfo fi = new FileInfo(path);
+                    if (fi.Exists)
+                    {
+                        Microsoft.VisualBasic.FileIO.FileSystem.RenameFile(path, e.Label);
+                        clsTreeListView.ShowListView(listView, clsTreeListView.GetParentDirectoryPath(path));
+                    }
+                }
+            }
+            catch(IOException)
+            {
+                MessageBox.Show("File or Folder already exists");
             }
             catch(Exception ex)
             {

@@ -137,6 +137,7 @@ namespace FileGuide
             this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView.FullRowSelect = true;
             this.listView.HideSelection = false;
+            this.listView.LabelEdit = true;
             this.listView.LargeImageList = this.imglstLarge;
             this.listView.Location = new System.Drawing.Point(0, 0);
             this.listView.Name = "listView";
@@ -145,6 +146,7 @@ namespace FileGuide
             this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
+            this.listView.AfterLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.listView_AfterLabelEdit);
             this.listView.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listView_KeyPress);
             this.listView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView_MouseDoubleClick);
             // 
@@ -235,8 +237,9 @@ namespace FileGuide
             // 
             this.menuRename.Name = "menuRename";
             this.menuRename.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.menuRename.Size = new System.Drawing.Size(136, 22);
+            this.menuRename.Size = new System.Drawing.Size(180, 22);
             this.menuRename.Text = "&Rename";
+            this.menuRename.Click += new System.EventHandler(this.menuRename_Click);
             // 
             // menuDelete
             // 

@@ -13,7 +13,7 @@ namespace FileGuide
     class ClsTreeListView
     {
         /// <summary>
-        /// Function khởi tạo treeView 
+        /// Initialize treeView
         /// </summary>
         /// <param name="treeView"></param>
         public void CreateTreeView(TreeView treeView)
@@ -85,10 +85,10 @@ namespace FileGuide
 
 
         /// <summary>
-        /// Function hiển thị cây thư mục lên treeview
+        /// Show computer's folder tree onto treeView
         /// </summary>
         /// <param name="treeView"></param>
-        /// <param name="currentNode"></param>
+        /// <param name="currentNode">The treenode at which to show folder tree</param>
         /// <returns></returns>
         public bool ShowFolderTree(TreeView treeView, ListView listView, TreeNode currentNode)
         {
@@ -137,10 +137,10 @@ namespace FileGuide
 
 
         /// <summary>
-        /// Function hiển thị nội dung của thư mục lên listView
+        /// Show a folder's content onto listView
         /// </summary>
         /// <param name="listView"></param>
-        /// <param name="currentNode"></param>
+        /// <param name="currentNode">The treenode at which to show content</param>
         public void ShowListView(ListView listView, TreeNode currentNode)
         {
             try
@@ -175,10 +175,10 @@ namespace FileGuide
         }
 
         /// <summary>
-        /// Function hiển thị nội dung của thư mục lên listView
+        /// Show a folder's content onto listView
         /// </summary>
         /// <param name="listView"></param>
-        /// <param name="strPath"></param>
+        /// <param name="strPath">The directory's path at which to show content</param>
         public void ShowListView(ListView listView, string strPath)
         {
             try
@@ -207,7 +207,7 @@ namespace FileGuide
 
 
         /// <summary>
-        /// Function xử lý item: thực thi nếu là file, mở ra nếu là folder
+        /// Process an item: Run if a file, open if a folder
         /// </summary>
         /// <param name="listView"></param>
         /// <param name="CurrentItem"></param>
@@ -237,6 +237,11 @@ namespace FileGuide
             return false;
         }
 
+        /// <summary>
+        /// Delete a listView item
+        /// </summary>
+        /// <param name="listView"></param>
+        /// <param name="item"></param>
         public void DeleteItem(ListView listView, ListViewItem item)
         {
             try
@@ -296,7 +301,7 @@ namespace FileGuide
         }
 
         /// <summary>
-        /// Function bổ trợ tạo ListViewItem từ folder. 
+        /// Return a listViewItem from a folder
         /// </summary>
         /// <param name="folder"></param>
         /// <returns></returns>
@@ -316,7 +321,7 @@ namespace FileGuide
 
 
         /// <summary>
-        /// Function bổ trợ tạo ListViewItem từ file. 
+        /// Return a listViewItem from a file
         /// </summary>
         /// <param name="folder"></param>
         /// <returns></returns>
@@ -336,7 +341,7 @@ namespace FileGuide
 
         
         /// <summary>
-        /// Function bổ trợ sửa path cho phù hợp với việc xử lý và hiển thị
+        /// Modify a path for displaying
         /// </summary>
         /// <param name="strPath"></param>
         /// <returns></returns>
@@ -347,9 +352,9 @@ namespace FileGuide
 
 
         /// <summary>
-        /// Function bổ trợ lấy tên file/directory (bỏ bớt các parent directory trong đường dẫn
+        /// Return name of a file, directory (Remove parent directories)
         /// </summary>
-        /// <param name="strPath"></param>
+        /// <param name="strPath">The path of the file/folder that needs modifying</param>
         /// <returns></returns>
         public string GetFileFolderName(string strPath)
         {
@@ -359,7 +364,7 @@ namespace FileGuide
 
 
         /// <summary>
-        /// Function bổ trợ tạo DirectoryInfo từ một node trong treeView
+        /// Return a DirectoryInfo from a treeView node
         /// </summary>
         /// <param name="currentNode"></param>
         /// <returns></returns>
@@ -376,7 +381,7 @@ namespace FileGuide
 
 
         /// <summary>
-        /// Function bổ trợ lấy index image ứng với extension của file
+        /// Return image index respective to a file's extension
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
@@ -443,6 +448,12 @@ namespace FileGuide
             }
         }
 
+
+        /// <summary>
+        /// Get the parent directory's path of a file/folder
+        /// </summary>
+        /// <param name="path">The full path of a file/folder</param>
+        /// <returns></returns>
         public string GetParentDirectoryPath(string path)
         {
             string[] strList = path.Split('\\');
