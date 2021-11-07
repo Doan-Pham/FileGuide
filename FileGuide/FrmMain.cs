@@ -260,7 +260,7 @@ namespace FileGuide
 
                 string strPath;
                 if (!isFolder)
-                    strPath = clsTreeListView.GetDirectoryPathFromFilePath(pathDest);
+                    strPath = clsTreeListView.GetParentDirectoryPath(pathDest);
                 else strPath = pathDest;
 
                 clsTreeListView.ShowListView(listView, strPath);
@@ -269,6 +269,21 @@ namespace FileGuide
                 tsbtnPaste.Enabled = false;
             }
             catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void menuDelete_Click(object sender, EventArgs e)
+        {
+            try 
+            {
+                if (listView.Focused)
+                {
+                    clsTreeListView.DeleteItem(listView, listView.FocusedItem);
+                }
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }

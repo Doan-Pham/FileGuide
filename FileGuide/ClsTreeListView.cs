@@ -237,6 +237,63 @@ namespace FileGuide
             return false;
         }
 
+        public void DeleteItem(ListView listView, ListViewItem item)
+        {
+            try
+            {
+                string path = item.SubItems[4].Text;
+
+                if (item.SubItems[1].Text == "Folder")
+                {
+                    DirectoryInfo directory = new DirectoryInfo(path);
+                    if (!directory.Exists)
+                    {
+                        MessageBox.Show("Folder might not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else 
+                    {
+                        DialogResult dialog = MessageBox.Show("Are you sure you want to delete this folder ? \n" + item.Text.ToString(), "Delete folder", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+                        if (dialog == DialogResult.Yes)
+                        {
+                            directory.Delete(true);
+                        }
+                        else return;
+
+                        string pathFolder = GetParentDirectoryPath(path);
+                        ShowListView(listView, pathFolder);
+                    }
+                }
+                else 
+                {
+                    FileInfo file = new FileInfo(path);
+                    if (!file.Exists)
+                    {
+                        MessageBox.Show("File might not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else 
+                    {
+                        DialogResult dialog = MessageBox.Show("Are you sure you want to delete this file ? \n" + item.Text.ToString(), "Delete file", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+                        if (dialog == DialogResult.Yes)
+                        {
+                            file.Delete();
+                        }
+                        else return;
+
+                        string pathFolder = GetParentDirectoryPath(path);
+                        ShowListView(listView, pathFolder);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
 
         /// <summary>
         /// Function bổ trợ tạo ListViewItem từ folder. 
@@ -386,7 +443,7 @@ namespace FileGuide
             }
         }
 
-        public string GetDirectoryPathFromFilePath(string path)
+        public string GetParentDirectoryPath(string path)
         {
             string[] strList = path.Split('\\');
             string strPath = strList.GetValue(0).ToString();

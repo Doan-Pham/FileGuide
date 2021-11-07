@@ -211,8 +211,8 @@ namespace FileGuide
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuFile,
-            this.menuEdit,
             this.menuView,
+            this.menuEdit,
             this.menuHelp});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -242,8 +242,9 @@ namespace FileGuide
             // 
             this.menuDelete.Name = "menuDelete";
             this.menuDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.menuDelete.Size = new System.Drawing.Size(136, 22);
+            this.menuDelete.Size = new System.Drawing.Size(180, 22);
             this.menuDelete.Text = "&Delete";
+            this.menuDelete.Click += new System.EventHandler(this.menuDelete_Click);
             // 
             // menuExit
             // 
@@ -385,6 +386,7 @@ namespace FileGuide
             this.tsbtnCopy.Name = "tsbtnCopy";
             this.tsbtnCopy.Size = new System.Drawing.Size(69, 34);
             this.tsbtnCopy.Text = "Copy";
+            this.tsbtnCopy.Click += new System.EventHandler(this.menuCopy_Click);
             // 
             // tsbtnCut
             // 
@@ -393,6 +395,7 @@ namespace FileGuide
             this.tsbtnCut.Name = "tsbtnCut";
             this.tsbtnCut.Size = new System.Drawing.Size(60, 34);
             this.tsbtnCut.Text = "Cut";
+            this.tsbtnCut.Click += new System.EventHandler(this.menuCut_Click);
             // 
             // tsbtnPaste
             // 
@@ -402,6 +405,7 @@ namespace FileGuide
             this.tsbtnPaste.Name = "tsbtnPaste";
             this.tsbtnPaste.Size = new System.Drawing.Size(69, 34);
             this.tsbtnPaste.Text = "Paste";
+            this.tsbtnPaste.Click += new System.EventHandler(this.menuPaste_Click);
             // 
             // tsbtnDelete
             // 
@@ -410,6 +414,7 @@ namespace FileGuide
             this.tsbtnDelete.Name = "tsbtnDelete";
             this.tsbtnDelete.Size = new System.Drawing.Size(74, 34);
             this.tsbtnDelete.Text = "Delete";
+            this.tsbtnDelete.Click += new System.EventHandler(this.menuDelete_Click);
             // 
             // toolStripSeparator2
             // 
@@ -493,6 +498,7 @@ namespace FileGuide
             this.Controls.Add(this.splitContainer);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
