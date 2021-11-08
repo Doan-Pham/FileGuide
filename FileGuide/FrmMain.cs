@@ -352,5 +352,25 @@ namespace FileGuide
             if (currentPath != "" && currentPath != "My Computer" )
                 clsTreeListView.ShowListView(listView, currentPath);
         }
+
+        private void menuLarge_Click(object sender, EventArgs e)
+        {
+            listView.View = View.LargeIcon;
+        }
+
+        private void menuSmall_Click(object sender, EventArgs e)
+        {
+            listView.View = View.SmallIcon;
+        }
+
+        private void menuList_Click(object sender, EventArgs e)
+        {
+            listView.View = View.List;
+        }
+
+        private void menuDetails_Click(object sender, EventArgs e)
+        {
+            listView.View = View.Details;
+        }
     }
 }

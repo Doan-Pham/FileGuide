@@ -266,32 +266,36 @@ namespace FileGuide
             this.menuList,
             this.menuDetails});
             this.menuView.Name = "menuView";
-            this.menuView.Size = new System.Drawing.Size(65, 29);
+            this.menuView.Size = new System.Drawing.Size(65, 30);
             this.menuView.Text = "&View";
             // 
             // menuLarge
             // 
             this.menuLarge.Name = "menuLarge";
-            this.menuLarge.Size = new System.Drawing.Size(204, 34);
+            this.menuLarge.Size = new System.Drawing.Size(270, 34);
             this.menuLarge.Text = "Lar&ge Icons";
+            this.menuLarge.Click += new System.EventHandler(this.menuLarge_Click);
             // 
             // menuSmall
             // 
             this.menuSmall.Name = "menuSmall";
-            this.menuSmall.Size = new System.Drawing.Size(204, 34);
+            this.menuSmall.Size = new System.Drawing.Size(270, 34);
             this.menuSmall.Text = "S&mall Icons";
+            this.menuSmall.Click += new System.EventHandler(this.menuSmall_Click);
             // 
             // menuList
             // 
             this.menuList.Name = "menuList";
-            this.menuList.Size = new System.Drawing.Size(204, 34);
+            this.menuList.Size = new System.Drawing.Size(270, 34);
             this.menuList.Text = "&List";
+            this.menuList.Click += new System.EventHandler(this.menuList_Click);
             // 
             // menuDetails
             // 
             this.menuDetails.Name = "menuDetails";
-            this.menuDetails.Size = new System.Drawing.Size(204, 34);
+            this.menuDetails.Size = new System.Drawing.Size(270, 34);
             this.menuDetails.Text = "&Details";
+            this.menuDetails.Click += new System.EventHandler(this.menuDetails_Click);
             // 
             // menuEdit
             // 
@@ -445,26 +449,30 @@ namespace FileGuide
             // tsMenuLarge
             // 
             this.tsMenuLarge.Name = "tsMenuLarge";
-            this.tsMenuLarge.Size = new System.Drawing.Size(204, 34);
+            this.tsMenuLarge.Size = new System.Drawing.Size(270, 34);
             this.tsMenuLarge.Text = "Large Icons";
+            this.tsMenuLarge.Click += new System.EventHandler(this.menuLarge_Click);
             // 
             // tsMenuSmall
             // 
             this.tsMenuSmall.Name = "tsMenuSmall";
-            this.tsMenuSmall.Size = new System.Drawing.Size(204, 34);
+            this.tsMenuSmall.Size = new System.Drawing.Size(270, 34);
             this.tsMenuSmall.Text = "Small Icons";
+            this.tsMenuSmall.Click += new System.EventHandler(this.menuSmall_Click);
             // 
             // tsMenuList
             // 
             this.tsMenuList.Name = "tsMenuList";
-            this.tsMenuList.Size = new System.Drawing.Size(204, 34);
+            this.tsMenuList.Size = new System.Drawing.Size(270, 34);
             this.tsMenuList.Text = "List";
+            this.tsMenuList.Click += new System.EventHandler(this.menuList_Click);
             // 
             // tsMenuDetails
             // 
             this.tsMenuDetails.Name = "tsMenuDetails";
-            this.tsMenuDetails.Size = new System.Drawing.Size(204, 34);
+            this.tsMenuDetails.Size = new System.Drawing.Size(270, 34);
             this.tsMenuDetails.Text = "Details";
+            this.tsMenuDetails.Click += new System.EventHandler(this.menuDetails_Click);
             // 
             // tsPath
             // 
