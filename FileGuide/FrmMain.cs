@@ -19,8 +19,8 @@ namespace FileGuide
         private bool isFolder = false;
         private bool isListView = false;
         private ListViewItem itemPaste;
-        private string pathFolder;
-        private string pathFile;
+        private string pathSource;
+        private string pathDest;
         private string pathNode;
         private string currentPath;
 
@@ -151,7 +151,10 @@ namespace FileGuide
 
         private void menuCopy_Click(object sender, EventArgs e)
         {
+            // Set isCopying to true so events for Paste feature know whether to cut paste or copy paste
             isCopying = true;
+
+            // If listView is focused, assign item's path to a variable and enable Paste feature
             if (listView.Focused)
             {
                 isListView = true;
@@ -163,16 +166,17 @@ namespace FileGuide
                 if (itemPaste.SubItems[1].Text.Trim() == "Folder")
                 {
                     isFolder = true;
-                    pathFolder = itemPaste.SubItems[4].Text + "\\";
+                    pathSource = itemPaste.SubItems[4].Text + "\\";
                 }
                 else
                 {
                     isFolder = false;
-                    pathFile = itemPaste.SubItems[4].Text;
+                    pathSource = itemPaste.SubItems[4].Text;
                 }
             }
             else if (treeView.Focused)
             {
+                pathSource = pathNode;
                 isListView = false;
                 isFolder = true;
             };
@@ -183,6 +187,7 @@ namespace FileGuide
 
         private void menuCut_Click(object sender, EventArgs e)
         {
+            // The same as menuCopy_Click event but set isCutting to true and isCopying to false
             menuCopy_Click(sender, e);
             isCopying = false;
             isCutting = true;
@@ -192,27 +197,17 @@ namespace FileGuide
         {
             try 
             {
-                string pathSource, pathDest;
-                if (isListView)
+                // pathSource and pathDest respectively indicate item-needed-to-copy-cut's path and destination directory's path 
+                if (isFolder)
                 {
-                    if (isFolder)
-                    {
-                        pathSource = pathFolder;
-                        pathDest = currentPath;
-                    }
-                    else
-                    {
-                        pathSource = pathFile;
-                        pathDest = currentPath + "\\" + itemPaste.Text;
-
-                    }
+                    pathDest = currentPath;
                 }
                 else 
                 {
-                    pathSource = pathNode;
-                    pathDest = currentPath;
+                    pathDest = currentPath + "\\" + itemPaste.Text;
                 }
-
+               
+                // If user is doing copy-paste, copy item to destination
                 if (isCopying)
                 {
                     if (isFolder)
@@ -226,6 +221,7 @@ namespace FileGuide
                     isCopying = false;
                 }
 
+                // If user is doing cut-paste, move item to new destination
                 if (isCutting)
                 {
                     if (isFolder)
@@ -239,6 +235,7 @@ namespace FileGuide
                     isCutting = false;
                 }
 
+                // After pasting, refresh listView
                 string strPath;
                 if (!isFolder)
                     strPath = clsTreeListView.GetParentDirectoryPath(pathDest);
