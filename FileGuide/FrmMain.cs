@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Diagnostics;
 namespace FileGuide
 {
     public partial class FrmMain : Form
@@ -109,7 +110,7 @@ namespace FileGuide
                         if (File.Exists(tscmbPath.Text.Trim()))
                         {
                             FileInfo file = new FileInfo(tscmbPath.Text.Trim());
-                            System.Diagnostics.Process.Start(tscmbPath.Text.Trim());
+                            Process.Start(tscmbPath.Text.Trim());
                             DirectoryInfo parent = file.Directory;
                             tscmbPath.Text = parent.FullName;
                             
@@ -327,6 +328,29 @@ namespace FileGuide
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void tsbtnBack_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                if (currentPath != "" && currentPath != "My Computer")
+                {
+                    currentPath = clsTreeListView.GetParentDirectoryPath(currentPath);
+                    tscmbPath.Text = currentPath;
+                    clsTreeListView.ShowListView(listView, currentPath);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void tsbtnRefresh_Click(object sender, EventArgs e)
+        {
+            if (currentPath != "" && currentPath != "My Computer" )
+                clsTreeListView.ShowListView(listView, currentPath);
         }
     }
 }

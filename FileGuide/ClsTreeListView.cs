@@ -458,6 +458,8 @@ namespace FileGuide
         {
             string[] strList = path.Split('\\');
             string strPath = strList.GetValue(0).ToString();
+            //if (strList.GetValue(1).ToString() == "") return "My Computer";
+            if (strList.Length == 2) return strPath + "\\";
             for (int i = 1; i < strList.Length - 1; i++)
             {
                 strPath += "\\" + strList.GetValue(i);
