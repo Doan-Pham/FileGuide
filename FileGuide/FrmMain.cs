@@ -372,5 +372,16 @@ namespace FileGuide
         {
             listView.View = View.Details;
         }
+
+        private void tscmbPath_TextChanged(object sender, EventArgs e)
+        {
+            statusLblItemNum.Text = listView.Items.Count.ToString() + " items";
+        }
+
+        private void listView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            statusLblNumSelect.Text = listView.SelectedItems.Count.ToString() + " items selected";
+
+        }
     }
 }
