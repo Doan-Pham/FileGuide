@@ -31,7 +31,7 @@ namespace FileGuide
         }
 
         /// <summary>
-        /// Create treeView and listView
+        /// Create treeView and set min width for toolStrip path
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -75,6 +75,12 @@ namespace FileGuide
                 }
             }
         }
+
+        /// <summary>
+        /// Run if a file, show content if a folder
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listView_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
@@ -103,10 +109,9 @@ namespace FileGuide
             {    
                 try
                 {
-                    // Chỉ xử lý khi đường dẫn không trống
                     if (tscmbPath.Text != "")
                     {
-                        // Nếu đường dẫn trỏ đến file thì thực thi file
+                        // If path points to a file, process that file
                         if (File.Exists(tscmbPath.Text.Trim()))
                         {
                             FileInfo file = new FileInfo(tscmbPath.Text.Trim());
@@ -116,14 +121,14 @@ namespace FileGuide
                             
                         }
 
-                        // Nếu đường dẫn trỏ đến folder thì hiện nội dung folder lên listView
+                        // If path points to a folder, open that folder
                         else if (Directory.Exists(tscmbPath.Text.Trim()))
                         {
                             clsTreeListView.ShowListView(this.listView, tscmbPath.Text) ;
                             currentPath = tscmbPath.Text;
                         }
 
-                        // Nếu đường dẫn không tồn tại thì báo lỗi
+                        // If path doesn't exist, show error message
                         else
                         {
                             MessageBox.Show("File/Folder not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
@@ -139,6 +144,7 @@ namespace FileGuide
 
         private void FrmMain_Resize(object sender, EventArgs e)
         {
+            // Set min width for toolStrip Path when resize form
             if (this.Width > 400)
             tscmbPath.Width = this.Width - 150;
         }
@@ -149,40 +155,6 @@ namespace FileGuide
             if (listView.Focused)
             {
                 isListView = true;
-
-                itemPaste = listView.FocusedItem;
-
-                if (itemPaste == null)
-                    return;
-
-                if (itemPaste.SubItems[1].Text.Trim() == "Folder")
-                {
-                    isFolder = true;
-                    pathFolder = clsTreeListView.GetApproriatePath(itemPaste.SubItems[4].Text + "\\");
-                }
-                else
-                {
-                    isFolder = false;
-                    pathFile = clsTreeListView.GetApproriatePath(itemPaste.SubItems[4].Text);
-                }
-            }
-            else if (treeView.Focused)
-            {
-                isListView = false;
-                isFolder = true;
-            };
-
-            menuPaste.Enabled = true;
-            tsbtnPaste.Enabled = true;
-        }
-
-        private void menuCut_Click(object sender, EventArgs e)
-        {
-            isCutting = true;
-            if (listView.Focused)
-            {
-                isListView = true;
-
                 itemPaste = listView.FocusedItem;
 
                 if (itemPaste == null)
@@ -207,6 +179,13 @@ namespace FileGuide
 
             menuPaste.Enabled = true;
             tsbtnPaste.Enabled = true;
+        }
+
+        private void menuCut_Click(object sender, EventArgs e)
+        {
+            menuCopy_Click(sender, e);
+            isCopying = false;
+            isCutting = true;
         }
 
         private void menuPaste_Click(object sender, EventArgs e)
