@@ -163,15 +163,15 @@ namespace FileGuide
                 if (itemPaste == null)
                     return;
 
+                pathSource = itemPaste.SubItems[4].Text;
                 if (itemPaste.SubItems[1].Text.Trim() == "Folder")
                 {
                     isFolder = true;
-                    pathSource = itemPaste.SubItems[4].Text + "\\";
+                    
                 }
                 else
                 {
                     isFolder = false;
-                    pathSource = itemPaste.SubItems[4].Text;
                 }
             }
             else if (treeView.Focused)
@@ -212,7 +212,7 @@ namespace FileGuide
                 {
                     if (isFolder)
                     {                 
-                        Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory(pathSource, pathDest);
+                        Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory(pathSource, pathDest + "\\" + clsTreeListView.GetFileFolderName(pathSource));
                     }
                     else 
                     {
@@ -226,7 +226,7 @@ namespace FileGuide
                 {
                     if (isFolder)
                     {
-                        Microsoft.VisualBasic.FileIO.FileSystem.MoveDirectory(pathSource, pathDest);
+                        Microsoft.VisualBasic.FileIO.FileSystem.MoveDirectory(pathSource, pathDest + "\\" + clsTreeListView.GetFileFolderName(pathSource));
                     }
                     else
                     {
@@ -235,12 +235,10 @@ namespace FileGuide
                     isCutting = false;
                 }
 
-                // After pasting, refresh listView
+                // After pasting, refresh listView and disable paste feature
                 string strPath;
-                if (!isFolder)
-                    strPath = clsTreeListView.GetParentDirectoryPath(pathDest);
+                if (!isFolder) strPath = clsTreeListView.GetParentDirectoryPath(pathDest);
                 else strPath = pathDest;
-
                 clsTreeListView.ShowListView(listView, strPath);
 
                 menuPaste.Enabled = false;
