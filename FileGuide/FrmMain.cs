@@ -39,7 +39,7 @@ namespace FileGuide
         {
             clsTreeListView.CreateTreeView(this.treeView);
             if (this.Width > 400)
-                tscmbPath.Width = this.Width - 150;
+                tscmbPath.Width = this.Width - 300;
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace FileGuide
         {
             // Set min width for toolStrip Path when resize form
             if (this.Width > 400)
-            tscmbPath.Width = this.Width - 150;
+            tscmbPath.Width = this.Width - 300;
         }
 
         /// <summary>
