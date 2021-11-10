@@ -237,7 +237,7 @@ namespace FileGuide
             this.menuDelete,
             this.menuExit});
             this.menuFile.Name = "menuFile";
-            this.menuFile.Size = new System.Drawing.Size(54, 30);
+            this.menuFile.Size = new System.Drawing.Size(54, 29);
             this.menuFile.Text = "&File";
             // 
             // menuRename
@@ -271,7 +271,7 @@ namespace FileGuide
             this.menuList,
             this.menuDetails});
             this.menuView.Name = "menuView";
-            this.menuView.Size = new System.Drawing.Size(65, 30);
+            this.menuView.Size = new System.Drawing.Size(65, 29);
             this.menuView.Text = "&View";
             // 
             // menuLarge
@@ -309,7 +309,7 @@ namespace FileGuide
             this.menuCut,
             this.menuPaste});
             this.menuEdit.Name = "menuEdit";
-            this.menuEdit.Size = new System.Drawing.Size(58, 30);
+            this.menuEdit.Size = new System.Drawing.Size(58, 29);
             this.menuEdit.Text = "&Edit";
             // 
             // menuCopy
@@ -342,7 +342,7 @@ namespace FileGuide
             this.menuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuAbout});
             this.menuHelp.Name = "menuHelp";
-            this.menuHelp.Size = new System.Drawing.Size(65, 30);
+            this.menuHelp.Size = new System.Drawing.Size(65, 29);
             this.menuHelp.Text = "&Help";
             // 
             // menuAbout
@@ -374,7 +374,7 @@ namespace FileGuide
             // 
             // tsbtnBack
             // 
-            this.tsbtnBack.Image = global::WindowExplorer.Properties.Resources.FolderBack;
+            this.tsbtnBack.Image = global::FileGuide.Properties.Resources.FolderBack;
             this.tsbtnBack.ImageTransparentColor = System.Drawing.Color.White;
             this.tsbtnBack.Name = "tsbtnBack";
             this.tsbtnBack.Size = new System.Drawing.Size(82, 67);
@@ -383,7 +383,7 @@ namespace FileGuide
             // 
             // tsbtnRefresh
             // 
-            this.tsbtnRefresh.Image = global::WindowExplorer.Properties.Resources.Refresh;
+            this.tsbtnRefresh.Image = global::FileGuide.Properties.Resources.Refresh;
             this.tsbtnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnRefresh.Margin = new System.Windows.Forms.Padding(8, 2, 0, 3);
             this.tsbtnRefresh.Name = "tsbtnRefresh";
@@ -398,7 +398,7 @@ namespace FileGuide
             // 
             // tsbtnCopy
             // 
-            this.tsbtnCopy.Image = global::WindowExplorer.Properties.Resources.Copy;
+            this.tsbtnCopy.Image = global::FileGuide.Properties.Resources.Copy;
             this.tsbtnCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnCopy.Margin = new System.Windows.Forms.Padding(4, 1, 0, 2);
             this.tsbtnCopy.Name = "tsbtnCopy";
@@ -408,7 +408,7 @@ namespace FileGuide
             // 
             // tsbtnCut
             // 
-            this.tsbtnCut.Image = global::WindowExplorer.Properties.Resources.Cut;
+            this.tsbtnCut.Image = global::FileGuide.Properties.Resources.Cut;
             this.tsbtnCut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnCut.Margin = new System.Windows.Forms.Padding(8, 2, 0, 3);
             this.tsbtnCut.Name = "tsbtnCut";
@@ -419,7 +419,7 @@ namespace FileGuide
             // tsbtnPaste
             // 
             this.tsbtnPaste.Enabled = false;
-            this.tsbtnPaste.Image = global::WindowExplorer.Properties.Resources.Paste;
+            this.tsbtnPaste.Image = global::FileGuide.Properties.Resources.Paste;
             this.tsbtnPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnPaste.Margin = new System.Windows.Forms.Padding(8, 2, 0, 3);
             this.tsbtnPaste.Name = "tsbtnPaste";
@@ -429,7 +429,7 @@ namespace FileGuide
             // 
             // tsbtnDelete
             // 
-            this.tsbtnDelete.Image = global::WindowExplorer.Properties.Resources.Delete;
+            this.tsbtnDelete.Image = global::FileGuide.Properties.Resources.Delete;
             this.tsbtnDelete.ImageTransparentColor = System.Drawing.Color.White;
             this.tsbtnDelete.Margin = new System.Windows.Forms.Padding(8, 2, 0, 3);
             this.tsbtnDelete.Name = "tsbtnDelete";
@@ -449,7 +449,7 @@ namespace FileGuide
             this.tsMenuSmall,
             this.tsMenuList,
             this.tsMenuDetails});
-            this.tsDropView.Image = global::WindowExplorer.Properties.Resources.View;
+            this.tsDropView.Image = global::FileGuide.Properties.Resources.View;
             this.tsDropView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsDropView.Margin = new System.Windows.Forms.Padding(8, 1, 0, 2);
             this.tsDropView.Name = "tsDropView";
@@ -459,28 +459,28 @@ namespace FileGuide
             // tsMenuLarge
             // 
             this.tsMenuLarge.Name = "tsMenuLarge";
-            this.tsMenuLarge.Size = new System.Drawing.Size(270, 34);
+            this.tsMenuLarge.Size = new System.Drawing.Size(204, 34);
             this.tsMenuLarge.Text = "Large Icons";
             this.tsMenuLarge.Click += new System.EventHandler(this.menuLarge_Click);
             // 
             // tsMenuSmall
             // 
             this.tsMenuSmall.Name = "tsMenuSmall";
-            this.tsMenuSmall.Size = new System.Drawing.Size(270, 34);
+            this.tsMenuSmall.Size = new System.Drawing.Size(204, 34);
             this.tsMenuSmall.Text = "Small Icons";
             this.tsMenuSmall.Click += new System.EventHandler(this.menuSmall_Click);
             // 
             // tsMenuList
             // 
             this.tsMenuList.Name = "tsMenuList";
-            this.tsMenuList.Size = new System.Drawing.Size(270, 34);
+            this.tsMenuList.Size = new System.Drawing.Size(204, 34);
             this.tsMenuList.Text = "List";
             this.tsMenuList.Click += new System.EventHandler(this.menuList_Click);
             // 
             // tsMenuDetails
             // 
             this.tsMenuDetails.Name = "tsMenuDetails";
-            this.tsMenuDetails.Size = new System.Drawing.Size(270, 34);
+            this.tsMenuDetails.Size = new System.Drawing.Size(204, 34);
             this.tsMenuDetails.Text = "Details";
             this.tsMenuDetails.Click += new System.EventHandler(this.menuDetails_Click);
             // 
@@ -501,7 +501,7 @@ namespace FileGuide
             // 
             this.tslbPath.Margin = new System.Windows.Forms.Padding(60, 1, 0, 2);
             this.tslbPath.Name = "tslbPath";
-            this.tslbPath.Size = new System.Drawing.Size(50, 35);
+            this.tslbPath.Size = new System.Drawing.Size(50, 30);
             this.tslbPath.Text = "Path:";
             // 
             // tscmbPath
@@ -548,12 +548,13 @@ namespace FileGuide
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.splitContainer);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "File Guide";
+            this.Text = "  File Guide";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.SizeChanged += new System.EventHandler(this.FrmMain_Resize);
             this.Resize += new System.EventHandler(this.FrmMain_Resize);
