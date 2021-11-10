@@ -89,10 +89,11 @@ namespace FileGuide
             // 
             // splitContainer
             // 
-            this.splitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.splitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer.Location = new System.Drawing.Point(0, 134);
-            this.splitContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.splitContainer.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer.Name = "splitContainer";
             // 
             // splitContainer.Panel1
@@ -112,10 +113,10 @@ namespace FileGuide
             this.treeView.ImageIndex = 0;
             this.treeView.ImageList = this.imglstTreeView;
             this.treeView.Location = new System.Drawing.Point(0, 0);
-            this.treeView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.treeView.Margin = new System.Windows.Forms.Padding(4);
             this.treeView.Name = "treeView";
             this.treeView.SelectedImageIndex = 0;
-            this.treeView.Size = new System.Drawing.Size(330, 552);
+            this.treeView.Size = new System.Drawing.Size(300, 552);
             this.treeView.TabIndex = 0;
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             // 
@@ -144,7 +145,7 @@ namespace FileGuide
             this.listView.LabelEdit = true;
             this.listView.LargeImageList = this.imglstLarge;
             this.listView.Location = new System.Drawing.Point(0, 0);
-            this.listView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listView.Margin = new System.Windows.Forms.Padding(4);
             this.listView.Name = "listView";
             this.listView.Size = new System.Drawing.Size(743, 552);
             this.listView.SmallImageList = this.imglstSmall;
@@ -225,7 +226,6 @@ namespace FileGuide
             this.menuHelp});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(1077, 33);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
@@ -237,7 +237,7 @@ namespace FileGuide
             this.menuDelete,
             this.menuExit});
             this.menuFile.Name = "menuFile";
-            this.menuFile.Size = new System.Drawing.Size(54, 32);
+            this.menuFile.Size = new System.Drawing.Size(54, 29);
             this.menuFile.Text = "&File";
             // 
             // menuRename
@@ -271,7 +271,7 @@ namespace FileGuide
             this.menuList,
             this.menuDetails});
             this.menuView.Name = "menuView";
-            this.menuView.Size = new System.Drawing.Size(65, 32);
+            this.menuView.Size = new System.Drawing.Size(65, 29);
             this.menuView.Text = "&View";
             // 
             // menuLarge
@@ -309,7 +309,7 @@ namespace FileGuide
             this.menuCut,
             this.menuPaste});
             this.menuEdit.Name = "menuEdit";
-            this.menuEdit.Size = new System.Drawing.Size(58, 32);
+            this.menuEdit.Size = new System.Drawing.Size(58, 29);
             this.menuEdit.Text = "&Edit";
             // 
             // menuCopy
@@ -342,7 +342,7 @@ namespace FileGuide
             this.menuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuAbout});
             this.menuHelp.Name = "menuHelp";
-            this.menuHelp.Size = new System.Drawing.Size(65, 32);
+            this.menuHelp.Size = new System.Drawing.Size(65, 29);
             this.menuHelp.Text = "&Help";
             // 
             // menuAbout
@@ -496,7 +496,7 @@ namespace FileGuide
             // 
             this.tslbPath.Margin = new System.Windows.Forms.Padding(60, 1, 0, 2);
             this.tslbPath.Name = "tslbPath";
-            this.tslbPath.Size = new System.Drawing.Size(50, 35);
+            this.tslbPath.Size = new System.Drawing.Size(50, 30);
             this.tslbPath.Text = "Path:";
             // 
             // tscmbPath
@@ -523,13 +523,13 @@ namespace FileGuide
             // statusLblItemNum
             // 
             this.statusLblItemNum.Name = "statusLblItemNum";
-            this.statusLblItemNum.Size = new System.Drawing.Size(0, 21);
+            this.statusLblItemNum.Size = new System.Drawing.Size(0, 15);
             // 
             // statusLblNumSelect
             // 
             this.statusLblNumSelect.Margin = new System.Windows.Forms.Padding(20, 4, 0, 3);
             this.statusLblNumSelect.Name = "statusLblNumSelect";
-            this.statusLblNumSelect.Size = new System.Drawing.Size(0, 21);
+            this.statusLblNumSelect.Size = new System.Drawing.Size(0, 15);
             // 
             // FrmMain
             // 
@@ -537,15 +537,15 @@ namespace FileGuide
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1077, 686);
-            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tsPath);
             this.Controls.Add(this.toolBar);
-            this.Controls.Add(this.splitContainer);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.splitContainer);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "File Guide";

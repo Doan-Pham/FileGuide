@@ -149,6 +149,11 @@ namespace FileGuide
             tscmbPath.Width = this.Width - 150;
         }
 
+        /// <summary>
+        /// Copy item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuCopy_Click(object sender, EventArgs e)
         {
             // Set isCopying to true so events for Paste feature know whether to cut paste or copy paste
@@ -185,6 +190,11 @@ namespace FileGuide
             tsbtnPaste.Enabled = true;
         }
 
+        /// <summary>
+        /// Cut item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuCut_Click(object sender, EventArgs e)
         {
             // The same as menuCopy_Click event but set isCutting to true and isCopying to false
@@ -193,6 +203,11 @@ namespace FileGuide
             isCutting = true;
         }
 
+        /// <summary>
+        /// Paste item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuPaste_Click(object sender, EventArgs e)
         {
             try 
@@ -250,6 +265,11 @@ namespace FileGuide
             }
         }
 
+        /// <summary>
+        /// Delete item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuDelete_Click(object sender, EventArgs e)
         {
             try 
@@ -265,6 +285,11 @@ namespace FileGuide
             }
         }
 
+        /// <summary>
+        /// Rename item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuRename_Click(object sender, EventArgs e)
         {
             isRenaming = true;
@@ -280,6 +305,8 @@ namespace FileGuide
                     string path = listView.FocusedItem.SubItems[4].Text;
                     if (e.Label == null) return;
                     FileInfo fi = new FileInfo(path);
+
+                    //Rename item then refresh listView
                     if (fi.Exists)
                     {
                         Microsoft.VisualBasic.FileIO.FileSystem.RenameFile(path, e.Label);
@@ -288,7 +315,6 @@ namespace FileGuide
                     {
                         Microsoft.VisualBasic.FileIO.FileSystem.RenameDirectory(path, e.Label);
                     }
-
                     clsTreeListView.ShowListView(listView, clsTreeListView.GetParentDirectoryPath(path));
                     e.CancelEdit = true;
                     isRenaming = false;
@@ -304,6 +330,11 @@ namespace FileGuide
             }
         }
 
+        /// <summary>
+        /// Go back to parent directory
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbtnBack_Click(object sender, EventArgs e)
         {
             try
@@ -321,41 +352,75 @@ namespace FileGuide
             }
         }
 
+        /// <summary>
+        /// Refresh listView
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tsbtnRefresh_Click(object sender, EventArgs e)
         {
             if (currentPath != "" && currentPath != "My Computer" )
                 clsTreeListView.ShowListView(listView, currentPath);
         }
 
+        /// <summary>
+        /// Set listView display to large icons
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuLarge_Click(object sender, EventArgs e)
         {
             listView.View = View.LargeIcon;
         }
 
+        /// <summary>
+        /// Set listView display to small icons
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuSmall_Click(object sender, EventArgs e)
         {
             listView.View = View.SmallIcon;
         }
 
+        /// <summary>
+        /// Set listView display to list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuList_Click(object sender, EventArgs e)
         {
             listView.View = View.List;
         }
 
+        /// <summary>
+        /// Set listView display to details
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuDetails_Click(object sender, EventArgs e)
         {
             listView.View = View.Details;
         }
 
+        /// <summary>
+        /// Show number of items in current directory on status strip
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tscmbPath_TextChanged(object sender, EventArgs e)
         {
             statusLblItemNum.Text = listView.Items.Count.ToString() + " items";
         }
 
+        /// <summary>
+        /// Show number of selected listView items on status strip
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             statusLblNumSelect.Text = listView.SelectedItems.Count.ToString() + " items selected";
-
         }
     }
 }
