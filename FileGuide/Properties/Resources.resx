@@ -142,8 +142,8 @@
   <data name="file" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\file.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FileGuide_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FileGuide_Icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="FileGuide" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FileGuide.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FloppyDisk" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FloppyDisk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

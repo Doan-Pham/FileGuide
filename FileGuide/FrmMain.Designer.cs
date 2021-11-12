@@ -109,7 +109,10 @@ namespace FileGuide
             // 
             // treeView
             // 
+            this.treeView.BackColor = System.Drawing.SystemColors.HighlightText;
             this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView.ForeColor = System.Drawing.Color.White;
+            this.treeView.FullRowSelect = true;
             this.treeView.ImageIndex = 0;
             this.treeView.ImageList = this.imglstTreeView;
             this.treeView.Location = new System.Drawing.Point(0, 0);
@@ -118,6 +121,7 @@ namespace FileGuide
             this.treeView.SelectedImageIndex = 0;
             this.treeView.Size = new System.Drawing.Size(343, 588);
             this.treeView.TabIndex = 0;
+            this.treeView.NodeMouseHover += new System.Windows.Forms.TreeNodeMouseHoverEventHandler(this.treeView_NodeMouseHover);
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             // 
             // imglstTreeView
@@ -134,6 +138,7 @@ namespace FileGuide
             // 
             // listView
             // 
+            this.listView.BackColor = System.Drawing.Color.White;
             this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colName,
             this.colSize,

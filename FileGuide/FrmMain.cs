@@ -422,5 +422,10 @@ namespace FileGuide
         {
             statusLblNumSelect.Text = listView.SelectedItems.Count.ToString() + " items selected";
         }
+
+        private void treeView_NodeMouseHover(object sender, TreeNodeMouseHoverEventArgs e)
+        {
+            e.Node.BackColor = Color.Blue;
+        }
     }
 }
