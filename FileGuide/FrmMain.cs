@@ -453,5 +453,60 @@ namespace FileGuide
         {
             e.DrawDefault = true;
         }
+
+        private void treeView_DrawNode(object sender, DrawTreeNodeEventArgs e)
+        {
+            if (e.Bounds.Height < 1 || e.Bounds.Width < 1) return;
+
+            Rectangle nodeRect = e.Node.Bounds;
+            Graphics g = e.Graphics;
+
+            //
+
+            if (e.Node.IsSelected)
+            {
+                Brush selectBrush;
+                if (e.Node.TreeView.Focused)
+                {
+                    selectBrush = new SolidBrush(Color.FromArgb(229, 243, 255));
+                }
+                else
+                {
+                    selectBrush = new SolidBrush(Color.FromArgb(242, 242, 242));
+                }
+
+                g.FillRectangle(selectBrush, e.Bounds);
+            }
+
+            // Draw expand/collapse icon
+            if (e.Node.Nodes.Count > 0)
+            { 
+                if (e.Node.IsExpanded)
+                {
+                    g.DrawImage(Properties.Resources.ExpandChevron, nodeRect.Location.X - 40, nodeRect.Location.Y + 16, 16, 16);
+                }
+                else
+                {
+                    g.DrawImage(Properties.Resources.NormalChevron, nodeRect.Location.X - 40, nodeRect.Location.Y + 16, 16, 16);
+                }
+            }
+
+            //Draw node icon
+            if (e.Node.Text == "My Computer")
+            {
+                g.DrawImage(Properties.Resources.MyComputer, nodeRect.Location.X - 14, nodeRect.Location.Y + 8, 30, 30);
+            }
+            else
+            {
+                g.DrawImage(Properties.Resources.Folder, nodeRect.Location.X - 14, nodeRect.Location.Y + 8, 30, 30);
+            }
+
+            //Draw text
+            if (e.Node.Bounds.X != 0)
+            { 
+                TextRenderer.DrawText(g, e.Node.Text, ((TreeView)sender).Font,
+                      new Point(nodeRect.Location.X + 20, nodeRect.Location.Y+8), Color.Black);
+            }
+        }
     }
 }

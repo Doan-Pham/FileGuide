@@ -93,7 +93,7 @@ namespace FileGuide
             this.splitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer.Location = new System.Drawing.Point(0, 175);
+            this.splitContainer.Location = new System.Drawing.Point(0, 184);
             this.splitContainer.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer.Name = "splitContainer";
             // 
@@ -104,7 +104,7 @@ namespace FileGuide
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.Controls.Add(this.listView);
-            this.splitContainer.Size = new System.Drawing.Size(1122, 527);
+            this.splitContainer.Size = new System.Drawing.Size(1122, 518);
             this.splitContainer.SplitterDistance = 343;
             this.splitContainer.TabIndex = 0;
             // 
@@ -112,18 +112,20 @@ namespace FileGuide
             // 
             this.treeView.BackColor = System.Drawing.Color.White;
             this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
             this.treeView.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeView.ForeColor = System.Drawing.Color.Black;
             this.treeView.FullRowSelect = true;
-            this.treeView.HotTracking = true;
             this.treeView.ImageIndex = 0;
             this.treeView.ImageList = this.imglstTreeView;
+            this.treeView.ItemHeight = 46;
             this.treeView.Location = new System.Drawing.Point(0, 0);
             this.treeView.Margin = new System.Windows.Forms.Padding(4);
             this.treeView.Name = "treeView";
             this.treeView.SelectedImageIndex = 0;
-            this.treeView.Size = new System.Drawing.Size(343, 527);
+            this.treeView.Size = new System.Drawing.Size(343, 518);
             this.treeView.TabIndex = 0;
+            this.treeView.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView_DrawNode);
             this.treeView.NodeMouseHover += new System.Windows.Forms.TreeNodeMouseHoverEventHandler(this.treeView_NodeMouseHover);
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             // 
@@ -158,7 +160,7 @@ namespace FileGuide
             this.listView.Margin = new System.Windows.Forms.Padding(4);
             this.listView.Name = "listView";
             this.listView.OwnerDraw = true;
-            this.listView.Size = new System.Drawing.Size(775, 527);
+            this.listView.Size = new System.Drawing.Size(775, 518);
             this.listView.SmallImageList = this.imglstSmall;
             this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
@@ -540,14 +542,14 @@ namespace FileGuide
             // 
             this.tslbPath.Margin = new System.Windows.Forms.Padding(60, 1, 0, 2);
             this.tslbPath.Name = "tslbPath";
-            this.tslbPath.Size = new System.Drawing.Size(50, 39);
+            this.tslbPath.Size = new System.Drawing.Size(54, 39);
             this.tslbPath.Text = "Path:";
             // 
             // tscmbPath
             // 
             this.tscmbPath.AutoSize = false;
             this.tscmbPath.Name = "tscmbPath";
-            this.tscmbPath.Size = new System.Drawing.Size(748, 36);
+            this.tscmbPath.Size = new System.Drawing.Size(748, 33);
             this.tscmbPath.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tscmbPath_KeyPress);
             this.tscmbPath.TextChanged += new System.EventHandler(this.tscmbPath_TextChanged);
             // 

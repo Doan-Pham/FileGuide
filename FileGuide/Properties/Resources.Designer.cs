@@ -133,6 +133,16 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap ExpandChevron {
+            get {
+                object obj = ResourceManager.GetObject("ExpandChevron", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap file {
             get {
                 object obj = ResourceManager.GetObject("file", resourceCulture);
@@ -236,6 +246,16 @@ namespace FileGuide.Properties {
         public static System.Drawing.Bitmap NetworkDrive {
             get {
                 object obj = ResourceManager.GetObject("NetworkDrive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap NormalChevron {
+            get {
+                object obj = ResourceManager.GetObject("NormalChevron", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
