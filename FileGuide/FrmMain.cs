@@ -425,7 +425,33 @@ namespace FileGuide
 
         private void treeView_NodeMouseHover(object sender, TreeNodeMouseHoverEventArgs e)
         {
-            e.Node.BackColor = Color.Blue;
+        }
+
+        private void listView_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
+        {
+            e.DrawBackground();
+            using (var sf = new StringFormat())
+            {
+                sf.Alignment = StringAlignment.Near;
+                sf.LineAlignment = StringAlignment.Center;
+                using (var headerFont = new Font("Questrial", 10, FontStyle.Regular))
+                {
+                    RectangleF rect = new RectangleF(e.Bounds.X + 12, e.Bounds.Y, e.Bounds.Width - 24, e.Bounds.Height);
+                    e.Graphics.DrawString(e.Header.Text, headerFont,
+                        Brushes.Gray, rect, sf);
+                }
+                
+            }      
+        }
+
+        private void listView_DrawItem(object sender, DrawListViewItemEventArgs e)
+        {
+            e.DrawDefault = true;
+        }
+
+        private void listView_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
+        {
+            e.DrawDefault = true;
         }
     }
 }
