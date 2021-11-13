@@ -458,13 +458,17 @@ namespace FileGuide
             Graphics g = e.Graphics;
 
             //
-
+            if ((e.State & TreeNodeStates.Hot) == TreeNodeStates.Hot)
+            {
+                Brush hoverBrush = new SolidBrush(Color.FromArgb(229, 243, 255));
+                g.FillRectangle(hoverBrush, e.Bounds);
+            }
             if (e.Node.IsSelected)
             {
                 Brush selectBrush;
                 if (e.Node.TreeView.Focused)
                 {
-                    selectBrush = new SolidBrush(Color.FromArgb(229, 243, 255));
+                    selectBrush = new SolidBrush(Color.FromArgb(205, 232, 255));
                 }
                 else
                 {

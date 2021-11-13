@@ -571,6 +571,7 @@ namespace FileGuide
             this.treeView.Font = new System.Drawing.Font("Questrial", 9.999999F);
             this.treeView.ForeColor = System.Drawing.Color.Black;
             this.treeView.FullRowSelect = true;
+            this.treeView.HotTracking = true;
             this.treeView.ImageIndex = 0;
             this.treeView.ImageList = this.imglstTreeView;
             this.treeView.Indent = 20;
