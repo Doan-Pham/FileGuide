@@ -32,7 +32,6 @@ namespace FileGuide
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer = new System.Windows.Forms.SplitContainer();
-            this.treeView = new System.Windows.Forms.TreeView();
             this.imglstTreeView = new System.Windows.Forms.ImageList(this.components);
             this.listView = new System.Windows.Forms.ListView();
             this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -78,6 +77,7 @@ namespace FileGuide
             this.statusLblItemNum = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusLblNumSelect = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextMenuStripListView = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.bufferedTreeView = new FileGuide.BufferedTreeView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -99,7 +99,7 @@ namespace FileGuide
             // 
             // splitContainer.Panel1
             // 
-            this.splitContainer.Panel1.Controls.Add(this.treeView);
+            this.splitContainer.Panel1.Controls.Add(this.bufferedTreeView);
             // 
             // splitContainer.Panel2
             // 
@@ -107,27 +107,6 @@ namespace FileGuide
             this.splitContainer.Size = new System.Drawing.Size(1122, 518);
             this.splitContainer.SplitterDistance = 343;
             this.splitContainer.TabIndex = 0;
-            // 
-            // treeView
-            // 
-            this.treeView.BackColor = System.Drawing.Color.White;
-            this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
-            this.treeView.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeView.ForeColor = System.Drawing.Color.Black;
-            this.treeView.FullRowSelect = true;
-            this.treeView.ImageIndex = 0;
-            this.treeView.ImageList = this.imglstTreeView;
-            this.treeView.ItemHeight = 46;
-            this.treeView.Location = new System.Drawing.Point(0, 0);
-            this.treeView.Margin = new System.Windows.Forms.Padding(4);
-            this.treeView.Name = "treeView";
-            this.treeView.SelectedImageIndex = 0;
-            this.treeView.Size = new System.Drawing.Size(343, 518);
-            this.treeView.TabIndex = 0;
-            this.treeView.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView_DrawNode);
-            this.treeView.NodeMouseHover += new System.Windows.Forms.TreeNodeMouseHoverEventHandler(this.treeView_NodeMouseHover);
-            this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             // 
             // imglstTreeView
             // 
@@ -243,7 +222,7 @@ namespace FileGuide
             this.menuHelp});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1122, 33);
+            this.menuStrip1.Size = new System.Drawing.Size(1122, 36);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -254,7 +233,7 @@ namespace FileGuide
             this.menuDelete,
             this.menuExit});
             this.menuFile.Name = "menuFile";
-            this.menuFile.Size = new System.Drawing.Size(54, 29);
+            this.menuFile.Size = new System.Drawing.Size(54, 32);
             this.menuFile.Text = "&File";
             // 
             // menuRename
@@ -288,7 +267,7 @@ namespace FileGuide
             this.menuList,
             this.menuDetails});
             this.menuView.Name = "menuView";
-            this.menuView.Size = new System.Drawing.Size(65, 29);
+            this.menuView.Size = new System.Drawing.Size(65, 32);
             this.menuView.Text = "&View";
             // 
             // menuLarge
@@ -326,7 +305,7 @@ namespace FileGuide
             this.menuCut,
             this.menuPaste});
             this.menuEdit.Name = "menuEdit";
-            this.menuEdit.Size = new System.Drawing.Size(58, 29);
+            this.menuEdit.Size = new System.Drawing.Size(58, 32);
             this.menuEdit.Text = "&Edit";
             // 
             // menuCopy
@@ -359,7 +338,7 @@ namespace FileGuide
             this.menuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuAbout});
             this.menuHelp.Name = "menuHelp";
-            this.menuHelp.Size = new System.Drawing.Size(65, 29);
+            this.menuHelp.Size = new System.Drawing.Size(65, 32);
             this.menuHelp.Text = "&Help";
             // 
             // menuAbout
@@ -383,7 +362,7 @@ namespace FileGuide
             this.tsbtnDelete,
             this.toolStripSeparator2,
             this.tsDropView});
-            this.toolBar.Location = new System.Drawing.Point(0, 33);
+            this.toolBar.Location = new System.Drawing.Point(0, 36);
             this.toolBar.Name = "toolBar";
             this.toolBar.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.toolBar.Size = new System.Drawing.Size(1122, 105);
@@ -531,7 +510,7 @@ namespace FileGuide
             this.tsPath.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslbPath,
             this.tscmbPath});
-            this.tsPath.Location = new System.Drawing.Point(0, 138);
+            this.tsPath.Location = new System.Drawing.Point(0, 141);
             this.tsPath.Name = "tsPath";
             this.tsPath.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.tsPath.Size = new System.Drawing.Size(1122, 42);
@@ -584,6 +563,27 @@ namespace FileGuide
             this.contextMenuStripListView.Name = "contextMenuStripListView";
             this.contextMenuStripListView.Size = new System.Drawing.Size(61, 4);
             // 
+            // bufferedTreeView
+            // 
+            this.bufferedTreeView.BackColor = System.Drawing.Color.White;
+            this.bufferedTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bufferedTreeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
+            this.bufferedTreeView.Font = new System.Drawing.Font("Questrial", 9.999999F);
+            this.bufferedTreeView.ForeColor = System.Drawing.Color.Black;
+            this.bufferedTreeView.FullRowSelect = true;
+            this.bufferedTreeView.ImageIndex = 0;
+            this.bufferedTreeView.ImageList = this.imglstTreeView;
+            this.bufferedTreeView.Indent = 20;
+            this.bufferedTreeView.ItemHeight = 46;
+            this.bufferedTreeView.Location = new System.Drawing.Point(0, 0);
+            this.bufferedTreeView.Name = "bufferedTreeView";
+            this.bufferedTreeView.SelectedImageIndex = 0;
+            this.bufferedTreeView.Size = new System.Drawing.Size(343, 518);
+            this.bufferedTreeView.TabIndex = 1;
+            this.bufferedTreeView.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView_DrawNode);
+            this.bufferedTreeView.NodeMouseHover += new System.Windows.Forms.TreeNodeMouseHoverEventHandler(this.bufferedTreeView_NodeMouseHover);
+            this.bufferedTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
@@ -626,7 +626,6 @@ namespace FileGuide
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer;
-        private System.Windows.Forms.TreeView treeView;
         private System.Windows.Forms.ListView listView;
         private System.Windows.Forms.ImageList imglstTreeView;
         private System.Windows.Forms.ColumnHeader colName;
@@ -672,6 +671,7 @@ namespace FileGuide
         private System.Windows.Forms.ToolStripStatusLabel statusLblItemNum;
         private System.Windows.Forms.ToolStripStatusLabel statusLblNumSelect;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripListView;
+        private BufferedTreeView bufferedTreeView;
     }
 }
 

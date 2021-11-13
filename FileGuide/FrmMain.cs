@@ -37,7 +37,7 @@ namespace FileGuide
         /// <param name="e"></param>
         private void Form1_Load(object sender, EventArgs e)
         {
-            clsTreeListView.CreateTreeView(this.treeView);
+            clsTreeListView.CreateTreeView(this.bufferedTreeView);
             if (this.Width > 400)
                 tscmbPath.Width = this.Width - 300;
         }
@@ -50,7 +50,7 @@ namespace FileGuide
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             TreeNode currentNode = e.Node;
-               clsTreeListView.ShowFolderTree(this.treeView,this.listView, currentNode);
+               clsTreeListView.ShowFolderTree(this.bufferedTreeView, this.listView, currentNode);
             tscmbPath.Text = clsTreeListView.GetApproriatePath(currentNode.FullPath);
             pathNode = tscmbPath.Text;
             currentPath = pathNode;
@@ -179,7 +179,7 @@ namespace FileGuide
                     isFolder = false;
                 }
             }
-            else if (treeView.Focused)
+            else if (bufferedTreeView.Focused)
             {
                 pathSource = pathNode;
                 isListView = false;
@@ -423,10 +423,6 @@ namespace FileGuide
             statusLblNumSelect.Text = listView.SelectedItems.Count.ToString() + " items selected";
         }
 
-        private void treeView_NodeMouseHover(object sender, TreeNodeMouseHoverEventArgs e)
-        {
-        }
-
         private void listView_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         {
             e.DrawBackground();
@@ -507,6 +503,11 @@ namespace FileGuide
                 TextRenderer.DrawText(g, e.Node.Text, ((TreeView)sender).Font,
                       new Point(nodeRect.Location.X + 20, nodeRect.Location.Y+8), Color.Black);
             }
+        }
+
+        private void bufferedTreeView_NodeMouseHover(object sender, TreeNodeMouseHoverEventArgs e)
+        {
+            e.Node.BackColor = Color.FromArgb(229, 243, 255);
         }
     }
 }
