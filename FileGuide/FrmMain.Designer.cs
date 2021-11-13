@@ -77,7 +77,7 @@ namespace FileGuide
             this.statusLblItemNum = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusLblNumSelect = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextMenuStripListView = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.bufferedTreeView = new FileGuide.BufferedTreeView();
+            this.treeView = new FileGuide.BufferedTreeView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -99,7 +99,7 @@ namespace FileGuide
             // 
             // splitContainer.Panel1
             // 
-            this.splitContainer.Panel1.Controls.Add(this.bufferedTreeView);
+            this.splitContainer.Panel1.Controls.Add(this.treeView);
             // 
             // splitContainer.Panel2
             // 
@@ -233,7 +233,7 @@ namespace FileGuide
             this.menuDelete,
             this.menuExit});
             this.menuFile.Name = "menuFile";
-            this.menuFile.Size = new System.Drawing.Size(54, 32);
+            this.menuFile.Size = new System.Drawing.Size(54, 30);
             this.menuFile.Text = "&File";
             // 
             // menuRename
@@ -267,7 +267,7 @@ namespace FileGuide
             this.menuList,
             this.menuDetails});
             this.menuView.Name = "menuView";
-            this.menuView.Size = new System.Drawing.Size(65, 32);
+            this.menuView.Size = new System.Drawing.Size(65, 30);
             this.menuView.Text = "&View";
             // 
             // menuLarge
@@ -305,7 +305,7 @@ namespace FileGuide
             this.menuCut,
             this.menuPaste});
             this.menuEdit.Name = "menuEdit";
-            this.menuEdit.Size = new System.Drawing.Size(58, 32);
+            this.menuEdit.Size = new System.Drawing.Size(58, 30);
             this.menuEdit.Text = "&Edit";
             // 
             // menuCopy
@@ -338,7 +338,7 @@ namespace FileGuide
             this.menuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuAbout});
             this.menuHelp.Name = "menuHelp";
-            this.menuHelp.Size = new System.Drawing.Size(65, 32);
+            this.menuHelp.Size = new System.Drawing.Size(65, 30);
             this.menuHelp.Text = "&Help";
             // 
             // menuAbout
@@ -563,26 +563,26 @@ namespace FileGuide
             this.contextMenuStripListView.Name = "contextMenuStripListView";
             this.contextMenuStripListView.Size = new System.Drawing.Size(61, 4);
             // 
-            // bufferedTreeView
+            // treeView
             // 
-            this.bufferedTreeView.BackColor = System.Drawing.Color.White;
-            this.bufferedTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bufferedTreeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
-            this.bufferedTreeView.Font = new System.Drawing.Font("Questrial", 9.999999F);
-            this.bufferedTreeView.ForeColor = System.Drawing.Color.Black;
-            this.bufferedTreeView.FullRowSelect = true;
-            this.bufferedTreeView.ImageIndex = 0;
-            this.bufferedTreeView.ImageList = this.imglstTreeView;
-            this.bufferedTreeView.Indent = 20;
-            this.bufferedTreeView.ItemHeight = 46;
-            this.bufferedTreeView.Location = new System.Drawing.Point(0, 0);
-            this.bufferedTreeView.Name = "bufferedTreeView";
-            this.bufferedTreeView.SelectedImageIndex = 0;
-            this.bufferedTreeView.Size = new System.Drawing.Size(343, 518);
-            this.bufferedTreeView.TabIndex = 1;
-            this.bufferedTreeView.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView_DrawNode);
-            this.bufferedTreeView.NodeMouseHover += new System.Windows.Forms.TreeNodeMouseHoverEventHandler(this.bufferedTreeView_NodeMouseHover);
-            this.bufferedTreeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
+            this.treeView.BackColor = System.Drawing.Color.White;
+            this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
+            this.treeView.Font = new System.Drawing.Font("Questrial", 9.999999F);
+            this.treeView.ForeColor = System.Drawing.Color.Black;
+            this.treeView.FullRowSelect = true;
+            this.treeView.ImageIndex = 0;
+            this.treeView.ImageList = this.imglstTreeView;
+            this.treeView.Indent = 20;
+            this.treeView.ItemHeight = 46;
+            this.treeView.Location = new System.Drawing.Point(0, 0);
+            this.treeView.Name = "treeView";
+            this.treeView.SelectedImageIndex = 0;
+            this.treeView.ShowLines = false;
+            this.treeView.Size = new System.Drawing.Size(343, 518);
+            this.treeView.TabIndex = 1;
+            this.treeView.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView_DrawNode);
+            this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             // 
             // FrmMain
             // 
@@ -671,7 +671,7 @@ namespace FileGuide
         private System.Windows.Forms.ToolStripStatusLabel statusLblItemNum;
         private System.Windows.Forms.ToolStripStatusLabel statusLblNumSelect;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripListView;
-        private BufferedTreeView bufferedTreeView;
+        private BufferedTreeView treeView;
     }
 }
 

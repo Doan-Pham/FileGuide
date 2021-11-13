@@ -37,7 +37,7 @@ namespace FileGuide
         /// <param name="e"></param>
         private void Form1_Load(object sender, EventArgs e)
         {
-            clsTreeListView.CreateTreeView(this.bufferedTreeView);
+            clsTreeListView.CreateTreeView(this.treeView);
             if (this.Width > 400)
                 tscmbPath.Width = this.Width - 300;
         }
@@ -50,7 +50,7 @@ namespace FileGuide
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             TreeNode currentNode = e.Node;
-               clsTreeListView.ShowFolderTree(this.bufferedTreeView, this.listView, currentNode);
+               clsTreeListView.ShowFolderTree(this.treeView, this.listView, currentNode);
             tscmbPath.Text = clsTreeListView.GetApproriatePath(currentNode.FullPath);
             pathNode = tscmbPath.Text;
             currentPath = pathNode;
@@ -179,7 +179,7 @@ namespace FileGuide
                     isFolder = false;
                 }
             }
-            else if (bufferedTreeView.Focused)
+            else if (treeView.Focused)
             {
                 pathSource = pathNode;
                 isListView = false;
@@ -505,9 +505,5 @@ namespace FileGuide
             }
         }
 
-        private void bufferedTreeView_NodeMouseHover(object sender, TreeNodeMouseHoverEventArgs e)
-        {
-            e.Node.BackColor = Color.FromArgb(229, 243, 255);
-        }
     }
 }
