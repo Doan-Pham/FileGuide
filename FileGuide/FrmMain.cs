@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+
 namespace FileGuide
 {
     public partial class FrmMain : Form
@@ -38,7 +39,7 @@ namespace FileGuide
         private void Form1_Load(object sender, EventArgs e)
         {
             clsTreeListView.CreateTreeView(this.treeView);
-            treeView.ExpandAll();
+           // treeView.ExpandAll();
             if (this.Width > 400)
                 tscmbPath.Width = this.Width - 300;
         }
@@ -532,6 +533,11 @@ namespace FileGuide
         private void treeView_MouseLeave(object sender, EventArgs e)
         {
             Cursor = Cursors.Default;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -7,23 +7,26 @@ using System.Windows.Forms;
 using System.Management;
 using System.IO;
 using System.Diagnostics;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 
 namespace FileGuide
 {
     class ClsTreeListView
     {
+        // Each type of drive is paired with respective number from DriveType enum 
+        const int RemovableDisk = 2;
+        const int LocalDisk = 3;
+        const int NetworkDisk = 4;
+        const int CDDisk = 5;
+
         /// <summary>
         /// Initialize treeView
         /// </summary>
         /// <param name="treeView"></param>
         public void CreateTreeView(TreeView treeView)
-        {
-            // Each type of drive is paired with respective number from DriveType enum 
-            const int RemovableDisk = 2;
-            const int LocalDisk = 3;
-            const int NetworkDisk = 4;
-            const int CDDisk = 5;
-
+        {  
             // Create root treenode: My Computer and add to treeView
             TreeNode tnMyComputer = new TreeNode("My Computer", 0, 0);
             treeView.Nodes.Clear();
@@ -33,11 +36,11 @@ namespace FileGuide
             ManagementObjectSearcher query = new ManagementObjectSearcher("Select * From Win32_LogicalDisk");
             ManagementObjectCollection queryCollection = query.Get();
 
-            // For each drive, assign the approriate image index, create a treenode and add to the root node's collection
+            Button DriveButton = new Button();
+            // For each drive, assign the approriate image index, create a treenode + add to the root node's collection
             foreach(ManagementObject mo in queryCollection)
             {
                 int DiskImageIndex, DiskSelectIndex;
-
                 
                 switch (int.Parse(mo["DriveType"].ToString()))
                 {
@@ -80,11 +83,62 @@ namespace FileGuide
 
                 TreeNode diskTreeNode = new TreeNode(mo["Name"].ToString() + "\\", DiskImageIndex, DiskSelectIndex);
                 tnMyComputer.Nodes.Add(diskTreeNode);
+
+
             }
             ShowFolderTree(treeView, tnMyComputer);
         }
 
+        public void ShowListViewFirstPage()
+        {
+            ManagementObjectSearcher query = new ManagementObjectSearcher("Select * From Win32_LogicalDisk");
+            ManagementObjectCollection queryCollection = query.Get();
 
+            Button DriveButton = new Button();
+            // For each drive, assign the approriate image index, create a treenode + add to the root node's collection
+            foreach (ManagementObject mo in queryCollection)
+            {
+                int DiskImageIndex;
+
+                switch (int.Parse(mo["DriveType"].ToString()))
+                {
+                    case RemovableDisk:
+                        {
+                            DiskImageIndex = 1;
+                        }
+                        break;
+
+                    case LocalDisk:
+                        {
+                            DiskImageIndex = 2;
+                        }
+                        break;
+
+                    case CDDisk:
+                        {
+                            DiskImageIndex = 3;
+                        }
+                        break;
+
+                    case NetworkDisk:
+                        {
+                            DiskImageIndex = 4;
+                        }
+                        break;
+
+                    default:
+                        {
+                            DiskImageIndex = 5;
+                        }
+                        break;
+
+                }
+
+                DriveButton.Width = 300;
+                DriveButton.Height = 100;
+                DriveButton.BackColor = Color.White;
+            }
+        }
         /// <summary>
         /// Show computer's folder tree onto treeView
         /// </summary>
