@@ -423,9 +423,14 @@ namespace FileGuide
             statusLblNumSelect.Text = listView.SelectedItems.Count.ToString() + " items selected";
         }
 
+        /// <summary>
+        /// Customize listView column headers to developer's need
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listView_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         {
-            e.DrawBackground();
+            //e.DrawBackground();
             using (var sf = new StringFormat())
             {
                 sf.Alignment = StringAlignment.Near;
@@ -435,8 +440,7 @@ namespace FileGuide
                     RectangleF rect = new RectangleF(e.Bounds.X + 12, e.Bounds.Y, e.Bounds.Width - 24, e.Bounds.Height);
                     e.Graphics.DrawString(e.Header.Text, headerFont,
                         Brushes.Gray, rect, sf);
-                }
-                
+                }             
             }      
         }
 
@@ -458,7 +462,7 @@ namespace FileGuide
             Graphics g = e.Graphics;
 
             //
-            if ((e.State & TreeNodeStates.Hot) == TreeNodeStates.Hot)
+            if (e.State == TreeNodeStates.Hot)
             {
                 Brush hoverBrush = new SolidBrush(Color.FromArgb(229, 243, 255));
                 g.FillRectangle(hoverBrush, e.Bounds);
@@ -509,5 +513,22 @@ namespace FileGuide
             }
         }
 
+        private void treeView_MouseMove(object sender, MouseEventArgs e)
+        {
+            TreeNode HoveredNode = ((TreeView)sender).GetNodeAt(e.Location);
+            if (HoveredNode != null)
+            {
+                Cursor = Cursors.Hand;
+            }
+            else 
+            {
+                Cursor = Cursors.Default;
+            }
+        }
+
+        private void treeView_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
     }
 }
