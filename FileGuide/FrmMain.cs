@@ -38,6 +38,7 @@ namespace FileGuide
         private void Form1_Load(object sender, EventArgs e)
         {
             clsTreeListView.CreateTreeView(this.treeView);
+            treeView.ExpandAll();
             if (this.Width > 400)
                 tscmbPath.Width = this.Width - 300;
         }
@@ -50,7 +51,8 @@ namespace FileGuide
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
             TreeNode currentNode = e.Node;
-               clsTreeListView.ShowFolderTree(this.treeView, this.listView, currentNode);
+            clsTreeListView.ShowFolderTree(this.treeView, currentNode);
+            clsTreeListView.ShowListView(this.listView, currentNode);
             tscmbPath.Text = clsTreeListView.GetApproriatePath(currentNode.FullPath);
             pathNode = tscmbPath.Text;
             currentPath = pathNode;
@@ -430,7 +432,6 @@ namespace FileGuide
         /// <param name="e"></param>
         private void listView_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         {
-            //e.DrawBackground();
             using (var sf = new StringFormat())
             {
                 sf.Alignment = StringAlignment.Near;
@@ -456,17 +457,20 @@ namespace FileGuide
 
         private void treeView_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
+            // Reduce the unnecessary DrawNode calls. Without this, some icons are drawn in weird places
             if (e.Bounds.Height < 1 || e.Bounds.Width < 1) return;
 
             Rectangle nodeRect = e.Node.Bounds;
             Graphics g = e.Graphics;
 
-            //
+            // Change node's background color on hovering
             if (e.State == TreeNodeStates.Hot)
             {
                 Brush hoverBrush = new SolidBrush(Color.FromArgb(229, 243, 255));
                 g.FillRectangle(hoverBrush, e.Bounds);
             }
+
+            // Change node's background color when selected
             if (e.Node.IsSelected)
             {
                 Brush selectBrush;
@@ -478,7 +482,6 @@ namespace FileGuide
                 {
                     selectBrush = new SolidBrush(Color.FromArgb(242, 242, 242));
                 }
-
                 g.FillRectangle(selectBrush, e.Bounds);
             }
 

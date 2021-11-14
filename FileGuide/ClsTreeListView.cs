@@ -18,26 +18,27 @@ namespace FileGuide
         /// <param name="treeView"></param>
         public void CreateTreeView(TreeView treeView)
         {
-            // Tạo các biến const thể hiện cho các thành phần của DriveType Enum - mỗi phần tử của enum thể hiện một loại ổ đĩa
+            // Each type of drive is paired with respective number from DriveType enum 
             const int RemovableDisk = 2;
             const int LocalDisk = 3;
             const int NetworkDisk = 4;
             const int CDDisk = 5;
 
-            // Tạo node đầu tiên là My Computer, đây sẽ là node gốc và thêm node gốc vào treeView
+            // Create root treenode: My Computer and add to treeView
             TreeNode tnMyComputer = new TreeNode("My Computer", 0, 0);
             treeView.Nodes.Clear();
             treeView.Nodes.Add(tnMyComputer);
 
-            // Lấy danh sách các ổ đĩa và đưa vào một collection rồi duyệt qua các ổ đĩa
+            // Select all drives into a collection 
             ManagementObjectSearcher query = new ManagementObjectSearcher("Select * From Win32_LogicalDisk");
             ManagementObjectCollection queryCollection = query.Get();
 
+            // For each drive, assign the approriate image index, create a treenode and add to the root node's collection
             foreach(ManagementObject mo in queryCollection)
             {
                 int DiskImageIndex, DiskSelectIndex;
 
-                // Gán các image index ứng với từng loại ổ đĩa
+                
                 switch (int.Parse(mo["DriveType"].ToString()))
                 {
                     case RemovableDisk:
@@ -77,10 +78,10 @@ namespace FileGuide
 
                 }
 
-                // Tạo một treenode cho từng ổ đĩa rồi thêm vào node collection của node gốc - My Computer
                 TreeNode diskTreeNode = new TreeNode(mo["Name"].ToString() + "\\", DiskImageIndex, DiskSelectIndex);
                 tnMyComputer.Nodes.Add(diskTreeNode);
             }
+            ShowFolderTree(treeView, tnMyComputer);
         }
 
 
@@ -90,9 +91,9 @@ namespace FileGuide
         /// <param name="treeView"></param>
         /// <param name="currentNode">The treenode at which to show folder tree</param>
         /// <returns></returns>
-        public bool ShowFolderTree(TreeView treeView, ListView listView, TreeNode currentNode)
+        public bool ShowFolderTree(TreeView treeView, TreeNode currentNode)
         {
-            // Phải xét xem current node có phải My Computer không, bởi vốn dĩ node My Computer đã được tạo (với các node con là các ổ đĩa) trong hàm CreateTreeView, xét lại sẽ gây lỗi
+            // My Computer and its children are already created in CreatTreeView func, recreating will cause an error
             if (currentNode.Text != "My Computer")
             {
                 try
@@ -104,7 +105,7 @@ namespace FileGuide
                     }
                     else
                     {
-                        // Thêm tất cả directory con của node hiện tại vào treeView
+                        // Add all child directories of the current's node to treeView 
                         string[] strDirectories = Directory.GetDirectories(GetApproriatePath(currentNode.FullPath));
 
                         foreach (string stringDir in strDirectories)
@@ -114,8 +115,6 @@ namespace FileGuide
                             currentNode.Nodes.Add(nodeDir);
                         }
 
-                        // Ánh xạ nội dung của thư mục hiện tại lên listView
-                        ShowListView(listView, currentNode);
                     }
                     return true;
                 }
@@ -145,10 +144,10 @@ namespace FileGuide
         {
             try
             {
-                // Dọn listView để chừa chỗ hiển thị nội dung
+                // Clear listView to show content
                 listView.Items.Clear();
 
-                // Lấy DirectoryInfo từ node, xét xem directory có tồn tại không, nếu có thì thêm các file, directory con vào listView
+                // Get Directory Info from the current node, if existing, add directory and its children to listView
                 ListViewItem item;
                 DirectoryInfo directory = GetDirectoryInfoFromNode(currentNode);
                 if (!directory.Exists)
@@ -175,7 +174,7 @@ namespace FileGuide
         }
 
         /// <summary>
-        /// Show a folder's content onto listView
+        /// Show a folder's content onto listView 
         /// </summary>
         /// <param name="listView"></param>
         /// <param name="strPath">The directory's path at which to show content</param>
@@ -183,7 +182,6 @@ namespace FileGuide
         {
             try
             {
-                //if (!strPath.EndsWith("\\")) strPath += "\\";
                 ListViewItem item;
                 DirectoryInfo directory = new DirectoryInfo(strPath);
                 listView.Items.Clear();
@@ -219,7 +217,6 @@ namespace FileGuide
                 string path = CurrentItem.SubItems[4].Text;
                 FileInfo fi = new FileInfo(path);
 
-                // Nếu item được chọn là file thì, nếu là folder thì mở ra
                 if (fi.Exists)
                 {
                     Process.Start(path);
