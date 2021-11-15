@@ -10,6 +10,7 @@ using System.Diagnostics;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Windows;
 
 namespace FileGuide
 {
@@ -89,56 +90,87 @@ namespace FileGuide
             ShowFolderTree(treeView, tnMyComputer);
         }
 
-        public void ShowListViewFirstPage()
+        public void ShowListViewFirstPage(FlowLayoutPanel flowLayoutPanelDrives)
         {
-            ManagementObjectSearcher query = new ManagementObjectSearcher("Select * From Win32_LogicalDisk");
-            ManagementObjectCollection queryCollection = query.Get();
-
-            Button DriveButton = new Button();
             // For each drive, assign the approriate image index, create a treenode + add to the root node's collection
-            foreach (ManagementObject mo in queryCollection)
+            foreach (var drive in DriveInfo.GetDrives())
             {
-                int DiskImageIndex;
+                long freeSpace = drive.TotalFreeSpace;
+                long totalSpace = drive.TotalSize;
+                double percentFree = freeSpace * 100.0 / totalSpace;
+              
+                Panel DrivePanel = new Panel();
+                PictureBox DrivePicture = new PictureBox();
+                Label DriveName = new Label();
+                Label DriveStorageInfo = new Label();
+                ProgressBar DriveStorageBar = new ProgressBar();
 
-                switch (int.Parse(mo["DriveType"].ToString()))
+                DrivePanel.BorderStyle = BorderStyle.FixedSingle;
+                DrivePanel.Width = 365;
+                DrivePanel.Height = 105;
+                DrivePanel.Margin = new Padding(3,10,20,10);
+
+                switch (drive.DriveType.ToString())
                 {
-                    case RemovableDisk:
+                    case "Removable":
                         {
-                            DiskImageIndex = 1;
+                            DrivePicture.Image = Properties.Resources.FloppyDisk;
                         }
                         break;
 
-                    case LocalDisk:
+                    case "Fixed":
                         {
-                            DiskImageIndex = 2;
+                            DrivePicture.Image = Properties.Resources.HardDisk;
                         }
                         break;
 
-                    case CDDisk:
+                    case "CDRom":
                         {
-                            DiskImageIndex = 3;
+                            DrivePicture.Image = Properties.Resources.CDDisk;
                         }
                         break;
 
-                    case NetworkDisk:
+                    case "Network":
                         {
-                            DiskImageIndex = 4;
+                            DrivePicture.Image = Properties.Resources.NetworkDrive;
                         }
                         break;
 
                     default:
                         {
-                            DiskImageIndex = 5;
+                            DrivePicture.Image = Properties.Resources.HardDisk;
                         }
                         break;
-
                 }
 
-                DriveButton.Width = 300;
-                DriveButton.Height = 100;
-                DriveButton.BackColor = Color.White;
+                DriveStorageBar.Dock = DockStyle.Left;
+                DriveStorageBar.Width = 250;
+                DriveStorageBar.Height = 25;
+                DriveStorageBar.Style = ProgressBarStyle.Continuous;
+                DriveStorageBar.ForeColor = Color.FromArgb(205, 232, 255);
+                DriveStorageBar.Value = 100 - (int)percentFree;
+                DrivePanel.Controls.Add(DriveStorageBar);
+
+                DriveName.Dock = DockStyle.Top;
+                DriveName.Height = 40;
+                DriveName.TextAlign = ContentAlignment.BottomLeft;
+                DriveName.Text = drive.VolumeLabel.ToString() + " (" + drive.Name.ToString() + ")";
+                DrivePanel.Controls.Add(DriveName);
+
+                DriveStorageInfo.Dock = DockStyle.Bottom;
+                DriveStorageInfo.Height = 36;
+                DriveStorageInfo.Text = FormatStorageLengthBytes(freeSpace) + " free of " + FormatStorageLengthBytes(totalSpace);
+                DrivePanel.Controls.Add(DriveStorageInfo);
+
+                DrivePicture.SizeMode = PictureBoxSizeMode.Zoom;
+                DrivePicture.Width = 80;
+                DrivePicture.Dock = DockStyle.Left;
+                DrivePanel.Controls.Add(DrivePicture);
+                flowLayoutPanelDrives.Controls.Add(DrivePanel);
             }
+        
         }
+
         /// <summary>
         /// Show computer's folder tree onto treeView
         /// </summary>
@@ -516,6 +548,23 @@ namespace FileGuide
                 strPath += "\\" + strList.GetValue(i);
             }
             return strPath;
+        }
+
+        /// <summary>
+        /// Convert bytes to KB, MB, GB, TB
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <returns></returns>
+        public string FormatStorageLengthBytes(long bytes)
+        {
+            string[] Suffix = { "B", "KB", "MB", "GB", "TB", "PB" };
+            int i;
+            double Result = bytes;
+            for (i = 0; i < Suffix.Length && bytes >= 1024; i++, bytes /= 1024)
+            {
+                Result = bytes / 1024.0;
+            }
+            return  Result.ToString("0.##") + " " + Suffix[i];
         }
     }
 }

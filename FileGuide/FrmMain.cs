@@ -39,6 +39,7 @@ namespace FileGuide
         private void Form1_Load(object sender, EventArgs e)
         {
             clsTreeListView.CreateTreeView(this.treeView);
+            clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives);
            // treeView.ExpandAll();
             if (this.Width > 400)
                 tscmbPath.Width = this.Width - 300;

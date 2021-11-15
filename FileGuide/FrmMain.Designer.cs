@@ -33,6 +33,15 @@ namespace FileGuide
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.imglstTreeView = new System.Windows.Forms.ImageList(this.components);
+            this.tableLayoutFirstPage = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLblDrives = new System.Windows.Forms.Label();
+            this.tableLblRecent = new System.Windows.Forms.Label();
+            this.flowLayoutPanelDrives = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.DriveStorageBar = new System.Windows.Forms.ProgressBar();
+            this.ListViewPageLblDriveStorage = new System.Windows.Forms.Label();
+            this.ListViewPageLblDriveName = new System.Windows.Forms.Label();
+            this.ListViewPageDrivePicture = new System.Windows.Forms.PictureBox();
             this.listView = new System.Windows.Forms.ListView();
             this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -77,28 +86,19 @@ namespace FileGuide
             this.statusLblItemNum = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusLblNumSelect = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextMenuStripListView = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.tableLayoutFirstPage = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLblDrives = new System.Windows.Forms.Label();
-            this.tableLblRecent = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.treeView = new FileGuide.BufferedTreeView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
             this.splitContainer.SuspendLayout();
+            this.tableLayoutFirstPage.SuspendLayout();
+            this.flowLayoutPanelDrives.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ListViewPageDrivePicture)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.toolBar.SuspendLayout();
             this.tsPath.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.tableLayoutFirstPage.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer
@@ -118,8 +118,8 @@ namespace FileGuide
             // 
             this.splitContainer.Panel2.Controls.Add(this.tableLayoutFirstPage);
             this.splitContainer.Panel2.Controls.Add(this.listView);
-            this.splitContainer.Size = new System.Drawing.Size(1145, 518);
-            this.splitContainer.SplitterDistance = 350;
+            this.splitContainer.Size = new System.Drawing.Size(1165, 518);
+            this.splitContainer.SplitterDistance = 356;
             this.splitContainer.TabIndex = 0;
             // 
             // imglstTreeView
@@ -133,6 +133,114 @@ namespace FileGuide
             this.imglstTreeView.Images.SetKeyName(4, "NetworkDrive.png");
             this.imglstTreeView.Images.SetKeyName(5, "Folder.png");
             this.imglstTreeView.Images.SetKeyName(6, "FolderOpen.png");
+            // 
+            // tableLayoutFirstPage
+            // 
+            this.tableLayoutFirstPage.BackColor = System.Drawing.Color.White;
+            this.tableLayoutFirstPage.ColumnCount = 1;
+            this.tableLayoutFirstPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutFirstPage.Controls.Add(this.tableLblDrives, 0, 0);
+            this.tableLayoutFirstPage.Controls.Add(this.tableLblRecent, 0, 2);
+            this.tableLayoutFirstPage.Controls.Add(this.flowLayoutPanelDrives, 0, 1);
+            this.tableLayoutFirstPage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutFirstPage.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableLayoutFirstPage.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutFirstPage.Name = "tableLayoutFirstPage";
+            this.tableLayoutFirstPage.RowCount = 4;
+            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutFirstPage.Size = new System.Drawing.Size(805, 518);
+            this.tableLayoutFirstPage.TabIndex = 1;
+            // 
+            // tableLblDrives
+            // 
+            this.tableLblDrives.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLblDrives.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableLblDrives.Location = new System.Drawing.Point(3, 0);
+            this.tableLblDrives.Name = "tableLblDrives";
+            this.tableLblDrives.Size = new System.Drawing.Size(799, 51);
+            this.tableLblDrives.TabIndex = 0;
+            this.tableLblDrives.Text = "Drives";
+            this.tableLblDrives.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // tableLblRecent
+            // 
+            this.tableLblRecent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLblRecent.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableLblRecent.Location = new System.Drawing.Point(3, 206);
+            this.tableLblRecent.Name = "tableLblRecent";
+            this.tableLblRecent.Size = new System.Drawing.Size(799, 51);
+            this.tableLblRecent.TabIndex = 1;
+            this.tableLblRecent.Text = "Recent files";
+            this.tableLblRecent.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // flowLayoutPanelDrives
+            // 
+            this.flowLayoutPanelDrives.AutoScroll = true;
+            this.flowLayoutPanelDrives.Controls.Add(this.panel1);
+            this.flowLayoutPanelDrives.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanelDrives.Location = new System.Drawing.Point(3, 54);
+            this.flowLayoutPanelDrives.Name = "flowLayoutPanelDrives";
+            this.flowLayoutPanelDrives.Size = new System.Drawing.Size(799, 149);
+            this.flowLayoutPanelDrives.TabIndex = 2;
+            // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.DriveStorageBar);
+            this.panel1.Controls.Add(this.ListViewPageLblDriveStorage);
+            this.panel1.Controls.Add(this.ListViewPageLblDriveName);
+            this.panel1.Controls.Add(this.ListViewPageDrivePicture);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(366, 105);
+            this.panel1.TabIndex = 0;
+            this.panel1.Visible = false;
+            // 
+            // DriveStorageBar
+            // 
+            this.DriveStorageBar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.DriveStorageBar.ForeColor = System.Drawing.Color.Yellow;
+            this.DriveStorageBar.Location = new System.Drawing.Point(86, 40);
+            this.DriveStorageBar.Name = "DriveStorageBar";
+            this.DriveStorageBar.Size = new System.Drawing.Size(250, 27);
+            this.DriveStorageBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.DriveStorageBar.TabIndex = 3;
+            // 
+            // ListViewPageLblDriveStorage
+            // 
+            this.ListViewPageLblDriveStorage.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ListViewPageLblDriveStorage.Location = new System.Drawing.Point(86, 67);
+            this.ListViewPageLblDriveStorage.Name = "ListViewPageLblDriveStorage";
+            this.ListViewPageLblDriveStorage.Size = new System.Drawing.Size(278, 36);
+            this.ListViewPageLblDriveStorage.TabIndex = 2;
+            this.ListViewPageLblDriveStorage.Text = "33.2 Gb free of 200 Gb";
+            // 
+            // ListViewPageLblDriveName
+            // 
+            this.ListViewPageLblDriveName.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ListViewPageLblDriveName.Location = new System.Drawing.Point(86, 0);
+            this.ListViewPageLblDriveName.Name = "ListViewPageLblDriveName";
+            this.ListViewPageLblDriveName.Size = new System.Drawing.Size(278, 40);
+            this.ListViewPageLblDriveName.TabIndex = 1;
+            this.ListViewPageLblDriveName.Text = "Windows-SSD (C:)";
+            this.ListViewPageLblDriveName.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // ListViewPageDrivePicture
+            // 
+            this.ListViewPageDrivePicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ListViewPageDrivePicture.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ListViewPageDrivePicture.Image = global::FileGuide.Properties.Resources.HardDisk;
+            this.ListViewPageDrivePicture.InitialImage = global::FileGuide.Properties.Resources.HardDisk;
+            this.ListViewPageDrivePicture.Location = new System.Drawing.Point(0, 0);
+            this.ListViewPageDrivePicture.Name = "ListViewPageDrivePicture";
+            this.ListViewPageDrivePicture.Padding = new System.Windows.Forms.Padding(4);
+            this.ListViewPageDrivePicture.Size = new System.Drawing.Size(86, 103);
+            this.ListViewPageDrivePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ListViewPageDrivePicture.TabIndex = 0;
+            this.ListViewPageDrivePicture.TabStop = false;
             // 
             // listView
             // 
@@ -153,7 +261,7 @@ namespace FileGuide
             this.listView.Margin = new System.Windows.Forms.Padding(4);
             this.listView.Name = "listView";
             this.listView.OwnerDraw = true;
-            this.listView.Size = new System.Drawing.Size(791, 518);
+            this.listView.Size = new System.Drawing.Size(805, 518);
             this.listView.SmallImageList = this.imglstSmall;
             this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
@@ -236,7 +344,7 @@ namespace FileGuide
             this.menuHelp});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1145, 36);
+            this.menuStrip1.Size = new System.Drawing.Size(1165, 36);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -247,7 +355,7 @@ namespace FileGuide
             this.menuDelete,
             this.menuExit});
             this.menuFile.Name = "menuFile";
-            this.menuFile.Size = new System.Drawing.Size(54, 32);
+            this.menuFile.Size = new System.Drawing.Size(54, 30);
             this.menuFile.Text = "&File";
             // 
             // menuRename
@@ -281,7 +389,7 @@ namespace FileGuide
             this.menuList,
             this.menuDetails});
             this.menuView.Name = "menuView";
-            this.menuView.Size = new System.Drawing.Size(65, 32);
+            this.menuView.Size = new System.Drawing.Size(65, 30);
             this.menuView.Text = "&View";
             // 
             // menuLarge
@@ -319,7 +427,7 @@ namespace FileGuide
             this.menuCut,
             this.menuPaste});
             this.menuEdit.Name = "menuEdit";
-            this.menuEdit.Size = new System.Drawing.Size(58, 32);
+            this.menuEdit.Size = new System.Drawing.Size(58, 30);
             this.menuEdit.Text = "&Edit";
             // 
             // menuCopy
@@ -352,7 +460,7 @@ namespace FileGuide
             this.menuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuAbout});
             this.menuHelp.Name = "menuHelp";
-            this.menuHelp.Size = new System.Drawing.Size(65, 32);
+            this.menuHelp.Size = new System.Drawing.Size(65, 30);
             this.menuHelp.Text = "&Help";
             // 
             // menuAbout
@@ -379,7 +487,7 @@ namespace FileGuide
             this.toolBar.Location = new System.Drawing.Point(0, 36);
             this.toolBar.Name = "toolBar";
             this.toolBar.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.toolBar.Size = new System.Drawing.Size(1145, 105);
+            this.toolBar.Size = new System.Drawing.Size(1165, 105);
             this.toolBar.TabIndex = 2;
             // 
             // tsbtnBack
@@ -527,7 +635,7 @@ namespace FileGuide
             this.tsPath.Location = new System.Drawing.Point(0, 141);
             this.tsPath.Name = "tsPath";
             this.tsPath.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.tsPath.Size = new System.Drawing.Size(1145, 42);
+            this.tsPath.Size = new System.Drawing.Size(1165, 42);
             this.tsPath.TabIndex = 3;
             this.tsPath.Text = "toolStrip1";
             // 
@@ -556,7 +664,7 @@ namespace FileGuide
             this.statusStrip1.Location = new System.Drawing.Point(0, 706);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 14, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1145, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1165, 22);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -578,112 +686,6 @@ namespace FileGuide
             this.contextMenuStripListView.Name = "contextMenuStripListView";
             this.contextMenuStripListView.Size = new System.Drawing.Size(61, 4);
             // 
-            // tableLayoutFirstPage
-            // 
-            this.tableLayoutFirstPage.BackColor = System.Drawing.Color.White;
-            this.tableLayoutFirstPage.ColumnCount = 1;
-            this.tableLayoutFirstPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutFirstPage.Controls.Add(this.tableLblDrives, 0, 0);
-            this.tableLayoutFirstPage.Controls.Add(this.tableLblRecent, 0, 2);
-            this.tableLayoutFirstPage.Controls.Add(this.flowLayoutPanel1, 0, 1);
-            this.tableLayoutFirstPage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutFirstPage.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLayoutFirstPage.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutFirstPage.Name = "tableLayoutFirstPage";
-            this.tableLayoutFirstPage.RowCount = 4;
-            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutFirstPage.Size = new System.Drawing.Size(791, 518);
-            this.tableLayoutFirstPage.TabIndex = 1;
-            // 
-            // tableLblDrives
-            // 
-            this.tableLblDrives.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLblDrives.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLblDrives.Location = new System.Drawing.Point(3, 0);
-            this.tableLblDrives.Name = "tableLblDrives";
-            this.tableLblDrives.Size = new System.Drawing.Size(785, 51);
-            this.tableLblDrives.TabIndex = 0;
-            this.tableLblDrives.Text = "Drives";
-            this.tableLblDrives.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // tableLblRecent
-            // 
-            this.tableLblRecent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLblRecent.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLblRecent.Location = new System.Drawing.Point(3, 206);
-            this.tableLblRecent.Name = "tableLblRecent";
-            this.tableLblRecent.Size = new System.Drawing.Size(785, 51);
-            this.tableLblRecent.TabIndex = 1;
-            this.tableLblRecent.Text = "Recent files";
-            this.tableLblRecent.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.panel1);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 54);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(785, 149);
-            this.flowLayoutPanel1.TabIndex = 2;
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.progressBar1);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(364, 105);
-            this.panel1.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox1.Image = global::FileGuide.Properties.Resources.HardDisk;
-            this.pictureBox1.InitialImage = global::FileGuide.Properties.Resources.HardDisk;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Size = new System.Drawing.Size(77, 103);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Location = new System.Drawing.Point(77, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(285, 42);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Windows-SSD (C:)";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // label2
-            // 
-            this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label2.Location = new System.Drawing.Point(77, 67);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(285, 36);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "33.2 Gb free of 200 Gb";
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.ForeColor = System.Drawing.Color.Yellow;
-            this.progressBar1.Location = new System.Drawing.Point(82, 37);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(250, 27);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar1.TabIndex = 3;
-            // 
             // treeView
             // 
             this.treeView.BackColor = System.Drawing.Color.White;
@@ -701,7 +703,7 @@ namespace FileGuide
             this.treeView.Name = "treeView";
             this.treeView.SelectedImageIndex = 0;
             this.treeView.ShowLines = false;
-            this.treeView.Size = new System.Drawing.Size(350, 518);
+            this.treeView.Size = new System.Drawing.Size(356, 518);
             this.treeView.TabIndex = 1;
             this.treeView.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView_DrawNode);
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
@@ -713,7 +715,7 @@ namespace FileGuide
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1145, 728);
+            this.ClientSize = new System.Drawing.Size(1165, 728);
             this.Controls.Add(this.tsPath);
             this.Controls.Add(this.toolBar);
             this.Controls.Add(this.menuStrip1);
@@ -734,6 +736,10 @@ namespace FileGuide
             this.splitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
             this.splitContainer.ResumeLayout(false);
+            this.tableLayoutFirstPage.ResumeLayout(false);
+            this.flowLayoutPanelDrives.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ListViewPageDrivePicture)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolBar.ResumeLayout(false);
@@ -742,10 +748,6 @@ namespace FileGuide
             this.tsPath.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.tableLayoutFirstPage.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -803,12 +805,12 @@ namespace FileGuide
         private System.Windows.Forms.TableLayoutPanel tableLayoutFirstPage;
         private System.Windows.Forms.Label tableLblDrives;
         private System.Windows.Forms.Label tableLblRecent;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelDrives;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label ListViewPageLblDriveName;
+        private System.Windows.Forms.PictureBox ListViewPageDrivePicture;
+        private System.Windows.Forms.ProgressBar DriveStorageBar;
+        private System.Windows.Forms.Label ListViewPageLblDriveStorage;
     }
 }
 
