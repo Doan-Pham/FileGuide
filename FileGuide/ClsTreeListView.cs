@@ -540,8 +540,8 @@ namespace FileGuide
         public string GetParentDirectoryPath(string path)
         {
             string[] strList = path.Split('\\');
+            if (strList.GetValue(1).ToString() == "" || strList.GetValue(1).ToString() == null) return "My Computer";
             string strPath = strList.GetValue(0).ToString();
-            //if (strList.GetValue(1).ToString() == "") return "My Computer";
             if (strList.Length == 2) return strPath + "\\";
             for (int i = 1; i < strList.Length - 1; i++)
             {

@@ -54,7 +54,18 @@ namespace FileGuide
         {
             TreeNode currentNode = e.Node;
             clsTreeListView.ShowFolderTree(this.treeView, currentNode);
-            clsTreeListView.ShowListView(this.listView, currentNode);
+            if (currentNode.Text == "My Computer")
+            {
+                tableLayoutFirstPage.Visible = true;
+                listView.Visible = false;
+                clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives);
+            }
+            else 
+            {
+                tableLayoutFirstPage.Visible = false;
+                listView.Visible = true;
+                clsTreeListView.ShowListView(this.listView, currentNode);
+            }
             tscmbPath.Text = clsTreeListView.GetApproriatePath(currentNode.FullPath);
             pathNode = tscmbPath.Text;
             currentPath = pathNode;
@@ -343,11 +354,22 @@ namespace FileGuide
         {
             try
             { 
-                if (currentPath != "" && currentPath != "My Computer")
+                if (currentPath != "")
                 {
                     currentPath = clsTreeListView.GetParentDirectoryPath(currentPath);
+                    if (currentPath != "My Computer")
+                    {
+                        tableLayoutFirstPage.Visible = false;
+                        listView.Visible = true;
+                        clsTreeListView.ShowListView(listView, currentPath);
+                    }
+                    else
+                    {
+                        tableLayoutFirstPage.Visible = true;
+                        listView.Visible = false;
+                        clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives);
+                    }
                     tscmbPath.Text = currentPath;
-                    clsTreeListView.ShowListView(listView, currentPath);
                 }
             }
             catch (Exception ex)
