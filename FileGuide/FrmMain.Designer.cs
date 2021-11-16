@@ -359,7 +359,7 @@ namespace FileGuide
             this.menuDelete,
             this.menuExit});
             this.menuFile.Name = "menuFile";
-            this.menuFile.Size = new System.Drawing.Size(54, 32);
+            this.menuFile.Size = new System.Drawing.Size(54, 30);
             this.menuFile.Text = "&File";
             // 
             // menuRename
@@ -393,7 +393,7 @@ namespace FileGuide
             this.menuList,
             this.menuDetails});
             this.menuView.Name = "menuView";
-            this.menuView.Size = new System.Drawing.Size(65, 32);
+            this.menuView.Size = new System.Drawing.Size(65, 30);
             this.menuView.Text = "&View";
             // 
             // menuLarge
@@ -431,7 +431,7 @@ namespace FileGuide
             this.menuCut,
             this.menuPaste});
             this.menuEdit.Name = "menuEdit";
-            this.menuEdit.Size = new System.Drawing.Size(58, 32);
+            this.menuEdit.Size = new System.Drawing.Size(58, 30);
             this.menuEdit.Text = "&Edit";
             // 
             // menuCopy
@@ -464,7 +464,7 @@ namespace FileGuide
             this.menuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuAbout});
             this.menuHelp.Name = "menuHelp";
-            this.menuHelp.Size = new System.Drawing.Size(65, 32);
+            this.menuHelp.Size = new System.Drawing.Size(65, 30);
             this.menuHelp.Text = "&Help";
             // 
             // menuAbout
@@ -757,6 +757,7 @@ namespace FileGuide
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  File Guide";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.SizeChanged += new System.EventHandler(this.FrmMain_Resize);
             this.Resize += new System.EventHandler(this.FrmMain_Resize);

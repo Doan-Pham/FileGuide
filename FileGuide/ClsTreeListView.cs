@@ -23,7 +23,7 @@ namespace FileGuide
         const int NetworkDisk = 4;
         const int CDDisk = 5;
         const int MaxRecentFilesShown = 10;
-        private List<string> ListRecentFiles = new List<string>();
+        public List<string> ListRecentFiles = new List<string>();
 
         /// <summary>
         /// Initialize treeView
@@ -330,6 +330,16 @@ namespace FileGuide
                     if (ListRecentFiles.Count != 0 && path == ListRecentFiles[0]) return true;
                     if (ListRecentFiles.Count >= MaxRecentFilesShown) ListRecentFiles.RemoveAt(ListRecentFiles.Count - 1);
                     ListRecentFiles.Insert(0, path);
+
+                    string DebugDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                    string RecentDirectory = Path.Combine(DebugDirectory, "RecentAccessesFiles");
+                    if (!Directory.Exists(RecentDirectory))
+                        Directory.CreateDirectory(RecentDirectory);
+                    using (StreamWriter OutputFile = new StreamWriter(RecentDirectory + @"RecentAccessedFiles.txt"))
+                    {
+                        foreach (string filePath in ListRecentFiles)
+                            OutputFile.WriteLine(filePath);
+                    }
                 }
                 else
                 {

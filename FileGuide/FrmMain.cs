@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace FileGuide
 {
@@ -40,7 +41,14 @@ namespace FileGuide
         {
             clsTreeListView.CreateTreeView(this.treeView);
             treeView.ExpandAll();
-            clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives,listViewRecentFiles);       
+
+            string DebugDirectory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string RecentDirectory = System.IO.Path.Combine(DebugDirectory, "RecentAccessesFiles");
+            string RecentFilesTxt = System.IO.Path.Combine(RecentDirectory,"RecentAccessedFiles.txt");
+
+            clsTreeListView.ListRecentFiles.AddRange(File.ReadAllLines(RecentFilesTxt));
+            clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives,listViewRecentFiles);
+
             if (this.Width > 400)
                 tscmbPath.Width = this.Width - 300;
         }
@@ -561,6 +569,22 @@ namespace FileGuide
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            string DebugDirectory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string RecentDirectory = System.IO.Path.Combine(DebugDirectory, "RecentAccessesFiles");
+            string RecentFilesTxt = System.IO.Path.Combine(RecentDirectory, "RecentAccessedFiles.txt");
+
+            if (!Directory.Exists(RecentDirectory))
+                Directory.CreateDirectory(RecentDirectory);
+
+            using (StreamWriter OutputFile = new StreamWriter(RecentFilesTxt))
+            {
+                foreach (string filePath in clsTreeListView.ListRecentFiles)
+                    OutputFile.WriteLine(filePath);
+            }
         }
     }
 }
