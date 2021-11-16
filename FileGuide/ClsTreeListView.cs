@@ -11,6 +11,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Windows;
+using System.Reflection;
 
 namespace FileGuide
 {
@@ -21,6 +22,8 @@ namespace FileGuide
         const int LocalDisk = 3;
         const int NetworkDisk = 4;
         const int CDDisk = 5;
+        const int MaxRecentFilesShown = 10;
+        private List<string> ListRecentFiles = new List<string>();
 
         /// <summary>
         /// Initialize treeView
@@ -90,9 +93,13 @@ namespace FileGuide
             ShowFolderTree(treeView, tnMyComputer);
         }
 
-        public void ShowListViewFirstPage(FlowLayoutPanel flowLayoutPanelDrives)
+        /// <summary>
+        /// Show the listView first page whenever the root node-My Computer is focused
+        /// </summary>
+        /// <param name="flowLayoutPanelDrives"></param>
+        public void ShowListViewFirstPage(FlowLayoutPanel flowLayoutPanelDrives, ListView RecentFiles)
         {
-            // For each drive, assign the approriate image index, create a treenode + add to the root node's collection
+            // For each drive, create a panel with icon, name, and storage information then add to listView first page
             foreach (var drive in DriveInfo.GetDrives())
             {
                 long freeSpace = drive.TotalFreeSpace;
@@ -168,8 +175,22 @@ namespace FileGuide
                 DrivePanel.Controls.Add(DrivePicture);
                 flowLayoutPanelDrives.Controls.Add(DrivePanel);
             }
-        
+            ShowRecentAccessedFiles(RecentFiles);
         }
+
+        public void ShowRecentAccessedFiles(ListView RecentFiles)
+        {
+            RecentFiles.Items.Clear();
+            foreach (string ItemPath in ListRecentFiles)
+            {
+                string[] items = new string[2];
+                items[0] = GetFileFolderName(ItemPath);
+                items[1] = ItemPath;
+                ListViewItem item = new ListViewItem(items);
+                RecentFiles.Items.Add(item);
+            }
+        }
+
 
         /// <summary>
         /// Show computer's folder tree onto treeView
@@ -296,7 +317,7 @@ namespace FileGuide
         /// <param name="listView"></param>
         /// <param name="CurrentItem"></param>
         /// <returns></returns>
-        public bool ClickItem(ListView listView, ListViewItem CurrentItem)
+        public bool ClickItem(ListView listView,ListView listViewRecentFiles ,ListViewItem CurrentItem)
         {
             try
             {
@@ -306,6 +327,9 @@ namespace FileGuide
                 if (fi.Exists)
                 {
                     Process.Start(path);
+                    if (ListRecentFiles.Count != 0 && path == ListRecentFiles[0]) return true;
+                    if (ListRecentFiles.Count >= MaxRecentFilesShown) ListRecentFiles.RemoveAt(ListRecentFiles.Count - 1);
+                    ListRecentFiles.Insert(0, path);
                 }
                 else
                 {

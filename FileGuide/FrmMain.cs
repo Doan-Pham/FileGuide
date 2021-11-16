@@ -39,8 +39,8 @@ namespace FileGuide
         private void Form1_Load(object sender, EventArgs e)
         {
             clsTreeListView.CreateTreeView(this.treeView);
-            clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives);
-           // treeView.ExpandAll();
+            treeView.ExpandAll();
+            clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives,listViewRecentFiles);       
             if (this.Width > 400)
                 tscmbPath.Width = this.Width - 300;
         }
@@ -58,7 +58,7 @@ namespace FileGuide
             {
                 tableLayoutFirstPage.Visible = true;
                 listView.Visible = false;
-                clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives);
+                clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles);
             }
             else 
             {
@@ -78,9 +78,9 @@ namespace FileGuide
         /// <param name="e"></param>
         private void listView_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            ListViewItem item = this.listView.FocusedItem;
+            ListViewItem item = listView.FocusedItem;
 
-            if(clsTreeListView.ClickItem(this.listView, item))
+            if(clsTreeListView.ClickItem(listView,listViewRecentFiles ,item))
             { 
                 // Nếu item là folder thì hiển thị path lên tsPath
                 if (item.SubItems[1].Text == "Folder")
@@ -100,8 +100,8 @@ namespace FileGuide
         {
             if (e.KeyChar == 13)
             {
-                ListViewItem item = this.listView.FocusedItem;
-                if (clsTreeListView.ClickItem(this.listView, item))
+                ListViewItem item = listView.FocusedItem;
+                if (clsTreeListView.ClickItem(listView, listViewRecentFiles, item))
                 {
                     // Nếu item là folder thì hiển thị path lên tsPath
                     if (item.SubItems[1].Text == "Folder")
@@ -367,7 +367,7 @@ namespace FileGuide
                     {
                         tableLayoutFirstPage.Visible = true;
                         listView.Visible = false;
-                        clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives);
+                        clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles);
                     }
                     tscmbPath.Text = currentPath;
                 }

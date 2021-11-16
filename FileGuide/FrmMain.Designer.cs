@@ -86,6 +86,9 @@ namespace FileGuide
             this.statusLblItemNum = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusLblNumSelect = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextMenuStripListView = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.listViewRecentFiles = new System.Windows.Forms.ListView();
+            this.listViewColRecentPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Path = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.treeView = new FileGuide.BufferedTreeView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
@@ -142,6 +145,7 @@ namespace FileGuide
             this.tableLayoutFirstPage.Controls.Add(this.tableLblDrives, 0, 0);
             this.tableLayoutFirstPage.Controls.Add(this.tableLblRecent, 0, 2);
             this.tableLayoutFirstPage.Controls.Add(this.flowLayoutPanelDrives, 0, 1);
+            this.tableLayoutFirstPage.Controls.Add(this.listViewRecentFiles, 0, 3);
             this.tableLayoutFirstPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutFirstPage.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableLayoutFirstPage.Location = new System.Drawing.Point(0, 0);
@@ -355,7 +359,7 @@ namespace FileGuide
             this.menuDelete,
             this.menuExit});
             this.menuFile.Name = "menuFile";
-            this.menuFile.Size = new System.Drawing.Size(54, 30);
+            this.menuFile.Size = new System.Drawing.Size(54, 32);
             this.menuFile.Text = "&File";
             // 
             // menuRename
@@ -389,7 +393,7 @@ namespace FileGuide
             this.menuList,
             this.menuDetails});
             this.menuView.Name = "menuView";
-            this.menuView.Size = new System.Drawing.Size(65, 30);
+            this.menuView.Size = new System.Drawing.Size(65, 32);
             this.menuView.Text = "&View";
             // 
             // menuLarge
@@ -427,7 +431,7 @@ namespace FileGuide
             this.menuCut,
             this.menuPaste});
             this.menuEdit.Name = "menuEdit";
-            this.menuEdit.Size = new System.Drawing.Size(58, 30);
+            this.menuEdit.Size = new System.Drawing.Size(58, 32);
             this.menuEdit.Text = "&Edit";
             // 
             // menuCopy
@@ -460,7 +464,7 @@ namespace FileGuide
             this.menuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuAbout});
             this.menuHelp.Name = "menuHelp";
-            this.menuHelp.Size = new System.Drawing.Size(65, 30);
+            this.menuHelp.Size = new System.Drawing.Size(65, 32);
             this.menuHelp.Text = "&Help";
             // 
             // menuAbout
@@ -686,6 +690,30 @@ namespace FileGuide
             this.contextMenuStripListView.Name = "contextMenuStripListView";
             this.contextMenuStripListView.Size = new System.Drawing.Size(61, 4);
             // 
+            // listViewRecentFiles
+            // 
+            this.listViewRecentFiles.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listViewRecentFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewColRecentPath,
+            this.Path});
+            this.listViewRecentFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewRecentFiles.Location = new System.Drawing.Point(3, 260);
+            this.listViewRecentFiles.Name = "listViewRecentFiles";
+            this.listViewRecentFiles.Size = new System.Drawing.Size(799, 255);
+            this.listViewRecentFiles.TabIndex = 3;
+            this.listViewRecentFiles.UseCompatibleStateImageBehavior = false;
+            this.listViewRecentFiles.View = System.Windows.Forms.View.Details;
+            // 
+            // listViewColRecentPath
+            // 
+            this.listViewColRecentPath.Text = "Name";
+            this.listViewColRecentPath.Width = 379;
+            // 
+            // Path
+            // 
+            this.Path.Text = "Path";
+            this.Path.Width = 421;
+            // 
             // treeView
             // 
             this.treeView.BackColor = System.Drawing.Color.White;
@@ -811,6 +839,9 @@ namespace FileGuide
         private System.Windows.Forms.PictureBox ListViewPageDrivePicture;
         private System.Windows.Forms.ProgressBar DriveStorageBar;
         private System.Windows.Forms.Label ListViewPageLblDriveStorage;
+        private System.Windows.Forms.ListView listViewRecentFiles;
+        private System.Windows.Forms.ColumnHeader listViewColRecentPath;
+        private System.Windows.Forms.ColumnHeader Path;
     }
 }
 
