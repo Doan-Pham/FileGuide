@@ -33,7 +33,7 @@ namespace FileGuide
         }
 
         /// <summary>
-        /// Create treeView and set min width for toolStrip path
+        /// Create treeView,load list of recent files into first page and set min width for toolStrip path
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -54,7 +54,7 @@ namespace FileGuide
         }
 
         /// <summary>
-        /// Load folder tree onto treeView
+        /// Load folder tree onto treeView and show listView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -165,9 +165,13 @@ namespace FileGuide
             }
         }
 
+        /// <summary>
+        /// Set min width for toolStrip Path when resize form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmMain_Resize(object sender, EventArgs e)
         {
-            // Set min width for toolStrip Path when resize form
             if (this.Width > 400)
             tscmbPath.Width = this.Width - 300;
         }
@@ -309,7 +313,7 @@ namespace FileGuide
         }
 
         /// <summary>
-        /// Rename item
+        /// Begin renaming item
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -319,6 +323,11 @@ namespace FileGuide
             listView.SelectedItems[0].BeginEdit();
         }
 
+        /// <summary>
+        /// Renaming item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listView_AfterLabelEdit(object sender, LabelEditEventArgs e)
         {
             try 
@@ -487,6 +496,11 @@ namespace FileGuide
             e.DrawDefault = true;
         }
 
+        /// <summary>
+        /// Customize treeView's design to developer's needs
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void treeView_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
             // Reduce the unnecessary DrawNode calls. Without this, some icons are drawn in weird places
@@ -517,7 +531,7 @@ namespace FileGuide
                 g.FillRectangle(selectBrush, e.Bounds);
             }
 
-            // Draw expand/collapse icon
+            // Draw expand/collapse chevrons
             if (e.Node.Nodes.Count > 0)
             { 
                 if (e.Node.IsExpanded)

@@ -178,6 +178,10 @@ namespace FileGuide
             ShowRecentAccessedFiles(RecentFiles);
         }
 
+        /// <summary>
+        /// Show list of recent accessed files onto listView first page
+        /// </summary>
+        /// <param name="RecentFiles"></param>
         public void ShowRecentAccessedFiles(ListView RecentFiles)
         {
             RecentFiles.Items.Clear();
