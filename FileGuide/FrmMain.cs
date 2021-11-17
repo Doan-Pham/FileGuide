@@ -684,17 +684,6 @@ namespace FileGuide
 
         }
 
-        private void listView_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                if (listView.Focused && listView.SelectedItems.Count == 0)
-                {
-                    contextMenuStripListView.Show(e.Location);
-                }
-            }
-        }
-
         private void listView_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -720,7 +709,6 @@ namespace FileGuide
         private void folderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string newFolderName = "New folder";
-            List<string> listNewFolder = new List<string>();
             int count = 1;
             foreach (ListViewItem item in listView.Items)
             {
@@ -732,6 +720,22 @@ namespace FileGuide
             }
             Directory.CreateDirectory(System.IO.Path.Combine(currentPath, newFolderName));
             clsTreeListView.ShowListView(listView,currentPath);
+        }
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string newFileName = "New file";
+            int count = 1;
+            foreach (ListViewItem item in listView.Items)
+            {
+                if (item.SubItems[0].Text.ToString().Contains("New file") && item.SubItems[1].Text.ToString() != "Folder")
+                {
+                    newFileName = "New file_" + count.ToString();
+                    count++;
+                }
+            }
+            File.Create(System.IO.Path.Combine(currentPath, newFileName));
+            clsTreeListView.ShowListView(listView, currentPath);
         }
     }
 }

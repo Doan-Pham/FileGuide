@@ -494,23 +494,23 @@ namespace FileGuide
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLblItemNum,
             this.statusLblNumSelect});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 700);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 706);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 14, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1165, 28);
+            this.statusStrip1.Size = new System.Drawing.Size(1165, 22);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // statusLblItemNum
             // 
             this.statusLblItemNum.Name = "statusLblItemNum";
-            this.statusLblItemNum.Size = new System.Drawing.Size(0, 21);
+            this.statusLblItemNum.Size = new System.Drawing.Size(0, 15);
             // 
             // statusLblNumSelect
             // 
             this.statusLblNumSelect.Margin = new System.Windows.Forms.Padding(20, 4, 0, 3);
             this.statusLblNumSelect.Name = "statusLblNumSelect";
-            this.statusLblNumSelect.Size = new System.Drawing.Size(0, 21);
+            this.statusLblNumSelect.Size = new System.Drawing.Size(0, 15);
             // 
             // contextMenuStripListView
             // 
@@ -525,7 +525,7 @@ namespace FileGuide
             this.pasteToolStripMenuItem});
             this.contextMenuStripListView.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.contextMenuStripListView.Name = "contextMenuStripListView";
-            this.contextMenuStripListView.Size = new System.Drawing.Size(199, 160);
+            this.contextMenuStripListView.Size = new System.Drawing.Size(241, 193);
             // 
             // viewToolStripMenuItem
             // 
@@ -535,7 +535,7 @@ namespace FileGuide
             this.listToolStripMenuItem,
             this.detailsToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(198, 36);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(240, 36);
             this.viewToolStripMenuItem.Text = "View";
             // 
             // largeIconsToolStripMenuItem
@@ -569,7 +569,7 @@ namespace FileGuide
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(195, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(237, 6);
             // 
             // newToolStripMenuItem
             // 
@@ -578,14 +578,14 @@ namespace FileGuide
             this.fileToolStripMenuItem});
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(198, 36);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(240, 36);
             this.newToolStripMenuItem.Text = "New";
             // 
             // folderToolStripMenuItem
             // 
             this.folderToolStripMenuItem.Image = global::FileGuide.Properties.Resources.Folder;
             this.folderToolStripMenuItem.Name = "folderToolStripMenuItem";
-            this.folderToolStripMenuItem.Size = new System.Drawing.Size(173, 38);
+            this.folderToolStripMenuItem.Size = new System.Drawing.Size(270, 38);
             this.folderToolStripMenuItem.Text = "Folder";
             this.folderToolStripMenuItem.Click += new System.EventHandler(this.folderToolStripMenuItem_Click);
             // 
@@ -593,18 +593,19 @@ namespace FileGuide
             // 
             this.fileToolStripMenuItem.Image = global::FileGuide.Properties.Resources.file;
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(173, 38);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(270, 38);
             this.fileToolStripMenuItem.Text = "File";
+            this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(195, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(237, 6);
             // 
             // refreshToolStripMenuItem
             // 
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(198, 36);
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(240, 36);
             this.refreshToolStripMenuItem.Text = "Refresh";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.tsbtnRefresh_Click);
             // 
@@ -672,7 +673,7 @@ namespace FileGuide
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(198, 36);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(240, 36);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.btnPaste_Click);
             // 
