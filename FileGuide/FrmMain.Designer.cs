@@ -32,6 +32,7 @@ namespace FileGuide
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer = new System.Windows.Forms.SplitContainer();
+            this.treeView = new FileGuide.BufferedTreeView();
             this.imglstTreeView = new System.Windows.Forms.ImageList(this.components);
             this.tableLayoutFirstPage = new System.Windows.Forms.TableLayoutPanel();
             this.tableLblDrives = new System.Windows.Forms.Label();
@@ -42,6 +43,9 @@ namespace FileGuide
             this.ListViewPageLblDriveStorage = new System.Windows.Forms.Label();
             this.ListViewPageLblDriveName = new System.Windows.Forms.Label();
             this.ListViewPageDrivePicture = new System.Windows.Forms.PictureBox();
+            this.listViewRecentFiles = new System.Windows.Forms.ListView();
+            this.listViewColRecentPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Path = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listView = new System.Windows.Forms.ListView();
             this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -86,10 +90,6 @@ namespace FileGuide
             this.statusLblItemNum = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusLblNumSelect = new System.Windows.Forms.ToolStripStatusLabel();
             this.contextMenuStripListView = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.listViewRecentFiles = new System.Windows.Forms.ListView();
-            this.listViewColRecentPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Path = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.treeView = new FileGuide.BufferedTreeView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -106,9 +106,6 @@ namespace FileGuide
             // 
             // splitContainer
             // 
-            this.splitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer.Location = new System.Drawing.Point(0, 184);
             this.splitContainer.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer.Name = "splitContainer";
@@ -124,6 +121,30 @@ namespace FileGuide
             this.splitContainer.Size = new System.Drawing.Size(1165, 518);
             this.splitContainer.SplitterDistance = 356;
             this.splitContainer.TabIndex = 0;
+            // 
+            // treeView
+            // 
+            this.treeView.BackColor = System.Drawing.Color.White;
+            this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
+            this.treeView.Font = new System.Drawing.Font("Questrial", 9.999999F);
+            this.treeView.ForeColor = System.Drawing.Color.Black;
+            this.treeView.FullRowSelect = true;
+            this.treeView.HotTracking = true;
+            this.treeView.ImageIndex = 0;
+            this.treeView.ImageList = this.imglstTreeView;
+            this.treeView.Indent = 20;
+            this.treeView.ItemHeight = 46;
+            this.treeView.Location = new System.Drawing.Point(0, 0);
+            this.treeView.Name = "treeView";
+            this.treeView.SelectedImageIndex = 0;
+            this.treeView.ShowLines = false;
+            this.treeView.Size = new System.Drawing.Size(356, 518);
+            this.treeView.TabIndex = 1;
+            this.treeView.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView_DrawNode);
+            this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
+            this.treeView.MouseLeave += new System.EventHandler(this.treeView_MouseLeave);
+            this.treeView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseMove);
             // 
             // imglstTreeView
             // 
@@ -245,6 +266,31 @@ namespace FileGuide
             this.ListViewPageDrivePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ListViewPageDrivePicture.TabIndex = 0;
             this.ListViewPageDrivePicture.TabStop = false;
+            // 
+            // listViewRecentFiles
+            // 
+            this.listViewRecentFiles.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listViewRecentFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewColRecentPath,
+            this.Path});
+            this.listViewRecentFiles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewRecentFiles.HideSelection = false;
+            this.listViewRecentFiles.Location = new System.Drawing.Point(3, 260);
+            this.listViewRecentFiles.Name = "listViewRecentFiles";
+            this.listViewRecentFiles.Size = new System.Drawing.Size(799, 255);
+            this.listViewRecentFiles.TabIndex = 3;
+            this.listViewRecentFiles.UseCompatibleStateImageBehavior = false;
+            this.listViewRecentFiles.View = System.Windows.Forms.View.Details;
+            // 
+            // listViewColRecentPath
+            // 
+            this.listViewColRecentPath.Text = "Name";
+            this.listViewColRecentPath.Width = 379;
+            // 
+            // Path
+            // 
+            this.Path.Text = "Path";
+            this.Path.Width = 421;
             // 
             // listView
             // 
@@ -689,54 +735,6 @@ namespace FileGuide
             this.contextMenuStripListView.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.contextMenuStripListView.Name = "contextMenuStripListView";
             this.contextMenuStripListView.Size = new System.Drawing.Size(61, 4);
-            // 
-            // listViewRecentFiles
-            // 
-            this.listViewRecentFiles.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listViewRecentFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.listViewColRecentPath,
-            this.Path});
-            this.listViewRecentFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewRecentFiles.Location = new System.Drawing.Point(3, 260);
-            this.listViewRecentFiles.Name = "listViewRecentFiles";
-            this.listViewRecentFiles.Size = new System.Drawing.Size(799, 255);
-            this.listViewRecentFiles.TabIndex = 3;
-            this.listViewRecentFiles.UseCompatibleStateImageBehavior = false;
-            this.listViewRecentFiles.View = System.Windows.Forms.View.Details;
-            // 
-            // listViewColRecentPath
-            // 
-            this.listViewColRecentPath.Text = "Name";
-            this.listViewColRecentPath.Width = 379;
-            // 
-            // Path
-            // 
-            this.Path.Text = "Path";
-            this.Path.Width = 421;
-            // 
-            // treeView
-            // 
-            this.treeView.BackColor = System.Drawing.Color.White;
-            this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
-            this.treeView.Font = new System.Drawing.Font("Questrial", 9.999999F);
-            this.treeView.ForeColor = System.Drawing.Color.Black;
-            this.treeView.FullRowSelect = true;
-            this.treeView.HotTracking = true;
-            this.treeView.ImageIndex = 0;
-            this.treeView.ImageList = this.imglstTreeView;
-            this.treeView.Indent = 20;
-            this.treeView.ItemHeight = 46;
-            this.treeView.Location = new System.Drawing.Point(0, 0);
-            this.treeView.Name = "treeView";
-            this.treeView.SelectedImageIndex = 0;
-            this.treeView.ShowLines = false;
-            this.treeView.Size = new System.Drawing.Size(356, 518);
-            this.treeView.TabIndex = 1;
-            this.treeView.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView_DrawNode);
-            this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
-            this.treeView.MouseLeave += new System.EventHandler(this.treeView_MouseLeave);
-            this.treeView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseMove);
             // 
             // FrmMain
             // 

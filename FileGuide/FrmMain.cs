@@ -21,6 +21,9 @@ namespace FileGuide
         private bool isFolder = false;
         private bool isListView = false;
         private ListViewItem itemPaste;
+        private Color HoverColor = Color.FromArgb(229, 243, 255);
+        private Color UnfocusedSelectColor = Color.FromArgb(242, 242, 242);
+        private Color FocusedSelectColor = Color.FromArgb(205, 232, 255);
         private string pathSource;
         private string pathDest;
         private string pathNode;
@@ -90,7 +93,7 @@ namespace FileGuide
 
             if(clsTreeListView.ClickItem(listView,listViewRecentFiles ,item))
             { 
-                // Nếu item là folder thì hiển thị path lên tsPath
+                //If item is a folder, show folder's path on tsPath
                 if (item.SubItems[1].Text == "Folder")
                 { 
                 tscmbPath.Text = clsTreeListView.GetApproriatePath(item.SubItems[4].Text);
@@ -413,6 +416,7 @@ namespace FileGuide
         /// <param name="e"></param>
         private void menuLarge_Click(object sender, EventArgs e)
         {
+            listView.OwnerDraw = false;
             listView.View = View.LargeIcon;
         }
 
@@ -423,6 +427,7 @@ namespace FileGuide
         /// <param name="e"></param>
         private void menuSmall_Click(object sender, EventArgs e)
         {
+            listView.OwnerDraw = false;
             listView.View = View.SmallIcon;
         }
 
@@ -433,6 +438,7 @@ namespace FileGuide
         /// <param name="e"></param>
         private void menuList_Click(object sender, EventArgs e)
         {
+            listView.OwnerDraw = false;
             listView.View = View.List;
         }
 
@@ -443,6 +449,7 @@ namespace FileGuide
         /// <param name="e"></param>
         private void menuDetails_Click(object sender, EventArgs e)
         {
+            listView.OwnerDraw = true;
             listView.View = View.Details;
         }
 
@@ -488,12 +495,85 @@ namespace FileGuide
 
         private void listView_DrawItem(object sender, DrawListViewItemEventArgs e)
         {
-            e.DrawDefault = true;
+            Rectangle itemRect = e.Item.Bounds;
+            Graphics g = e.Graphics;
+            // Change item's background color when selected
+            if (e.State == ListViewItemStates.Hot)
+            {
+                Brush hoverBrush = new SolidBrush(HoverColor);
+                g.FillRectangle(hoverBrush, e.Bounds);
+            }
+
+            if (e.Item.Selected)
+            {
+                Brush selectBrush;
+                if (e.Item.ListView.Focused)
+                {
+                    selectBrush = new SolidBrush(FocusedSelectColor);
+                }
+                else
+                {
+                    selectBrush = new SolidBrush(UnfocusedSelectColor);
+                }
+                g.FillRectangle(selectBrush, itemRect);
+            }
         }
 
         private void listView_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
-            e.DrawDefault = true;
+            Rectangle itemRect = e.Item.Bounds;
+            Graphics g = e.Graphics;
+            if (e.Item.ListView.View == View.Details)
+            {
+                if (e.Item.SubItems[1].Text == "Folder")
+                {
+                    g.DrawImage(Properties.Resources.Folder, e.Item.Bounds.X + 20, e.Item.Bounds.Y, 30, 30);
+                }
+                else
+                {
+                    g.DrawImage(Properties.Resources.file, e.Item.Bounds.X + 20, e.Item.Bounds.Y, 30, 30);
+                }
+
+                TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis |
+       TextFormatFlags.ExpandTabs | TextFormatFlags.SingleLine;
+
+                Rectangle textRect;
+                Color textColor;
+
+                if (e.ColumnIndex == 0)
+                {
+                    textRect = new Rectangle(e.Bounds.X + 50, e.Bounds.Y, e.Bounds.Width - 50, e.Bounds.Height);
+                    textColor = Color.Black;
+                }
+                else
+                {
+                    textRect = new Rectangle(e.Bounds.X + 20, e.Bounds.Y, e.Bounds.Width - 20, e.Bounds.Height);
+                    textColor = Color.Gray;
+                }
+
+
+                TextRenderer.DrawText(g, e.SubItem.Text, e.Item.ListView.Font, textRect, textColor, flags);
+
+            }
+            else if (e.Item.ListView.View == View.LargeIcon)
+
+            {
+                if (e.Item.SubItems[1].Text == "Folder")
+                {
+                    g.DrawImage(Properties.Resources.Folder, e.Item.Bounds.X, e.Item.Bounds.Y, 25,25);
+                }
+                else
+                {
+                    g.DrawImage(Properties.Resources.file, e.Item.Bounds.X + 20, e.Item.Bounds.Y, 25, 25);
+                }
+
+                TextFormatFlags flags = TextFormatFlags.Bottom |TextFormatFlags.VerticalCenter | TextFormatFlags.EndEllipsis |
+       TextFormatFlags.ExpandTabs | TextFormatFlags.SingleLine;
+
+                Rectangle textRect = new Rectangle(e.Bounds.X , e.Bounds.Y, e.Bounds.Width, e.Bounds.Height);
+                TextRenderer.DrawText(g, e.SubItem.Text, e.Item.ListView.Font, textRect, Color.Black, flags);
+
+            }
         }
 
         /// <summary>
@@ -512,7 +592,7 @@ namespace FileGuide
             // Change node's background color on hovering
             if (e.State == TreeNodeStates.Hot)
             {
-                Brush hoverBrush = new SolidBrush(Color.FromArgb(229, 243, 255));
+                Brush hoverBrush = new SolidBrush(HoverColor);
                 g.FillRectangle(hoverBrush, e.Bounds);
             }
 
@@ -522,11 +602,11 @@ namespace FileGuide
                 Brush selectBrush;
                 if (e.Node.TreeView.Focused)
                 {
-                    selectBrush = new SolidBrush(Color.FromArgb(205, 232, 255));
+                    selectBrush = new SolidBrush(FocusedSelectColor);
                 }
                 else
                 {
-                    selectBrush = new SolidBrush(Color.FromArgb(242, 242, 242));
+                    selectBrush = new SolidBrush(UnfocusedSelectColor);
                 }
                 g.FillRectangle(selectBrush, e.Bounds);
             }
