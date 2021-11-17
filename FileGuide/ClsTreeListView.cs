@@ -321,7 +321,7 @@ namespace FileGuide
         /// <param name="listView"></param>
         /// <param name="CurrentItem"></param>
         /// <returns></returns>
-        public bool ClickItem(ListView listView,ListView listViewRecentFiles ,ListViewItem CurrentItem)
+        public bool ClickItem(ListView listView,ListView listViewRecentFiles ,ListViewItem CurrentItem, ToolStripComboBox tscmbPath)
         {
             try
             {
@@ -347,7 +347,8 @@ namespace FileGuide
                 }
                 else
                 {
-                    ShowListView(listView, path);  
+                    ShowListView(listView, path);
+                    tscmbPath.Text = GetApproriatePath(path);
                 }
                 return true;
             }

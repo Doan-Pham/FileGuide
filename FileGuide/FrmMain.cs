@@ -91,7 +91,7 @@ namespace FileGuide
         {
             ListViewItem item = listView.FocusedItem;
 
-            if(clsTreeListView.ClickItem(listView,listViewRecentFiles ,item))
+            if(clsTreeListView.ClickItem(listView,listViewRecentFiles ,item, tscmbPath))
             { 
                 //If item is a folder, show folder's path on tsPath
                 if (item.SubItems[1].Text == "Folder")
@@ -112,7 +112,7 @@ namespace FileGuide
             if (e.KeyChar == 13)
             {
                 ListViewItem item = listView.FocusedItem;
-                if (clsTreeListView.ClickItem(listView, listViewRecentFiles, item))
+                if (clsTreeListView.ClickItem(listView, listViewRecentFiles, item, tscmbPath))
                 {
                     // Nếu item là folder thì hiển thị path lên tsPath
                     if (item.SubItems[1].Text == "Folder")
@@ -215,7 +215,7 @@ namespace FileGuide
                 isListView = false;
                 isFolder = true;
             };
-
+            pasteToolStripMenuItem.Enabled = true;
             tsbtnPaste.Enabled = true;
         }
 
@@ -285,6 +285,7 @@ namespace FileGuide
                 else strPath = pathDest;
                 clsTreeListView.ShowListView(listView, strPath);
 
+                pasteToolStripMenuItem.Enabled = true;
                 tsbtnPaste.Enabled = false;
             }
             catch (Exception ex)
@@ -688,8 +689,33 @@ namespace FileGuide
         {
             if (e.Button == MouseButtons.Right)
             {
-                contextMenuStripListView.Show(Cursor.Position);
+                if (listView.Focused && listView.SelectedItems.Count == 0)
+                {
+                    contextMenuStripListView.Show(e.Location);
+                }
             }
+        }
+
+        private void listView_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+
+                if (((ListView)sender).SelectedItems.Count > 0)
+                {
+                    contextMenuStripListViewItem.Show((ListView)sender, e.Location);
+                }
+                else
+                {
+                    contextMenuStripListView.Show((ListView)sender, e.Location);
+                }
+            }
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clsTreeListView.ClickItem(listView, listViewRecentFiles, listView.SelectedItems[0], tscmbPath);
+            currentPath = tscmbPath.Text;
         }
     }
 }
