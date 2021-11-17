@@ -417,7 +417,7 @@ namespace FileGuide
         /// <param name="e"></param>
         private void menuLarge_Click(object sender, EventArgs e)
         {
-            listView.OwnerDraw = false;
+            listView.OwnerDraw = true;
             listView.View = View.LargeIcon;
         }
 
@@ -516,62 +516,63 @@ namespace FileGuide
                 }
                 g.FillRectangle(selectBrush, itemRect);
             }
+
+            if (e.Item.ListView.View == View.LargeIcon)
+            {
+                float ImageSize = 80.0f;
+
+                int ImageLocationX = ((e.Item.Bounds.Right - e.Bounds.X - (int)ImageSize)/ 2) + e.Item.Bounds.X;
+                int ImageLocationY = ((e.Item.Bounds.Bottom - e.Bounds.Y - (int)ImageSize)/2) + e.Item.Bounds.Y - 10;
+                if (e.Item.SubItems[1].Text == "Folder")
+                {
+                    g.DrawImage(Properties.Resources.Folder, ImageLocationX, ImageLocationY, ImageSize, ImageSize);
+                }
+                else
+                {
+                    g.DrawImage(Properties.Resources.file, ImageLocationX, ImageLocationY, ImageSize, ImageSize);
+                }
+
+                TextFormatFlags flags = TextFormatFlags.Bottom | TextFormatFlags.EndEllipsis | TextFormatFlags.LeftAndRightPadding | TextFormatFlags.SingleLine | TextFormatFlags.HorizontalCenter;
+
+                Rectangle textRect = new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height);
+                TextRenderer.DrawText(g, e.Item.Text, e.Item.ListView.Font, textRect, PrimaryTextColor, flags);
+            }
         }
 
         private void listView_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
             Rectangle itemRect = e.Item.Bounds;
             Graphics g = e.Graphics;
-            if (e.Item.ListView.View == View.Details)
-            {
-                if (e.Item.SubItems[1].Text == "Folder")
+            if (e.Item.SubItems[1].Text == "Folder")
                 {
                     g.DrawImage(Properties.Resources.Folder, e.Item.Bounds.X + 20, e.Item.Bounds.Y, 30, 30);
                 }
-                else
+            else
                 {
                     g.DrawImage(Properties.Resources.file, e.Item.Bounds.X + 20, e.Item.Bounds.Y, 30, 30);
                 }
 
-                TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis |
+            TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis |
        TextFormatFlags.ExpandTabs | TextFormatFlags.SingleLine | TextFormatFlags.VerticalCenter;
 
-                Rectangle textRect;
-                Color textColor;
+             Rectangle textRect;
+             Color textColor;
 
-                if (e.ColumnIndex == 0)
-                {
-                    textRect = new Rectangle(e.Bounds.X + 60, e.Bounds.Y, e.Bounds.Width - 60, e.Bounds.Height);
-                    textColor = PrimaryTextColor;
-                }
-                else
-                {
-                    textRect = new Rectangle(e.Bounds.X + 20, e.Bounds.Y, e.Bounds.Width - 20, e.Bounds.Height);
-                    textColor = SecondaryTextColor;
-                }
+             if (e.ColumnIndex == 0)
+             {
+                 textRect = new Rectangle(e.Bounds.X + 60, e.Bounds.Y, e.Bounds.Width-60,e.Bounds.Height);
+                 textColor = PrimaryTextColor;
+             }
+             else
+             {
+                 textRect = new Rectangle(e.Bounds.X + 20, e.Bounds.Y, e.Bounds.Width-20,e.Bounds.Height);
+                 textColor = SecondaryTextColor;
+             }
 
-                TextRenderer.DrawText(g, e.SubItem.Text, e.Item.ListView.Font, textRect, textColor, flags);
+             TextRenderer.DrawText(g, e.SubItem.Text, e.Item.ListView.Font, textRect, textColor, flags);
 
-            }
-            else if (e.Item.ListView.View == View.LargeIcon)
+            
 
-            {
-                if (e.Item.SubItems[1].Text == "Folder")
-                {
-                    g.DrawImage(Properties.Resources.Folder, e.Item.Bounds.X, e.Item.Bounds.Y, 25,25);
-                }
-                else
-                {
-                    g.DrawImage(Properties.Resources.file, e.Item.Bounds.X + 20, e.Item.Bounds.Y, 25, 25);
-                }
-
-                TextFormatFlags flags = TextFormatFlags.Bottom |TextFormatFlags.VerticalCenter | TextFormatFlags.EndEllipsis |
-       TextFormatFlags.ExpandTabs | TextFormatFlags.SingleLine;
-
-                Rectangle textRect = new Rectangle(e.Bounds.X , e.Bounds.Y, e.Bounds.Width, e.Bounds.Height);
-                TextRenderer.DrawText(g, e.SubItem.Text, e.Item.ListView.Font, textRect, PrimaryTextColor, flags);
-
-            }
         }
 
         /// <summary>
