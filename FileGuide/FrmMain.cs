@@ -24,6 +24,8 @@ namespace FileGuide
         private Color HoverColor = Color.FromArgb(229, 243, 255);
         private Color UnfocusedSelectColor = Color.FromArgb(242, 242, 242);
         private Color FocusedSelectColor = Color.FromArgb(205, 232, 255);
+        private Color PrimaryTextColor = Color.Black;
+        private Color SecondaryTextColor = Color.Gray;
         private string pathSource;
         private string pathDest;
         private string pathNode;
@@ -479,17 +481,15 @@ namespace FileGuide
         /// <param name="e"></param>
         private void listView_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         {
-            using (var sf = new StringFormat())
-            {
-                sf.Alignment = StringAlignment.Near;
-                sf.LineAlignment = StringAlignment.Center;
-                using (var headerFont = new Font("Questrial", 10, FontStyle.Regular))
-                {
-                    RectangleF rect = new RectangleF(e.Bounds.X + 12, e.Bounds.Y, e.Bounds.Width - 24, e.Bounds.Height);
-                    e.Graphics.DrawString(e.Header.Text, headerFont,
-                        Brushes.Gray, rect, sf);
-                }             
-            }      
+            TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis |
+       TextFormatFlags.ExpandTabs | TextFormatFlags.SingleLine;
+
+            Rectangle textRect = new Rectangle(e.Bounds.X + 20, e.Bounds.Y, e.Bounds.Width - 20, e.Bounds.Height);
+            TextRenderer.DrawText(e.Graphics, e.Header.Text, e.Header.ListView.Font,textRect,SecondaryTextColor, flags);
+
+            Pen textBorder = new Pen(Color.FromArgb(186, 186, 186), 1.5f);
+            e.Graphics.DrawLine(textBorder, new Point(e.Bounds.X + 25, e.Bounds.Y - 5 + e.Bounds.Height), new Point(e.Bounds.X + e.Bounds.Width, e.Bounds.Y - 5 + e.Bounds.Height));
+            /*e.Graphics.DrawLine(textBorder, new Point(e.Bounds.X + e.Bounds.Width, e.Bounds.Y), new Point(e.Bounds.X + e.Bounds.Width, e.Bounds.Y + e.Bounds.Height));*/
         }
 
         private void listView_DrawItem(object sender, DrawListViewItemEventArgs e)
@@ -534,22 +534,21 @@ namespace FileGuide
                 }
 
                 TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis |
-       TextFormatFlags.ExpandTabs | TextFormatFlags.SingleLine;
+       TextFormatFlags.ExpandTabs | TextFormatFlags.SingleLine | TextFormatFlags.VerticalCenter;
 
                 Rectangle textRect;
                 Color textColor;
 
                 if (e.ColumnIndex == 0)
                 {
-                    textRect = new Rectangle(e.Bounds.X + 50, e.Bounds.Y, e.Bounds.Width - 50, e.Bounds.Height);
-                    textColor = Color.Black;
+                    textRect = new Rectangle(e.Bounds.X + 60, e.Bounds.Y, e.Bounds.Width - 60, e.Bounds.Height);
+                    textColor = PrimaryTextColor;
                 }
                 else
                 {
                     textRect = new Rectangle(e.Bounds.X + 20, e.Bounds.Y, e.Bounds.Width - 20, e.Bounds.Height);
-                    textColor = Color.Gray;
+                    textColor = SecondaryTextColor;
                 }
-
 
                 TextRenderer.DrawText(g, e.SubItem.Text, e.Item.ListView.Font, textRect, textColor, flags);
 
@@ -570,7 +569,7 @@ namespace FileGuide
        TextFormatFlags.ExpandTabs | TextFormatFlags.SingleLine;
 
                 Rectangle textRect = new Rectangle(e.Bounds.X , e.Bounds.Y, e.Bounds.Width, e.Bounds.Height);
-                TextRenderer.DrawText(g, e.SubItem.Text, e.Item.ListView.Font, textRect, Color.Black, flags);
+                TextRenderer.DrawText(g, e.SubItem.Text, e.Item.ListView.Font, textRect, PrimaryTextColor, flags);
 
             }
         }
@@ -637,7 +636,7 @@ namespace FileGuide
             if (e.Node.Bounds.X != 0)
             { 
                 TextRenderer.DrawText(g, e.Node.Text, ((TreeView)sender).Font,
-                      new Point(nodeRect.Location.X + 20, nodeRect.Location.Y+8), Color.Black);
+                      new Point(nodeRect.Location.X + 20, nodeRect.Location.Y+8), PrimaryTextColor);
             }
         }
 
@@ -716,6 +715,23 @@ namespace FileGuide
         {
             clsTreeListView.ClickItem(listView, listViewRecentFiles, listView.SelectedItems[0], tscmbPath);
             currentPath = tscmbPath.Text;
+        }
+
+        private void folderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string newFolderName = "New folder";
+            List<string> listNewFolder = new List<string>();
+            int count = 1;
+            foreach (ListViewItem item in listView.Items)
+            {
+                if (item.SubItems[0].Text.ToString().Contains("New folder") && item.SubItems[1].Text.ToString() == "Folder")
+                {
+                    newFolderName = "New folder_" + count.ToString();
+                    count++;
+                }
+            }
+            Directory.CreateDirectory(System.IO.Path.Combine(currentPath, newFolderName));
+            clsTreeListView.ShowListView(listView,currentPath);
         }
     }
 }
