@@ -184,7 +184,7 @@ namespace FileGuide
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void menuCopy_Click(object sender, EventArgs e)
+        private void btnCopy_Click(object sender, EventArgs e)
         {
             // Set isCopying to true so events for Paste feature know whether to cut paste or copy paste
             isCopying = true;
@@ -216,7 +216,6 @@ namespace FileGuide
                 isFolder = true;
             };
 
-            menuPaste.Enabled = true;
             tsbtnPaste.Enabled = true;
         }
 
@@ -225,10 +224,10 @@ namespace FileGuide
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void menuCut_Click(object sender, EventArgs e)
+        private void btnCut_Click(object sender, EventArgs e)
         {
-            // The same as menuCopy_Click event but set isCutting to true and isCopying to false
-            menuCopy_Click(sender, e);
+            // The same as btnCopy_Click event but set isCutting to true and isCopying to false
+            btnCopy_Click(sender, e);
             isCopying = false;
             isCutting = true;
         }
@@ -238,7 +237,7 @@ namespace FileGuide
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void menuPaste_Click(object sender, EventArgs e)
+        private void btnPaste_Click(object sender, EventArgs e)
         {
             try 
             {
@@ -286,7 +285,6 @@ namespace FileGuide
                 else strPath = pathDest;
                 clsTreeListView.ShowListView(listView, strPath);
 
-                menuPaste.Enabled = false;
                 tsbtnPaste.Enabled = false;
             }
             catch (Exception ex)
@@ -300,7 +298,7 @@ namespace FileGuide
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void menuDelete_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
             try 
             {
@@ -678,6 +676,19 @@ namespace FileGuide
             {
                 foreach (string filePath in clsTreeListView.ListRecentFiles)
                     OutputFile.WriteLine(filePath);
+            }
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                contextMenuStripListView.Show(Cursor.Position);
             }
         }
     }
