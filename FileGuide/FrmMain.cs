@@ -419,6 +419,7 @@ namespace FileGuide
         {
             listView.OwnerDraw = true;
             listView.View = View.LargeIcon;
+
         }
 
         /// <summary>
@@ -495,6 +496,7 @@ namespace FileGuide
         private void listView_DrawItem(object sender, DrawListViewItemEventArgs e)
         {
             Rectangle itemRect = e.Item.Bounds;
+            listView.ShowItemToolTips = true;
             Graphics g = e.Graphics;
             // Change item's background color when selected
             if (e.State == ListViewItemStates.Hot)
@@ -520,9 +522,8 @@ namespace FileGuide
             if (e.Item.ListView.View == View.LargeIcon)
             {
                 float ImageSize = 80.0f;
-
                 int ImageLocationX = ((e.Item.Bounds.Right - e.Bounds.X - (int)ImageSize)/ 2) + e.Item.Bounds.X;
-                int ImageLocationY = ((e.Item.Bounds.Bottom - e.Bounds.Y - (int)ImageSize)/2) + e.Item.Bounds.Y - 10;
+                int ImageLocationY = e.Bounds.Y;
                 if (e.Item.SubItems[1].Text == "Folder")
                 {
                     g.DrawImage(Properties.Resources.Folder, ImageLocationX, ImageLocationY, ImageSize, ImageSize);
@@ -532,10 +533,10 @@ namespace FileGuide
                     g.DrawImage(Properties.Resources.file, ImageLocationX, ImageLocationY, ImageSize, ImageSize);
                 }
 
-                TextFormatFlags flags = TextFormatFlags.Bottom | TextFormatFlags.EndEllipsis | TextFormatFlags.LeftAndRightPadding | TextFormatFlags.SingleLine | TextFormatFlags.HorizontalCenter;
+                TextFormatFlags flags = TextFormatFlags.Top | TextFormatFlags.EndEllipsis  | TextFormatFlags.HorizontalCenter | TextFormatFlags.SingleLine;
+                Rectangle textRect = new Rectangle(e.Bounds.X, (int)(e.Bounds.Y + ImageSize), e.Bounds.Width, (int)(e.Bounds.Height - ImageSize));
 
-                Rectangle textRect = new Rectangle(e.Bounds.X, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height);
-                TextRenderer.DrawText(g, e.Item.Text, e.Item.ListView.Font, textRect, PrimaryTextColor, flags);
+                 TextRenderer.DrawText(g, e.Item.Text, e.Item.ListView.Font, textRect, PrimaryTextColor, flags);
             }
         }
 

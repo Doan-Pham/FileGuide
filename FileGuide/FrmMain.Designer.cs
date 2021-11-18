@@ -118,7 +118,7 @@ namespace FileGuide
             // 
             this.splitContainer.Panel2.Controls.Add(this.tableLayoutFirstPage);
             this.splitContainer.Panel2.Controls.Add(this.listView);
-            this.splitContainer.Size = new System.Drawing.Size(1165, 537);
+            this.splitContainer.Size = new System.Drawing.Size(1165, 533);
             this.splitContainer.SplitterDistance = 356;
             this.splitContainer.TabIndex = 0;
             // 
@@ -152,7 +152,7 @@ namespace FileGuide
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutFirstPage.Size = new System.Drawing.Size(805, 537);
+            this.tableLayoutFirstPage.Size = new System.Drawing.Size(805, 533);
             this.tableLayoutFirstPage.TabIndex = 1;
             // 
             // tableLblDrives
@@ -170,7 +170,7 @@ namespace FileGuide
             // 
             this.tableLblRecent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLblRecent.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLblRecent.Location = new System.Drawing.Point(3, 214);
+            this.tableLblRecent.Location = new System.Drawing.Point(3, 212);
             this.tableLblRecent.Name = "tableLblRecent";
             this.tableLblRecent.Size = new System.Drawing.Size(799, 53);
             this.tableLblRecent.TabIndex = 1;
@@ -183,7 +183,7 @@ namespace FileGuide
             this.flowLayoutPanelDrives.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanelDrives.Location = new System.Drawing.Point(3, 56);
             this.flowLayoutPanelDrives.Name = "flowLayoutPanelDrives";
-            this.flowLayoutPanelDrives.Size = new System.Drawing.Size(799, 155);
+            this.flowLayoutPanelDrives.Size = new System.Drawing.Size(799, 153);
             this.flowLayoutPanelDrives.TabIndex = 2;
             // 
             // listViewRecentFiles
@@ -194,9 +194,9 @@ namespace FileGuide
             this.Path});
             this.listViewRecentFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewRecentFiles.HideSelection = false;
-            this.listViewRecentFiles.Location = new System.Drawing.Point(3, 270);
+            this.listViewRecentFiles.Location = new System.Drawing.Point(3, 268);
             this.listViewRecentFiles.Name = "listViewRecentFiles";
-            this.listViewRecentFiles.Size = new System.Drawing.Size(799, 264);
+            this.listViewRecentFiles.Size = new System.Drawing.Size(799, 262);
             this.listViewRecentFiles.TabIndex = 3;
             this.listViewRecentFiles.UseCompatibleStateImageBehavior = false;
             this.listViewRecentFiles.View = System.Windows.Forms.View.Details;
@@ -230,7 +230,7 @@ namespace FileGuide
             this.listView.Margin = new System.Windows.Forms.Padding(4);
             this.listView.Name = "listView";
             this.listView.OwnerDraw = true;
-            this.listView.Size = new System.Drawing.Size(805, 537);
+            this.listView.Size = new System.Drawing.Size(805, 533);
             this.listView.SmallImageList = this.imglstSmall;
             this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
@@ -694,7 +694,7 @@ namespace FileGuide
             this.treeView.Name = "treeView";
             this.treeView.SelectedImageIndex = 0;
             this.treeView.ShowLines = false;
-            this.treeView.Size = new System.Drawing.Size(356, 537);
+            this.treeView.Size = new System.Drawing.Size(356, 533);
             this.treeView.TabIndex = 1;
             this.treeView.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView_DrawNode);
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);

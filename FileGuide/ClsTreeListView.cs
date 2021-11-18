@@ -605,6 +605,22 @@ namespace FileGuide
             }
             return  Result.ToString("0.##") + " " + Suffix[i];
         }
+
+        /// <summary>
+        /// Set width, height of listView item
+        /// </summary>
+        /// <param name="listView"></param>
+        /// <param name="height"></param>
+        public void SetListViewItemSize(ListView listView, int width, int height)
+        {
+            ImageList imgList = new ImageList();
+            imgList.ImageSize = new Size(width, height);
+            listView.SmallImageList = imgList;
+        }
+        public void ResetListViewItemSize(ListView listView)
+        {
+            listView.SmallImageList = null;
+        }
     }
 }
 
