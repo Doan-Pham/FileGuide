@@ -37,6 +37,9 @@ namespace FileGuide
             InitializeComponent();
         }
 
+
+        #region Overall Form design
+
         /// <summary>
         /// Create treeView,load list of recent files into first page and set min width for toolStrip path
         /// </summary>
@@ -49,82 +52,53 @@ namespace FileGuide
 
             string DebugDirectory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string RecentDirectory = System.IO.Path.Combine(DebugDirectory, "RecentAccessesFiles");
-            string RecentFilesTxt = System.IO.Path.Combine(RecentDirectory,"RecentAccessedFiles.txt");
+            string RecentFilesTxt = System.IO.Path.Combine(RecentDirectory, "RecentAccessedFiles.txt");
 
             clsTreeListView.ListRecentFiles.AddRange(File.ReadAllLines(RecentFilesTxt));
-            clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives,listViewRecentFiles);
+            clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles);
 
             if (this.Width > 900)
                 tscmbPath.Width = this.Width - 700;
         }
 
+
         /// <summary>
-        /// Load folder tree onto treeView and show listView
+        /// Set min width for toolStrip Path when resize form
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
+        private void FrmMain_Resize(object sender, EventArgs e)
         {
-            TreeNode currentNode = e.Node;
-            clsTreeListView.ShowFolderTree(this.treeView, currentNode);
-            if (currentNode.Text == "My Computer")
-            {
-                tableLayoutFirstPage.Visible = true;
-                listView.Visible = false;
-                clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles);
-            }
-            else 
-            {
-                tableLayoutFirstPage.Visible = false;
-                listView.Visible = true;
-                clsTreeListView.ShowListView(this.listView, currentNode);
-            }
-            tscmbPath.Text = clsTreeListView.GetApproriatePath(currentNode.FullPath);
-            pathNode = tscmbPath.Text;
-            currentPath = pathNode;
+
+            if (this.Width > 900)
+                tscmbPath.Width = this.Width - 700;
         }
+        
 
         /// <summary>
-        /// Run if a file, show content if a folder
+        /// Write list of recent accessed files to a txt file in debug folder
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void listView_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            ListViewItem item = listView.FocusedItem;
+            string DebugDirectory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string RecentDirectory = System.IO.Path.Combine(DebugDirectory, "RecentAccessesFiles");
+            string RecentFilesTxt = System.IO.Path.Combine(RecentDirectory, "RecentAccessedFiles.txt");
 
-            if(clsTreeListView.ClickItem(listView,listViewRecentFiles ,item, tscmbPath))
-            { 
-                //If item is a folder, show folder's path on tsPath
-                if (item.SubItems[1].Text == "Folder")
-                { 
-                tscmbPath.Text = clsTreeListView.GetApproriatePath(item.SubItems[4].Text);
-                currentPath = tscmbPath.Text;
-                }
-            }
-        }
+            if (!Directory.Exists(RecentDirectory))
+                Directory.CreateDirectory(RecentDirectory);
 
-        /// <summary>
-        /// Run if a file, show content if a folder
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void listView_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13)
+            using (StreamWriter OutputFile = new StreamWriter(RecentFilesTxt))
             {
-                ListViewItem item = listView.FocusedItem;
-                if (clsTreeListView.ClickItem(listView, listViewRecentFiles, item, tscmbPath))
-                {
-                    // Nếu item là folder thì hiển thị path lên tsPath
-                    if (item.SubItems[1].Text == "Folder")
-                    { 
-                        tscmbPath.Text = clsTreeListView.GetApproriatePath(item.SubItems[4].Text);
-                        currentPath = tscmbPath.Text;
-                    }
-                }
+                foreach (string filePath in clsTreeListView.ListRecentFiles)
+                    OutputFile.WriteLine(filePath);
             }
         }
+
+        #endregion
+
+        #region App features: copy, cut, paste, delete, new, go to file/folder, go back
 
         /// <summary>
         /// Go to the path on toolStrip Path
@@ -134,7 +108,7 @@ namespace FileGuide
         private void tscmbPath_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
-            {    
+            {
                 try
                 {
                     if (tscmbPath.Text != "")
@@ -146,13 +120,13 @@ namespace FileGuide
                             Process.Start(tscmbPath.Text.Trim());
                             DirectoryInfo parent = file.Directory;
                             tscmbPath.Text = parent.FullName;
-                            
+
                         }
 
                         // If path points to a folder, open that folder
                         else if (Directory.Exists(tscmbPath.Text.Trim()))
                         {
-                            clsTreeListView.ShowListView(this.listView, tscmbPath.Text) ;
+                            clsTreeListView.ShowListView(this.listView, tscmbPath.Text);
                             currentPath = tscmbPath.Text;
                         }
 
@@ -170,17 +144,6 @@ namespace FileGuide
             }
         }
 
-        /// <summary>
-        /// Set min width for toolStrip Path when resize form
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void FrmMain_Resize(object sender, EventArgs e)
-        {
-
-            if (this.Width > 900)
-                tscmbPath.Width = this.Width - 700;
-        }
 
         /// <summary>
         /// Copy item
@@ -205,7 +168,7 @@ namespace FileGuide
                 if (itemPaste.SubItems[1].Text.Trim() == "Folder")
                 {
                     isFolder = true;
-                    
+
                 }
                 else
                 {
@@ -222,6 +185,7 @@ namespace FileGuide
             tsbtnPaste.Enabled = true;
         }
 
+
         /// <summary>
         /// Cut item
         /// </summary>
@@ -235,6 +199,7 @@ namespace FileGuide
             isCutting = true;
         }
 
+
         /// <summary>
         /// Paste item
         /// </summary>
@@ -242,26 +207,26 @@ namespace FileGuide
         /// <param name="e"></param>
         private void btnPaste_Click(object sender, EventArgs e)
         {
-            try 
+            try
             {
                 // pathSource and pathDest respectively indicate item-needed-to-copy-cut's path and destination directory's path 
                 if (isFolder)
                 {
                     pathDest = currentPath;
                 }
-                else 
+                else
                 {
                     pathDest = currentPath + "\\" + itemPaste.Text;
                 }
-               
+
                 // If user is doing copy-paste, copy item to destination
                 if (isCopying)
                 {
                     if (isFolder)
-                    {                 
+                    {
                         Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory(pathSource, pathDest + "\\" + clsTreeListView.GetFileFolderName(pathSource));
                     }
-                    else 
+                    else
                     {
                         Microsoft.VisualBasic.FileIO.FileSystem.CopyFile(pathSource, pathDest);
                     }
@@ -297,6 +262,7 @@ namespace FileGuide
             }
         }
 
+
         /// <summary>
         /// Delete item
         /// </summary>
@@ -304,18 +270,19 @@ namespace FileGuide
         /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            try 
+            try
             {
                 if (listView.Focused)
                 {
                     clsTreeListView.DeleteItem(listView, listView.FocusedItem);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
         }
+
 
         /// <summary>
         /// Begin renaming item
@@ -328,6 +295,7 @@ namespace FileGuide
             listView.SelectedItems[0].BeginEdit();
         }
 
+
         /// <summary>
         /// Renaming item
         /// </summary>
@@ -335,7 +303,7 @@ namespace FileGuide
         /// <param name="e"></param>
         private void listView_AfterLabelEdit(object sender, LabelEditEventArgs e)
         {
-            try 
+            try
             {
                 if (isRenaming)
                 {
@@ -348,7 +316,7 @@ namespace FileGuide
                     {
                         Microsoft.VisualBasic.FileIO.FileSystem.RenameFile(path, e.Label);
                     }
-                    else 
+                    else
                     {
                         Microsoft.VisualBasic.FileIO.FileSystem.RenameDirectory(path, e.Label);
                     }
@@ -357,15 +325,33 @@ namespace FileGuide
                     isRenaming = false;
                 }
             }
-            catch(IOException)
+            catch (IOException)
             {
-                MessageBox.Show("File or Folder already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error) ;
+                MessageBox.Show("File or Folder already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
         }
+
+
+        /// <summary>
+        /// Refresh listView
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsbtnRefresh_Click(object sender, EventArgs e)
+        {
+            if (currentPath != "")
+            {
+                if (currentPath != "My Computer")
+                    clsTreeListView.ShowListView(listView, currentPath);
+                else 
+                    clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles);
+            }
+        }
+
 
         /// <summary>
         /// Go back to parent directory
@@ -375,7 +361,7 @@ namespace FileGuide
         private void tsbtnBack_Click(object sender, EventArgs e)
         {
             try
-            { 
+            {
                 if (currentPath != "")
                 {
                     currentPath = clsTreeListView.GetParentDirectoryPath(currentPath);
@@ -400,16 +386,180 @@ namespace FileGuide
             }
         }
 
+
         /// <summary>
-        /// Refresh listView
+        /// Run if a file, show content if a folder
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void tsbtnRefresh_Click(object sender, EventArgs e)
+        private void listView_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (currentPath != "" && currentPath != "My Computer" )
-                clsTreeListView.ShowListView(listView, currentPath);
+            ListViewItem item = listView.FocusedItem;
+
+            if (clsTreeListView.ClickItem(listView, listViewRecentFiles, item, tscmbPath))
+            {
+                //If item is a folder, show folder's path on tsPath
+                if (item.SubItems[1].Text == "Folder")
+                {
+                    tscmbPath.Text = clsTreeListView.GetApproriatePath(item.SubItems[4].Text);
+                    currentPath = tscmbPath.Text;
+                }
+            }
         }
+
+        /// <summary>
+        /// Run if a file, show content if a folder
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listView_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                ListViewItem item = listView.FocusedItem;
+                if (clsTreeListView.ClickItem(listView, listViewRecentFiles, item, tscmbPath))
+                {
+                    // Nếu item là folder thì hiển thị path lên tsPath
+                    if (item.SubItems[1].Text == "Folder")
+                    {
+                        tscmbPath.Text = clsTreeListView.GetApproriatePath(item.SubItems[4].Text);
+                        currentPath = tscmbPath.Text;
+                    }
+                }
+            }
+        }
+
+        #endregion
+
+        #region TreeView design
+
+
+        /// <summary>
+        /// Load folder tree onto treeView and show listView
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            TreeNode currentNode = e.Node;
+            clsTreeListView.ShowFolderTree(this.treeView, currentNode);
+            if (currentNode.Text == "My Computer")
+            {
+                tableLayoutFirstPage.Visible = true;
+                listView.Visible = false;
+                clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles);
+            }
+            else
+            {
+                tableLayoutFirstPage.Visible = false;
+                listView.Visible = true;
+                clsTreeListView.ShowListView(this.listView, currentNode);
+            }
+            tscmbPath.Text = clsTreeListView.GetApproriatePath(currentNode.FullPath);
+            pathNode = tscmbPath.Text;
+            currentPath = pathNode;
+        }
+
+
+        /// <summary>
+        /// Customize treeView's design to developer's needs
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void treeView_DrawNode(object sender, DrawTreeNodeEventArgs e)
+        {
+            // Reduce the unnecessary DrawNode calls. Without this, some icons are drawn in weird places
+            if (e.Bounds.Height < 1 || e.Bounds.Width < 1) return;
+
+            Rectangle nodeRect = e.Node.Bounds;
+            Graphics g = e.Graphics;
+
+            // Change node's background color on hovering
+            if (e.State == TreeNodeStates.Hot)
+            {
+                Brush hoverBrush = new SolidBrush(HoverColor);
+                g.FillRectangle(hoverBrush, e.Bounds);
+            }
+
+            // Change node's background color when selected
+            if (e.Node.IsSelected)
+            {
+                Brush selectBrush;
+                if (e.Node.TreeView.Focused)
+                {
+                    selectBrush = new SolidBrush(FocusedSelectColor);
+                }
+                else
+                {
+                    selectBrush = new SolidBrush(UnfocusedSelectColor);
+                }
+                g.FillRectangle(selectBrush, e.Bounds);
+            }
+
+            // Draw expand/collapse chevrons
+            if (e.Node.Nodes.Count > 0)
+            {
+                if (e.Node.IsExpanded)
+                {
+                    g.DrawImage(Properties.Resources.ExpandChevron, nodeRect.Location.X - 40, nodeRect.Location.Y + 16, 16, 16);
+                }
+                else
+                {
+                    g.DrawImage(Properties.Resources.NormalChevron, nodeRect.Location.X - 40, nodeRect.Location.Y + 16, 16, 16);
+                }
+            }
+
+            //Draw node icon
+            if (e.Node.Text == "My Computer")
+            {
+                g.DrawImage(Properties.Resources.MyComputer, nodeRect.Location.X - 14, nodeRect.Location.Y + 8, 30, 30);
+            }
+            else
+            {
+                g.DrawImage(Properties.Resources.Folder, nodeRect.Location.X - 14, nodeRect.Location.Y + 8, 30, 30);
+            }
+
+            //Draw text
+            if (e.Node.Bounds.X != 0)
+            {
+                TextRenderer.DrawText(g, e.Node.Text, ((TreeView)sender).Font,
+                      new Point(nodeRect.Location.X + 20, nodeRect.Location.Y + 8), PrimaryTextColor);
+            }
+        }
+
+
+        /// <summary>
+        /// Change cursor's appearnce on hovering treenode
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void treeView_MouseMove(object sender, MouseEventArgs e)
+        {
+            TreeNode HoveredNode = ((TreeView)sender).GetNodeAt(e.Location);
+            if (HoveredNode != null)
+            {
+                Cursor = Cursors.Hand;
+            }
+            else
+            {
+                Cursor = Cursors.Default;
+            }
+        }
+
+
+        /// <summary>
+        /// Set cursor to default when not hovering treenode
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void treeView_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+
+        #endregion
+
+        #region ListView design
 
         /// <summary>
         /// Set listView display to large icons
@@ -423,6 +573,7 @@ namespace FileGuide
 
         }
 
+
         /// <summary>
         /// Set listView display to small icons
         /// </summary>
@@ -433,6 +584,7 @@ namespace FileGuide
             listView.OwnerDraw = true;
             listView.View = View.SmallIcon;
         }
+
 
         /// <summary>
         /// Set listView display to list
@@ -445,6 +597,7 @@ namespace FileGuide
             listView.View = View.List;
         }
 
+
         /// <summary>
         /// Set listView display to details
         /// </summary>
@@ -456,25 +609,6 @@ namespace FileGuide
             listView.View = View.Details;
         }
 
-        /// <summary>
-        /// Show number of items in current directory on status strip
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void tscmbPath_TextChanged(object sender, EventArgs e)
-        {
-            statusLblItemNum.Text = listView.Items.Count.ToString() + " items";
-        }
-
-        /// <summary>
-        /// Show number of selected listView items on status strip
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void listView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
-        {
-            statusLblNumSelect.Text = listView.SelectedItems.Count.ToString() + " items selected";
-        }
 
         /// <summary>
         /// Customize appearance of listView column headers to developer's need
@@ -487,12 +621,13 @@ namespace FileGuide
        TextFormatFlags.ExpandTabs | TextFormatFlags.SingleLine;
 
             Rectangle textRect = new Rectangle(e.Bounds.X + 20, e.Bounds.Y, e.Bounds.Width - 20, e.Bounds.Height);
-            TextRenderer.DrawText(e.Graphics, e.Header.Text, e.Header.ListView.Font,textRect,SecondaryTextColor, flags);
+            TextRenderer.DrawText(e.Graphics, e.Header.Text, e.Header.ListView.Font, textRect, SecondaryTextColor, flags);
 
             Pen textBorder = new Pen(Color.FromArgb(186, 186, 186), 1.5f);
             e.Graphics.DrawLine(textBorder, new Point(e.Bounds.X + 25, e.Bounds.Y - 5 + e.Bounds.Height), new Point(e.Bounds.X + e.Bounds.Width, e.Bounds.Y - 5 + e.Bounds.Height));
-            /*e.Graphics.DrawLine(textBorder, new Point(e.Bounds.X + e.Bounds.Width, e.Bounds.Y), new Point(e.Bounds.X + e.Bounds.Width, e.Bounds.Y + e.Bounds.Height));*/
+
         }
+
 
         /// <summary>
         ///  Customize appearance of listView items to developer's need
@@ -503,13 +638,15 @@ namespace FileGuide
         {
             Rectangle itemRect = e.Item.Bounds;
             Graphics g = e.Graphics;
-            // Change item's background color when selected
+
+
             if (e.State == ListViewItemStates.Hot)
             {
                 Brush hoverBrush = new SolidBrush(HoverColor);
                 g.FillRectangle(hoverBrush, e.Bounds);
             }
 
+            // Change item's background color when selected
             if (e.Item.Selected)
             {
                 Brush selectBrush;
@@ -527,7 +664,7 @@ namespace FileGuide
             if (e.Item.ListView.View == View.LargeIcon)
             {
                 float ImageSize = 80.0f;
-                int ImageLocationX = ((e.Item.Bounds.Right - e.Bounds.X - (int)ImageSize)/ 2) + e.Item.Bounds.X;
+                int ImageLocationX = ((e.Item.Bounds.Right - e.Bounds.X - (int)ImageSize) / 2) + e.Item.Bounds.X;
                 int ImageLocationY = e.Bounds.Y;
                 if (e.Item.SubItems[1].Text == "Folder")
                 {
@@ -538,10 +675,10 @@ namespace FileGuide
                     g.DrawImage(Properties.Resources.file, ImageLocationX, ImageLocationY, ImageSize, ImageSize);
                 }
 
-                TextFormatFlags flags = TextFormatFlags.Top | TextFormatFlags.EndEllipsis  | TextFormatFlags.HorizontalCenter | TextFormatFlags.SingleLine;
+                TextFormatFlags flags = TextFormatFlags.Top | TextFormatFlags.EndEllipsis | TextFormatFlags.HorizontalCenter | TextFormatFlags.SingleLine;
                 Rectangle textRect = new Rectangle(e.Bounds.X, (int)(e.Bounds.Y + ImageSize), e.Bounds.Width, (int)(e.Bounds.Height - ImageSize));
 
-                 TextRenderer.DrawText(g, e.Item.Text, e.Item.ListView.Font, textRect, PrimaryTextColor, flags);
+                TextRenderer.DrawText(g, e.Item.Text, e.Item.ListView.Font, textRect, PrimaryTextColor, flags);
             }
             else if (e.Item.ListView.View == View.SmallIcon)
             {
@@ -583,6 +720,7 @@ namespace FileGuide
             }
         }
 
+
         /// <summary>
         /// Customize appearance of listView subitems to developer's need
         /// </summary>
@@ -593,162 +731,34 @@ namespace FileGuide
             Rectangle itemRect = e.Item.Bounds;
             Graphics g = e.Graphics;
             if (e.Item.SubItems[1].Text == "Folder")
-                {
-                    g.DrawImage(Properties.Resources.Folder, e.Item.Bounds.X + 20, e.Item.Bounds.Y, 30, 30);
-                }
+            {
+                g.DrawImage(Properties.Resources.Folder, e.Item.Bounds.X + 20, e.Item.Bounds.Y, 30, 30);
+            }
             else
-                {
-                    g.DrawImage(Properties.Resources.file, e.Item.Bounds.X + 20, e.Item.Bounds.Y, 30, 30);
-                }
+            {
+                g.DrawImage(Properties.Resources.file, e.Item.Bounds.X + 20, e.Item.Bounds.Y, 30, 30);
+            }
 
             TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis |
        TextFormatFlags.ExpandTabs | TextFormatFlags.SingleLine | TextFormatFlags.VerticalCenter;
 
-             Rectangle textRect;
-             Color textColor;
+            Rectangle textRect;
+            Color textColor;
 
-             if (e.ColumnIndex == 0)
-             {
-                 textRect = new Rectangle(e.Bounds.X + 60, e.Bounds.Y, e.Bounds.Width-60,e.Bounds.Height);
-                 textColor = PrimaryTextColor;
-             }
-             else
-             {
-                 textRect = new Rectangle(e.Bounds.X + 20, e.Bounds.Y, e.Bounds.Width-20,e.Bounds.Height);
-                 textColor = SecondaryTextColor;
-             }
-
-             TextRenderer.DrawText(g, e.SubItem.Text, e.Item.ListView.Font, textRect, textColor, flags);
-
-            
-
-        }
-
-       
-        /// <summary>
-        /// Customize treeView's design to developer's needs
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void treeView_DrawNode(object sender, DrawTreeNodeEventArgs e)
-        {
-            // Reduce the unnecessary DrawNode calls. Without this, some icons are drawn in weird places
-            if (e.Bounds.Height < 1 || e.Bounds.Width < 1) return;
-
-            Rectangle nodeRect = e.Node.Bounds;
-            Graphics g = e.Graphics;
-
-            // Change node's background color on hovering
-            if (e.State == TreeNodeStates.Hot)
+            if (e.ColumnIndex == 0)
             {
-                Brush hoverBrush = new SolidBrush(HoverColor);
-                g.FillRectangle(hoverBrush, e.Bounds);
-            }
-
-            // Change node's background color when selected
-            if (e.Node.IsSelected)
-            {
-                Brush selectBrush;
-                if (e.Node.TreeView.Focused)
-                {
-                    selectBrush = new SolidBrush(FocusedSelectColor);
-                }
-                else
-                {
-                    selectBrush = new SolidBrush(UnfocusedSelectColor);
-                }
-                g.FillRectangle(selectBrush, e.Bounds);
-            }
-
-            // Draw expand/collapse chevrons
-            if (e.Node.Nodes.Count > 0)
-            { 
-                if (e.Node.IsExpanded)
-                {
-                    g.DrawImage(Properties.Resources.ExpandChevron, nodeRect.Location.X - 40, nodeRect.Location.Y + 16, 16, 16);
-                }
-                else
-                {
-                    g.DrawImage(Properties.Resources.NormalChevron, nodeRect.Location.X - 40, nodeRect.Location.Y + 16, 16, 16);
-                }
-            }
-
-            //Draw node icon
-            if (e.Node.Text == "My Computer")
-            {
-                g.DrawImage(Properties.Resources.MyComputer, nodeRect.Location.X - 14, nodeRect.Location.Y + 8, 30, 30);
+                textRect = new Rectangle(e.Bounds.X + 60, e.Bounds.Y, e.Bounds.Width - 60, e.Bounds.Height);
+                textColor = PrimaryTextColor;
             }
             else
             {
-                g.DrawImage(Properties.Resources.Folder, nodeRect.Location.X - 14, nodeRect.Location.Y + 8, 30, 30);
+                textRect = new Rectangle(e.Bounds.X + 20, e.Bounds.Y, e.Bounds.Width - 20, e.Bounds.Height);
+                textColor = SecondaryTextColor;
             }
 
-            //Draw text
-            if (e.Node.Bounds.X != 0)
-            { 
-                TextRenderer.DrawText(g, e.Node.Text, ((TreeView)sender).Font,
-                      new Point(nodeRect.Location.X + 20, nodeRect.Location.Y+8), PrimaryTextColor);
-            }
+            TextRenderer.DrawText(g, e.SubItem.Text, e.Item.ListView.Font, textRect, textColor, flags);
         }
 
-        /// <summary>
-        /// Change cursor's appearnce on hovering treenode
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void treeView_MouseMove(object sender, MouseEventArgs e)
-        {
-            TreeNode HoveredNode = ((TreeView)sender).GetNodeAt(e.Location);
-            if (HoveredNode != null)
-            {
-                Cursor = Cursors.Hand;
-            }
-            else 
-            {
-                Cursor = Cursors.Default;
-            }
-        }
-
-        /// <summary>
-        /// Change cursor back to default when not hovering treenode
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void treeView_MouseLeave(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// Write list of recent accessed files to a txt file in debug folder
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            string DebugDirectory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string RecentDirectory = System.IO.Path.Combine(DebugDirectory, "RecentAccessesFiles");
-            string RecentFilesTxt = System.IO.Path.Combine(RecentDirectory, "RecentAccessedFiles.txt");
-
-            if (!Directory.Exists(RecentDirectory))
-                Directory.CreateDirectory(RecentDirectory);
-
-            using (StreamWriter OutputFile = new StreamWriter(RecentFilesTxt))
-            {
-                foreach (string filePath in clsTreeListView.ListRecentFiles)
-                    OutputFile.WriteLine(filePath);
-            }
-        }
-
-        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
 
         /// <summary>
         /// Show approriate contextMenuStrip when right clicking on listView
@@ -771,6 +781,7 @@ namespace FileGuide
             }
         }
 
+
         /// <summary>
         /// Process item: run if a file, open if a folder
         /// </summary>
@@ -781,6 +792,7 @@ namespace FileGuide
             clsTreeListView.ClickItem(listView, listViewRecentFiles, listView.SelectedItems[0], tscmbPath);
             currentPath = tscmbPath.Text;
         }
+
 
         /// <summary>
         /// Create a new folder
@@ -800,8 +812,9 @@ namespace FileGuide
                 }
             }
             Directory.CreateDirectory(System.IO.Path.Combine(currentPath, newFolderName));
-            clsTreeListView.ShowListView(listView,currentPath);
+            clsTreeListView.ShowListView(listView, currentPath);
         }
+
 
         /// <summary>
         /// Create a new file
@@ -823,5 +836,34 @@ namespace FileGuide
             File.Create(System.IO.Path.Combine(currentPath, newFileName));
             clsTreeListView.ShowListView(listView, currentPath);
         }
+
+
+        #endregion
+
+        #region Bottom statusBar design
+
+
+        /// <summary>
+        /// Show number of items in current directory on status strip
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tscmbPath_TextChanged(object sender, EventArgs e)
+        {
+            statusLblItemNum.Text = listView.Items.Count.ToString() + " items";
+        }
+
+
+        /// <summary>
+        /// Show number of selected listView items on status strip
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            statusLblNumSelect.Text = listView.SelectedItems.Count.ToString() + " items selected";
+        }
+
+        #endregion    
     }
 }

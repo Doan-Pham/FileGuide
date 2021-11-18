@@ -164,12 +164,16 @@ namespace FileGuide
             // 
             // listViewRecentFiles
             // 
+            this.listViewRecentFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewRecentFiles.BackColor = System.Drawing.Color.White;
             this.listViewRecentFiles.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listViewRecentFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.listViewColRecentPath,
             this.Path});
-            this.listViewRecentFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewRecentFiles.FullRowSelect = true;
+            this.listViewRecentFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewRecentFiles.HideSelection = false;
             this.listViewRecentFiles.Location = new System.Drawing.Point(3, 320);
             this.listViewRecentFiles.Name = "listViewRecentFiles";
@@ -185,12 +189,12 @@ namespace FileGuide
             // listViewColRecentPath
             // 
             this.listViewColRecentPath.Text = "Name";
-            this.listViewColRecentPath.Width = 379;
+            this.listViewColRecentPath.Width = 500;
             // 
             // Path
             // 
             this.Path.Text = "Path";
-            this.Path.Width = 421;
+            this.Path.Width = 600;
             // 
             // listView
             // 
