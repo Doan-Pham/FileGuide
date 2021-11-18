@@ -429,7 +429,7 @@ namespace FileGuide
         /// <param name="e"></param>
         private void menuSmall_Click(object sender, EventArgs e)
         {
-            listView.OwnerDraw = false;
+            listView.OwnerDraw = true;
             listView.View = View.SmallIcon;
         }
 
@@ -440,7 +440,7 @@ namespace FileGuide
         /// <param name="e"></param>
         private void menuList_Click(object sender, EventArgs e)
         {
-            listView.OwnerDraw = false;
+            listView.OwnerDraw = true;
             listView.View = View.List;
         }
 
@@ -537,6 +537,44 @@ namespace FileGuide
                 Rectangle textRect = new Rectangle(e.Bounds.X, (int)(e.Bounds.Y + ImageSize), e.Bounds.Width, (int)(e.Bounds.Height - ImageSize));
 
                  TextRenderer.DrawText(g, e.Item.Text, e.Item.ListView.Font, textRect, PrimaryTextColor, flags);
+            }
+            else if (e.Item.ListView.View == View.SmallIcon)
+            {
+                float ImageSize = 24.0f;
+                int ImageLocationX = e.Bounds.X;
+                int ImageLocationY = e.Bounds.Y;
+                if (e.Item.SubItems[1].Text == "Folder")
+                {
+                    g.DrawImage(Properties.Resources.Folder, ImageLocationX, ImageLocationY, ImageSize, ImageSize);
+                }
+                else
+                {
+                    g.DrawImage(Properties.Resources.file, ImageLocationX, ImageLocationY, ImageSize, ImageSize);
+                }
+
+                TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine | TextFormatFlags.ExpandTabs;
+                Rectangle textRect = new Rectangle(e.Bounds.X + 30, e.Bounds.Y, e.Bounds.Width - 30, e.Bounds.Height);
+
+                TextRenderer.DrawText(g, e.Item.Text, e.Item.ListView.Font, textRect, PrimaryTextColor, flags);
+            }
+            else if (e.Item.ListView.View == View.List)
+            {
+                float ImageSize = 24.0f;
+                int ImageLocationX = e.Bounds.X;
+                int ImageLocationY = e.Bounds.Y;
+                if (e.Item.SubItems[1].Text == "Folder")
+                {
+                    g.DrawImage(Properties.Resources.Folder, ImageLocationX, ImageLocationY, ImageSize, ImageSize);
+                }
+                else
+                {
+                    g.DrawImage(Properties.Resources.file, ImageLocationX, ImageLocationY, ImageSize, ImageSize);
+                }
+
+                TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine | TextFormatFlags.ExpandTabs;
+                Rectangle textRect = new Rectangle(e.Bounds.X + 30, e.Bounds.Y, e.Bounds.Width - 30, e.Bounds.Height);
+
+                TextRenderer.DrawText(g, e.Item.Text, e.Item.ListView.Font, textRect, PrimaryTextColor, flags);
             }
         }
 
