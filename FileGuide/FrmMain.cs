@@ -496,7 +496,6 @@ namespace FileGuide
         private void listView_DrawItem(object sender, DrawListViewItemEventArgs e)
         {
             Rectangle itemRect = e.Item.Bounds;
-            listView.ShowItemToolTips = true;
             Graphics g = e.Graphics;
             // Change item's background color when selected
             if (e.State == ListViewItemStates.Hot)
