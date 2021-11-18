@@ -54,8 +54,8 @@ namespace FileGuide
             clsTreeListView.ListRecentFiles.AddRange(File.ReadAllLines(RecentFilesTxt));
             clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives,listViewRecentFiles);
 
-            if (this.Width > 400)
-                tscmbPath.Width = this.Width - 300;
+            if (this.Width > 900)
+                tscmbPath.Width = this.Width - 700;
         }
 
         /// <summary>
@@ -177,8 +177,9 @@ namespace FileGuide
         /// <param name="e"></param>
         private void FrmMain_Resize(object sender, EventArgs e)
         {
-            if (this.Width > 400)
-            tscmbPath.Width = this.Width - 300;
+
+            if (this.Width > 900)
+                tscmbPath.Width = this.Width - 700;
         }
 
         /// <summary>

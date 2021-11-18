@@ -31,7 +31,6 @@ namespace FileGuide
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.imglstTreeView = new System.Windows.Forms.ImageList(this.components);
             this.tableLayoutFirstPage = new System.Windows.Forms.TableLayoutPanel();
             this.tableLblDrives = new System.Windows.Forms.Label();
@@ -89,8 +88,6 @@ namespace FileGuide
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.treeView = new FileGuide.BufferedTreeView();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
-            this.splitContainer.SuspendLayout();
             this.tableLayoutFirstPage.SuspendLayout();
             this.toolBar.SuspendLayout();
             this.tsPath.SuspendLayout();
@@ -98,18 +95,6 @@ namespace FileGuide
             this.contextMenuStripListView.SuspendLayout();
             this.contextMenuStripListViewItem.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // splitContainer
-            // 
-            this.splitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer.Location = new System.Drawing.Point(0, 169);
-            this.splitContainer.Margin = new System.Windows.Forms.Padding(4);
-            this.splitContainer.Name = "splitContainer";
-            this.splitContainer.Size = new System.Drawing.Size(1165, 533);
-            this.splitContainer.SplitterDistance = 356;
-            this.splitContainer.TabIndex = 0;
             // 
             // imglstTreeView
             // 
@@ -125,7 +110,9 @@ namespace FileGuide
             // 
             // tableLayoutFirstPage
             // 
-            this.tableLayoutFirstPage.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.tableLayoutFirstPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutFirstPage.BackColor = System.Drawing.Color.White;
             this.tableLayoutFirstPage.ColumnCount = 1;
             this.tableLayoutFirstPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -141,7 +128,7 @@ namespace FileGuide
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutFirstPage.Size = new System.Drawing.Size(809, 535);
+            this.tableLayoutFirstPage.Size = new System.Drawing.Size(1222, 639);
             this.tableLayoutFirstPage.TabIndex = 1;
             // 
             // tableLblDrives
@@ -150,7 +137,7 @@ namespace FileGuide
             this.tableLblDrives.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableLblDrives.Location = new System.Drawing.Point(3, 0);
             this.tableLblDrives.Name = "tableLblDrives";
-            this.tableLblDrives.Size = new System.Drawing.Size(803, 51);
+            this.tableLblDrives.Size = new System.Drawing.Size(1216, 51);
             this.tableLblDrives.TabIndex = 0;
             this.tableLblDrives.Text = "Drives";
             this.tableLblDrives.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -159,9 +146,9 @@ namespace FileGuide
             // 
             this.tableLblRecent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLblRecent.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLblRecent.Location = new System.Drawing.Point(3, 213);
+            this.tableLblRecent.Location = new System.Drawing.Point(3, 254);
             this.tableLblRecent.Name = "tableLblRecent";
-            this.tableLblRecent.Size = new System.Drawing.Size(803, 53);
+            this.tableLblRecent.Size = new System.Drawing.Size(1216, 63);
             this.tableLblRecent.TabIndex = 1;
             this.tableLblRecent.Text = "Recent files";
             this.tableLblRecent.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -170,9 +157,9 @@ namespace FileGuide
             // 
             this.flowLayoutPanelDrives.AutoScroll = true;
             this.flowLayoutPanelDrives.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanelDrives.Location = new System.Drawing.Point(3, 56);
+            this.flowLayoutPanelDrives.Location = new System.Drawing.Point(3, 66);
             this.flowLayoutPanelDrives.Name = "flowLayoutPanelDrives";
-            this.flowLayoutPanelDrives.Size = new System.Drawing.Size(803, 154);
+            this.flowLayoutPanelDrives.Size = new System.Drawing.Size(1216, 185);
             this.flowLayoutPanelDrives.TabIndex = 2;
             // 
             // listViewRecentFiles
@@ -184,10 +171,10 @@ namespace FileGuide
             this.listViewRecentFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewRecentFiles.FullRowSelect = true;
             this.listViewRecentFiles.HideSelection = false;
-            this.listViewRecentFiles.Location = new System.Drawing.Point(3, 269);
+            this.listViewRecentFiles.Location = new System.Drawing.Point(3, 320);
             this.listViewRecentFiles.Name = "listViewRecentFiles";
             this.listViewRecentFiles.OwnerDraw = true;
-            this.listViewRecentFiles.Size = new System.Drawing.Size(803, 263);
+            this.listViewRecentFiles.Size = new System.Drawing.Size(1216, 316);
             this.listViewRecentFiles.TabIndex = 3;
             this.listViewRecentFiles.UseCompatibleStateImageBehavior = false;
             this.listViewRecentFiles.View = System.Windows.Forms.View.Details;
@@ -207,7 +194,9 @@ namespace FileGuide
             // 
             // listView
             // 
-            this.listView.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.listView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listView.BackColor = System.Drawing.Color.White;
             this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colName,
@@ -224,7 +213,7 @@ namespace FileGuide
             this.listView.Margin = new System.Windows.Forms.Padding(4);
             this.listView.Name = "listView";
             this.listView.OwnerDraw = true;
-            this.listView.Size = new System.Drawing.Size(809, 534);
+            this.listView.Size = new System.Drawing.Size(1222, 639);
             this.listView.SmallImageList = this.imglstSmall;
             this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
@@ -298,9 +287,7 @@ namespace FileGuide
             // 
             // toolBar
             // 
-            this.toolBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.toolBar.AutoSize = false;
-            this.toolBar.Dock = System.Windows.Forms.DockStyle.None;
             this.toolBar.Font = new System.Drawing.Font("Questrial", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolBar.ImageScalingSize = new System.Drawing.Size(50, 50);
             this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -313,10 +300,10 @@ namespace FileGuide
             this.tsbtnDelete,
             this.toolStripSeparator2,
             this.tsDropView});
-            this.toolBar.Location = new System.Drawing.Point(356, 0);
+            this.toolBar.Location = new System.Drawing.Point(353, 0);
             this.toolBar.Name = "toolBar";
             this.toolBar.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.toolBar.Size = new System.Drawing.Size(809, 123);
+            this.toolBar.Size = new System.Drawing.Size(1225, 123);
             this.toolBar.TabIndex = 2;
             // 
             // tsbtnBack
@@ -455,24 +442,21 @@ namespace FileGuide
             // 
             // tsPath
             // 
-            this.tsPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tsPath.AutoSize = false;
-            this.tsPath.Dock = System.Windows.Forms.DockStyle.None;
             this.tsPath.Font = new System.Drawing.Font("Questrial", 9F);
             this.tsPath.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.tsPath.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslbPath,
             this.tscmbPath});
-            this.tsPath.Location = new System.Drawing.Point(356, 123);
+            this.tsPath.Location = new System.Drawing.Point(353, 123);
             this.tsPath.Name = "tsPath";
             this.tsPath.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.tsPath.Size = new System.Drawing.Size(809, 42);
+            this.tsPath.Size = new System.Drawing.Size(1225, 45);
             this.tsPath.TabIndex = 3;
-            this.tsPath.Text = "toolStrip1";
             // 
             // tslbPath
             // 
-            this.tslbPath.Margin = new System.Windows.Forms.Padding(60, 1, 0, 2);
+            this.tslbPath.Margin = new System.Windows.Forms.Padding(20, 1, 0, 2);
             this.tslbPath.Name = "tslbPath";
             this.tslbPath.Size = new System.Drawing.Size(54, 39);
             this.tslbPath.Text = "Path:";
@@ -481,21 +465,22 @@ namespace FileGuide
             // 
             this.tscmbPath.AutoSize = false;
             this.tscmbPath.Name = "tscmbPath";
-            this.tscmbPath.Size = new System.Drawing.Size(748, 33);
+            this.tscmbPath.Size = new System.Drawing.Size(400, 33);
             this.tscmbPath.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tscmbPath_KeyPress);
             this.tscmbPath.TextChanged += new System.EventHandler(this.tscmbPath_TextChanged);
             // 
             // statusStrip1
             // 
+            this.statusStrip1.AutoSize = false;
             this.statusStrip1.Font = new System.Drawing.Font("Questrial", 9F);
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLblItemNum,
             this.statusLblNumSelect});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 706);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 807);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 14, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1165, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1578, 37);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -677,8 +662,9 @@ namespace FileGuide
             // 
             // treeView
             // 
-            this.treeView.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.treeView.BackColor = System.Drawing.Color.White;
+            this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeView.Dock = System.Windows.Forms.DockStyle.Left;
             this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
             this.treeView.Font = new System.Drawing.Font("Questrial", 9.999999F);
             this.treeView.ForeColor = System.Drawing.Color.Black;
@@ -692,7 +678,7 @@ namespace FileGuide
             this.treeView.Name = "treeView";
             this.treeView.SelectedImageIndex = 0;
             this.treeView.ShowLines = false;
-            this.treeView.Size = new System.Drawing.Size(353, 702);
+            this.treeView.Size = new System.Drawing.Size(353, 807);
             this.treeView.TabIndex = 1;
             this.treeView.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView_DrawNode);
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
@@ -704,13 +690,12 @@ namespace FileGuide
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1165, 728);
+            this.ClientSize = new System.Drawing.Size(1578, 844);
             this.Controls.Add(this.tsPath);
             this.Controls.Add(this.toolBar);
             this.Controls.Add(this.tableLayoutFirstPage);
             this.Controls.Add(this.treeView);
             this.Controls.Add(this.listView);
-            this.Controls.Add(this.splitContainer);
             this.Controls.Add(this.statusStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -723,8 +708,6 @@ namespace FileGuide
             this.Load += new System.EventHandler(this.Form1_Load);
             this.SizeChanged += new System.EventHandler(this.FrmMain_Resize);
             this.Resize += new System.EventHandler(this.FrmMain_Resize);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).EndInit();
-            this.splitContainer.ResumeLayout(false);
             this.tableLayoutFirstPage.ResumeLayout(false);
             this.toolBar.ResumeLayout(false);
             this.toolBar.PerformLayout();
@@ -735,13 +718,10 @@ namespace FileGuide
             this.contextMenuStripListView.ResumeLayout(false);
             this.contextMenuStripListViewItem.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.SplitContainer splitContainer;
         private System.Windows.Forms.ListView listView;
         private System.Windows.Forms.ImageList imglstTreeView;
         private System.Windows.Forms.ColumnHeader colName;
