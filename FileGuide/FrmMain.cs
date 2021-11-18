@@ -477,7 +477,7 @@ namespace FileGuide
         }
 
         /// <summary>
-        /// Customize listView column headers to developer's need
+        /// Customize appearance of listView column headers to developer's need
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -494,6 +494,11 @@ namespace FileGuide
             /*e.Graphics.DrawLine(textBorder, new Point(e.Bounds.X + e.Bounds.Width, e.Bounds.Y), new Point(e.Bounds.X + e.Bounds.Width, e.Bounds.Y + e.Bounds.Height));*/
         }
 
+        /// <summary>
+        ///  Customize appearance of listView items to developer's need
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listView_DrawItem(object sender, DrawListViewItemEventArgs e)
         {
             Rectangle itemRect = e.Item.Bounds;
@@ -578,6 +583,11 @@ namespace FileGuide
             }
         }
 
+        /// <summary>
+        /// Customize appearance of listView subitems to developer's need
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listView_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
             Rectangle itemRect = e.Item.Bounds;
@@ -614,6 +624,7 @@ namespace FileGuide
 
         }
 
+       
         /// <summary>
         /// Customize treeView's design to developer's needs
         /// </summary>
@@ -680,6 +691,11 @@ namespace FileGuide
             }
         }
 
+        /// <summary>
+        /// Change cursor's appearnce on hovering treenode
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void treeView_MouseMove(object sender, MouseEventArgs e)
         {
             TreeNode HoveredNode = ((TreeView)sender).GetNodeAt(e.Location);
@@ -693,6 +709,11 @@ namespace FileGuide
             }
         }
 
+        /// <summary>
+        /// Change cursor back to default when not hovering treenode
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void treeView_MouseLeave(object sender, EventArgs e)
         {
             Cursor = Cursors.Default;
@@ -703,6 +724,11 @@ namespace FileGuide
 
         }
 
+        /// <summary>
+        /// Write list of recent accessed files to a txt file in debug folder
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             string DebugDirectory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -724,6 +750,11 @@ namespace FileGuide
 
         }
 
+        /// <summary>
+        /// Show approriate contextMenuStrip when right clicking on listView
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listView_MouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -740,12 +771,22 @@ namespace FileGuide
             }
         }
 
+        /// <summary>
+        /// Process item: run if a file, open if a folder
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             clsTreeListView.ClickItem(listView, listViewRecentFiles, listView.SelectedItems[0], tscmbPath);
             currentPath = tscmbPath.Text;
         }
 
+        /// <summary>
+        /// Create a new folder
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void folderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string newFolderName = "New folder";
@@ -762,6 +803,11 @@ namespace FileGuide
             clsTreeListView.ShowListView(listView,currentPath);
         }
 
+        /// <summary>
+        /// Create a new file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string newFileName = "New file";
