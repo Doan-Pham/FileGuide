@@ -643,6 +643,7 @@ namespace FileGuide
         private void listView_DrawItem(object sender, DrawListViewItemEventArgs e)
         {
             Rectangle itemRect = e.Item.Bounds;
+            listView.ShowItemToolTips = true;
             Graphics g = e.Graphics;
 
 
