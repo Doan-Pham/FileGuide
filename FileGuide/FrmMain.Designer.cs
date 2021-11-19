@@ -649,6 +649,7 @@ namespace FileGuide
             // mainSplitContainer.Panel1
             // 
             this.mainSplitContainer.Panel1.Controls.Add(this.treeView);
+            this.mainSplitContainer.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
             // mainSplitContainer.Panel2
             // 

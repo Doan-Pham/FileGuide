@@ -35,8 +35,6 @@ namespace FileGuide
         public FrmMain()
         {
             InitializeComponent();
-            treeView.BackColor = Color.FromArgb(244,244,244);
-            this.TransparencyKey = Color.LimeGreen;
         }
 
 
@@ -51,7 +49,7 @@ namespace FileGuide
         {
             clsTreeListView.CreateTreeView(this.treeView);
             treeView.ExpandAll();
-
+            
             string DebugDirectory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string RecentDirectory = System.IO.Path.Combine(DebugDirectory, "RecentAccessesFiles");
             string RecentFilesTxt = System.IO.Path.Combine(RecentDirectory, "RecentAccessedFiles.txt");
@@ -60,7 +58,7 @@ namespace FileGuide
             clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles);
 
             if (this.Width > 900)
-                tscmbPath.Width = this.Width - 700;
+                tscmbPath.Width = this.Width - 800;
         }
 
 
@@ -73,7 +71,7 @@ namespace FileGuide
         {
 
             if (this.Width > 900)
-                tscmbPath.Width = this.Width - 700;
+                tscmbPath.Width = this.Width - 800;
         }
         
 
@@ -472,7 +470,12 @@ namespace FileGuide
         {
             // Reduce the unnecessary DrawNode calls. Without this, some icons are drawn in weird places
             if (e.Bounds.Height < 1 || e.Bounds.Width < 1) return;
-
+            Color borderColor = Color.FromArgb(227, 227, 227);
+            ControlPaint.DrawBorder(e.Graphics, e.Node.TreeView.ClientRectangle,
+    borderColor, 0, ButtonBorderStyle.Solid,
+    borderColor, 0, ButtonBorderStyle.Solid,
+    borderColor, 2, ButtonBorderStyle.Solid,
+    borderColor, 0, ButtonBorderStyle.Solid);
             Rectangle nodeRect = e.Node.Bounds;
             Graphics g = e.Graphics;
 
@@ -867,5 +870,10 @@ namespace FileGuide
         }
 
         #endregion
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
