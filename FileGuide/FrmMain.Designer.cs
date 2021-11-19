@@ -31,7 +31,6 @@ namespace FileGuide
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            this.imglstTreeView = new System.Windows.Forms.ImageList(this.components);
             this.tableLayoutFirstPage = new System.Windows.Forms.TableLayoutPanel();
             this.tableLblDrives = new System.Windows.Forms.Label();
             this.tableLblRecent = new System.Windows.Forms.Label();
@@ -44,8 +43,6 @@ namespace FileGuide
             this.colSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colDateCreated = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colDateModified = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.imglstLarge = new System.Windows.Forms.ImageList(this.components);
-            this.imglstSmall = new System.Windows.Forms.ImageList(this.components);
             this.toolBar = new System.Windows.Forms.ToolStrip();
             this.tsbtnBack = new System.Windows.Forms.ToolStripButton();
             this.tsbtnRefresh = new System.Windows.Forms.ToolStripButton();
@@ -88,31 +85,22 @@ namespace FileGuide
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.treeView = new FileGuide.BufferedTreeView();
+            this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
             this.tableLayoutFirstPage.SuspendLayout();
             this.toolBar.SuspendLayout();
             this.tsPath.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.contextMenuStripListView.SuspendLayout();
             this.contextMenuStripListViewItem.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).BeginInit();
+            this.mainSplitContainer.Panel1.SuspendLayout();
+            this.mainSplitContainer.Panel2.SuspendLayout();
+            this.mainSplitContainer.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // imglstTreeView
-            // 
-            this.imglstTreeView.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglstTreeView.ImageStream")));
-            this.imglstTreeView.TransparentColor = System.Drawing.Color.Transparent;
-            this.imglstTreeView.Images.SetKeyName(0, "MyComputer.png");
-            this.imglstTreeView.Images.SetKeyName(1, "FloppyDisk.png");
-            this.imglstTreeView.Images.SetKeyName(2, "HardDisk.png");
-            this.imglstTreeView.Images.SetKeyName(3, "CDDisk.png");
-            this.imglstTreeView.Images.SetKeyName(4, "NetworkDrive.png");
-            this.imglstTreeView.Images.SetKeyName(5, "Folder.png");
-            this.imglstTreeView.Images.SetKeyName(6, "FolderOpen.png");
             // 
             // tableLayoutFirstPage
             // 
-            this.tableLayoutFirstPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutFirstPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tableLayoutFirstPage.BackColor = System.Drawing.Color.White;
             this.tableLayoutFirstPage.ColumnCount = 1;
             this.tableLayoutFirstPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -120,14 +108,16 @@ namespace FileGuide
             this.tableLayoutFirstPage.Controls.Add(this.tableLblRecent, 0, 2);
             this.tableLayoutFirstPage.Controls.Add(this.flowLayoutPanelDrives, 0, 1);
             this.tableLayoutFirstPage.Controls.Add(this.listViewRecentFiles, 0, 3);
+            this.tableLayoutFirstPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutFirstPage.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLayoutFirstPage.Location = new System.Drawing.Point(356, 168);
+            this.tableLayoutFirstPage.Location = new System.Drawing.Point(0, 168);
             this.tableLayoutFirstPage.Name = "tableLayoutFirstPage";
-            this.tableLayoutFirstPage.RowCount = 4;
+            this.tableLayoutFirstPage.RowCount = 5;
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutFirstPage.Size = new System.Drawing.Size(1222, 639);
             this.tableLayoutFirstPage.TabIndex = 1;
             // 
@@ -146,9 +136,9 @@ namespace FileGuide
             // 
             this.tableLblRecent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLblRecent.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLblRecent.Location = new System.Drawing.Point(3, 254);
+            this.tableLblRecent.Location = new System.Drawing.Point(3, 246);
             this.tableLblRecent.Name = "tableLblRecent";
-            this.tableLblRecent.Size = new System.Drawing.Size(1216, 63);
+            this.tableLblRecent.Size = new System.Drawing.Size(1216, 61);
             this.tableLblRecent.TabIndex = 1;
             this.tableLblRecent.Text = "Recent files";
             this.tableLblRecent.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -157,9 +147,9 @@ namespace FileGuide
             // 
             this.flowLayoutPanelDrives.AutoScroll = true;
             this.flowLayoutPanelDrives.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanelDrives.Location = new System.Drawing.Point(3, 66);
+            this.flowLayoutPanelDrives.Location = new System.Drawing.Point(3, 64);
             this.flowLayoutPanelDrives.Name = "flowLayoutPanelDrives";
-            this.flowLayoutPanelDrives.Size = new System.Drawing.Size(1216, 185);
+            this.flowLayoutPanelDrives.Size = new System.Drawing.Size(1216, 179);
             this.flowLayoutPanelDrives.TabIndex = 2;
             // 
             // listViewRecentFiles
@@ -175,10 +165,10 @@ namespace FileGuide
             this.listViewRecentFiles.FullRowSelect = true;
             this.listViewRecentFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewRecentFiles.HideSelection = false;
-            this.listViewRecentFiles.Location = new System.Drawing.Point(3, 320);
+            this.listViewRecentFiles.Location = new System.Drawing.Point(3, 310);
             this.listViewRecentFiles.Name = "listViewRecentFiles";
             this.listViewRecentFiles.OwnerDraw = true;
-            this.listViewRecentFiles.Size = new System.Drawing.Size(1216, 316);
+            this.listViewRecentFiles.Size = new System.Drawing.Size(1216, 303);
             this.listViewRecentFiles.TabIndex = 3;
             this.listViewRecentFiles.UseCompatibleStateImageBehavior = false;
             this.listViewRecentFiles.View = System.Windows.Forms.View.Details;
@@ -198,27 +188,23 @@ namespace FileGuide
             // 
             // listView
             // 
-            this.listView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.listView.BackColor = System.Drawing.Color.White;
+            this.listView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colName,
             this.colSize,
             this.colDateCreated,
             this.colDateModified});
+            this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView.FullRowSelect = true;
             this.listView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listView.HideSelection = false;
             this.listView.LabelEdit = true;
-            this.listView.LargeImageList = this.imglstLarge;
-            this.listView.Location = new System.Drawing.Point(356, 168);
+            this.listView.Location = new System.Drawing.Point(0, 168);
             this.listView.Margin = new System.Windows.Forms.Padding(4);
             this.listView.Name = "listView";
             this.listView.OwnerDraw = true;
             this.listView.Size = new System.Drawing.Size(1222, 639);
-            this.listView.SmallImageList = this.imglstSmall;
             this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
@@ -234,7 +220,7 @@ namespace FileGuide
             // colName
             // 
             this.colName.Text = "Name";
-            this.colName.Width = 250;
+            this.colName.Width = 299;
             // 
             // colSize
             // 
@@ -244,55 +230,19 @@ namespace FileGuide
             // colDateCreated
             // 
             this.colDateCreated.Text = "Date created";
-            this.colDateCreated.Width = 200;
+            this.colDateCreated.Width = 311;
             // 
             // colDateModified
             // 
             this.colDateModified.Text = "Date modified";
-            this.colDateModified.Width = 200;
-            // 
-            // imglstLarge
-            // 
-            this.imglstLarge.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglstLarge.ImageStream")));
-            this.imglstLarge.TransparentColor = System.Drawing.Color.Transparent;
-            this.imglstLarge.Images.SetKeyName(0, "database.png");
-            this.imglstLarge.Images.SetKeyName(1, "doc.png");
-            this.imglstLarge.Images.SetKeyName(2, "exe.png");
-            this.imglstLarge.Images.SetKeyName(3, "file.png");
-            this.imglstLarge.Images.SetKeyName(4, "Folder.png");
-            this.imglstLarge.Images.SetKeyName(5, "html.png");
-            this.imglstLarge.Images.SetKeyName(6, "music.png");
-            this.imglstLarge.Images.SetKeyName(7, "pdf.png");
-            this.imglstLarge.Images.SetKeyName(8, "png.png");
-            this.imglstLarge.Images.SetKeyName(9, "ppt.jpg");
-            this.imglstLarge.Images.SetKeyName(10, "rar.jpg");
-            this.imglstLarge.Images.SetKeyName(11, "swf.png");
-            this.imglstLarge.Images.SetKeyName(12, "txt.png");
-            this.imglstLarge.Images.SetKeyName(13, "xls.jpg");
-            // 
-            // imglstSmall
-            // 
-            this.imglstSmall.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imglstSmall.ImageStream")));
-            this.imglstSmall.TransparentColor = System.Drawing.Color.Transparent;
-            this.imglstSmall.Images.SetKeyName(0, "database.png");
-            this.imglstSmall.Images.SetKeyName(1, "doc.png");
-            this.imglstSmall.Images.SetKeyName(2, "exe.png");
-            this.imglstSmall.Images.SetKeyName(3, "file.png");
-            this.imglstSmall.Images.SetKeyName(4, "Folder.png");
-            this.imglstSmall.Images.SetKeyName(5, "html.png");
-            this.imglstSmall.Images.SetKeyName(6, "music.png");
-            this.imglstSmall.Images.SetKeyName(7, "pdf.png");
-            this.imglstSmall.Images.SetKeyName(8, "png.png");
-            this.imglstSmall.Images.SetKeyName(9, "ppt.jpg");
-            this.imglstSmall.Images.SetKeyName(10, "rar.jpg");
-            this.imglstSmall.Images.SetKeyName(11, "swf.png");
-            this.imglstSmall.Images.SetKeyName(12, "txt.png");
-            this.imglstSmall.Images.SetKeyName(13, "xls.jpg");
+            this.colDateModified.Width = 338;
             // 
             // toolBar
             // 
             this.toolBar.AutoSize = false;
+            this.toolBar.BackColor = System.Drawing.Color.White;
             this.toolBar.Font = new System.Drawing.Font("Questrial", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolBar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolBar.ImageScalingSize = new System.Drawing.Size(50, 50);
             this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbtnBack,
@@ -304,10 +254,10 @@ namespace FileGuide
             this.tsbtnDelete,
             this.toolStripSeparator2,
             this.tsDropView});
-            this.toolBar.Location = new System.Drawing.Point(353, 0);
+            this.toolBar.Location = new System.Drawing.Point(0, 0);
             this.toolBar.Name = "toolBar";
             this.toolBar.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.toolBar.Size = new System.Drawing.Size(1225, 123);
+            this.toolBar.Size = new System.Drawing.Size(1222, 123);
             this.toolBar.TabIndex = 2;
             // 
             // tsbtnBack
@@ -447,22 +397,24 @@ namespace FileGuide
             // tsPath
             // 
             this.tsPath.AutoSize = false;
+            this.tsPath.BackColor = System.Drawing.Color.White;
             this.tsPath.Font = new System.Drawing.Font("Questrial", 9F);
+            this.tsPath.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tsPath.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.tsPath.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tslbPath,
             this.tscmbPath});
-            this.tsPath.Location = new System.Drawing.Point(353, 123);
+            this.tsPath.Location = new System.Drawing.Point(0, 123);
             this.tsPath.Name = "tsPath";
             this.tsPath.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.tsPath.Size = new System.Drawing.Size(1225, 45);
+            this.tsPath.Size = new System.Drawing.Size(1222, 45);
             this.tsPath.TabIndex = 3;
             // 
             // tslbPath
             // 
             this.tslbPath.Margin = new System.Windows.Forms.Padding(20, 1, 0, 2);
             this.tslbPath.Name = "tslbPath";
-            this.tslbPath.Size = new System.Drawing.Size(54, 39);
+            this.tslbPath.Size = new System.Drawing.Size(54, 42);
             this.tslbPath.Text = "Path:";
             // 
             // tscmbPath
@@ -491,13 +443,13 @@ namespace FileGuide
             // statusLblItemNum
             // 
             this.statusLblItemNum.Name = "statusLblItemNum";
-            this.statusLblItemNum.Size = new System.Drawing.Size(0, 15);
+            this.statusLblItemNum.Size = new System.Drawing.Size(0, 30);
             // 
             // statusLblNumSelect
             // 
             this.statusLblNumSelect.Margin = new System.Windows.Forms.Padding(20, 4, 0, 3);
             this.statusLblNumSelect.Name = "statusLblNumSelect";
-            this.statusLblNumSelect.Size = new System.Drawing.Size(0, 15);
+            this.statusLblNumSelect.Size = new System.Drawing.Size(0, 30);
             // 
             // contextMenuStripListView
             // 
@@ -668,26 +620,45 @@ namespace FileGuide
             // 
             this.treeView.BackColor = System.Drawing.Color.White;
             this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeView.Dock = System.Windows.Forms.DockStyle.Left;
+            this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
             this.treeView.Font = new System.Drawing.Font("Questrial", 9.999999F);
             this.treeView.ForeColor = System.Drawing.Color.Black;
             this.treeView.FullRowSelect = true;
             this.treeView.HotTracking = true;
-            this.treeView.ImageIndex = 0;
-            this.treeView.ImageList = this.imglstTreeView;
             this.treeView.Indent = 20;
             this.treeView.ItemHeight = 46;
             this.treeView.Location = new System.Drawing.Point(0, 0);
             this.treeView.Name = "treeView";
-            this.treeView.SelectedImageIndex = 0;
             this.treeView.ShowLines = false;
-            this.treeView.Size = new System.Drawing.Size(353, 807);
+            this.treeView.Size = new System.Drawing.Size(352, 807);
             this.treeView.TabIndex = 1;
             this.treeView.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView_DrawNode);
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             this.treeView.MouseLeave += new System.EventHandler(this.treeView_MouseLeave);
             this.treeView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseMove);
+            // 
+            // mainSplitContainer
+            // 
+            this.mainSplitContainer.BackColor = System.Drawing.Color.White;
+            this.mainSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainSplitContainer.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mainSplitContainer.Location = new System.Drawing.Point(0, 0);
+            this.mainSplitContainer.Name = "mainSplitContainer";
+            // 
+            // mainSplitContainer.Panel1
+            // 
+            this.mainSplitContainer.Panel1.Controls.Add(this.treeView);
+            // 
+            // mainSplitContainer.Panel2
+            // 
+            this.mainSplitContainer.Panel2.Controls.Add(this.listView);
+            this.mainSplitContainer.Panel2.Controls.Add(this.tableLayoutFirstPage);
+            this.mainSplitContainer.Panel2.Controls.Add(this.tsPath);
+            this.mainSplitContainer.Panel2.Controls.Add(this.toolBar);
+            this.mainSplitContainer.Size = new System.Drawing.Size(1578, 807);
+            this.mainSplitContainer.SplitterDistance = 352;
+            this.mainSplitContainer.TabIndex = 5;
             // 
             // FrmMain
             // 
@@ -695,11 +666,7 @@ namespace FileGuide
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1578, 844);
-            this.Controls.Add(this.tsPath);
-            this.Controls.Add(this.toolBar);
-            this.Controls.Add(this.tableLayoutFirstPage);
-            this.Controls.Add(this.treeView);
-            this.Controls.Add(this.listView);
+            this.Controls.Add(this.mainSplitContainer);
             this.Controls.Add(this.statusStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -721,19 +688,20 @@ namespace FileGuide
             this.statusStrip1.PerformLayout();
             this.contextMenuStripListView.ResumeLayout(false);
             this.contextMenuStripListViewItem.ResumeLayout(false);
+            this.mainSplitContainer.Panel1.ResumeLayout(false);
+            this.mainSplitContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).EndInit();
+            this.mainSplitContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.ListView listView;
-        private System.Windows.Forms.ImageList imglstTreeView;
         private System.Windows.Forms.ColumnHeader colName;
         private System.Windows.Forms.ColumnHeader colSize;
         private System.Windows.Forms.ColumnHeader colDateCreated;
         private System.Windows.Forms.ColumnHeader colDateModified;
-        private System.Windows.Forms.ImageList imglstLarge;
-        private System.Windows.Forms.ImageList imglstSmall;
         private System.Windows.Forms.ToolStrip toolBar;
         private System.Windows.Forms.ToolStripButton tsbtnBack;
         private System.Windows.Forms.ToolStripButton tsbtnRefresh;
@@ -783,6 +751,7 @@ namespace FileGuide
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem delteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
+        private System.Windows.Forms.SplitContainer mainSplitContainer;
     }
 }
 

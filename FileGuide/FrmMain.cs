@@ -35,6 +35,8 @@ namespace FileGuide
         public FrmMain()
         {
             InitializeComponent();
+            treeView.BackColor = Color.FromArgb(244,244,244);
+            this.TransparencyKey = Color.LimeGreen;
         }
 
 
@@ -864,6 +866,6 @@ namespace FileGuide
             statusLblNumSelect.Text = listView.SelectedItems.Count.ToString() + " items selected";
         }
 
-        #endregion    
+        #endregion
     }
 }
