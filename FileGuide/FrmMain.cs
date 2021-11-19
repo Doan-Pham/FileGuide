@@ -576,7 +576,7 @@ namespace FileGuide
         {
             listView.OwnerDraw = true;
             listView.View = View.LargeIcon;
-
+            clsTreeListView.SetListViewItemSizeLargeIcon(listView, 70, 70);
         }
 
 
@@ -589,6 +589,7 @@ namespace FileGuide
         {
             listView.OwnerDraw = true;
             listView.View = View.SmallIcon;
+            clsTreeListView.SetListViewItemSizeSmallIcon(listView, 100, 30);
         }
 
 
@@ -679,8 +680,7 @@ namespace FileGuide
                 else
                 {
                     FileInfo itemPath = new FileInfo(e.Item.SubItems[5].Text);
-                    //clsTreeListView.GetFileTypeIcon(itemPath)
-                    g.DrawImage(Properties.Resources.file, ImageLocationX, ImageLocationY, ImageSize, ImageSize);
+                    g.DrawImage(clsTreeListView.GetFileTypeIcon(itemPath), ImageLocationX, ImageLocationY, ImageSize, ImageSize);
                 }
 
                 TextFormatFlags flags = TextFormatFlags.Top | TextFormatFlags.EndEllipsis | TextFormatFlags.HorizontalCenter | TextFormatFlags.SingleLine;
@@ -692,7 +692,7 @@ namespace FileGuide
             {
                 float ImageSize = 24.0f;
                 int ImageLocationX = e.Bounds.X;
-                int ImageLocationY = e.Bounds.Y;
+                int ImageLocationY = e.Bounds.Y + 5;
                 if (e.Item.SubItems[1].Text == "Folder")
                 {
                     g.DrawImage(Properties.Resources.Folder, ImageLocationX, ImageLocationY, ImageSize, ImageSize);

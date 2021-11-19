@@ -673,6 +673,40 @@ namespace FileGuide
             return  Result.ToString("0.##") + " " + Suffix[i];
         }
 
+        /// <summary>
+        /// Set width, height of listView item in large icon view mode
+        /// </summary>
+        /// <param name="listView"></param>
+        /// <param name="height"></param>
+        /// 
+        public void SetListViewItemSizeLargeIcon(ListView listView, int width, int height)
+        {
+            ImageList imgList = new ImageList();
+            imgList.ImageSize = new Size(width, height);
+            listView.LargeImageList = imgList;
+        }
+
+        /// <summary>
+        /// Set width, height of listView item in small icon view mode
+        /// </summary>
+        /// <param name="listView"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        public void SetListViewItemSizeSmallIcon(ListView listView, int width, int height)
+        {
+            ImageList imgList = new ImageList();
+            imgList.ImageSize = new Size(width, height);
+            listView.SmallImageList = imgList;
+        }
+        /// <summary>
+        /// Reset listView item's size
+        /// </summary>
+        /// <param name="listView"></param>
+        public void ResetListViewItemSize(ListView listView)
+        {
+            listView.SmallImageList = null;
+            listView.LargeImageList = null;
+        }
     }
 }
 
