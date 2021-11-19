@@ -86,6 +86,7 @@ namespace FileGuide
             this.delteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.treeView = new FileGuide.BufferedTreeView();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.colType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tableLayoutFirstPage.SuspendLayout();
             this.toolBar.SuspendLayout();
             this.tsPath.SuspendLayout();
@@ -192,6 +193,7 @@ namespace FileGuide
             this.listView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colName,
+            this.colType,
             this.colSize,
             this.colDateCreated,
             this.colDateModified});
@@ -220,17 +222,17 @@ namespace FileGuide
             // colName
             // 
             this.colName.Text = "Name";
-            this.colName.Width = 299;
+            this.colName.Width = 290;
             // 
             // colSize
             // 
             this.colSize.Text = "Size";
-            this.colSize.Width = 150;
+            this.colSize.Width = 161;
             // 
             // colDateCreated
             // 
             this.colDateCreated.Text = "Date created";
-            this.colDateCreated.Width = 311;
+            this.colDateCreated.Width = 271;
             // 
             // colDateModified
             // 
@@ -649,7 +651,6 @@ namespace FileGuide
             // mainSplitContainer.Panel1
             // 
             this.mainSplitContainer.Panel1.Controls.Add(this.treeView);
-            this.mainSplitContainer.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
             // mainSplitContainer.Panel2
             // 
@@ -660,6 +661,11 @@ namespace FileGuide
             this.mainSplitContainer.Size = new System.Drawing.Size(1578, 807);
             this.mainSplitContainer.SplitterDistance = 352;
             this.mainSplitContainer.TabIndex = 5;
+            // 
+            // colType
+            // 
+            this.colType.Text = "Type";
+            this.colType.Width = 155;
             // 
             // FrmMain
             // 
@@ -753,6 +759,7 @@ namespace FileGuide
         private System.Windows.Forms.ToolStripMenuItem delteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.SplitContainer mainSplitContainer;
+        private System.Windows.Forms.ColumnHeader colType;
     }
 }
 

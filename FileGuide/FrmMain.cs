@@ -476,6 +476,7 @@ namespace FileGuide
     borderColor, 0, ButtonBorderStyle.Solid,
     borderColor, 2, ButtonBorderStyle.Solid,
     borderColor, 0, ButtonBorderStyle.Solid);
+
             Rectangle nodeRect = e.Node.Bounds;
             Graphics g = e.Graphics;
 
@@ -677,6 +678,8 @@ namespace FileGuide
                 }
                 else
                 {
+                    FileInfo itemPath = new FileInfo(e.Item.SubItems[5].Text);
+                    //clsTreeListView.GetFileTypeIcon(itemPath)
                     g.DrawImage(Properties.Resources.file, ImageLocationX, ImageLocationY, ImageSize, ImageSize);
                 }
 
@@ -870,10 +873,5 @@ namespace FileGuide
         }
 
         #endregion
-
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

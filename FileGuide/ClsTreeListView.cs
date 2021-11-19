@@ -429,15 +429,15 @@ namespace FileGuide
         /// <returns></returns>
         public ListViewItem GetListViewItem(DirectoryInfo folder)
         {
-            string[] item = new string[5];
+            string[] item = new string[6];
             item[0] = folder.Name;
             item[1] = "Folder";
-            item[2] = folder.CreationTime.ToString();
-            item[3] = folder.LastWriteTime.ToString();
-            item[4] = folder.FullName;
+            item[2] = "";
+            item[3] = folder.CreationTime.ToString();
+            item[4] = folder.LastWriteTime.ToString();
+            item[5] = folder.FullName;
 
             ListViewItem newItem = new ListViewItem(item);
-            newItem.ImageIndex = 4;
             return newItem;
         }
 
@@ -449,15 +449,15 @@ namespace FileGuide
         /// <returns></returns>
         public ListViewItem GetListViewItem(FileInfo file)
         {
-            string[] item = new string[5];
+            string[] item = new string[6];
             item[0] = file.Name;
-            item[1] = (file.Length/1024).ToString() + " KB";
-            item[2] = file.CreationTime.ToString();
-            item[3] = file.LastWriteTime.ToString();
-            item[4] = file.FullName;
+            item[1] = GetFileType(file);
+            item[2] = FormatStorageLengthBytes(file.Length);
+            item[3] = file.CreationTime.ToString();
+            item[4] = file.LastWriteTime.ToString();
+            item[5] = file.FullName;
 
             ListViewItem newItem = new ListViewItem(item);
-            newItem.ImageIndex = GetImageIndex(file);
             return newItem;
         }
 
@@ -507,23 +507,23 @@ namespace FileGuide
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
-        public int GetImageIndex(FileInfo file)
+        public Image GetFileTypeIcon(FileInfo file)
         {
             switch(file.Extension.ToUpper())
             {
                 case ".MDB":
-                    return 0;
+                    return Properties.Resources.database;
 
                 case ".DOC":
                 case ".DOCX":
-                    return 1;
+                    return Properties.Resources.doc;
 
                 case ".EXE":
-                    return 2;
+                    return Properties.Resources.exe;
 
                 case ".HTM":
                 case ".HTML":
-                    return 5;
+                    return Properties.Resources.html;
 
                 case ".MP3":
                 case ".WAV":
@@ -531,45 +531,112 @@ namespace FileGuide
                 case ".ASF":
                 case ".MPEG":
                 case ".AVI":
-                    return 6;
+                    return Properties.Resources.music;
 
                 case ".PDF":
-                    return 7;
+                    return Properties.Resources.pdf;
 
                 case ".JPG":
                 case ".PNG":
                 case ".BMP":
                 case ".GIF":
-                    return 8;
+                    return Properties.Resources.png;
 
                 case ".PPT":
                 case ".PPTX":
-                    return 9;
+                    return Properties.Resources.ppt;
 
                 case ".RAR":
                 case ".ZIP":
-                    return 10;
+                    return Properties.Resources.rar;
 
                 case ".SWF":
                 case ".FLV":
                 case ".FLA":
-                    return 11;
+                    return Properties.Resources.swf;
 
                 case ".TXT":
                 case ".DIZ":
                 case ".LOG":
-                    return 12;
+                    return Properties.Resources.txt;
 
                 case ".XLS":
                 case ".XLSX":
-                    return 13;
+                    return Properties.Resources.xls;
 
                 default:
-                    return 3;
+                    return Properties.Resources.file;
 
             }
         }
 
+        /// <summary>
+        /// Return a string representing the file type
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        public string GetFileType(FileInfo file)
+        {
+            switch (file.Extension.ToUpper())
+            {
+                case ".MDB":
+                    return "Database File";
+
+                case ".DOC":
+                case ".DOCX":
+                    return "Microsoft Word Document";
+
+                case ".EXE":
+                    return "Application";
+
+                case ".HTM":
+                case ".HTML":
+                    return "HTML Document";
+
+                case ".MP3":
+                case ".WAV":
+                case ".WMV":
+                case ".ASF":
+                case ".MPEG":
+                case ".AVI":
+                    return "Media File";
+
+                case ".PDF":
+                    return "PDF Document File";
+
+                case ".JPG":
+                case ".PNG":
+                case ".BMP":
+                case ".GIF":
+                    return "Image File";
+
+                case ".PPT":
+                case ".PPTX":
+                    return "Microsoft Powerpoint File";
+
+                case ".RAR":
+                case ".ZIP":
+                    return "Compressed Folder";
+
+                case ".SWF":
+                case ".FLV":
+                case ".FLA":
+                    return "Flash File";
+
+                case ".TXT":
+                case ".DIZ":
+                case ".LOG":
+                    return "Text File";
+
+                case ".XLS":
+                case ".XLSX":
+                    return "Microsoft Excel File";
+
+                default:
+                    return "File";
+
+            }
+        }
 
         /// <summary>
         /// Get the parent directory's path of a file/folder
@@ -606,21 +673,6 @@ namespace FileGuide
             return  Result.ToString("0.##") + " " + Suffix[i];
         }
 
-        /// <summary>
-        /// Set width, height of listView item
-        /// </summary>
-        /// <param name="listView"></param>
-        /// <param name="height"></param>
-        public void SetListViewItemSize(ListView listView, int width, int height)
-        {
-            ImageList imgList = new ImageList();
-            imgList.ImageSize = new Size(width, height);
-            listView.SmallImageList = imgList;
-        }
-        public void ResetListViewItemSize(ListView listView)
-        {
-            listView.SmallImageList = null;
-        }
     }
 }
 
