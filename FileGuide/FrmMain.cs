@@ -470,12 +470,12 @@ namespace FileGuide
         {
             // Reduce the unnecessary DrawNode calls. Without this, some icons are drawn in weird places
             if (e.Bounds.Height < 1 || e.Bounds.Width < 1) return;
-            Color borderColor = Color.FromArgb(227, 227, 227);
+           /* Color borderColor = Color.FromArgb(227, 227, 227);
             ControlPaint.DrawBorder(e.Graphics, e.Node.TreeView.ClientRectangle,
     borderColor, 0, ButtonBorderStyle.Solid,
     borderColor, 0, ButtonBorderStyle.Solid,
     borderColor, 2, ButtonBorderStyle.Solid,
-    borderColor, 0, ButtonBorderStyle.Solid);
+    borderColor, 0, ButtonBorderStyle.Solid);*/
 
             Rectangle nodeRect = e.Node.Bounds;
             Graphics g = e.Graphics;
