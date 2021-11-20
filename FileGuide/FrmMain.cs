@@ -54,7 +54,8 @@ namespace FileGuide
             string DebugDirectory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string RecentDirectory = System.IO.Path.Combine(DebugDirectory, "RecentAccessesFiles");
             string RecentFilesTxt = System.IO.Path.Combine(RecentDirectory, "RecentAccessedFiles.txt");
-            
+
+            if (File.Exists(RecentFilesTxt))
             clsTreeListView.ListRecentFiles.AddRange(File.ReadAllLines(RecentFilesTxt));
             clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles);
 

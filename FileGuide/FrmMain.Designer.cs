@@ -98,6 +98,7 @@ namespace FileGuide
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
             this.mainSplitContainer.SuspendLayout();
+            this.panelTest.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutFirstPage
@@ -635,9 +636,7 @@ namespace FileGuide
             // 
             // mainSplitContainer.Panel1
             // 
-            this.mainSplitContainer.Panel1.BackgroundImage = global::FileGuide.Properties.Resources.Copy;
             this.mainSplitContainer.Panel1.Controls.Add(this.panelTest);
-            this.mainSplitContainer.Panel1.Controls.Add(this.treeView);
             // 
             // mainSplitContainer.Panel2
             // 
@@ -651,6 +650,7 @@ namespace FileGuide
             // 
             // panelTest
             // 
+            this.panelTest.Controls.Add(this.treeView);
             this.panelTest.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelTest.Location = new System.Drawing.Point(0, 0);
             this.panelTest.Name = "panelTest";
@@ -659,7 +659,7 @@ namespace FileGuide
             // 
             // treeView
             // 
-            this.treeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.treeView.BackColor = System.Drawing.Color.White;
             this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
@@ -674,7 +674,6 @@ namespace FileGuide
             this.treeView.ShowLines = false;
             this.treeView.Size = new System.Drawing.Size(351, 807);
             this.treeView.TabIndex = 1;
-            this.treeView.Visible = false;
             this.treeView.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView_DrawNode);
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             this.treeView.MouseLeave += new System.EventHandler(this.treeView_MouseLeave);
@@ -712,6 +711,7 @@ namespace FileGuide
             this.mainSplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).EndInit();
             this.mainSplitContainer.ResumeLayout(false);
+            this.panelTest.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
