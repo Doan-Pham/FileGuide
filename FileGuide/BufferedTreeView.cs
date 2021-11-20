@@ -24,18 +24,6 @@ namespace FileGuide
         [DllImport("user32.dll")]
         private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wp, IntPtr lp);
 
-        public Color TopColor { get; set; }
-        public Color BottomColor { get; set; }
-        public int Angle { get; set; }
-
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            LinearGradientBrush gradientBrush = new LinearGradientBrush(this.ClientRectangle, TopColor, BottomColor, Angle);
-            Graphics g = e.Graphics;
-            g.FillRectangle(gradientBrush, this.ClientRectangle);
-            base.OnPaint(e);
-        }
-
     }
 }
 

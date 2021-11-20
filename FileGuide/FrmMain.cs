@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 using System.Reflection;
-
+using System.Runtime.InteropServices;
 namespace FileGuide
 {
     public partial class FrmMain : Form
@@ -50,9 +50,6 @@ namespace FileGuide
         private void Form1_Load(object sender, EventArgs e)
         {
             clsTreeListView.CreateTreeView(this.treeView);
-            treeView.BottomColor = Color.Yellow;
-            treeView.TopColor = Color.Orange;
-            treeView.Angle = 60;
             
             treeView.ExpandAll();
             
@@ -450,10 +447,10 @@ namespace FileGuide
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
-                Graphics g = CreateGraphics();
+                /*Graphics g = CreateGraphics();
                 LinearGradientBrush gradientBrush = new LinearGradientBrush(e.Node.TreeView.Bounds, Color.Blue, Color.Yellow, 60);
                 g.FillRectangle(gradientBrush, e.Node.TreeView.Bounds);
-                haveDrawTreeViewBackground = true;
+                haveDrawTreeViewBackground = true;*/
 
             TreeNode currentNode = e.Node;
             clsTreeListView.ShowFolderTree(this.treeView, currentNode);
@@ -517,6 +514,8 @@ namespace FileGuide
                     selectBrush = new SolidBrush(UnfocusedSelectColor);
                 }
                 g.FillRectangle(selectBrush, e.Bounds);
+                Rectangle flags = new Rectangle(e.Bounds.Right - 10, e.Bounds.Y , 10, e.Bounds.Height);
+                g.FillRectangle(new SolidBrush(Color.BlueViolet), flags);
             }
 
             // Draw expand/collapse chevrons
@@ -890,5 +889,6 @@ namespace FileGuide
         }
 
         #endregion
+
     }
 }
