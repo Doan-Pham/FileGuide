@@ -49,11 +49,12 @@ namespace FileGuide
         {
             clsTreeListView.CreateTreeView(this.treeView);
             treeView.ExpandAll();
+            panelTest.BackColor = Color.FromArgb(40, 0, 0, 0);
             
             string DebugDirectory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string RecentDirectory = System.IO.Path.Combine(DebugDirectory, "RecentAccessesFiles");
             string RecentFilesTxt = System.IO.Path.Combine(RecentDirectory, "RecentAccessedFiles.txt");
-
+            
             clsTreeListView.ListRecentFiles.AddRange(File.ReadAllLines(RecentFilesTxt));
             clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles);
 

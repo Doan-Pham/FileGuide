@@ -86,6 +86,7 @@ namespace FileGuide
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.panelTest = new System.Windows.Forms.Panel();
             this.treeView = new FileGuide.BufferedTreeView();
             this.tableLayoutFirstPage.SuspendLayout();
             this.toolBar.SuspendLayout();
@@ -634,6 +635,8 @@ namespace FileGuide
             // 
             // mainSplitContainer.Panel1
             // 
+            this.mainSplitContainer.Panel1.BackgroundImage = global::FileGuide.Properties.Resources.Copy;
+            this.mainSplitContainer.Panel1.Controls.Add(this.panelTest);
             this.mainSplitContainer.Panel1.Controls.Add(this.treeView);
             // 
             // mainSplitContainer.Panel2
@@ -645,6 +648,14 @@ namespace FileGuide
             this.mainSplitContainer.Size = new System.Drawing.Size(1578, 807);
             this.mainSplitContainer.SplitterDistance = 351;
             this.mainSplitContainer.TabIndex = 5;
+            // 
+            // panelTest
+            // 
+            this.panelTest.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelTest.Location = new System.Drawing.Point(0, 0);
+            this.panelTest.Name = "panelTest";
+            this.panelTest.Size = new System.Drawing.Size(351, 807);
+            this.panelTest.TabIndex = 2;
             // 
             // treeView
             // 
@@ -663,6 +674,7 @@ namespace FileGuide
             this.treeView.ShowLines = false;
             this.treeView.Size = new System.Drawing.Size(351, 807);
             this.treeView.TabIndex = 1;
+            this.treeView.Visible = false;
             this.treeView.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView_DrawNode);
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             this.treeView.MouseLeave += new System.EventHandler(this.treeView_MouseLeave);
@@ -761,6 +773,7 @@ namespace FileGuide
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.SplitContainer mainSplitContainer;
         private System.Windows.Forms.ColumnHeader colType;
+        private System.Windows.Forms.Panel panelTest;
     }
 }
 
