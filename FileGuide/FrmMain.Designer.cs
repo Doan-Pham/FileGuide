@@ -86,7 +86,6 @@ namespace FileGuide
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
-            this.panelTest = new System.Windows.Forms.Panel();
             this.treeView = new FileGuide.BufferedTreeView();
             this.tableLayoutFirstPage.SuspendLayout();
             this.toolBar.SuspendLayout();
@@ -98,7 +97,6 @@ namespace FileGuide
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
             this.mainSplitContainer.SuspendLayout();
-            this.panelTest.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutFirstPage
@@ -636,7 +634,8 @@ namespace FileGuide
             // 
             // mainSplitContainer.Panel1
             // 
-            this.mainSplitContainer.Panel1.Controls.Add(this.panelTest);
+            this.mainSplitContainer.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.mainSplitContainer.Panel1.Controls.Add(this.treeView);
             // 
             // mainSplitContainer.Panel2
             // 
@@ -648,18 +647,9 @@ namespace FileGuide
             this.mainSplitContainer.SplitterDistance = 351;
             this.mainSplitContainer.TabIndex = 5;
             // 
-            // panelTest
-            // 
-            this.panelTest.Controls.Add(this.treeView);
-            this.panelTest.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelTest.Location = new System.Drawing.Point(0, 0);
-            this.panelTest.Name = "panelTest";
-            this.panelTest.Size = new System.Drawing.Size(351, 807);
-            this.panelTest.TabIndex = 2;
-            // 
             // treeView
             // 
-            this.treeView.BackColor = System.Drawing.Color.White;
+            this.treeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
@@ -711,7 +701,6 @@ namespace FileGuide
             this.mainSplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).EndInit();
             this.mainSplitContainer.ResumeLayout(false);
-            this.panelTest.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -773,7 +762,6 @@ namespace FileGuide
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.SplitContainer mainSplitContainer;
         private System.Windows.Forms.ColumnHeader colType;
-        private System.Windows.Forms.Panel panelTest;
     }
 }
 

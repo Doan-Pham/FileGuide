@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace FileGuide
         private bool isRenaming = false;
         private bool isFolder = false;
         private bool isListView = false;
+        private bool haveDrawTreeViewBackground = false;
         private ListViewItem itemPaste;
         private Color HoverColor = Color.FromArgb(229, 243, 255);
         private Color UnfocusedSelectColor = Color.FromArgb(242, 242, 242);
@@ -48,8 +50,12 @@ namespace FileGuide
         private void Form1_Load(object sender, EventArgs e)
         {
             clsTreeListView.CreateTreeView(this.treeView);
+            treeView.BottomColor = Color.Yellow;
+            treeView.TopColor = Color.Orange;
+            treeView.Angle = 60;
+            
             treeView.ExpandAll();
-            panelTest.BackColor = Color.FromArgb(40, 0, 0, 0);
+            
             
             string DebugDirectory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string RecentDirectory = System.IO.Path.Combine(DebugDirectory, "RecentAccessesFiles");
@@ -443,6 +449,12 @@ namespace FileGuide
         /// <param name="e"></param>
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
+
+                Graphics g = CreateGraphics();
+                LinearGradientBrush gradientBrush = new LinearGradientBrush(e.Node.TreeView.Bounds, Color.Blue, Color.Yellow, 60);
+                g.FillRectangle(gradientBrush, e.Node.TreeView.Bounds);
+                haveDrawTreeViewBackground = true;
+
             TreeNode currentNode = e.Node;
             clsTreeListView.ShowFolderTree(this.treeView, currentNode);
             if (currentNode.Text == "My Computer")
@@ -471,16 +483,19 @@ namespace FileGuide
         private void treeView_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
             // Reduce the unnecessary DrawNode calls. Without this, some icons are drawn in weird places
-            if (e.Bounds.Height < 1 || e.Bounds.Width < 1) return;
-           /* Color borderColor = Color.FromArgb(227, 227, 227);
-            ControlPaint.DrawBorder(e.Graphics, e.Node.TreeView.ClientRectangle,
-    borderColor, 0, ButtonBorderStyle.Solid,
-    borderColor, 0, ButtonBorderStyle.Solid,
-    borderColor, 2, ButtonBorderStyle.Solid,
-    borderColor, 0, ButtonBorderStyle.Solid);*/
 
-            Rectangle nodeRect = e.Node.Bounds;
+
+            if (e.Bounds.Height < 1 || e.Bounds.Width < 1) return;
+            /* Color borderColor = Color.FromArgb(227, 227, 227);
+             ControlPaint.DrawBorder(e.Graphics, e.Node.TreeView.ClientRectangle,
+     borderColor, 0, ButtonBorderStyle.Solid,
+     borderColor, 0, ButtonBorderStyle.Solid,
+     borderColor, 2, ButtonBorderStyle.Solid,
+     borderColor, 0, ButtonBorderStyle.Solid);*/
+
+
             Graphics g = e.Graphics;
+            Rectangle nodeRect = e.Node.Bounds;
 
             // Change node's background color on hovering
             if (e.State == TreeNodeStates.Hot)
