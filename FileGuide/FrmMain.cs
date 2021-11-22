@@ -16,7 +16,7 @@ namespace FileGuide
 {
     public partial class FrmMain : Form
     {
-        List<string> tabPathList = new List<string> {"My Computer"};
+        List<string> tabPathList = new List<string> { "My Computer", ""};
 
         private Color HoverColor = Color.FromArgb(229, 243, 255);
         private Color UnfocusedSelectColor = Color.FromArgb(242, 242, 242);
@@ -55,6 +55,7 @@ namespace FileGuide
             clsTreeListView.CreateTreeView(this.treeView);
             treeView.ExpandAll();
             
+
             string DebugDirectory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string RecentDirectory = System.IO.Path.Combine(DebugDirectory, "RecentAccessesFiles");
             string RecentFilesTxt = System.IO.Path.Combine(RecentDirectory, "RecentAccessedFiles.txt");
@@ -64,6 +65,7 @@ namespace FileGuide
 
             if (this.Width > 900)
                 tscmbPath.Width = this.Width - 800;
+            currentPath = "My Computer";
             this.tabControl.TabPages[this.tabControl.TabCount - 1].Text = "";
             this.tabControl.TabPages[0].Text = "My Computer    ";
             tabControl.TabPages[this.tabControl.TabCount - 1].ToolTipText = "Add a new tab";
@@ -461,9 +463,9 @@ namespace FileGuide
                 newTab.Size = new Size(200, 10);
                 ControlPaint.DrawBorder(tabControl.CreateGraphics(), newTab.Bounds, Color.AliceBlue, ButtonBorderStyle.Solid);
                 string spaceText = "      ";
-                newTab.Text = "My Computer" + spaceText;
+                newTab.Text = "FUCK" + spaceText;
                 this.tabControl.TabPages.Insert(lastIndex, newTab);
-                tabPathList.Add("My Computer");
+                tabPathList.Insert(tabPathList.Count-1, "My Computer");
                 this.tabControl.SelectedIndex = lastIndex;
             }
             else
@@ -519,25 +521,45 @@ namespace FileGuide
             else
             {
                 Image closeImage = Properties.Resources.Sign_Close;
-                e.Graphics.DrawImage(closeImage, tabRect.Right - imageSize - 5, tabRect.Top + (tabRect.Height - imageSize) / 2, imageSize, imageSize);
-                TextFormatFlags textFlags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis;
-                    TextRenderer.DrawText(e.Graphics, tabPage.Text, tabPage.Font, tabRect, tabPage.ForeColor, textFlags);
-                }
+                e.Graphics.DrawImage
+                    (closeImage, 
+                    tabRect.Right - imageSize - 5, 
+                    tabRect.Top + (tabRect.Height - imageSize) / 2, 
+                    imageSize, 
+                    imageSize);
+
+                TextFormatFlags textFlags = TextFormatFlags.Left |TextFormatFlags.EndEllipsis;
+                 TextRenderer.DrawText
+                    (e.Graphics, 
+                    tabPage.Text, 
+                    tabPage.Font, 
+                    tabRect, tabPage.ForeColor, 
+                    textFlags);
+            }
         }
 
         private void tabControl_Selecting(object sender, TabControlCancelEventArgs e)
         {
             if (e.TabPageIndex == this.tabControl.TabCount - 1)
-                e.Cancel = true;
+                e.Cancel = true; 
             else
             {
                 string tabPath = tabPathList[e.TabPageIndex];
                 e.TabPage.Controls.Add(listView);
-                e.TabPage.Controls.Add(flowLayoutPanelDrives);
+                e.TabPage.Controls.Add(tableLayoutFirstPage);
                 if (tabPath == "My Computer")
+                {
+                    tableLayoutFirstPage.Visible = true;
+                    listView.Visible = false;
                     clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles);
+                }
                 else
-                    clsTreeListView.ShowListView(listView, tabPathList[e.TabPageIndex]);
+                {
+                    tableLayoutFirstPage.Visible = false;
+                    listView.Visible = true;
+                    clsTreeListView.ShowListView(listView, tabPathList[e.TabPageIndex]); 
+                }
+                tscmbPath.Text = tabPath;
             }
         }
 
@@ -588,6 +610,7 @@ namespace FileGuide
             tscmbPath.Text = clsTreeListView.GetApproriatePath(currentNode.FullPath);
             pathNode = tscmbPath.Text;
             currentPath = pathNode;
+            tabPathList[tabControl.SelectedIndex] = currentPath;
         }
 
 
@@ -991,6 +1014,7 @@ namespace FileGuide
         private void tscmbPath_TextChanged(object sender, EventArgs e)
         {
             statusLblItemNum.Text = listView.Items.Count.ToString() + " items";
+
         }
 
 
