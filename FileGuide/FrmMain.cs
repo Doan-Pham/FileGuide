@@ -17,6 +17,7 @@ namespace FileGuide
     public partial class FrmMain : Form
     {
         List<string> tabPathList = new List<string> { "My Computer", ""};
+        string spaceText = "      ";
 
         private Color HoverColor = Color.FromArgb(229, 243, 255);
         private Color UnfocusedSelectColor = Color.FromArgb(242, 242, 242);
@@ -462,8 +463,8 @@ namespace FileGuide
                 newTab.BorderStyle = BorderStyle.None;
                 newTab.Size = new Size(200, 10);
                 ControlPaint.DrawBorder(tabControl.CreateGraphics(), newTab.Bounds, Color.AliceBlue, ButtonBorderStyle.Solid);
-                string spaceText = "      ";
-                newTab.Text = "FUCK" + spaceText;
+
+                newTab.Text = "My Computer" + spaceText;
                 this.tabControl.TabPages.Insert(lastIndex, newTab);
                 tabPathList.Insert(tabPathList.Count-1, "My Computer");
                 this.tabControl.SelectedIndex = lastIndex;
@@ -560,6 +561,7 @@ namespace FileGuide
                     clsTreeListView.ShowListView(listView, tabPathList[e.TabPageIndex]); 
                 }
                 tscmbPath.Text = tabPath;
+                //e.TabPage.Text = clsTreeListView.GetApproriatePath(tabPath) + spaceText;
             }
         }
 
@@ -593,24 +595,33 @@ namespace FileGuide
         /// <param name="e"></param>
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            TreeNode currentNode = e.Node;
-            clsTreeListView.ShowFolderTree(this.treeView, currentNode);
-            if (currentNode.Text == "My Computer")
+            try 
             {
-                tableLayoutFirstPage.Visible = true;
-                listView.Visible = false;
-                clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles);
+                TreeNode currentNode = e.Node;
+                if (!clsTreeListView.ShowFolderTree(this.treeView, currentNode)) return;
+                if (currentNode.Text == "My Computer")
+                {
+                    tableLayoutFirstPage.Visible = true;
+                    listView.Visible = false;
+                    clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles);
+                }
+                else
+                {
+                    tableLayoutFirstPage.Visible = false;
+                    listView.Visible = true;
+                    clsTreeListView.ShowListView(this.listView, currentNode);
+                }
+                tscmbPath.Text = clsTreeListView.GetApproriatePath(currentNode.FullPath);
+                pathNode = tscmbPath.Text;
+                currentPath = pathNode;
+                tabPathList[tabControl.SelectedIndex] = currentPath;
+                tabControl.TabPages[tabControl.SelectedIndex].Text = clsTreeListView.GetFileFolderName(currentPath) + spaceText;
             }
-            else
+            catch(Exception ex)
             {
-                tableLayoutFirstPage.Visible = false;
-                listView.Visible = true;
-                clsTreeListView.ShowListView(this.listView, currentNode);
+                MessageBox.Show(ex.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            tscmbPath.Text = clsTreeListView.GetApproriatePath(currentNode.FullPath);
-            pathNode = tscmbPath.Text;
-            currentPath = pathNode;
-            tabPathList[tabControl.SelectedIndex] = currentPath;
+            
         }
 
 

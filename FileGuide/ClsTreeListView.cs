@@ -481,6 +481,7 @@ namespace FileGuide
         public string GetFileFolderName(string strPath)
         {
             string[] strSplit = strPath.Split('\\');
+            if (strSplit.Length == 2 && strSplit[1]=="") return strSplit[0] + "\\";
             return strSplit[strSplit.Length - 1];
         }
 
