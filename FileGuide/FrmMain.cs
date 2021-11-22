@@ -23,9 +23,9 @@ namespace FileGuide
         private bool isListView = false;
         private bool haveDrawTreeViewBackground = false;
         private ListViewItem itemPaste;
-        private Color HoverColor = Color.FromArgb(229, 243, 255);
+        private Color HoverColor = Color.FromArgb(200,200,200);
         private Color UnfocusedSelectColor = Color.FromArgb(242, 242, 242);
-        private Color FocusedSelectColor = Color.FromArgb(205, 232, 255);
+        private Color FocusedSelectColor = Color.FromArgb(255, 255, 255);
         private Color PrimaryTextColor = Color.Black;
         private Color SecondaryTextColor = Color.Gray;
         private string pathSource;
