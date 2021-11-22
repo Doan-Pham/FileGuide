@@ -31,36 +31,6 @@ namespace FileGuide
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            this.tableLayoutFirstPage = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLblDrives = new System.Windows.Forms.Label();
-            this.tableLblRecent = new System.Windows.Forms.Label();
-            this.flowLayoutPanelDrives = new System.Windows.Forms.FlowLayoutPanel();
-            this.listViewRecentFiles = new System.Windows.Forms.ListView();
-            this.listViewColRecentPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Path = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listView = new System.Windows.Forms.ListView();
-            this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colDateCreated = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colDateModified = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.toolBar = new System.Windows.Forms.ToolStrip();
-            this.tsbtnBack = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnRefresh = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbtnCopy = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnCut = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnPaste = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsDropView = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tsMenuLarge = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsMenuSmall = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsMenuList = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsMenuDetails = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsPath = new System.Windows.Forms.ToolStrip();
-            this.tslbPath = new System.Windows.Forms.ToolStripLabel();
-            this.tscmbPath = new System.Windows.Forms.ToolStripComboBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLblItemNum = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusLblNumSelect = new System.Windows.Forms.ToolStripStatusLabel();
@@ -86,10 +56,40 @@ namespace FileGuide
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabPlus = new System.Windows.Forms.TabPage();
+            this.tsPath = new System.Windows.Forms.ToolStrip();
+            this.tslbPath = new System.Windows.Forms.ToolStripLabel();
+            this.tscmbPath = new System.Windows.Forms.ToolStripComboBox();
+            this.listView = new System.Windows.Forms.ListView();
+            this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colDateCreated = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colDateModified = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tableLayoutFirstPage = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLblDrives = new System.Windows.Forms.Label();
+            this.tableLblRecent = new System.Windows.Forms.Label();
+            this.flowLayoutPanelDrives = new System.Windows.Forms.FlowLayoutPanel();
+            this.listViewRecentFiles = new System.Windows.Forms.ListView();
+            this.listViewColRecentPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Path = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.toolBar = new System.Windows.Forms.ToolStrip();
+            this.tsbtnBack = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnRefresh = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbtnCopy = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnCut = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnPaste = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnDelete = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsDropView = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsMenuLarge = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMenuSmall = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMenuList = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsMenuDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.treeView = new FileGuide.BufferedTreeView();
-            this.tableLayoutFirstPage.SuspendLayout();
-            this.toolBar.SuspendLayout();
-            this.tsPath.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.contextMenuStripListView.SuspendLayout();
             this.contextMenuStripListViewItem.SuspendLayout();
@@ -97,341 +97,12 @@ namespace FileGuide
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
             this.mainSplitContainer.SuspendLayout();
+            this.tabControl.SuspendLayout();
+            this.tsPath.SuspendLayout();
+            this.tableLayoutFirstPage.SuspendLayout();
+            this.toolBar.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // tableLayoutFirstPage
-            // 
-            this.tableLayoutFirstPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutFirstPage.BackColor = System.Drawing.Color.White;
-            this.tableLayoutFirstPage.ColumnCount = 1;
-            this.tableLayoutFirstPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutFirstPage.Controls.Add(this.tableLblDrives, 0, 0);
-            this.tableLayoutFirstPage.Controls.Add(this.tableLblRecent, 0, 2);
-            this.tableLayoutFirstPage.Controls.Add(this.flowLayoutPanelDrives, 0, 1);
-            this.tableLayoutFirstPage.Controls.Add(this.listViewRecentFiles, 0, 3);
-            this.tableLayoutFirstPage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutFirstPage.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLayoutFirstPage.Location = new System.Drawing.Point(0, 168);
-            this.tableLayoutFirstPage.Name = "tableLayoutFirstPage";
-            this.tableLayoutFirstPage.RowCount = 5;
-            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutFirstPage.Size = new System.Drawing.Size(1223, 639);
-            this.tableLayoutFirstPage.TabIndex = 1;
-            // 
-            // tableLblDrives
-            // 
-            this.tableLblDrives.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLblDrives.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLblDrives.Location = new System.Drawing.Point(3, 0);
-            this.tableLblDrives.Name = "tableLblDrives";
-            this.tableLblDrives.Size = new System.Drawing.Size(1217, 51);
-            this.tableLblDrives.TabIndex = 0;
-            this.tableLblDrives.Text = "Drives";
-            this.tableLblDrives.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // tableLblRecent
-            // 
-            this.tableLblRecent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLblRecent.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLblRecent.Location = new System.Drawing.Point(3, 246);
-            this.tableLblRecent.Name = "tableLblRecent";
-            this.tableLblRecent.Size = new System.Drawing.Size(1217, 61);
-            this.tableLblRecent.TabIndex = 1;
-            this.tableLblRecent.Text = "Recent files";
-            this.tableLblRecent.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // flowLayoutPanelDrives
-            // 
-            this.flowLayoutPanelDrives.AutoScroll = true;
-            this.flowLayoutPanelDrives.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanelDrives.Location = new System.Drawing.Point(3, 64);
-            this.flowLayoutPanelDrives.Name = "flowLayoutPanelDrives";
-            this.flowLayoutPanelDrives.Size = new System.Drawing.Size(1217, 179);
-            this.flowLayoutPanelDrives.TabIndex = 2;
-            // 
-            // listViewRecentFiles
-            // 
-            this.listViewRecentFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewRecentFiles.BackColor = System.Drawing.Color.White;
-            this.listViewRecentFiles.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listViewRecentFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.listViewColRecentPath,
-            this.Path});
-            this.listViewRecentFiles.FullRowSelect = true;
-            this.listViewRecentFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listViewRecentFiles.HideSelection = false;
-            this.listViewRecentFiles.Location = new System.Drawing.Point(3, 310);
-            this.listViewRecentFiles.Name = "listViewRecentFiles";
-            this.listViewRecentFiles.OwnerDraw = true;
-            this.listViewRecentFiles.Size = new System.Drawing.Size(1217, 303);
-            this.listViewRecentFiles.TabIndex = 3;
-            this.listViewRecentFiles.UseCompatibleStateImageBehavior = false;
-            this.listViewRecentFiles.View = System.Windows.Forms.View.Details;
-            this.listViewRecentFiles.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.listView_DrawColumnHeader);
-            this.listViewRecentFiles.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.listView_DrawItem);
-            this.listViewRecentFiles.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.listView_DrawSubItem);
-            // 
-            // listViewColRecentPath
-            // 
-            this.listViewColRecentPath.Text = "Name";
-            this.listViewColRecentPath.Width = 500;
-            // 
-            // Path
-            // 
-            this.Path.Text = "Path";
-            this.Path.Width = 600;
-            // 
-            // listView
-            // 
-            this.listView.BackColor = System.Drawing.Color.White;
-            this.listView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colName,
-            this.colType,
-            this.colSize,
-            this.colDateCreated,
-            this.colDateModified});
-            this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView.FullRowSelect = true;
-            this.listView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listView.HideSelection = false;
-            this.listView.LabelEdit = true;
-            this.listView.Location = new System.Drawing.Point(0, 168);
-            this.listView.Margin = new System.Windows.Forms.Padding(4);
-            this.listView.Name = "listView";
-            this.listView.OwnerDraw = true;
-            this.listView.Size = new System.Drawing.Size(1223, 639);
-            this.listView.TabIndex = 0;
-            this.listView.UseCompatibleStateImageBehavior = false;
-            this.listView.View = System.Windows.Forms.View.Details;
-            this.listView.AfterLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.listView_AfterLabelEdit);
-            this.listView.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.listView_DrawColumnHeader);
-            this.listView.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.listView_DrawItem);
-            this.listView.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.listView_DrawSubItem);
-            this.listView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView_ItemSelectionChanged);
-            this.listView.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listView_KeyPress);
-            this.listView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView_MouseDoubleClick);
-            this.listView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listView_MouseUp);
-            // 
-            // colName
-            // 
-            this.colName.Text = "Name";
-            this.colName.Width = 290;
-            // 
-            // colType
-            // 
-            this.colType.Text = "Type";
-            this.colType.Width = 155;
-            // 
-            // colSize
-            // 
-            this.colSize.Text = "Size";
-            this.colSize.Width = 161;
-            // 
-            // colDateCreated
-            // 
-            this.colDateCreated.Text = "Date created";
-            this.colDateCreated.Width = 271;
-            // 
-            // colDateModified
-            // 
-            this.colDateModified.Text = "Date modified";
-            this.colDateModified.Width = 338;
-            // 
-            // toolBar
-            // 
-            this.toolBar.AutoSize = false;
-            this.toolBar.BackColor = System.Drawing.Color.White;
-            this.toolBar.Font = new System.Drawing.Font("Questrial", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolBar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolBar.ImageScalingSize = new System.Drawing.Size(50, 50);
-            this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbtnBack,
-            this.tsbtnRefresh,
-            this.toolStripSeparator1,
-            this.tsbtnCopy,
-            this.tsbtnCut,
-            this.tsbtnPaste,
-            this.tsbtnDelete,
-            this.toolStripSeparator2,
-            this.tsDropView});
-            this.toolBar.Location = new System.Drawing.Point(0, 0);
-            this.toolBar.Name = "toolBar";
-            this.toolBar.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.toolBar.Size = new System.Drawing.Size(1223, 123);
-            this.toolBar.TabIndex = 2;
-            // 
-            // tsbtnBack
-            // 
-            this.tsbtnBack.AutoSize = false;
-            this.tsbtnBack.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tsbtnBack.Image = global::FileGuide.Properties.Resources.FolderBack;
-            this.tsbtnBack.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.tsbtnBack.ImageTransparentColor = System.Drawing.Color.White;
-            this.tsbtnBack.Name = "tsbtnBack";
-            this.tsbtnBack.Size = new System.Drawing.Size(100, 100);
-            this.tsbtnBack.Text = "Back";
-            this.tsbtnBack.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsbtnBack.Click += new System.EventHandler(this.tsbtnBack_Click);
-            // 
-            // tsbtnRefresh
-            // 
-            this.tsbtnRefresh.AutoSize = false;
-            this.tsbtnRefresh.Image = global::FileGuide.Properties.Resources.Refresh;
-            this.tsbtnRefresh.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.tsbtnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnRefresh.Margin = new System.Windows.Forms.Padding(8, 2, 0, 3);
-            this.tsbtnRefresh.Name = "tsbtnRefresh";
-            this.tsbtnRefresh.Size = new System.Drawing.Size(100, 100);
-            this.tsbtnRefresh.Text = "Refresh";
-            this.tsbtnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsbtnRefresh.Click += new System.EventHandler(this.tsbtnRefresh_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 123);
-            // 
-            // tsbtnCopy
-            // 
-            this.tsbtnCopy.AutoSize = false;
-            this.tsbtnCopy.Image = global::FileGuide.Properties.Resources.Copy;
-            this.tsbtnCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnCopy.Margin = new System.Windows.Forms.Padding(4, 1, 0, 2);
-            this.tsbtnCopy.Name = "tsbtnCopy";
-            this.tsbtnCopy.Size = new System.Drawing.Size(100, 100);
-            this.tsbtnCopy.Text = "Copy";
-            this.tsbtnCopy.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.tsbtnCopy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsbtnCopy.Click += new System.EventHandler(this.btnCopy_Click);
-            // 
-            // tsbtnCut
-            // 
-            this.tsbtnCut.AutoSize = false;
-            this.tsbtnCut.Image = global::FileGuide.Properties.Resources.Cut;
-            this.tsbtnCut.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.tsbtnCut.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnCut.Margin = new System.Windows.Forms.Padding(8, 2, 0, 3);
-            this.tsbtnCut.Name = "tsbtnCut";
-            this.tsbtnCut.Size = new System.Drawing.Size(100, 100);
-            this.tsbtnCut.Text = "Cut";
-            this.tsbtnCut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsbtnCut.Click += new System.EventHandler(this.btnCut_Click);
-            // 
-            // tsbtnPaste
-            // 
-            this.tsbtnPaste.AutoSize = false;
-            this.tsbtnPaste.Enabled = false;
-            this.tsbtnPaste.Image = global::FileGuide.Properties.Resources.Paste;
-            this.tsbtnPaste.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.tsbtnPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnPaste.Margin = new System.Windows.Forms.Padding(8, 2, 0, 3);
-            this.tsbtnPaste.Name = "tsbtnPaste";
-            this.tsbtnPaste.Size = new System.Drawing.Size(100, 100);
-            this.tsbtnPaste.Text = "Paste";
-            this.tsbtnPaste.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsbtnPaste.Click += new System.EventHandler(this.btnPaste_Click);
-            // 
-            // tsbtnDelete
-            // 
-            this.tsbtnDelete.AutoSize = false;
-            this.tsbtnDelete.Image = global::FileGuide.Properties.Resources.Delete;
-            this.tsbtnDelete.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.tsbtnDelete.ImageTransparentColor = System.Drawing.Color.White;
-            this.tsbtnDelete.Margin = new System.Windows.Forms.Padding(8, 2, 0, 3);
-            this.tsbtnDelete.Name = "tsbtnDelete";
-            this.tsbtnDelete.Size = new System.Drawing.Size(100, 100);
-            this.tsbtnDelete.Text = "Delete";
-            this.tsbtnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsbtnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 123);
-            // 
-            // tsDropView
-            // 
-            this.tsDropView.AutoSize = false;
-            this.tsDropView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsMenuLarge,
-            this.tsMenuSmall,
-            this.tsMenuList,
-            this.tsMenuDetails});
-            this.tsDropView.Image = global::FileGuide.Properties.Resources.View;
-            this.tsDropView.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.tsDropView.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsDropView.Margin = new System.Windows.Forms.Padding(8, 1, 0, 2);
-            this.tsDropView.Name = "tsDropView";
-            this.tsDropView.Size = new System.Drawing.Size(100, 100);
-            this.tsDropView.Text = "View";
-            this.tsDropView.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // tsMenuLarge
-            // 
-            this.tsMenuLarge.Name = "tsMenuLarge";
-            this.tsMenuLarge.Size = new System.Drawing.Size(209, 36);
-            this.tsMenuLarge.Text = "Large Icons";
-            this.tsMenuLarge.Click += new System.EventHandler(this.menuLarge_Click);
-            // 
-            // tsMenuSmall
-            // 
-            this.tsMenuSmall.Name = "tsMenuSmall";
-            this.tsMenuSmall.Size = new System.Drawing.Size(209, 36);
-            this.tsMenuSmall.Text = "Small Icons";
-            this.tsMenuSmall.Click += new System.EventHandler(this.menuSmall_Click);
-            // 
-            // tsMenuList
-            // 
-            this.tsMenuList.Name = "tsMenuList";
-            this.tsMenuList.Size = new System.Drawing.Size(209, 36);
-            this.tsMenuList.Text = "List";
-            this.tsMenuList.Click += new System.EventHandler(this.menuList_Click);
-            // 
-            // tsMenuDetails
-            // 
-            this.tsMenuDetails.Name = "tsMenuDetails";
-            this.tsMenuDetails.Size = new System.Drawing.Size(209, 36);
-            this.tsMenuDetails.Text = "Details";
-            this.tsMenuDetails.Click += new System.EventHandler(this.menuDetails_Click);
-            // 
-            // tsPath
-            // 
-            this.tsPath.AutoSize = false;
-            this.tsPath.BackColor = System.Drawing.Color.White;
-            this.tsPath.Font = new System.Drawing.Font("Questrial", 9F);
-            this.tsPath.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.tsPath.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.tsPath.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tslbPath,
-            this.tscmbPath});
-            this.tsPath.Location = new System.Drawing.Point(0, 123);
-            this.tsPath.Name = "tsPath";
-            this.tsPath.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.tsPath.Size = new System.Drawing.Size(1223, 45);
-            this.tsPath.TabIndex = 3;
-            // 
-            // tslbPath
-            // 
-            this.tslbPath.Margin = new System.Windows.Forms.Padding(20, 1, 0, 2);
-            this.tslbPath.Name = "tslbPath";
-            this.tslbPath.Size = new System.Drawing.Size(54, 42);
-            this.tslbPath.Text = "Path:";
-            // 
-            // tscmbPath
-            // 
-            this.tscmbPath.AutoSize = false;
-            this.tscmbPath.Name = "tscmbPath";
-            this.tscmbPath.Size = new System.Drawing.Size(400, 33);
-            this.tscmbPath.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tscmbPath_KeyPress);
-            this.tscmbPath.TextChanged += new System.EventHandler(this.tscmbPath_TextChanged);
             // 
             // statusStrip1
             // 
@@ -638,17 +309,390 @@ namespace FileGuide
             // 
             // mainSplitContainer.Panel2
             // 
-            this.mainSplitContainer.Panel2.Controls.Add(this.listView);
-            this.mainSplitContainer.Panel2.Controls.Add(this.tableLayoutFirstPage);
+            this.mainSplitContainer.Panel2.Controls.Add(this.tabControl);
             this.mainSplitContainer.Panel2.Controls.Add(this.tsPath);
             this.mainSplitContainer.Panel2.Controls.Add(this.toolBar);
             this.mainSplitContainer.Size = new System.Drawing.Size(1578, 807);
             this.mainSplitContainer.SplitterDistance = 351;
             this.mainSplitContainer.TabIndex = 5;
             // 
+            // tabControl
+            // 
+            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Controls.Add(this.tabPlus);
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.tabControl.Location = new System.Drawing.Point(0, 168);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.ShowToolTips = true;
+            this.tabControl.Size = new System.Drawing.Size(1223, 639);
+            this.tabControl.TabIndex = 4;
+            this.tabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl_DrawItem);
+            this.tabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl_Selecting);
+            this.tabControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabControl_MouseDown);
+            this.tabControl.MouseEnter += new System.EventHandler(this.tabControl_MouseEnter);
+            this.tabControl.MouseLeave += new System.EventHandler(this.tabControl_MouseLeave);
+            // 
+            // tabPlus
+            // 
+            this.tabPlus.Location = new System.Drawing.Point(4, 39);
+            this.tabPlus.Name = "tabPlus";
+            this.tabPlus.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPlus.Size = new System.Drawing.Size(1215, 596);
+            this.tabPlus.TabIndex = 0;
+            this.tabPlus.Text = " ";
+            this.tabPlus.UseVisualStyleBackColor = true;
+            // 
+            // tsPath
+            // 
+            this.tsPath.AutoSize = false;
+            this.tsPath.BackColor = System.Drawing.Color.White;
+            this.tsPath.Font = new System.Drawing.Font("Questrial", 9F);
+            this.tsPath.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tsPath.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.tsPath.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tslbPath,
+            this.tscmbPath});
+            this.tsPath.Location = new System.Drawing.Point(0, 123);
+            this.tsPath.Name = "tsPath";
+            this.tsPath.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.tsPath.Size = new System.Drawing.Size(1223, 45);
+            this.tsPath.TabIndex = 3;
+            // 
+            // tslbPath
+            // 
+            this.tslbPath.Margin = new System.Windows.Forms.Padding(20, 1, 0, 2);
+            this.tslbPath.Name = "tslbPath";
+            this.tslbPath.Size = new System.Drawing.Size(54, 42);
+            this.tslbPath.Text = "Path:";
+            // 
+            // tscmbPath
+            // 
+            this.tscmbPath.AutoSize = false;
+            this.tscmbPath.Name = "tscmbPath";
+            this.tscmbPath.Size = new System.Drawing.Size(400, 33);
+            this.tscmbPath.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tscmbPath_KeyPress);
+            this.tscmbPath.TextChanged += new System.EventHandler(this.tscmbPath_TextChanged);
+            // 
+            // listView
+            // 
+            this.listView.BackColor = System.Drawing.Color.White;
+            this.listView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colName,
+            this.colType,
+            this.colSize,
+            this.colDateCreated,
+            this.colDateModified});
+            this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView.FullRowSelect = true;
+            this.listView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listView.HideSelection = false;
+            this.listView.LabelEdit = true;
+            this.listView.Location = new System.Drawing.Point(3, 3);
+            this.listView.Margin = new System.Windows.Forms.Padding(4);
+            this.listView.Name = "listView";
+            this.listView.OwnerDraw = true;
+            this.listView.Size = new System.Drawing.Size(1209, 590);
+            this.listView.TabIndex = 0;
+            this.listView.UseCompatibleStateImageBehavior = false;
+            this.listView.View = System.Windows.Forms.View.Details;
+            this.listView.AfterLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.listView_AfterLabelEdit);
+            this.listView.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.listView_DrawColumnHeader);
+            this.listView.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.listView_DrawItem);
+            this.listView.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.listView_DrawSubItem);
+            this.listView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView_ItemSelectionChanged);
+            this.listView.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listView_KeyPress);
+            this.listView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView_MouseDoubleClick);
+            this.listView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listView_MouseUp);
+            // 
+            // colName
+            // 
+            this.colName.Text = "Name";
+            this.colName.Width = 290;
+            // 
+            // colType
+            // 
+            this.colType.Text = "Type";
+            this.colType.Width = 155;
+            // 
+            // colSize
+            // 
+            this.colSize.Text = "Size";
+            this.colSize.Width = 161;
+            // 
+            // colDateCreated
+            // 
+            this.colDateCreated.Text = "Date created";
+            this.colDateCreated.Width = 271;
+            // 
+            // colDateModified
+            // 
+            this.colDateModified.Text = "Date modified";
+            this.colDateModified.Width = 338;
+            // 
+            // tableLayoutFirstPage
+            // 
+            this.tableLayoutFirstPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutFirstPage.BackColor = System.Drawing.Color.White;
+            this.tableLayoutFirstPage.ColumnCount = 1;
+            this.tableLayoutFirstPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutFirstPage.Controls.Add(this.tableLblDrives, 0, 0);
+            this.tableLayoutFirstPage.Controls.Add(this.tableLblRecent, 0, 2);
+            this.tableLayoutFirstPage.Controls.Add(this.flowLayoutPanelDrives, 0, 1);
+            this.tableLayoutFirstPage.Controls.Add(this.listViewRecentFiles, 0, 3);
+            this.tableLayoutFirstPage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutFirstPage.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableLayoutFirstPage.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutFirstPage.Name = "tableLayoutFirstPage";
+            this.tableLayoutFirstPage.RowCount = 5;
+            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutFirstPage.Size = new System.Drawing.Size(1209, 590);
+            this.tableLayoutFirstPage.TabIndex = 1;
+            // 
+            // tableLblDrives
+            // 
+            this.tableLblDrives.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLblDrives.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableLblDrives.Location = new System.Drawing.Point(3, 0);
+            this.tableLblDrives.Name = "tableLblDrives";
+            this.tableLblDrives.Size = new System.Drawing.Size(1203, 51);
+            this.tableLblDrives.TabIndex = 0;
+            this.tableLblDrives.Text = "Drives";
+            this.tableLblDrives.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // tableLblRecent
+            // 
+            this.tableLblRecent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLblRecent.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableLblRecent.Location = new System.Drawing.Point(3, 228);
+            this.tableLblRecent.Name = "tableLblRecent";
+            this.tableLblRecent.Size = new System.Drawing.Size(1203, 57);
+            this.tableLblRecent.TabIndex = 1;
+            this.tableLblRecent.Text = "Recent files";
+            this.tableLblRecent.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // flowLayoutPanelDrives
+            // 
+            this.flowLayoutPanelDrives.AutoScroll = true;
+            this.flowLayoutPanelDrives.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanelDrives.Location = new System.Drawing.Point(3, 60);
+            this.flowLayoutPanelDrives.Name = "flowLayoutPanelDrives";
+            this.flowLayoutPanelDrives.Size = new System.Drawing.Size(1203, 165);
+            this.flowLayoutPanelDrives.TabIndex = 2;
+            // 
+            // listViewRecentFiles
+            // 
+            this.listViewRecentFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewRecentFiles.BackColor = System.Drawing.Color.White;
+            this.listViewRecentFiles.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listViewRecentFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewColRecentPath,
+            this.Path});
+            this.listViewRecentFiles.FullRowSelect = true;
+            this.listViewRecentFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listViewRecentFiles.HideSelection = false;
+            this.listViewRecentFiles.Location = new System.Drawing.Point(3, 288);
+            this.listViewRecentFiles.Name = "listViewRecentFiles";
+            this.listViewRecentFiles.OwnerDraw = true;
+            this.listViewRecentFiles.Size = new System.Drawing.Size(1203, 279);
+            this.listViewRecentFiles.TabIndex = 3;
+            this.listViewRecentFiles.UseCompatibleStateImageBehavior = false;
+            this.listViewRecentFiles.View = System.Windows.Forms.View.Details;
+            this.listViewRecentFiles.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.listView_DrawColumnHeader);
+            this.listViewRecentFiles.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.listView_DrawItem);
+            this.listViewRecentFiles.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.listView_DrawSubItem);
+            // 
+            // listViewColRecentPath
+            // 
+            this.listViewColRecentPath.Text = "Name";
+            this.listViewColRecentPath.Width = 500;
+            // 
+            // Path
+            // 
+            this.Path.Text = "Path";
+            this.Path.Width = 600;
+            // 
+            // toolBar
+            // 
+            this.toolBar.AutoSize = false;
+            this.toolBar.BackColor = System.Drawing.Color.White;
+            this.toolBar.Font = new System.Drawing.Font("Questrial", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolBar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolBar.ImageScalingSize = new System.Drawing.Size(50, 50);
+            this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbtnBack,
+            this.tsbtnRefresh,
+            this.toolStripSeparator1,
+            this.tsbtnCopy,
+            this.tsbtnCut,
+            this.tsbtnPaste,
+            this.tsbtnDelete,
+            this.toolStripSeparator2,
+            this.tsDropView});
+            this.toolBar.Location = new System.Drawing.Point(0, 0);
+            this.toolBar.Name = "toolBar";
+            this.toolBar.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.toolBar.Size = new System.Drawing.Size(1223, 123);
+            this.toolBar.TabIndex = 2;
+            // 
+            // tsbtnBack
+            // 
+            this.tsbtnBack.AutoSize = false;
+            this.tsbtnBack.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tsbtnBack.Image = global::FileGuide.Properties.Resources.FolderBack;
+            this.tsbtnBack.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.tsbtnBack.ImageTransparentColor = System.Drawing.Color.White;
+            this.tsbtnBack.Name = "tsbtnBack";
+            this.tsbtnBack.Size = new System.Drawing.Size(100, 100);
+            this.tsbtnBack.Text = "Back";
+            this.tsbtnBack.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbtnBack.Click += new System.EventHandler(this.tsbtnBack_Click);
+            // 
+            // tsbtnRefresh
+            // 
+            this.tsbtnRefresh.AutoSize = false;
+            this.tsbtnRefresh.Image = global::FileGuide.Properties.Resources.Refresh;
+            this.tsbtnRefresh.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.tsbtnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnRefresh.Margin = new System.Windows.Forms.Padding(8, 2, 0, 3);
+            this.tsbtnRefresh.Name = "tsbtnRefresh";
+            this.tsbtnRefresh.Size = new System.Drawing.Size(100, 100);
+            this.tsbtnRefresh.Text = "Refresh";
+            this.tsbtnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbtnRefresh.Click += new System.EventHandler(this.tsbtnRefresh_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 123);
+            // 
+            // tsbtnCopy
+            // 
+            this.tsbtnCopy.AutoSize = false;
+            this.tsbtnCopy.Image = global::FileGuide.Properties.Resources.Copy;
+            this.tsbtnCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnCopy.Margin = new System.Windows.Forms.Padding(4, 1, 0, 2);
+            this.tsbtnCopy.Name = "tsbtnCopy";
+            this.tsbtnCopy.Size = new System.Drawing.Size(100, 100);
+            this.tsbtnCopy.Text = "Copy";
+            this.tsbtnCopy.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.tsbtnCopy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbtnCopy.Click += new System.EventHandler(this.btnCopy_Click);
+            // 
+            // tsbtnCut
+            // 
+            this.tsbtnCut.AutoSize = false;
+            this.tsbtnCut.Image = global::FileGuide.Properties.Resources.Cut;
+            this.tsbtnCut.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.tsbtnCut.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnCut.Margin = new System.Windows.Forms.Padding(8, 2, 0, 3);
+            this.tsbtnCut.Name = "tsbtnCut";
+            this.tsbtnCut.Size = new System.Drawing.Size(100, 100);
+            this.tsbtnCut.Text = "Cut";
+            this.tsbtnCut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbtnCut.Click += new System.EventHandler(this.btnCut_Click);
+            // 
+            // tsbtnPaste
+            // 
+            this.tsbtnPaste.AutoSize = false;
+            this.tsbtnPaste.Enabled = false;
+            this.tsbtnPaste.Image = global::FileGuide.Properties.Resources.Paste;
+            this.tsbtnPaste.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.tsbtnPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtnPaste.Margin = new System.Windows.Forms.Padding(8, 2, 0, 3);
+            this.tsbtnPaste.Name = "tsbtnPaste";
+            this.tsbtnPaste.Size = new System.Drawing.Size(100, 100);
+            this.tsbtnPaste.Text = "Paste";
+            this.tsbtnPaste.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbtnPaste.Click += new System.EventHandler(this.btnPaste_Click);
+            // 
+            // tsbtnDelete
+            // 
+            this.tsbtnDelete.AutoSize = false;
+            this.tsbtnDelete.Image = global::FileGuide.Properties.Resources.Delete;
+            this.tsbtnDelete.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.tsbtnDelete.ImageTransparentColor = System.Drawing.Color.White;
+            this.tsbtnDelete.Margin = new System.Windows.Forms.Padding(8, 2, 0, 3);
+            this.tsbtnDelete.Name = "tsbtnDelete";
+            this.tsbtnDelete.Size = new System.Drawing.Size(100, 100);
+            this.tsbtnDelete.Text = "Delete";
+            this.tsbtnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbtnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 123);
+            // 
+            // tsDropView
+            // 
+            this.tsDropView.AutoSize = false;
+            this.tsDropView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsMenuLarge,
+            this.tsMenuSmall,
+            this.tsMenuList,
+            this.tsMenuDetails});
+            this.tsDropView.Image = global::FileGuide.Properties.Resources.View;
+            this.tsDropView.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.tsDropView.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsDropView.Margin = new System.Windows.Forms.Padding(8, 1, 0, 2);
+            this.tsDropView.Name = "tsDropView";
+            this.tsDropView.Size = new System.Drawing.Size(100, 100);
+            this.tsDropView.Text = "View";
+            this.tsDropView.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // tsMenuLarge
+            // 
+            this.tsMenuLarge.Name = "tsMenuLarge";
+            this.tsMenuLarge.Size = new System.Drawing.Size(209, 36);
+            this.tsMenuLarge.Text = "Large Icons";
+            this.tsMenuLarge.Click += new System.EventHandler(this.menuLarge_Click);
+            // 
+            // tsMenuSmall
+            // 
+            this.tsMenuSmall.Name = "tsMenuSmall";
+            this.tsMenuSmall.Size = new System.Drawing.Size(209, 36);
+            this.tsMenuSmall.Text = "Small Icons";
+            this.tsMenuSmall.Click += new System.EventHandler(this.menuSmall_Click);
+            // 
+            // tsMenuList
+            // 
+            this.tsMenuList.Name = "tsMenuList";
+            this.tsMenuList.Size = new System.Drawing.Size(209, 36);
+            this.tsMenuList.Text = "List";
+            this.tsMenuList.Click += new System.EventHandler(this.menuList_Click);
+            // 
+            // tsMenuDetails
+            // 
+            this.tsMenuDetails.Name = "tsMenuDetails";
+            this.tsMenuDetails.Size = new System.Drawing.Size(209, 36);
+            this.tsMenuDetails.Text = "Details";
+            this.tsMenuDetails.Click += new System.EventHandler(this.menuDetails_Click);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.tableLayoutFirstPage);
+            this.tabPage1.Controls.Add(this.listView);
+            this.tabPage1.Location = new System.Drawing.Point(4, 39);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1215, 596);
+            this.tabPage1.TabIndex = 1;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
             // treeView
             // 
-            this.treeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.treeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
@@ -687,11 +731,6 @@ namespace FileGuide
             this.Load += new System.EventHandler(this.Form1_Load);
             this.SizeChanged += new System.EventHandler(this.FrmMain_Resize);
             this.Resize += new System.EventHandler(this.FrmMain_Resize);
-            this.tableLayoutFirstPage.ResumeLayout(false);
-            this.toolBar.ResumeLayout(false);
-            this.toolBar.PerformLayout();
-            this.tsPath.ResumeLayout(false);
-            this.tsPath.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.contextMenuStripListView.ResumeLayout(false);
@@ -700,6 +739,13 @@ namespace FileGuide
             this.mainSplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).EndInit();
             this.mainSplitContainer.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
+            this.tsPath.ResumeLayout(false);
+            this.tsPath.PerformLayout();
+            this.tableLayoutFirstPage.ResumeLayout(false);
+            this.toolBar.ResumeLayout(false);
+            this.toolBar.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -761,6 +807,9 @@ namespace FileGuide
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.SplitContainer mainSplitContainer;
         private System.Windows.Forms.ColumnHeader colType;
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.TabPage tabPlus;
+        private System.Windows.Forms.TabPage tabPage1;
     }
 }
 

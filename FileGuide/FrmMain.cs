@@ -10,22 +10,27 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace FileGuide
 {
     public partial class FrmMain : Form
     {
-        private bool isCopying = false;
-        private bool isCutting = false;
-        private bool isRenaming = false;
-        private bool isFolder = false;
-        private bool isListView = false;
-        private ListViewItem itemPaste;
+        List<string> tabPathList = new List<string> {"My Computer"};
+
         private Color HoverColor = Color.FromArgb(229, 243, 255);
         private Color UnfocusedSelectColor = Color.FromArgb(242, 242, 242);
         private Color FocusedSelectColor = Color.FromArgb(205, 232, 255);
         private Color PrimaryTextColor = Color.Black;
         private Color SecondaryTextColor = Color.Gray;
+
+        private bool isCopying = false;
+        private bool isCutting = false;
+        private bool isRenaming = false;
+        private bool isFolder = false;
+        private bool isListView = false;
+
+        private ListViewItem itemPaste;
         private string pathSource;
         private string pathDest;
         private string pathNode;
@@ -59,6 +64,11 @@ namespace FileGuide
 
             if (this.Width > 900)
                 tscmbPath.Width = this.Width - 800;
+            this.tabControl.TabPages[this.tabControl.TabCount - 1].Text = "";
+            this.tabControl.TabPages[0].Text = "My Computer    ";
+            tabControl.TabPages[this.tabControl.TabCount - 1].ToolTipText = "Add a new tab";
+            this.tabControl.Padding = new Point(12, 4);
+            this.tabControl.HandleCreated += tabControl_HandleCreated;
         }
 
 
@@ -98,51 +108,8 @@ namespace FileGuide
 
         #endregion
 
+
         #region App features: copy, cut, paste, delete, new, go to file/folder, go back
-
-        /// <summary>
-        /// Go to the path on toolStrip Path
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void tscmbPath_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13)
-            {
-                try
-                {
-                    if (tscmbPath.Text != "")
-                    {
-                        // If path points to a file, process that file
-                        if (File.Exists(tscmbPath.Text.Trim()))
-                        {
-                            FileInfo file = new FileInfo(tscmbPath.Text.Trim());
-                            Process.Start(tscmbPath.Text.Trim());
-                            DirectoryInfo parent = file.Directory;
-                            tscmbPath.Text = parent.FullName;
-
-                        }
-
-                        // If path points to a folder, open that folder
-                        else if (Directory.Exists(tscmbPath.Text.Trim()))
-                        {
-                            clsTreeListView.ShowListView(this.listView, tscmbPath.Text);
-                            currentPath = tscmbPath.Text;
-                        }
-
-                        // If path doesn't exist, show error message
-                        else
-                        {
-                            MessageBox.Show("File/Folder not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
-            }
-        }
 
 
         /// <summary>
@@ -335,6 +302,56 @@ namespace FileGuide
             }
         }
 
+        #endregion
+
+
+        #region App features: Go to file/folder, go back, click file/folder
+
+
+        /// <summary>
+        /// Go to the path on toolStrip Path
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tscmbPath_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                try
+                {
+                    if (tscmbPath.Text != "")
+                    {
+                        // If path points to a file, process that file
+                        if (File.Exists(tscmbPath.Text.Trim()))
+                        {
+                            FileInfo file = new FileInfo(tscmbPath.Text.Trim());
+                            Process.Start(tscmbPath.Text.Trim());
+                            DirectoryInfo parent = file.Directory;
+                            tscmbPath.Text = parent.FullName;
+
+                        }
+
+                        // If path points to a folder, open that folder
+                        else if (Directory.Exists(tscmbPath.Text.Trim()))
+                        {
+                            clsTreeListView.ShowListView(this.listView, tscmbPath.Text);
+                            currentPath = tscmbPath.Text;
+                        }
+
+                        // If path doesn't exist, show error message
+                        else
+                        {
+                            MessageBox.Show("File/Folder not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+
 
         /// <summary>
         /// Refresh listView
@@ -347,7 +364,7 @@ namespace FileGuide
             {
                 if (currentPath != "My Computer")
                     clsTreeListView.ShowListView(listView, currentPath);
-                else 
+                else
                     clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles);
             }
         }
@@ -430,6 +447,119 @@ namespace FileGuide
         }
 
         #endregion
+
+
+        #region App feature: Tabs control
+        private void tabControl_MouseDown(object sender, MouseEventArgs e)
+        {
+            var lastIndex = this.tabControl.TabCount - 1;
+            if (this.tabControl.GetTabRect(lastIndex).Contains(e.Location))
+            {
+                TabPage newTab = new TabPage();
+                newTab.BackColor = Color.White;
+                newTab.BorderStyle = BorderStyle.None;
+                newTab.Size = new Size(200, 10);
+                ControlPaint.DrawBorder(tabControl.CreateGraphics(), newTab.Bounds, Color.AliceBlue, ButtonBorderStyle.Solid);
+                string spaceText = "      ";
+                newTab.Text = "My Computer" + spaceText;
+                this.tabControl.TabPages.Insert(lastIndex, newTab);
+                tabPathList.Add("My Computer");
+                this.tabControl.SelectedIndex = lastIndex;
+            }
+            else
+            {
+                int imageSize = 16;
+                for (var i = 0; i < this.tabControl.TabPages.Count; i++)
+                {
+                    var tabRect = this.tabControl.GetTabRect(i);
+                    var imageRect = new Rectangle(
+                        (tabRect.Right - imageSize - 4),
+                        tabRect.Top + (tabRect.Height - imageSize) / 2,
+                        imageSize,
+                        imageSize);
+
+                    if (imageRect.Contains(e.Location))
+                    {
+                        this.tabControl.TabPages.RemoveAt(i);
+                        tabPathList.RemoveAt(i);
+                        break;
+                    }
+                }
+            }
+        }
+
+        private void tabControl_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            var tabPage = this.tabControl.TabPages[e.Index];
+            var tabRect = this.tabControl.GetTabRect(e.Index);
+            tabRect.Inflate(-2, -2);
+            int imageSize = 16;
+
+            if (e.Index == tabControl.SelectedIndex)
+            {
+                SolidBrush backgroundBrush = new SolidBrush(Color.White);
+                e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
+            }
+            else
+            {
+                SolidBrush backgroundBrush = new SolidBrush(Color.FromArgb(243,243,243));
+                e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
+            }
+
+            if (e.Index == this.tabControl.TabCount - 1)
+            {
+                Image addImage = Properties.Resources.Sign_Plus;
+                e.Graphics.DrawImage
+                    (addImage,
+                    tabRect.Left + (tabRect.Width - imageSize) / 2,
+                    tabRect.Top + (tabRect.Height - imageSize) / 2,
+                    imageSize,
+                    imageSize);
+            }
+            else
+            {
+                Image closeImage = Properties.Resources.Sign_Close;
+                e.Graphics.DrawImage(closeImage, tabRect.Right - imageSize - 5, tabRect.Top + (tabRect.Height - imageSize) / 2, imageSize, imageSize);
+                TextFormatFlags textFlags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis;
+                    TextRenderer.DrawText(e.Graphics, tabPage.Text, tabPage.Font, tabRect, tabPage.ForeColor, textFlags);
+                }
+        }
+
+        private void tabControl_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (e.TabPageIndex == this.tabControl.TabCount - 1)
+                e.Cancel = true;
+            else
+            {
+                string tabPath = tabPathList[e.TabPageIndex];
+                e.TabPage.Controls.Add(listView);
+                e.TabPage.Controls.Add(flowLayoutPanelDrives);
+                if (tabPath == "My Computer")
+                    clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles);
+                else
+                    clsTreeListView.ShowListView(listView, tabPathList[e.TabPageIndex]);
+            }
+        }
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wp, IntPtr lp);
+        private const int TCM_SETMINTABWIDTH = 0x1300 + 49;
+        private void tabControl_HandleCreated(object sender, EventArgs e)
+        {
+            SendMessage(this.tabControl.Handle, TCM_SETMINTABWIDTH, IntPtr.Zero, (IntPtr)7);
+        }
+
+        private void tabControl_MouseEnter(object sender, EventArgs e)
+        {
+           // tabControl.SelectedTab.BackColor = Color.Black;
+        }
+
+        private void tabControl_MouseLeave(object sender, EventArgs e)
+        {
+            //tabControl.SelectedTab.BackColor = SecondaryTextColor;
+        }
+        #endregion
+
 
         #region TreeView design
 
@@ -564,6 +694,7 @@ namespace FileGuide
         }
 
         #endregion
+
 
         #region ListView design
 
@@ -848,6 +979,7 @@ namespace FileGuide
 
         #endregion
 
+
         #region Bottom statusBar design
 
 
@@ -872,6 +1004,10 @@ namespace FileGuide
             statusLblNumSelect.Text = listView.SelectedItems.Count.ToString() + " items selected";
         }
 
+
+
         #endregion
+
+
     }
 }
