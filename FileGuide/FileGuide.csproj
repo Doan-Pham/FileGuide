@@ -81,6 +81,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ClsTreeListView.cs" />
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -214,6 +223,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FileGuide.ico" />
+    <None Include="Resources\Icon_Info.png" />
+    <None Include="Resources\Icon_User.png" />
+    <None Include="Resources\Icon_UserGroup.png" />
     <Content Include="Resources\Sign_Close.png" />
     <Content Include="Resources\Sign_Plus.png" />
     <None Include="Resources\NormalChevron.png" />
