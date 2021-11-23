@@ -25,6 +25,7 @@ namespace FileGuide
         private Color PrimaryTextColor = Color.Black;
         private Color SecondaryTextColor = Color.Gray;
 
+
         private bool isCopying = false;
         private bool isCutting = false;
         private bool isRenaming = false;
@@ -112,7 +113,7 @@ namespace FileGuide
         #endregion
 
 
-        #region App features: copy, cut, paste, delete, new, go to file/folder, go back
+        #region App features: copy, cut, paste, delete, new, rename file/folder
 
 
         /// <summary>
@@ -134,7 +135,7 @@ namespace FileGuide
                 if (itemPaste == null)
                     return;
 
-                pathSource = itemPaste.SubItems[4].Text;
+                pathSource = itemPaste.SubItems[5].Text;
                 if (itemPaste.SubItems[1].Text.Trim() == "Folder")
                 {
                     isFolder = true;
@@ -255,6 +256,61 @@ namespace FileGuide
 
 
         /// <summary>
+        /// Create a new folder
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void folderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            int count = 1;
+            string newFolderName = "New folder";
+            foreach (ListViewItem item in listView.Items)
+            {
+                if (item.SubItems[0].Text.ToString().Contains("New folder") && item.SubItems[1].Text.ToString() == "Folder")
+                {
+                    newFolderName = "New folder_" + count.ToString();
+                    count++;
+                }
+            }
+            Directory.CreateDirectory(System.IO.Path.Combine(currentPath, newFolderName));
+            int index = 0;
+            clsTreeListView.ShowListView(listView, currentPath);
+            foreach (ListViewItem item in listView.Items)
+            {
+                if (item.SubItems[0].Text.ToString() == newFolderName)
+                {
+                    index = item.Index;
+                }
+            }           
+            listView.Items[index].Selected = true;
+            menuRename_Click(sender, e);
+        }
+
+
+        /// <summary>
+        /// Create a new file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string newFileName = "New file";
+            int count = 1;
+            foreach (ListViewItem item in listView.Items)
+            {
+                if (item.SubItems[0].Text.ToString().Contains("New file") && item.SubItems[1].Text.ToString() != "Folder")
+                {
+                    newFileName = "New file_" + count.ToString();
+                    count++;
+                }
+            }
+            File.Create(System.IO.Path.Combine(currentPath, newFileName));
+            clsTreeListView.ShowListView(listView, currentPath);
+        }
+
+
+        /// <summary>
         /// Begin renaming item
         /// </summary>
         /// <param name="sender"></param>
@@ -277,27 +333,33 @@ namespace FileGuide
             {
                 if (isRenaming)
                 {
-                    string path = listView.FocusedItem.SubItems[4].Text;
-                    if (e.Label == null) return;
-                    FileInfo fi = new FileInfo(path);
-
+                    while (e.Label == null || e.Label == "")
+                    {
+                        MessageBox.Show("File/folder's name can not be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        listView.SelectedItems[0].BeginEdit();
+                    }
+                string path = listView.FocusedItem.SubItems[5].Text;
+                FileInfo fi = new FileInfo(path);
                     //Rename item then refresh listView
-                    if (fi.Exists)
-                    {
-                        Microsoft.VisualBasic.FileIO.FileSystem.RenameFile(path, e.Label);
-                    }
-                    else
-                    {
-                        Microsoft.VisualBasic.FileIO.FileSystem.RenameDirectory(path, e.Label);
-                    }
-                    clsTreeListView.ShowListView(listView, clsTreeListView.GetParentDirectoryPath(path));
-                    e.CancelEdit = true;
-                    isRenaming = false;
+                
+                if (fi.Exists)
+                {
+                    Microsoft.VisualBasic.FileIO.FileSystem.RenameFile(path,e.Label);
+                }
+                else
+                {
+                    Microsoft.VisualBasic.FileIO.FileSystem.RenameDirectory(path,e.Label);
+                }
+                   
+                clsTreeListView.ShowListView(listView, clsTreeListView.GetParentDirectoryPath(path));
+                e.CancelEdit = true;
+                isRenaming = false;
                 }
             }
             catch (IOException)
             {
                 MessageBox.Show("File or Folder already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             catch (Exception ex)
             {
@@ -308,7 +370,7 @@ namespace FileGuide
         #endregion
 
 
-        #region App features: Go to file/folder, go back, click file/folder
+        #region App features: Go to file/folder, refresh, go back, click file/folder
 
 
         /// <summary>
@@ -426,6 +488,7 @@ namespace FileGuide
             }
         }
 
+
         /// <summary>
         /// Run if a file, show content if a folder
         /// </summary>
@@ -441,7 +504,7 @@ namespace FileGuide
                     // Nếu item là folder thì hiển thị path lên tsPath
                     if (item.SubItems[1].Text == "Folder")
                     {
-                        tscmbPath.Text = clsTreeListView.GetApproriatePath(item.SubItems[4].Text);
+                        tscmbPath.Text = clsTreeListView.GetApproriatePath(item.SubItems[5].Text);
                         currentPath = tscmbPath.Text;
                     }
                 }
@@ -964,51 +1027,6 @@ namespace FileGuide
             clsTreeListView.ClickItem(listView, listViewRecentFiles, listView.SelectedItems[0], tscmbPath);
             currentPath = tscmbPath.Text;
         }
-
-
-        /// <summary>
-        /// Create a new folder
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void folderToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string newFolderName = "New folder";
-            int count = 1;
-            foreach (ListViewItem item in listView.Items)
-            {
-                if (item.SubItems[0].Text.ToString().Contains("New folder") && item.SubItems[1].Text.ToString() == "Folder")
-                {
-                    newFolderName = "New folder_" + count.ToString();
-                    count++;
-                }
-            }
-            Directory.CreateDirectory(System.IO.Path.Combine(currentPath, newFolderName));
-            clsTreeListView.ShowListView(listView, currentPath);
-        }
-
-
-        /// <summary>
-        /// Create a new file
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string newFileName = "New file";
-            int count = 1;
-            foreach (ListViewItem item in listView.Items)
-            {
-                if (item.SubItems[0].Text.ToString().Contains("New file") && item.SubItems[1].Text.ToString() != "Folder")
-                {
-                    newFileName = "New file_" + count.ToString();
-                    count++;
-                }
-            }
-            File.Create(System.IO.Path.Combine(currentPath, newFileName));
-            clsTreeListView.ShowListView(listView, currentPath);
-        }
-
 
         #endregion
 
