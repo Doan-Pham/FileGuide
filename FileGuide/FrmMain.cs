@@ -331,17 +331,16 @@ namespace FileGuide
         {
             try
             {
-                if (isRenaming)
+                if (e.Label == null || e.Label == "")
                 {
-                    while (e.Label == null || e.Label == "")
-                    {
-                        MessageBox.Show("File/folder's name can not be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        listView.SelectedItems[0].BeginEdit();
-                    }
+                    refreshToolStripMenuItem.PerformClick();
+                    e.CancelEdit = true;
+                    return;
+                }
+
+                //Rename item then refresh listView
                 string path = listView.FocusedItem.SubItems[5].Text;
                 FileInfo fi = new FileInfo(path);
-                    //Rename item then refresh listView
-                
                 if (fi.Exists)
                 {
                     Microsoft.VisualBasic.FileIO.FileSystem.RenameFile(path,e.Label);
@@ -350,11 +349,8 @@ namespace FileGuide
                 {
                     Microsoft.VisualBasic.FileIO.FileSystem.RenameDirectory(path,e.Label);
                 }
-                   
                 clsTreeListView.ShowListView(listView, clsTreeListView.GetParentDirectoryPath(path));
                 e.CancelEdit = true;
-                isRenaming = false;
-                }
             }
             catch (IOException)
             {
