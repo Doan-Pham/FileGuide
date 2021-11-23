@@ -239,7 +239,7 @@ namespace FileGuide
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e.ToString());
+                    MessageBox.Show(e.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }         
             }
             return false;
@@ -280,7 +280,7 @@ namespace FileGuide
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+                MessageBox.Show(e.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -310,7 +310,7 @@ namespace FileGuide
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+                MessageBox.Show(e.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -325,7 +325,7 @@ namespace FileGuide
         {
             try
             {
-                string path = CurrentItem.SubItems[4].Text;
+                string path = CurrentItem.SubItems[5].Text;
                 FileInfo fi = new FileInfo(path);
 
                 if (fi.Exists)
@@ -354,7 +354,7 @@ namespace FileGuide
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+                MessageBox.Show(e.ToString(), "An error has occured",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             return false;
         }
@@ -368,7 +368,7 @@ namespace FileGuide
         {
             try
             {
-                string path = item.SubItems[4].Text;
+                string path = item.SubItems[5].Text;
 
                 if (item.SubItems[1].Text == "Folder")
                 {
@@ -418,7 +418,7 @@ namespace FileGuide
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

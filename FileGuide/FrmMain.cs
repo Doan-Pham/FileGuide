@@ -70,7 +70,7 @@ namespace FileGuide
             this.tabControl.TabPages[this.tabControl.TabCount - 1].Text = "";
             this.tabControl.TabPages[0].Text = "My Computer    ";
             tabControl.TabPages[this.tabControl.TabCount - 1].ToolTipText = "Add a new tab";
-            this.tabControl.Padding = new Point(12, 4);
+            this.tabControl.Padding = new Point(16, 4);
             this.tabControl.HandleCreated += tabControl_HandleCreated;
         }
 
@@ -418,10 +418,9 @@ namespace FileGuide
 
             if (clsTreeListView.ClickItem(listView, listViewRecentFiles, item, tscmbPath))
             {
-                //If item is a folder, show folder's path on tsPath
+                //If item is a folder, assign the current directory to currentPath
                 if (item.SubItems[1].Text == "Folder")
                 {
-                    tscmbPath.Text = clsTreeListView.GetApproriatePath(item.SubItems[4].Text);
                     currentPath = tscmbPath.Text;
                 }
             }
