@@ -97,25 +97,26 @@ namespace FileGuide
         /// Show the listView first page whenever the root node-My Computer is focused
         /// </summary>
         /// <param name="flowLayoutPanelDrives"></param>
-        public void ShowListViewFirstPage(FlowLayoutPanel flowLayoutPanelDrives, ListView RecentFiles)
+        public void ShowListViewFirstPage(FlowLayoutPanel flowLayoutPanelDrives, ListView RecentFiles, List<Panel> DrivePanel)
         {
             // For each drive, create a panel with icon, name, and storage information then add to listView first page
+            int driveCount = 0;
             foreach (var drive in DriveInfo.GetDrives())
             {
                 long freeSpace = drive.TotalFreeSpace;
                 long totalSpace = drive.TotalSize;
                 double percentFree = freeSpace * 100.0 / totalSpace;
-              
-                Panel DrivePanel = new Panel();
+
                 PictureBox DrivePicture = new PictureBox();
                 Label DriveName = new Label();
                 Label DriveStorageInfo = new Label();
                 ProgressBar DriveStorageBar = new ProgressBar();
 
-                DrivePanel.BorderStyle = BorderStyle.FixedSingle;
-                DrivePanel.Width = 365;
-                DrivePanel.Height = 105;
-                DrivePanel.Margin = new Padding(3,10,20,10);
+                DrivePanel.Add(new Panel());
+                DrivePanel[driveCount].BorderStyle = BorderStyle.FixedSingle;
+                DrivePanel[driveCount].Width = 365;
+                DrivePanel[driveCount].Height = 105;
+                DrivePanel[driveCount].Margin = new Padding(3,10,20,10);
 
                 switch (drive.DriveType.ToString())
                 {
@@ -156,24 +157,25 @@ namespace FileGuide
                 DriveStorageBar.Style = ProgressBarStyle.Continuous;
                 DriveStorageBar.ForeColor = Color.FromArgb(205, 232, 255);
                 DriveStorageBar.Value = 100 - (int)percentFree;
-                DrivePanel.Controls.Add(DriveStorageBar);
+                DrivePanel[driveCount].Controls.Add(DriveStorageBar);
 
                 DriveName.Dock = DockStyle.Top;
                 DriveName.Height = 40;
                 DriveName.TextAlign = ContentAlignment.BottomLeft;
                 DriveName.Text = drive.VolumeLabel.ToString() + " (" + drive.Name.ToString() + ")";
-                DrivePanel.Controls.Add(DriveName);
+                DrivePanel[driveCount].Controls.Add(DriveName);
 
                 DriveStorageInfo.Dock = DockStyle.Bottom;
                 DriveStorageInfo.Height = 36;
                 DriveStorageInfo.Text = FormatStorageLengthBytes(freeSpace) + " free of " + FormatStorageLengthBytes(totalSpace);
-                DrivePanel.Controls.Add(DriveStorageInfo);
+                DrivePanel[driveCount].Controls.Add(DriveStorageInfo);
 
                 DrivePicture.SizeMode = PictureBoxSizeMode.Zoom;
                 DrivePicture.Width = 80;
                 DrivePicture.Dock = DockStyle.Left;
-                DrivePanel.Controls.Add(DrivePicture);
-                flowLayoutPanelDrives.Controls.Add(DrivePanel);
+                DrivePanel[driveCount].Controls.Add(DrivePicture); 
+                flowLayoutPanelDrives.Controls.Add(DrivePanel[driveCount]);
+                driveCount++;
             }
             ShowRecentAccessedFiles(RecentFiles);
         }

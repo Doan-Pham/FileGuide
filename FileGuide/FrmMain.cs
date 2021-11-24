@@ -19,6 +19,7 @@ namespace FileGuide
     {
         List<string> tabPathList = new List<string> { "My Computer", ""};
         string spaceText = "      ";
+        List<Panel> DrivePanel = new List <Panel>();
 
         private Color HoverColor = Color.FromArgb(229, 243, 255);
         private Color UnfocusedSelectColor = Color.FromArgb(242, 242, 242);
@@ -65,7 +66,8 @@ namespace FileGuide
 
             if (File.Exists(RecentFilesTxt))
             clsTreeListView.ListRecentFiles.AddRange(File.ReadAllLines(RecentFilesTxt));
-            clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles);
+
+            clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanel);
 
             if (this.Width > 900)
                 tscmbPath.Width = this.Width - 800;
@@ -427,7 +429,7 @@ namespace FileGuide
                 if (currentPath != "My Computer")
                     clsTreeListView.ShowListView(listView, currentPath);
                 else
-                    clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles);
+                    clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanel);
             }
         }
 
@@ -454,7 +456,7 @@ namespace FileGuide
                     {
                         tableLayoutFirstPage.Visible = true;
                         listView.Visible = false;
-                        clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles);
+                        clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanel);
                     }
                     tscmbPath.Text = currentPath;
                 }
@@ -611,7 +613,7 @@ namespace FileGuide
                 {
                     tableLayoutFirstPage.Visible = true;
                     listView.Visible = false;
-                    clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles);
+                    clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanel);
                 }
                 else
                 {
@@ -662,7 +664,7 @@ namespace FileGuide
                 {
                     tableLayoutFirstPage.Visible = true;
                     listView.Visible = false;
-                    clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles);
+                    clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanel);
                 }
                 else
                 {
