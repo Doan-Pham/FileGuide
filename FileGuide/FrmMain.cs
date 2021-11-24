@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,7 +32,7 @@ namespace FileGuide
         private bool isRenaming = false;
         private bool isFolder = false;
         private bool isListView = false;
-
+        private bool haveDrawTreeViewBackground = false;
         private ListViewItem itemPaste;
         private string pathSource;
         private string pathDest;
@@ -55,12 +56,14 @@ namespace FileGuide
         private void Form1_Load(object sender, EventArgs e)
         {
             clsTreeListView.CreateTreeView(this.treeView);
+            
             treeView.ExpandAll();
             
-
+            
             string DebugDirectory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string RecentDirectory = System.IO.Path.Combine(DebugDirectory, "RecentAccessesFiles");
             string RecentFilesTxt = System.IO.Path.Combine(RecentDirectory, "RecentAccessedFiles.txt");
+
             if (File.Exists(RecentFilesTxt))
             clsTreeListView.ListRecentFiles.AddRange(File.ReadAllLines(RecentFilesTxt));
             clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles);
@@ -691,16 +694,19 @@ namespace FileGuide
         private void treeView_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
             // Reduce the unnecessary DrawNode calls. Without this, some icons are drawn in weird places
-            if (e.Bounds.Height < 1 || e.Bounds.Width < 1) return;
-           /* Color borderColor = Color.FromArgb(227, 227, 227);
-            ControlPaint.DrawBorder(e.Graphics, e.Node.TreeView.ClientRectangle,
-    borderColor, 0, ButtonBorderStyle.Solid,
-    borderColor, 0, ButtonBorderStyle.Solid,
-    borderColor, 2, ButtonBorderStyle.Solid,
-    borderColor, 0, ButtonBorderStyle.Solid);*/
 
-            Rectangle nodeRect = e.Node.Bounds;
+
+            if (e.Bounds.Height < 1 || e.Bounds.Width < 1) return;
+            /* Color borderColor = Color.FromArgb(227, 227, 227);
+             ControlPaint.DrawBorder(e.Graphics, e.Node.TreeView.ClientRectangle,
+     borderColor, 0, ButtonBorderStyle.Solid,
+     borderColor, 0, ButtonBorderStyle.Solid,
+     borderColor, 2, ButtonBorderStyle.Solid,
+     borderColor, 0, ButtonBorderStyle.Solid);*/
+
+
             Graphics g = e.Graphics;
+            Rectangle nodeRect = e.Node.Bounds;
 
             // Change node's background color on hovering
             if (e.State == TreeNodeStates.Hot)
@@ -722,6 +728,8 @@ namespace FileGuide
                     selectBrush = new SolidBrush(UnfocusedSelectColor);
                 }
                 g.FillRectangle(selectBrush, e.Bounds);
+                Rectangle flags = new Rectangle(e.Bounds.Right - 10, e.Bounds.Y , 10, e.Bounds.Height);
+                g.FillRectangle(new SolidBrush(Color.BlueViolet), flags);
             }
 
             // Draw expand/collapse chevrons
