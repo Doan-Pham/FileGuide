@@ -1066,6 +1066,7 @@ namespace FileGuide
         private void listViewRecentFiles_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             clsTreeListView.ClickItem(listViewRecentFiles, listViewRecentFiles.FocusedItem, tscmbPath,true);
+            tsbtnRefresh.PerformClick();
         }
     }
 }
