@@ -134,7 +134,7 @@ namespace FileGuide
                 if (itemPaste == null)
                     return;
 
-                pathSource = itemPaste.SubItems[4].Text;
+                pathSource = itemPaste.SubItems[5].Text;
                 if (itemPaste.SubItems[1].Text.Trim() == "Folder")
                 {
                     isFolder = true;
@@ -277,7 +277,7 @@ namespace FileGuide
             {
                 if (isRenaming)
                 {
-                    string path = listView.FocusedItem.SubItems[4].Text;
+                    string path = listView.FocusedItem.SubItems[5].Text;
                     if (e.Label == null) return;
                     FileInfo fi = new FileInfo(path);
 
@@ -421,7 +421,7 @@ namespace FileGuide
                 //If item is a folder, show folder's path on tsPath
                 if (item.SubItems[1].Text == "Folder")
                 {
-                    tscmbPath.Text = clsTreeListView.GetApproriatePath(item.SubItems[4].Text);
+                    tscmbPath.Text = clsTreeListView.GetApproriatePath(item.SubItems[5].Text);
                     currentPath = tscmbPath.Text;
                 }
             }
@@ -442,7 +442,7 @@ namespace FileGuide
                     // Nếu item là folder thì hiển thị path lên tsPath
                     if (item.SubItems[1].Text == "Folder")
                     {
-                        tscmbPath.Text = clsTreeListView.GetApproriatePath(item.SubItems[4].Text);
+                        tscmbPath.Text = clsTreeListView.GetApproriatePath(item.SubItems[5].Text);
                         currentPath = tscmbPath.Text;
                     }
                 }
@@ -754,7 +754,7 @@ namespace FileGuide
         {
             listView.OwnerDraw = true;
             listView.View = View.SmallIcon;
-            clsTreeListView.SetListViewItemSizeSmallIcon(listView, 100, 30);
+            //clsTreeListView.SetListViewItemSizeSmallIcon(listView, 100, 30);
         }
 
 
@@ -1036,7 +1036,7 @@ namespace FileGuide
         /// <param name="e"></param>
         private void listView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            statusLblNumSelect.Text = listView.SelectedItems.Count.ToString() + " items selected";
+            statusLblNumSelect.Text = listView.SelectedItems.Count.ToString() + " items selected   " + listView.SelectedItems;
         }
 
 
