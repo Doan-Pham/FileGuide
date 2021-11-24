@@ -432,7 +432,7 @@ namespace FileGuide
             string[] item = new string[6];
             item[0] = folder.Name;
             item[1] = "Folder";
-            item[2] = "";
+            item[2] = FormatStorageLengthBytes(GetFolderSize(folder.FullName));
             item[3] = folder.CreationTime.ToString();
             item[4] = folder.LastWriteTime.ToString();
             item[5] = folder.FullName;
@@ -463,7 +463,7 @@ namespace FileGuide
 
         
         /// <summary>
-        /// Modify a path for displaying
+        /// Return a approriate path for use in a directory structure
         /// </summary>
         /// <param name="strPath"></param>
         /// <returns></returns>
@@ -675,6 +675,36 @@ namespace FileGuide
         }
 
         /// <summary>
+        /// Get a directory's size in bytes
+        /// </summary>
+        /// <param name="folderPath"></param>
+        /// <returns></returns>
+        public long GetFolderSize(string folderPath)
+        {
+            /* DirectoryInfo directory = new DirectoryInfo(folderPath);
+             return directory.EnumerateFiles("*", SearchOption.AllDirectories).Sum(file => file.Length);*/
+            long size = 0;
+            try 
+            {       
+                string[] fileNames = Directory.GetFiles(folderPath, "*", SearchOption.AllDirectories);
+                foreach (string name in fileNames)
+                {
+                    FileInfo fileInfo = new FileInfo(name);
+                    size += fileInfo.Length;
+                }
+            }
+            catch (UnauthorizedAccessException)
+            {
+                size = 0;
+            }
+            catch (IOException)
+            {
+                size = 0;
+            }
+            return size;
+        }
+
+        /// <summary>
         /// Set width, height of listView item in large icon view mode
         /// </summary>
         /// <param name="listView"></param>
@@ -685,28 +715,6 @@ namespace FileGuide
             ImageList imgList = new ImageList();
             imgList.ImageSize = new Size(width, height);
             listView.LargeImageList = imgList;
-        }
-
-        /// <summary>
-        /// Set width, height of listView item in small icon view mode
-        /// </summary>
-        /// <param name="listView"></param>
-        /// <param name="width"></param>
-        /// <param name="height"></param>
-        public void SetListViewItemSizeSmallIcon(ListView listView, int width, int height)
-        {
-            ImageList imgList = new ImageList();
-            imgList.ImageSize = new Size(width, height);
-            listView.SmallImageList = imgList;
-        }
-        /// <summary>
-        /// Reset listView item's size
-        /// </summary>
-        /// <param name="listView"></param>
-        public void ResetListViewItemSize(ListView listView)
-        {
-            listView.SmallImageList = null;
-            listView.LargeImageList = null;
         }
     }
 }

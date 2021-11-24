@@ -820,7 +820,7 @@ namespace FileGuide
         {
             listView.OwnerDraw = true;
             listView.View = View.SmallIcon;
-            clsTreeListView.SetListViewItemSizeSmallIcon(listView, 100, 30);
+            //clsTreeListView.SetListViewItemSizeSmallIcon(listView, 100, 30);
         }
 
 
@@ -1057,7 +1057,7 @@ namespace FileGuide
         /// <param name="e"></param>
         private void listView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            statusLblNumSelect.Text = listView.SelectedItems.Count.ToString() + " items selected";
+            statusLblNumSelect.Text = listView.SelectedItems.Count.ToString() + " items selected   " + listView.SelectedItems;
         }
 
 
