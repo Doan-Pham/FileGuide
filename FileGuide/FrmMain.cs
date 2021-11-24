@@ -29,7 +29,6 @@ namespace FileGuide
 
         private bool isCopying = false;
         private bool isCutting = false;
-        private bool isRenaming = false;
         private bool isFolder = false;
         private bool isListView = false;
         private bool haveDrawTreeViewBackground = false;
@@ -320,7 +319,6 @@ namespace FileGuide
         /// <param name="e"></param>
         private void menuRename_Click(object sender, EventArgs e)
         {
-            isRenaming = true;
             listView.SelectedItems[0].BeginEdit();
         }
 
@@ -477,7 +475,7 @@ namespace FileGuide
         {
             ListViewItem item = listView.FocusedItem;
 
-            if (clsTreeListView.ClickItem(listView, listViewRecentFiles, item, tscmbPath))
+            if (clsTreeListView.ClickItem(listView, item, tscmbPath,false))
             {
                 //If item is a folder, assign the current directory to currentPath
                 if (item.SubItems[1].Text == "Folder")
@@ -498,7 +496,7 @@ namespace FileGuide
             if (e.KeyChar == 13)
             {
                 ListViewItem item = listView.FocusedItem;
-                if (clsTreeListView.ClickItem(listView, listViewRecentFiles, item, tscmbPath))
+                if (clsTreeListView.ClickItem(listView, item, tscmbPath, false))
                 {
                     // Nếu item là folder thì hiển thị path lên tsPath
                     if (item.SubItems[1].Text == "Folder")
@@ -1028,7 +1026,7 @@ namespace FileGuide
         /// <param name="e"></param>
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            clsTreeListView.ClickItem(listView, listViewRecentFiles, listView.SelectedItems[0], tscmbPath);
+            clsTreeListView.ClickItem(listView, listView.SelectedItems[0], tscmbPath,false);
             currentPath = tscmbPath.Text;
         }
 
@@ -1062,8 +1060,12 @@ namespace FileGuide
 
 
 
+
         #endregion
 
-
+        private void listViewRecentFiles_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            clsTreeListView.ClickItem(listViewRecentFiles, listViewRecentFiles.FocusedItem, tscmbPath,true);
+        }
     }
 }

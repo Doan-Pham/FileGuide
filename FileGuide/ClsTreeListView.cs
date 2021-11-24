@@ -321,11 +321,11 @@ namespace FileGuide
         /// <param name="listView"></param>
         /// <param name="CurrentItem"></param>
         /// <returns></returns>
-        public bool ClickItem(ListView listView,ListView listViewRecentFiles ,ListViewItem CurrentItem, ToolStripComboBox tscmbPath)
+        public bool ClickItem(ListView listView,ListViewItem CurrentItem, ToolStripComboBox tscmbPath,bool isRecenFilesListView)
         {
             try
             {
-                string path = CurrentItem.SubItems[5].Text;
+                string path = CurrentItem.SubItems[CurrentItem.SubItems.Count-1].Text;
                 FileInfo fi = new FileInfo(path);
 
                 if (fi.Exists)
@@ -347,8 +347,11 @@ namespace FileGuide
                 }
                 else
                 {
+                    if (!isRecenFilesListView)
+                    { 
                     ShowListView(listView, path);
                     tscmbPath.Text = GetApproriatePath(path);
+                    }
                 }
                 return true;
             }
@@ -432,7 +435,7 @@ namespace FileGuide
             string[] item = new string[6];
             item[0] = folder.Name;
             item[1] = "Folder";
-            item[2] = FormatStorageLengthBytes(GetFolderSize(folder.FullName));
+            item[2] = "";//FormatStorageLengthBytes(GetFolderSize(folder.FullName));
             item[3] = folder.CreationTime.ToString();
             item[4] = folder.LastWriteTime.ToString();
             item[5] = folder.FullName;
@@ -681,8 +684,6 @@ namespace FileGuide
         /// <returns></returns>
         public long GetFolderSize(string folderPath)
         {
-            /* DirectoryInfo directory = new DirectoryInfo(folderPath);
-             return directory.EnumerateFiles("*", SearchOption.AllDirectories).Sum(file => file.Length);*/
             long size = 0;
             try 
             {       

@@ -445,6 +445,7 @@ namespace FileGuide
             this.listViewRecentFiles.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.listView_DrawColumnHeader);
             this.listViewRecentFiles.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.listView_DrawItem);
             this.listViewRecentFiles.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.listView_DrawSubItem);
+            this.listViewRecentFiles.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewRecentFiles_MouseDoubleClick);
             // 
             // listViewColRecentPath
             // 
