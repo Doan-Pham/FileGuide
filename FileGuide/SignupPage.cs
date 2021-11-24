@@ -22,7 +22,7 @@ namespace FileGuide
         private void SignupPage_Load(object sender, EventArgs e)
         {
             DataGridViewUserList.DataSource = GetAllUsers().Tables[0];
-            DataGridViewUserList.DataMember = "USERS";
+
         }
 
         DataSet GetAllUsers()

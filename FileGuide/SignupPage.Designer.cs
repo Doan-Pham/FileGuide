@@ -54,7 +54,7 @@ namespace FileGuide
             this.guna2Button1.Font = new System.Drawing.Font("Questrial", 11F);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
             this.guna2Button1.HoverState.Parent = this.guna2Button1;
-            this.guna2Button1.Location = new System.Drawing.Point(875, 335);
+            this.guna2Button1.Location = new System.Drawing.Point(834, 461);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
             this.guna2Button1.Size = new System.Drawing.Size(172, 57);
@@ -79,7 +79,7 @@ namespace FileGuide
             this.guna2TextBox2.ForeColor = System.Drawing.Color.Black;
             this.guna2TextBox2.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox2.HoverState.Parent = this.guna2TextBox2;
-            this.guna2TextBox2.Location = new System.Drawing.Point(806, 248);
+            this.guna2TextBox2.Location = new System.Drawing.Point(765, 374);
             this.guna2TextBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2TextBox2.Name = "guna2TextBox2";
             this.guna2TextBox2.PasswordChar = '*';
@@ -108,7 +108,7 @@ namespace FileGuide
             this.guna2TextBox1.ForeColor = System.Drawing.Color.Black;
             this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox1.HoverState.Parent = this.guna2TextBox1;
-            this.guna2TextBox1.Location = new System.Drawing.Point(806, 157);
+            this.guna2TextBox1.Location = new System.Drawing.Point(765, 283);
             this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PasswordChar = '\0';
@@ -123,7 +123,7 @@ namespace FileGuide
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Merriweather Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(73, 60);
+            this.label2.Location = new System.Drawing.Point(61, 166);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(619, 64);
             this.label2.TabIndex = 28;
@@ -158,13 +158,13 @@ namespace FileGuide
             this.DataGridViewUserList.DefaultCellStyle = dataGridViewCellStyle3;
             this.DataGridViewUserList.EnableHeadersVisualStyles = false;
             this.DataGridViewUserList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.DataGridViewUserList.Location = new System.Drawing.Point(84, 157);
+            this.DataGridViewUserList.Location = new System.Drawing.Point(57, 292);
             this.DataGridViewUserList.Name = "DataGridViewUserList";
             this.DataGridViewUserList.RowHeadersVisible = false;
             this.DataGridViewUserList.RowHeadersWidth = 62;
             this.DataGridViewUserList.RowTemplate.Height = 28;
             this.DataGridViewUserList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewUserList.Size = new System.Drawing.Size(608, 396);
+            this.DataGridViewUserList.Size = new System.Drawing.Size(623, 408);
             this.DataGridViewUserList.TabIndex = 29;
             this.DataGridViewUserList.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.DataGridViewUserList.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -190,8 +190,7 @@ namespace FileGuide
             // 
             // SignupPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.Controls.Add(this.DataGridViewUserList);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.guna2Button1);
