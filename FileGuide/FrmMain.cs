@@ -1112,5 +1112,40 @@ namespace FileGuide
             drivePanel.Parent.BackColor = Color.White;
             Cursor = Cursors.Default;
         }
+
+        private void guna2Panel1_Click(object sender, EventArgs e)
+        {
+            Panel drivePanel = sender as Panel;
+            foreach (var drive in DriveInfo.GetDrives())
+            {
+                if (drivePanel.Controls["Name"].Text.Contains(drive.Name.ToString().Replace("\\", "")))
+                {
+                    tableLayoutFirstPage.Visible = false;
+                    listView.Visible = true;
+                    currentPath = drive.Name;
+                    tscmbPath.Text = drive.Name;
+                    clsTreeListView.ShowListView(listView, currentPath);
+                    return;
+                }
+            }
+        }
+
+        private void guna2Panel2_Click(object sender, EventArgs e)
+        {
+            Panel drivePanel = sender as Panel;
+            Panel actualPanel = (Panel)drivePanel.Parent;
+            foreach (var drive in DriveInfo.GetDrives())
+            {
+                if (actualPanel.Controls["driveName"].Text.Contains(drive.Name.ToString().Replace("\\","")))
+                {
+                    tableLayoutFirstPage.Visible = false;
+                    listView.Visible = true;
+                    currentPath = drive.Name;
+                    tscmbPath.Text = drive.Name;
+                    clsTreeListView.ShowListView(listView, currentPath);
+                    return;
+                }
+            }
+        }
     }
 }

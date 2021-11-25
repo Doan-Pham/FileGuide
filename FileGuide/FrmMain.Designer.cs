@@ -92,7 +92,7 @@ namespace FileGuide
             this.tsMenuSmall = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMenuList = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMenuDetails = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
+            this.driveName = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.statusStrip1.SuspendLayout();
@@ -436,7 +436,7 @@ namespace FileGuide
             this.guna2Panel1.BorderRadius = 10;
             this.guna2Panel1.BorderThickness = 1;
             this.guna2Panel1.Controls.Add(this.guna2Panel2);
-            this.guna2Panel1.Controls.Add(this.label1);
+            this.guna2Panel1.Controls.Add(this.driveName);
             this.guna2Panel1.Controls.Add(this.label2);
             this.guna2Panel1.Controls.Add(this.guna2ProgressBar1);
             this.guna2Panel1.Cursor = System.Windows.Forms.Cursors.Arrow;
@@ -446,6 +446,7 @@ namespace FileGuide
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(392, 114);
             this.guna2Panel1.TabIndex = 0;
+            this.guna2Panel1.Click += new System.EventHandler(this.guna2Panel1_Click);
             // 
             // guna2ProgressBar1
             // 
@@ -753,13 +754,13 @@ namespace FileGuide
             this.tsMenuDetails.Text = "Details";
             this.tsMenuDetails.Click += new System.EventHandler(this.menuDetails_Click);
             // 
-            // label1
+            // driveName
             // 
-            this.label1.Location = new System.Drawing.Point(91, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(149, 31);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
+            this.driveName.Location = new System.Drawing.Point(91, 17);
+            this.driveName.Name = "driveName";
+            this.driveName.Size = new System.Drawing.Size(281, 31);
+            this.driveName.TabIndex = 1;
+            this.driveName.Text = "Windows SSD (C:)";
             // 
             // label2
             // 
@@ -780,6 +781,7 @@ namespace FileGuide
             this.guna2Panel2.Size = new System.Drawing.Size(392, 114);
             this.guna2Panel2.TabIndex = 1;
             this.guna2Panel2.UseTransparentBackground = true;
+            this.guna2Panel2.Click += new System.EventHandler(this.guna2Panel2_Click);
             this.guna2Panel2.MouseEnter += new System.EventHandler(this.guna2Panel1_MouseEnter);
             this.guna2Panel2.MouseLeave += new System.EventHandler(this.guna2Panel1_MouseLeave);
             // 
@@ -887,7 +889,7 @@ namespace FileGuide
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2ProgressBar guna2ProgressBar1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label driveName;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
     }
 }
