@@ -71,8 +71,12 @@ namespace FileGuide
 
             foreach (Panel DrivePanel in DrivePanelList)
             {
-                DrivePanel.MouseEnter += DrivePanel_MouseEnter;
-                DrivePanel.MouseLeave += DrivePanel_MouseLeave;
+                foreach (Control control in DrivePanel.Controls)
+                {
+                    control.MouseEnter += DrivePanel_MouseEnter;
+                    control.MouseLeave += DrivePanel_MouseLeave;
+                    control.Click += DrivePanel_Click;
+                }
             }
             if (this.Width > 900)
                 tscmbPath.Width = this.Width - 800;
@@ -444,7 +448,18 @@ namespace FileGuide
                 if (currentPath != "My Computer")
                     clsTreeListView.ShowListView(listView, currentPath);
                 else
+                {
                     clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
+                    foreach (Panel DrivePanel in DrivePanelList)
+                    {
+                        foreach (Control control in DrivePanel.Controls)
+                        {
+                            control.MouseEnter += DrivePanel_MouseEnter;
+                            control.MouseLeave += DrivePanel_MouseLeave;
+                            control.Click += DrivePanel_Click;
+                        }
+                    };
+                }
             }
         }
 
@@ -1061,7 +1076,18 @@ namespace FileGuide
         private void tscmbPath_TextChanged(object sender, EventArgs e)
         {
             statusLblItemNum.Text = listView.Items.Count.ToString() + " items";
-
+            if (currentPath == "My Computer")
+            { 
+                foreach (Panel DrivePanel in DrivePanelList)
+                {
+                    foreach (Control control in DrivePanel.Controls)
+                    {
+                        control.MouseEnter += DrivePanel_MouseEnter;
+                        control.MouseLeave += DrivePanel_MouseLeave;
+                        control.Click += DrivePanel_Click;
+                    }
+                }
+            }
         }
 
 
@@ -1088,37 +1114,26 @@ namespace FileGuide
 
         private void DrivePanel_MouseEnter(object sender, EventArgs e)
         {
-            Panel drivePanel = sender as Panel;
+            Control drivePanelChildControls = sender as Control;
+            Panel drivePanel = (Panel)drivePanelChildControls.Parent;
             drivePanel.BackColor = Color.FromArgb(200, 200, 200);
             Cursor = Cursors.Hand;
         }
         private void DrivePanel_MouseLeave(object sender, EventArgs e)
         {
-            Panel drivePanel = sender as Panel;
+            Control drivePanelChildControls = sender as Control;
+            Panel drivePanel = (Panel)drivePanelChildControls.Parent;
             drivePanel.BackColor = Color.White;
             Cursor = Cursors.Default;
         }
 
-        private void guna2Panel1_MouseEnter(object sender, EventArgs e)
+        private void DrivePanel_Click(object sender, EventArgs e)
         {
-            Panel drivePanel = sender as Panel;
-            drivePanel.Parent.BackColor = Color.FromArgb(200, 200, 200);
-            Cursor = Cursors.Hand;
-        }
-
-        private void guna2Panel1_MouseLeave(object sender, EventArgs e)
-        {
-            Panel drivePanel = sender as Panel;
-            drivePanel.Parent.BackColor = Color.White;
-            Cursor = Cursors.Default;
-        }
-
-        private void guna2Panel1_Click(object sender, EventArgs e)
-        {
-            Panel drivePanel = sender as Panel;
+            Control drivePanelChildControls = sender as Control;
+            Panel drivePanel = (Panel)drivePanelChildControls.Parent;
             foreach (var drive in DriveInfo.GetDrives())
             {
-                if (drivePanel.Controls["Name"].Text.Contains(drive.Name.ToString().Replace("\\", "")))
+                if (drivePanel.Controls[1].Text.Contains(drive.Name.ToString().Replace("\\", "")))
                 {
                     tableLayoutFirstPage.Visible = false;
                     listView.Visible = true;
@@ -1129,7 +1144,6 @@ namespace FileGuide
                 }
             }
         }
-
         private void guna2Panel2_Click(object sender, EventArgs e)
         {
             Panel drivePanel = sender as Panel;
@@ -1146,6 +1160,23 @@ namespace FileGuide
                     return;
                 }
             }
+        }
+
+        private void guna2Panel2_MouseEnter(object sender, EventArgs e)
+        {
+         
+            Panel drivePanel = sender as Panel;
+            Panel parentPanel = (Panel)drivePanel.Parent;
+            parentPanel.BackColor = Color.FromArgb(200, 200, 200);
+            Cursor = Cursors.Hand;
+        }
+
+        private void guna2Panel2_MouseLeave(object sender, EventArgs e)
+        {
+            Panel drivePanel = sender as Panel;
+            Panel parentPanel = (Panel)drivePanel.Parent;
+            parentPanel.BackColor = Color.White;
+            Cursor = Cursors.Default;
         }
     }
 }

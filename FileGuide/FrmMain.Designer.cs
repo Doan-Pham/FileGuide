@@ -64,6 +64,9 @@ namespace FileGuide
             this.tableLblRecent = new System.Windows.Forms.Label();
             this.flowLayoutPanelDrives = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.driveName = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.guna2ProgressBar1 = new Guna.UI2.WinForms.Guna2ProgressBar();
             this.listViewRecentFiles = new System.Windows.Forms.ListView();
             this.listViewColRecentPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -92,9 +95,6 @@ namespace FileGuide
             this.tsMenuSmall = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMenuList = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMenuDetails = new System.Windows.Forms.ToolStripMenuItem();
-            this.driveName = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.statusStrip1.SuspendLayout();
             this.contextMenuStripListView.SuspendLayout();
             this.contextMenuStripListViewItem.SuspendLayout();
@@ -446,7 +446,37 @@ namespace FileGuide
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(392, 114);
             this.guna2Panel1.TabIndex = 0;
-            this.guna2Panel1.Click += new System.EventHandler(this.guna2Panel1_Click);
+            // 
+            // guna2Panel2
+            // 
+            this.guna2Panel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel2.Name = "guna2Panel2";
+            this.guna2Panel2.ShadowDecoration.Parent = this.guna2Panel2;
+            this.guna2Panel2.Size = new System.Drawing.Size(392, 114);
+            this.guna2Panel2.TabIndex = 1;
+            this.guna2Panel2.UseTransparentBackground = true;
+            this.guna2Panel2.Click += new System.EventHandler(this.guna2Panel2_Click);
+            this.guna2Panel2.MouseEnter += new System.EventHandler(this.guna2Panel2_MouseEnter);
+            this.guna2Panel2.MouseLeave += new System.EventHandler(this.guna2Panel2_MouseLeave);
+            // 
+            // driveName
+            // 
+            this.driveName.Location = new System.Drawing.Point(91, 17);
+            this.driveName.Name = "driveName";
+            this.driveName.Size = new System.Drawing.Size(281, 31);
+            this.driveName.TabIndex = 1;
+            this.driveName.Text = "Windows SSD (C:)";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(80, 82);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 30);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "label2";
             // 
             // guna2ProgressBar1
             // 
@@ -753,37 +783,6 @@ namespace FileGuide
             this.tsMenuDetails.Size = new System.Drawing.Size(209, 36);
             this.tsMenuDetails.Text = "Details";
             this.tsMenuDetails.Click += new System.EventHandler(this.menuDetails_Click);
-            // 
-            // driveName
-            // 
-            this.driveName.Location = new System.Drawing.Point(91, 17);
-            this.driveName.Name = "driveName";
-            this.driveName.Size = new System.Drawing.Size(281, 31);
-            this.driveName.TabIndex = 1;
-            this.driveName.Text = "Windows SSD (C:)";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(80, 82);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 30);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "label2";
-            // 
-            // guna2Panel2
-            // 
-            this.guna2Panel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.ShadowDecoration.Parent = this.guna2Panel2;
-            this.guna2Panel2.Size = new System.Drawing.Size(392, 114);
-            this.guna2Panel2.TabIndex = 1;
-            this.guna2Panel2.UseTransparentBackground = true;
-            this.guna2Panel2.Click += new System.EventHandler(this.guna2Panel2_Click);
-            this.guna2Panel2.MouseEnter += new System.EventHandler(this.guna2Panel1_MouseEnter);
-            this.guna2Panel2.MouseLeave += new System.EventHandler(this.guna2Panel1_MouseLeave);
             // 
             // FrmMain
             // 

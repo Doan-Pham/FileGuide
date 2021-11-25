@@ -12,6 +12,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows;
 using System.Reflection;
+using Guna.UI2.WinForms;
 
 namespace FileGuide
 {
@@ -173,7 +174,8 @@ namespace FileGuide
                 DrivePicture.SizeMode = PictureBoxSizeMode.Zoom;
                 DrivePicture.Width = 80;
                 DrivePicture.Dock = DockStyle.Left;
-                DrivePanel[driveCount].Controls.Add(DrivePicture); 
+                DrivePanel[driveCount].Controls.Add(DrivePicture);
+
                 flowLayoutPanelDrives.Controls.Add(DrivePanel[driveCount]);
                 driveCount++;
             }
