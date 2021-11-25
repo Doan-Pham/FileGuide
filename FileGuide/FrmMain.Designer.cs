@@ -63,6 +63,8 @@ namespace FileGuide
             this.tableLblDrives = new System.Windows.Forms.Label();
             this.tableLblRecent = new System.Windows.Forms.Label();
             this.flowLayoutPanelDrives = new System.Windows.Forms.FlowLayoutPanel();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2ProgressBar1 = new Guna.UI2.WinForms.Guna2ProgressBar();
             this.listViewRecentFiles = new System.Windows.Forms.ListView();
             this.listViewColRecentPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Path = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -90,6 +92,9 @@ namespace FileGuide
             this.tsMenuSmall = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMenuList = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMenuDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.statusStrip1.SuspendLayout();
             this.contextMenuStripListView.SuspendLayout();
             this.contextMenuStripListViewItem.SuspendLayout();
@@ -100,6 +105,8 @@ namespace FileGuide
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutFirstPage.SuspendLayout();
+            this.flowLayoutPanelDrives.SuspendLayout();
+            this.guna2Panel1.SuspendLayout();
             this.tsPath.SuspendLayout();
             this.toolBar.SuspendLayout();
             this.SuspendLayout();
@@ -416,11 +423,44 @@ namespace FileGuide
             // flowLayoutPanelDrives
             // 
             this.flowLayoutPanelDrives.AutoScroll = true;
+            this.flowLayoutPanelDrives.Controls.Add(this.guna2Panel1);
             this.flowLayoutPanelDrives.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanelDrives.Location = new System.Drawing.Point(3, 60);
             this.flowLayoutPanelDrives.Name = "flowLayoutPanelDrives";
             this.flowLayoutPanelDrives.Size = new System.Drawing.Size(1203, 165);
             this.flowLayoutPanelDrives.TabIndex = 2;
+            // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.BorderColor = System.Drawing.Color.Silver;
+            this.guna2Panel1.BorderRadius = 10;
+            this.guna2Panel1.BorderThickness = 1;
+            this.guna2Panel1.Controls.Add(this.guna2Panel2);
+            this.guna2Panel1.Controls.Add(this.label1);
+            this.guna2Panel1.Controls.Add(this.label2);
+            this.guna2Panel1.Controls.Add(this.guna2ProgressBar1);
+            this.guna2Panel1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.guna2Panel1.Location = new System.Drawing.Point(3, 3);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.ShadowDecoration.BorderRadius = 10;
+            this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
+            this.guna2Panel1.Size = new System.Drawing.Size(392, 114);
+            this.guna2Panel1.TabIndex = 0;
+            // 
+            // guna2ProgressBar1
+            // 
+            this.guna2ProgressBar1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ProgressBar1.BorderRadius = 10;
+            this.guna2ProgressBar1.Location = new System.Drawing.Point(85, 68);
+            this.guna2ProgressBar1.Name = "guna2ProgressBar1";
+            this.guna2ProgressBar1.ProgressColor = System.Drawing.Color.Turquoise;
+            this.guna2ProgressBar1.ProgressColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.guna2ProgressBar1.ShadowDecoration.Parent = this.guna2ProgressBar1;
+            this.guna2ProgressBar1.Size = new System.Drawing.Size(301, 11);
+            this.guna2ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.guna2ProgressBar1.TabIndex = 0;
+            this.guna2ProgressBar1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.guna2ProgressBar1.Value = 80;
             // 
             // listViewRecentFiles
             // 
@@ -713,6 +753,36 @@ namespace FileGuide
             this.tsMenuDetails.Text = "Details";
             this.tsMenuDetails.Click += new System.EventHandler(this.menuDetails_Click);
             // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(91, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(149, 31);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "label1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(80, 82);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 30);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "label2";
+            // 
+            // guna2Panel2
+            // 
+            this.guna2Panel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel2.Name = "guna2Panel2";
+            this.guna2Panel2.ShadowDecoration.Parent = this.guna2Panel2;
+            this.guna2Panel2.Size = new System.Drawing.Size(392, 114);
+            this.guna2Panel2.TabIndex = 1;
+            this.guna2Panel2.UseTransparentBackground = true;
+            this.guna2Panel2.MouseEnter += new System.EventHandler(this.guna2Panel1_MouseEnter);
+            this.guna2Panel2.MouseLeave += new System.EventHandler(this.guna2Panel1_MouseLeave);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
@@ -743,6 +813,9 @@ namespace FileGuide
             this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tableLayoutFirstPage.ResumeLayout(false);
+            this.flowLayoutPanelDrives.ResumeLayout(false);
+            this.guna2Panel1.ResumeLayout(false);
+            this.guna2Panel1.PerformLayout();
             this.tsPath.ResumeLayout(false);
             this.tsPath.PerformLayout();
             this.toolBar.ResumeLayout(false);
@@ -811,6 +884,11 @@ namespace FileGuide
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPlus;
         private System.Windows.Forms.TabPage tabPage1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2ProgressBar guna2ProgressBar1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
     }
 }
 

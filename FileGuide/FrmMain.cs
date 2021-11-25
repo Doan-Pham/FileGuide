@@ -19,7 +19,7 @@ namespace FileGuide
     {
         List<string> tabPathList = new List<string> { "My Computer", ""};
         string spaceText = "      ";
-        List<Panel> DrivePanel = new List <Panel>();
+        List<Panel> DrivePanelList = new List <Panel>();
 
         private Color HoverColor = Color.FromArgb(229, 243, 255);
         private Color UnfocusedSelectColor = Color.FromArgb(242, 242, 242);
@@ -67,8 +67,13 @@ namespace FileGuide
             if (File.Exists(RecentFilesTxt))
             clsTreeListView.ListRecentFiles.AddRange(File.ReadAllLines(RecentFilesTxt));
 
-            clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanel);
+            clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
 
+            foreach (Panel DrivePanel in DrivePanelList)
+            {
+                DrivePanel.MouseEnter += DrivePanel_MouseEnter;
+                DrivePanel.MouseLeave += DrivePanel_MouseLeave;
+            }
             if (this.Width > 900)
                 tscmbPath.Width = this.Width - 800;
             currentPath = "My Computer";
@@ -77,6 +82,16 @@ namespace FileGuide
             tabControl.TabPages[this.tabControl.TabCount - 1].ToolTipText = "Add a new tab";
             this.tabControl.Padding = new Point(16, 4);
             this.tabControl.HandleCreated += tabControl_HandleCreated;
+        }
+
+        private void DrivePanel_MouseEnter1(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Panel_MouseMove(object sender, MouseEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
 
@@ -429,7 +444,7 @@ namespace FileGuide
                 if (currentPath != "My Computer")
                     clsTreeListView.ShowListView(listView, currentPath);
                 else
-                    clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanel);
+                    clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
             }
         }
 
@@ -456,7 +471,7 @@ namespace FileGuide
                     {
                         tableLayoutFirstPage.Visible = true;
                         listView.Visible = false;
-                        clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanel);
+                        clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
                     }
                     tscmbPath.Text = currentPath;
                 }
@@ -613,7 +628,7 @@ namespace FileGuide
                 {
                     tableLayoutFirstPage.Visible = true;
                     listView.Visible = false;
-                    clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanel);
+                    clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
                 }
                 else
                 {
@@ -664,7 +679,7 @@ namespace FileGuide
                 {
                     tableLayoutFirstPage.Visible = true;
                     listView.Visible = false;
-                    clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanel);
+                    clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
                 }
                 else
                 {
@@ -1069,6 +1084,33 @@ namespace FileGuide
         {
             clsTreeListView.ClickItem(listViewRecentFiles, listViewRecentFiles.FocusedItem, tscmbPath,true);
             tsbtnRefresh.PerformClick();
+        }
+
+        private void DrivePanel_MouseEnter(object sender, EventArgs e)
+        {
+            Panel drivePanel = sender as Panel;
+            drivePanel.BackColor = Color.FromArgb(200, 200, 200);
+            Cursor = Cursors.Hand;
+        }
+        private void DrivePanel_MouseLeave(object sender, EventArgs e)
+        {
+            Panel drivePanel = sender as Panel;
+            drivePanel.BackColor = Color.White;
+            Cursor = Cursors.Default;
+        }
+
+        private void guna2Panel1_MouseEnter(object sender, EventArgs e)
+        {
+            Panel drivePanel = sender as Panel;
+            drivePanel.Parent.BackColor = Color.FromArgb(200, 200, 200);
+            Cursor = Cursors.Hand;
+        }
+
+        private void guna2Panel1_MouseLeave(object sender, EventArgs e)
+        {
+            Panel drivePanel = sender as Panel;
+            drivePanel.Parent.BackColor = Color.White;
+            Cursor = Cursors.Default;
         }
     }
 }
