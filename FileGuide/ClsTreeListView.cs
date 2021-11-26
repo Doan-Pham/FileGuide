@@ -31,10 +31,12 @@ namespace FileGuide
         /// </summary>
         /// <param name="treeView"></param>
         public void CreateTreeView(TreeView treeView)
-        {  
+        {
+            treeView.Nodes.Clear();
+
             // Create root treenode: My Computer and add to treeView
             TreeNode tnMyComputer = new TreeNode("My Computer", 0, 0);
-            treeView.Nodes.Clear();
+            
             treeView.Nodes.Add(tnMyComputer);
 
             // Select all drives into a collection 
@@ -91,7 +93,13 @@ namespace FileGuide
 
 
             }
-            ShowFolderTree(treeView, tnMyComputer);
+
+            TreeNode tnDesktop = new TreeNode("Desktop");
+            treeView.Nodes.Add(tnDesktop);
+            tnDesktop.Nodes.Add("Downloads");
+            tnDesktop.Nodes.Add("Documents");
+    
+
         }
 
         /// <summary>
@@ -206,14 +214,14 @@ namespace FileGuide
         /// <param name="treeView"></param>
         /// <param name="currentNode">The treenode at which to show folder tree</param>
         /// <returns></returns>
-        public bool ShowFolderTree(TreeView treeView, TreeNode currentNode)
+        public bool ShowFolderTree(TreeView treeView, TreeNode currentNode, bool isSpecialFolder, string SpecialFolderPath)
         {
             // My Computer and its children are already created in CreatTreeView func, recreating will cause an error
             if (currentNode.Text != "My Computer")
             {
                 try
                 {
-                    if (!Directory.Exists(GetApproriatePath(currentNode.FullPath)))
+                    if (!Directory.Exists(GetApproriatePath(currentNode.FullPath)) && !isSpecialFolder)
                     {
                         MessageBox.Show("Directory not found","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                         return false;
@@ -221,8 +229,15 @@ namespace FileGuide
                     else
                     {
                         // Add all child directories of the current's node to treeView 
-                        string[] strDirectories = Directory.GetDirectories(GetApproriatePath(currentNode.FullPath));
-
+                        string[] strDirectories;
+                        if (!isSpecialFolder)
+                        {
+                            strDirectories = Directory.GetDirectories(GetApproriatePath(currentNode.FullPath));
+                        }
+                        else 
+                        {
+                            strDirectories = Directory.GetDirectories(SpecialFolderPath);
+                        }
                         foreach (string stringDir in strDirectories)
                         {
                             string strName = GetFileFolderName(stringDir);
@@ -492,7 +507,11 @@ namespace FileGuide
             return strSplit[strSplit.Length - 1];
         }
 
-
+        public string GetFileFolderRoot(string strPath)
+        {
+            string[] strSplit = strPath.Split('\\');
+            return strSplit[0];
+        }
         /// <summary>
         /// Return a DirectoryInfo from a treeView node
         /// </summary>

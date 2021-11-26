@@ -12,6 +12,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using Syroot.Windows.IO;
 
 namespace FileGuide
 {
@@ -27,7 +28,7 @@ namespace FileGuide
         private Color PrimaryTextColor = Color.Black;
         private Color SecondaryTextColor = Color.Gray;
 
-
+        private bool isSpecialFolder = false;
         private bool isCopying = false;
         private bool isCutting = false;
         private bool isFolder = false;
@@ -688,8 +689,27 @@ namespace FileGuide
         {
             try 
             {
+                isSpecialFolder = false;
                 TreeNode currentNode = e.Node;
-                if (!clsTreeListView.ShowFolderTree(this.treeView, currentNode)) return;
+                string SpecialFolderPath = "";
+
+                if (clsTreeListView.GetFileFolderRoot(currentNode.FullPath) != "My Computer")
+                {
+                    switch (currentNode.Text)
+                    {
+                        case "Desktop":
+                            SpecialFolderPath = new KnownFolder(KnownFolderType.Desktop).Path;
+                            break;
+                        case "Downloads":
+                            SpecialFolderPath = new KnownFolder(KnownFolderType.Downloads).Path;
+                            break;
+                        case "Documents":
+                            SpecialFolderPath = new KnownFolder(KnownFolderType.Documents).Path;
+                            break;
+                    }
+                    isSpecialFolder = true;
+                }
+                if (!clsTreeListView.ShowFolderTree(this.treeView, currentNode, isSpecialFolder,SpecialFolderPath)) return;
                 if (currentNode.Text == "My Computer")
                 {
                     tableLayoutFirstPage.Visible = true;
@@ -698,9 +718,11 @@ namespace FileGuide
                 }
                 else
                 {
+
                     tableLayoutFirstPage.Visible = false;
                     listView.Visible = true;
-                    clsTreeListView.ShowListView(this.listView, currentNode);
+                    if (SpecialFolderPath == "") clsTreeListView.ShowListView(this.listView, currentNode);
+                    else clsTreeListView.ShowListView(this.listView, SpecialFolderPath);
                 }
                 tscmbPath.Text = clsTreeListView.GetApproriatePath(currentNode.FullPath);
                 pathNode = tscmbPath.Text;
@@ -1178,5 +1200,6 @@ namespace FileGuide
             parentPanel.BackColor = Color.White;
             Cursor = Cursors.Default;
         }
+
     }
 }
