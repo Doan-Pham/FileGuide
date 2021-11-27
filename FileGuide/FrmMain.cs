@@ -693,7 +693,7 @@ namespace FileGuide
                 TreeNode currentNode = e.Node;
                 string SpecialFolderPath = "";
 
-                if (clsTreeListView.GetFileFolderRoot(currentNode.FullPath) != "My Computer")
+                if (clsTreeListView.GetTreeNodeRoot(currentNode).Text != "My Computer")
                 {
                     switch (currentNode.Text)
                     {
@@ -709,7 +709,9 @@ namespace FileGuide
                     }
                     isSpecialFolder = true;
                 }
+
                 if (!clsTreeListView.ShowFolderTree(this.treeView, currentNode, isSpecialFolder,SpecialFolderPath)) return;
+
                 if (currentNode.Text == "My Computer")
                 {
                     tableLayoutFirstPage.Visible = true;
@@ -718,15 +720,16 @@ namespace FileGuide
                 }
                 else
                 {
-
                     tableLayoutFirstPage.Visible = false;
                     listView.Visible = true;
                     if (SpecialFolderPath == "") clsTreeListView.ShowListView(this.listView, currentNode);
                     else clsTreeListView.ShowListView(this.listView, SpecialFolderPath);
                 }
+
                 tscmbPath.Text = clsTreeListView.GetApproriatePath(currentNode.FullPath);
                 pathNode = tscmbPath.Text;
                 currentPath = pathNode;
+
                 tabPathList[tabControl.SelectedIndex] = currentPath;
                 tabControl.TabPages[tabControl.SelectedIndex].Text = clsTreeListView.GetFileFolderName(currentPath) + spaceText;
             }
@@ -734,7 +737,6 @@ namespace FileGuide
             {
                 MessageBox.Show(ex.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            
         }
 
 
@@ -746,16 +748,7 @@ namespace FileGuide
         private void treeView_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
             // Reduce the unnecessary DrawNode calls. Without this, some icons are drawn in weird places
-
-
             if (e.Bounds.Height < 1 || e.Bounds.Width < 1) return;
-            /* Color borderColor = Color.FromArgb(227, 227, 227);
-             ControlPaint.DrawBorder(e.Graphics, e.Node.TreeView.ClientRectangle,
-     borderColor, 0, ButtonBorderStyle.Solid,
-     borderColor, 0, ButtonBorderStyle.Solid,
-     borderColor, 2, ButtonBorderStyle.Solid,
-     borderColor, 0, ButtonBorderStyle.Solid);*/
-
 
             Graphics g = e.Graphics;
             Rectangle nodeRect = e.Node.Bounds;
@@ -810,8 +803,7 @@ namespace FileGuide
             //Draw text
             if (e.Node.Bounds.X != 0)
             {
-                TextRenderer.DrawText(g, e.Node.Text, ((TreeView)sender).Font,
-                      new Point(nodeRect.Location.X + 20, nodeRect.Location.Y + 8), PrimaryTextColor);
+                TextRenderer.DrawText(g, e.Node.Text, ((TreeView)sender).Font, new Point(nodeRect.Location.X + 20, nodeRect.Location.Y + 8), PrimaryTextColor);
             }
         }
 
@@ -824,14 +816,8 @@ namespace FileGuide
         private void treeView_MouseMove(object sender, MouseEventArgs e)
         {
             TreeNode HoveredNode = ((TreeView)sender).GetNodeAt(e.Location);
-            if (HoveredNode != null)
-            {
-                Cursor = Cursors.Hand;
-            }
-            else
-            {
-                Cursor = Cursors.Default;
-            }
+            if (HoveredNode != null) Cursor = Cursors.Hand;
+            else Cursor = Cursors.Default;
         }
 
 
@@ -872,7 +858,7 @@ namespace FileGuide
         {
             listView.OwnerDraw = true;
             listView.View = View.SmallIcon;
-            //clsTreeListView.SetListViewItemSizeSmallIcon(listView, 100, 30);
+            clsTreeListView.SetListViewItemSizeSmallIcon(listView, 100, 30);
         }
 
 
@@ -915,7 +901,6 @@ namespace FileGuide
 
             Pen textBorder = new Pen(Color.FromArgb(186, 186, 186), 1.5f);
             e.Graphics.DrawLine(textBorder, new Point(e.Bounds.X + 25, e.Bounds.Y - 5 + e.Bounds.Height), new Point(e.Bounds.X + e.Bounds.Width, e.Bounds.Y - 5 + e.Bounds.Height));
-
         }
 
 
@@ -1060,7 +1045,6 @@ namespace FileGuide
         {
             if (e.Button == MouseButtons.Right)
             {
-
                 if (((ListView)sender).SelectedItems.Count > 0)
                 {
                     contextMenuStripListViewItem.Show((ListView)sender, e.Location);
@@ -1201,5 +1185,14 @@ namespace FileGuide
             Cursor = Cursors.Default;
         }
 
+        private void treeView_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                treeView.SelectedNode = treeView.GetNodeAt(e.Location);
+                if (treeView.SelectedNode != null)
+                    treeViewContextMenuStrip.Show((TreeView)sender, e.Location);
+            }
+        }
     }
 }

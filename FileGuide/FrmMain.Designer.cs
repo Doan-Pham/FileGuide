@@ -57,6 +57,9 @@ namespace FileGuide
             this.delteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
             this.treeView = new FileGuide.BufferedTreeView();
+            this.treeViewContextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            this.pinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unpingFromEasyAccessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutFirstPage = new System.Windows.Forms.TableLayoutPanel();
@@ -102,6 +105,7 @@ namespace FileGuide
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
             this.mainSplitContainer.SuspendLayout();
+            this.treeViewContextMenuStrip.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutFirstPage.SuspendLayout();
@@ -327,6 +331,7 @@ namespace FileGuide
             // 
             this.treeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeView.ContextMenuStrip = this.treeViewContextMenuStrip;
             this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
             this.treeView.Font = new System.Drawing.Font("Questrial", 9.999999F);
@@ -344,6 +349,39 @@ namespace FileGuide
             this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
             this.treeView.MouseLeave += new System.EventHandler(this.treeView_MouseLeave);
             this.treeView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseMove);
+            this.treeView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseUp);
+            // 
+            // treeViewContextMenuStrip
+            // 
+            this.treeViewContextMenuStrip.BackColor = System.Drawing.Color.White;
+            this.treeViewContextMenuStrip.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeViewContextMenuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.treeViewContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pinToolStripMenuItem,
+            this.unpingFromEasyAccessToolStripMenuItem});
+            this.treeViewContextMenuStrip.Name = "treeViewContextMenuStrip";
+            this.treeViewContextMenuStrip.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.treeViewContextMenuStrip.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
+            this.treeViewContextMenuStrip.RenderStyle.ColorTable = null;
+            this.treeViewContextMenuStrip.RenderStyle.RoundedEdges = true;
+            this.treeViewContextMenuStrip.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.treeViewContextMenuStrip.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.treeViewContextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.treeViewContextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.treeViewContextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.treeViewContextMenuStrip.Size = new System.Drawing.Size(302, 76);
+            // 
+            // pinToolStripMenuItem
+            // 
+            this.pinToolStripMenuItem.Name = "pinToolStripMenuItem";
+            this.pinToolStripMenuItem.Size = new System.Drawing.Size(301, 36);
+            this.pinToolStripMenuItem.Text = "Pin to Easy Access";
+            // 
+            // unpingFromEasyAccessToolStripMenuItem
+            // 
+            this.unpingFromEasyAccessToolStripMenuItem.Name = "unpingFromEasyAccessToolStripMenuItem";
+            this.unpingFromEasyAccessToolStripMenuItem.Size = new System.Drawing.Size(301, 36);
+            this.unpingFromEasyAccessToolStripMenuItem.Text = "Unpin from Easy Access";
             // 
             // tabControl
             // 
@@ -811,6 +849,7 @@ namespace FileGuide
             this.mainSplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).EndInit();
             this.mainSplitContainer.ResumeLayout(false);
+            this.treeViewContextMenuStrip.ResumeLayout(false);
             this.tabControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tableLayoutFirstPage.ResumeLayout(false);
@@ -890,6 +929,9 @@ namespace FileGuide
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label driveName;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
+        private Guna.UI2.WinForms.Guna2ContextMenuStrip treeViewContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem pinToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem unpingFromEasyAccessToolStripMenuItem;
     }
 }
 

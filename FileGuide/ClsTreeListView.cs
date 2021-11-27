@@ -94,10 +94,9 @@ namespace FileGuide
 
             }
 
-            TreeNode tnDesktop = new TreeNode("Desktop");
-            treeView.Nodes.Add(tnDesktop);
-            tnDesktop.Nodes.Add("Downloads");
-            tnDesktop.Nodes.Add("Documents");
+            treeView.Nodes.Add("Desktop");
+            treeView.Nodes.Add("Downloads");
+            treeView.Nodes.Add("Documents");
     
 
         }
@@ -217,8 +216,7 @@ namespace FileGuide
         public bool ShowFolderTree(TreeView treeView, TreeNode currentNode, bool isSpecialFolder, string SpecialFolderPath)
         {
             // My Computer and its children are already created in CreatTreeView func, recreating will cause an error
-            if (currentNode.Text != "My Computer")
-            {
+            if (currentNode.Text == "My Computer") return true;
                 try
                 {
                     if (!Directory.Exists(GetApproriatePath(currentNode.FullPath)) && !isSpecialFolder)
@@ -260,7 +258,6 @@ namespace FileGuide
                 {
                     MessageBox.Show(e.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }         
-            }
             return false;
         }
 
@@ -507,11 +504,16 @@ namespace FileGuide
             return strSplit[strSplit.Length - 1];
         }
 
-        public string GetFileFolderRoot(string strPath)
+        public TreeNode GetTreeNodeRoot(TreeNode treeNode)
         {
-            string[] strSplit = strPath.Split('\\');
-            return strSplit[0];
+            while (treeNode.Parent != null)
+            {
+                treeNode = treeNode.Parent;
+            }
+            return treeNode;
         }
+
+
         /// <summary>
         /// Return a DirectoryInfo from a treeView node
         /// </summary>
@@ -683,6 +685,7 @@ namespace FileGuide
             return strPath;
         }
 
+
         /// <summary>
         /// Convert bytes to KB, MB, GB, TB
         /// </summary>
@@ -699,6 +702,7 @@ namespace FileGuide
             }
             return  Result.ToString("0.##") + " " + Suffix[i];
         }
+
 
         /// <summary>
         /// Get a directory's size in bytes
@@ -728,6 +732,7 @@ namespace FileGuide
             return size;
         }
 
+
         /// <summary>
         /// Set width, height of listView item in large icon view mode
         /// </summary>
@@ -739,6 +744,19 @@ namespace FileGuide
             ImageList imgList = new ImageList();
             imgList.ImageSize = new Size(width, height);
             listView.LargeImageList = imgList;
+        }
+
+        /// <summary>
+        /// Set width, height of listView item in small icon view mode
+        /// </summary>
+        /// <param name="listView"></param>
+        /// <param name="height"></param>
+        /// 
+        public void SetListViewItemSizeSmallIcon(ListView listView, int width, int height)
+        {
+            ImageList imgList = new ImageList();
+            imgList.ImageSize = new Size(width, height);
+            listView.SmallImageList = imgList;
         }
     }
 }
