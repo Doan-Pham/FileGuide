@@ -18,6 +18,7 @@ namespace FileGuide
 {
     public partial class FrmMain : Form
     {
+        List<string> EasyAccessFolderPathList = new List<string>();
         List<string> tabPathList = new List<string> { "My Computer", ""};
         string spaceText = "      ";
         List<Panel> DrivePanelList = new List <Panel>();
@@ -57,16 +58,25 @@ namespace FileGuide
         private void Form1_Load(object sender, EventArgs e)
         {
             clsTreeListView.CreateTreeView(this.treeView);
-            
-            treeView.ExpandAll();
-            
-            
+
             string DebugDirectory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string RecentDirectory = System.IO.Path.Combine(DebugDirectory, "RecentAccessesFiles");
             string RecentFilesTxt = System.IO.Path.Combine(RecentDirectory, "RecentAccessedFiles.txt");
-
             if (File.Exists(RecentFilesTxt))
-            clsTreeListView.ListRecentFiles.AddRange(File.ReadAllLines(RecentFilesTxt));
+                clsTreeListView.ListRecentFiles.AddRange(File.ReadAllLines(RecentFilesTxt));
+
+            string EasyAccessDirectory = System.IO.Path.Combine(DebugDirectory, "EasyAccess");
+            string EasyAccessFoldersTxt = System.IO.Path.Combine(EasyAccessDirectory, "EasyAccessFolders.txt");
+            if (File.Exists(EasyAccessFoldersTxt))
+                EasyAccessFolderPathList.AddRange(File.ReadAllLines(EasyAccessFoldersTxt));
+
+            foreach (string folderPath in EasyAccessFolderPathList)
+            {
+                treeView.Nodes[1].Nodes.Add(clsTreeListView.GetFileFolderName (folderPath));
+            }
+            
+           
+            treeView.ExpandAll();
 
             clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
 
@@ -81,6 +91,7 @@ namespace FileGuide
             }
             if (this.Width > 900)
                 tscmbPath.Width = this.Width - 800;
+
             currentPath = "My Computer";
             this.tabControl.TabPages[this.tabControl.TabCount - 1].Text = "";
             this.tabControl.TabPages[0].Text = "My Computer    ";
@@ -126,10 +137,20 @@ namespace FileGuide
 
             if (!Directory.Exists(RecentDirectory))
                 Directory.CreateDirectory(RecentDirectory);
-
             using (StreamWriter OutputFile = new StreamWriter(RecentFilesTxt))
             {
                 foreach (string filePath in clsTreeListView.ListRecentFiles)
+                    OutputFile.WriteLine(filePath);
+            }
+
+            string EasyAccessDirectory = System.IO.Path.Combine(DebugDirectory, "EasyAccess");
+            string EasyAccessFoldersTxt = System.IO.Path.Combine(EasyAccessDirectory, "EasyAccessFolders.txt");
+
+            if (!Directory.Exists(EasyAccessDirectory))
+                Directory.CreateDirectory(EasyAccessDirectory);
+            using (StreamWriter OutputFile = new StreamWriter(EasyAccessFoldersTxt))
+            {
+                foreach (string filePath in EasyAccessFolderPathList)
                     OutputFile.WriteLine(filePath);
             }
         }
@@ -720,6 +741,11 @@ namespace FileGuide
                 }
                 else
                 {
+                    if (currentNode.Text == "Easy Access" && clsTreeListView.GetTreeNodeRoot(currentNode).Text == "Easy Access")
+                    {
+                        currentNode.Expand();
+                        return;
+                    }
                     tableLayoutFirstPage.Visible = false;
                     listView.Visible = true;
                     if (SpecialFolderPath == "") clsTreeListView.ShowListView(this.listView, currentNode);
@@ -1192,6 +1218,26 @@ namespace FileGuide
                 treeView.SelectedNode = treeView.GetNodeAt(e.Location);
                 if (treeView.SelectedNode != null)
                     treeViewContextMenuStrip.Show((TreeView)sender, e.Location);
+            }
+        }
+
+        private void pinToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (treeView.SelectedNode != null)
+            {
+                EasyAccessFolderPathList.Add(clsTreeListView.GetApproriatePath(treeView.SelectedNode.FullPath));
+                TreeNode clonedTreeNode = (TreeNode)treeView.SelectedNode.Clone();
+                treeView.Nodes[1].Nodes.Add(treeView.SelectedNode.Text);
+            }
+            treeView.Nodes[1].Expand();
+        }
+
+        private void unpingFromEasyAccessToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (treeView.SelectedNode != null && clsTreeListView.GetTreeNodeRoot(treeView.SelectedNode).Text == "Easy Access")
+            {
+                EasyAccessFolderPathList.RemoveAt(treeView.SelectedNode.Index);
+                treeView.Nodes[1].Nodes.RemoveAt(treeView.SelectedNode.Index);
             }
         }
     }

@@ -369,19 +369,21 @@ namespace FileGuide
             this.treeViewContextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
             this.treeViewContextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.treeViewContextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.treeViewContextMenuStrip.Size = new System.Drawing.Size(302, 76);
+            this.treeViewContextMenuStrip.Size = new System.Drawing.Size(302, 109);
             // 
             // pinToolStripMenuItem
             // 
             this.pinToolStripMenuItem.Name = "pinToolStripMenuItem";
             this.pinToolStripMenuItem.Size = new System.Drawing.Size(301, 36);
             this.pinToolStripMenuItem.Text = "Pin to Easy Access";
+            this.pinToolStripMenuItem.Click += new System.EventHandler(this.pinToolStripMenuItem_Click);
             // 
             // unpingFromEasyAccessToolStripMenuItem
             // 
             this.unpingFromEasyAccessToolStripMenuItem.Name = "unpingFromEasyAccessToolStripMenuItem";
             this.unpingFromEasyAccessToolStripMenuItem.Size = new System.Drawing.Size(301, 36);
             this.unpingFromEasyAccessToolStripMenuItem.Text = "Unpin from Easy Access";
+            this.unpingFromEasyAccessToolStripMenuItem.Click += new System.EventHandler(this.unpingFromEasyAccessToolStripMenuItem_Click);
             // 
             // tabControl
             // 

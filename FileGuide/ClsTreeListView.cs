@@ -34,11 +34,13 @@ namespace FileGuide
         {
             treeView.Nodes.Clear();
 
+            
+
             // Create root treenode: My Computer and add to treeView
             TreeNode tnMyComputer = new TreeNode("My Computer", 0, 0);
-            
             treeView.Nodes.Add(tnMyComputer);
 
+            
             // Select all drives into a collection 
             ManagementObjectSearcher query = new ManagementObjectSearcher("Select * From Win32_LogicalDisk");
             ManagementObjectCollection queryCollection = query.Get();
@@ -94,6 +96,8 @@ namespace FileGuide
 
             }
 
+            TreeNode tnEasyAccess = new TreeNode("Easy Access");
+            treeView.Nodes.Add(tnEasyAccess);
             treeView.Nodes.Add("Desktop");
             treeView.Nodes.Add("Downloads");
             treeView.Nodes.Add("Documents");
@@ -216,48 +220,49 @@ namespace FileGuide
         public bool ShowFolderTree(TreeView treeView, TreeNode currentNode, bool isSpecialFolder, string SpecialFolderPath)
         {
             // My Computer and its children are already created in CreatTreeView func, recreating will cause an error
-            if (currentNode.Text == "My Computer") return true;
-                try
+            if (currentNode.Text == GetTreeNodeRoot(currentNode).Text || GetTreeNodeRoot(currentNode).Text == "Easy Access") return true;
+            try
+            {
+                if (!Directory.Exists(GetApproriatePath(currentNode.FullPath)) && !isSpecialFolder)
                 {
-                    if (!Directory.Exists(GetApproriatePath(currentNode.FullPath)) && !isSpecialFolder)
-                    {
-                        MessageBox.Show("Directory not found","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                        return false;
-                    }
-                    else
-                    {
-                        // Add all child directories of the current's node to treeView 
-                        string[] strDirectories;
-                        if (!isSpecialFolder)
+                    MessageBox.Show("Directory not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                else
+                {
+                    // Add all child directories of the current's node to treeView 
+                    string[] strDirectories;
+                    if (!isSpecialFolder)
                         {
                             strDirectories = Directory.GetDirectories(GetApproriatePath(currentNode.FullPath));
                         }
-                        else 
-                        {
-                            strDirectories = Directory.GetDirectories(SpecialFolderPath);
-                        }
-                        foreach (string stringDir in strDirectories)
+                    else 
+                    {
+                        strDirectories = Directory.GetDirectories(SpecialFolderPath);
+                    }
+                    foreach (string stringDir in strDirectories)
                         {
                             string strName = GetFileFolderName(stringDir);
                             TreeNode nodeDir = new TreeNode(strName, 5, 6);
                             currentNode.Nodes.Add(nodeDir);
                         }
 
-                    }
-                    return true;
                 }
-                catch (IOException)
-                {
-                    MessageBox.Show("Directory does not exist","Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                catch (UnauthorizedAccessException)
-                {
-                    MessageBox.Show("You might not have permission to access this directory", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show(e.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }         
+                return true;
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Directory does not exist","Error", MessageBoxButtons.OK,   MessageBoxIcon.Error);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                MessageBox.Show("You might not have permission to access this directory",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }         
             return false;
         }
 
@@ -271,6 +276,7 @@ namespace FileGuide
         {
             try
             {
+                if (currentNode.Text == "Easy Access" && GetTreeNodeRoot(currentNode).Text == "Easy Access") return;
                 // Clear listView to show content
                 listView.Items.Clear();
 
@@ -598,6 +604,7 @@ namespace FileGuide
 
             }
         }
+
 
         /// <summary>
         /// Return a string representing the file type
