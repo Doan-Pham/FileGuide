@@ -26,6 +26,8 @@ namespace FileGuide
         const int MaxRecentFilesShown = 10;
         public List<string> ListRecentFiles = new List<string>();
 
+        #region TreeView Main Methods
+
         /// <summary>
         /// Initialize treeView
         /// </summary>
@@ -34,23 +36,18 @@ namespace FileGuide
         {
             treeView.Nodes.Clear();
 
-            
-
             // Create root treenode: My Computer and add to treeView
             TreeNode tnMyComputer = new TreeNode("My Computer", 0, 0);
             treeView.Nodes.Add(tnMyComputer);
 
-            
-            // Select all drives into a collection 
+            // Select all drives into a collection then create a treenode for each drive
             ManagementObjectSearcher query = new ManagementObjectSearcher("Select * From Win32_LogicalDisk");
             ManagementObjectCollection queryCollection = query.Get();
 
-            Button DriveButton = new Button();
-            // For each drive, assign the approriate image index, create a treenode + add to the root node's collection
-            foreach(ManagementObject mo in queryCollection)
+            foreach (ManagementObject mo in queryCollection)
             {
                 int DiskImageIndex, DiskSelectIndex;
-                
+
                 switch (int.Parse(mo["DriveType"].ToString()))
                 {
                     case RemovableDisk:
@@ -92,18 +89,261 @@ namespace FileGuide
 
                 TreeNode diskTreeNode = new TreeNode(mo["Name"].ToString() + "\\", DiskImageIndex, DiskSelectIndex);
                 tnMyComputer.Nodes.Add(diskTreeNode);
-
-
             }
 
-            TreeNode tnEasyAccess = new TreeNode("Easy Access");
-            treeView.Nodes.Add(tnEasyAccess);
+            // Added all the special folders to treeView
+            treeView.Nodes.Add("Easy Access");
             treeView.Nodes.Add("Desktop");
             treeView.Nodes.Add("Downloads");
             treeView.Nodes.Add("Documents");
-    
-
         }
+
+
+        /// <summary>
+        /// Show computer's folder tree onto treeView
+        /// </summary>
+        /// <param name="treeView"></param>
+        /// <param name="currentNode">The treenode at which to show folder tree</param>
+        /// <returns></returns>
+        public bool ShowFolderTree(TreeView treeView, TreeNode currentNode, bool isSpecialFolder, string SpecialFolderPath)
+        {
+            // My Computer and its children are already created in CreatTreeView func, recreating will cause an error
+            if (currentNode.Text == GetTreeNodeRoot(currentNode).Text || GetTreeNodeRoot(currentNode).Text == "Easy Access") return true;
+            try
+            {
+                if (!Directory.Exists(GetApproriatePath(currentNode.FullPath)) && !isSpecialFolder)
+                {
+                    MessageBox.Show("Directory not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                else
+                {
+                    // Add all child directories of the current's node to treeView 
+                    string[] strDirectories;
+                    if (!isSpecialFolder)
+                    {
+                        strDirectories = Directory.GetDirectories(GetApproriatePath(currentNode.FullPath));
+                    }
+                    else
+                    {
+                        strDirectories = Directory.GetDirectories(SpecialFolderPath);
+                    }
+                    foreach (string stringDir in strDirectories)
+                    {
+                        string strName = GetFileFolderName(stringDir);
+                        TreeNode nodeDir = new TreeNode(strName, 5, 6);
+                        currentNode.Nodes.Add(nodeDir);
+                    }
+
+                }
+                return true;
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Directory does not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                MessageBox.Show("You might not have permission to access this directory",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            return false;
+        }
+
+
+        #endregion
+
+        #region TreeView Helper Methods
+
+        /// <summary>
+        /// Return the root node of a treeView node
+        /// </summary>
+        /// <param name="treeNode"></param>
+        /// <returns></returns>
+        public TreeNode GetTreeNodeRoot(TreeNode treeNode)
+        {
+            while (treeNode.Parent != null)
+            {
+                treeNode = treeNode.Parent;
+            }
+            return treeNode;
+        }
+
+
+        /// <summary>
+        /// Return a DirectoryInfo from a treeView node
+        /// </summary>
+        /// <param name="currentNode"></param>
+        /// <returns></returns>
+        public DirectoryInfo GetDirectoryInfoFromNode(TreeNode currentNode)
+        {
+            string[] strList = currentNode.FullPath.Split('\\');
+            string strPath = strList.GetValue(1).ToString();
+            for (int i = 2; i < strList.Length; i++)
+            {
+                strPath += strList.GetValue(i) + "\\";
+            }
+            return new DirectoryInfo(strPath);
+        }
+
+
+        #endregion
+
+
+        #region ListView Main Methods
+
+        /// <summary>
+        /// Show a folder's content onto listView
+        /// </summary>
+        /// <param name="listView"></param>
+        /// <param name="currentNode">The treenode at which to show content</param>
+        public void ShowListView(ListView listView, TreeNode currentNode)
+        {
+            try
+            {
+                if (currentNode.Text == "Easy Access" && GetTreeNodeRoot(currentNode).Text == "Easy Access") return;
+                // Clear listView to show content
+                listView.Items.Clear();
+
+                // Get Directory Info from the current node, if existing, add directory and its children to listView
+                ListViewItem item;
+                DirectoryInfo directory = GetDirectoryInfoFromNode(currentNode);
+                if (!directory.Exists)
+                {
+                    MessageBox.Show("Folder does not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                foreach (DirectoryInfo folder in directory.GetDirectories())
+                {
+                    item = GetListViewItem(folder);
+                    listView.Items.Add(item);
+                }
+
+                foreach (FileInfo file in directory.GetFiles())
+                {
+                    item = GetListViewItem(file);
+                    listView.Items.Add(item);
+                };
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+
+        /// <summary>
+        /// Show a folder's content onto listView 
+        /// </summary>
+        /// <param name="listView"></param>
+        /// <param name="strPath">The directory's path at which to show content</param>
+        public void ShowListView(ListView listView, string strPath)
+        {
+            try
+            {
+                ListViewItem item;
+                DirectoryInfo directory = new DirectoryInfo(strPath);
+                listView.Items.Clear();
+                foreach (DirectoryInfo folder in directory.GetDirectories())
+                {
+                    item = GetListViewItem(folder);
+                    listView.Items.Add(item);
+                }
+
+                foreach (FileInfo file in directory.GetFiles())
+                {
+                    item = GetListViewItem(file);
+                    listView.Items.Add(item);
+                };
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+
+        #endregion
+
+        #region ListView Helper Methods
+
+
+        /// <summary>
+        /// Return a listViewItem from a folder
+        /// </summary>
+        /// <param name="folder"></param>
+        /// <returns></returns>
+        public ListViewItem GetListViewItem(DirectoryInfo folder)
+        {
+            string[] item = new string[6];
+            item[0] = folder.Name;
+            item[1] = "Folder";
+            item[2] = "";//FormatStorageLengthBytes(GetFolderSize(folder.FullName));
+            item[3] = folder.CreationTime.ToString();
+            item[4] = folder.LastWriteTime.ToString();
+            item[5] = folder.FullName;
+
+            ListViewItem newItem = new ListViewItem(item);
+            return newItem;
+        }
+
+
+        /// <summary>
+        /// Return a listViewItem from a file
+        /// </summary>
+        /// <param name="folder"></param>
+        /// <returns></returns>
+        public ListViewItem GetListViewItem(FileInfo file)
+        {
+            string[] item = new string[6];
+            item[0] = file.Name;
+            item[1] = GetFileType(file);
+            item[2] = FormatStorageLengthBytes(file.Length);
+            item[3] = file.CreationTime.ToString();
+            item[4] = file.LastWriteTime.ToString();
+            item[5] = file.FullName;
+
+            ListViewItem newItem = new ListViewItem(item);
+            return newItem;
+        }
+
+
+        /// <summary>
+        /// Set width, height of listView item in large icon view mode
+        /// </summary>
+        /// <param name="listView"></param>
+        /// <param name="height"></param>
+        /// 
+        public void SetListViewItemSizeLargeIcon(ListView listView, int width, int height)
+        {
+            ImageList imgList = new ImageList();
+            imgList.ImageSize = new Size(width, height);
+            listView.LargeImageList = imgList;
+        }
+
+
+        /// <summary>
+        /// Set width, height of listView item in small icon view mode
+        /// </summary>
+        /// <param name="listView"></param>
+        /// <param name="height"></param>
+        /// 
+        public void SetListViewItemSizeSmallIcon(ListView listView, int width, int height)
+        {
+            ImageList imgList = new ImageList();
+            imgList.ImageSize = new Size(width, height);
+            listView.SmallImageList = imgList;
+        }
+
+
+        #endregion
+
+
+        #region FirstPage Main Methods
 
         /// <summary>
         /// Show the listView first page whenever the root node-My Computer is focused
@@ -128,7 +368,7 @@ namespace FileGuide
                 DrivePanel[driveCount].BorderStyle = BorderStyle.FixedSingle;
                 DrivePanel[driveCount].Width = 365;
                 DrivePanel[driveCount].Height = 105;
-                DrivePanel[driveCount].Margin = new Padding(3,10,20,10);
+                DrivePanel[driveCount].Margin = new Padding(3, 10, 20, 10);
 
                 switch (drive.DriveType.ToString())
                 {
@@ -193,6 +433,7 @@ namespace FileGuide
             ShowRecentAccessedFiles(RecentFiles);
         }
 
+
         /// <summary>
         /// Show list of recent accessed files onto listView first page
         /// </summary>
@@ -211,130 +452,10 @@ namespace FileGuide
         }
 
 
-        /// <summary>
-        /// Show computer's folder tree onto treeView
-        /// </summary>
-        /// <param name="treeView"></param>
-        /// <param name="currentNode">The treenode at which to show folder tree</param>
-        /// <returns></returns>
-        public bool ShowFolderTree(TreeView treeView, TreeNode currentNode, bool isSpecialFolder, string SpecialFolderPath)
-        {
-            // My Computer and its children are already created in CreatTreeView func, recreating will cause an error
-            if (currentNode.Text == GetTreeNodeRoot(currentNode).Text || GetTreeNodeRoot(currentNode).Text == "Easy Access") return true;
-            try
-            {
-                if (!Directory.Exists(GetApproriatePath(currentNode.FullPath)) && !isSpecialFolder)
-                {
-                    MessageBox.Show("Directory not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-                else
-                {
-                    // Add all child directories of the current's node to treeView 
-                    string[] strDirectories;
-                    if (!isSpecialFolder)
-                        {
-                            strDirectories = Directory.GetDirectories(GetApproriatePath(currentNode.FullPath));
-                        }
-                    else 
-                    {
-                        strDirectories = Directory.GetDirectories(SpecialFolderPath);
-                    }
-                    foreach (string stringDir in strDirectories)
-                        {
-                            string strName = GetFileFolderName(stringDir);
-                            TreeNode nodeDir = new TreeNode(strName, 5, 6);
-                            currentNode.Nodes.Add(nodeDir);
-                        }
-
-                }
-                return true;
-            }
-            catch (IOException)
-            {
-                MessageBox.Show("Directory does not exist","Error", MessageBoxButtons.OK,   MessageBoxIcon.Error);
-            }
-            catch (UnauthorizedAccessException)
-            {
-                MessageBox.Show("You might not have permission to access this directory",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }         
-            return false;
-        }
+        #endregion
 
 
-        /// <summary>
-        /// Show a folder's content onto listView
-        /// </summary>
-        /// <param name="listView"></param>
-        /// <param name="currentNode">The treenode at which to show content</param>
-        public void ShowListView(ListView listView, TreeNode currentNode)
-        {
-            try
-            {
-                if (currentNode.Text == "Easy Access" && GetTreeNodeRoot(currentNode).Text == "Easy Access") return;
-                // Clear listView to show content
-                listView.Items.Clear();
-
-                // Get Directory Info from the current node, if existing, add directory and its children to listView
-                ListViewItem item;
-                DirectoryInfo directory = GetDirectoryInfoFromNode(currentNode);
-                if (!directory.Exists)
-                {
-                    MessageBox.Show("Folder does not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                foreach (DirectoryInfo folder in directory.GetDirectories())
-                {
-                    item = GetListViewItem(folder);
-                    listView.Items.Add(item);
-                }
-
-                foreach (FileInfo file in directory.GetFiles())
-                {
-                    item = GetListViewItem(file);
-                    listView.Items.Add(item);
-                };
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        /// <summary>
-        /// Show a folder's content onto listView 
-        /// </summary>
-        /// <param name="listView"></param>
-        /// <param name="strPath">The directory's path at which to show content</param>
-        public void ShowListView(ListView listView, string strPath)
-        {
-            try
-            {
-                ListViewItem item;
-                DirectoryInfo directory = new DirectoryInfo(strPath);
-                listView.Items.Clear();
-                foreach (DirectoryInfo folder in directory.GetDirectories())
-                {
-                    item = GetListViewItem(folder);
-                    listView.Items.Add(item);
-                }
-
-                foreach (FileInfo file in directory.GetFiles())
-                {
-                    item = GetListViewItem(file);
-                    listView.Items.Add(item);
-                };
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        #region Features Methods
 
 
         /// <summary>
@@ -343,11 +464,11 @@ namespace FileGuide
         /// <param name="listView"></param>
         /// <param name="CurrentItem"></param>
         /// <returns></returns>
-        public bool ClickItem(ListView listView,ListViewItem CurrentItem, ToolStripComboBox tscmbPath,bool isRecenFilesListView)
+        public bool ClickItem(ListView listView, ListViewItem CurrentItem, ToolStripComboBox tscmbPath, bool isRecenFilesListView)
         {
             try
             {
-                string path = CurrentItem.SubItems[CurrentItem.SubItems.Count-1].Text;
+                string path = CurrentItem.SubItems[CurrentItem.SubItems.Count - 1].Text;
                 FileInfo fi = new FileInfo(path);
 
                 if (fi.Exists)
@@ -370,7 +491,7 @@ namespace FileGuide
                 else
                 {
                     if (!isRecenFilesListView)
-                    { 
+                    {
                         ShowListView(listView, path);
                         tscmbPath.Text = GetApproriatePath(path);
                     }
@@ -379,10 +500,11 @@ namespace FileGuide
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString(), "An error has occured",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show(e.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             return false;
         }
+
 
         /// <summary>
         /// Delete a listView item
@@ -403,7 +525,7 @@ namespace FileGuide
                         MessageBox.Show("Folder might not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    else 
+                    else
                     {
                         DialogResult dialog = MessageBox.Show("Are you sure you want to delete this folder ? \n" + item.Text.ToString(), "Delete folder", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
@@ -417,7 +539,7 @@ namespace FileGuide
                         ShowListView(listView, pathFolder);
                     }
                 }
-                else 
+                else
                 {
                     FileInfo file = new FileInfo(path);
                     if (!file.Exists)
@@ -425,7 +547,7 @@ namespace FileGuide
                         MessageBox.Show("File might not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    else 
+                    else
                     {
                         DialogResult dialog = MessageBox.Show("Are you sure you want to delete this file ? \n" + item.Text.ToString(), "Delete file", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
@@ -447,46 +569,12 @@ namespace FileGuide
             }
         }
 
-        /// <summary>
-        /// Return a listViewItem from a folder
-        /// </summary>
-        /// <param name="folder"></param>
-        /// <returns></returns>
-        public ListViewItem GetListViewItem(DirectoryInfo folder)
-        {
-            string[] item = new string[6];
-            item[0] = folder.Name;
-            item[1] = "Folder";
-            item[2] = "";//FormatStorageLengthBytes(GetFolderSize(folder.FullName));
-            item[3] = folder.CreationTime.ToString();
-            item[4] = folder.LastWriteTime.ToString();
-            item[5] = folder.FullName;
 
-            ListViewItem newItem = new ListViewItem(item);
-            return newItem;
-        }
+        #endregion
 
 
-        /// <summary>
-        /// Return a listViewItem from a file
-        /// </summary>
-        /// <param name="folder"></param>
-        /// <returns></returns>
-        public ListViewItem GetListViewItem(FileInfo file)
-        {
-            string[] item = new string[6];
-            item[0] = file.Name;
-            item[1] = GetFileType(file);
-            item[2] = FormatStorageLengthBytes(file.Length);
-            item[3] = file.CreationTime.ToString();
-            item[4] = file.LastWriteTime.ToString();
-            item[5] = file.FullName;
+        #region General Helper Methods
 
-            ListViewItem newItem = new ListViewItem(item);
-            return newItem;
-        }
-
-        
         /// <summary>
         /// Return a approriate path for use in a directory structure
         /// </summary>
@@ -506,45 +594,19 @@ namespace FileGuide
         public string GetFileFolderName(string strPath)
         {
             string[] strSplit = strPath.Split('\\');
-            if (strSplit.Length == 2 && strSplit[1]=="") return strSplit[0] + "\\";
+            if (strSplit.Length == 2 && strSplit[1] == "") return strSplit[0] + "\\";
             return strSplit[strSplit.Length - 1];
         }
 
-        public TreeNode GetTreeNodeRoot(TreeNode treeNode)
-        {
-            while (treeNode.Parent != null)
-            {
-                treeNode = treeNode.Parent;
-            }
-            return treeNode;
-        }
-
 
         /// <summary>
-        /// Return a DirectoryInfo from a treeView node
-        /// </summary>
-        /// <param name="currentNode"></param>
-        /// <returns></returns>
-        public DirectoryInfo GetDirectoryInfoFromNode(TreeNode currentNode)
-        {
-            string[] strList = currentNode.FullPath.Split('\\');
-            string strPath = strList.GetValue(1).ToString();
-            for (int i = 2; i < strList.Length; i++)
-            {
-                strPath += strList.GetValue(i) + "\\";
-            }
-            return new DirectoryInfo(strPath);
-        }
-
-
-        /// <summary>
-        /// Return image index respective to a file's extension
+        /// Return icon image respective to a file's extension
         /// </summary>
         /// <param name="file"></param>
         /// <returns></returns>
         public Image GetFileTypeIcon(FileInfo file)
         {
-            switch(file.Extension.ToUpper())
+            switch (file.Extension.ToUpper())
             {
                 case ".MDB":
                     return Properties.Resources.database;
@@ -674,6 +736,7 @@ namespace FileGuide
             }
         }
 
+
         /// <summary>
         /// Get the parent directory's path of a file/folder
         /// </summary>
@@ -707,20 +770,20 @@ namespace FileGuide
             {
                 Result = bytes / 1024.0;
             }
-            return  Result.ToString("0.##") + " " + Suffix[i];
+            return Result.ToString("0.##") + " " + Suffix[i];
         }
 
 
         /// <summary>
-        /// Get a directory's size in bytes
+        /// Get a folder's size in bytes
         /// </summary>
         /// <param name="folderPath"></param>
         /// <returns></returns>
         public long GetFolderSize(string folderPath)
         {
             long size = 0;
-            try 
-            {       
+            try
+            {
                 string[] fileNames = Directory.GetFiles(folderPath, "*", SearchOption.AllDirectories);
                 foreach (string name in fileNames)
                 {
@@ -740,31 +803,7 @@ namespace FileGuide
         }
 
 
-        /// <summary>
-        /// Set width, height of listView item in large icon view mode
-        /// </summary>
-        /// <param name="listView"></param>
-        /// <param name="height"></param>
-        /// 
-        public void SetListViewItemSizeLargeIcon(ListView listView, int width, int height)
-        {
-            ImageList imgList = new ImageList();
-            imgList.ImageSize = new Size(width, height);
-            listView.LargeImageList = imgList;
-        }
-
-        /// <summary>
-        /// Set width, height of listView item in small icon view mode
-        /// </summary>
-        /// <param name="listView"></param>
-        /// <param name="height"></param>
-        /// 
-        public void SetListViewItemSizeSmallIcon(ListView listView, int width, int height)
-        {
-            ImageList imgList = new ImageList();
-            imgList.ImageSize = new Size(width, height);
-            listView.SmallImageList = imgList;
-        }
+        #endregion
     }
 }
 
