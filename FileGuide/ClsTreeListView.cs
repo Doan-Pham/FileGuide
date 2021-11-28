@@ -25,7 +25,7 @@ namespace FileGuide
         const int CDDisk = 5;
         const int MaxRecentFilesShown = 10;
         public List<string> ListRecentFiles = new List<string>();
-
+        public List<string> EasyAccessFolderPathList = new List<string>();
         #region TreeView Main Methods
 
         /// <summary>
@@ -91,11 +91,24 @@ namespace FileGuide
                 tnMyComputer.Nodes.Add(diskTreeNode);
             }
 
-            // Added all the special folders to treeView
-            treeView.Nodes.Add("Easy Access");
+            // Add all the special folders to treeView
+            TreeNode tnEasyAccess = new TreeNode("Easy Access");
+            treeView.Nodes.Add(tnEasyAccess);
             treeView.Nodes.Add("Desktop");
             treeView.Nodes.Add("Downloads");
             treeView.Nodes.Add("Documents");
+
+            //Read list of folders in easy access into a list, then foreach of these, add a node to easy access
+            string DebugDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string EasyAccessDirectory = Path.Combine(DebugDirectory, "EasyAccess");
+            string EasyAccessFoldersTxt = Path.Combine(EasyAccessDirectory, "EasyAccessFolders.txt");
+            if (File.Exists(EasyAccessFoldersTxt))
+                EasyAccessFolderPathList.AddRange(File.ReadAllLines(EasyAccessFoldersTxt));
+
+            foreach (string folderPath in EasyAccessFolderPathList)
+            {
+                tnEasyAccess.Nodes.Add(GetFileFolderName(folderPath));
+            }
         }
 
 

@@ -18,7 +18,6 @@ namespace FileGuide
 {
     public partial class FrmMain : Form
     {
-        List<string> EasyAccessFolderPathList = new List<string>();
         List<string> tabPathList = new List<string> { "My Computer", ""};
         string spaceText = "      ";
         List<Panel> DrivePanelList = new List <Panel>();
@@ -67,17 +66,6 @@ namespace FileGuide
             if (File.Exists(RecentFilesTxt))
                 clsTreeListView.ListRecentFiles.AddRange(File.ReadAllLines(RecentFilesTxt));
 
-            // Read list of folders in easy access into a list, then foreach of these, add a node to easy access
-            string EasyAccessDirectory = System.IO.Path.Combine(DebugDirectory, "EasyAccess");
-            string EasyAccessFoldersTxt = System.IO.Path.Combine(EasyAccessDirectory, "EasyAccessFolders.txt");
-            if (File.Exists(EasyAccessFoldersTxt))
-                EasyAccessFolderPathList.AddRange(File.ReadAllLines(EasyAccessFoldersTxt));
-
-            foreach (string folderPath in EasyAccessFolderPathList)
-            {
-                treeView.Nodes[1].Nodes.Add(clsTreeListView.GetFileFolderName (folderPath));
-            }
-            
             treeView.ExpandAll();
 
             // Show first page and add event handlers for drive panels' mouses events
@@ -144,7 +132,7 @@ namespace FileGuide
 
             using (StreamWriter OutputFile = new StreamWriter(EasyAccessFoldersTxt))
             {
-                foreach (string filePath in EasyAccessFolderPathList) OutputFile.WriteLine(filePath);
+                foreach (string filePath in clsTreeListView.EasyAccessFolderPathList) OutputFile.WriteLine(filePath);
             }
         }
 
@@ -875,7 +863,7 @@ namespace FileGuide
         {
             if (treeView.SelectedNode != null)
             {
-                EasyAccessFolderPathList.Add(clsTreeListView.GetApproriatePath(treeView.SelectedNode.FullPath));
+                clsTreeListView.EasyAccessFolderPathList.Add(clsTreeListView.GetApproriatePath(treeView.SelectedNode.FullPath));
                 TreeNode clonedTreeNode = (TreeNode)treeView.SelectedNode.Clone();
                 treeView.Nodes[1].Nodes.Add(treeView.SelectedNode.Text);
             }
@@ -892,7 +880,7 @@ namespace FileGuide
         {
             if (treeView.SelectedNode != null && clsTreeListView.GetTreeNodeRoot(treeView.SelectedNode).Text == "Easy Access")
             {
-                EasyAccessFolderPathList.RemoveAt(treeView.SelectedNode.Index);
+                clsTreeListView.EasyAccessFolderPathList.RemoveAt(treeView.SelectedNode.Index);
                 treeView.Nodes[1].Nodes.RemoveAt(treeView.SelectedNode.Index);
             }
         }
