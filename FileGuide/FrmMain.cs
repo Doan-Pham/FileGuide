@@ -18,9 +18,9 @@ namespace FileGuide
 {
     public partial class FrmMain : Form
     {
-        List<string> tabPathList = new List<string> { "My Computer", ""};
+        List<string> tabPathList = new List<string> { "My Computer", "" };
         string spaceText = "      ";
-        List<Panel> DrivePanelList = new List <Panel>();
+        List<Panel> DrivePanelList = new List<Panel>();
 
         private Color HoverColor = Color.FromArgb(229, 243, 255);
         private Color UnfocusedSelectColor = Color.FromArgb(242, 242, 242);
@@ -69,7 +69,7 @@ namespace FileGuide
             treeView.ExpandAll();
 
             // Show first page and add event handlers for drive panels' mouses events
-            clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
+            clsTreeListView.ShowFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
 
             foreach (Panel DrivePanel in DrivePanelList)
             {
@@ -82,8 +82,7 @@ namespace FileGuide
             }
 
             // Set min width for tscmbPath
-            if (Width > 900)
-                tscmbPath.Width = Width - 800;
+            if (Width > 900) tscmbPath.Width = Width - 800;
 
             // Initializes first 2 tabs: My Computer and Add
             tabControl.TabPages[tabControl.TabCount - 1].Text = "";
@@ -103,7 +102,7 @@ namespace FileGuide
             if (Width > 900)
                 tscmbPath.Width = Width - 800;
         }
-        
+
 
         /// <summary>
         /// Write recent accessed files list and easy access folders to .txt files 
@@ -264,16 +263,63 @@ namespace FileGuide
         /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            try
+            if (listView.Focused)
             {
-                if (listView.Focused)
+                try
                 {
-                    clsTreeListView.DeleteItem(listView, listView.FocusedItem);
+                    ListViewItem deleteItem = listView.FocusedItem;
+                    string path = deleteItem.SubItems[5].Text;
+
+                    if (deleteItem.SubItems[1].Text == "Folder")
+                    {
+                        DirectoryInfo directory = new DirectoryInfo(path);
+                        if (!directory.Exists)
+                        {
+                            MessageBox.Show("Folder might not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        else
+                        {
+                            DialogResult dialog = MessageBox.Show("Are you sure you want to delete this folder ? \n" + deleteItem.Text.ToString(), "Delete folder", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+                            if (dialog == DialogResult.Yes)
+                            {
+                                directory.Delete(true);
+                            }
+                            else return;
+
+                            string pathFolder = clsTreeListView.GetParentDirectoryPath(path);
+                            clsTreeListView.ShowListView(listView, pathFolder);
+                        }
+                    }
+                    else
+                    {
+                        FileInfo file = new FileInfo(path);
+                        if (!file.Exists)
+                        {
+                            MessageBox.Show("File might not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        else
+                        {
+                            DialogResult dialog = MessageBox.Show("Are you sure you want to delete this file ? \n" + deleteItem.Text.ToString(), "Delete file", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+                            if (dialog == DialogResult.Yes)
+                            {
+                                file.Delete();
+                            }
+                            else return;
+
+                            string pathFolder = clsTreeListView.GetParentDirectoryPath(path);
+                            clsTreeListView.ShowListView(listView, pathFolder);
+                        }
+
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 
@@ -284,7 +330,7 @@ namespace FileGuide
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void folderToolStripMenuItem_Click(object sender, EventArgs e)
-        {    
+        {
             // Check for folders with the same name as the new folder to assign correct name, then create the new folder
             int SameNameCount = 1;
             string newFolderName = "New folder";
@@ -308,7 +354,7 @@ namespace FileGuide
                 {
                     index = item.Index;
                 }
-            }           
+            }
             listView.Items[index].Selected = true;
             menuRename_Click(sender, e);
         }
@@ -332,7 +378,7 @@ namespace FileGuide
                     SameNameCount++;
                 }
             }
-            
+
             File.Create(System.IO.Path.Combine(currentPath, newFileName));
 
             // Go to the created folder and start renaming
@@ -383,11 +429,11 @@ namespace FileGuide
                 FileInfo fi = new FileInfo(path);
                 if (fi.Exists)
                 {
-                    Microsoft.VisualBasic.FileIO.FileSystem.RenameFile(path,e.Label);
+                    Microsoft.VisualBasic.FileIO.FileSystem.RenameFile(path, e.Label);
                 }
                 else
                 {
-                    Microsoft.VisualBasic.FileIO.FileSystem.RenameDirectory(path,e.Label);
+                    Microsoft.VisualBasic.FileIO.FileSystem.RenameDirectory(path, e.Label);
                 }
                 clsTreeListView.ShowListView(listView, clsTreeListView.GetParentDirectoryPath(path));
                 e.CancelEdit = true;
@@ -441,7 +487,7 @@ namespace FileGuide
                         // If path doesn't exist, show error message
                         else
                         {
-                            MessageBox.Show("File/Folder not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error) ;
+                            MessageBox.Show("File/Folder not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -466,7 +512,7 @@ namespace FileGuide
                 if (currentPath != "My Computer") clsTreeListView.ShowListView(listView, currentPath);
                 else
                 {
-                    clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
+                    clsTreeListView.ShowFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
                     foreach (Panel DrivePanel in DrivePanelList)
                     {
                         foreach (Control control in DrivePanel.Controls)
@@ -503,7 +549,7 @@ namespace FileGuide
                     {
                         tableLayoutFirstPage.Visible = true;
                         listView.Visible = false;
-                        clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
+                        clsTreeListView.ShowFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
                     }
                     tscmbPath.Text = currentPath;
                 }
@@ -523,7 +569,7 @@ namespace FileGuide
         private void listView_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             ListViewItem item = listView.FocusedItem;
-            if (clsTreeListView.ClickItem(listView, item, tscmbPath,false))
+            if (clsTreeListView.ClickItem(listView, item, tscmbPath, false))
             {
                 //If item is a folder, assign the current directory to currentPath
                 if (item.SubItems[1].Text == "Folder")
@@ -574,7 +620,7 @@ namespace FileGuide
                 newTab.Text = "My Computer" + spaceText;
                 tabControl.TabPages.Insert(lastIndex, newTab);
                 tabControl.SelectedIndex = lastIndex;
-                tabPathList.Insert(tabPathList.Count-1, "My Computer");  
+                tabPathList.Insert(tabPathList.Count - 1, "My Computer");
             }
             // If clicked on the X sign of any tab, delete that tab
             else
@@ -614,7 +660,7 @@ namespace FileGuide
             }
             else
             {
-                SolidBrush backgroundBrush = new SolidBrush(Color.FromArgb(243,243,243));
+                SolidBrush backgroundBrush = new SolidBrush(Color.FromArgb(243, 243, 243));
                 e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
             }
 
@@ -633,26 +679,26 @@ namespace FileGuide
             {
                 Image closeImage = Properties.Resources.Sign_Close;
                 e.Graphics.DrawImage
-                    (closeImage, 
-                    tabRect.Right - imageSize - 5, 
-                    tabRect.Top + (tabRect.Height - imageSize) / 2, 
-                    imageSize, 
+                    (closeImage,
+                    tabRect.Right - imageSize - 5,
+                    tabRect.Top + (tabRect.Height - imageSize) / 2,
+                    imageSize,
                     imageSize);
 
-                TextFormatFlags textFlags = TextFormatFlags.Left |TextFormatFlags.EndEllipsis;
-                 TextRenderer.DrawText
-                    (e.Graphics, 
-                    tabPage.Text, 
-                    tabPage.Font, 
-                    tabRect, tabPage.ForeColor, 
-                    textFlags);
+                TextFormatFlags textFlags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis;
+                TextRenderer.DrawText
+                   (e.Graphics,
+                   tabPage.Text,
+                   tabPage.Font,
+                   tabRect, tabPage.ForeColor,
+                   textFlags);
             }
         }
 
         private void tabControl_Selecting(object sender, TabControlCancelEventArgs e)
         {
             if (e.TabPageIndex == tabControl.TabCount - 1)
-                e.Cancel = true; 
+                e.Cancel = true;
             else
             {
                 string tabPath = tabPathList[e.TabPageIndex];
@@ -662,13 +708,13 @@ namespace FileGuide
                 {
                     tableLayoutFirstPage.Visible = true;
                     listView.Visible = false;
-                    clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
+                    clsTreeListView.ShowFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
                 }
                 else
                 {
                     tableLayoutFirstPage.Visible = false;
                     listView.Visible = true;
-                    clsTreeListView.ShowListView(listView, tabPathList[e.TabPageIndex]); 
+                    clsTreeListView.ShowListView(listView, tabPathList[e.TabPageIndex]);
                 }
                 tscmbPath.Text = tabPath;
             }
@@ -686,7 +732,7 @@ namespace FileGuide
         /// <param name="e"></param>
         private void treeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            try 
+            try
             {
                 isSpecialFolder = false;
                 TreeNode currentNode = e.Node;
@@ -711,13 +757,13 @@ namespace FileGuide
                 }
 
                 // If there's an error when showing folder tree, return
-                if (!clsTreeListView.ShowFolderTree(treeView, currentNode, isSpecialFolder,SpecialFolderPath)) return;
+                if (!clsTreeListView.ShowFolderTree(treeView, currentNode, isSpecialFolder, SpecialFolderPath)) return;
 
                 if (currentNode.Text == "My Computer")
                 {
                     tableLayoutFirstPage.Visible = true;
                     listView.Visible = false;
-                    clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
+                    clsTreeListView.ShowFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
                 }
                 else
                 {
@@ -739,7 +785,7 @@ namespace FileGuide
                 tabPathList[tabControl.SelectedIndex] = currentPath;
                 tabControl.TabPages[tabControl.SelectedIndex].Text = clsTreeListView.GetFileFolderName(currentPath) + spaceText;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -779,7 +825,7 @@ namespace FileGuide
                     selectBrush = new SolidBrush(UnfocusedSelectColor);
                 }
                 g.FillRectangle(selectBrush, e.Bounds);
-                Rectangle flags = new Rectangle(e.Bounds.Right - 10, e.Bounds.Y , 10, e.Bounds.Height);
+                Rectangle flags = new Rectangle(e.Bounds.Right - 10, e.Bounds.Y, 10, e.Bounds.Height);
                 g.FillRectangle(new SolidBrush(Color.BlueViolet), flags);
             }
 
@@ -1120,7 +1166,7 @@ namespace FileGuide
         /// <param name="e"></param>
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            clsTreeListView.ClickItem(listView, listView.SelectedItems[0], tscmbPath,false);
+            clsTreeListView.ClickItem(listView, listView.SelectedItems[0], tscmbPath, false);
             currentPath = tscmbPath.Text;
         }
 
@@ -1237,7 +1283,7 @@ namespace FileGuide
         {
             statusLblItemNum.Text = listView.Items.Count.ToString() + " items";
             if (currentPath == "My Computer")
-            { 
+            {
                 foreach (Panel DrivePanel in DrivePanelList)
                 {
                     foreach (Control control in DrivePanel.Controls)

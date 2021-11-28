@@ -26,6 +26,8 @@ namespace FileGuide
         const int MaxRecentFilesShown = 10;
         public List<string> ListRecentFiles = new List<string>();
         public List<string> EasyAccessFolderPathList = new List<string>();
+
+
         #region TreeView Main Methods
 
         /// <summary>
@@ -362,7 +364,7 @@ namespace FileGuide
         /// Show the listView first page whenever the root node-My Computer is focused
         /// </summary>
         /// <param name="flowLayoutPanelDrives"></param>
-        public void ShowListViewFirstPage(FlowLayoutPanel flowLayoutPanelDrives, ListView RecentFiles, List<Panel> DrivePanel)
+        public void ShowFirstPage(FlowLayoutPanel flowLayoutPanelDrives, ListView RecentFiles, List<Panel> DrivePanel)
         {
             // For each drive, create a panel with icon, name, and storage information then add to listView first page
             int driveCount = 0;
@@ -516,70 +518,6 @@ namespace FileGuide
                 MessageBox.Show(e.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             return false;
-        }
-
-
-        /// <summary>
-        /// Delete a listView item
-        /// </summary>
-        /// <param name="listView"></param>
-        /// <param name="item"></param>
-        public void DeleteItem(ListView listView, ListViewItem item)
-        {
-            try
-            {
-                string path = item.SubItems[5].Text;
-
-                if (item.SubItems[1].Text == "Folder")
-                {
-                    DirectoryInfo directory = new DirectoryInfo(path);
-                    if (!directory.Exists)
-                    {
-                        MessageBox.Show("Folder might not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    else
-                    {
-                        DialogResult dialog = MessageBox.Show("Are you sure you want to delete this folder ? \n" + item.Text.ToString(), "Delete folder", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-
-                        if (dialog == DialogResult.Yes)
-                        {
-                            directory.Delete(true);
-                        }
-                        else return;
-
-                        string pathFolder = GetParentDirectoryPath(path);
-                        ShowListView(listView, pathFolder);
-                    }
-                }
-                else
-                {
-                    FileInfo file = new FileInfo(path);
-                    if (!file.Exists)
-                    {
-                        MessageBox.Show("File might not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    else
-                    {
-                        DialogResult dialog = MessageBox.Show("Are you sure you want to delete this file ? \n" + item.Text.ToString(), "Delete file", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-
-                        if (dialog == DialogResult.Yes)
-                        {
-                            file.Delete();
-                        }
-                        else return;
-
-                        string pathFolder = GetParentDirectoryPath(path);
-                        ShowListView(listView, pathFolder);
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
 
 
