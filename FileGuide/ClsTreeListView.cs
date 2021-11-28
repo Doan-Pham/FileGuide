@@ -371,8 +371,8 @@ namespace FileGuide
                 {
                     if (!isRecenFilesListView)
                     { 
-                    ShowListView(listView, path);
-                    tscmbPath.Text = GetApproriatePath(path);
+                        ShowListView(listView, path);
+                        tscmbPath.Text = GetApproriatePath(path);
                     }
                 }
                 return true;

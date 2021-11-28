@@ -369,7 +369,7 @@ namespace FileGuide
             this.treeViewContextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
             this.treeViewContextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.treeViewContextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.treeViewContextMenuStrip.Size = new System.Drawing.Size(302, 109);
+            this.treeViewContextMenuStrip.Size = new System.Drawing.Size(302, 76);
             // 
             // pinToolStripMenuItem
             // 
@@ -400,8 +400,6 @@ namespace FileGuide
             this.tabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl_DrawItem);
             this.tabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl_Selecting);
             this.tabControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabControl_MouseDown);
-            this.tabControl.MouseEnter += new System.EventHandler(this.tabControl_MouseEnter);
-            this.tabControl.MouseLeave += new System.EventHandler(this.tabControl_MouseLeave);
             // 
             // tabPage1
             // 

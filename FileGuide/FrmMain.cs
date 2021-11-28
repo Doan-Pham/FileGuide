@@ -58,7 +58,7 @@ namespace FileGuide
         private void Form1_Load(object sender, EventArgs e)
         {
             currentPath = "My Computer";
-            clsTreeListView.CreateTreeView(this.treeView);
+            clsTreeListView.CreateTreeView(treeView);
 
             // Read list of recent accessed files into a list
             string DebugDirectory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -94,14 +94,14 @@ namespace FileGuide
             }
 
             // Set min width for tscmbPath
-            if (this.Width > 900)
-                tscmbPath.Width = this.Width - 800;
+            if (Width > 900)
+                tscmbPath.Width = Width - 800;
 
             // Initializes first 2 tabs: My Computer and Add
-            this.tabControl.TabPages[this.tabControl.TabCount - 1].Text = "";
-            this.tabControl.TabPages[0].Text = "My Computer    ";
-            tabControl.TabPages[this.tabControl.TabCount - 1].ToolTipText = "Add a new tab";
-            this.tabControl.Padding = new Point(16, 4);
+            tabControl.TabPages[tabControl.TabCount - 1].Text = "";
+            tabControl.TabPages[0].Text = "My Computer    ";
+            tabControl.TabPages[tabControl.TabCount - 1].ToolTipText = "Add a new tab";
+            tabControl.Padding = new Point(16, 4);
         }
 
 
@@ -112,8 +112,8 @@ namespace FileGuide
         /// <param name="e"></param>
         private void FrmMain_Resize(object sender, EventArgs e)
         {
-            if (this.Width > 900)
-                tscmbPath.Width = this.Width - 800;
+            if (Width > 900)
+                tscmbPath.Width = Width - 800;
         }
         
 
@@ -382,6 +382,7 @@ namespace FileGuide
         {
             try
             {
+                // Refesh if the new label is empty
                 if (e.Label == null || e.Label == "")
                 {
                     refreshToolStripMenuItem.PerformClick();
@@ -410,7 +411,7 @@ namespace FileGuide
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -433,33 +434,32 @@ namespace FileGuide
                 {
                     if (tscmbPath.Text != "")
                     {
-                        // If path points to a file, process that file
+                        // If path points to a file, run that file
                         if (File.Exists(tscmbPath.Text.Trim()))
                         {
                             FileInfo file = new FileInfo(tscmbPath.Text.Trim());
                             Process.Start(tscmbPath.Text.Trim());
                             DirectoryInfo parent = file.Directory;
                             tscmbPath.Text = parent.FullName;
-
                         }
 
                         // If path points to a folder, open that folder
                         else if (Directory.Exists(tscmbPath.Text.Trim()))
                         {
-                            clsTreeListView.ShowListView(this.listView, tscmbPath.Text);
+                            clsTreeListView.ShowListView(listView, tscmbPath.Text);
                             currentPath = tscmbPath.Text;
                         }
 
                         // If path doesn't exist, show error message
                         else
                         {
-                            MessageBox.Show("File/Folder not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
+                            MessageBox.Show("File/Folder not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error) ;
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -472,10 +472,10 @@ namespace FileGuide
         /// <param name="e"></param>
         private void tsbtnRefresh_Click(object sender, EventArgs e)
         {
+            // Show list view/first page and add mouse events to drive panels
             if (currentPath != "")
             {
-                if (currentPath != "My Computer")
-                    clsTreeListView.ShowListView(listView, currentPath);
+                if (currentPath != "My Computer") clsTreeListView.ShowListView(listView, currentPath);
                 else
                 {
                     clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
@@ -487,7 +487,7 @@ namespace FileGuide
                             control.MouseLeave += DrivePanel_MouseLeave;
                             control.Click += DrivePanel_Click;
                         }
-                    };
+                    }
                 }
             }
         }
@@ -522,7 +522,7 @@ namespace FileGuide
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -535,7 +535,6 @@ namespace FileGuide
         private void listView_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             ListViewItem item = listView.FocusedItem;
-
             if (clsTreeListView.ClickItem(listView, item, tscmbPath,false))
             {
                 //If item is a folder, assign the current directory to currentPath
@@ -559,10 +558,9 @@ namespace FileGuide
                 ListViewItem item = listView.FocusedItem;
                 if (clsTreeListView.ClickItem(listView, item, tscmbPath, false))
                 {
-                    // Nếu item là folder thì hiển thị path lên tsPath
+                    //If item is a folder, assign the current directory to currentPath and show on tscmbPath
                     if (item.SubItems[1].Text == "Folder")
                     {
-                        tscmbPath.Text = clsTreeListView.GetApproriatePath(item.SubItems[5].Text);
                         currentPath = tscmbPath.Text;
                     }
                 }
@@ -575,8 +573,9 @@ namespace FileGuide
         #region App feature: Tabs control
         private void tabControl_MouseDown(object sender, MouseEventArgs e)
         {
-            var lastIndex = this.tabControl.TabCount - 1;
-            if (this.tabControl.GetTabRect(lastIndex).Contains(e.Location))
+            // If clicked on the last tab (tab with the plus sign), create a new tab
+            var lastIndex = tabControl.TabCount - 1;
+            if (tabControl.GetTabRect(lastIndex).Contains(e.Location))
             {
                 TabPage newTab = new TabPage();
                 newTab.BackColor = Color.White;
@@ -585,16 +584,17 @@ namespace FileGuide
                 ControlPaint.DrawBorder(tabControl.CreateGraphics(), newTab.Bounds, Color.AliceBlue, ButtonBorderStyle.Solid);
 
                 newTab.Text = "My Computer" + spaceText;
-                this.tabControl.TabPages.Insert(lastIndex, newTab);
-                tabPathList.Insert(tabPathList.Count-1, "My Computer");
-                this.tabControl.SelectedIndex = lastIndex;
+                tabControl.TabPages.Insert(lastIndex, newTab);
+                tabControl.SelectedIndex = lastIndex;
+                tabPathList.Insert(tabPathList.Count-1, "My Computer");  
             }
+            // If clicked on the X sign of any tab, delete that tab
             else
             {
                 int imageSize = 16;
-                for (var i = 0; i < this.tabControl.TabPages.Count; i++)
+                for (var i = 0; i < tabControl.TabPages.Count; i++)
                 {
-                    var tabRect = this.tabControl.GetTabRect(i);
+                    var tabRect = tabControl.GetTabRect(i);
                     var imageRect = new Rectangle(
                         (tabRect.Right - imageSize - 4),
                         tabRect.Top + (tabRect.Height - imageSize) / 2,
@@ -603,7 +603,7 @@ namespace FileGuide
 
                     if (imageRect.Contains(e.Location))
                     {
-                        this.tabControl.TabPages.RemoveAt(i);
+                        tabControl.TabPages.RemoveAt(i);
                         tabPathList.RemoveAt(i);
                         break;
                     }
@@ -613,11 +613,12 @@ namespace FileGuide
 
         private void tabControl_DrawItem(object sender, DrawItemEventArgs e)
         {
-            var tabPage = this.tabControl.TabPages[e.Index];
-            var tabRect = this.tabControl.GetTabRect(e.Index);
+            var tabPage = tabControl.TabPages[e.Index];
+            var tabRect = tabControl.GetTabRect(e.Index);
             tabRect.Inflate(-2, -2);
             int imageSize = 16;
 
+            // Change the color of the selected tabs
             if (e.Index == tabControl.SelectedIndex)
             {
                 SolidBrush backgroundBrush = new SolidBrush(Color.White);
@@ -629,7 +630,8 @@ namespace FileGuide
                 e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
             }
 
-            if (e.Index == this.tabControl.TabCount - 1)
+            // Draw the X sign or Plus sign depending on the tabs
+            if (e.Index == tabControl.TabCount - 1)
             {
                 Image addImage = Properties.Resources.Sign_Plus;
                 e.Graphics.DrawImage
@@ -661,7 +663,7 @@ namespace FileGuide
 
         private void tabControl_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            if (e.TabPageIndex == this.tabControl.TabCount - 1)
+            if (e.TabPageIndex == tabControl.TabCount - 1)
                 e.Cancel = true; 
             else
             {
@@ -681,18 +683,7 @@ namespace FileGuide
                     clsTreeListView.ShowListView(listView, tabPathList[e.TabPageIndex]); 
                 }
                 tscmbPath.Text = tabPath;
-                //e.TabPage.Text = clsTreeListView.GetApproriatePath(tabPath) + spaceText;
             }
-        }
-
-        private void tabControl_MouseEnter(object sender, EventArgs e)
-        {
-           // tabControl.SelectedTab.BackColor = Color.Black;
-        }
-
-        private void tabControl_MouseLeave(object sender, EventArgs e)
-        {
-            //tabControl.SelectedTab.BackColor = SecondaryTextColor;
         }
         #endregion
 
@@ -713,6 +704,7 @@ namespace FileGuide
                 TreeNode currentNode = e.Node;
                 string SpecialFolderPath = "";
 
+                // Check for special folders: downloads, desktop, easy access, documents
                 if (clsTreeListView.GetTreeNodeRoot(currentNode).Text != "My Computer")
                 {
                     switch (currentNode.Text)
@@ -730,7 +722,8 @@ namespace FileGuide
                     isSpecialFolder = true;
                 }
 
-                if (!clsTreeListView.ShowFolderTree(this.treeView, currentNode, isSpecialFolder,SpecialFolderPath)) return;
+                // If there's an error when showing folder tree, return
+                if (!clsTreeListView.ShowFolderTree(treeView, currentNode, isSpecialFolder,SpecialFolderPath)) return;
 
                 if (currentNode.Text == "My Computer")
                 {
@@ -747,8 +740,8 @@ namespace FileGuide
                     }
                     tableLayoutFirstPage.Visible = false;
                     listView.Visible = true;
-                    if (SpecialFolderPath == "") clsTreeListView.ShowListView(this.listView, currentNode);
-                    else clsTreeListView.ShowListView(this.listView, SpecialFolderPath);
+                    if (SpecialFolderPath == "") clsTreeListView.ShowListView(listView, currentNode);
+                    else clsTreeListView.ShowListView(listView, SpecialFolderPath);
                 }
 
                 tscmbPath.Text = clsTreeListView.GetApproriatePath(currentNode.FullPath);
@@ -856,6 +849,54 @@ namespace FileGuide
             Cursor = Cursors.Default;
         }
 
+
+        /// <summary>
+        /// Show contextMenuStrip when right click a treeView node
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void treeView_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                treeView.SelectedNode = treeView.GetNodeAt(e.Location);
+                if (treeView.SelectedNode != null)
+                    treeViewContextMenuStrip.Show((TreeView)sender, e.Location);
+            }
+        }
+
+
+        /// <summary>
+        /// Pin folder to easy access
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pinToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (treeView.SelectedNode != null)
+            {
+                EasyAccessFolderPathList.Add(clsTreeListView.GetApproriatePath(treeView.SelectedNode.FullPath));
+                TreeNode clonedTreeNode = (TreeNode)treeView.SelectedNode.Clone();
+                treeView.Nodes[1].Nodes.Add(treeView.SelectedNode.Text);
+            }
+            treeView.Nodes[1].Expand();
+        }
+
+
+        /// <summary>
+        /// Unpin folder from easy access
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void unpingFromEasyAccessToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (treeView.SelectedNode != null && clsTreeListView.GetTreeNodeRoot(treeView.SelectedNode).Text == "Easy Access")
+            {
+                EasyAccessFolderPathList.RemoveAt(treeView.SelectedNode.Index);
+                treeView.Nodes[1].Nodes.RemoveAt(treeView.SelectedNode.Index);
+            }
+        }
+
         #endregion
 
 
@@ -918,12 +959,14 @@ namespace FileGuide
         /// <param name="e"></param>
         private void listView_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         {
+            // Draw text
             TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis |
        TextFormatFlags.ExpandTabs | TextFormatFlags.SingleLine;
 
             Rectangle textRect = new Rectangle(e.Bounds.X + 20, e.Bounds.Y, e.Bounds.Width - 20, e.Bounds.Height);
             TextRenderer.DrawText(e.Graphics, e.Header.Text, e.Header.ListView.Font, textRect, SecondaryTextColor, flags);
 
+            // Draw border
             Pen textBorder = new Pen(Color.FromArgb(186, 186, 186), 1.5f);
             e.Graphics.DrawLine(textBorder, new Point(e.Bounds.X + 25, e.Bounds.Y - 5 + e.Bounds.Height), new Point(e.Bounds.X + e.Bounds.Width, e.Bounds.Y - 5 + e.Bounds.Height));
         }
@@ -938,7 +981,6 @@ namespace FileGuide
         {
             Rectangle itemRect = e.Item.Bounds;
             Graphics g = e.Graphics;
-
 
             if (e.State == ListViewItemStates.Hot)
             {
@@ -961,6 +1003,7 @@ namespace FileGuide
                 g.FillRectangle(selectBrush, itemRect);
             }
 
+            // Specify how to draw listView items in each view mode
             if (e.Item.ListView.View == View.LargeIcon)
             {
                 float ImageSize = 80.0f;
@@ -1096,6 +1139,104 @@ namespace FileGuide
         #endregion
 
 
+        #region FirstPage design
+
+        /// <summary>
+        /// Go to file when click on recent access files list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listViewRecentFiles_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            clsTreeListView.ClickItem(listViewRecentFiles, listViewRecentFiles.FocusedItem, tscmbPath, true);
+            tsbtnRefresh.PerformClick();
+        }
+
+        /// <summary>
+        /// Change background color of hovered drive panel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DrivePanel_MouseEnter(object sender, EventArgs e)
+        {
+            Control drivePanelChildControls = sender as Control;
+            Panel drivePanel = (Panel)drivePanelChildControls.Parent;
+            drivePanel.BackColor = Color.FromArgb(200, 200, 200);
+            Cursor = Cursors.Hand;
+        }
+
+        /// <summary>
+        /// Change background color of unhovered drive panels
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DrivePanel_MouseLeave(object sender, EventArgs e)
+        {
+            Control drivePanelChildControls = sender as Control;
+            Panel drivePanel = (Panel)drivePanelChildControls.Parent;
+            drivePanel.BackColor = Color.White;
+            Cursor = Cursors.Default;
+        }
+
+        /// <summary>
+        /// Go to the approriate hard disk when clicking on a drive panel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DrivePanel_Click(object sender, EventArgs e)
+        {
+            Control drivePanelChildControls = sender as Control;
+            Panel drivePanel = (Panel)drivePanelChildControls.Parent;
+            foreach (var drive in DriveInfo.GetDrives())
+            {
+                if (drivePanel.Controls[1].Text.Contains(drive.Name.ToString().Replace("\\", "")))
+                {
+                    tableLayoutFirstPage.Visible = false;
+                    listView.Visible = true;
+                    currentPath = drive.Name;
+                    tscmbPath.Text = drive.Name;
+                    clsTreeListView.ShowListView(listView, currentPath);
+                    return;
+                }
+            }
+        }
+        private void guna2Panel2_Click(object sender, EventArgs e)
+        {
+            Panel drivePanel = sender as Panel;
+            Panel actualPanel = (Panel)drivePanel.Parent;
+            foreach (var drive in DriveInfo.GetDrives())
+            {
+                if (actualPanel.Controls["driveName"].Text.Contains(drive.Name.ToString().Replace("\\", "")))
+                {
+                    tableLayoutFirstPage.Visible = false;
+                    listView.Visible = true;
+                    currentPath = drive.Name;
+                    tscmbPath.Text = drive.Name;
+                    clsTreeListView.ShowListView(listView, currentPath);
+                    return;
+                }
+            }
+        }
+
+        private void guna2Panel2_MouseEnter(object sender, EventArgs e)
+        {
+
+            Panel drivePanel = sender as Panel;
+            Panel parentPanel = (Panel)drivePanel.Parent;
+            parentPanel.BackColor = Color.FromArgb(200, 200, 200);
+            Cursor = Cursors.Hand;
+        }
+
+        private void guna2Panel2_MouseLeave(object sender, EventArgs e)
+        {
+            Panel drivePanel = sender as Panel;
+            Panel parentPanel = (Panel)drivePanel.Parent;
+            parentPanel.BackColor = Color.White;
+            Cursor = Cursors.Default;
+        }
+        #endregion
+
+
         #region Bottom statusBar design
 
 
@@ -1137,107 +1278,6 @@ namespace FileGuide
 
         #endregion
 
-        private void listViewRecentFiles_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            clsTreeListView.ClickItem(listViewRecentFiles, listViewRecentFiles.FocusedItem, tscmbPath,true);
-            tsbtnRefresh.PerformClick();
-        }
 
-        private void DrivePanel_MouseEnter(object sender, EventArgs e)
-        {
-            Control drivePanelChildControls = sender as Control;
-            Panel drivePanel = (Panel)drivePanelChildControls.Parent;
-            drivePanel.BackColor = Color.FromArgb(200, 200, 200);
-            Cursor = Cursors.Hand;
-        }
-        private void DrivePanel_MouseLeave(object sender, EventArgs e)
-        {
-            Control drivePanelChildControls = sender as Control;
-            Panel drivePanel = (Panel)drivePanelChildControls.Parent;
-            drivePanel.BackColor = Color.White;
-            Cursor = Cursors.Default;
-        }
-
-        private void DrivePanel_Click(object sender, EventArgs e)
-        {
-            Control drivePanelChildControls = sender as Control;
-            Panel drivePanel = (Panel)drivePanelChildControls.Parent;
-            foreach (var drive in DriveInfo.GetDrives())
-            {
-                if (drivePanel.Controls[1].Text.Contains(drive.Name.ToString().Replace("\\", "")))
-                {
-                    tableLayoutFirstPage.Visible = false;
-                    listView.Visible = true;
-                    currentPath = drive.Name;
-                    tscmbPath.Text = drive.Name;
-                    clsTreeListView.ShowListView(listView, currentPath);
-                    return;
-                }
-            }
-        }
-        private void guna2Panel2_Click(object sender, EventArgs e)
-        {
-            Panel drivePanel = sender as Panel;
-            Panel actualPanel = (Panel)drivePanel.Parent;
-            foreach (var drive in DriveInfo.GetDrives())
-            {
-                if (actualPanel.Controls["driveName"].Text.Contains(drive.Name.ToString().Replace("\\","")))
-                {
-                    tableLayoutFirstPage.Visible = false;
-                    listView.Visible = true;
-                    currentPath = drive.Name;
-                    tscmbPath.Text = drive.Name;
-                    clsTreeListView.ShowListView(listView, currentPath);
-                    return;
-                }
-            }
-        }
-
-        private void guna2Panel2_MouseEnter(object sender, EventArgs e)
-        {
-         
-            Panel drivePanel = sender as Panel;
-            Panel parentPanel = (Panel)drivePanel.Parent;
-            parentPanel.BackColor = Color.FromArgb(200, 200, 200);
-            Cursor = Cursors.Hand;
-        }
-
-        private void guna2Panel2_MouseLeave(object sender, EventArgs e)
-        {
-            Panel drivePanel = sender as Panel;
-            Panel parentPanel = (Panel)drivePanel.Parent;
-            parentPanel.BackColor = Color.White;
-            Cursor = Cursors.Default;
-        }
-
-        private void treeView_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                treeView.SelectedNode = treeView.GetNodeAt(e.Location);
-                if (treeView.SelectedNode != null)
-                    treeViewContextMenuStrip.Show((TreeView)sender, e.Location);
-            }
-        }
-
-        private void pinToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (treeView.SelectedNode != null)
-            {
-                EasyAccessFolderPathList.Add(clsTreeListView.GetApproriatePath(treeView.SelectedNode.FullPath));
-                TreeNode clonedTreeNode = (TreeNode)treeView.SelectedNode.Clone();
-                treeView.Nodes[1].Nodes.Add(treeView.SelectedNode.Text);
-            }
-            treeView.Nodes[1].Expand();
-        }
-
-        private void unpingFromEasyAccessToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (treeView.SelectedNode != null && clsTreeListView.GetTreeNodeRoot(treeView.SelectedNode).Text == "Easy Access")
-            {
-                EasyAccessFolderPathList.RemoveAt(treeView.SelectedNode.Index);
-                treeView.Nodes[1].Nodes.RemoveAt(treeView.SelectedNode.Index);
-            }
-        }
     }
 }
