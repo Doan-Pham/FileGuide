@@ -455,6 +455,12 @@ namespace FileGuide
         /// <param name="RecentFiles"></param>
         public void ShowRecentAccessedFiles(ListView RecentFiles)
         {
+            // Read list of recent accessed files into a list
+            string DebugDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string RecentDirectory = Path.Combine(DebugDirectory, "RecentAccessesFiles");
+            string RecentFilesTxt = Path.Combine(RecentDirectory, "RecentAccessedFiles.txt");
+            if (File.Exists(RecentFilesTxt)) ListRecentFiles.AddRange(File.ReadAllLines(RecentFilesTxt));
+
             RecentFiles.Items.Clear();
             foreach (string ItemPath in ListRecentFiles)
             {
