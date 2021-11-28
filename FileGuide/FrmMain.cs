@@ -51,20 +51,23 @@ namespace FileGuide
         #region Overall Form design
 
         /// <summary>
-        /// Create treeView,load list of recent files into first page and set min width for toolStrip path
+        /// Create treeView, load recent files list, load easy acccess list, load first page, load first tabs, set min width for tscmbPath
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Form1_Load(object sender, EventArgs e)
         {
+            currentPath = "My Computer";
             clsTreeListView.CreateTreeView(this.treeView);
 
+            // Read list of recent accessed files into a list
             string DebugDirectory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string RecentDirectory = System.IO.Path.Combine(DebugDirectory, "RecentAccessesFiles");
             string RecentFilesTxt = System.IO.Path.Combine(RecentDirectory, "RecentAccessedFiles.txt");
             if (File.Exists(RecentFilesTxt))
                 clsTreeListView.ListRecentFiles.AddRange(File.ReadAllLines(RecentFilesTxt));
 
+            // Read list of folders in easy access into a list, then foreach of these, add a node to easy access
             string EasyAccessDirectory = System.IO.Path.Combine(DebugDirectory, "EasyAccess");
             string EasyAccessFoldersTxt = System.IO.Path.Combine(EasyAccessDirectory, "EasyAccessFolders.txt");
             if (File.Exists(EasyAccessFoldersTxt))
@@ -75,9 +78,9 @@ namespace FileGuide
                 treeView.Nodes[1].Nodes.Add(clsTreeListView.GetFileFolderName (folderPath));
             }
             
-           
             treeView.ExpandAll();
 
+            // Show first page and add event handlers for drive panels' mouses events
             clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
 
             foreach (Panel DrivePanel in DrivePanelList)
@@ -89,69 +92,59 @@ namespace FileGuide
                     control.Click += DrivePanel_Click;
                 }
             }
+
+            // Set min width for tscmbPath
             if (this.Width > 900)
                 tscmbPath.Width = this.Width - 800;
 
-            currentPath = "My Computer";
+            // Initializes first 2 tabs: My Computer and Add
             this.tabControl.TabPages[this.tabControl.TabCount - 1].Text = "";
             this.tabControl.TabPages[0].Text = "My Computer    ";
             tabControl.TabPages[this.tabControl.TabCount - 1].ToolTipText = "Add a new tab";
             this.tabControl.Padding = new Point(16, 4);
-            this.tabControl.HandleCreated += tabControl_HandleCreated;
-        }
-
-        private void DrivePanel_MouseEnter1(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void Panel_MouseMove(object sender, MouseEventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
 
         /// <summary>
-        /// Set min width for toolStrip Path when resize form
+        /// Set min width for tscmbPath when resize form
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void FrmMain_Resize(object sender, EventArgs e)
         {
-
             if (this.Width > 900)
                 tscmbPath.Width = this.Width - 800;
         }
         
 
         /// <summary>
-        /// Write list of recent accessed files to a txt file in debug folder
+        /// Write recent accessed files list and easy access folders to .txt files 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
+            // Write recent accessed files list
             string DebugDirectory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string RecentDirectory = System.IO.Path.Combine(DebugDirectory, "RecentAccessesFiles");
             string RecentFilesTxt = System.IO.Path.Combine(RecentDirectory, "RecentAccessedFiles.txt");
 
-            if (!Directory.Exists(RecentDirectory))
-                Directory.CreateDirectory(RecentDirectory);
+            if (!Directory.Exists(RecentDirectory)) Directory.CreateDirectory(RecentDirectory);
+
             using (StreamWriter OutputFile = new StreamWriter(RecentFilesTxt))
             {
-                foreach (string filePath in clsTreeListView.ListRecentFiles)
-                    OutputFile.WriteLine(filePath);
+                foreach (string filePath in clsTreeListView.ListRecentFiles) OutputFile.WriteLine(filePath);
             }
 
+            // Write easy access folders list
             string EasyAccessDirectory = System.IO.Path.Combine(DebugDirectory, "EasyAccess");
             string EasyAccessFoldersTxt = System.IO.Path.Combine(EasyAccessDirectory, "EasyAccessFolders.txt");
 
-            if (!Directory.Exists(EasyAccessDirectory))
-                Directory.CreateDirectory(EasyAccessDirectory);
+            if (!Directory.Exists(EasyAccessDirectory)) Directory.CreateDirectory(EasyAccessDirectory);
+
             using (StreamWriter OutputFile = new StreamWriter(EasyAccessFoldersTxt))
             {
-                foreach (string filePath in EasyAccessFolderPathList)
-                    OutputFile.WriteLine(filePath);
+                foreach (string filePath in EasyAccessFolderPathList) OutputFile.WriteLine(filePath);
             }
         }
 
@@ -171,20 +164,17 @@ namespace FileGuide
             // Set isCopying to true so events for Paste feature know whether to cut paste or copy paste
             isCopying = true;
 
-            // If listView is focused, assign item's path to a variable and enable Paste feature
+            // If listView is focused, assign initial item's path to a variable and enable Paste feature
             if (listView.Focused)
             {
                 isListView = true;
                 itemPaste = listView.FocusedItem;
-
-                if (itemPaste == null)
-                    return;
+                if (itemPaste == null) return;
 
                 pathSource = itemPaste.SubItems[5].Text;
                 if (itemPaste.SubItems[1].Text.Trim() == "Folder")
                 {
                     isFolder = true;
-
                 }
                 else
                 {
@@ -264,10 +254,10 @@ namespace FileGuide
                 }
 
                 // After pasting, refresh listView and disable paste feature
-                string strPath;
-                if (!isFolder) strPath = clsTreeListView.GetParentDirectoryPath(pathDest);
-                else strPath = pathDest;
-                clsTreeListView.ShowListView(listView, strPath);
+                string strNewPath;
+                if (!isFolder) strNewPath = clsTreeListView.GetParentDirectoryPath(pathDest);
+                else strNewPath = pathDest;
+                clsTreeListView.ShowListView(listView, strNewPath);
 
                 pasteToolStripMenuItem.Enabled = true;
                 tsbtnPaste.Enabled = false;
@@ -306,24 +296,27 @@ namespace FileGuide
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void folderToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-            int count = 1;
+        {    
+            // Check for folders with the same name as the new folder to assign correct name, then create the new folder
+            int SameNameCount = 1;
             string newFolderName = "New folder";
             foreach (ListViewItem item in listView.Items)
             {
                 if (item.SubItems[0].Text.ToString().Contains("New folder") && item.SubItems[1].Text.ToString() == "Folder")
                 {
-                    newFolderName = "New folder_" + count.ToString();
-                    count++;
+                    newFolderName = "New folder_" + SameNameCount.ToString();
+                    SameNameCount++;
                 }
             }
-            Directory.CreateDirectory(System.IO.Path.Combine(currentPath, newFolderName));
+            DirectoryInfo newlyCreatedFolder = Directory.CreateDirectory(System.IO.Path.Combine(currentPath, newFolderName));
+            ListViewItem newlyCreatedItem = clsTreeListView.GetListViewItem(newlyCreatedFolder);
+
+            // Check for the folder with same name and same type as the newly created folder and start renaming
             int index = 0;
             clsTreeListView.ShowListView(listView, currentPath);
             foreach (ListViewItem item in listView.Items)
             {
-                if (item.SubItems[0].Text.ToString() == newFolderName)
+                if (item.SubItems[0].Text == newFolderName && item.SubItems[1].Text == newlyCreatedItem.SubItems[1].Text)
                 {
                     index = item.Index;
                 }
@@ -340,18 +333,32 @@ namespace FileGuide
         /// <param name="e"></param>
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Check for folders with the same name as the new folder to assign correct name, then create the new folder
             string newFileName = "New file";
-            int count = 1;
+            int SameNameCount = 1;
             foreach (ListViewItem item in listView.Items)
             {
                 if (item.SubItems[0].Text.ToString().Contains("New file") && item.SubItems[1].Text.ToString() != "Folder")
                 {
-                    newFileName = "New file_" + count.ToString();
-                    count++;
+                    newFileName = "New file_" + SameNameCount.ToString();
+                    SameNameCount++;
                 }
             }
+            
             File.Create(System.IO.Path.Combine(currentPath, newFileName));
+
+            // Go to the created folder and start renaming
+            int index = 0;
             clsTreeListView.ShowListView(listView, currentPath);
+            foreach (ListViewItem item in listView.Items)
+            {
+                if (item.SubItems[0].Text.ToString() == newFileName)
+                {
+                    index = item.Index;
+                }
+            }
+            listView.Items[index].Selected = true;
+            menuRename_Click(sender, e);
         }
 
 
@@ -676,14 +683,6 @@ namespace FileGuide
                 tscmbPath.Text = tabPath;
                 //e.TabPage.Text = clsTreeListView.GetApproriatePath(tabPath) + spaceText;
             }
-        }
-
-        [DllImport("user32.dll")]
-        private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wp, IntPtr lp);
-        private const int TCM_SETMINTABWIDTH = 0x1300 + 49;
-        private void tabControl_HandleCreated(object sender, EventArgs e)
-        {
-            SendMessage(this.tabControl.Handle, TCM_SETMINTABWIDTH, IntPtr.Zero, (IntPtr)7);
         }
 
         private void tabControl_MouseEnter(object sender, EventArgs e)
