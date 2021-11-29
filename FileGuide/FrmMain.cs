@@ -1300,7 +1300,7 @@ namespace FileGuide
         /// <param name="e"></param>
         private void listView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            statusLblNumSelect.Text = listView.SelectedItems.Count.ToString() + " items selected   " + listView.SelectedItems;
+            statusLblNumSelect.Text = listView.SelectedItems.Count.ToString() + " items selected   " + listView.SelectedItems.Count;
         }
 
 
