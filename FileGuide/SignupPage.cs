@@ -13,6 +13,8 @@ namespace FileGuide
 {
     public partial class SignupPage : UserControl
     {
+        public Color SuccessNoticeColor = Color.FromArgb(0,200,0);
+        public Color ErrorWarningColor = Color.FromArgb(200, 0, 0);
         public SignupPage()
         {
             InitializeComponent();
@@ -63,7 +65,7 @@ namespace FileGuide
         {
             labelWarning1.Visible = false;
             labelWarning2.Visible = false;
-            labelWarning2.ForeColor = Color.FromArgb(200, 0, 0);
+            labelWarning2.ForeColor = ErrorWarningColor;
             if (textBoxUser.Text.ToString().Trim() == "")
             {
                 labelWarning1.Visible = true;
@@ -115,7 +117,7 @@ namespace FileGuide
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            labelNotice.ForeColor = Color.FromArgb(200, 0, 0);
+            labelNotice.ForeColor = ErrorWarningColor;
             labelNotice.Visible = false;
             if (textBoxUserAfter.Text.ToString().Trim() == "" || textBoxPassAfter.Text.ToString().Trim() == "" || textBoxPerAfter.Text.ToString().Trim() == "")
             {
@@ -145,8 +147,7 @@ namespace FileGuide
                 }
                 else
                 {
-                    string InsertQuery = "INSERT INTO USERS (USERNAME, PASSWORD, PERMISSION)";
-                    InsertQuery += " VALUES (@USERNAME, @PASSWORD, @PERMISSION)";
+                    string InsertQuery = "INSERT INTO USERS (USERNAME, PASSWORD, PERMISSION) VALUES (@USERNAME, @PASSWORD, @PERMISSION)";
                     using (SqlCommand InsertCommand = new SqlCommand(InsertQuery, connection))
                     {
                         InsertCommand.Parameters.AddWithValue("@USERNAME", textBoxUserAfter.Text);
@@ -156,7 +157,7 @@ namespace FileGuide
                     }
                     labelNotice.Visible = true;
                     labelNotice.Text = "Thêm mới thành công";
-                    labelNotice.ForeColor = Color.FromArgb(0, 200, 0);
+                    labelNotice.ForeColor = SuccessNoticeColor;
                     SignupPage_Load(sender, e);
                 }
                 connection.Close();
@@ -165,7 +166,7 @@ namespace FileGuide
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            labelNotice.ForeColor = Color.FromArgb(200, 0, 0);
+            labelNotice.ForeColor = ErrorWarningColor;
             labelNotice.Visible = false;
             if (textBoxUserAfter.Text.ToString().Trim() == "" )
             {
@@ -199,7 +200,7 @@ namespace FileGuide
                     }
                     labelNotice.Visible = true;
                     labelNotice.Text = "Xóa TK thành công";
-                    labelNotice.ForeColor = Color.FromArgb(0, 200, 0);
+                    labelNotice.ForeColor = SuccessNoticeColor;
                     SignupPage_Load(sender, e);
                 }
                 connection.Close();
@@ -209,7 +210,54 @@ namespace FileGuide
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            labelNotice.ForeColor = ErrorWarningColor;
             labelNotice.Visible = false;
+            if (textBoxUserAfter.Text.ToString().Trim() == "" || textBoxPassAfter.Text.ToString().Trim() == "" || textBoxPerAfter.Text.ToString().Trim() == "")
+            {
+                labelNotice.Visible = true;
+                labelNotice.Text = "Vui lòng nhập đầy đủ thông tin";
+                return;
+            }
+            else if (!(textBoxPerAfter.Text.ToString().Trim() == "0" || textBoxPerAfter.Text.ToString().Trim() == "1"))
+            {
+                labelNotice.Visible = true;
+                labelNotice.Text = "Vui lòng nhập chỉ nhập 0 hoặc 1 vào ô Quyền";
+                return;
+            }
+
+            using (SqlConnection connection = new SqlConnection(FormLogin.SQLConnectionString))
+            {
+                connection.Open();
+
+                SqlCommand SelectCommand = new SqlCommand("SELECT * FROM USERS WHERE USERNAME = @USERNAME",connection);
+                SelectCommand.Parameters.AddWithValue("USERNAME", textBoxUserAfter.Text);
+                SqlDataAdapter adapter = new SqlDataAdapter(SelectCommand);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                if (dataTable.Rows.Count == 0)
+                {
+                    labelNotice.Visible = true;
+                    labelNotice.Text = "Tài khoản muốn sửa không tồn tại";
+                }
+                else
+                {
+                    using (SqlCommand UpdateCommand = new SqlCommand("UPDATE USERS SET PASSWORD = @PASSWORD, PERMISSION = @PERMISSION WHERE USERNAME = @USERNAME", connection))
+                    {
+                        UpdateCommand.Parameters.AddWithValue("USERNAME", textBoxUserAfter.Text);
+                        UpdateCommand.Parameters.AddWithValue("PASSWORD", textBoxPassAfter.Text);
+                        UpdateCommand.Parameters.AddWithValue("PERMISSION",int.Parse(textBoxPerAfter.Text));
+
+                        UpdateCommand.ExecuteNonQuery();
+                    }
+                    
+                    labelNotice.Visible = true;
+                    labelNotice.ForeColor = SuccessNoticeColor;
+                    labelNotice.Text = "Sửa thông tin thành công";
+                    SignupPage_Load(sender, e);
+                }
+                connection.Close();
+            }    
         }
     }
 }
