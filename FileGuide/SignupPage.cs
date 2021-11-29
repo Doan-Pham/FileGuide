@@ -115,7 +115,7 @@ namespace FileGuide
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            labelWarning2.ForeColor = Color.FromArgb(200, 0, 0);
+            labelNotice.ForeColor = Color.FromArgb(200, 0, 0);
             labelNotice.Visible = false;
             if (textBoxUserAfter.Text.ToString().Trim() == "" || textBoxPassAfter.Text.ToString().Trim() == "" || textBoxPerAfter.Text.ToString().Trim() == "")
             {
@@ -165,7 +165,46 @@ namespace FileGuide
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            labelNotice.ForeColor = Color.FromArgb(200, 0, 0);
             labelNotice.Visible = false;
+            if (textBoxUserAfter.Text.ToString().Trim() == "" )
+            {
+                labelNotice.Visible = true;
+                labelNotice.Text = "Vui lòng nhập tên tài khoản";
+                return;
+            }
+
+            using (SqlConnection connection = new SqlConnection(FormLogin.SQLConnectionString))
+            {
+                connection.Open();
+
+                SqlCommand SelectCommand = new  SqlCommand("SELECT * FROM USERS WHERE USERNAME = @USERNAME", connection);
+                SelectCommand.Parameters.AddWithValue("USERNAME", textBoxUserAfter.Text);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(SelectCommand);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                if (dataTable.Rows.Count == 0)
+                {
+                    labelNotice.Visible = true;
+                    labelNotice.Text = "Tài khoản muốn xóa không tồn tại";
+                }
+                else
+                {
+                    using (SqlCommand DeleteCommand = new SqlCommand("DELETE USERS WHERE USERNAME = @USERNAME", connection))
+                    {
+                        DeleteCommand.Parameters.AddWithValue("@USERNAME", textBoxUserAfter.Text);
+                        DeleteCommand.ExecuteNonQuery();
+                    }
+                    labelNotice.Visible = true;
+                    labelNotice.Text = "Xóa TK thành công";
+                    labelNotice.ForeColor = Color.FromArgb(0, 200, 0);
+                    SignupPage_Load(sender, e);
+                }
+                connection.Close();
+            }
+
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
