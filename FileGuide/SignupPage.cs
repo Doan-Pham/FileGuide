@@ -75,7 +75,7 @@ namespace FileGuide
                 labelWarning2.Text = "Vui lòng nhập mật khẩu";
                 return;
             }
-            string SelectQuery = "SELECT * FROM USERS WHERE USERNAME = '" + textBoxUser.Text + "'";
+            string SelectQuery = "SELECT * FROM USERS WHERE USERNAME = " + textBoxUser.Text + "'";
             using (SqlConnection connection = new SqlConnection(FormLogin.SQLConnectionString))
             {
                 connection.Open();
@@ -103,7 +103,6 @@ namespace FileGuide
                     labelWarning2.Text = "Đăng ký thành công";
                     labelWarning2.ForeColor = Color.FromArgb(0,200,0);
                     SignupPage_Load(sender,e);
-
                 }
                 connection.Close();
             }
@@ -112,6 +111,66 @@ namespace FileGuide
         private void SignupPage_VisibleChanged(object sender, EventArgs e)
         {
             SignupPage_Load(sender, e);
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            labelWarning2.ForeColor = Color.FromArgb(200, 0, 0);
+            labelNotice.Visible = false;
+            if (textBoxUserAfter.Text.ToString().Trim() == "" || textBoxPassAfter.Text.ToString().Trim() == "" || textBoxPerAfter.Text.ToString().Trim() == "")
+            {
+                labelNotice.Visible = true;
+                labelNotice.Text = "Vui lòng nhập đầy đủ thông tin";
+                return;
+            }
+            else if (!(textBoxPerAfter.Text.ToString().Trim() == "0" || textBoxPerAfter.Text.ToString().Trim() == "1"))
+            {
+                labelNotice.Visible = true;
+                labelNotice.Text = "Vui lòng nhập chỉ nhập 0 hoặc 1 vào ô Quyền";
+                return;
+            }
+
+            string SelectQuery = "SELECT * FROM USERS WHERE USERNAME = '" + textBoxUserAfter.Text + "'";
+            using (SqlConnection connection = new SqlConnection(FormLogin.SQLConnectionString))
+            {
+                connection.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter(SelectQuery, connection);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                if (dataTable.Rows.Count > 0)
+                {
+                    labelNotice.Visible = true;
+                    labelNotice.Text = "Tài khoản đã tồn tại!";
+                }
+                else
+                {
+                    string InsertQuery = "INSERT INTO USERS (USERNAME, PASSWORD, PERMISSION)";
+                    InsertQuery += " VALUES (@USERNAME, @PASSWORD, @PERMISSION)";
+                    using (SqlCommand InsertCommand = new SqlCommand(InsertQuery, connection))
+                    {
+                        InsertCommand.Parameters.AddWithValue("@USERNAME", textBoxUserAfter.Text);
+                        InsertCommand.Parameters.AddWithValue("@PASSWORD", textBoxPassAfter.Text);
+                        InsertCommand.Parameters.AddWithValue("@PERMISSION", int.Parse(textBoxPerAfter.Text));
+                        InsertCommand.ExecuteNonQuery();
+                    }
+                    labelNotice.Visible = true;
+                    labelNotice.Text = "Thêm mới thành công";
+                    labelNotice.ForeColor = Color.FromArgb(0, 200, 0);
+                    SignupPage_Load(sender, e);
+                }
+                connection.Close();
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            labelNotice.Visible = false;
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            labelNotice.Visible = false;
         }
     }
 }
