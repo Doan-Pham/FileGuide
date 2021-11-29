@@ -31,11 +31,17 @@ namespace FileGuide
                 if (FormLogin.UserPermission.ToString() == "1")
                 {
                     labelPermis.Text = "admin";
+                    btnAdd.Enabled = true;
+                    btnDelete.Enabled = true;
+                    btnUpdate.Enabled = true;
                     labelAdmin.BringToFront();
                 }    
                 else
                 {
                     labelPermis.Text = "guest";
+                    btnAdd.Enabled = false;
+                    btnDelete.Enabled = false;
+                    btnUpdate.Enabled = false;
                     labelGuest.BringToFront();
                 }
             }

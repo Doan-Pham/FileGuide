@@ -36,7 +36,7 @@ namespace FileGuide
                     }
                     else
                     {
-                        FormLogin.UserPermission = 1;
+                        FormLogin.UserPermission = 0;
                         labelPermis.Text = "guest";
                     }
                     labelUsername.Text = textBoxUser.Text.Trim();
