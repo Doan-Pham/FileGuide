@@ -506,7 +506,9 @@ namespace FileGuide
                 if (currentPath != "My Computer") clsTreeListView.ShowListView(listView, currentPath);
                 else
                 {
-                    clsTreeListView.ShowFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
+                    //clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
+                    listViewRecentFiles.Refresh();
+                    clsTreeListView.ShowRecentAccessedFiles(listViewRecentFiles);
                     foreach (Panel DrivePanel in DrivePanelList)
                     {
                         foreach (Control control in DrivePanel.Controls)
@@ -757,7 +759,7 @@ namespace FileGuide
                 {
                     tableLayoutFirstPage.Visible = true;
                     listView.Visible = false;
-                    clsTreeListView.ShowFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
+                    //clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
                 }
                 else
                 {
