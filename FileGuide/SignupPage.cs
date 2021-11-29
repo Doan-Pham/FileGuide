@@ -20,7 +20,28 @@ namespace FileGuide
         }
 
         private void SignupPage_Load(object sender, EventArgs e)
-        {
+        { 
+            if (FormLogin.isLogined)
+            {
+                panelBeforeLogined.Visible = false;
+                panelAfterLogin.Visible = true;
+                
+                if (FormLogin.UserPermission.ToString() == "1")
+                {
+                    labelPermis.Text = "admin";
+                    labelAdmin.BringToFront();
+                }    
+                else
+                {
+                    labelPermis.Text = "guest";
+                    labelGuest.BringToFront();
+                }
+            }
+            else
+            {
+                panelBeforeLogined.Visible = true;
+                panelAfterLogin.Visible = false;
+            }
             DataGridViewUserList.DataSource = GetAllUsers().Tables[0];
         }
 
@@ -86,6 +107,11 @@ namespace FileGuide
                 }
                 connection.Close();
             }
+        }
+
+        private void SignupPage_VisibleChanged(object sender, EventArgs e)
+        {
+            SignupPage_Load(sender, e);
         }
     }
 }

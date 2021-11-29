@@ -15,36 +15,47 @@ namespace FileGuide
     {
         public static int UserPermission;
         public static bool isLogined = false;
+        public static string SQLConnectionString = @"Data Source=LAPTOP-MFVT6MG4\MSSQLSERVER01;Initial Catalog = DoAnLTTQ; Integrated Security = True";
 
         public FormLogin()
         {
             InitializeComponent();
             sidePanel.Height = LoginButton.Height;
             sidePanel.Top = LoginButton.Top;
-            loginPage1.BringToFront();
+            loginPage1.Visible = true;
+            signupPage1.Visible = false;
+            infoPage1.Visible = false;
         }
 
-        public static string SQLConnectionString = @"Data Source=LAPTOP-MFVT6MG4\MSSQLSERVER01;Initial Catalog = DoAnLTTQ; Integrated Security = True";
+
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
             sidePanel.Height = LoginButton.Height;
             sidePanel.Top = LoginButton.Top;
-            loginPage1.BringToFront();
+            loginPage1.Visible = true;
+            signupPage1.Visible = false;
+            infoPage1.Visible = false;
+            //loginPage1.BringToFront();
         }
 
         private void SignupButton_Click(object sender, EventArgs e)
         {
             sidePanel.Height = SignupButton.Height;
             sidePanel.Top = SignupButton.Top;
-            signupPage1.BringToFront();
+            loginPage1.Visible = false;
+            signupPage1.Visible = true;
+            infoPage1.Visible = false;
         }
 
         private void InfoButton_Click(object sender, EventArgs e)
         {
             sidePanel.Height = InfoButton.Height;
             sidePanel.Top = InfoButton.Top;
-            infoPage1.BringToFront();
+            loginPage1.Visible = false;
+            signupPage1.Visible = false;
+            infoPage1.Visible = true;
+            //infoPage1.BringToFront();
         }
     }
 }

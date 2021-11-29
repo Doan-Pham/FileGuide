@@ -39,6 +39,7 @@ namespace FileGuide
                         FormLogin.UserPermission = 1;
                         labelPermis.Text = "guest";
                     }
+                    labelUsername.Text = textBoxUser.Text.Trim();
                     panelAfterLogin.BringToFront();
                 }
                 else
@@ -53,6 +54,5 @@ namespace FileGuide
         {
             FormLogin.isLogined = false;
         }
-
     }
 }
