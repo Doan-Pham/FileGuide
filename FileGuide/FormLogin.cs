@@ -13,6 +13,9 @@ namespace FileGuide
 {
     public partial class FormLogin : Form
     {
+        public static int UserPermission;
+        public static bool isLogined = false;
+
         public FormLogin()
         {
             InitializeComponent();

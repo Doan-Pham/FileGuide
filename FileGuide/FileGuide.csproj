@@ -260,13 +260,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FileGuide.ico" />
-    <Content Include="UsersDatabase.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="UsersDatabase_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>UsersDatabase.mdf</DependentUpon>
-    </Content>
     <None Include="Resources\Icon_Info.png" />
     <None Include="Resources\Icon_User.png" />
     <None Include="Resources\Icon_UserGroup.png" />
