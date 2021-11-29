@@ -94,11 +94,12 @@ namespace FileGuide
 
             }
 
-            TreeNode tnDesktop = new TreeNode("Desktop");
-            treeView.Nodes.Add(tnDesktop);
-            tnDesktop.Nodes.Add("Downloads");
-            tnDesktop.Nodes.Add("Documents");
-    
+
+            treeView.Nodes.Add("Desktop");
+            treeView.Nodes.Add("Downloads");
+            treeView.Nodes.Add("Documents");
+
+
 
         }
 
@@ -217,7 +218,8 @@ namespace FileGuide
         public bool ShowFolderTree(TreeView treeView, TreeNode currentNode, bool isSpecialFolder, string SpecialFolderPath)
         {
             // My Computer and its children are already created in CreatTreeView func, recreating will cause an error
-            if (currentNode.Text != "My Computer")
+
+            if (currentNode.Text == "My Computer") return true;
             {
                 try
                 {

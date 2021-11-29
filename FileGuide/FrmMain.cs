@@ -69,7 +69,6 @@ namespace FileGuide
             clsTreeListView.ListRecentFiles.AddRange(File.ReadAllLines(RecentFilesTxt));
 
             clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
-
             foreach (Panel DrivePanel in DrivePanelList)
             {
                 foreach (Control control in DrivePanel.Controls)
@@ -450,7 +449,9 @@ namespace FileGuide
                     clsTreeListView.ShowListView(listView, currentPath);
                 else
                 {
-                    clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
+                    //clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
+                    listViewRecentFiles.Refresh();
+                    clsTreeListView.ShowRecentAccessedFiles(listViewRecentFiles);
                     foreach (Panel DrivePanel in DrivePanelList)
                     {
                         foreach (Control control in DrivePanel.Controls)
@@ -714,7 +715,7 @@ namespace FileGuide
                 {
                     tableLayoutFirstPage.Visible = true;
                     listView.Visible = false;
-                    clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
+                    //clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
                 }
                 else
                 {
