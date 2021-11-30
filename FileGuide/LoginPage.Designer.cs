@@ -37,15 +37,14 @@ namespace FileGuide
             this.textBoxUser = new Guna.UI2.WinForms.Guna2TextBox();
             this.panelBeforeLogin = new Guna.UI2.WinForms.Guna2Panel();
             this.labelWarning = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnLogin = new Guna.UI2.WinForms.Guna2GradientButton();
             this.panelAfterLogin = new System.Windows.Forms.Panel();
-            this.labelPermis = new System.Windows.Forms.Label();
             this.btnLogout = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnStart = new Guna.UI2.WinForms.Guna2GradientButton();
             this.label6 = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.btnLogin = new Guna.UI2.WinForms.Guna2GradientButton();
             this.panelBeforeLogin.SuspendLayout();
             this.panelAfterLogin.SuspendLayout();
             this.SuspendLayout();
@@ -114,6 +113,7 @@ namespace FileGuide
             this.textBoxPass.HoverState.Parent = this.textBoxPass;
             this.textBoxPass.Location = new System.Drawing.Point(150, 351);
             this.textBoxPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxPass.Multiline = true;
             this.textBoxPass.Name = "textBoxPass";
             this.textBoxPass.PasswordChar = '*';
             this.textBoxPass.PlaceholderForeColor = System.Drawing.Color.DarkGray;
@@ -122,6 +122,7 @@ namespace FileGuide
             this.textBoxPass.ShadowDecoration.Parent = this.textBoxPass;
             this.textBoxPass.Size = new System.Drawing.Size(304, 70);
             this.textBoxPass.TabIndex = 23;
+            this.textBoxPass.TextOffset = new System.Drawing.Point(0, 5);
             // 
             // textBoxUser
             // 
@@ -143,6 +144,7 @@ namespace FileGuide
             this.textBoxUser.HoverState.Parent = this.textBoxUser;
             this.textBoxUser.Location = new System.Drawing.Point(150, 245);
             this.textBoxUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxUser.Multiline = true;
             this.textBoxUser.Name = "textBoxUser";
             this.textBoxUser.PasswordChar = '\0';
             this.textBoxUser.PlaceholderForeColor = System.Drawing.Color.DarkGray;
@@ -151,6 +153,7 @@ namespace FileGuide
             this.textBoxUser.ShadowDecoration.Parent = this.textBoxUser;
             this.textBoxUser.Size = new System.Drawing.Size(304, 70);
             this.textBoxUser.TabIndex = 22;
+            this.textBoxUser.TextOffset = new System.Drawing.Point(0, 5);
             // 
             // panelBeforeLogin
             // 
@@ -159,7 +162,7 @@ namespace FileGuide
             this.panelBeforeLogin.Controls.Add(this.btnLogin);
             this.panelBeforeLogin.Controls.Add(this.textBoxPass);
             this.panelBeforeLogin.Controls.Add(this.textBoxUser);
-            this.panelBeforeLogin.Location = new System.Drawing.Point(633, 0);
+            this.panelBeforeLogin.Location = new System.Drawing.Point(633, 3);
             this.panelBeforeLogin.Name = "panelBeforeLogin";
             this.panelBeforeLogin.ShadowDecoration.Parent = this.panelBeforeLogin;
             this.panelBeforeLogin.Size = new System.Drawing.Size(582, 1062);
@@ -177,10 +180,49 @@ namespace FileGuide
             this.labelWarning.Text = "Tài khoản hoặc mật khẩu chưa đúng !";
             this.labelWarning.Visible = false;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Lexend", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
+            this.label7.Location = new System.Drawing.Point(146, 68);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(308, 70);
+            this.label7.TabIndex = 29;
+            this.label7.Text = "ĐĂNG NHẬP";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.BorderColor = System.Drawing.Color.Transparent;
+            this.btnLogin.BorderRadius = 30;
+            this.btnLogin.CheckedState.Parent = this.btnLogin;
+            this.btnLogin.CustomImages.Parent = this.btnLogin;
+            this.btnLogin.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLogin.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLogin.DisabledState.Parent = this.btnLogin;
+            this.btnLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
+            this.btnLogin.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
+            this.btnLogin.Font = new System.Drawing.Font("Lexend", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.ForeColor = System.Drawing.Color.White;
+            this.btnLogin.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(119)))), ((int)(((byte)(199)))));
+            this.btnLogin.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(192)))), ((int)(((byte)(228)))));
+            this.btnLogin.HoverState.Parent = this.btnLogin;
+            this.btnLogin.Location = new System.Drawing.Point(172, 481);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.ShadowDecoration.BorderRadius = 10;
+            this.btnLogin.ShadowDecoration.Parent = this.btnLogin;
+            this.btnLogin.Size = new System.Drawing.Size(260, 70);
+            this.btnLogin.TabIndex = 25;
+            this.btnLogin.Text = "Đăng nhập";
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
             // panelAfterLogin
             // 
             this.panelAfterLogin.BackColor = System.Drawing.Color.White;
-            this.panelAfterLogin.Controls.Add(this.labelPermis);
             this.panelAfterLogin.Controls.Add(this.btnLogout);
             this.panelAfterLogin.Controls.Add(this.btnStart);
             this.panelAfterLogin.Controls.Add(this.label6);
@@ -190,14 +232,6 @@ namespace FileGuide
             this.panelAfterLogin.Name = "panelAfterLogin";
             this.panelAfterLogin.Size = new System.Drawing.Size(576, 1056);
             this.panelAfterLogin.TabIndex = 25;
-            // 
-            // labelPermis
-            // 
-            this.labelPermis.Font = new System.Drawing.Font("Questrial", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPermis.Location = new System.Drawing.Point(200, 88);
-            this.labelPermis.Name = "labelPermis";
-            this.labelPermis.Size = new System.Drawing.Size(143, 47);
-            this.labelPermis.TabIndex = 8;
             // 
             // btnLogout
             // 
@@ -264,60 +298,19 @@ namespace FileGuide
             this.labelUsername.AutoSize = true;
             this.labelUsername.Font = new System.Drawing.Font("Questrial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
-            this.labelUsername.Location = new System.Drawing.Point(349, 88);
+            this.labelUsername.Location = new System.Drawing.Point(336, 88);
             this.labelUsername.Name = "labelUsername";
-            this.labelUsername.Size = new System.Drawing.Size(73, 47);
+            this.labelUsername.Size = new System.Drawing.Size(0, 47);
             this.labelUsername.TabIndex = 1;
-            this.labelUsername.Text = "sđa";
             // 
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Questrial", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(57, 88);
+            this.label5.Location = new System.Drawing.Point(170, 88);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(173, 57);
             this.label5.TabIndex = 0;
             this.label5.Text = "Xin chào";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Lexend", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
-            this.label7.Location = new System.Drawing.Point(146, 68);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(308, 70);
-            this.label7.TabIndex = 29;
-            this.label7.Text = "ĐĂNG NHẬP";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnLogin
-            // 
-            this.btnLogin.BorderColor = System.Drawing.Color.Transparent;
-            this.btnLogin.BorderRadius = 30;
-            this.btnLogin.CheckedState.Parent = this.btnLogin;
-            this.btnLogin.CustomImages.Parent = this.btnLogin;
-            this.btnLogin.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLogin.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLogin.DisabledState.Parent = this.btnLogin;
-            this.btnLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
-            this.btnLogin.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
-            this.btnLogin.Font = new System.Drawing.Font("Lexend", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(119)))), ((int)(((byte)(199)))));
-            this.btnLogin.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(192)))), ((int)(((byte)(228)))));
-            this.btnLogin.HoverState.Parent = this.btnLogin;
-            this.btnLogin.Location = new System.Drawing.Point(172, 481);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.ShadowDecoration.BorderRadius = 10;
-            this.btnLogin.ShadowDecoration.Parent = this.btnLogin;
-            this.btnLogin.Size = new System.Drawing.Size(260, 70);
-            this.btnLogin.TabIndex = 25;
-            this.btnLogin.Text = "Đăng nhập";
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // LoginPage
             // 
@@ -358,7 +351,6 @@ namespace FileGuide
         private System.Windows.Forms.Label labelUsername;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label labelPermis;
         private System.Windows.Forms.Label labelWarning;
     }
 }

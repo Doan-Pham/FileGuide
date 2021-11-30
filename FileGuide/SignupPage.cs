@@ -83,35 +83,40 @@ namespace FileGuide
                 labelWarning2.Text = "Vui lòng nhập mật khẩu";
                 return;
             }
-            string SelectQuery = "SELECT * FROM USERS WHERE USERNAME = " + textBoxUser.Text + "'";
+            string SelectQuery = "SELECT * FROM USERS WHERE USERNAME = @USERNAME" ;
             using (SqlConnection connection = new SqlConnection(FormLogin.SQLConnectionString))
             {
                 connection.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter(SelectQuery, connection);
-                DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
+                using (SqlCommand SelectCommand = new SqlCommand(SelectQuery, connection))
+                {
+                    SelectCommand.Parameters.AddWithValue("USERNAME", textBoxUser.Text.ToString().Trim());
+                    SqlDataAdapter adapter = new SqlDataAdapter(SelectCommand);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
 
-                if (dataTable.Rows.Count > 0)
-                {
-                    labelWarning2.Visible = true;
-                    labelWarning2.Text = "Tài khoản đã tồn tại!";
-                }
-                else
-                {
-                    string InsertQuery = "INSERT INTO USERS (USERNAME, PASSWORD, PERMISSION)";
-                    InsertQuery += " VALUES (@USERNAME, @PASSWORD, @PERMISSION)";
-                    using (SqlCommand InsertCommand = new SqlCommand(InsertQuery,connection))
+                    if (dataTable.Rows.Count > 0)
                     {
-                        InsertCommand.Parameters.AddWithValue("@USERNAME", textBoxUser.Text);
-                        InsertCommand.Parameters.AddWithValue("@PASSWORD", textBoxPass.Text);
-                        InsertCommand.Parameters.AddWithValue("@PERMISSION", 0);
-                        InsertCommand.ExecuteNonQuery();
+                        labelWarning2.Visible = true;
+                        labelWarning2.Text = "Tài khoản đã tồn tại!";
                     }
-                    labelWarning2.Visible = true;
-                    labelWarning2.Text = "Đăng ký thành công";
-                    labelWarning2.ForeColor = Color.FromArgb(0,200,0);
-                    SignupPage_Load(sender,e);
-                }
+                    else
+                    {
+                        string InsertQuery = "INSERT INTO USERS (USERNAME, PASSWORD, PERMISSION)";
+                        InsertQuery += " VALUES (@USERNAME, @PASSWORD, @PERMISSION)";
+                        using (SqlCommand InsertCommand = new SqlCommand(InsertQuery, connection))
+                        {
+                            InsertCommand.Parameters.AddWithValue("@USERNAME", textBoxUser.Text);
+                            InsertCommand.Parameters.AddWithValue("@PASSWORD", textBoxPass.Text);
+                            InsertCommand.Parameters.AddWithValue("@PERMISSION", 0);
+                            InsertCommand.ExecuteNonQuery();
+                        }
+                        labelWarning2.Visible = true;
+                        labelWarning2.Text = "Đăng ký thành công";
+                        labelWarning2.ForeColor = Color.FromArgb(0, 200, 0);
+                        SignupPage_Load(sender, e);
+                    }
+                };
+
                 connection.Close();
             }
         }

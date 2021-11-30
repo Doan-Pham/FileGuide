@@ -32,12 +32,10 @@ namespace FileGuide
                     if (dataTable.Rows[0][0].ToString() == "1")
                     {
                         FormLogin.UserPermission = 1;
-                        labelPermis.Text = "admin";
                     }
                     else
                     {
                         FormLogin.UserPermission = 0;
-                        labelPermis.Text = "guest";
                     }
                     labelUsername.Text = textBoxUser.Text.Trim();
                     panelAfterLogin.BringToFront();
@@ -53,6 +51,8 @@ namespace FileGuide
         private void btnLogout_Click(object sender, EventArgs e)
         {
             FormLogin.isLogined = false;
+            labelWarning.Visible = false;
+            panelBeforeLogin.BringToFront();
         }
     }
 }
