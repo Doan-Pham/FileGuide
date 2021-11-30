@@ -602,7 +602,8 @@ namespace FileGuide
                 case ".PNG":
                 case ".BMP":
                 case ".GIF":
-                    return Properties.Resources.Logo_PNG;
+                    return Image.FromFile(file.FullName);
+                        //Properties.Resources.Logo_PNG;
 
                 case ".PPT":
                 case ".PPTX":

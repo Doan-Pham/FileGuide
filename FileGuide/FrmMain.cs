@@ -1092,7 +1092,8 @@ namespace FileGuide
                 }
                 else
                 {
-                    g.DrawImage(Properties.Resources.Logo_UnknownFile, ImageLocationX, ImageLocationY, ImageSize, ImageSize);
+                    FileInfo itemPath = new FileInfo(e.Item.SubItems[5].Text);
+                    g.DrawImage(clsTreeListView.GetFileTypeIcon(itemPath), ImageLocationX, ImageLocationY, ImageSize, ImageSize);
                 }
 
                 TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine | TextFormatFlags.ExpandTabs;
@@ -1111,7 +1112,8 @@ namespace FileGuide
                 }
                 else
                 {
-                    g.DrawImage(Properties.Resources.Logo_UnknownFile, ImageLocationX, ImageLocationY, ImageSize, ImageSize);
+                    FileInfo itemPath = new FileInfo(e.Item.SubItems[5].Text);
+                    g.DrawImage(clsTreeListView.GetFileTypeIcon(itemPath), ImageLocationX, ImageLocationY, ImageSize, ImageSize);
                 }
 
                 TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine | TextFormatFlags.ExpandTabs;
