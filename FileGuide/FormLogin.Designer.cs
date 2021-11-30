@@ -31,6 +31,9 @@ namespace FileGuide
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.sidePanel = new System.Windows.Forms.Panel();
             this.InfoButton = new System.Windows.Forms.Button();
             this.SignupButton = new System.Windows.Forms.Button();
@@ -40,12 +43,18 @@ namespace FileGuide
             this.loginPage1 = new FileGuide.LoginPage();
             this.infoPage1 = new FileGuide.InfoPage();
             this.panelMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.PanelMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.panelMenu.Controls.Add(this.pictureBox3);
+            this.panelMenu.Controls.Add(this.pictureBox2);
+            this.panelMenu.Controls.Add(this.pictureBox1);
             this.panelMenu.Controls.Add(this.sidePanel);
             this.panelMenu.Controls.Add(this.InfoButton);
             this.panelMenu.Controls.Add(this.SignupButton);
@@ -56,9 +65,42 @@ namespace FileGuide
             this.panelMenu.Size = new System.Drawing.Size(268, 760);
             this.panelMenu.TabIndex = 0;
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox3.Image = global::FileGuide.Properties.Resources.Icon_Info;
+            this.pictureBox3.Location = new System.Drawing.Point(0, 358);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(74, 78);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 6;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Image = global::FileGuide.Properties.Resources.Icon_UserGroup;
+            this.pictureBox2.Location = new System.Drawing.Point(11, 256);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(57, 58);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Image = global::FileGuide.Properties.Resources.Icon_User;
+            this.pictureBox1.Location = new System.Drawing.Point(11, 134);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(57, 58);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
             // sidePanel
             // 
-            this.sidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(116)))), ((int)(((byte)(219)))));
+            this.sidePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
             this.sidePanel.Location = new System.Drawing.Point(247, 134);
             this.sidePanel.Name = "sidePanel";
             this.sidePanel.Size = new System.Drawing.Size(21, 78);
@@ -70,7 +112,6 @@ namespace FileGuide
             this.InfoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.InfoButton.Font = new System.Drawing.Font("Questrial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InfoButton.ForeColor = System.Drawing.Color.White;
-            this.InfoButton.Image = ((System.Drawing.Image)(resources.GetObject("InfoButton.Image")));
             this.InfoButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.InfoButton.Location = new System.Drawing.Point(0, 358);
             this.InfoButton.Name = "InfoButton";
@@ -88,14 +129,13 @@ namespace FileGuide
             this.SignupButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SignupButton.Font = new System.Drawing.Font("Questrial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SignupButton.ForeColor = System.Drawing.Color.White;
-            this.SignupButton.Image = global::FileGuide.Properties.Resources.Icon_UserGroup;
             this.SignupButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.SignupButton.Location = new System.Drawing.Point(0, 246);
             this.SignupButton.Name = "SignupButton";
             this.SignupButton.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.SignupButton.Size = new System.Drawing.Size(268, 78);
             this.SignupButton.TabIndex = 2;
-            this.SignupButton.Text = "   Đăng ký";
+            this.SignupButton.Text = "Quản lý";
             this.SignupButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.SignupButton.UseVisualStyleBackColor = true;
             this.SignupButton.Click += new System.EventHandler(this.SignupButton_Click);
@@ -106,14 +146,13 @@ namespace FileGuide
             this.LoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoginButton.Font = new System.Drawing.Font("Questrial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginButton.ForeColor = System.Drawing.Color.White;
-            this.LoginButton.Image = global::FileGuide.Properties.Resources.Icon_User;
             this.LoginButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.LoginButton.Location = new System.Drawing.Point(0, 134);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.LoginButton.Size = new System.Drawing.Size(268, 78);
             this.LoginButton.TabIndex = 1;
-            this.LoginButton.Text = "    Đăng nhập";
+            this.LoginButton.Text = "   Đăng nhập";
             this.LoginButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.LoginButton.UseVisualStyleBackColor = true;
             this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
@@ -131,6 +170,7 @@ namespace FileGuide
             // 
             // signupPage1
             // 
+            this.signupPage1.BackColor = System.Drawing.Color.White;
             this.signupPage1.Location = new System.Drawing.Point(0, 0);
             this.signupPage1.Name = "signupPage1";
             this.signupPage1.Size = new System.Drawing.Size(1213, 757);
@@ -139,9 +179,10 @@ namespace FileGuide
             // loginPage1
             // 
             this.loginPage1.AutoSize = true;
+            this.loginPage1.BackColor = System.Drawing.Color.White;
             this.loginPage1.Location = new System.Drawing.Point(-3, 0);
             this.loginPage1.Name = "loginPage1";
-            this.loginPage1.Size = new System.Drawing.Size(1216, 757);
+            this.loginPage1.Size = new System.Drawing.Size(1218, 1068);
             this.loginPage1.TabIndex = 3;
             // 
             // infoPage1
@@ -167,6 +208,9 @@ namespace FileGuide
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.panelMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.PanelMain.ResumeLayout(false);
             this.PanelMain.PerformLayout();
             this.ResumeLayout(false);
@@ -184,5 +228,8 @@ namespace FileGuide
         private InfoPage infoPage1;
         private LoginPage loginPage1;
         private SignupPage signupPage1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

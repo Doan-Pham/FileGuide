@@ -29,15 +29,9 @@ namespace FileGuide
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textBoxPass = new Guna.UI2.WinForms.Guna2TextBox();
             this.textBoxUser = new Guna.UI2.WinForms.Guna2TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.DataGridViewUserLit = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.ColumnUsername = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPassword = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataGridViewUserList = new System.Windows.Forms.DataGridView();
             this.btnSignup = new Guna.UI2.WinForms.Guna2GradientButton();
             this.label7 = new System.Windows.Forms.Label();
@@ -56,7 +50,6 @@ namespace FileGuide
             this.labelAdmin = new System.Windows.Forms.Label();
             this.labelPermis = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridViewUserLit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewUserList)).BeginInit();
             this.panelBeforeLogined.SuspendLayout();
             this.panelAfterLogin.SuspendLayout();
@@ -134,81 +127,6 @@ namespace FileGuide
             this.label2.TabIndex = 28;
             this.label2.Text = "DANH SÁCH TÀI KHOẢN";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // DataGridViewUserLit
-            // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.DataGridViewUserLit.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.DataGridViewUserLit.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DataGridViewUserLit.BackgroundColor = System.Drawing.Color.White;
-            this.DataGridViewUserLit.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.DataGridViewUserLit.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.DataGridViewUserLit.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Questrial", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridViewUserLit.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.DataGridViewUserLit.ColumnHeadersHeight = 4;
-            this.DataGridViewUserLit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.DataGridViewUserLit.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnUsername,
-            this.ColumnPassword});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataGridViewUserLit.DefaultCellStyle = dataGridViewCellStyle6;
-            this.DataGridViewUserLit.EnableHeadersVisualStyles = false;
-            this.DataGridViewUserLit.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.DataGridViewUserLit.Location = new System.Drawing.Point(-500, 441);
-            this.DataGridViewUserLit.Name = "DataGridViewUserLit";
-            this.DataGridViewUserLit.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.DataGridViewUserLit.RowHeadersVisible = false;
-            this.DataGridViewUserLit.RowHeadersWidth = 100;
-            this.DataGridViewUserLit.RowTemplate.Height = 28;
-            this.DataGridViewUserLit.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewUserLit.Size = new System.Drawing.Size(623, 449);
-            this.DataGridViewUserLit.TabIndex = 29;
-            this.DataGridViewUserLit.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.DataGridViewUserLit.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.DataGridViewUserLit.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.DataGridViewUserLit.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.DataGridViewUserLit.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.DataGridViewUserLit.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.DataGridViewUserLit.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.DataGridViewUserLit.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.DataGridViewUserLit.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.DataGridViewUserLit.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            this.DataGridViewUserLit.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.DataGridViewUserLit.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.DataGridViewUserLit.ThemeStyle.HeaderStyle.Height = 4;
-            this.DataGridViewUserLit.ThemeStyle.ReadOnly = false;
-            this.DataGridViewUserLit.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.DataGridViewUserLit.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.DataGridViewUserLit.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            this.DataGridViewUserLit.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.DataGridViewUserLit.ThemeStyle.RowsStyle.Height = 28;
-            this.DataGridViewUserLit.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.DataGridViewUserLit.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // ColumnUsername
-            // 
-            this.ColumnUsername.HeaderText = "Tên tài khoản";
-            this.ColumnUsername.MinimumWidth = 8;
-            this.ColumnUsername.Name = "ColumnUsername";
-            // 
-            // ColumnPassword
-            // 
-            this.ColumnPassword.HeaderText = "Mật khẩu";
-            this.ColumnPassword.MinimumWidth = 8;
-            this.ColumnPassword.Name = "ColumnPassword";
             // 
             // DataGridViewUserList
             // 
@@ -551,7 +469,6 @@ namespace FileGuide
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panelAfterLogin);
-            this.Controls.Add(this.DataGridViewUserLit);
             this.Controls.Add(this.DataGridViewUserList);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panelBeforeLogined);
@@ -559,7 +476,6 @@ namespace FileGuide
             this.Size = new System.Drawing.Size(1201, 744);
             this.Load += new System.EventHandler(this.SignupPage_Load);
             this.VisibleChanged += new System.EventHandler(this.SignupPage_VisibleChanged);
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridViewUserLit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewUserList)).EndInit();
             this.panelBeforeLogined.ResumeLayout(false);
             this.panelBeforeLogined.PerformLayout();
@@ -574,9 +490,6 @@ namespace FileGuide
         private Guna.UI2.WinForms.Guna2TextBox textBoxPass;
         private Guna.UI2.WinForms.Guna2TextBox textBoxUser;
         private System.Windows.Forms.Label label2;
-        private Guna.UI2.WinForms.Guna2DataGridView DataGridViewUserLit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnUsername;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPassword;
         private System.Windows.Forms.DataGridView DataGridViewUserList;
         private Guna.UI2.WinForms.Guna2GradientButton btnSignup;
         private System.Windows.Forms.Label label7;
