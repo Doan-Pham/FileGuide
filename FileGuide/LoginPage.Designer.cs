@@ -282,6 +282,7 @@ namespace FileGuide
             this.btnStart.Size = new System.Drawing.Size(260, 70);
             this.btnStart.TabIndex = 5;
             this.btnStart.Text = "Khởi động ứng dụng";
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // label6
             // 

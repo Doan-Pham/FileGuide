@@ -54,5 +54,11 @@ namespace FileGuide
             labelWarning.Visible = false;
             panelBeforeLogin.BringToFront();
         }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            FrmMain newForm = new FrmMain();
+            newForm.Show();
+        }
     }
 }
