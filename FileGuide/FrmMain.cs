@@ -13,6 +13,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Syroot.Windows.IO;
+using Guna.UI2.WinForms;
 
 namespace FileGuide
 {
@@ -20,11 +21,13 @@ namespace FileGuide
     {
         List<string> tabPathList = new List<string> { "My Computer", "" };
         string spaceText = "      ";
-        List<Panel> DrivePanelList = new List<Panel>();
+        List<Guna2Panel> DrivePanelList = new List<Guna2Panel>();
 
         private Color HoverColor = Color.FromArgb(229, 243, 255);
         private Color UnfocusedSelectColor = Color.FromArgb(242, 242, 242);
         private Color FocusedSelectColor = Color.FromArgb(205, 232, 255);
+        public static Color PrimaryThemeColor = Color.FromArgb(9, 119, 199);
+        public static Color SecondaryThemeColor = Color.FromArgb(43, 192, 228);
         private Color PrimaryTextColor = Color.Black;
         private Color SecondaryTextColor = Color.Gray;
 
@@ -838,22 +841,22 @@ namespace FileGuide
             {
                 if (e.Node.IsExpanded)
                 {
-                    g.DrawImage(Properties.Resources.ExpandChevron, nodeRect.Location.X - 40, nodeRect.Location.Y + 16, 16, 16);
+                    g.DrawImage(Properties.Resources.Icon_ExpandChevron, nodeRect.Location.X - 40, nodeRect.Location.Y + 16, 16, 16);
                 }
                 else
                 {
-                    g.DrawImage(Properties.Resources.NormalChevron, nodeRect.Location.X - 40, nodeRect.Location.Y + 16, 16, 16);
+                    g.DrawImage(Properties.Resources.Icon_NormalChevron, nodeRect.Location.X - 40, nodeRect.Location.Y + 16, 16, 16);
                 }
             }
 
             //Draw node icon
             if (e.Node.Text == "My Computer")
             {
-                g.DrawImage(Properties.Resources.MyComputer, nodeRect.Location.X - 14, nodeRect.Location.Y + 8, 30, 30);
+                g.DrawImage(Properties.Resources.Icon_MyComputer, nodeRect.Location.X - 14, nodeRect.Location.Y + 8, 30, 30);
             }
             else
             {
-                g.DrawImage(Properties.Resources.Folder, nodeRect.Location.X - 14, nodeRect.Location.Y + 8, 30, 30);
+                g.DrawImage(Properties.Resources.Icon_Folder, nodeRect.Location.X - 14, nodeRect.Location.Y + 8, 30, 30);
             }
 
             //Draw text
@@ -1049,7 +1052,7 @@ namespace FileGuide
                 int ImageLocationY = e.Bounds.Y;
                 if (e.Item.SubItems[1].Text == "Folder")
                 {
-                    g.DrawImage(Properties.Resources.Folder, ImageLocationX, ImageLocationY, ImageSize, ImageSize);
+                    g.DrawImage(Properties.Resources.Icon_Folder, ImageLocationX, ImageLocationY, ImageSize, ImageSize);
                 }
                 else
                 {
@@ -1069,11 +1072,11 @@ namespace FileGuide
                 int ImageLocationY = e.Bounds.Y + 5;
                 if (e.Item.SubItems[1].Text == "Folder")
                 {
-                    g.DrawImage(Properties.Resources.Folder, ImageLocationX, ImageLocationY, ImageSize, ImageSize);
+                    g.DrawImage(Properties.Resources.Icon_Folder, ImageLocationX, ImageLocationY, ImageSize, ImageSize);
                 }
                 else
                 {
-                    g.DrawImage(Properties.Resources.file, ImageLocationX, ImageLocationY, ImageSize, ImageSize);
+                    g.DrawImage(Properties.Resources.Logo_UnknownFile, ImageLocationX, ImageLocationY, ImageSize, ImageSize);
                 }
 
                 TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine | TextFormatFlags.ExpandTabs;
@@ -1088,11 +1091,11 @@ namespace FileGuide
                 int ImageLocationY = e.Bounds.Y;
                 if (e.Item.SubItems[1].Text == "Folder")
                 {
-                    g.DrawImage(Properties.Resources.Folder, ImageLocationX, ImageLocationY, ImageSize, ImageSize);
+                    g.DrawImage(Properties.Resources.Icon_Folder, ImageLocationX, ImageLocationY, ImageSize, ImageSize);
                 }
                 else
                 {
-                    g.DrawImage(Properties.Resources.file, ImageLocationX, ImageLocationY, ImageSize, ImageSize);
+                    g.DrawImage(Properties.Resources.Logo_UnknownFile, ImageLocationX, ImageLocationY, ImageSize, ImageSize);
                 }
 
                 TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine | TextFormatFlags.ExpandTabs;
@@ -1114,11 +1117,11 @@ namespace FileGuide
             Graphics g = e.Graphics;
             if (e.Item.SubItems[1].Text == "Folder")
             {
-                g.DrawImage(Properties.Resources.Folder, e.Item.Bounds.X + 20, e.Item.Bounds.Y, 30, 30);
+                g.DrawImage(Properties.Resources.Icon_Folder, e.Item.Bounds.X + 20, e.Item.Bounds.Y, 30, 30);
             }
             else
             {
-                g.DrawImage(Properties.Resources.file, e.Item.Bounds.X + 20, e.Item.Bounds.Y, 30, 30);
+                g.DrawImage(Properties.Resources.Logo_UnknownFile, e.Item.Bounds.X + 20, e.Item.Bounds.Y, 30, 30);
             }
 
             TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis |

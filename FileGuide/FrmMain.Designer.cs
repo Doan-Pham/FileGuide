@@ -56,7 +56,6 @@ namespace FileGuide
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
-            this.treeView = new FileGuide.BufferedTreeView();
             this.treeViewContextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
             this.pinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unpingFromEasyAccessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,7 +66,6 @@ namespace FileGuide
             this.tableLblRecent = new System.Windows.Forms.Label();
             this.flowLayoutPanelDrives = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.driveName = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.guna2ProgressBar1 = new Guna.UI2.WinForms.Guna2ProgressBar();
@@ -98,6 +96,7 @@ namespace FileGuide
             this.tsMenuSmall = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMenuList = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMenuDetails = new System.Windows.Forms.ToolStripMenuItem();
+            this.treeView = new FileGuide.BufferedTreeView();
             this.statusStrip1.SuspendLayout();
             this.contextMenuStripListView.SuspendLayout();
             this.contextMenuStripListViewItem.SuspendLayout();
@@ -212,7 +211,7 @@ namespace FileGuide
             // 
             // folderToolStripMenuItem
             // 
-            this.folderToolStripMenuItem.Image = global::FileGuide.Properties.Resources.Folder;
+            this.folderToolStripMenuItem.Image = global::FileGuide.Properties.Resources.Icon_Folder;
             this.folderToolStripMenuItem.Name = "folderToolStripMenuItem";
             this.folderToolStripMenuItem.Size = new System.Drawing.Size(173, 38);
             this.folderToolStripMenuItem.Text = "Folder";
@@ -220,7 +219,7 @@ namespace FileGuide
             // 
             // fileToolStripMenuItem
             // 
-            this.fileToolStripMenuItem.Image = global::FileGuide.Properties.Resources.file;
+            this.fileToolStripMenuItem.Image = global::FileGuide.Properties.Resources.Logo_UnknownFile;
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(173, 38);
             this.fileToolStripMenuItem.Text = "File";
@@ -326,30 +325,6 @@ namespace FileGuide
             this.mainSplitContainer.Size = new System.Drawing.Size(1578, 807);
             this.mainSplitContainer.SplitterDistance = 351;
             this.mainSplitContainer.TabIndex = 5;
-            // 
-            // treeView
-            // 
-            this.treeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeView.ContextMenuStrip = this.treeViewContextMenuStrip;
-            this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
-            this.treeView.Font = new System.Drawing.Font("Questrial", 9.999999F);
-            this.treeView.ForeColor = System.Drawing.Color.Black;
-            this.treeView.FullRowSelect = true;
-            this.treeView.HotTracking = true;
-            this.treeView.Indent = 20;
-            this.treeView.ItemHeight = 46;
-            this.treeView.Location = new System.Drawing.Point(0, 0);
-            this.treeView.Name = "treeView";
-            this.treeView.ShowLines = false;
-            this.treeView.Size = new System.Drawing.Size(351, 807);
-            this.treeView.TabIndex = 1;
-            this.treeView.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView_DrawNode);
-            this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
-            this.treeView.MouseLeave += new System.EventHandler(this.treeView_MouseLeave);
-            this.treeView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseMove);
-            this.treeView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseUp);
             // 
             // treeViewContextMenuStrip
             // 
@@ -472,45 +447,33 @@ namespace FileGuide
             // 
             this.guna2Panel1.BorderColor = System.Drawing.Color.Silver;
             this.guna2Panel1.BorderRadius = 10;
-            this.guna2Panel1.BorderThickness = 1;
-            this.guna2Panel1.Controls.Add(this.guna2Panel2);
+            this.guna2Panel1.BorderThickness = 10;
             this.guna2Panel1.Controls.Add(this.driveName);
             this.guna2Panel1.Controls.Add(this.label2);
             this.guna2Panel1.Controls.Add(this.guna2ProgressBar1);
             this.guna2Panel1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.guna2Panel1.Location = new System.Drawing.Point(3, 3);
             this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Padding = new System.Windows.Forms.Padding(10);
             this.guna2Panel1.ShadowDecoration.BorderRadius = 10;
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(392, 114);
             this.guna2Panel1.TabIndex = 0;
             // 
-            // guna2Panel2
-            // 
-            this.guna2Panel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.ShadowDecoration.Parent = this.guna2Panel2;
-            this.guna2Panel2.Size = new System.Drawing.Size(392, 114);
-            this.guna2Panel2.TabIndex = 1;
-            this.guna2Panel2.UseTransparentBackground = true;
-            this.guna2Panel2.Click += new System.EventHandler(this.guna2Panel2_Click);
-            this.guna2Panel2.MouseEnter += new System.EventHandler(this.guna2Panel2_MouseEnter);
-            this.guna2Panel2.MouseLeave += new System.EventHandler(this.guna2Panel2_MouseLeave);
-            // 
             // driveName
             // 
-            this.driveName.Location = new System.Drawing.Point(91, 17);
+            this.driveName.Dock = System.Windows.Forms.DockStyle.Top;
+            this.driveName.Location = new System.Drawing.Point(297, 10);
             this.driveName.Name = "driveName";
-            this.driveName.Size = new System.Drawing.Size(281, 31);
+            this.driveName.Size = new System.Drawing.Size(85, 31);
             this.driveName.TabIndex = 1;
             this.driveName.Text = "Windows SSD (C:)";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(80, 82);
+            this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label2.Location = new System.Drawing.Point(297, 74);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 30);
             this.label2.TabIndex = 2;
@@ -520,12 +483,13 @@ namespace FileGuide
             // 
             this.guna2ProgressBar1.BackColor = System.Drawing.Color.Transparent;
             this.guna2ProgressBar1.BorderRadius = 10;
-            this.guna2ProgressBar1.Location = new System.Drawing.Point(85, 68);
+            this.guna2ProgressBar1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.guna2ProgressBar1.Location = new System.Drawing.Point(10, 10);
             this.guna2ProgressBar1.Name = "guna2ProgressBar1";
-            this.guna2ProgressBar1.ProgressColor = System.Drawing.Color.Turquoise;
-            this.guna2ProgressBar1.ProgressColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.guna2ProgressBar1.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(119)))), ((int)(((byte)(199)))));
+            this.guna2ProgressBar1.ProgressColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(192)))), ((int)(((byte)(228)))));
             this.guna2ProgressBar1.ShadowDecoration.Parent = this.guna2ProgressBar1;
-            this.guna2ProgressBar1.Size = new System.Drawing.Size(301, 11);
+            this.guna2ProgressBar1.Size = new System.Drawing.Size(287, 94);
             this.guna2ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.guna2ProgressBar1.TabIndex = 0;
             this.guna2ProgressBar1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
@@ -692,7 +656,7 @@ namespace FileGuide
             // 
             this.tsbtnBack.AutoSize = false;
             this.tsbtnBack.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tsbtnBack.Image = global::FileGuide.Properties.Resources.FolderBack;
+            this.tsbtnBack.Image = global::FileGuide.Properties.Resources.Icon_Folder;
             this.tsbtnBack.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.tsbtnBack.ImageTransparentColor = System.Drawing.Color.White;
             this.tsbtnBack.Name = "tsbtnBack";
@@ -704,7 +668,7 @@ namespace FileGuide
             // tsbtnRefresh
             // 
             this.tsbtnRefresh.AutoSize = false;
-            this.tsbtnRefresh.Image = global::FileGuide.Properties.Resources.Refresh;
+            this.tsbtnRefresh.Image = global::FileGuide.Properties.Resources.Icon_Refresh;
             this.tsbtnRefresh.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.tsbtnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnRefresh.Margin = new System.Windows.Forms.Padding(8, 2, 0, 3);
@@ -722,7 +686,7 @@ namespace FileGuide
             // tsbtnCopy
             // 
             this.tsbtnCopy.AutoSize = false;
-            this.tsbtnCopy.Image = global::FileGuide.Properties.Resources.Copy;
+            this.tsbtnCopy.Image = global::FileGuide.Properties.Resources.Icon_Copy;
             this.tsbtnCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnCopy.Margin = new System.Windows.Forms.Padding(4, 1, 0, 2);
             this.tsbtnCopy.Name = "tsbtnCopy";
@@ -735,7 +699,7 @@ namespace FileGuide
             // tsbtnCut
             // 
             this.tsbtnCut.AutoSize = false;
-            this.tsbtnCut.Image = global::FileGuide.Properties.Resources.Cut;
+            this.tsbtnCut.Image = global::FileGuide.Properties.Resources.Icon_Cut;
             this.tsbtnCut.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.tsbtnCut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnCut.Margin = new System.Windows.Forms.Padding(8, 2, 0, 3);
@@ -749,7 +713,7 @@ namespace FileGuide
             // 
             this.tsbtnPaste.AutoSize = false;
             this.tsbtnPaste.Enabled = false;
-            this.tsbtnPaste.Image = global::FileGuide.Properties.Resources.Paste;
+            this.tsbtnPaste.Image = global::FileGuide.Properties.Resources.Icon_Paste;
             this.tsbtnPaste.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.tsbtnPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnPaste.Margin = new System.Windows.Forms.Padding(8, 2, 0, 3);
@@ -762,7 +726,7 @@ namespace FileGuide
             // tsbtnDelete
             // 
             this.tsbtnDelete.AutoSize = false;
-            this.tsbtnDelete.Image = global::FileGuide.Properties.Resources.Delete;
+            this.tsbtnDelete.Image = global::FileGuide.Properties.Resources.Icon_Delete;
             this.tsbtnDelete.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.tsbtnDelete.ImageTransparentColor = System.Drawing.Color.White;
             this.tsbtnDelete.Margin = new System.Windows.Forms.Padding(8, 2, 0, 3);
@@ -785,7 +749,7 @@ namespace FileGuide
             this.tsMenuSmall,
             this.tsMenuList,
             this.tsMenuDetails});
-            this.tsDropView.Image = global::FileGuide.Properties.Resources.View;
+            this.tsDropView.Image = global::FileGuide.Properties.Resources.Icon_View;
             this.tsDropView.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.tsDropView.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsDropView.Margin = new System.Windows.Forms.Padding(8, 1, 0, 2);
@@ -821,6 +785,30 @@ namespace FileGuide
             this.tsMenuDetails.Size = new System.Drawing.Size(209, 36);
             this.tsMenuDetails.Text = "Details";
             this.tsMenuDetails.Click += new System.EventHandler(this.menuDetails_Click);
+            // 
+            // treeView
+            // 
+            this.treeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
+            this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeView.ContextMenuStrip = this.treeViewContextMenuStrip;
+            this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
+            this.treeView.Font = new System.Drawing.Font("Questrial", 9.999999F);
+            this.treeView.ForeColor = System.Drawing.Color.Black;
+            this.treeView.FullRowSelect = true;
+            this.treeView.HotTracking = true;
+            this.treeView.Indent = 20;
+            this.treeView.ItemHeight = 46;
+            this.treeView.Location = new System.Drawing.Point(0, 0);
+            this.treeView.Name = "treeView";
+            this.treeView.ShowLines = false;
+            this.treeView.Size = new System.Drawing.Size(351, 807);
+            this.treeView.TabIndex = 1;
+            this.treeView.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView_DrawNode);
+            this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
+            this.treeView.MouseLeave += new System.EventHandler(this.treeView_MouseLeave);
+            this.treeView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseMove);
+            this.treeView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseUp);
             // 
             // FrmMain
             // 
@@ -928,7 +916,6 @@ namespace FileGuide
         private Guna.UI2.WinForms.Guna2ProgressBar guna2ProgressBar1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label driveName;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI2.WinForms.Guna2ContextMenuStrip treeViewContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem pinToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unpingFromEasyAccessToolStripMenuItem;

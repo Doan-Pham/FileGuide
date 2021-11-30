@@ -364,7 +364,7 @@ namespace FileGuide
         /// Show the listView first page whenever the root node-My Computer is focused
         /// </summary>
         /// <param name="flowLayoutPanelDrives"></param>
-        public void ShowFirstPage(FlowLayoutPanel flowLayoutPanelDrives, ListView RecentFiles, List<Panel> DrivePanel)
+        public void ShowFirstPage(FlowLayoutPanel flowLayoutPanelDrives, ListView RecentFiles, List<Guna2Panel> DrivePanel)
         {
             // For each drive, create a panel with icon, name, and storage information then add to listView first page
             int driveCount = 0;
@@ -377,63 +377,71 @@ namespace FileGuide
                 PictureBox DrivePicture = new PictureBox();
                 Label DriveName = new Label();
                 Label DriveStorageInfo = new Label();
-                ProgressBar DriveStorageBar = new ProgressBar();
+                Guna2ProgressBar DriveStorageBar = new Guna2ProgressBar();
 
-                DrivePanel.Add(new Panel());
-                DrivePanel[driveCount].BorderStyle = BorderStyle.FixedSingle;
-                DrivePanel[driveCount].Width = 365;
-                DrivePanel[driveCount].Height = 105;
+                DrivePanel.Add(new Guna2Panel());
+                DrivePanel[driveCount].BorderRadius = 10;
+                DrivePanel[driveCount].Margin = new Padding(10);
+                DrivePanel[driveCount].Padding = new Padding(10);
+                DrivePanel[driveCount].BorderThickness = 2;
+                DrivePanel[driveCount].BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+                DrivePanel[driveCount].BorderColor = Color.Silver;
+                DrivePanel[driveCount].Width = 390;
+                DrivePanel[driveCount].Height = 125;
                 DrivePanel[driveCount].Margin = new Padding(3, 10, 20, 10);
 
                 switch (drive.DriveType.ToString())
                 {
                     case "Removable":
                         {
-                            DrivePicture.Image = Properties.Resources.FloppyDisk;
+                            DrivePicture.Image = Properties.Resources.Icon_FloppyDisk;
                         }
                         break;
 
                     case "Fixed":
                         {
-                            DrivePicture.Image = Properties.Resources.HardDisk;
+                            DrivePicture.Image = Properties.Resources.Icon_HardDisk;
                         }
                         break;
 
                     case "CDRom":
                         {
-                            DrivePicture.Image = Properties.Resources.CDDisk;
+                            DrivePicture.Image = Properties.Resources.Icon_CDDisk;
                         }
                         break;
 
                     case "Network":
                         {
-                            DrivePicture.Image = Properties.Resources.NetworkDrive;
+                            DrivePicture.Image = Properties.Resources.Icon_NetworkDrive;
                         }
                         break;
 
                     default:
                         {
-                            DrivePicture.Image = Properties.Resources.HardDisk;
+                            DrivePicture.Image = Properties.Resources.Icon_HardDisk;
                         }
                         break;
                 }
 
                 DriveStorageBar.Dock = DockStyle.Left;
-                DriveStorageBar.Width = 250;
-                DriveStorageBar.Height = 25;
+                DriveStorageBar.BorderRadius = 5;
+                DriveStorageBar.Width = 270;
+                DriveStorageBar.Height = 15;
                 DriveStorageBar.Style = ProgressBarStyle.Continuous;
-                DriveStorageBar.ForeColor = Color.FromArgb(205, 232, 255);
+                DriveStorageBar.ProgressColor = FrmMain.PrimaryThemeColor;
+                DriveStorageBar.ProgressColor2 = FrmMain.SecondaryThemeColor;
                 DriveStorageBar.Value = 100 - (int)percentFree;
                 DrivePanel[driveCount].Controls.Add(DriveStorageBar);
 
                 DriveName.Dock = DockStyle.Top;
                 DriveName.Height = 40;
-                DriveName.TextAlign = ContentAlignment.BottomLeft;
+                DriveName.TextAlign = ContentAlignment.MiddleLeft;
                 DriveName.Text = drive.VolumeLabel.ToString() + " (" + drive.Name.ToString() + ")";
                 DrivePanel[driveCount].Controls.Add(DriveName);
 
                 DriveStorageInfo.Dock = DockStyle.Bottom;
-                DriveStorageInfo.Height = 36;
+                DriveStorageInfo.TextAlign = ContentAlignment.MiddleLeft;
+                DriveStorageInfo.Height = 45;
                 DriveStorageInfo.Text = FormatStorageLengthBytes(freeSpace) + " free of " + FormatStorageLengthBytes(totalSpace);
                 DrivePanel[driveCount].Controls.Add(DriveStorageInfo);
 
@@ -566,18 +574,18 @@ namespace FileGuide
             switch (file.Extension.ToUpper())
             {
                 case ".MDB":
-                    return Properties.Resources.database;
+                    return Properties.Resources.Logo_Database;
 
                 case ".DOC":
                 case ".DOCX":
-                    return Properties.Resources.doc;
+                    return Properties.Resources.Logo_WORD;
 
                 case ".EXE":
-                    return Properties.Resources.exe;
+                    return Properties.Resources.Logo_EXE;
 
                 case ".HTM":
                 case ".HTML":
-                    return Properties.Resources.html;
+                    return Properties.Resources.Logo_HTML;
 
                 case ".MP3":
                 case ".WAV":
@@ -585,41 +593,41 @@ namespace FileGuide
                 case ".ASF":
                 case ".MPEG":
                 case ".AVI":
-                    return Properties.Resources.music;
+                    return Properties.Resources.Logo_Music;
 
                 case ".PDF":
-                    return Properties.Resources.pdf;
+                    return Properties.Resources.Logo_PDF;
 
                 case ".JPG":
                 case ".PNG":
                 case ".BMP":
                 case ".GIF":
-                    return Properties.Resources.png;
+                    return Properties.Resources.Logo_PNG;
 
                 case ".PPT":
                 case ".PPTX":
-                    return Properties.Resources.ppt;
+                    return Properties.Resources.Logo_PPT;
 
                 case ".RAR":
                 case ".ZIP":
-                    return Properties.Resources.rar;
+                    return Properties.Resources.Logo_RAR;
 
                 case ".SWF":
                 case ".FLV":
                 case ".FLA":
-                    return Properties.Resources.swf;
+                    return Properties.Resources.Logo_FLASH ;
 
                 case ".TXT":
                 case ".DIZ":
                 case ".LOG":
-                    return Properties.Resources.txt;
+                    return Properties.Resources.Logo_Text ;
 
                 case ".XLS":
                 case ".XLSX":
-                    return Properties.Resources.xls;
+                    return Properties.Resources.Logo_EXCEL;
 
                 default:
-                    return Properties.Resources.file;
+                    return Properties.Resources.Logo_UnknownFile;
 
             }
         }

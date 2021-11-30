@@ -63,9 +63,9 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap CDDisk {
+        public static System.Drawing.Bitmap Icon_CDDisk {
             get {
-                object obj = ResourceManager.GetObject("CDDisk", resourceCulture);
+                object obj = ResourceManager.GetObject("Icon_CDDisk", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Copy {
+        public static System.Drawing.Bitmap Icon_Copy {
             get {
-                object obj = ResourceManager.GetObject("Copy", resourceCulture);
+                object obj = ResourceManager.GetObject("Icon_Copy", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Cut {
+        public static System.Drawing.Bitmap Icon_Cut {
             get {
-                object obj = ResourceManager.GetObject("Cut", resourceCulture);
+                object obj = ResourceManager.GetObject("Icon_Cut", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap database {
+        public static System.Drawing.Bitmap Icon_Delete {
             get {
-                object obj = ResourceManager.GetObject("database", resourceCulture);
+                object obj = ResourceManager.GetObject("Icon_Delete", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Delete {
+        public static System.Drawing.Bitmap Icon_Desktop {
             get {
-                object obj = ResourceManager.GetObject("Delete", resourceCulture);
+                object obj = ResourceManager.GetObject("Icon_Desktop", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap doc {
+        public static System.Drawing.Bitmap Icon_Documents {
             get {
-                object obj = ResourceManager.GetObject("doc", resourceCulture);
+                object obj = ResourceManager.GetObject("Icon_Documents", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap exe {
+        public static System.Drawing.Bitmap Icon_Downloads {
             get {
-                object obj = ResourceManager.GetObject("exe", resourceCulture);
+                object obj = ResourceManager.GetObject("Icon_Downloads", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,9 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ExpandChevron {
+        public static System.Drawing.Bitmap Icon_EasyAccess {
             get {
-                object obj = ResourceManager.GetObject("ExpandChevron", resourceCulture);
+                object obj = ResourceManager.GetObject("Icon_EasyAccess", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,29 +143,9 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap file {
+        public static System.Drawing.Bitmap Icon_ExpandChevron {
             get {
-                object obj = ResourceManager.GetObject("file", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        public static System.Drawing.Icon FileGuide {
-            get {
-                object obj = ResourceManager.GetObject("FileGuide", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap FloppyDisk {
-            get {
-                object obj = ResourceManager.GetObject("FloppyDisk", resourceCulture);
+                object obj = ResourceManager.GetObject("Icon_ExpandChevron", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +153,9 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Folder {
+        public static System.Drawing.Bitmap Icon_FloppyDisk {
             get {
-                object obj = ResourceManager.GetObject("Folder", resourceCulture);
+                object obj = ResourceManager.GetObject("Icon_FloppyDisk", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +163,9 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap FolderBack {
+        public static System.Drawing.Bitmap Icon_Folder {
             get {
-                object obj = ResourceManager.GetObject("FolderBack", resourceCulture);
+                object obj = ResourceManager.GetObject("Icon_Folder", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,29 +173,9 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap FolderOpen {
+        public static System.Drawing.Bitmap Icon_HardDisk {
             get {
-                object obj = ResourceManager.GetObject("FolderOpen", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap HardDisk {
-            get {
-                object obj = ResourceManager.GetObject("HardDisk", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap html {
-            get {
-                object obj = ResourceManager.GetObject("html", resourceCulture);
+                object obj = ResourceManager.GetObject("Icon_HardDisk", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -226,6 +186,56 @@ namespace FileGuide.Properties {
         public static System.Drawing.Bitmap Icon_Info {
             get {
                 object obj = ResourceManager.GetObject("Icon_Info", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Icon_MyComputer {
+            get {
+                object obj = ResourceManager.GetObject("Icon_MyComputer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Icon_NetworkDrive {
+            get {
+                object obj = ResourceManager.GetObject("Icon_NetworkDrive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Icon_NormalChevron {
+            get {
+                object obj = ResourceManager.GetObject("Icon_NormalChevron", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Icon_Paste {
+            get {
+                object obj = ResourceManager.GetObject("Icon_Paste", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Icon_Refresh {
+            get {
+                object obj = ResourceManager.GetObject("Icon_Refresh", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -253,9 +263,9 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap music {
+        public static System.Drawing.Bitmap Icon_View {
             get {
-                object obj = ResourceManager.GetObject("music", resourceCulture);
+                object obj = ResourceManager.GetObject("Icon_View", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,9 +273,9 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap MyComputer {
+        public static System.Drawing.Bitmap Logo_Database {
             get {
-                object obj = ResourceManager.GetObject("MyComputer", resourceCulture);
+                object obj = ResourceManager.GetObject("Logo_Database", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,9 +283,9 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap NetworkDrive {
+        public static System.Drawing.Bitmap Logo_EXCEL {
             get {
-                object obj = ResourceManager.GetObject("NetworkDrive", resourceCulture);
+                object obj = ResourceManager.GetObject("Logo_EXCEL", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -283,9 +293,9 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap NormalChevron {
+        public static System.Drawing.Bitmap Logo_EXE {
             get {
-                object obj = ResourceManager.GetObject("NormalChevron", resourceCulture);
+                object obj = ResourceManager.GetObject("Logo_EXE", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -293,9 +303,9 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Paste {
+        public static System.Drawing.Bitmap Logo_FLASH {
             get {
-                object obj = ResourceManager.GetObject("Paste", resourceCulture);
+                object obj = ResourceManager.GetObject("Logo_FLASH", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -303,9 +313,9 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap pdf {
+        public static System.Drawing.Bitmap Logo_HTML {
             get {
-                object obj = ResourceManager.GetObject("pdf", resourceCulture);
+                object obj = ResourceManager.GetObject("Logo_HTML", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -313,9 +323,9 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap png {
+        public static System.Drawing.Bitmap Logo_Music {
             get {
-                object obj = ResourceManager.GetObject("png", resourceCulture);
+                object obj = ResourceManager.GetObject("Logo_Music", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -323,9 +333,9 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap ppt {
+        public static System.Drawing.Bitmap Logo_PDF {
             get {
-                object obj = ResourceManager.GetObject("ppt", resourceCulture);
+                object obj = ResourceManager.GetObject("Logo_PDF", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -333,9 +343,9 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap rar {
+        public static System.Drawing.Bitmap Logo_PNG {
             get {
-                object obj = ResourceManager.GetObject("rar", resourceCulture);
+                object obj = ResourceManager.GetObject("Logo_PNG", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -343,9 +353,49 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Refresh {
+        public static System.Drawing.Bitmap Logo_PPT {
             get {
-                object obj = ResourceManager.GetObject("Refresh", resourceCulture);
+                object obj = ResourceManager.GetObject("Logo_PPT", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Logo_RAR {
+            get {
+                object obj = ResourceManager.GetObject("Logo_RAR", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Logo_Text {
+            get {
+                object obj = ResourceManager.GetObject("Logo_Text", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Logo_UnknownFile {
+            get {
+                object obj = ResourceManager.GetObject("Logo_UnknownFile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Logo_WORD {
+            get {
+                object obj = ResourceManager.GetObject("Logo_WORD", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -376,46 +426,6 @@ namespace FileGuide.Properties {
         public static string String1 {
             get {
                 return ResourceManager.GetString("String1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap swf {
-            get {
-                object obj = ResourceManager.GetObject("swf", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap txt {
-            get {
-                object obj = ResourceManager.GetObject("txt", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap View {
-            get {
-                object obj = ResourceManager.GetObject("View", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap xls {
-            get {
-                object obj = ResourceManager.GetObject("xls", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

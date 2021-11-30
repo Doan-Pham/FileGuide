@@ -49,17 +49,18 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <ApplicationIcon>FileGuide.ico</ApplicationIcon>
+    <ApplicationIcon>Logo_FileGuide.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup />
   <PropertyGroup />
-  <PropertyGroup>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-  </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <StartupObject>
     </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Guna.UI2, Version=2.0.2.5, Culture=neutral, PublicKeyToken=e4b9cdd7b4cde4b4, processorArchitecture=MSIL">
@@ -116,6 +117,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SignupPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -136,14 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="SignupPage.resx">
       <DependentUpon>SignupPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,87 +162,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\CDDisk.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\database.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\doc.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\exe.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\file.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\FloppyDisk.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Folder.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\FolderOpen.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\HardDisk.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\html.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\music.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MyComputer.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\NetworkDrive.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\pdf.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\png.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ppt.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\rar.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\swf.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\txt.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\xls.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Copy.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cut.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\FolderBack.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Paste.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Refresh.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Delete.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\View.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -263,10 +183,41 @@
     <None Include="Resources\Icon_Info.png" />
     <None Include="Resources\Icon_User.png" />
     <None Include="Resources\Icon_UserGroup.png" />
-    <Content Include="Resources\Sign_Close.png" />
-    <Content Include="Resources\Sign_Plus.png" />
-    <None Include="Resources\NormalChevron.png" />
-    <None Include="Resources\ExpandChevron.png" />
+    <Content Include="Logo_FileGuide.ico" />
+    <None Include="Resources\Icon\Icon_CDDisk.png" />
+    <None Include="Resources\Icon\Icon_Copy.png" />
+    <None Include="Resources\Icon\Icon_Cut.png" />
+    <None Include="Resources\Icon\Icon_Delete.png" />
+    <None Include="Resources\Icon\Icon_Desktop.png" />
+    <None Include="Resources\Icon\Icon_Documents.png" />
+    <None Include="Resources\Icon\Icon_Downloads.png" />
+    <None Include="Resources\Icon\Icon_EasyAccess.png" />
+    <None Include="Resources\Icon\Icon_ExpandChevron.png" />
+    <None Include="Resources\Icon\Icon_FloppyDisk.png" />
+    <None Include="Resources\Icon\Icon_Folder.png" />
+    <None Include="Resources\Icon\Icon_HardDisk.png" />
+    <None Include="Resources\Icon\Icon_MyComputer.png" />
+    <None Include="Resources\Icon\Icon_NetworkDrive.png" />
+    <None Include="Resources\Icon\Icon_NormalChevron.png" />
+    <None Include="Resources\Icon\Icon_Paste.png" />
+    <None Include="Resources\Icon\Icon_Refresh.png" />
+    <None Include="Resources\Icon\Icon_View.png" />
+    <None Include="Resources\Logo\Logo_Database.png" />
+    <None Include="Resources\Logo\Logo_EXCEL.jpg" />
+    <None Include="Resources\Logo\Logo_EXE.png" />
+    <None Include="Resources\Logo\Logo_FLASH.png" />
+    <None Include="Resources\Logo\Logo_HTML.png" />
+    <None Include="Resources\Logo\Logo_Music.png" />
+    <None Include="Resources\Logo\Logo_PDF.png" />
+    <None Include="Resources\Logo\Logo_PNG.png" />
+    <None Include="Resources\Logo\Logo_PPT.jpg" />
+    <None Include="Resources\Logo\Logo_RAR.jpg" />
+    <None Include="Resources\Logo\Logo_Text.png" />
+    <None Include="Resources\Logo\Logo_UnknownFile.png" />
+    <None Include="Resources\Logo\Logo_WORD.png" />
+    <None Include="Resources\Sign\Sign_Close.png" />
+    <None Include="Resources\Sign\Sign_Plus.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
