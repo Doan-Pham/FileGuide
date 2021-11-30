@@ -748,8 +748,16 @@ namespace FileGuide
                         case "Documents":
                             SpecialFolderPath = new KnownFolder(KnownFolderType.Documents).Path;
                             break;
+                        default:
+                            {
+                                if (clsTreeListView.GetTreeNodeRoot(currentNode).Text == "Easy Access")
+                                {
+                                    SpecialFolderPath = clsTreeListView.EasyAccessFolderPathList[currentNode.Index];
+                                }
+                            }
+                            break;
                     }
-                    isSpecialFolder = true;
+                   isSpecialFolder = true;
                 }
 
                 // If there's an error when showing folder tree, return
