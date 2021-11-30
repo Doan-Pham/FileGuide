@@ -164,6 +164,13 @@ namespace FileGuide
                     }
                     else
                     {
+                        if (itemPaste.SubItems[1].Text.Trim() == "Image File")
+                        {
+                            string ImagePath = clsTreeListView.GetApproriatePath(itemPaste.SubItems[5].Text.Trim());
+                            Image img = Image.FromFile(ImagePath);
+                            Clipboard.SetImage(img);
+                        }
+                        
                         isFolder = false;
                     }
                 }
