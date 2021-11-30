@@ -769,7 +769,7 @@ namespace FileGuide
                             break;
                         default:
                             {
-                                if (clsTreeListView.GetTreeNodeRoot(currentNode).Text == "Easy Access")
+                                if (clsTreeListView.GetTreeNodeRoot(currentNode).Text == "Easy Access" && currentNode.Parent != null)
                                 {
                                     SpecialFolderPath = clsTreeListView.EasyAccessFolderPathList[currentNode.Index];
                                 }
@@ -786,11 +786,10 @@ namespace FileGuide
                 {
                     tableLayoutFirstPage.Visible = true;
                     listView.Visible = false;
-                    //clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
                 }
                 else
                 {
-                    if (currentNode.Text == "Easy Access" && clsTreeListView.GetTreeNodeRoot(currentNode).Text == "Easy Access")
+                    if (currentNode.Text == "Easy Access" && currentNode.Parent == null)
                     {
                         currentNode.Expand();
                         return;
@@ -866,14 +865,7 @@ namespace FileGuide
             }
 
             //Draw node icon
-            if (e.Node.Text == "My Computer")
-            {
-                g.DrawImage(Properties.Resources.Icon_MyComputer, nodeRect.Location.X - 14, nodeRect.Location.Y + 8, 30, 30);
-            }
-            else
-            {
-                g.DrawImage(Properties.Resources.Icon_Folder, nodeRect.Location.X - 14, nodeRect.Location.Y + 8, 30, 30);
-            }
+            g.DrawImage(clsTreeListView.GetNodeTypeIcon(e.Node), nodeRect.Location.X - 14, nodeRect.Location.Y + 8, 30, 30);
 
             //Draw text
             if (e.Node.Bounds.X != 0)

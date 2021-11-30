@@ -632,6 +632,22 @@ namespace FileGuide
             }
         }
 
+        public Image GetNodeTypeIcon(TreeNode node)
+        {
+            if (node.Parent == null)
+            { 
+                switch (node.Text)
+                {
+                    case "My Computer": return Properties.Resources.Icon_MyComputer;
+                    case "Easy Access": return Properties.Resources.Icon_EasyAccess;
+                    case "Desktop": return Properties.Resources.Icon_Desktop;
+                    case "Downloads": return Properties.Resources.Icon_Downloads;
+                    case "Documents": return Properties.Resources.Icon_Documents;
+                    default: return Properties.Resources.Icon_Folder;
+                }
+            }
+            return Properties.Resources.Icon_Folder;
+        }
 
         /// <summary>
         /// Return a string representing the file type
