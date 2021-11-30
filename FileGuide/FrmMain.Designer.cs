@@ -803,28 +803,28 @@ namespace FileGuide
             // tsMenuLarge
             // 
             this.tsMenuLarge.Name = "tsMenuLarge";
-            this.tsMenuLarge.Size = new System.Drawing.Size(270, 36);
+            this.tsMenuLarge.Size = new System.Drawing.Size(209, 36);
             this.tsMenuLarge.Text = "Large Icons";
             this.tsMenuLarge.Click += new System.EventHandler(this.menuLarge_Click);
             // 
             // tsMenuSmall
             // 
             this.tsMenuSmall.Name = "tsMenuSmall";
-            this.tsMenuSmall.Size = new System.Drawing.Size(270, 36);
+            this.tsMenuSmall.Size = new System.Drawing.Size(209, 36);
             this.tsMenuSmall.Text = "Small Icons";
             this.tsMenuSmall.Click += new System.EventHandler(this.menuSmall_Click);
             // 
             // tsMenuList
             // 
             this.tsMenuList.Name = "tsMenuList";
-            this.tsMenuList.Size = new System.Drawing.Size(270, 36);
+            this.tsMenuList.Size = new System.Drawing.Size(209, 36);
             this.tsMenuList.Text = "List";
             this.tsMenuList.Click += new System.EventHandler(this.menuList_Click);
             // 
             // tsMenuDetails
             // 
             this.tsMenuDetails.Name = "tsMenuDetails";
-            this.tsMenuDetails.Size = new System.Drawing.Size(270, 36);
+            this.tsMenuDetails.Size = new System.Drawing.Size(209, 36);
             this.tsMenuDetails.Text = "Details";
             this.tsMenuDetails.Click += new System.EventHandler(this.menuDetails_Click);
             // 
@@ -846,14 +846,14 @@ namespace FileGuide
             // toolStripMenuItemFolder
             // 
             this.toolStripMenuItemFolder.Name = "toolStripMenuItemFolder";
-            this.toolStripMenuItemFolder.Size = new System.Drawing.Size(270, 36);
+            this.toolStripMenuItemFolder.Size = new System.Drawing.Size(166, 36);
             this.toolStripMenuItemFolder.Text = "Folder";
             this.toolStripMenuItemFolder.Click += new System.EventHandler(this.folderToolStripMenuItem_Click);
             // 
             // toolStripMenuItemFile
             // 
             this.toolStripMenuItemFile.Name = "toolStripMenuItemFile";
-            this.toolStripMenuItemFile.Size = new System.Drawing.Size(270, 36);
+            this.toolStripMenuItemFile.Size = new System.Drawing.Size(166, 36);
             this.toolStripMenuItemFile.Text = "File";
             this.toolStripMenuItemFile.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
             // 

@@ -636,8 +636,8 @@ namespace FileGuide
 
                 newTab.Text = "My Computer" + spaceText;
                 tabControl.TabPages.Insert(lastIndex, newTab);
-                tabControl.SelectedIndex = lastIndex;
                 tabPathList.Insert(tabPathList.Count - 1, "My Computer");
+                tabControl.SelectedIndex = lastIndex;
             }
             // If clicked on the X sign of any tab, delete that tab
             else

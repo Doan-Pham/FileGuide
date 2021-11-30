@@ -425,7 +425,7 @@ namespace FileGuide
 
                 DriveStorageBar.Dock = DockStyle.Left;
                 DriveStorageBar.BorderRadius = 5;
-                DriveStorageBar.Width = 270;
+                DriveStorageBar.Width = 250;
                 DriveStorageBar.Height = 15;
                 DriveStorageBar.Style = ProgressBarStyle.Continuous;
                 DriveStorageBar.ProgressColor = FrmMain.PrimaryThemeColor;
