@@ -525,7 +525,6 @@ namespace FileGuide
                 if (currentPath != "My Computer") clsTreeListView.ShowListView(listView, currentPath);
                 else
                 {
-                    //clsTreeListView.ShowListViewFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
                     listViewRecentFiles.Refresh();
                     clsTreeListView.ShowRecentAccessedFiles(listViewRecentFiles);
                     foreach (Panel DrivePanel in DrivePanelList)
@@ -564,7 +563,7 @@ namespace FileGuide
                     {
                         tableLayoutFirstPage.Visible = true;
                         listView.Visible = false;
-                        clsTreeListView.ShowFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
+                        clsTreeListView.ShowRecentAccessedFiles( listViewRecentFiles);
                     }
                     tscmbPath.Text = currentPath;
                     tabPathList[tabControl.SelectedIndex] = currentPath;
@@ -725,7 +724,7 @@ namespace FileGuide
                 {
                     tableLayoutFirstPage.Visible = true;
                     listView.Visible = false;
-                    clsTreeListView.ShowFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
+                    clsTreeListView.ShowRecentAccessedFiles (listViewRecentFiles);
                 }
                 else
                 {
@@ -1251,40 +1250,7 @@ namespace FileGuide
                 }
             }
         }
-        private void guna2Panel2_Click(object sender, EventArgs e)
-        {
-            Panel drivePanel = sender as Panel;
-            Panel actualPanel = (Panel)drivePanel.Parent;
-            foreach (var drive in DriveInfo.GetDrives())
-            {
-                if (actualPanel.Controls["driveName"].Text.Contains(drive.Name.ToString().Replace("\\", "")))
-                {
-                    tableLayoutFirstPage.Visible = false;
-                    listView.Visible = true;
-                    currentPath = drive.Name;
-                    tscmbPath.Text = drive.Name;
-                    clsTreeListView.ShowListView(listView, currentPath);
-                    return;
-                }
-            }
-        }
 
-        private void guna2Panel2_MouseEnter(object sender, EventArgs e)
-        {
-
-            Panel drivePanel = sender as Panel;
-            Panel parentPanel = (Panel)drivePanel.Parent;
-            parentPanel.BackColor = Color.FromArgb(200, 200, 200);
-            Cursor = Cursors.Hand;
-        }
-
-        private void guna2Panel2_MouseLeave(object sender, EventArgs e)
-        {
-            Panel drivePanel = sender as Panel;
-            Panel parentPanel = (Panel)drivePanel.Parent;
-            parentPanel.BackColor = Color.White;
-            Cursor = Cursors.Default;
-        }
         #endregion
 
 
@@ -1311,8 +1277,9 @@ namespace FileGuide
                     }
                 }
             }
-            tabPathList[tabControl.SelectedIndex] = currentPath;
-            tabControl.TabPages[tabControl.SelectedIndex].Text = clsTreeListView.GetFileFolderName(currentPath) + spaceText;
+            //tabPathList[tabControl.SelectedIndex] = currentPath;
+            //tabControl.TabPages[tabControl.SelectedIndex].Text = clsTreeListView.GetFileFolderName(currentPath) + spaceText;
+            tabControl.TabPages[tabControl.SelectedIndex].Text = tabPathList[tabControl.SelectedIndex];
         }
 
 
