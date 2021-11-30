@@ -180,6 +180,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FileGuide.ico" />
+    <None Include="Resources\Icon\Icon_New.png" />
+    <None Include="Resources\Icon\Icon_Rename.png" />
+    <None Include="Resources\Icon\Icon_Back.png" />
     <None Include="Resources\Icon_Info.png" />
     <None Include="Resources\Icon_User.png" />
     <None Include="Resources\Icon_UserGroup.png" />

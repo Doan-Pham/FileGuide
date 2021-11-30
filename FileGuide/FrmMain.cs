@@ -145,34 +145,37 @@ namespace FileGuide
         /// <param name="e"></param>
         private void btnCopy_Click(object sender, EventArgs e)
         {
-            // Set isCopying to true so events for Paste feature know whether to cut paste or copy paste
-            isCopying = true;
-
-            // If listView is focused, assign initial item's path to a variable and enable Paste feature
-            if (listView.Focused)
+            if (listView.SelectedItems.Count >= 0)
             {
-                isListView = true;
-                itemPaste = listView.FocusedItem;
-                if (itemPaste == null) return;
+                // Set isCopying to true so events for Paste feature know whether to cut paste or copy paste
+                isCopying = true;
 
-                pathSource = itemPaste.SubItems[5].Text;
-                if (itemPaste.SubItems[1].Text.Trim() == "Folder")
+                // If listView is focused, assign initial item's path to a variable and enable Paste feature
+                if (listView.Focused)
                 {
+                    isListView = true;
+                    itemPaste = listView.FocusedItem;
+                    if (itemPaste == null) return;
+
+                    pathSource = itemPaste.SubItems[5].Text;
+                    if (itemPaste.SubItems[1].Text.Trim() == "Folder")
+                    {
+                        isFolder = true;
+                    }
+                    else
+                    {
+                        isFolder = false;
+                    }
+                }
+                else if (treeView.Focused)
+                {
+                    pathSource = pathNode;
+                    isListView = false;
                     isFolder = true;
-                }
-                else
-                {
-                    isFolder = false;
-                }
+                };
+                pasteToolStripMenuItem.Enabled = true;
+                tsbtnPaste.Enabled = true;
             }
-            else if (treeView.Focused)
-            {
-                pathSource = pathNode;
-                isListView = false;
-                isFolder = true;
-            };
-            pasteToolStripMenuItem.Enabled = true;
-            tsbtnPaste.Enabled = true;
         }
 
 
@@ -185,8 +188,12 @@ namespace FileGuide
         {
             // The same as btnCopy_Click event but set isCutting to true and isCopying to false
             btnCopy_Click(sender, e);
-            isCopying = false;
-            isCutting = true;
+            if (listView.SelectedItems.Count >= 0)
+            {
+                isCopying = false;
+                isCutting = true;
+            }
+
         }
 
 
@@ -328,32 +335,36 @@ namespace FileGuide
         /// <param name="e"></param>
         private void folderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Check for folders with the same name as the new folder to assign correct name, then create the new folder
-            int SameNameCount = 1;
-            string newFolderName = "New folder";
-            foreach (ListViewItem item in listView.Items)
+            if (listView.Focused)
             {
-                if (item.SubItems[0].Text.ToString().Contains("New folder") && item.SubItems[1].Text.ToString() == "Folder")
+                // Check for folders with the same name as the new folder to assign correct name, then create the new folder
+                int SameNameCount = 1;
+                string newFolderName = "New folder";
+                foreach (ListViewItem item in listView.Items)
                 {
-                    newFolderName = "New folder_" + SameNameCount.ToString();
-                    SameNameCount++;
+                    if (item.SubItems[0].Text.ToString().Contains("New folder") && item.SubItems[1].Text.ToString() == "Folder")
+                    {
+                        newFolderName = "New folder_" + SameNameCount.ToString();
+                        SameNameCount++;
+                    }
                 }
-            }
-            DirectoryInfo newlyCreatedFolder = Directory.CreateDirectory(System.IO.Path.Combine(currentPath, newFolderName));
-            ListViewItem newlyCreatedItem = clsTreeListView.GetListViewItem(newlyCreatedFolder);
+                DirectoryInfo newlyCreatedFolder = Directory.CreateDirectory(System.IO.Path.Combine(currentPath, newFolderName));
+                ListViewItem newlyCreatedItem = clsTreeListView.GetListViewItem(newlyCreatedFolder);
 
-            // Check for the folder with same name and same type as the newly created folder and start renaming
-            int index = 0;
-            clsTreeListView.ShowListView(listView, currentPath);
-            foreach (ListViewItem item in listView.Items)
-            {
-                if (item.SubItems[0].Text == newFolderName && item.SubItems[1].Text == newlyCreatedItem.SubItems[1].Text)
+                // Check for the folder with same name and same type as the newly created folder and start renaming
+                int index = 0;
+                clsTreeListView.ShowListView(listView, currentPath);
+                foreach (ListViewItem item in listView.Items)
                 {
-                    index = item.Index;
+                    if (item.SubItems[0].Text == newFolderName && item.SubItems[1].Text == newlyCreatedItem.SubItems[1].Text)
+                    {
+                        index = item.Index;
+                    }
                 }
+                listView.Items[index].Selected = true;
+                menuRename_Click(sender, e);
+
             }
-            listView.Items[index].Selected = true;
-            menuRename_Click(sender, e);
         }
 
 
@@ -364,32 +375,36 @@ namespace FileGuide
         /// <param name="e"></param>
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Check for folders with the same name as the new folder to assign correct name, then create the new folder
-            string newFileName = "New file";
-            int SameNameCount = 1;
-            foreach (ListViewItem item in listView.Items)
+            if (listView.Focused)
             {
-                if (item.SubItems[0].Text.ToString().Contains("New file") && item.SubItems[1].Text.ToString() != "Folder")
+                // Check for folders with the same name as the new folder to assign correct name, then create the new folder
+                string newFileName = "New file";
+                int SameNameCount = 1;
+                foreach (ListViewItem item in listView.Items)
                 {
-                    newFileName = "New file_" + SameNameCount.ToString();
-                    SameNameCount++;
+                    if (item.SubItems[0].Text.ToString().Contains("New file") && item.SubItems[1].Text.ToString() != "Folder")
+                    {
+                        newFileName = "New file_" + SameNameCount.ToString();
+                        SameNameCount++;
+                    }
                 }
-            }
 
-            File.Create(System.IO.Path.Combine(currentPath, newFileName));
+                File.Create(System.IO.Path.Combine(currentPath, newFileName));
 
-            // Go to the created folder and start renaming
-            int index = 0;
-            clsTreeListView.ShowListView(listView, currentPath);
-            foreach (ListViewItem item in listView.Items)
-            {
-                if (item.SubItems[0].Text.ToString() == newFileName)
+                // Go to the created folder and start renaming
+                int index = 0;
+                clsTreeListView.ShowListView(listView, currentPath);
+                foreach (ListViewItem item in listView.Items)
                 {
-                    index = item.Index;
+                    if (item.SubItems[0].Text.ToString() == newFileName)
+                    {
+                        index = item.Index;
+                    }
                 }
+                listView.Items[index].Selected = true;
+                menuRename_Click(sender, e);
+
             }
-            listView.Items[index].Selected = true;
-            menuRename_Click(sender, e);
         }
 
 
@@ -400,6 +415,7 @@ namespace FileGuide
         /// <param name="e"></param>
         private void menuRename_Click(object sender, EventArgs e)
         {
+            if (listView.Focused)
             listView.SelectedItems[0].BeginEdit();
         }
 
@@ -1190,7 +1206,7 @@ namespace FileGuide
         private void listViewRecentFiles_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             clsTreeListView.ClickItem(listViewRecentFiles, listViewRecentFiles.FocusedItem, tscmbPath, true);
-            tsbtnRefresh.PerformClick();
+            btnRefresh.PerformClick();
         }
 
         /// <summary>
@@ -1311,7 +1327,7 @@ namespace FileGuide
         /// <param name="e"></param>
         private void listView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            statusLblNumSelect.Text = listView.SelectedItems.Count.ToString() + " items selected   " + listView.SelectedItems.Count;
+            statusLblNumSelect.Text = listView.SelectedItems.Count.ToString() + " items selected   ";
         }
 
 

@@ -63,6 +63,16 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Icon_Back {
+            get {
+                object obj = ResourceManager.GetObject("Icon_Back", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Icon_CDDisk {
             get {
                 object obj = ResourceManager.GetObject("Icon_CDDisk", resourceCulture);
@@ -213,6 +223,16 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Icon_New {
+            get {
+                object obj = ResourceManager.GetObject("Icon_New", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Icon_NormalChevron {
             get {
                 object obj = ResourceManager.GetObject("Icon_NormalChevron", resourceCulture);
@@ -236,6 +256,16 @@ namespace FileGuide.Properties {
         public static System.Drawing.Bitmap Icon_Refresh {
             get {
                 object obj = ResourceManager.GetObject("Icon_Refresh", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Icon_Rename {
+            get {
+                object obj = ResourceManager.GetObject("Icon_Rename", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

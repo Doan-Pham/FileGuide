@@ -56,6 +56,7 @@ namespace FileGuide
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.treeView = new FileGuide.BufferedTreeView();
             this.treeViewContextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
             this.pinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unpingFromEasyAccessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,23 +81,26 @@ namespace FileGuide
             this.colDateModified = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPlus = new System.Windows.Forms.TabPage();
             this.tsPath = new System.Windows.Forms.ToolStrip();
+            this.btnBack = new System.Windows.Forms.ToolStripButton();
+            this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.tslbPath = new System.Windows.Forms.ToolStripLabel();
             this.tscmbPath = new System.Windows.Forms.ToolStripComboBox();
             this.toolBar = new System.Windows.Forms.ToolStrip();
-            this.tsbtnBack = new System.Windows.Forms.ToolStripButton();
-            this.tsbtnRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbtnCopy = new System.Windows.Forms.ToolStripButton();
             this.tsbtnCut = new System.Windows.Forms.ToolStripButton();
             this.tsbtnPaste = new System.Windows.Forms.ToolStripButton();
             this.tsbtnDelete = new System.Windows.Forms.ToolStripButton();
+            this.tsbtnRename = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsDropView = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsMenuLarge = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMenuSmall = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMenuList = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMenuDetails = new System.Windows.Forms.ToolStripMenuItem();
-            this.treeView = new FileGuide.BufferedTreeView();
+            this.tsDropNew = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripMenuItemFolder = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.contextMenuStripListView.SuspendLayout();
             this.contextMenuStripListViewItem.SuspendLayout();
@@ -326,6 +330,30 @@ namespace FileGuide
             this.mainSplitContainer.SplitterDistance = 351;
             this.mainSplitContainer.TabIndex = 5;
             // 
+            // treeView
+            // 
+            this.treeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
+            this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeView.ContextMenuStrip = this.treeViewContextMenuStrip;
+            this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
+            this.treeView.Font = new System.Drawing.Font("Questrial", 9.999999F);
+            this.treeView.ForeColor = System.Drawing.Color.Black;
+            this.treeView.FullRowSelect = true;
+            this.treeView.HotTracking = true;
+            this.treeView.Indent = 20;
+            this.treeView.ItemHeight = 46;
+            this.treeView.Location = new System.Drawing.Point(0, 0);
+            this.treeView.Name = "treeView";
+            this.treeView.ShowLines = false;
+            this.treeView.Size = new System.Drawing.Size(351, 807);
+            this.treeView.TabIndex = 1;
+            this.treeView.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView_DrawNode);
+            this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
+            this.treeView.MouseLeave += new System.EventHandler(this.treeView_MouseLeave);
+            this.treeView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseMove);
+            this.treeView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseUp);
+            // 
             // treeViewContextMenuStrip
             // 
             this.treeViewContextMenuStrip.BackColor = System.Drawing.Color.White;
@@ -366,11 +394,11 @@ namespace FileGuide
             this.tabControl.Controls.Add(this.tabPlus);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabControl.Location = new System.Drawing.Point(0, 168);
+            this.tabControl.Location = new System.Drawing.Point(0, 174);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.ShowToolTips = true;
-            this.tabControl.Size = new System.Drawing.Size(1223, 639);
+            this.tabControl.Size = new System.Drawing.Size(1223, 633);
             this.tabControl.TabIndex = 4;
             this.tabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl_DrawItem);
             this.tabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl_Selecting);
@@ -383,7 +411,7 @@ namespace FileGuide
             this.tabPage1.Location = new System.Drawing.Point(4, 39);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1215, 596);
+            this.tabPage1.Size = new System.Drawing.Size(1215, 590);
             this.tabPage1.TabIndex = 1;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -408,7 +436,7 @@ namespace FileGuide
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutFirstPage.Size = new System.Drawing.Size(1209, 590);
+            this.tableLayoutFirstPage.Size = new System.Drawing.Size(1209, 584);
             this.tableLayoutFirstPage.TabIndex = 1;
             // 
             // tableLblDrives
@@ -426,9 +454,9 @@ namespace FileGuide
             // 
             this.tableLblRecent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLblRecent.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLblRecent.Location = new System.Drawing.Point(3, 228);
+            this.tableLblRecent.Location = new System.Drawing.Point(3, 225);
             this.tableLblRecent.Name = "tableLblRecent";
-            this.tableLblRecent.Size = new System.Drawing.Size(1203, 57);
+            this.tableLblRecent.Size = new System.Drawing.Size(1203, 56);
             this.tableLblRecent.TabIndex = 1;
             this.tableLblRecent.Text = "Recent files";
             this.tableLblRecent.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -438,9 +466,9 @@ namespace FileGuide
             this.flowLayoutPanelDrives.AutoScroll = true;
             this.flowLayoutPanelDrives.Controls.Add(this.guna2Panel1);
             this.flowLayoutPanelDrives.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanelDrives.Location = new System.Drawing.Point(3, 60);
+            this.flowLayoutPanelDrives.Location = new System.Drawing.Point(3, 59);
             this.flowLayoutPanelDrives.Name = "flowLayoutPanelDrives";
-            this.flowLayoutPanelDrives.Size = new System.Drawing.Size(1203, 165);
+            this.flowLayoutPanelDrives.Size = new System.Drawing.Size(1203, 163);
             this.flowLayoutPanelDrives.TabIndex = 2;
             // 
             // guna2Panel1
@@ -508,10 +536,10 @@ namespace FileGuide
             this.listViewRecentFiles.FullRowSelect = true;
             this.listViewRecentFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewRecentFiles.HideSelection = false;
-            this.listViewRecentFiles.Location = new System.Drawing.Point(3, 288);
+            this.listViewRecentFiles.Location = new System.Drawing.Point(3, 284);
             this.listViewRecentFiles.Name = "listViewRecentFiles";
             this.listViewRecentFiles.OwnerDraw = true;
-            this.listViewRecentFiles.Size = new System.Drawing.Size(1203, 279);
+            this.listViewRecentFiles.Size = new System.Drawing.Size(1203, 276);
             this.listViewRecentFiles.TabIndex = 3;
             this.listViewRecentFiles.UseCompatibleStateImageBehavior = false;
             this.listViewRecentFiles.View = System.Windows.Forms.View.Details;
@@ -550,7 +578,7 @@ namespace FileGuide
             this.listView.Margin = new System.Windows.Forms.Padding(4);
             this.listView.Name = "listView";
             this.listView.OwnerDraw = true;
-            this.listView.Size = new System.Drawing.Size(1209, 590);
+            this.listView.Size = new System.Drawing.Size(1209, 584);
             this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
@@ -593,7 +621,7 @@ namespace FileGuide
             this.tabPlus.Location = new System.Drawing.Point(4, 39);
             this.tabPlus.Name = "tabPlus";
             this.tabPlus.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPlus.Size = new System.Drawing.Size(1215, 596);
+            this.tabPlus.Size = new System.Drawing.Size(1215, 590);
             this.tabPlus.TabIndex = 0;
             this.tabPlus.Text = " ";
             this.tabPlus.UseVisualStyleBackColor = true;
@@ -606,19 +634,46 @@ namespace FileGuide
             this.tsPath.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tsPath.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.tsPath.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnBack,
+            this.btnRefresh,
             this.tslbPath,
             this.tscmbPath});
             this.tsPath.Location = new System.Drawing.Point(0, 123);
             this.tsPath.Name = "tsPath";
             this.tsPath.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.tsPath.Size = new System.Drawing.Size(1223, 45);
+            this.tsPath.Size = new System.Drawing.Size(1223, 51);
             this.tsPath.TabIndex = 3;
+            // 
+            // btnBack
+            // 
+            this.btnBack.AutoSize = false;
+            this.btnBack.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnBack.Image = global::FileGuide.Properties.Resources.Icon_Back;
+            this.btnBack.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnBack.Margin = new System.Windows.Forms.Padding(10, 2, 10, 3);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(34, 46);
+            this.btnBack.Text = "toolStripButton2";
+            this.btnBack.Click += new System.EventHandler(this.tsbtnBack_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.AutoSize = false;
+            this.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnRefresh.Font = new System.Drawing.Font("Questrial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.Image = global::FileGuide.Properties.Resources.Icon_Refresh;
+            this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(0, 2, 10, 3);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(34, 46);
+            this.btnRefresh.Text = "toolStripButton1";
+            this.btnRefresh.Click += new System.EventHandler(this.tsbtnRefresh_Click);
             // 
             // tslbPath
             // 
             this.tslbPath.Margin = new System.Windows.Forms.Padding(20, 1, 0, 2);
             this.tslbPath.Name = "tslbPath";
-            this.tslbPath.Size = new System.Drawing.Size(54, 42);
+            this.tslbPath.Size = new System.Drawing.Size(54, 48);
             this.tslbPath.Text = "Path:";
             // 
             // tscmbPath
@@ -637,46 +692,20 @@ namespace FileGuide
             this.toolBar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolBar.ImageScalingSize = new System.Drawing.Size(50, 50);
             this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbtnBack,
-            this.tsbtnRefresh,
             this.toolStripSeparator1,
             this.tsbtnCopy,
             this.tsbtnCut,
             this.tsbtnPaste,
             this.tsbtnDelete,
+            this.tsbtnRename,
             this.toolStripSeparator2,
-            this.tsDropView});
+            this.tsDropView,
+            this.tsDropNew});
             this.toolBar.Location = new System.Drawing.Point(0, 0);
             this.toolBar.Name = "toolBar";
             this.toolBar.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.toolBar.Size = new System.Drawing.Size(1223, 123);
             this.toolBar.TabIndex = 2;
-            // 
-            // tsbtnBack
-            // 
-            this.tsbtnBack.AutoSize = false;
-            this.tsbtnBack.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.tsbtnBack.Image = global::FileGuide.Properties.Resources.Icon_Folder;
-            this.tsbtnBack.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.tsbtnBack.ImageTransparentColor = System.Drawing.Color.White;
-            this.tsbtnBack.Name = "tsbtnBack";
-            this.tsbtnBack.Size = new System.Drawing.Size(100, 100);
-            this.tsbtnBack.Text = "Back";
-            this.tsbtnBack.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsbtnBack.Click += new System.EventHandler(this.tsbtnBack_Click);
-            // 
-            // tsbtnRefresh
-            // 
-            this.tsbtnRefresh.AutoSize = false;
-            this.tsbtnRefresh.Image = global::FileGuide.Properties.Resources.Icon_Refresh;
-            this.tsbtnRefresh.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.tsbtnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnRefresh.Margin = new System.Windows.Forms.Padding(8, 2, 0, 3);
-            this.tsbtnRefresh.Name = "tsbtnRefresh";
-            this.tsbtnRefresh.Size = new System.Drawing.Size(100, 100);
-            this.tsbtnRefresh.Text = "Refresh";
-            this.tsbtnRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsbtnRefresh.Click += new System.EventHandler(this.tsbtnRefresh_Click);
             // 
             // toolStripSeparator1
             // 
@@ -736,6 +765,19 @@ namespace FileGuide
             this.tsbtnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbtnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // tsbtnRename
+            // 
+            this.tsbtnRename.AutoSize = false;
+            this.tsbtnRename.Image = global::FileGuide.Properties.Resources.Icon_Rename;
+            this.tsbtnRename.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.tsbtnRename.ImageTransparentColor = System.Drawing.Color.White;
+            this.tsbtnRename.Margin = new System.Windows.Forms.Padding(8, 2, 0, 3);
+            this.tsbtnRename.Name = "tsbtnRename";
+            this.tsbtnRename.Size = new System.Drawing.Size(100, 100);
+            this.tsbtnRename.Text = "Rename";
+            this.tsbtnRename.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbtnRename.Click += new System.EventHandler(this.menuRename_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
@@ -761,54 +803,59 @@ namespace FileGuide
             // tsMenuLarge
             // 
             this.tsMenuLarge.Name = "tsMenuLarge";
-            this.tsMenuLarge.Size = new System.Drawing.Size(209, 36);
+            this.tsMenuLarge.Size = new System.Drawing.Size(270, 36);
             this.tsMenuLarge.Text = "Large Icons";
             this.tsMenuLarge.Click += new System.EventHandler(this.menuLarge_Click);
             // 
             // tsMenuSmall
             // 
             this.tsMenuSmall.Name = "tsMenuSmall";
-            this.tsMenuSmall.Size = new System.Drawing.Size(209, 36);
+            this.tsMenuSmall.Size = new System.Drawing.Size(270, 36);
             this.tsMenuSmall.Text = "Small Icons";
             this.tsMenuSmall.Click += new System.EventHandler(this.menuSmall_Click);
             // 
             // tsMenuList
             // 
             this.tsMenuList.Name = "tsMenuList";
-            this.tsMenuList.Size = new System.Drawing.Size(209, 36);
+            this.tsMenuList.Size = new System.Drawing.Size(270, 36);
             this.tsMenuList.Text = "List";
             this.tsMenuList.Click += new System.EventHandler(this.menuList_Click);
             // 
             // tsMenuDetails
             // 
             this.tsMenuDetails.Name = "tsMenuDetails";
-            this.tsMenuDetails.Size = new System.Drawing.Size(209, 36);
+            this.tsMenuDetails.Size = new System.Drawing.Size(270, 36);
             this.tsMenuDetails.Text = "Details";
             this.tsMenuDetails.Click += new System.EventHandler(this.menuDetails_Click);
             // 
-            // treeView
+            // tsDropNew
             // 
-            this.treeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
-            this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeView.ContextMenuStrip = this.treeViewContextMenuStrip;
-            this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
-            this.treeView.Font = new System.Drawing.Font("Questrial", 9.999999F);
-            this.treeView.ForeColor = System.Drawing.Color.Black;
-            this.treeView.FullRowSelect = true;
-            this.treeView.HotTracking = true;
-            this.treeView.Indent = 20;
-            this.treeView.ItemHeight = 46;
-            this.treeView.Location = new System.Drawing.Point(0, 0);
-            this.treeView.Name = "treeView";
-            this.treeView.ShowLines = false;
-            this.treeView.Size = new System.Drawing.Size(351, 807);
-            this.treeView.TabIndex = 1;
-            this.treeView.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView_DrawNode);
-            this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
-            this.treeView.MouseLeave += new System.EventHandler(this.treeView_MouseLeave);
-            this.treeView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseMove);
-            this.treeView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseUp);
+            this.tsDropNew.AutoSize = false;
+            this.tsDropNew.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemFolder,
+            this.toolStripMenuItemFile});
+            this.tsDropNew.Image = global::FileGuide.Properties.Resources.Icon_New;
+            this.tsDropNew.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.tsDropNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsDropNew.Margin = new System.Windows.Forms.Padding(8, 1, 0, 2);
+            this.tsDropNew.Name = "tsDropNew";
+            this.tsDropNew.Size = new System.Drawing.Size(100, 100);
+            this.tsDropNew.Text = "New";
+            this.tsDropNew.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // toolStripMenuItemFolder
+            // 
+            this.toolStripMenuItemFolder.Name = "toolStripMenuItemFolder";
+            this.toolStripMenuItemFolder.Size = new System.Drawing.Size(270, 36);
+            this.toolStripMenuItemFolder.Text = "Folder";
+            this.toolStripMenuItemFolder.Click += new System.EventHandler(this.folderToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItemFile
+            // 
+            this.toolStripMenuItemFile.Name = "toolStripMenuItemFile";
+            this.toolStripMenuItemFile.Size = new System.Drawing.Size(270, 36);
+            this.toolStripMenuItemFile.Text = "File";
+            this.toolStripMenuItemFile.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
             // 
             // FrmMain
             // 
@@ -859,8 +906,6 @@ namespace FileGuide
         private System.Windows.Forms.ColumnHeader colDateCreated;
         private System.Windows.Forms.ColumnHeader colDateModified;
         private System.Windows.Forms.ToolStrip toolBar;
-        private System.Windows.Forms.ToolStripButton tsbtnBack;
-        private System.Windows.Forms.ToolStripButton tsbtnRefresh;
         private System.Windows.Forms.ToolStripButton tsbtnCopy;
         private System.Windows.Forms.ToolStripButton tsbtnCut;
         private System.Windows.Forms.ToolStripButton tsbtnPaste;
@@ -919,6 +964,12 @@ namespace FileGuide
         private Guna.UI2.WinForms.Guna2ContextMenuStrip treeViewContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem pinToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unpingFromEasyAccessToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton btnRefresh;
+        private System.Windows.Forms.ToolStripButton btnBack;
+        private System.Windows.Forms.ToolStripButton tsbtnRename;
+        private System.Windows.Forms.ToolStripDropDownButton tsDropNew;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemFolder;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemFile;
     }
 }
 
