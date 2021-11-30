@@ -567,6 +567,8 @@ namespace FileGuide
                         clsTreeListView.ShowFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
                     }
                     tscmbPath.Text = currentPath;
+                    tabPathList[tabControl.SelectedIndex] = currentPath;
+                    tabControl.TabPages[tabControl.SelectedIndex].Text = clsTreeListView.GetFileFolderName(currentPath) + spaceText;
                 }
             }
             catch (Exception ex)
@@ -1309,6 +1311,8 @@ namespace FileGuide
                     }
                 }
             }
+            tabPathList[tabControl.SelectedIndex] = currentPath;
+            tabControl.TabPages[tabControl.SelectedIndex].Text = clsTreeListView.GetFileFolderName(currentPath) + spaceText;
         }
 
 
