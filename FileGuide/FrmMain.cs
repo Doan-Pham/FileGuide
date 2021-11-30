@@ -551,7 +551,7 @@ namespace FileGuide
         {
             try
             {
-                if (currentPath != "")
+                if (currentPath != "" && currentPath != "My Computer")
                 {
                     currentPath = clsTreeListView.GetParentDirectoryPath(currentPath);
                     if (currentPath != "My Computer")
