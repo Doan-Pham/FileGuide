@@ -1254,6 +1254,8 @@ namespace FileGuide
                     listView.Visible = true;
                     currentPath = drive.Name;
                     tscmbPath.Text = drive.Name;
+                    tabPathList[tabControl.SelectedIndex] = currentPath;
+                    tabControl.TabPages[tabControl.SelectedIndex].Text = currentPath + spaceText;
                     clsTreeListView.ShowListView(listView, currentPath);
                     return;
                 }
