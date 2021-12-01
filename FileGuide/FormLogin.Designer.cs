@@ -60,9 +60,9 @@ namespace FileGuide
             this.panelMenu.Controls.Add(this.SignupButton);
             this.panelMenu.Controls.Add(this.LoginButton);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelMenu.Location = new System.Drawing.Point(1210, 0);
+            this.panelMenu.Location = new System.Drawing.Point(1196, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(268, 760);
+            this.panelMenu.Size = new System.Drawing.Size(282, 760);
             this.panelMenu.TabIndex = 0;
             // 
             // pictureBox3
@@ -148,12 +148,12 @@ namespace FileGuide
             this.LoginButton.Font = new System.Drawing.Font("Questrial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginButton.ForeColor = System.Drawing.Color.White;
             this.LoginButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.LoginButton.Location = new System.Drawing.Point(66, 137);
+            this.LoginButton.Location = new System.Drawing.Point(80, 137);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.LoginButton.Size = new System.Drawing.Size(202, 78);
+            this.LoginButton.Size = new System.Drawing.Size(188, 78);
             this.LoginButton.TabIndex = 1;
-            this.LoginButton.Text = "  Đăng nhập";
+            this.LoginButton.Text = "Đăng nhập";
             this.LoginButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.LoginButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.LoginButton.UseVisualStyleBackColor = true;
@@ -161,9 +161,9 @@ namespace FileGuide
             // 
             // PanelMain
             // 
+            this.PanelMain.Controls.Add(this.infoPage1);
             this.PanelMain.Controls.Add(this.signupPage1);
             this.PanelMain.Controls.Add(this.loginPage1);
-            this.PanelMain.Controls.Add(this.infoPage1);
             this.PanelMain.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelMain.Location = new System.Drawing.Point(0, 0);
             this.PanelMain.Name = "PanelMain";
@@ -175,7 +175,7 @@ namespace FileGuide
             this.signupPage1.BackColor = System.Drawing.Color.White;
             this.signupPage1.Location = new System.Drawing.Point(0, 0);
             this.signupPage1.Name = "signupPage1";
-            this.signupPage1.Size = new System.Drawing.Size(1213, 757);
+            this.signupPage1.Size = new System.Drawing.Size(1190, 774);
             this.signupPage1.TabIndex = 4;
             // 
             // loginPage1
@@ -190,10 +190,10 @@ namespace FileGuide
             // infoPage1
             // 
             this.infoPage1.BackColor = System.Drawing.Color.White;
-            this.infoPage1.Location = new System.Drawing.Point(12, 0);
+            this.infoPage1.Location = new System.Drawing.Point(-5, 0);
             this.infoPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.infoPage1.Name = "infoPage1";
-            this.infoPage1.Size = new System.Drawing.Size(1201, 760);
+            this.infoPage1.Size = new System.Drawing.Size(1220, 760);
             this.infoPage1.TabIndex = 0;
             // 
             // FormLogin
@@ -202,8 +202,8 @@ namespace FileGuide
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1478, 760);
-            this.Controls.Add(this.PanelMain);
             this.Controls.Add(this.panelMenu);
+            this.Controls.Add(this.PanelMain);
             this.Font = new System.Drawing.Font("Questrial", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormLogin";

@@ -502,6 +502,8 @@ namespace FileGuide
                         {
                             clsTreeListView.ShowListView(listView, tscmbPath.Text);
                             currentPath = tscmbPath.Text;
+                            tabPathList[tabControl.SelectedIndex] = currentPath;
+                            tabControl.TabPages[tabControl.SelectedIndex].Text = clsTreeListView.GetFileFolderName(currentPath) + spaceText;
                         }
 
                         // If path doesn't exist, show error message
@@ -598,6 +600,8 @@ namespace FileGuide
                 if (item.SubItems[1].Text == "Folder")
                 {
                     currentPath = tscmbPath.Text;
+                    tabPathList[tabControl.SelectedIndex] = currentPath;
+                    tabControl.TabPages[tabControl.SelectedIndex].Text = clsTreeListView.GetFileFolderName(currentPath) + spaceText;
                 }
             }
         }
@@ -620,6 +624,8 @@ namespace FileGuide
                     {
                         currentPath = tscmbPath.Text;
                     }
+                    tabPathList[tabControl.SelectedIndex] = currentPath;
+                    tabControl.TabPages[tabControl.SelectedIndex].Text = clsTreeListView.GetFileFolderName(currentPath) + spaceText;
                 }
             }
         }
@@ -1255,7 +1261,7 @@ namespace FileGuide
                     currentPath = drive.Name;
                     tscmbPath.Text = drive.Name;
                     tabPathList[tabControl.SelectedIndex] = currentPath;
-                    tabControl.TabPages[tabControl.SelectedIndex].Text = currentPath + spaceText;
+                    tabControl.TabPages[tabControl.SelectedIndex].Text = clsTreeListView.GetFileFolderName(currentPath) + spaceText;
                     clsTreeListView.ShowListView(listView, currentPath);
                     return;
                 }
@@ -1288,9 +1294,8 @@ namespace FileGuide
                     }
                 }
             }
-            //tabPathList[tabControl.SelectedIndex] = currentPath;
-            //tabControl.TabPages[tabControl.SelectedIndex].Text = clsTreeListView.GetFileFolderName(currentPath) + spaceText;
-            tabControl.TabPages[tabControl.SelectedIndex].Text = tabPathList[tabControl.SelectedIndex];
+ 
+            tabControl.TabPages[tabControl.SelectedIndex].Text = clsTreeListView.GetFileFolderName(tabPathList[tabControl.SelectedIndex]) + spaceText;
         }
 
 

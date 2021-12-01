@@ -29,9 +29,9 @@ namespace FileGuide
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignupPage));
             this.textBoxPass = new Guna.UI2.WinForms.Guna2TextBox();
             this.textBoxUser = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.DataGridViewUserList = new System.Windows.Forms.DataGridView();
             this.btnSignup = new Guna.UI2.WinForms.Guna2GradientButton();
             this.label7 = new System.Windows.Forms.Label();
@@ -50,9 +50,11 @@ namespace FileGuide
             this.labelAdmin = new System.Windows.Forms.Label();
             this.labelPermis = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewUserList)).BeginInit();
             this.panelBeforeLogined.SuspendLayout();
             this.panelAfterLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxPass
@@ -117,28 +119,17 @@ namespace FileGuide
             this.textBoxUser.TabIndex = 25;
             this.textBoxUser.TextOffset = new System.Drawing.Point(0, 5);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Merriweather Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(31, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(619, 64);
-            this.label2.TabIndex = 28;
-            this.label2.Text = "DANH SÁCH TÀI KHOẢN";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // DataGridViewUserList
             // 
             this.DataGridViewUserList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataGridViewUserList.BackgroundColor = System.Drawing.Color.White;
             this.DataGridViewUserList.ColumnHeadersHeight = 34;
             this.DataGridViewUserList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.DataGridViewUserList.Location = new System.Drawing.Point(58, 154);
+            this.DataGridViewUserList.Location = new System.Drawing.Point(39, 119);
             this.DataGridViewUserList.Name = "DataGridViewUserList";
             this.DataGridViewUserList.RowHeadersWidth = 62;
             this.DataGridViewUserList.RowTemplate.Height = 28;
-            this.DataGridViewUserList.Size = new System.Drawing.Size(576, 399);
+            this.DataGridViewUserList.Size = new System.Drawing.Size(576, 593);
             this.DataGridViewUserList.TabIndex = 30;
             // 
             // btnSignup
@@ -464,14 +455,24 @@ namespace FileGuide
             this.label5.TabIndex = 9;
             this.label5.Text = "Xin chào";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(-8, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(665, 772);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 32;
+            this.pictureBox1.TabStop = false;
+            // 
             // SignupPage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.panelAfterLogin);
             this.Controls.Add(this.DataGridViewUserList);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.panelBeforeLogined);
+            this.Controls.Add(this.pictureBox1);
             this.Name = "SignupPage";
             this.Size = new System.Drawing.Size(1201, 744);
             this.Load += new System.EventHandler(this.SignupPage_Load);
@@ -481,15 +482,14 @@ namespace FileGuide
             this.panelBeforeLogined.PerformLayout();
             this.panelAfterLogin.ResumeLayout(false);
             this.panelAfterLogin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
         private Guna.UI2.WinForms.Guna2TextBox textBoxPass;
         private Guna.UI2.WinForms.Guna2TextBox textBoxUser;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView DataGridViewUserList;
         private Guna.UI2.WinForms.Guna2GradientButton btnSignup;
         private System.Windows.Forms.Label label7;
@@ -508,5 +508,6 @@ namespace FileGuide
         private Guna.UI2.WinForms.Guna2GradientButton btnDelete;
         private Guna.UI2.WinForms.Guna2GradientButton btnAdd;
         private System.Windows.Forms.Label labelNotice;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

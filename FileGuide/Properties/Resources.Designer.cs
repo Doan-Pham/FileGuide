@@ -333,6 +333,16 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Logo_FileGuide {
+            get {
+                object obj = ResourceManager.GetObject("Logo_FileGuide", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Logo_FLASH {
             get {
                 object obj = ResourceManager.GetObject("Logo_FLASH", resourceCulture);
