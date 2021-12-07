@@ -81,6 +81,12 @@ namespace FileGuide
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.tslbPath = new System.Windows.Forms.ToolStripLabel();
             this.tscmbPath = new System.Windows.Forms.ToolStripComboBox();
+            this.ShortcutKeysPanel = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.toolBar = new System.Windows.Forms.ToolStrip();
             this.tsbtnCopy = new System.Windows.Forms.ToolStripButton();
             this.tsbtnCut = new System.Windows.Forms.ToolStripButton();
@@ -96,7 +102,7 @@ namespace FileGuide
             this.tsDropNew = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripMenuItemFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.ShortcutKeysMenu = new System.Windows.Forms.MenuStrip();
             this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -107,11 +113,9 @@ namespace FileGuide
             this.newFoldẻToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewLargeIconToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.toolsPanel = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.contextMenuStripListView.SuspendLayout();
             this.contextMenuStripListViewItem.SuspendLayout();
@@ -124,9 +128,10 @@ namespace FileGuide
             this.tabPage1.SuspendLayout();
             this.tableLayoutFirstPage.SuspendLayout();
             this.tsPath.SuspendLayout();
+            this.ShortcutKeysPanel.SuspendLayout();
             this.toolBar.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.ShortcutKeysMenu.SuspendLayout();
+            this.toolsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -336,9 +341,7 @@ namespace FileGuide
             // 
             this.mainSplitContainer.Panel2.Controls.Add(this.tabControl);
             this.mainSplitContainer.Panel2.Controls.Add(this.tsPath);
-            this.mainSplitContainer.Panel2.Controls.Add(this.toolStrip1);
-            this.mainSplitContainer.Panel2.Controls.Add(this.toolBar);
-            this.mainSplitContainer.Panel2.Controls.Add(this.panel1);
+            this.mainSplitContainer.Panel2.Controls.Add(this.toolsPanel);
             this.mainSplitContainer.Size = new System.Drawing.Size(1678, 807);
             this.mainSplitContainer.SplitterDistance = 373;
             this.mainSplitContainer.TabIndex = 5;
@@ -403,15 +406,17 @@ namespace FileGuide
             // 
             // tabControl
             // 
+            this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.tabPlus);
-            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabControl.Location = new System.Drawing.Point(0, 188);
+            this.tabControl.Location = new System.Drawing.Point(0, 214);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.ShowToolTips = true;
-            this.tabControl.Size = new System.Drawing.Size(1301, 619);
+            this.tabControl.Size = new System.Drawing.Size(1303, 607);
             this.tabControl.TabIndex = 4;
             this.tabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl_DrawItem);
             this.tabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl_Selecting);
@@ -424,7 +429,7 @@ namespace FileGuide
             this.tabPage1.Location = new System.Drawing.Point(4, 39);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1293, 576);
+            this.tabPage1.Size = new System.Drawing.Size(1295, 564);
             this.tabPage1.TabIndex = 1;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -449,7 +454,7 @@ namespace FileGuide
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutFirstPage.Size = new System.Drawing.Size(1287, 570);
+            this.tableLayoutFirstPage.Size = new System.Drawing.Size(1289, 558);
             this.tableLayoutFirstPage.TabIndex = 1;
             // 
             // tableLblDrives
@@ -458,7 +463,7 @@ namespace FileGuide
             this.tableLblDrives.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableLblDrives.Location = new System.Drawing.Point(3, 0);
             this.tableLblDrives.Name = "tableLblDrives";
-            this.tableLblDrives.Size = new System.Drawing.Size(1281, 51);
+            this.tableLblDrives.Size = new System.Drawing.Size(1283, 51);
             this.tableLblDrives.TabIndex = 0;
             this.tableLblDrives.Text = "Drives";
             this.tableLblDrives.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -467,9 +472,9 @@ namespace FileGuide
             // 
             this.tableLblRecent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLblRecent.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLblRecent.Location = new System.Drawing.Point(3, 220);
+            this.tableLblRecent.Location = new System.Drawing.Point(3, 214);
             this.tableLblRecent.Name = "tableLblRecent";
-            this.tableLblRecent.Size = new System.Drawing.Size(1281, 55);
+            this.tableLblRecent.Size = new System.Drawing.Size(1283, 53);
             this.tableLblRecent.TabIndex = 1;
             this.tableLblRecent.Text = "Recent files";
             this.tableLblRecent.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -478,9 +483,9 @@ namespace FileGuide
             // 
             this.flowLayoutPanelDrives.AutoScroll = true;
             this.flowLayoutPanelDrives.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanelDrives.Location = new System.Drawing.Point(3, 58);
+            this.flowLayoutPanelDrives.Location = new System.Drawing.Point(3, 56);
             this.flowLayoutPanelDrives.Name = "flowLayoutPanelDrives";
-            this.flowLayoutPanelDrives.Size = new System.Drawing.Size(1281, 159);
+            this.flowLayoutPanelDrives.Size = new System.Drawing.Size(1283, 155);
             this.flowLayoutPanelDrives.TabIndex = 2;
             // 
             // listViewRecentFiles
@@ -496,10 +501,10 @@ namespace FileGuide
             this.listViewRecentFiles.FullRowSelect = true;
             this.listViewRecentFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewRecentFiles.HideSelection = false;
-            this.listViewRecentFiles.Location = new System.Drawing.Point(3, 278);
+            this.listViewRecentFiles.Location = new System.Drawing.Point(3, 270);
             this.listViewRecentFiles.Name = "listViewRecentFiles";
             this.listViewRecentFiles.OwnerDraw = true;
-            this.listViewRecentFiles.Size = new System.Drawing.Size(1281, 269);
+            this.listViewRecentFiles.Size = new System.Drawing.Size(1283, 263);
             this.listViewRecentFiles.TabIndex = 3;
             this.listViewRecentFiles.UseCompatibleStateImageBehavior = false;
             this.listViewRecentFiles.View = System.Windows.Forms.View.Details;
@@ -538,7 +543,7 @@ namespace FileGuide
             this.listView.Margin = new System.Windows.Forms.Padding(4);
             this.listView.Name = "listView";
             this.listView.OwnerDraw = true;
-            this.listView.Size = new System.Drawing.Size(1287, 570);
+            this.listView.Size = new System.Drawing.Size(1289, 558);
             this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
@@ -581,7 +586,7 @@ namespace FileGuide
             this.tabPlus.Location = new System.Drawing.Point(4, 39);
             this.tabPlus.Name = "tabPlus";
             this.tabPlus.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPlus.Size = new System.Drawing.Size(1293, 590);
+            this.tabPlus.Size = new System.Drawing.Size(1293, 582);
             this.tabPlus.TabIndex = 0;
             this.tabPlus.Text = " ";
             this.tabPlus.UseVisualStyleBackColor = true;
@@ -598,7 +603,7 @@ namespace FileGuide
             this.btnRefresh,
             this.tslbPath,
             this.tscmbPath});
-            this.tsPath.Location = new System.Drawing.Point(0, 137);
+            this.tsPath.Location = new System.Drawing.Point(0, 160);
             this.tsPath.Name = "tsPath";
             this.tsPath.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.tsPath.Size = new System.Drawing.Size(1301, 51);
@@ -644,13 +649,76 @@ namespace FileGuide
             this.tscmbPath.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tscmbPath_KeyPress);
             this.tscmbPath.TextChanged += new System.EventHandler(this.tscmbPath_TextChanged);
             // 
+            // ShortcutKeysPanel
+            // 
+            this.ShortcutKeysPanel.Controls.Add(this.label7);
+            this.ShortcutKeysPanel.Controls.Add(this.label6);
+            this.ShortcutKeysPanel.Controls.Add(this.label5);
+            this.ShortcutKeysPanel.Controls.Add(this.label4);
+            this.ShortcutKeysPanel.Controls.Add(this.label3);
+            this.ShortcutKeysPanel.Controls.Add(this.label2);
+            this.ShortcutKeysPanel.Controls.Add(this.label1);
+            this.ShortcutKeysPanel.Font = new System.Drawing.Font("Be Vietnam", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ShortcutKeysPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ShortcutKeysPanel.Location = new System.Drawing.Point(0, 121);
+            this.ShortcutKeysPanel.Name = "ShortcutKeysPanel";
+            this.ShortcutKeysPanel.Size = new System.Drawing.Size(1301, 27);
+            this.ShortcutKeysPanel.TabIndex = 7;
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(448, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(75, 34);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "(Ctrl+R)";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(337, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(75, 34);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "(Del)";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(230, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(75, 34);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "(Ctrl+V)";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(125, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 34);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "(Ctrl+X)";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(10, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 34);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "(Ctrl+C)";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
             // toolBar
             // 
             this.toolBar.AutoSize = false;
             this.toolBar.BackColor = System.Drawing.Color.White;
-            this.toolBar.Font = new System.Drawing.Font("Questrial", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolBar.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolBar.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolBar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolBar.ImageScalingSize = new System.Drawing.Size(50, 50);
+            this.toolBar.ImageScalingSize = new System.Drawing.Size(60, 60);
             this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbtnCopy,
             this.tsbtnCut,
@@ -660,23 +728,25 @@ namespace FileGuide
             this.toolStripSeparator2,
             this.tsDropView,
             this.tsDropNew});
+            this.toolBar.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.toolBar.Location = new System.Drawing.Point(0, 0);
             this.toolBar.Name = "toolBar";
             this.toolBar.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.toolBar.Size = new System.Drawing.Size(1301, 97);
+            this.toolBar.Size = new System.Drawing.Size(1301, 148);
             this.toolBar.TabIndex = 2;
             // 
             // tsbtnCopy
             // 
             this.tsbtnCopy.AutoSize = false;
             this.tsbtnCopy.Image = global::FileGuide.Properties.Resources.Icon_Copy;
+            this.tsbtnCopy.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.tsbtnCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtnCopy.Margin = new System.Windows.Forms.Padding(4, 1, 0, 2);
+            this.tsbtnCopy.Margin = new System.Windows.Forms.Padding(4, 1, 0, 0);
             this.tsbtnCopy.Name = "tsbtnCopy";
             this.tsbtnCopy.Size = new System.Drawing.Size(100, 100);
             this.tsbtnCopy.Text = "Copy ";
-            this.tsbtnCopy.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.tsbtnCopy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbtnCopy.ToolTipText = "Copy (Ctrl+C)\r\n ";
             this.tsbtnCopy.Click += new System.EventHandler(this.btnCopy_Click);
             // 
             // tsbtnCut
@@ -690,6 +760,7 @@ namespace FileGuide
             this.tsbtnCut.Size = new System.Drawing.Size(100, 100);
             this.tsbtnCut.Text = "Cut";
             this.tsbtnCut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbtnCut.ToolTipText = "Cut (Ctrl+X)\r\n";
             this.tsbtnCut.Click += new System.EventHandler(this.btnCut_Click);
             // 
             // tsbtnPaste
@@ -704,6 +775,7 @@ namespace FileGuide
             this.tsbtnPaste.Size = new System.Drawing.Size(100, 100);
             this.tsbtnPaste.Text = "Paste";
             this.tsbtnPaste.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbtnPaste.ToolTipText = "Paste (Ctrl+V)\r\n\r\n";
             this.tsbtnPaste.Click += new System.EventHandler(this.btnPaste_Click);
             // 
             // tsbtnDelete
@@ -717,6 +789,7 @@ namespace FileGuide
             this.tsbtnDelete.Size = new System.Drawing.Size(100, 100);
             this.tsbtnDelete.Text = "Delete";
             this.tsbtnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbtnDelete.ToolTipText = "Delete (Del)\r\n";
             this.tsbtnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // tsbtnRename
@@ -730,12 +803,13 @@ namespace FileGuide
             this.tsbtnRename.Size = new System.Drawing.Size(100, 100);
             this.tsbtnRename.Text = "Rename";
             this.tsbtnRename.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbtnRename.ToolTipText = "Rename (Ctrl+R)\r\n";
             this.tsbtnRename.Click += new System.EventHandler(this.menuRename_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 97);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 148);
             // 
             // tsDropView
             // 
@@ -748,7 +822,7 @@ namespace FileGuide
             this.tsDropView.Image = global::FileGuide.Properties.Resources.Icon_View;
             this.tsDropView.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.tsDropView.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsDropView.Margin = new System.Windows.Forms.Padding(8, 1, 0, 2);
+            this.tsDropView.Margin = new System.Windows.Forms.Padding(20, 1, 0, 2);
             this.tsDropView.Name = "tsDropView";
             this.tsDropView.Size = new System.Drawing.Size(100, 100);
             this.tsDropView.Text = "View";
@@ -757,17 +831,17 @@ namespace FileGuide
             // tsMenuLarge
             // 
             this.tsMenuLarge.Name = "tsMenuLarge";
-            this.tsMenuLarge.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.V)));
-            this.tsMenuLarge.Size = new System.Drawing.Size(317, 36);
+            this.tsMenuLarge.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.V)));
+            this.tsMenuLarge.Size = new System.Drawing.Size(337, 38);
             this.tsMenuLarge.Text = "Large Icons";
             this.tsMenuLarge.Click += new System.EventHandler(this.menuLarge_Click);
             // 
             // tsMenuSmall
             // 
             this.tsMenuSmall.Name = "tsMenuSmall";
-            this.tsMenuSmall.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.V)));
-            this.tsMenuSmall.Size = new System.Drawing.Size(317, 36);
+            this.tsMenuSmall.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.V)));
+            this.tsMenuSmall.Size = new System.Drawing.Size(337, 38);
             this.tsMenuSmall.Text = "Small Icons";
             this.tsMenuSmall.Click += new System.EventHandler(this.menuSmall_Click);
             // 
@@ -776,17 +850,16 @@ namespace FileGuide
             this.tsMenuList.Name = "tsMenuList";
             this.tsMenuList.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.V)));
-            this.tsMenuList.Size = new System.Drawing.Size(317, 36);
+            this.tsMenuList.Size = new System.Drawing.Size(337, 38);
             this.tsMenuList.Text = "List";
             this.tsMenuList.Click += new System.EventHandler(this.menuList_Click);
             // 
             // tsMenuDetails
             // 
             this.tsMenuDetails.Name = "tsMenuDetails";
-            this.tsMenuDetails.ShortcutKeys = ((System.Windows.Forms.Keys)((((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.Shift) 
+            this.tsMenuDetails.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.V)));
-            this.tsMenuDetails.Size = new System.Drawing.Size(317, 36);
+            this.tsMenuDetails.Size = new System.Drawing.Size(337, 38);
             this.tsMenuDetails.Text = "Details";
             this.tsMenuDetails.Click += new System.EventHandler(this.menuDetails_Click);
             // 
@@ -799,7 +872,7 @@ namespace FileGuide
             this.tsDropNew.Image = global::FileGuide.Properties.Resources.Icon_New;
             this.tsDropNew.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.tsDropNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsDropNew.Margin = new System.Windows.Forms.Padding(8, 1, 0, 2);
+            this.tsDropNew.Margin = new System.Windows.Forms.Padding(40, 1, 0, 2);
             this.tsDropNew.Name = "tsDropNew";
             this.tsDropNew.Size = new System.Drawing.Size(100, 100);
             this.tsDropNew.Text = "New";
@@ -810,7 +883,7 @@ namespace FileGuide
             this.toolStripMenuItemFolder.Name = "toolStripMenuItemFolder";
             this.toolStripMenuItemFolder.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.N)));
-            this.toolStripMenuItemFolder.Size = new System.Drawing.Size(276, 36);
+            this.toolStripMenuItemFolder.Size = new System.Drawing.Size(295, 38);
             this.toolStripMenuItemFolder.Text = "Folder";
             this.toolStripMenuItemFolder.Click += new System.EventHandler(this.folderToolStripMenuItem_Click);
             // 
@@ -818,24 +891,24 @@ namespace FileGuide
             // 
             this.toolStripMenuItemFile.Name = "toolStripMenuItemFile";
             this.toolStripMenuItemFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.toolStripMenuItemFile.Size = new System.Drawing.Size(276, 36);
+            this.toolStripMenuItemFile.Size = new System.Drawing.Size(295, 38);
             this.toolStripMenuItemFile.Text = "File";
             this.toolStripMenuItemFile.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
             // 
-            // menuStrip1
+            // ShortcutKeysMenu
             // 
-            this.menuStrip1.AutoSize = false;
-            this.menuStrip1.BackColor = System.Drawing.Color.White;
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ShortcutKeysMenu.AutoSize = false;
+            this.ShortcutKeysMenu.BackColor = System.Drawing.Color.White;
+            this.ShortcutKeysMenu.Dock = System.Windows.Forms.DockStyle.None;
+            this.ShortcutKeysMenu.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.ShortcutKeysMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.ShortcutKeysMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.copyToolStripMenuItem1});
-            this.menuStrip1.Location = new System.Drawing.Point(532, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(271, 10);
-            this.menuStrip1.TabIndex = 6;
-            this.menuStrip1.Text = "menuStrip1";
+            this.ShortcutKeysMenu.Location = new System.Drawing.Point(532, 0);
+            this.ShortcutKeysMenu.Name = "ShortcutKeysMenu";
+            this.ShortcutKeysMenu.Size = new System.Drawing.Size(271, 10);
+            this.ShortcutKeysMenu.TabIndex = 6;
+            this.ShortcutKeysMenu.Text = "menuStrip1";
             // 
             // copyToolStripMenuItem1
             // 
@@ -858,7 +931,7 @@ namespace FileGuide
             // 
             this.cutToolStripMenuItem1.Name = "cutToolStripMenuItem1";
             this.cutToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem1.Size = new System.Drawing.Size(348, 34);
+            this.cutToolStripMenuItem1.Size = new System.Drawing.Size(343, 34);
             this.cutToolStripMenuItem1.Text = "Cut";
             this.cutToolStripMenuItem1.Click += new System.EventHandler(this.btnCut_Click);
             // 
@@ -866,7 +939,7 @@ namespace FileGuide
             // 
             this.pasteToolStripMenuItem1.Name = "pasteToolStripMenuItem1";
             this.pasteToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteToolStripMenuItem1.Size = new System.Drawing.Size(348, 34);
+            this.pasteToolStripMenuItem1.Size = new System.Drawing.Size(343, 34);
             this.pasteToolStripMenuItem1.Text = "Paste";
             this.pasteToolStripMenuItem1.Click += new System.EventHandler(this.btnPaste_Click);
             // 
@@ -874,7 +947,7 @@ namespace FileGuide
             // 
             this.copyToolStripMenuItem2.Name = "copyToolStripMenuItem2";
             this.copyToolStripMenuItem2.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem2.Size = new System.Drawing.Size(348, 34);
+            this.copyToolStripMenuItem2.Size = new System.Drawing.Size(343, 34);
             this.copyToolStripMenuItem2.Text = "Copy";
             this.copyToolStripMenuItem2.Click += new System.EventHandler(this.btnCopy_Click);
             // 
@@ -882,7 +955,7 @@ namespace FileGuide
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(343, 34);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -890,7 +963,7 @@ namespace FileGuide
             // 
             this.renameToolStripMenuItem1.Name = "renameToolStripMenuItem1";
             this.renameToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.renameToolStripMenuItem1.Size = new System.Drawing.Size(348, 34);
+            this.renameToolStripMenuItem1.Size = new System.Drawing.Size(343, 34);
             this.renameToolStripMenuItem1.Text = "Rename";
             this.renameToolStripMenuItem1.Click += new System.EventHandler(this.menuRename_Click);
             // 
@@ -898,7 +971,7 @@ namespace FileGuide
             // 
             this.newItemToolStripMenuItem.Name = "newItemToolStripMenuItem";
             this.newItemToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newItemToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
+            this.newItemToolStripMenuItem.Size = new System.Drawing.Size(343, 34);
             this.newItemToolStripMenuItem.Text = "New Item";
             this.newItemToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
             // 
@@ -907,16 +980,16 @@ namespace FileGuide
             this.newFoldẻToolStripMenuItem.Name = "newFoldẻToolStripMenuItem";
             this.newFoldẻToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.N)));
-            this.newFoldẻToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
+            this.newFoldẻToolStripMenuItem.Size = new System.Drawing.Size(343, 34);
             this.newFoldẻToolStripMenuItem.Text = "New folder ";
             this.newFoldẻToolStripMenuItem.Click += new System.EventHandler(this.folderToolStripMenuItem_Click);
             // 
             // viewLargeIconToolStripMenuItem
             // 
             this.viewLargeIconToolStripMenuItem.Name = "viewLargeIconToolStripMenuItem";
-            this.viewLargeIconToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            this.viewLargeIconToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.V)));
-            this.viewLargeIconToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
+            this.viewLargeIconToolStripMenuItem.Size = new System.Drawing.Size(343, 34);
             this.viewLargeIconToolStripMenuItem.Text = "View Large Icon";
             this.viewLargeIconToolStripMenuItem.Click += new System.EventHandler(this.menuLarge_Click);
             this.viewLargeIconToolStripMenuItem.DoubleClick += new System.EventHandler(this.menuLarge_Click);
@@ -924,56 +997,38 @@ namespace FileGuide
             // viewDetailsToolStripMenuItem
             // 
             this.viewDetailsToolStripMenuItem.Name = "viewDetailsToolStripMenuItem";
-            this.viewDetailsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.viewDetailsToolStripMenuItem.Size = new System.Drawing.Size(348, 34);
+            this.viewDetailsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.V)));
+            this.viewDetailsToolStripMenuItem.Size = new System.Drawing.Size(343, 34);
             this.viewDetailsToolStripMenuItem.Text = "View Details";
             this.viewDetailsToolStripMenuItem.Click += new System.EventHandler(this.menuDetails_Click);
             // 
-            // toolStripLabel1
+            // toolsPanel
             // 
-            this.toolStripLabel1.Margin = new System.Windows.Forms.Padding(30, 2, 0, 3);
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(55, 35);
-            this.toolStripLabel1.Text = "Ctrl+C";
+            this.toolsPanel.Controls.Add(this.ShortcutKeysPanel);
+            this.toolsPanel.Controls.Add(this.toolBar);
+            this.toolsPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.toolsPanel.Location = new System.Drawing.Point(0, 0);
+            this.toolsPanel.Name = "toolsPanel";
+            this.toolsPanel.Size = new System.Drawing.Size(1301, 160);
+            this.toolsPanel.TabIndex = 8;
             // 
-            // toolStripLabel3
+            // label6
             // 
-            this.toolStripLabel3.Margin = new System.Windows.Forms.Padding(60, 2, 0, 3);
-            this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(54, 35);
-            this.toolStripLabel3.Text = "Ctrl+X";
+            this.label6.Location = new System.Drawing.Point(541, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(137, 34);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "(Alt+(Shift)+V)";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // toolStripLabel2
+            // label7
             // 
-            this.toolStripLabel2.Margin = new System.Windows.Forms.Padding(50, 2, 0, 3);
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(54, 35);
-            this.toolStripLabel2.Text = "Ctrl+V";
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.AutoSize = false;
-            this.toolStrip1.BackColor = System.Drawing.Color.Transparent;
-            this.toolStrip1.CanOverflow = false;
-            this.toolStrip1.Font = new System.Drawing.Font("Questrial", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel1,
-            this.toolStripLabel3,
-            this.toolStripLabel2});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 97);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1301, 40);
-            this.toolStrip1.TabIndex = 5;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 100);
-            this.panel1.TabIndex = 6;
+            this.label7.Location = new System.Drawing.Point(684, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(137, 34);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "(Ctrl+(Shift)+N)";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // FrmMain
             // 
@@ -981,13 +1036,13 @@ namespace FileGuide
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1678, 844);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.ShortcutKeysMenu);
             this.Controls.Add(this.mainSplitContainer);
             this.Controls.Add(this.statusStrip1);
             this.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.ShortcutKeysMenu;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1010,12 +1065,12 @@ namespace FileGuide
             this.tableLayoutFirstPage.ResumeLayout(false);
             this.tsPath.ResumeLayout(false);
             this.tsPath.PerformLayout();
+            this.ShortcutKeysPanel.ResumeLayout(false);
             this.toolBar.ResumeLayout(false);
             this.toolBar.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.ShortcutKeysMenu.ResumeLayout(false);
+            this.ShortcutKeysMenu.PerformLayout();
+            this.toolsPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1086,7 +1141,7 @@ namespace FileGuide
         private System.Windows.Forms.ToolStripDropDownButton tsDropNew;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemFolder;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemFile;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip ShortcutKeysMenu;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem1;
@@ -1097,11 +1152,15 @@ namespace FileGuide
         private System.Windows.Forms.ToolStripMenuItem newFoldẻToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewLargeIconToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewDetailsToolStripMenuItem;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel3;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel2;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel ShortcutKeysPanel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel toolsPanel;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
     }
 }
 
