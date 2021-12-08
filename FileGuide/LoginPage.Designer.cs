@@ -325,7 +325,7 @@ namespace FileGuide
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(-1, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(634, 1065);
+            this.pictureBox1.Size = new System.Drawing.Size(628, 1065);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 30;
             this.pictureBox1.TabStop = false;
@@ -333,7 +333,6 @@ namespace FileGuide
             // LoginPage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panelBeforeLogin);
@@ -343,7 +342,7 @@ namespace FileGuide
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "LoginPage";
-            this.Size = new System.Drawing.Size(1218, 1071);
+            this.Size = new System.Drawing.Size(1218, 816);
             this.panelBeforeLogin.ResumeLayout(false);
             this.panelBeforeLogin.PerformLayout();
             this.panelAfterLogin.ResumeLayout(false);

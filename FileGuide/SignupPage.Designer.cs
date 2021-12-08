@@ -50,11 +50,13 @@ namespace FileGuide
             this.labelAdmin = new System.Windows.Forms.Label();
             this.labelPermis = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxAdmin = new System.Windows.Forms.PictureBox();
+            this.pictureBoxGuest = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewUserList)).BeginInit();
             this.panelBeforeLogined.SuspendLayout();
             this.panelAfterLogin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAdmin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGuest)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxPass
@@ -75,7 +77,7 @@ namespace FileGuide
             this.textBoxPass.ForeColor = System.Drawing.Color.Black;
             this.textBoxPass.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.textBoxPass.HoverState.Parent = this.textBoxPass;
-            this.textBoxPass.Location = new System.Drawing.Point(113, 334);
+            this.textBoxPass.Location = new System.Drawing.Point(150, 351);
             this.textBoxPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxPass.Multiline = true;
             this.textBoxPass.Name = "textBoxPass";
@@ -84,7 +86,7 @@ namespace FileGuide
             this.textBoxPass.PlaceholderText = "Mật khẩu";
             this.textBoxPass.SelectedText = "";
             this.textBoxPass.ShadowDecoration.Parent = this.textBoxPass;
-            this.textBoxPass.Size = new System.Drawing.Size(304, 57);
+            this.textBoxPass.Size = new System.Drawing.Size(304, 70);
             this.textBoxPass.TabIndex = 26;
             this.textBoxPass.TextOffset = new System.Drawing.Point(0, 5);
             // 
@@ -106,7 +108,7 @@ namespace FileGuide
             this.textBoxUser.ForeColor = System.Drawing.Color.Black;
             this.textBoxUser.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.textBoxUser.HoverState.Parent = this.textBoxUser;
-            this.textBoxUser.Location = new System.Drawing.Point(113, 219);
+            this.textBoxUser.Location = new System.Drawing.Point(150, 245);
             this.textBoxUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxUser.Multiline = true;
             this.textBoxUser.Name = "textBoxUser";
@@ -115,7 +117,7 @@ namespace FileGuide
             this.textBoxUser.PlaceholderText = "Tên tài khoản";
             this.textBoxUser.SelectedText = "";
             this.textBoxUser.ShadowDecoration.Parent = this.textBoxUser;
-            this.textBoxUser.Size = new System.Drawing.Size(304, 57);
+            this.textBoxUser.Size = new System.Drawing.Size(304, 70);
             this.textBoxUser.TabIndex = 25;
             this.textBoxUser.TextOffset = new System.Drawing.Point(0, 5);
             // 
@@ -152,7 +154,7 @@ namespace FileGuide
             this.btnSignup.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(119)))), ((int)(((byte)(199)))));
             this.btnSignup.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(192)))), ((int)(((byte)(228)))));
             this.btnSignup.HoverState.Parent = this.btnSignup;
-            this.btnSignup.Location = new System.Drawing.Point(141, 470);
+            this.btnSignup.Location = new System.Drawing.Point(172, 481);
             this.btnSignup.Name = "btnSignup";
             this.btnSignup.ShadowDecoration.BorderRadius = 10;
             this.btnSignup.ShadowDecoration.Parent = this.btnSignup;
@@ -166,7 +168,7 @@ namespace FileGuide
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Lexend", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
-            this.label7.Location = new System.Drawing.Point(143, 56);
+            this.label7.Location = new System.Drawing.Point(180, 66);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(242, 70);
             this.label7.TabIndex = 32;
@@ -178,7 +180,7 @@ namespace FileGuide
             this.labelWarning2.AutoSize = true;
             this.labelWarning2.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelWarning2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.labelWarning2.Location = new System.Drawing.Point(120, 397);
+            this.labelWarning2.Location = new System.Drawing.Point(153, 425);
             this.labelWarning2.Name = "labelWarning2";
             this.labelWarning2.Size = new System.Drawing.Size(88, 30);
             this.labelWarning2.TabIndex = 33;
@@ -190,7 +192,7 @@ namespace FileGuide
             this.labelWarning1.AutoSize = true;
             this.labelWarning1.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelWarning1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.labelWarning1.Location = new System.Drawing.Point(120, 280);
+            this.labelWarning1.Location = new System.Drawing.Point(153, 317);
             this.labelWarning1.Name = "labelWarning1";
             this.labelWarning1.Size = new System.Drawing.Size(88, 30);
             this.labelWarning1.TabIndex = 34;
@@ -199,20 +201,20 @@ namespace FileGuide
             // 
             // panelBeforeLogined
             // 
+            this.panelBeforeLogined.Controls.Add(this.labelNotice);
             this.panelBeforeLogined.Controls.Add(this.textBoxPass);
             this.panelBeforeLogined.Controls.Add(this.textBoxUser);
             this.panelBeforeLogined.Controls.Add(this.labelWarning2);
             this.panelBeforeLogined.Controls.Add(this.btnSignup);
             this.panelBeforeLogined.Controls.Add(this.label7);
             this.panelBeforeLogined.Controls.Add(this.labelWarning1);
-            this.panelBeforeLogined.Location = new System.Drawing.Point(656, 3);
+            this.panelBeforeLogined.Location = new System.Drawing.Point(633, 3);
             this.panelBeforeLogined.Name = "panelBeforeLogined";
-            this.panelBeforeLogined.Size = new System.Drawing.Size(542, 738);
+            this.panelBeforeLogined.Size = new System.Drawing.Size(575, 816);
             this.panelBeforeLogined.TabIndex = 35;
             // 
             // panelAfterLogin
             // 
-            this.panelAfterLogin.Controls.Add(this.labelNotice);
             this.panelAfterLogin.Controls.Add(this.btnUpdate);
             this.panelAfterLogin.Controls.Add(this.btnDelete);
             this.panelAfterLogin.Controls.Add(this.btnAdd);
@@ -223,9 +225,9 @@ namespace FileGuide
             this.panelAfterLogin.Controls.Add(this.labelAdmin);
             this.panelAfterLogin.Controls.Add(this.labelPermis);
             this.panelAfterLogin.Controls.Add(this.label5);
-            this.panelAfterLogin.Location = new System.Drawing.Point(656, 3);
+            this.panelAfterLogin.Location = new System.Drawing.Point(621, 3);
             this.panelAfterLogin.Name = "panelAfterLogin";
-            this.panelAfterLogin.Size = new System.Drawing.Size(539, 735);
+            this.panelAfterLogin.Size = new System.Drawing.Size(574, 741);
             this.panelAfterLogin.TabIndex = 35;
             // 
             // labelNotice
@@ -233,7 +235,7 @@ namespace FileGuide
             this.labelNotice.AutoSize = true;
             this.labelNotice.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNotice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.labelNotice.Location = new System.Drawing.Point(111, 543);
+            this.labelNotice.Location = new System.Drawing.Point(142, 557);
             this.labelNotice.Name = "labelNotice";
             this.labelNotice.Size = new System.Drawing.Size(341, 30);
             this.labelNotice.TabIndex = 31;
@@ -259,7 +261,7 @@ namespace FileGuide
             this.btnUpdate.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(119)))), ((int)(((byte)(199)))));
             this.btnUpdate.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(192)))), ((int)(((byte)(228)))));
             this.btnUpdate.HoverState.Parent = this.btnUpdate;
-            this.btnUpdate.Location = new System.Drawing.Point(371, 593);
+            this.btnUpdate.Location = new System.Drawing.Point(405, 593);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.ShadowDecoration.BorderRadius = 10;
             this.btnUpdate.ShadowDecoration.Parent = this.btnUpdate;
@@ -287,7 +289,7 @@ namespace FileGuide
             this.btnDelete.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(119)))), ((int)(((byte)(199)))));
             this.btnDelete.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(192)))), ((int)(((byte)(228)))));
             this.btnDelete.HoverState.Parent = this.btnDelete;
-            this.btnDelete.Location = new System.Drawing.Point(206, 593);
+            this.btnDelete.Location = new System.Drawing.Point(240, 593);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.ShadowDecoration.BorderRadius = 10;
             this.btnDelete.ShadowDecoration.Parent = this.btnDelete;
@@ -315,7 +317,7 @@ namespace FileGuide
             this.btnAdd.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(119)))), ((int)(((byte)(199)))));
             this.btnAdd.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(192)))), ((int)(((byte)(228)))));
             this.btnAdd.HoverState.Parent = this.btnAdd;
-            this.btnAdd.Location = new System.Drawing.Point(42, 593);
+            this.btnAdd.Location = new System.Drawing.Point(76, 593);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.ShadowDecoration.BorderRadius = 10;
             this.btnAdd.ShadowDecoration.Parent = this.btnAdd;
@@ -342,7 +344,7 @@ namespace FileGuide
             this.textBoxPerAfter.ForeColor = System.Drawing.Color.Black;
             this.textBoxPerAfter.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.textBoxPerAfter.HoverState.Parent = this.textBoxPerAfter;
-            this.textBoxPerAfter.Location = new System.Drawing.Point(116, 457);
+            this.textBoxPerAfter.Location = new System.Drawing.Point(150, 457);
             this.textBoxPerAfter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxPerAfter.Multiline = true;
             this.textBoxPerAfter.Name = "textBoxPerAfter";
@@ -373,7 +375,7 @@ namespace FileGuide
             this.textBoxPassAfter.ForeColor = System.Drawing.Color.Black;
             this.textBoxPassAfter.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.textBoxPassAfter.HoverState.Parent = this.textBoxPassAfter;
-            this.textBoxPassAfter.Location = new System.Drawing.Point(113, 369);
+            this.textBoxPassAfter.Location = new System.Drawing.Point(147, 369);
             this.textBoxPassAfter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxPassAfter.Multiline = true;
             this.textBoxPassAfter.Name = "textBoxPassAfter";
@@ -404,7 +406,7 @@ namespace FileGuide
             this.textBoxUserAfter.ForeColor = System.Drawing.Color.Black;
             this.textBoxUserAfter.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.textBoxUserAfter.HoverState.Parent = this.textBoxUserAfter;
-            this.textBoxUserAfter.Location = new System.Drawing.Point(113, 280);
+            this.textBoxUserAfter.Location = new System.Drawing.Point(147, 280);
             this.textBoxUserAfter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBoxUserAfter.Multiline = true;
             this.textBoxUserAfter.Name = "textBoxUserAfter";
@@ -420,17 +422,17 @@ namespace FileGuide
             // labelGuest
             // 
             this.labelGuest.Font = new System.Drawing.Font("Questrial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGuest.Location = new System.Drawing.Point(90, 137);
+            this.labelGuest.Location = new System.Drawing.Point(115, 174);
             this.labelGuest.Name = "labelGuest";
-            this.labelGuest.Size = new System.Drawing.Size(343, 115);
+            this.labelGuest.Size = new System.Drawing.Size(371, 233);
             this.labelGuest.TabIndex = 13;
-            this.labelGuest.Text = "Guest chỉ có thể\r\nxem thông tin TK\r\n";
+            this.labelGuest.Text = "Guest chỉ được sử dụng ứng dụng, không được quản lý TK";
             this.labelGuest.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelAdmin
             // 
             this.labelAdmin.Font = new System.Drawing.Font("Questrial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAdmin.Location = new System.Drawing.Point(90, 131);
+            this.labelAdmin.Location = new System.Drawing.Point(124, 131);
             this.labelAdmin.Name = "labelAdmin";
             this.labelAdmin.Size = new System.Drawing.Size(320, 126);
             this.labelAdmin.TabIndex = 12;
@@ -449,40 +451,51 @@ namespace FileGuide
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Questrial", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(117, 69);
+            this.label5.Location = new System.Drawing.Point(151, 69);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(173, 57);
             this.label5.TabIndex = 9;
             this.label5.Text = "Xin chào";
             // 
-            // pictureBox1
+            // pictureBoxAdmin
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-8, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(665, 772);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 32;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxAdmin.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAdmin.Image")));
+            this.pictureBoxAdmin.Location = new System.Drawing.Point(-8, 0);
+            this.pictureBoxAdmin.Name = "pictureBoxAdmin";
+            this.pictureBoxAdmin.Size = new System.Drawing.Size(634, 772);
+            this.pictureBoxAdmin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxAdmin.TabIndex = 32;
+            this.pictureBoxAdmin.TabStop = false;
+            // 
+            // pictureBoxGuest
+            // 
+            this.pictureBoxGuest.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxGuest.Image")));
+            this.pictureBoxGuest.Location = new System.Drawing.Point(-1, 0);
+            this.pictureBoxGuest.Name = "pictureBoxGuest";
+            this.pictureBoxGuest.Size = new System.Drawing.Size(628, 1065);
+            this.pictureBoxGuest.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxGuest.TabIndex = 36;
+            this.pictureBoxGuest.TabStop = false;
             // 
             // SignupPage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.pictureBoxGuest);
+            this.Controls.Add(this.panelBeforeLogined);
             this.Controls.Add(this.panelAfterLogin);
             this.Controls.Add(this.DataGridViewUserList);
-            this.Controls.Add(this.panelBeforeLogined);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBoxAdmin);
             this.Name = "SignupPage";
-            this.Size = new System.Drawing.Size(1201, 744);
+            this.Size = new System.Drawing.Size(1218, 816);
             this.Load += new System.EventHandler(this.SignupPage_Load);
             this.VisibleChanged += new System.EventHandler(this.SignupPage_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewUserList)).EndInit();
             this.panelBeforeLogined.ResumeLayout(false);
             this.panelBeforeLogined.PerformLayout();
             this.panelAfterLogin.ResumeLayout(false);
-            this.panelAfterLogin.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAdmin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGuest)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -508,6 +521,7 @@ namespace FileGuide
         private Guna.UI2.WinForms.Guna2GradientButton btnDelete;
         private Guna.UI2.WinForms.Guna2GradientButton btnAdd;
         private System.Windows.Forms.Label labelNotice;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxAdmin;
+        private System.Windows.Forms.PictureBox pictureBoxGuest;
     }
 }

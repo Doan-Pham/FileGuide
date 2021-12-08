@@ -81,7 +81,10 @@ namespace FileGuide
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.tslbPath = new System.Windows.Forms.ToolStripLabel();
             this.tscmbPath = new System.Windows.Forms.ToolStripComboBox();
+            this.toolsPanel = new System.Windows.Forms.Panel();
             this.ShortcutKeysPanel = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -113,9 +116,6 @@ namespace FileGuide
             this.newFoldẻToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewLargeIconToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolsPanel = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.contextMenuStripListView.SuspendLayout();
             this.contextMenuStripListViewItem.SuspendLayout();
@@ -128,10 +128,10 @@ namespace FileGuide
             this.tabPage1.SuspendLayout();
             this.tableLayoutFirstPage.SuspendLayout();
             this.tsPath.SuspendLayout();
+            this.toolsPanel.SuspendLayout();
             this.ShortcutKeysPanel.SuspendLayout();
             this.toolBar.SuspendLayout();
             this.ShortcutKeysMenu.SuspendLayout();
-            this.toolsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -586,7 +586,7 @@ namespace FileGuide
             this.tabPlus.Location = new System.Drawing.Point(4, 39);
             this.tabPlus.Name = "tabPlus";
             this.tabPlus.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPlus.Size = new System.Drawing.Size(1293, 582);
+            this.tabPlus.Size = new System.Drawing.Size(1295, 564);
             this.tabPlus.TabIndex = 0;
             this.tabPlus.Text = " ";
             this.tabPlus.UseVisualStyleBackColor = true;
@@ -649,6 +649,16 @@ namespace FileGuide
             this.tscmbPath.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tscmbPath_KeyPress);
             this.tscmbPath.TextChanged += new System.EventHandler(this.tscmbPath_TextChanged);
             // 
+            // toolsPanel
+            // 
+            this.toolsPanel.Controls.Add(this.ShortcutKeysPanel);
+            this.toolsPanel.Controls.Add(this.toolBar);
+            this.toolsPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.toolsPanel.Location = new System.Drawing.Point(0, 0);
+            this.toolsPanel.Name = "toolsPanel";
+            this.toolsPanel.Size = new System.Drawing.Size(1301, 160);
+            this.toolsPanel.TabIndex = 8;
+            // 
             // ShortcutKeysPanel
             // 
             this.ShortcutKeysPanel.Controls.Add(this.label7);
@@ -664,6 +674,24 @@ namespace FileGuide
             this.ShortcutKeysPanel.Name = "ShortcutKeysPanel";
             this.ShortcutKeysPanel.Size = new System.Drawing.Size(1301, 27);
             this.ShortcutKeysPanel.TabIndex = 7;
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(684, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(137, 34);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "(Ctrl+(Shift)+N)";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(541, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(137, 34);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "(Alt+(Shift)+V)";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label5
             // 
@@ -909,6 +937,7 @@ namespace FileGuide
             this.ShortcutKeysMenu.Size = new System.Drawing.Size(271, 10);
             this.ShortcutKeysMenu.TabIndex = 6;
             this.ShortcutKeysMenu.Text = "menuStrip1";
+            this.ShortcutKeysMenu.Visible = false;
             // 
             // copyToolStripMenuItem1
             // 
@@ -1002,34 +1031,6 @@ namespace FileGuide
             this.viewDetailsToolStripMenuItem.Text = "View Details";
             this.viewDetailsToolStripMenuItem.Click += new System.EventHandler(this.menuDetails_Click);
             // 
-            // toolsPanel
-            // 
-            this.toolsPanel.Controls.Add(this.ShortcutKeysPanel);
-            this.toolsPanel.Controls.Add(this.toolBar);
-            this.toolsPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.toolsPanel.Location = new System.Drawing.Point(0, 0);
-            this.toolsPanel.Name = "toolsPanel";
-            this.toolsPanel.Size = new System.Drawing.Size(1301, 160);
-            this.toolsPanel.TabIndex = 8;
-            // 
-            // label6
-            // 
-            this.label6.Location = new System.Drawing.Point(541, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(137, 34);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "(Alt+(Shift)+V)";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label7
-            // 
-            this.label7.Location = new System.Drawing.Point(684, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(137, 34);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "(Ctrl+(Shift)+N)";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
@@ -1065,12 +1066,12 @@ namespace FileGuide
             this.tableLayoutFirstPage.ResumeLayout(false);
             this.tsPath.ResumeLayout(false);
             this.tsPath.PerformLayout();
+            this.toolsPanel.ResumeLayout(false);
             this.ShortcutKeysPanel.ResumeLayout(false);
             this.toolBar.ResumeLayout(false);
             this.toolBar.PerformLayout();
             this.ShortcutKeysMenu.ResumeLayout(false);
             this.ShortcutKeysMenu.PerformLayout();
-            this.toolsPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

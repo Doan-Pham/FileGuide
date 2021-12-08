@@ -40,7 +40,7 @@ namespace FileGuide
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1201, 744);
+            this.pictureBox1.Size = new System.Drawing.Size(1218, 816);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 29;
             this.pictureBox1.TabStop = false;
@@ -51,7 +51,7 @@ namespace FileGuide
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.pictureBox1);
             this.Name = "InfoPage";
-            this.Size = new System.Drawing.Size(1201, 744);
+            this.Size = new System.Drawing.Size(1218, 816);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

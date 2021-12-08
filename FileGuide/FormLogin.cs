@@ -22,12 +22,19 @@ namespace FileGuide
             InitializeComponent();
             sidePanel.Height = LoginButton.Height;
             sidePanel.Top = LoginButton.Top;
+
             loginPage1.Visible = true;
             signupPage1.Visible = false;
             infoPage1.Visible = false;
+
+            loginPage1.Dock = DockStyle.Fill;
+            signupPage1.Dock = DockStyle.None;
+            infoPage1.Dock = DockStyle.None;
+
+            loginPage1.AutoSize = false;
+            signupPage1.AutoSize = false;
+            infoPage1.AutoSize = false;
         }
-
-
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
@@ -36,16 +43,23 @@ namespace FileGuide
             loginPage1.Visible = true;
             signupPage1.Visible = false;
             infoPage1.Visible = false;
-            //loginPage1.BringToFront();
+
+            loginPage1.Dock = DockStyle.Fill;
+            signupPage1.Dock = DockStyle.None;
+            infoPage1.Dock = DockStyle.None;
         }
 
         private void SignupButton_Click(object sender, EventArgs e)
         {
-            sidePanel.Height = SignupButton.Height;
-            sidePanel.Top = SignupButton.Top;
+            sidePanel.Height = ManagementButton.Height;
+            sidePanel.Top = ManagementButton.Top;
             loginPage1.Visible = false;
             signupPage1.Visible = true;
             infoPage1.Visible = false;
+
+            loginPage1.Dock = DockStyle.None;
+            signupPage1.Dock = DockStyle.Fill;
+            infoPage1.Dock = DockStyle.None;
         }
 
         private void InfoButton_Click(object sender, EventArgs e)
@@ -55,7 +69,10 @@ namespace FileGuide
             loginPage1.Visible = false;
             signupPage1.Visible = false;
             infoPage1.Visible = true;
-            //infoPage1.BringToFront();
+
+            loginPage1.Dock = DockStyle.None;
+            signupPage1.Dock = DockStyle.None;
+            infoPage1.Dock = DockStyle.Fill;
         }
     }
 }

@@ -31,18 +31,38 @@ namespace FileGuide
                 if (FormLogin.UserPermission.ToString() == "1")
                 {
                     labelPermis.Text = "admin";
-                    btnAdd.Enabled = true;
-                    btnDelete.Enabled = true;
-                    btnUpdate.Enabled = true;
-                    labelAdmin.BringToFront();
+
+                    labelAdmin.Visible = true;
+                    labelGuest.Visible = false;
+
+                    pictureBoxAdmin.Visible = true;
+                    pictureBoxGuest.Visible = false;
+
+                    textBoxUserAfter.Visible = true;
+                    textBoxPassAfter.Visible = true;
+                    textBoxPerAfter.Visible = true;
+
+                    btnAdd.Visible = true;
+                    btnDelete.Visible = true;
+                    btnUpdate.Visible = true;
                 }    
                 else
                 {
                     labelPermis.Text = "guest";
-                    btnAdd.Enabled = false;
-                    btnDelete.Enabled = false;
-                    btnUpdate.Enabled = false;
-                    labelGuest.BringToFront();
+
+                    labelAdmin.Visible = false;
+                    labelGuest.Visible = true;
+
+                    pictureBoxAdmin.Visible = false;
+                    pictureBoxGuest.Visible = true;
+
+                    textBoxUserAfter.Visible = false;
+                    textBoxPassAfter.Visible = false;
+                    textBoxPerAfter.Visible = false;
+
+                    btnAdd.Visible = false;
+                    btnDelete.Visible = false;
+                    btnUpdate.Visible = false;
                 }
             }
             else
