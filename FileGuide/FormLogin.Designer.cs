@@ -174,7 +174,6 @@ namespace FileGuide
             // 
             // infoPage1
             // 
-            this.infoPage1.AutoSize = true;
             this.infoPage1.BackColor = System.Drawing.Color.White;
             this.infoPage1.Location = new System.Drawing.Point(-3, 0);
             this.infoPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -184,7 +183,6 @@ namespace FileGuide
             // 
             // signupPage1
             // 
-            this.signupPage1.AutoSize = true;
             this.signupPage1.BackColor = System.Drawing.Color.White;
             this.signupPage1.Location = new System.Drawing.Point(-3, 0);
             this.signupPage1.Name = "signupPage1";
@@ -193,7 +191,6 @@ namespace FileGuide
             // 
             // loginPage1
             // 
-            this.loginPage1.AutoSize = true;
             this.loginPage1.BackColor = System.Drawing.Color.White;
             this.loginPage1.Location = new System.Drawing.Point(-3, 0);
             this.loginPage1.Name = "loginPage1";
@@ -218,7 +215,6 @@ namespace FileGuide
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxManagement)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.PanelMain.ResumeLayout(false);
-            this.PanelMain.PerformLayout();
             this.ResumeLayout(false);
 
         }
