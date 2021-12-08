@@ -71,6 +71,10 @@ namespace FileGuide
                 panelAfterLogin.Visible = false;
             }
             DataGridViewUserList.DataSource = GetAllUsers().Tables[0];
+            foreach (DataGridViewRow row in DataGridViewUserList.Rows)
+            {
+                if (row.Cells[0].Value != null) row.Cells[1].Value = "********";
+            }
         }
 
         DataSet GetAllUsers()
@@ -243,10 +247,10 @@ namespace FileGuide
         {
             labelNotice.ForeColor = ErrorWarningColor;
             labelNotice.Visible = false;
-            if (textBoxUserAfter.Text.ToString().Trim() == "" || textBoxPassAfter.Text.ToString().Trim() == "" || textBoxPerAfter.Text.ToString().Trim() == "")
+            if (textBoxUserAfter.Text.ToString().Trim() == "" || textBoxPerAfter.Text.ToString().Trim() == "")
             {
                 labelNotice.Visible = true;
-                labelNotice.Text = "Vui lòng nhập đầy đủ thông tin";
+                labelNotice.Text = "Vui lòng nhập tên tài khoản và quyền";
                 return;
             }
             else if (!(textBoxPerAfter.Text.ToString().Trim() == "0" || textBoxPerAfter.Text.ToString().Trim() == "1"))
@@ -273,10 +277,9 @@ namespace FileGuide
                 }
                 else
                 {
-                    using (SqlCommand UpdateCommand = new SqlCommand("UPDATE USERS SET PASSWORD = @PASSWORD, PERMISSION = @PERMISSION WHERE USERNAME = @USERNAME", connection))
+                    using (SqlCommand UpdateCommand = new SqlCommand("UPDATE USERS SET PERMISSION = @PERMISSION WHERE USERNAME = @USERNAME", connection))
                     {
                         UpdateCommand.Parameters.AddWithValue("USERNAME", textBoxUserAfter.Text);
-                        UpdateCommand.Parameters.AddWithValue("PASSWORD", textBoxPassAfter.Text);
                         UpdateCommand.Parameters.AddWithValue("PERMISSION",int.Parse(textBoxPerAfter.Text));
 
                         UpdateCommand.ExecuteNonQuery();

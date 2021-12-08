@@ -182,10 +182,9 @@ namespace FileGuide
             this.panelAfterLogin.Controls.Add(this.label6);
             this.panelAfterLogin.Controls.Add(this.labelUsername);
             this.panelAfterLogin.Controls.Add(this.label5);
-            this.panelAfterLogin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelAfterLogin.Location = new System.Drawing.Point(0, 0);
+            this.panelAfterLogin.Location = new System.Drawing.Point(630, 0);
             this.panelAfterLogin.Name = "panelAfterLogin";
-            this.panelAfterLogin.Size = new System.Drawing.Size(1218, 816);
+            this.panelAfterLogin.Size = new System.Drawing.Size(582, 1062);
             this.panelAfterLogin.TabIndex = 25;
             // 
             // btnLogout

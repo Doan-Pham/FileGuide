@@ -38,8 +38,8 @@ namespace FileGuide
             this.labelWarning2 = new System.Windows.Forms.Label();
             this.labelWarning1 = new System.Windows.Forms.Label();
             this.panelBeforeLogined = new System.Windows.Forms.Panel();
-            this.panelAfterLogin = new System.Windows.Forms.Panel();
             this.labelNotice = new System.Windows.Forms.Label();
+            this.panelAfterLogin = new System.Windows.Forms.Panel();
             this.btnUpdate = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnDelete = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnAdd = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -127,8 +127,9 @@ namespace FileGuide
             this.DataGridViewUserList.BackgroundColor = System.Drawing.Color.White;
             this.DataGridViewUserList.ColumnHeadersHeight = 34;
             this.DataGridViewUserList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.DataGridViewUserList.Location = new System.Drawing.Point(39, 119);
+            this.DataGridViewUserList.Location = new System.Drawing.Point(23, 117);
             this.DataGridViewUserList.Name = "DataGridViewUserList";
+            this.DataGridViewUserList.ReadOnly = true;
             this.DataGridViewUserList.RowHeadersWidth = 62;
             this.DataGridViewUserList.RowTemplate.Height = 28;
             this.DataGridViewUserList.Size = new System.Drawing.Size(576, 593);
@@ -201,17 +202,28 @@ namespace FileGuide
             // 
             // panelBeforeLogined
             // 
-            this.panelBeforeLogined.Controls.Add(this.labelNotice);
             this.panelBeforeLogined.Controls.Add(this.textBoxPass);
             this.panelBeforeLogined.Controls.Add(this.textBoxUser);
             this.panelBeforeLogined.Controls.Add(this.labelWarning2);
             this.panelBeforeLogined.Controls.Add(this.btnSignup);
             this.panelBeforeLogined.Controls.Add(this.label7);
             this.panelBeforeLogined.Controls.Add(this.labelWarning1);
-            this.panelBeforeLogined.Location = new System.Drawing.Point(633, 3);
+            this.panelBeforeLogined.Location = new System.Drawing.Point(632, 0);
             this.panelBeforeLogined.Name = "panelBeforeLogined";
-            this.panelBeforeLogined.Size = new System.Drawing.Size(575, 816);
+            this.panelBeforeLogined.Size = new System.Drawing.Size(583, 816);
             this.panelBeforeLogined.TabIndex = 35;
+            // 
+            // labelNotice
+            // 
+            this.labelNotice.AutoSize = true;
+            this.labelNotice.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNotice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.labelNotice.Location = new System.Drawing.Point(145, 540);
+            this.labelNotice.Name = "labelNotice";
+            this.labelNotice.Size = new System.Drawing.Size(341, 30);
+            this.labelNotice.TabIndex = 31;
+            this.labelNotice.Text = "Tài khoản hoặc mật khẩu chưa đúng !";
+            this.labelNotice.Visible = false;
             // 
             // panelAfterLogin
             // 
@@ -225,22 +237,11 @@ namespace FileGuide
             this.panelAfterLogin.Controls.Add(this.labelAdmin);
             this.panelAfterLogin.Controls.Add(this.labelPermis);
             this.panelAfterLogin.Controls.Add(this.label5);
-            this.panelAfterLogin.Location = new System.Drawing.Point(621, 3);
+            this.panelAfterLogin.Controls.Add(this.labelNotice);
+            this.panelAfterLogin.Location = new System.Drawing.Point(632, 0);
             this.panelAfterLogin.Name = "panelAfterLogin";
-            this.panelAfterLogin.Size = new System.Drawing.Size(574, 741);
+            this.panelAfterLogin.Size = new System.Drawing.Size(586, 819);
             this.panelAfterLogin.TabIndex = 35;
-            // 
-            // labelNotice
-            // 
-            this.labelNotice.AutoSize = true;
-            this.labelNotice.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNotice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.labelNotice.Location = new System.Drawing.Point(142, 557);
-            this.labelNotice.Name = "labelNotice";
-            this.labelNotice.Size = new System.Drawing.Size(341, 30);
-            this.labelNotice.TabIndex = 31;
-            this.labelNotice.Text = "Tài khoản hoặc mật khẩu chưa đúng !";
-            this.labelNotice.Visible = false;
             // 
             // btnUpdate
             // 
@@ -443,7 +444,7 @@ namespace FileGuide
             // 
             this.labelPermis.Font = new System.Drawing.Font("Questrial", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPermis.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
-            this.labelPermis.Location = new System.Drawing.Point(260, 69);
+            this.labelPermis.Location = new System.Drawing.Point(309, 56);
             this.labelPermis.Name = "labelPermis";
             this.labelPermis.Size = new System.Drawing.Size(143, 47);
             this.labelPermis.TabIndex = 11;
@@ -451,7 +452,7 @@ namespace FileGuide
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Questrial", 16F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(151, 69);
+            this.label5.Location = new System.Drawing.Point(153, 56);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(173, 57);
             this.label5.TabIndex = 9;
@@ -460,9 +461,9 @@ namespace FileGuide
             // pictureBoxAdmin
             // 
             this.pictureBoxAdmin.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxAdmin.Image")));
-            this.pictureBoxAdmin.Location = new System.Drawing.Point(-8, 0);
+            this.pictureBoxAdmin.Location = new System.Drawing.Point(-8, -8);
             this.pictureBoxAdmin.Name = "pictureBoxAdmin";
-            this.pictureBoxAdmin.Size = new System.Drawing.Size(634, 772);
+            this.pictureBoxAdmin.Size = new System.Drawing.Size(636, 827);
             this.pictureBoxAdmin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxAdmin.TabIndex = 32;
             this.pictureBoxAdmin.TabStop = false;
@@ -470,7 +471,7 @@ namespace FileGuide
             // pictureBoxGuest
             // 
             this.pictureBoxGuest.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxGuest.Image")));
-            this.pictureBoxGuest.Location = new System.Drawing.Point(-1, 0);
+            this.pictureBoxGuest.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxGuest.Name = "pictureBoxGuest";
             this.pictureBoxGuest.Size = new System.Drawing.Size(628, 1065);
             this.pictureBoxGuest.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -481,9 +482,9 @@ namespace FileGuide
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.pictureBoxGuest);
             this.Controls.Add(this.panelBeforeLogined);
             this.Controls.Add(this.panelAfterLogin);
+            this.Controls.Add(this.pictureBoxGuest);
             this.Controls.Add(this.DataGridViewUserList);
             this.Controls.Add(this.pictureBoxAdmin);
             this.Name = "SignupPage";
@@ -494,6 +495,7 @@ namespace FileGuide
             this.panelBeforeLogined.ResumeLayout(false);
             this.panelBeforeLogined.PerformLayout();
             this.panelAfterLogin.ResumeLayout(false);
+            this.panelAfterLogin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAdmin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGuest)).EndInit();
             this.ResumeLayout(false);
