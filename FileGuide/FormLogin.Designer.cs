@@ -69,9 +69,9 @@ namespace FileGuide
             // 
             this.pictureBoxInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBoxInfo.Image = global::FileGuide.Properties.Resources.Icon_Info;
-            this.pictureBoxInfo.Location = new System.Drawing.Point(0, 256);
+            this.pictureBoxInfo.Location = new System.Drawing.Point(4, 331);
             this.pictureBoxInfo.Name = "pictureBoxInfo";
-            this.pictureBoxInfo.Size = new System.Drawing.Size(74, 78);
+            this.pictureBoxInfo.Size = new System.Drawing.Size(70, 70);
             this.pictureBoxInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxInfo.TabIndex = 6;
             this.pictureBoxInfo.TabStop = false;
@@ -80,9 +80,9 @@ namespace FileGuide
             // 
             this.pictureBoxManagement.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBoxManagement.Image = global::FileGuide.Properties.Resources.Icon_UserGroup;
-            this.pictureBoxManagement.Location = new System.Drawing.Point(11, 358);
+            this.pictureBoxManagement.Location = new System.Drawing.Point(11, 234);
             this.pictureBoxManagement.Name = "pictureBoxManagement";
-            this.pictureBoxManagement.Size = new System.Drawing.Size(66, 65);
+            this.pictureBoxManagement.Size = new System.Drawing.Size(57, 58);
             this.pictureBoxManagement.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxManagement.TabIndex = 5;
             this.pictureBoxManagement.TabStop = false;
@@ -113,12 +113,12 @@ namespace FileGuide
             this.InfoButton.Font = new System.Drawing.Font("Questrial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InfoButton.ForeColor = System.Drawing.Color.White;
             this.InfoButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.InfoButton.Location = new System.Drawing.Point(83, 256);
+            this.InfoButton.Location = new System.Drawing.Point(80, 323);
             this.InfoButton.Name = "InfoButton";
             this.InfoButton.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.InfoButton.Size = new System.Drawing.Size(199, 78);
+            this.InfoButton.Size = new System.Drawing.Size(202, 78);
             this.InfoButton.TabIndex = 3;
-            this.InfoButton.Text = "  Giới thiệu";
+            this.InfoButton.Text = "Giới thiệu";
             this.InfoButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.InfoButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.InfoButton.UseVisualStyleBackColor = true;
@@ -131,12 +131,13 @@ namespace FileGuide
             this.ManagementButton.Font = new System.Drawing.Font("Questrial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ManagementButton.ForeColor = System.Drawing.Color.White;
             this.ManagementButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ManagementButton.Location = new System.Drawing.Point(83, 358);
+            this.ManagementButton.Location = new System.Drawing.Point(80, 230);
             this.ManagementButton.Name = "ManagementButton";
             this.ManagementButton.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.ManagementButton.Size = new System.Drawing.Size(188, 78);
+            this.ManagementButton.Size = new System.Drawing.Size(202, 78);
             this.ManagementButton.TabIndex = 2;
             this.ManagementButton.Text = "Quản lý";
+            this.ManagementButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ManagementButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ManagementButton.UseVisualStyleBackColor = true;
             this.ManagementButton.Click += new System.EventHandler(this.SignupButton_Click);
