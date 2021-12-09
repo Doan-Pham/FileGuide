@@ -55,6 +55,9 @@ namespace FileGuide
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.delteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
+            this.zipFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unzipFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
             this.treeView = new FileGuide.BufferedTreeView();
             this.treeViewContextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
@@ -116,9 +119,6 @@ namespace FileGuide
             this.newFoldẻToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewLargeIconToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
-            this.zipFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.unzipFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.contextMenuStripListView.SuspendLayout();
             this.contextMenuStripListViewItem.SuspendLayout();
@@ -290,25 +290,25 @@ namespace FileGuide
             this.unzipFileToolStripMenuItem});
             this.contextMenuStripListViewItem.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.contextMenuStripListViewItem.Name = "contextMenuStripListViewItem";
-            this.contextMenuStripListViewItem.Size = new System.Drawing.Size(278, 274);
+            this.contextMenuStripListViewItem.Size = new System.Drawing.Size(303, 307);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(230, 36);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(302, 36);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(227, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(299, 6);
             // 
             // cutToolStripMenuItem
             // 
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
             this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(230, 36);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(302, 36);
             this.cutToolStripMenuItem.Text = "Cut";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.btnCut_Click);
             // 
@@ -316,20 +316,20 @@ namespace FileGuide
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(230, 36);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(302, 36);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.btnCopy_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(227, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(299, 6);
             // 
             // renameToolStripMenuItem
             // 
             this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
             this.renameToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(230, 36);
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(302, 36);
             this.renameToolStripMenuItem.Text = "Rename";
             this.renameToolStripMenuItem.Click += new System.EventHandler(this.menuRename_Click);
             // 
@@ -337,9 +337,31 @@ namespace FileGuide
             // 
             this.delteToolStripMenuItem.Name = "delteToolStripMenuItem";
             this.delteToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.delteToolStripMenuItem.Size = new System.Drawing.Size(230, 36);
+            this.delteToolStripMenuItem.Size = new System.Drawing.Size(302, 36);
             this.delteToolStripMenuItem.Text = "Delete";
             this.delteToolStripMenuItem.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(299, 6);
+            // 
+            // zipFilesToolStripMenuItem
+            // 
+            this.zipFilesToolStripMenuItem.Name = "zipFilesToolStripMenuItem";
+            this.zipFilesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Z)));
+            this.zipFilesToolStripMenuItem.Size = new System.Drawing.Size(302, 36);
+            this.zipFilesToolStripMenuItem.Text = "Zip file(s)/folder(s)";
+            this.zipFilesToolStripMenuItem.Click += new System.EventHandler(this.zipFilesToolStripMenuItem_Click);
+            // 
+            // unzipFileToolStripMenuItem
+            // 
+            this.unzipFileToolStripMenuItem.Name = "unzipFileToolStripMenuItem";
+            this.unzipFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.Z)));
+            this.unzipFileToolStripMenuItem.Size = new System.Drawing.Size(302, 36);
+            this.unzipFileToolStripMenuItem.Text = "Unzip file";
+            this.unzipFileToolStripMenuItem.Click += new System.EventHandler(this.unzipFileToolStripMenuItem_Click);
             // 
             // mainSplitContainer
             // 
@@ -1045,28 +1067,6 @@ namespace FileGuide
             this.viewDetailsToolStripMenuItem.Size = new System.Drawing.Size(343, 34);
             this.viewDetailsToolStripMenuItem.Text = "View Details";
             this.viewDetailsToolStripMenuItem.Click += new System.EventHandler(this.menuDetails_Click);
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(227, 6);
-            // 
-            // zipFilesToolStripMenuItem
-            // 
-            this.zipFilesToolStripMenuItem.Name = "zipFilesToolStripMenuItem";
-            this.zipFilesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Z)));
-            this.zipFilesToolStripMenuItem.Size = new System.Drawing.Size(277, 36);
-            this.zipFilesToolStripMenuItem.Text = "Zip file(s)";
-            this.zipFilesToolStripMenuItem.Click += new System.EventHandler(this.zipFilesToolStripMenuItem_Click);
-            // 
-            // unzipFileToolStripMenuItem
-            // 
-            this.unzipFileToolStripMenuItem.Name = "unzipFileToolStripMenuItem";
-            this.unzipFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.Z)));
-            this.unzipFileToolStripMenuItem.Size = new System.Drawing.Size(277, 36);
-            this.unzipFileToolStripMenuItem.Text = "Unzip file";
-            this.unzipFileToolStripMenuItem.Click += new System.EventHandler(this.unzipFileToolStripMenuItem_Click);
             // 
             // FrmMain
             // 

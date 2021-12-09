@@ -13,6 +13,7 @@ using System.Drawing;
 using System.Windows;
 using System.Reflection;
 using Guna.UI2.WinForms;
+using System.IO.Compression;
 
 namespace FileGuide
 {
@@ -784,7 +785,27 @@ namespace FileGuide
             return size;
         }
 
-
+        public void CreateEntryFromAny(ZipArchive archive, string sourceName, string entryName = "")
+        {
+            var fileName = Path.GetFileName(sourceName);
+            if (File.GetAttributes(sourceName).HasFlag(FileAttributes.Directory))
+            {
+                CreateEntryFromDirectory(archive, sourceName, Path.Combine(entryName, fileName));
+            }
+            else
+            {
+                archive.CreateEntryFromFile(sourceName, Path.Combine(entryName, fileName), CompressionLevel.Fastest);
+            }
+        }
+        
+        public void CreateEntryFromDirectory(ZipArchive archive, string sourceDirName, string entryName = "")
+        {
+            string[] files = Directory.GetFiles(sourceDirName).Concat(Directory.GetDirectories(sourceDirName)).ToArray();
+            foreach (var file in files)
+            {
+                CreateEntryFromAny(archive, file, entryName);
+            }
+        }
         #endregion
     }
 }

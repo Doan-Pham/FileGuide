@@ -641,19 +641,19 @@ namespace FileGuide
         {
             try
             {
-                string fileName = listView.SelectedItems[0].SubItems[0].Text;
-                string filePath = currentPath + "\\" + fileName;
-                string zipPath = currentPath + "\\" + fileName.Split('.').ToList().ElementAt(0) + ".zip";
+                string FirstItemName = listView.SelectedItems[0].SubItems[0].Text;
+                string ZipFilePath = currentPath + "\\" + FirstItemName.Split('.').ToList().ElementAt(0) + ".zip";
 
-                using (FileStream fs = new FileStream(zipPath, FileMode.Create))
+                using (FileStream fs = new FileStream(ZipFilePath, FileMode.Create))
                 {
                     using (ZipArchive newZipFile = new ZipArchive(fs, ZipArchiveMode.Create))
                     {
-                        newZipFile.CreateEntryFromFile(filePath, fileName);
-                        /* foreach (string file in Directory.GetFiles(myPath))
-                         {
-                             newZipFile.CreateEntryFromFile(file, System.IO.Path.GetFileName(file));
-                         }*/
+                        foreach (ListViewItem item in listView.SelectedItems)
+                        {
+                            string itemName = item.SubItems[0].Text;
+                            string itemPath = currentPath + "\\" + itemName;
+                            clsTreeListView.CreateEntryFromAny(newZipFile, itemPath);
+                        }
                     }
                 }
                 btnRefresh.PerformClick();
