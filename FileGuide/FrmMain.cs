@@ -646,7 +646,7 @@ namespace FileGuide
 
                 using (FileStream fs = new FileStream(ZipFilePath, FileMode.Create))
                 {
-                    using (ZipArchive newZipFile = new ZipArchive(fs, ZipArchiveMode.Create))
+                    using (ZipArchive newZipFile = new ZipArchive(fs, ZipArchiveMode.Update))
                     {
                         foreach (ListViewItem item in listView.SelectedItems)
                         {

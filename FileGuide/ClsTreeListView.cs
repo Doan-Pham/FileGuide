@@ -800,10 +800,20 @@ namespace FileGuide
         
         public void CreateEntryFromDirectory(ZipArchive archive, string sourceDirName, string entryName = "")
         {
-            string[] files = Directory.GetFiles(sourceDirName).Concat(Directory.GetDirectories(sourceDirName)).ToArray();
-            foreach (var file in files)
+            string[] ChildFileFolderArray = Directory.GetFiles(sourceDirName).Concat(Directory.GetDirectories(sourceDirName)).ToArray();
+            if (entryName != Path.GetFileName(sourceDirName))
+                archive.CreateEntry(Path.Combine(entryName, Path.GetFileName(sourceDirName)));
+            foreach (var ChildFileFolderPath in ChildFileFolderArray)
             {
-                CreateEntryFromAny(archive, file, entryName);
+                CreateEntryFromAny(archive, ChildFileFolderPath, entryName);
+            }
+            foreach (var item in archive.Entries)
+            {
+                if (!item.FullName.EndsWith("/") && item.Name.Equals(entryName))
+                {
+                    item.Delete();
+                    break;
+                }
             }
         }
         #endregion
