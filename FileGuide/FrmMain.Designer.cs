@@ -290,7 +290,7 @@ namespace FileGuide
             this.unzipFileToolStripMenuItem});
             this.contextMenuStripListViewItem.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.contextMenuStripListViewItem.Name = "contextMenuStripListViewItem";
-            this.contextMenuStripListViewItem.Size = new System.Drawing.Size(231, 274);
+            this.contextMenuStripListViewItem.Size = new System.Drawing.Size(278, 274);
             // 
             // openToolStripMenuItem
             // 
@@ -1054,14 +1054,19 @@ namespace FileGuide
             // zipFilesToolStripMenuItem
             // 
             this.zipFilesToolStripMenuItem.Name = "zipFilesToolStripMenuItem";
-            this.zipFilesToolStripMenuItem.Size = new System.Drawing.Size(230, 36);
+            this.zipFilesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Z)));
+            this.zipFilesToolStripMenuItem.Size = new System.Drawing.Size(277, 36);
             this.zipFilesToolStripMenuItem.Text = "Zip file(s)";
+            this.zipFilesToolStripMenuItem.Click += new System.EventHandler(this.zipFilesToolStripMenuItem_Click);
             // 
             // unzipFileToolStripMenuItem
             // 
             this.unzipFileToolStripMenuItem.Name = "unzipFileToolStripMenuItem";
-            this.unzipFileToolStripMenuItem.Size = new System.Drawing.Size(230, 36);
+            this.unzipFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.Z)));
+            this.unzipFileToolStripMenuItem.Size = new System.Drawing.Size(277, 36);
             this.unzipFileToolStripMenuItem.Text = "Unzip file";
+            this.unzipFileToolStripMenuItem.Click += new System.EventHandler(this.unzipFileToolStripMenuItem_Click);
             // 
             // FrmMain
             // 

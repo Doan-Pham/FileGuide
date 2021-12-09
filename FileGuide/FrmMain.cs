@@ -14,6 +14,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using Syroot.Windows.IO;
 using Guna.UI2.WinForms;
+using System.IO.Compression;
 
 namespace FileGuide
 {
@@ -628,6 +629,50 @@ namespace FileGuide
                     tabControl.TabPages[tabControl.SelectedIndex].Text = clsTreeListView.GetFileFolderName(currentPath) + spaceText;
                 }
             }
+        }
+
+
+        /// <summary>
+        /// Zip files
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void zipFilesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string fileName = listView.SelectedItems[0].SubItems[0].Text;
+                string filePath = currentPath + "\\" + fileName;
+                string zipPath = currentPath + "\\" + fileName.Split('.').ToList().ElementAt(0) + ".zip";
+
+                using (FileStream fs = new FileStream(zipPath, FileMode.Create))
+                {
+                    using (ZipArchive newZipFile = new ZipArchive(fs, ZipArchiveMode.Create))
+                    {
+                        newZipFile.CreateEntryFromFile(filePath, fileName);
+                        /* foreach (string file in Directory.GetFiles(myPath))
+                         {
+                             newZipFile.CreateEntryFromFile(file, System.IO.Path.GetFileName(file));
+                         }*/
+                    }
+                }
+                btnRefresh.PerformClick();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error has occured while zipping files \n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        /// <summary>
+        /// Unzip compressed file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void unzipFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
         #endregion
@@ -1315,9 +1360,6 @@ namespace FileGuide
 
         #endregion
 
-        private void label1_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }
