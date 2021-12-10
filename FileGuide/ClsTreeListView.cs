@@ -802,18 +802,10 @@ namespace FileGuide
         {
             string[] ChildFileFolderArray = Directory.GetFiles(sourceDirName).Concat(Directory.GetDirectories(sourceDirName)).ToArray();
             if (entryName != Path.GetFileName(sourceDirName))
-                archive.CreateEntry(Path.Combine(entryName, Path.GetFileName(sourceDirName)));
+                archive.CreateEntry(entryName + "\\");
             foreach (var ChildFileFolderPath in ChildFileFolderArray)
             {
                 CreateEntryFromAny(archive, ChildFileFolderPath, entryName);
-            }
-            foreach (var item in archive.Entries)
-            {
-                if (!item.FullName.EndsWith("/") && item.Name.Equals(entryName))
-                {
-                    item.Delete();
-                    break;
-                }
             }
         }
         #endregion
