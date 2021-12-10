@@ -110,7 +110,7 @@ namespace FileGuide
 
             foreach (string folderPath in EasyAccessFolderPathList)
             {
-                tnEasyAccess.Nodes.Add(GetFileFolderName(folderPath));
+                tnEasyAccess.Nodes.Add(HelperMethods.GetFileFolderName(folderPath));
             }
         }
 
@@ -127,7 +127,7 @@ namespace FileGuide
             if (currentNode.Text == GetTreeNodeRoot(currentNode).Text || GetTreeNodeRoot(currentNode).Text == "Easy Access") return true;
             try
             {
-                if (!Directory.Exists(GetApproriatePath(currentNode.FullPath)) && !isSpecialFolder)
+                if (!Directory.Exists(HelperMethods.GetApproriatePath(currentNode.FullPath)) && !isSpecialFolder)
                 {
                     MessageBox.Show("Directory not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
@@ -138,7 +138,7 @@ namespace FileGuide
                     string[] strDirectories;
                     if (!isSpecialFolder)
                     {
-                        strDirectories = Directory.GetDirectories(GetApproriatePath(currentNode.FullPath));
+                        strDirectories = Directory.GetDirectories(HelperMethods.GetApproriatePath(currentNode.FullPath));
                     }
                     else
                     {
@@ -146,7 +146,7 @@ namespace FileGuide
                     }
                     foreach (string stringDir in strDirectories)
                     {
-                        string strName = GetFileFolderName(stringDir);
+                        string strName = HelperMethods.GetFileFolderName(stringDir);
                         TreeNode nodeDir = new TreeNode(strName, 5, 6);
                         currentNode.Nodes.Add(nodeDir);
                     }
@@ -298,7 +298,7 @@ namespace FileGuide
             string[] item = new string[6];
             item[0] = folder.Name;
             item[1] = "Folder";
-            item[2] = "";//FormatStorageLengthBytes(GetFolderSize(folder.FullName));
+            item[2] = "";//HelperMethods.FormatStorageLengthBytes(GetFolderSize(folder.FullName));
             item[3] = folder.CreationTime.ToString();
             item[4] = folder.LastWriteTime.ToString();
             item[5] = folder.FullName;
@@ -317,8 +317,8 @@ namespace FileGuide
         {
             string[] item = new string[6];
             item[0] = file.Name;
-            item[1] = GetFileType(file);
-            item[2] = FormatStorageLengthBytes(file.Length);
+            item[1] = HelperMethods.GetFileType(file);
+            item[2] = HelperMethods.FormatStorageLengthBytes(file.Length);
             item[3] = file.CreationTime.ToString();
             item[4] = file.LastWriteTime.ToString();
             item[5] = file.FullName;
@@ -443,7 +443,7 @@ namespace FileGuide
                 DriveStorageInfo.Dock = DockStyle.Bottom;
                 DriveStorageInfo.TextAlign = ContentAlignment.MiddleLeft;
                 DriveStorageInfo.Height = 45;
-                DriveStorageInfo.Text = FormatStorageLengthBytes(freeSpace) + " free of " + FormatStorageLengthBytes(totalSpace);
+                DriveStorageInfo.Text = HelperMethods.FormatStorageLengthBytes(freeSpace) + " free of " + HelperMethods.FormatStorageLengthBytes(totalSpace);
                 DrivePanel[driveCount].Controls.Add(DriveStorageInfo);
 
                 DrivePicture.SizeMode = PictureBoxSizeMode.Zoom;
@@ -474,7 +474,7 @@ namespace FileGuide
             foreach (string ItemPath in ListRecentFiles)
             {
                 string[] items = new string[2];
-                items[0] = GetFileFolderName(ItemPath);
+                items[0] = HelperMethods.GetFileFolderName(ItemPath);
                 items[1] = ItemPath;
                 ListViewItem item = new ListViewItem(items);
                 RecentFiles.Items.Add(item);
@@ -523,7 +523,7 @@ namespace FileGuide
                     if (!isRecenFilesListView)
                     {
                         ShowListView(listView, path);
-                        tscmbPath.Text = GetApproriatePath(path);
+                        tscmbPath.Text = HelperMethods.GetApproriatePath(path);
                     }
                 }
                 return true;
@@ -539,276 +539,7 @@ namespace FileGuide
         #endregion
 
 
-        #region General Helper Methods
 
-        /// <summary>
-        /// Return a approriate path for use in a directory structure
-        /// </summary>
-        /// <param name="strPath"></param>
-        /// <returns></returns>
-        public string GetApproriatePath(string strPath)
-        {
-            return strPath.Replace("My Computer\\", "").Replace("\\\\", "\\");
-        }
-
-
-        /// <summary>
-        /// Return name of a file, directory (Remove parent directories)
-        /// </summary>
-        /// <param name="strPath">The path of the file/folder that needs modifying</param>
-        /// <returns></returns>
-        public string GetFileFolderName(string strPath)
-        {
-            string[] strSplit = strPath.Split('\\');
-            if (strSplit.Length == 2 && strSplit[1] == "") return strSplit[0] + "\\";
-            return strSplit[strSplit.Length - 1];
-        }
-
-
-        /// <summary>
-        /// Return icon image respective to a file's extension
-        /// </summary>
-        /// <param name="file"></param>
-        /// <returns></returns>
-        public Image GetFileTypeIcon(FileInfo file)
-        {
-            switch (file.Extension.ToUpper())
-            {
-                case ".MDB":
-                    return Properties.Resources.Logo_Database;
-
-                case ".DOC":
-                case ".DOCX":
-                    return Properties.Resources.Logo_WORD;
-
-                case ".EXE":
-                    return Properties.Resources.Logo_EXE;
-
-                case ".HTM":
-                case ".HTML":
-                    return Properties.Resources.Logo_HTML;
-
-                case ".MP3":
-                case ".WAV":
-                case ".WMV":
-                case ".ASF":
-                case ".MPEG":
-                case ".AVI":
-                    return Properties.Resources.Logo_Music;
-
-                case ".PDF":
-                    return Properties.Resources.Logo_PDF;
-
-                case ".JPG":
-                case ".PNG":
-                case ".BMP":
-                case ".GIF":
-                    return Image.FromFile(file.FullName);
-                        //Properties.Resources.Logo_PNG;
-
-                case ".PPT":
-                case ".PPTX":
-                    return Properties.Resources.Logo_PPT;
-
-                case ".RAR":
-                case ".ZIP":
-                    return Properties.Resources.Logo_RAR;
-
-                case ".SWF":
-                case ".FLV":
-                case ".FLA":
-                    return Properties.Resources.Logo_FLASH ;
-
-                case ".TXT":
-                case ".DIZ":
-                case ".LOG":
-                    return Properties.Resources.Logo_Text ;
-
-                case ".XLS":
-                case ".XLSX":
-                    return Properties.Resources.Logo_EXCEL;
-
-                default:
-                    return Properties.Resources.Logo_UnknownFile;
-
-            }
-        }
-
-        public Image GetNodeTypeIcon(TreeNode node)
-        {
-            if (node.Parent == null)
-            { 
-                switch (node.Text)
-                {
-                    case "My Computer": return Properties.Resources.Icon_MyComputer;
-                    case "Easy Access": return Properties.Resources.Icon_EasyAccess;
-                    case "Desktop": return Properties.Resources.Icon_Desktop;
-                    case "Downloads": return Properties.Resources.Icon_Downloads;
-                    case "Documents": return Properties.Resources.Icon_Documents;
-                    default: return Properties.Resources.Icon_Folder;
-                }
-            }
-            return Properties.Resources.Icon_Folder;
-        }
-
-        /// <summary>
-        /// Return a string representing the file type
-        /// </summary>
-        /// <param name="file"></param>
-        /// <returns></returns>
-        public string GetFileType(FileInfo file)
-        {
-            switch (file.Extension.ToUpper())
-            {
-                case ".MDB":
-                    return "Database File";
-
-                case ".DOC":
-                case ".DOCX":
-                    return "Microsoft Word Document";
-
-                case ".EXE":
-                    return "Application";
-
-                case ".HTM":
-                case ".HTML":
-                    return "HTML Document";
-
-                case ".MP3":
-                case ".WAV":
-                case ".WMV":
-                case ".ASF":
-                case ".MPEG":
-                case ".AVI":
-                    return "Media File";
-
-                case ".PDF":
-                    return "PDF Document File";
-
-                case ".JPG":
-                case ".PNG":
-                case ".BMP":
-                case ".GIF":
-                    return "Image File";
-
-                case ".PPT":
-                case ".PPTX":
-                    return "Microsoft Powerpoint File";
-
-                case ".RAR":
-                case ".ZIP":
-                    return "Compressed Folder";
-
-                case ".SWF":
-                case ".FLV":
-                case ".FLA":
-                    return "Flash File";
-
-                case ".TXT":
-                case ".DIZ":
-                case ".LOG":
-                    return "Text File";
-
-                case ".XLS":
-                case ".XLSX":
-                    return "Microsoft Excel File";
-
-                default:
-                    return "File";
-
-            }
-        }
-
-
-        /// <summary>
-        /// Get the parent directory's path of a file/folder
-        /// </summary>
-        /// <param name="path">The full path of a file/folder</param>
-        /// <returns></returns>
-        public string GetParentDirectoryPath(string path)
-        {
-            string[] strList = path.Split('\\');
-            if (strList.GetValue(1).ToString() == "" || strList.GetValue(1).ToString() == null) return "My Computer";
-            string strPath = strList.GetValue(0).ToString();
-            if (strList.Length == 2) return strPath + "\\";
-            for (int i = 1; i < strList.Length - 1; i++)
-            {
-                strPath += "\\" + strList.GetValue(i);
-            }
-            return strPath;
-        }
-
-
-        /// <summary>
-        /// Convert bytes to KB, MB, GB, TB
-        /// </summary>
-        /// <param name="bytes"></param>
-        /// <returns></returns>
-        public string FormatStorageLengthBytes(long bytes)
-        {
-            string[] Suffix = { "B", "KB", "MB", "GB", "TB", "PB" };
-            int i;
-            double Result = bytes;
-            for (i = 0; i < Suffix.Length && bytes >= 1024; i++, bytes /= 1024)
-            {
-                Result = bytes / 1024.0;
-            }
-            return Result.ToString("0.##") + " " + Suffix[i];
-        }
-
-
-        /// <summary>
-        /// Get a folder's size in bytes
-        /// </summary>
-        /// <param name="folderPath"></param>
-        /// <returns></returns>
-        public long GetFolderSize(string folderPath)
-        {
-            long size = 0;
-            try
-            {
-                string[] fileNames = Directory.GetFiles(folderPath, "*", SearchOption.AllDirectories);
-                foreach (string name in fileNames)
-                {
-                    FileInfo fileInfo = new FileInfo(name);
-                    size += fileInfo.Length;
-                }
-            }
-            catch (UnauthorizedAccessException)
-            {
-                size = 0;
-            }
-            catch (IOException)
-            {
-                size = 0;
-            }
-            return size;
-        }
-
-        public void CreateEntryFromAny(ZipArchive archive, string sourceName, string entryName = "")
-        {
-            var fileName = Path.GetFileName(sourceName);
-            if (File.GetAttributes(sourceName).HasFlag(FileAttributes.Directory))
-            {
-                CreateEntryFromDirectory(archive, sourceName, Path.Combine(entryName, fileName));
-            }
-            else
-            {
-                archive.CreateEntryFromFile(sourceName, Path.Combine(entryName, fileName), CompressionLevel.Fastest);
-            }
-        }
-        
-        public void CreateEntryFromDirectory(ZipArchive archive, string sourceDirName, string entryName = "")
-        {
-            string[] ChildFileFolderArray = Directory.GetFiles(sourceDirName).Concat(Directory.GetDirectories(sourceDirName)).ToArray();
-            if (entryName != Path.GetFileName(sourceDirName))
-                archive.CreateEntry(entryName + "\\");
-            foreach (var ChildFileFolderPath in ChildFileFolderArray)
-            {
-                CreateEntryFromAny(archive, ChildFileFolderPath, entryName);
-            }
-        }
-        #endregion
     }
 }
 

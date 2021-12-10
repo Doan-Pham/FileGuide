@@ -167,7 +167,7 @@ namespace FileGuide
                     {
                         if (itemPaste.SubItems[1].Text.Trim() == "Image File")
                         {
-                            string ImagePath = clsTreeListView.GetApproriatePath(itemPaste.SubItems[5].Text.Trim());
+                            string ImagePath = HelperMethods.GetApproriatePath(itemPaste.SubItems[5].Text.Trim());
                             Image img = Image.FromFile(ImagePath);
                             Clipboard.SetImage(img);
                         }
@@ -207,7 +207,7 @@ namespace FileGuide
 
         /// <summary>
         /// Paste item
-        /// </summary>
+        /// </summary>GetParentDirectoryPath
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnPaste_Click(object sender, EventArgs e)
@@ -229,7 +229,7 @@ namespace FileGuide
                 {
                     if (isFolder)
                     {
-                        Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory(pathSource, pathDest + "\\" + clsTreeListView.GetFileFolderName(pathSource));
+                        Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory(pathSource, pathDest + "\\" + HelperMethods.GetFileFolderName(pathSource));
                     }
                     else
                     {
@@ -243,7 +243,7 @@ namespace FileGuide
                 {
                     if (isFolder)
                     {
-                        Microsoft.VisualBasic.FileIO.FileSystem.MoveDirectory(pathSource, pathDest + "\\" + clsTreeListView.GetFileFolderName(pathSource));
+                        Microsoft.VisualBasic.FileIO.FileSystem.MoveDirectory(pathSource, pathDest + "\\" + HelperMethods.GetFileFolderName(pathSource));
                     }
                     else
                     {
@@ -254,7 +254,7 @@ namespace FileGuide
 
                 // After pasting, refresh listView and disable paste feature
                 string strNewPath;
-                if (!isFolder) strNewPath = clsTreeListView.GetParentDirectoryPath(pathDest);
+                if (!isFolder) strNewPath = HelperMethods.GetParentDirectoryPath(pathDest);
                 else strNewPath = pathDest;
                 clsTreeListView.ShowListView(listView, strNewPath);
 
@@ -300,7 +300,7 @@ namespace FileGuide
                             }
                             else return;
 
-                            string pathFolder = clsTreeListView.GetParentDirectoryPath(path);
+                            string pathFolder = HelperMethods.GetParentDirectoryPath(path);
                             clsTreeListView.ShowListView(listView, pathFolder);
                         }
                     }
@@ -322,7 +322,7 @@ namespace FileGuide
                             }
                             else return;
 
-                            string pathFolder = clsTreeListView.GetParentDirectoryPath(path);
+                            string pathFolder = HelperMethods.GetParentDirectoryPath(path);
                             clsTreeListView.ShowListView(listView, pathFolder);
                         }
 
@@ -456,7 +456,7 @@ namespace FileGuide
                 {
                     Microsoft.VisualBasic.FileIO.FileSystem.RenameDirectory(path, e.Label);
                 }
-                clsTreeListView.ShowListView(listView, clsTreeListView.GetParentDirectoryPath(path));
+                clsTreeListView.ShowListView(listView, HelperMethods.GetParentDirectoryPath(path));
                 e.CancelEdit = true;
             }
             catch (IOException)
@@ -473,7 +473,7 @@ namespace FileGuide
         #endregion
 
 
-        #region App features: Go to file/folder, refresh, go back, click file/folder
+        #region App features: Go to file/folder, refresh, go back, click file/folder, zip files/folders
 
 
         /// <summary>
@@ -504,7 +504,7 @@ namespace FileGuide
                             clsTreeListView.ShowListView(listView, tscmbPath.Text);
                             currentPath = tscmbPath.Text;
                             tabPathList[tabControl.SelectedIndex] = currentPath;
-                            tabControl.TabPages[tabControl.SelectedIndex].Text = clsTreeListView.GetFileFolderName(currentPath) + spaceText;
+                            tabControl.TabPages[tabControl.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
                         }
 
                         // If path doesn't exist, show error message
@@ -562,7 +562,7 @@ namespace FileGuide
             {
                 if (currentPath != "" && currentPath != "My Computer")
                 {
-                    currentPath = clsTreeListView.GetParentDirectoryPath(currentPath);
+                    currentPath = HelperMethods.GetParentDirectoryPath(currentPath);
                     if (currentPath != "My Computer")
                     {
                         tableLayoutFirstPage.Visible = false;
@@ -577,7 +577,7 @@ namespace FileGuide
                     }
                     tscmbPath.Text = currentPath;
                     tabPathList[tabControl.SelectedIndex] = currentPath;
-                    tabControl.TabPages[tabControl.SelectedIndex].Text = clsTreeListView.GetFileFolderName(currentPath) + spaceText;
+                    tabControl.TabPages[tabControl.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
                 }
             }
             catch (Exception ex)
@@ -602,7 +602,7 @@ namespace FileGuide
                 {
                     currentPath = tscmbPath.Text;
                     tabPathList[tabControl.SelectedIndex] = currentPath;
-                    tabControl.TabPages[tabControl.SelectedIndex].Text = clsTreeListView.GetFileFolderName(currentPath) + spaceText;
+                    tabControl.TabPages[tabControl.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
                 }
             }
         }
@@ -626,7 +626,7 @@ namespace FileGuide
                         currentPath = tscmbPath.Text;
                     }
                     tabPathList[tabControl.SelectedIndex] = currentPath;
-                    tabControl.TabPages[tabControl.SelectedIndex].Text = clsTreeListView.GetFileFolderName(currentPath) + spaceText;
+                    tabControl.TabPages[tabControl.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
                 }
             }
         }
@@ -652,7 +652,7 @@ namespace FileGuide
                         {
                             string itemName = item.SubItems[0].Text;
                             string itemPath = currentPath + "\\" + itemName;
-                            clsTreeListView.CreateEntryFromAny(newZipFile, itemPath);
+                            HelperMethods.CreateEntryFromAny(newZipFile, itemPath);
                         }
                     }
                 }
@@ -672,7 +672,16 @@ namespace FileGuide
         /// <param name="e"></param>
         private void unzipFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            foreach (ListViewItem item in listView.SelectedItems)
+            {
+               
+                string itemName = item.SubItems[0].Text;
+                string itemPath = currentPath + "\\" + itemName;
+                if (System.IO.Path.GetExtension(itemPath).Equals(".zip"))
+                {
 
+                }
+            }
         }
 
         #endregion
@@ -859,12 +868,12 @@ namespace FileGuide
                     else clsTreeListView.ShowListView(listView, SpecialFolderPath);
                 }
 
-                tscmbPath.Text = clsTreeListView.GetApproriatePath(currentNode.FullPath);
+                tscmbPath.Text = HelperMethods.GetApproriatePath(currentNode.FullPath);
                 pathNode = tscmbPath.Text;
                 currentPath = pathNode;
 
                 tabPathList[tabControl.SelectedIndex] = currentPath;
-                tabControl.TabPages[tabControl.SelectedIndex].Text = clsTreeListView.GetFileFolderName(currentPath) + spaceText;
+                tabControl.TabPages[tabControl.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
             }
             catch (Exception ex)
             {
@@ -924,7 +933,7 @@ namespace FileGuide
             }
 
             //Draw node icon
-            g.DrawImage(clsTreeListView.GetNodeTypeIcon(e.Node), nodeRect.Location.X - 14, nodeRect.Location.Y + 8, 30, 30);
+            g.DrawImage(HelperMethods.GetNodeTypeIcon(e.Node), nodeRect.Location.X - 14, nodeRect.Location.Y + 8, 30, 30);
 
             //Draw text
             if (e.Node.Bounds.X != 0)
@@ -983,7 +992,7 @@ namespace FileGuide
         {
             if (treeView.SelectedNode != null)
             {
-                clsTreeListView.EasyAccessFolderPathList.Add(clsTreeListView.GetApproriatePath(treeView.SelectedNode.FullPath));
+                clsTreeListView.EasyAccessFolderPathList.Add(HelperMethods.GetApproriatePath(treeView.SelectedNode.FullPath));
                 TreeNode clonedTreeNode = (TreeNode)treeView.SelectedNode.Clone();
                 treeView.Nodes[1].Nodes.Add(treeView.SelectedNode.Text);
             }
@@ -1124,7 +1133,7 @@ namespace FileGuide
                 else
                 {
                     FileInfo itemPath = new FileInfo(e.Item.SubItems[5].Text);
-                    g.DrawImage(clsTreeListView.GetFileTypeIcon(itemPath), ImageLocationX, ImageLocationY, ImageSize, ImageSize);
+                    g.DrawImage(HelperMethods.GetFileTypeIcon(itemPath), ImageLocationX, ImageLocationY, ImageSize, ImageSize);
                 }
 
                 TextFormatFlags flags = TextFormatFlags.Top | TextFormatFlags.EndEllipsis | TextFormatFlags.HorizontalCenter | TextFormatFlags.SingleLine;
@@ -1144,7 +1153,7 @@ namespace FileGuide
                 else
                 {
                     FileInfo itemPath = new FileInfo(e.Item.SubItems[5].Text);
-                    g.DrawImage(clsTreeListView.GetFileTypeIcon(itemPath), ImageLocationX, ImageLocationY, ImageSize, ImageSize);
+                    g.DrawImage(HelperMethods.GetFileTypeIcon(itemPath), ImageLocationX, ImageLocationY, ImageSize, ImageSize);
                 }
 
                 TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine | TextFormatFlags.ExpandTabs;
@@ -1164,7 +1173,7 @@ namespace FileGuide
                 else
                 {
                     FileInfo itemPath = new FileInfo(e.Item.SubItems[5].Text);
-                    g.DrawImage(clsTreeListView.GetFileTypeIcon(itemPath), ImageLocationX, ImageLocationY, ImageSize, ImageSize);
+                    g.DrawImage(HelperMethods.GetFileTypeIcon(itemPath), ImageLocationX, ImageLocationY, ImageSize, ImageSize);
                 }
 
                 TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.SingleLine | TextFormatFlags.ExpandTabs;
@@ -1306,7 +1315,7 @@ namespace FileGuide
                     currentPath = drive.Name;
                     tscmbPath.Text = drive.Name;
                     tabPathList[tabControl.SelectedIndex] = currentPath;
-                    tabControl.TabPages[tabControl.SelectedIndex].Text = clsTreeListView.GetFileFolderName(currentPath) + spaceText;
+                    tabControl.TabPages[tabControl.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
                     clsTreeListView.ShowListView(listView, currentPath);
                     return;
                 }
@@ -1340,7 +1349,7 @@ namespace FileGuide
                 }
             }
  
-            tabControl.TabPages[tabControl.SelectedIndex].Text = clsTreeListView.GetFileFolderName(tabPathList[tabControl.SelectedIndex]) + spaceText;
+            tabControl.TabPages[tabControl.SelectedIndex].Text = HelperMethods.GetFileFolderName(tabPathList[tabControl.SelectedIndex]) + spaceText;
         }
 
 

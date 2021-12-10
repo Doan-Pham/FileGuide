@@ -105,6 +105,7 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelperMethods.cs" />
     <Compile Include="InfoPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
