@@ -690,20 +690,27 @@ namespace FileGuide
 
                     if (System.IO.Path.GetExtension(itemPath).Equals(".zip"))
                     {
-                        bool isSameNameAlreadyExists = false;
                         string destinationPath = currentPath + "\\" + itemName.Replace(".zip", "");
 
-                        if (!File.Exists(destinationPath) && !Directory.Exists(destinationPath)) ZipFile.ExtractToDirectory(itemPath, destinationPath);
-                        /*foreach (ListViewItem LVitem in listView.Items)
+                        if (!File.Exists(destinationPath) && !Directory.Exists(destinationPath))
                         {
-                            if (LVitem.SubItems[0].Text == itemName.Replace(".zip", "") && LVitem.SubItems[1].Text != "Compressed Folder")
+                            ZipFile.ExtractToDirectory(itemPath, destinationPath);
+                        }
+                        else if (File.Exists(destinationPath))
+                        {
+                            int SameNameCount = 1;
+                            string newItemName = itemName.Replace(".zip", "");
+                            foreach (ListViewItem LVitem in listView.Items)
                             {
-                                isSameNameAlreadyExists = true;
-                                break;
+                                if (item.SubItems[0].Text.ToString().Contains(newItemName))
+                                {
+                                    newItemName = itemName.Replace(".zip", "") + SameNameCount.ToString();
+                                    SameNameCount++;
+                                }
                             }
-                        }*/
-                        //if (isSameNameAlreadyExists == false)
 
+                            ZipFile.ExtractToDirectory(itemPath, currentPath + "\\" + newItemName);
+                        }
                         else
                         {
                             MessageBox.Show("Aloha");

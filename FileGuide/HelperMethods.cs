@@ -312,17 +312,17 @@ namespace FileGuide
 
         public static void ImprovedExtractToDirectory(string sourceArchiveFileName, string destinationDirectoryName, Overwrite overwriteMethod = Overwrite.IfNewer)
         {
-           /* using (ZipArchive archive = ZipFile.OpenRead(sourceArchiveFileName))
+            using (ZipArchive archive = ZipFile.OpenRead(sourceArchiveFileName))
             {
                 foreach (ZipArchiveEntry entry in archive.Entries)
                 {
                     if (entry.FullName.EndsWith("/"))
                     {
-                        Directory.CreateDirectory(destinationFilePath);
+                        Directory.CreateDirectory(destinationDirectoryName);
                     }
-                    ImprovedExtractToFile(file, destinationDirectoryName, overwriteMethod);
+                    ImprovedExtractToFileFolder(entry, destinationDirectoryName, overwriteMethod);
                 }
-            }*/
+            }
         }
 
 
