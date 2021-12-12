@@ -107,7 +107,6 @@ namespace FileGuide
             this.tsDropNew = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripMenuItemFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButtonDarkMode = new System.Windows.Forms.ToolStripButton();
             this.ShortcutKeysMenu = new System.Windows.Forms.MenuStrip();
             this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -676,7 +675,6 @@ namespace FileGuide
             // 
             // ShortcutKeysPanel
             // 
-            this.ShortcutKeysPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
             this.ShortcutKeysPanel.Controls.Add(this.label7);
             this.ShortcutKeysPanel.Controls.Add(this.label6);
             this.ShortcutKeysPanel.Controls.Add(this.label5);
@@ -685,7 +683,7 @@ namespace FileGuide
             this.ShortcutKeysPanel.Controls.Add(this.label2);
             this.ShortcutKeysPanel.Controls.Add(this.label1);
             this.ShortcutKeysPanel.Font = new System.Drawing.Font("Be Vietnam", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ShortcutKeysPanel.ForeColor = System.Drawing.Color.DarkGray;
+            this.ShortcutKeysPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ShortcutKeysPanel.Location = new System.Drawing.Point(0, 121);
             this.ShortcutKeysPanel.Name = "ShortcutKeysPanel";
             this.ShortcutKeysPanel.Size = new System.Drawing.Size(1301, 27);
@@ -757,7 +755,7 @@ namespace FileGuide
             // toolBar
             // 
             this.toolBar.AutoSize = false;
-            this.toolBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
+            this.toolBar.BackColor = System.Drawing.Color.White;
             this.toolBar.Dock = System.Windows.Forms.DockStyle.None;
             this.toolBar.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolBar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
@@ -770,8 +768,7 @@ namespace FileGuide
             this.tsbtnRename,
             this.toolStripSeparator2,
             this.tsDropView,
-            this.tsDropNew,
-            this.toolStripButtonDarkMode});
+            this.tsDropNew});
             this.toolBar.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.toolBar.Location = new System.Drawing.Point(0, 0);
             this.toolBar.Name = "toolBar";
@@ -939,20 +936,6 @@ namespace FileGuide
             this.toolStripMenuItemFile.Text = "File";
             this.toolStripMenuItemFile.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
             // 
-            // toolStripButtonDarkMode
-            // 
-            this.toolStripButtonDarkMode.AutoSize = false;
-            this.toolStripButtonDarkMode.Image = global::FileGuide.Properties.Resources.Icon_DarkMode;
-            this.toolStripButtonDarkMode.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolStripButtonDarkMode.ImageTransparentColor = System.Drawing.Color.White;
-            this.toolStripButtonDarkMode.Margin = new System.Windows.Forms.Padding(8, 2, 0, 3);
-            this.toolStripButtonDarkMode.Name = "toolStripButtonDarkMode";
-            this.toolStripButtonDarkMode.Size = new System.Drawing.Size(140, 100);
-            this.toolStripButtonDarkMode.Text = "Dark Mode";
-            this.toolStripButtonDarkMode.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonDarkMode.ToolTipText = "Rename (Ctrl+R)\r\n";
-            this.toolStripButtonDarkMode.Click += new System.EventHandler(this.toolStripButtonDarkMode_Click);
-            // 
             // ShortcutKeysMenu
             // 
             this.ShortcutKeysMenu.AutoSize = false;
@@ -982,7 +965,7 @@ namespace FileGuide
             this.viewLargeIconToolStripMenuItem,
             this.viewDetailsToolStripMenuItem});
             this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
-            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(70, 4);
+            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(70, 6);
             this.copyToolStripMenuItem1.Text = "Copy";
             this.copyToolStripMenuItem1.Visible = false;
             // 
@@ -1063,13 +1046,13 @@ namespace FileGuide
             // 
             // treeView
             // 
-            this.treeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
+            this.treeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(253)))), ((int)(((byte)(253)))));
             this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeView.ContextMenuStrip = this.treeViewContextMenuStrip;
             this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
             this.treeView.Font = new System.Drawing.Font("Questrial", 9.999999F);
-            this.treeView.ForeColor = System.Drawing.Color.White;
+            this.treeView.ForeColor = System.Drawing.Color.Black;
             this.treeView.FullRowSelect = true;
             this.treeView.HotTracking = true;
             this.treeView.Indent = 20;
@@ -1089,13 +1072,12 @@ namespace FileGuide
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1678, 844);
             this.Controls.Add(this.ShortcutKeysMenu);
             this.Controls.Add(this.mainSplitContainer);
             this.Controls.Add(this.statusStrip1);
             this.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.ShortcutKeysMenu;
@@ -1220,7 +1202,6 @@ namespace FileGuide
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem zipFilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unzipFileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripButton toolStripButtonDarkMode;
     }
 }
 

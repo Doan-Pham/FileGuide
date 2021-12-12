@@ -183,7 +183,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FileGuide.ico" />
-    <None Include="Resources\Icon\Icon_DarkMode.png" />
     <None Include="Resources\Logo\Logo_FileGuide.png" />
     <None Include="Resources\Icon\Icon_New.png" />
     <None Include="Resources\Icon\Icon_Rename.png" />
