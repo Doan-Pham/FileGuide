@@ -721,6 +721,12 @@ namespace FileGuide
             }
         }
 
+
+
+        private void toolStripButtonDarkMode_Click(object sender, EventArgs e)
+        {
+            //this.ForeColor = 
+        }
         #endregion
 
 
@@ -1404,8 +1410,8 @@ namespace FileGuide
 
 
 
-        #endregion
 
+        #endregion
 
     }
 }
