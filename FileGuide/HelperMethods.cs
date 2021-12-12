@@ -312,12 +312,14 @@ namespace FileGuide
 
         public static void ImprovedExtractToDirectory(string sourceArchiveFileName, string destinationDirectoryName, Overwrite overwriteMethod = Overwrite.IfNewer)
         {
-           /* //Opens the zip file up to be read
-            using (ZipArchive archive = ZipFile.OpenRead(sourceArchiveFileName))
+           /* using (ZipArchive archive = ZipFile.OpenRead(sourceArchiveFileName))
             {
-                //Loops through each file in the zip file
-                foreach (ZipArchiveEntry file in archive.Entries)
+                foreach (ZipArchiveEntry entry in archive.Entries)
                 {
+                    if (entry.FullName.EndsWith("/"))
+                    {
+                        Directory.CreateDirectory(destinationFilePath);
+                    }
                     ImprovedExtractToFile(file, destinationDirectoryName, overwriteMethod);
                 }
             }*/
@@ -336,7 +338,7 @@ namespace FileGuide
 
             //Creates the directory (if it doesn't exist) for the new path
             if (!File.Exists(destinationFilePath))
-            Directory.CreateDirectory(destinationFilePath);
+            
 
             //Determines what to do with the file based upon the
             //method of overwriting chosen

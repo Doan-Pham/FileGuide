@@ -652,7 +652,11 @@ namespace FileGuide
                         {
                             string itemName = item.SubItems[0].Text;
                             string itemPath = currentPath + "\\" + itemName;
-                            HelperMethods.CreateEntryFromAny(newZipFile, itemPath);
+                            if (!System.IO.Path.GetExtension(itemPath).Equals(".zip"))
+                            {
+                                HelperMethods.CreateEntryFromAny(newZipFile, itemPath);
+                            }
+
                         }
                     }
                 }
@@ -688,16 +692,17 @@ namespace FileGuide
                         bool isSameNameAlreadyExists = false;
                         string destinationPath = currentPath + "\\" + itemName.Replace(".zip", "");
 
-                        foreach (ListViewItem LVitem in listView.Items)
+                        if (!File.Exists(destinationPath) && !Directory.Exists(destinationPath)) ZipFile.ExtractToDirectory(itemPath, destinationPath);
+                        /*foreach (ListViewItem LVitem in listView.Items)
                         {
                             if (LVitem.SubItems[0].Text == itemName.Replace(".zip", "") && LVitem.SubItems[1].Text != "Compressed Folder")
                             {
                                 isSameNameAlreadyExists = true;
                                 break;
                             }
-                        }
-                        if (isSameNameAlreadyExists == false)
-                            ZipFile.ExtractToDirectory(itemPath, destinationPath);
+                        }*/
+                        //if (isSameNameAlreadyExists == false)
+
                         else
                         {
                             MessageBox.Show("Aloha");
