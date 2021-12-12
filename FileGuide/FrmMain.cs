@@ -661,8 +661,6 @@ namespace FileGuide
                     }
 
                 }
-
-
                 btnRefresh.PerformClick();
             }
             catch (Exception ex)
