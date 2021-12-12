@@ -290,7 +290,7 @@ namespace FileGuide
             this.unzipFileToolStripMenuItem});
             this.contextMenuStripListViewItem.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.contextMenuStripListViewItem.Name = "contextMenuStripListViewItem";
-            this.contextMenuStripListViewItem.Size = new System.Drawing.Size(303, 307);
+            this.contextMenuStripListViewItem.Size = new System.Drawing.Size(303, 274);
             // 
             // openToolStripMenuItem
             // 
@@ -336,7 +336,7 @@ namespace FileGuide
             // delteToolStripMenuItem
             // 
             this.delteToolStripMenuItem.Name = "delteToolStripMenuItem";
-            this.delteToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.delteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
             this.delteToolStripMenuItem.Size = new System.Drawing.Size(302, 36);
             this.delteToolStripMenuItem.Text = "Delete";
             this.delteToolStripMenuItem.Click += new System.EventHandler(this.btnDelete_Click);
@@ -746,7 +746,7 @@ namespace FileGuide
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 34);
             this.label4.TabIndex = 3;
-            this.label4.Text = "(Del)";
+            this.label4.Text = "(Ctrl+D)";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label3
@@ -854,7 +854,7 @@ namespace FileGuide
             this.tsbtnDelete.Size = new System.Drawing.Size(100, 100);
             this.tsbtnDelete.Text = "Delete";
             this.tsbtnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsbtnDelete.ToolTipText = "Delete (Del)\r\n";
+            this.tsbtnDelete.ToolTipText = "Delete (Ctrl+D)\r\n";
             this.tsbtnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // tsbtnRename

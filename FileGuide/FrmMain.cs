@@ -171,7 +171,7 @@ namespace FileGuide
                             Image img = Image.FromFile(ImagePath);
                             Clipboard.SetImage(img);
                         }
-                        
+
                         isFolder = false;
                     }
                 }
@@ -424,7 +424,7 @@ namespace FileGuide
         private void menuRename_Click(object sender, EventArgs e)
         {
             if (listView.Focused)
-            listView.SelectedItems[0].BeginEdit();
+                listView.SelectedItems[0].BeginEdit();
         }
 
 
@@ -573,7 +573,7 @@ namespace FileGuide
                     {
                         tableLayoutFirstPage.Visible = true;
                         listView.Visible = false;
-                        clsTreeListView.ShowRecentAccessedFiles( listViewRecentFiles);
+                        clsTreeListView.ShowRecentAccessedFiles(listViewRecentFiles);
                     }
                     tscmbPath.Text = currentPath;
                     tabPathList[tabControl.SelectedIndex] = currentPath;
@@ -644,22 +644,25 @@ namespace FileGuide
                 string FirstItemName = listView.SelectedItems[0].SubItems[0].Text;
                 string ZipFilePath = currentPath + "\\" + FirstItemName.Split('.').ToList().ElementAt(0) + ".zip";
 
-                using (FileStream fs = new FileStream(ZipFilePath, FileMode.Create))
+
+                foreach (ListViewItem item in listView.SelectedItems)
                 {
-                    using (ZipArchive newZipFile = new ZipArchive(fs, ZipArchiveMode.Update))
+                    string itemName = item.SubItems[0].Text;
+                    string itemPath = currentPath + "\\" + itemName;
+                    if (!System.IO.Path.GetExtension(itemPath).Equals(".zip"))
                     {
-                        foreach (ListViewItem item in listView.SelectedItems)
+                        using (FileStream fs = new FileStream(ZipFilePath, FileMode.Create))
                         {
-                            string itemName = item.SubItems[0].Text;
-                            string itemPath = currentPath + "\\" + itemName;
-                            if (!System.IO.Path.GetExtension(itemPath).Equals(".zip"))
+                            using (ZipArchive newZipFile = new ZipArchive(fs, ZipArchiveMode.Update))
                             {
                                 HelperMethods.CreateEntryFromAny(newZipFile, itemPath);
                             }
-
                         }
                     }
+
                 }
+
+
                 btnRefresh.PerformClick();
             }
             catch (Exception ex)
@@ -825,7 +828,7 @@ namespace FileGuide
                 {
                     tableLayoutFirstPage.Visible = true;
                     listView.Visible = false;
-                    clsTreeListView.ShowRecentAccessedFiles (listViewRecentFiles);
+                    clsTreeListView.ShowRecentAccessedFiles(listViewRecentFiles);
                 }
                 else
                 {
@@ -878,7 +881,7 @@ namespace FileGuide
                             }
                             break;
                     }
-                   isSpecialFolder = true;
+                    isSpecialFolder = true;
                 }
 
                 // If there's an error when showing folder tree, return
@@ -1382,7 +1385,7 @@ namespace FileGuide
                     }
                 }
             }
- 
+
             tabControl.TabPages[tabControl.SelectedIndex].Text = HelperMethods.GetFileFolderName(tabPathList[tabControl.SelectedIndex]) + spaceText;
         }
 
