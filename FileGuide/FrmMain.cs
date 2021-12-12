@@ -37,7 +37,8 @@ namespace FileGuide
         private bool isCutting = false;
         private bool isFolder = false;
         private bool isListView = false;
-        private bool haveDrawTreeViewBackground = false;
+        private bool isInDarkMode = false;
+
         private ListViewItem itemPaste;
         private string pathSource;
         private string pathDest;
@@ -725,7 +726,31 @@ namespace FileGuide
 
         private void toolStripButtonDarkMode_Click(object sender, EventArgs e)
         {
-            //this.ForeColor = 
+            if (!isInDarkMode)
+            {
+                isInDarkMode = true;
+                PrimaryTextColor = Color.White;
+                foreach (Control control in this.Controls)
+                {
+                    control.BackColor = Color.FromArgb(39, 39, 39);
+                    control.ForeColor = Color.White;
+                }
+                this.Refresh();
+
+            }
+            else
+            {
+                isInDarkMode = false;
+                HoverColor = Color.FromArgb(229, 243, 255);
+                UnfocusedSelectColor = Color.FromArgb(242, 242, 242);
+                FocusedSelectColor = Color.FromArgb(205, 232, 255);
+                Color PrimaryThemeColor = Color.FromArgb(9, 119, 199);
+                Color SecondaryThemeColor = Color.FromArgb(43, 192, 228);
+                PrimaryTextColor = Color.Black;
+                SecondaryTextColor = Color.Gray;
+                this.Refresh();
+            }
+            
         }
         #endregion
 
@@ -786,7 +811,7 @@ namespace FileGuide
             }
             else
             {
-                SolidBrush backgroundBrush = new SolidBrush(Color.FromArgb(243, 243, 243));
+                SolidBrush backgroundBrush = new SolidBrush(UnfocusedSelectColor);
                 e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
             }
 
