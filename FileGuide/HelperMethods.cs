@@ -317,16 +317,15 @@ namespace FileGuide
                 foreach (ZipArchiveEntry entry in archive.Entries)
                 {
                     if (entry.FullName.EndsWith("/"))
-                    {
                         Directory.CreateDirectory(destinationDirectoryName);
-                    }
-                    ImprovedExtractToFileFolder(entry, destinationDirectoryName, overwriteMethod);
+                    else
+                        ImprovedExtractToFile(entry, destinationDirectoryName, overwriteMethod);
                 }
             }
         }
 
 
-        public static void ImprovedExtractToFileFolder(ZipArchiveEntry file, string destinationPath, Overwrite overwriteMethod = Overwrite.IfNewer)
+        public static void ImprovedExtractToFile(ZipArchiveEntry file, string destinationPath, Overwrite overwriteMethod = Overwrite.IfNewer)
         {
             //Gets the complete path for the destination file, including any
             //relative paths that were in the zip file

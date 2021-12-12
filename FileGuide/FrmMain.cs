@@ -679,42 +679,37 @@ namespace FileGuide
         {
             try
             {
-                string itemName;
-                string itemPath;
+                string ZipItemName;
+                string ZipItemPath;
 
                 foreach (ListViewItem item in listView.SelectedItems)
                 {
 
-                    itemName = item.SubItems[0].Text;
-                    itemPath = currentPath + "\\" + itemName;
+                    ZipItemName = item.SubItems[0].Text;
+                    ZipItemPath = currentPath + "\\" + ZipItemName;
 
-                    if (System.IO.Path.GetExtension(itemPath).Equals(".zip"))
+                    if (System.IO.Path.GetExtension(ZipItemPath).Equals(".zip"))
                     {
-                        string destinationPath = currentPath + "\\" + itemName.Replace(".zip", "");
+                        string destinationPath = currentPath + "\\" + ZipItemName.Replace(".zip", "");
 
                         if (!File.Exists(destinationPath) && !Directory.Exists(destinationPath))
                         {
-                            ZipFile.ExtractToDirectory(itemPath, destinationPath);
-                        }
-                        else if (File.Exists(destinationPath))
-                        {
-                            int SameNameCount = 1;
-                            string newItemName = itemName.Replace(".zip", "");
-                            foreach (ListViewItem LVitem in listView.Items)
-                            {
-                                if (item.SubItems[0].Text.ToString().Contains(newItemName))
-                                {
-                                    newItemName = itemName.Replace(".zip", "") + SameNameCount.ToString();
-                                    SameNameCount++;
-                                }
-                            }
-
-                            ZipFile.ExtractToDirectory(itemPath, currentPath + "\\" + newItemName);
+                            ZipFile.ExtractToDirectory(ZipItemPath, destinationPath);
                         }
                         else
                         {
-                            MessageBox.Show("Aloha");
-                            HelperMethods.ImprovedExtractToDirectory(itemPath, destinationPath);
+                            int SameNameCount = 1;
+                            string OriginalItemName = ZipItemName.Replace(".zip", "");
+                            string newItemName = OriginalItemName;
+                            foreach (ListViewItem LVitem in listView.Items)
+                            {
+                                if (LVitem.SubItems[0].Text.ToString().Contains(OriginalItemName))
+                                {
+                                    newItemName = OriginalItemName + SameNameCount.ToString();
+                                    SameNameCount++;
+                                }
+                            }
+                            ZipFile.ExtractToDirectory(ZipItemPath, currentPath + "\\" + newItemName);
                         }
                     }
                 }
