@@ -732,8 +732,7 @@ namespace FileGuide
                 PrimaryTextColor = Color.White;
                 foreach (Control control in this.Controls)
                 {
-                    control.BackColor = Color.FromArgb(39, 39, 39);
-                    control.ForeColor = Color.White;
+                    UpdateColorControls(control, Color.FromArgb(39, 39, 39),Color.White);
                 }
                 this.Refresh();
 
@@ -744,13 +743,28 @@ namespace FileGuide
                 HoverColor = Color.FromArgb(229, 243, 255);
                 UnfocusedSelectColor = Color.FromArgb(242, 242, 242);
                 FocusedSelectColor = Color.FromArgb(205, 232, 255);
-                Color PrimaryThemeColor = Color.FromArgb(9, 119, 199);
-                Color SecondaryThemeColor = Color.FromArgb(43, 192, 228);
                 PrimaryTextColor = Color.Black;
                 SecondaryTextColor = Color.Gray;
+
+                foreach (Control control in this.Controls)
+                {
+                    UpdateColorControls(control, Color.White, Color.Black);
+                }
+                treeView.BackColor = Color.FromArgb(244, 244, 244);
                 this.Refresh();
             }
             
+        }
+
+
+        public void UpdateColorControls(Control control, Color BackColor, Color ForeColor)
+        {
+            control.BackColor = BackColor;
+            control.ForeColor = ForeColor;
+            foreach (Control subControl in control.Controls)
+            {
+                UpdateColorControls(subControl, BackColor, ForeColor);
+            }
         }
         #endregion
 

@@ -141,7 +141,7 @@ namespace FileGuide
             // statusStrip1
             // 
             this.statusStrip1.AutoSize = false;
-            this.statusStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
+            this.statusStrip1.BackColor = System.Drawing.Color.White;
             this.statusStrip1.Font = new System.Drawing.Font("Questrial", 9F);
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -379,7 +379,7 @@ namespace FileGuide
             // 
             // mainSplitContainer.Panel2
             // 
-            this.mainSplitContainer.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
+            this.mainSplitContainer.Panel2.BackColor = System.Drawing.Color.White;
             this.mainSplitContainer.Panel2.Controls.Add(this.tabControl);
             this.mainSplitContainer.Panel2.Controls.Add(this.tsPath);
             this.mainSplitContainer.Panel2.Controls.Add(this.toolsPanel);
@@ -389,13 +389,13 @@ namespace FileGuide
             // 
             // treeView
             // 
-            this.treeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
+            this.treeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeView.ContextMenuStrip = this.treeViewContextMenuStrip;
             this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
             this.treeView.Font = new System.Drawing.Font("Questrial", 9.999999F);
-            this.treeView.ForeColor = System.Drawing.Color.White;
+            this.treeView.ForeColor = System.Drawing.Color.Black;
             this.treeView.FullRowSelect = true;
             this.treeView.HotTracking = true;
             this.treeView.Indent = 20;
@@ -465,21 +465,21 @@ namespace FileGuide
             // 
             // tabPage1
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
+            this.tabPage1.BackColor = System.Drawing.Color.White;
             this.tabPage1.Controls.Add(this.tableLayoutFirstPage);
             this.tabPage1.Controls.Add(this.listView);
-            this.tabPage1.ForeColor = System.Drawing.Color.White;
+            this.tabPage1.ForeColor = System.Drawing.Color.Black;
             this.tabPage1.Location = new System.Drawing.Point(4, 39);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1295, 564);
+            this.tabPage1.Size = new System.Drawing.Size(1304, 564);
             this.tabPage1.TabIndex = 1;
             this.tabPage1.Text = "tabPage1";
             // 
             // tableLayoutFirstPage
             // 
             this.tableLayoutFirstPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutFirstPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
+            this.tableLayoutFirstPage.BackColor = System.Drawing.Color.White;
             this.tableLayoutFirstPage.ColumnCount = 1;
             this.tableLayoutFirstPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutFirstPage.Controls.Add(this.tableLblDrives, 0, 0);
@@ -488,6 +488,7 @@ namespace FileGuide
             this.tableLayoutFirstPage.Controls.Add(this.listViewRecentFiles, 0, 3);
             this.tableLayoutFirstPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutFirstPage.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableLayoutFirstPage.ForeColor = System.Drawing.Color.Black;
             this.tableLayoutFirstPage.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutFirstPage.Name = "tableLayoutFirstPage";
             this.tableLayoutFirstPage.RowCount = 5;
@@ -496,29 +497,31 @@ namespace FileGuide
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutFirstPage.Size = new System.Drawing.Size(1289, 558);
+            this.tableLayoutFirstPage.Size = new System.Drawing.Size(1298, 558);
             this.tableLayoutFirstPage.TabIndex = 1;
             // 
             // tableLblDrives
             // 
-            this.tableLblDrives.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
+            this.tableLblDrives.BackColor = System.Drawing.Color.White;
             this.tableLblDrives.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLblDrives.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableLblDrives.ForeColor = System.Drawing.Color.Black;
             this.tableLblDrives.Location = new System.Drawing.Point(3, 0);
             this.tableLblDrives.Name = "tableLblDrives";
-            this.tableLblDrives.Size = new System.Drawing.Size(1283, 51);
+            this.tableLblDrives.Size = new System.Drawing.Size(1292, 51);
             this.tableLblDrives.TabIndex = 0;
             this.tableLblDrives.Text = "Drives";
             this.tableLblDrives.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // tableLblRecent
             // 
-            this.tableLblRecent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
+            this.tableLblRecent.BackColor = System.Drawing.Color.White;
             this.tableLblRecent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLblRecent.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableLblRecent.ForeColor = System.Drawing.Color.Black;
             this.tableLblRecent.Location = new System.Drawing.Point(3, 214);
             this.tableLblRecent.Name = "tableLblRecent";
-            this.tableLblRecent.Size = new System.Drawing.Size(1283, 53);
+            this.tableLblRecent.Size = new System.Drawing.Size(1292, 53);
             this.tableLblRecent.TabIndex = 1;
             this.tableLblRecent.Text = "Recent files";
             this.tableLblRecent.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -526,11 +529,12 @@ namespace FileGuide
             // flowLayoutPanelDrives
             // 
             this.flowLayoutPanelDrives.AutoScroll = true;
-            this.flowLayoutPanelDrives.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
+            this.flowLayoutPanelDrives.BackColor = System.Drawing.Color.White;
             this.flowLayoutPanelDrives.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanelDrives.ForeColor = System.Drawing.Color.Black;
             this.flowLayoutPanelDrives.Location = new System.Drawing.Point(3, 56);
             this.flowLayoutPanelDrives.Name = "flowLayoutPanelDrives";
-            this.flowLayoutPanelDrives.Size = new System.Drawing.Size(1283, 155);
+            this.flowLayoutPanelDrives.Size = new System.Drawing.Size(1292, 155);
             this.flowLayoutPanelDrives.TabIndex = 2;
             // 
             // listViewRecentFiles
@@ -538,19 +542,19 @@ namespace FileGuide
             this.listViewRecentFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewRecentFiles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
+            this.listViewRecentFiles.BackColor = System.Drawing.Color.White;
             this.listViewRecentFiles.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listViewRecentFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.listViewColRecentPath,
             this.Path});
-            this.listViewRecentFiles.ForeColor = System.Drawing.Color.White;
+            this.listViewRecentFiles.ForeColor = System.Drawing.Color.Black;
             this.listViewRecentFiles.FullRowSelect = true;
             this.listViewRecentFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewRecentFiles.HideSelection = false;
             this.listViewRecentFiles.Location = new System.Drawing.Point(3, 270);
             this.listViewRecentFiles.Name = "listViewRecentFiles";
             this.listViewRecentFiles.OwnerDraw = true;
-            this.listViewRecentFiles.Size = new System.Drawing.Size(1283, 263);
+            this.listViewRecentFiles.Size = new System.Drawing.Size(1292, 263);
             this.listViewRecentFiles.TabIndex = 3;
             this.listViewRecentFiles.UseCompatibleStateImageBehavior = false;
             this.listViewRecentFiles.View = System.Windows.Forms.View.Details;
@@ -571,7 +575,7 @@ namespace FileGuide
             // 
             // listView
             // 
-            this.listView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
+            this.listView.BackColor = System.Drawing.Color.White;
             this.listView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colName,
@@ -581,7 +585,7 @@ namespace FileGuide
             this.colDateModified});
             this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView.ForeColor = System.Drawing.Color.White;
+            this.listView.ForeColor = System.Drawing.Color.Black;
             this.listView.FullRowSelect = true;
             this.listView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView.HideSelection = false;
@@ -590,7 +594,7 @@ namespace FileGuide
             this.listView.Margin = new System.Windows.Forms.Padding(4);
             this.listView.Name = "listView";
             this.listView.OwnerDraw = true;
-            this.listView.Size = new System.Drawing.Size(1289, 558);
+            this.listView.Size = new System.Drawing.Size(1298, 558);
             this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
@@ -641,7 +645,7 @@ namespace FileGuide
             // tsPath
             // 
             this.tsPath.AutoSize = false;
-            this.tsPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
+            this.tsPath.BackColor = System.Drawing.Color.White;
             this.tsPath.Font = new System.Drawing.Font("Questrial", 9F);
             this.tsPath.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tsPath.ImageScalingSize = new System.Drawing.Size(24, 24);
@@ -698,7 +702,7 @@ namespace FileGuide
             // 
             // toolsPanel
             // 
-            this.toolsPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
+            this.toolsPanel.BackColor = System.Drawing.Color.White;
             this.toolsPanel.Controls.Add(this.ShortcutKeysPanel);
             this.toolsPanel.Controls.Add(this.toolBar);
             this.toolsPanel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -709,7 +713,7 @@ namespace FileGuide
             // 
             // ShortcutKeysPanel
             // 
-            this.ShortcutKeysPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
+            this.ShortcutKeysPanel.BackColor = System.Drawing.Color.White;
             this.ShortcutKeysPanel.Controls.Add(this.label7);
             this.ShortcutKeysPanel.Controls.Add(this.label6);
             this.ShortcutKeysPanel.Controls.Add(this.label5);
@@ -718,7 +722,7 @@ namespace FileGuide
             this.ShortcutKeysPanel.Controls.Add(this.label2);
             this.ShortcutKeysPanel.Controls.Add(this.label1);
             this.ShortcutKeysPanel.Font = new System.Drawing.Font("Be Vietnam", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ShortcutKeysPanel.ForeColor = System.Drawing.Color.DarkGray;
+            this.ShortcutKeysPanel.ForeColor = System.Drawing.Color.DimGray;
             this.ShortcutKeysPanel.Location = new System.Drawing.Point(0, 121);
             this.ShortcutKeysPanel.Name = "ShortcutKeysPanel";
             this.ShortcutKeysPanel.Size = new System.Drawing.Size(1301, 27);
@@ -790,7 +794,7 @@ namespace FileGuide
             // toolBar
             // 
             this.toolBar.AutoSize = false;
-            this.toolBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(39)))));
+            this.toolBar.BackColor = System.Drawing.Color.White;
             this.toolBar.Dock = System.Windows.Forms.DockStyle.None;
             this.toolBar.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolBar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
@@ -1104,7 +1108,7 @@ namespace FileGuide
             this.Controls.Add(this.mainSplitContainer);
             this.Controls.Add(this.statusStrip1);
             this.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ForeColor = System.Drawing.Color.White;
+            this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.ShortcutKeysMenu;
