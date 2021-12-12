@@ -660,7 +660,7 @@ namespace FileGuide
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error has occured while zipping files \n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error has occured while zipping files/folders \n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -672,15 +672,44 @@ namespace FileGuide
         /// <param name="e"></param>
         private void unzipFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (ListViewItem item in listView.SelectedItems)
+            try
             {
-               
-                string itemName = item.SubItems[0].Text;
-                string itemPath = currentPath + "\\" + itemName;
-                if (System.IO.Path.GetExtension(itemPath).Equals(".zip"))
+                string itemName;
+                string itemPath;
+
+                foreach (ListViewItem item in listView.SelectedItems)
                 {
 
+                    itemName = item.SubItems[0].Text;
+                    itemPath = currentPath + "\\" + itemName;
+
+                    if (System.IO.Path.GetExtension(itemPath).Equals(".zip"))
+                    {
+                        bool isSameNameAlreadyExists = false;
+                        string destinationPath = currentPath + "\\" + itemName.Replace(".zip", "");
+
+                        foreach (ListViewItem LVitem in listView.Items)
+                        {
+                            if (LVitem.SubItems[0].Text == itemName.Replace(".zip", "") && LVitem.SubItems[1].Text != "Compressed Folder")
+                            {
+                                isSameNameAlreadyExists = true;
+                                break;
+                            }
+                        }
+                        if (isSameNameAlreadyExists == false)
+                            ZipFile.ExtractToDirectory(itemPath, destinationPath);
+                        else
+                        {
+                            MessageBox.Show("Aloha");
+                            HelperMethods.ImprovedExtractToDirectory(itemPath, destinationPath);
+                        }
+                    }
                 }
+                btnRefresh.PerformClick();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error has occured while unzipping files \n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
