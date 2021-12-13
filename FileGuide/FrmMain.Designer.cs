@@ -63,7 +63,7 @@ namespace FileGuide
             this.treeViewContextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
             this.pinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unpingFromEasyAccessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabControl = new FileGuide.CustomTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutFirstPage = new System.Windows.Forms.TableLayoutPanel();
             this.tableLblDrives = new System.Windows.Forms.Label();
@@ -452,8 +452,8 @@ namespace FileGuide
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.tabPlus);
-            this.tabControl.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabControl.Location = new System.Drawing.Point(-9, 214);
+            this.tabControl.ItemSize = new System.Drawing.Size(200, 50);
+            this.tabControl.Location = new System.Drawing.Point(0, 214);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.ShowToolTips = true;
@@ -469,10 +469,10 @@ namespace FileGuide
             this.tabPage1.Controls.Add(this.tableLayoutFirstPage);
             this.tabPage1.Controls.Add(this.listView);
             this.tabPage1.ForeColor = System.Drawing.Color.Black;
-            this.tabPage1.Location = new System.Drawing.Point(4, 39);
+            this.tabPage1.Location = new System.Drawing.Point(4, 54);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1304, 564);
+            this.tabPage1.Size = new System.Drawing.Size(1304, 549);
             this.tabPage1.TabIndex = 1;
             this.tabPage1.Text = "tabPage1";
             // 
@@ -497,7 +497,7 @@ namespace FileGuide
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutFirstPage.Size = new System.Drawing.Size(1298, 558);
+            this.tableLayoutFirstPage.Size = new System.Drawing.Size(1298, 543);
             this.tableLayoutFirstPage.TabIndex = 1;
             // 
             // tableLblDrives
@@ -519,9 +519,9 @@ namespace FileGuide
             this.tableLblRecent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLblRecent.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tableLblRecent.ForeColor = System.Drawing.Color.Black;
-            this.tableLblRecent.Location = new System.Drawing.Point(3, 214);
+            this.tableLblRecent.Location = new System.Drawing.Point(3, 208);
             this.tableLblRecent.Name = "tableLblRecent";
-            this.tableLblRecent.Size = new System.Drawing.Size(1292, 53);
+            this.tableLblRecent.Size = new System.Drawing.Size(1292, 52);
             this.tableLblRecent.TabIndex = 1;
             this.tableLblRecent.Text = "Recent files";
             this.tableLblRecent.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -532,9 +532,9 @@ namespace FileGuide
             this.flowLayoutPanelDrives.BackColor = System.Drawing.Color.White;
             this.flowLayoutPanelDrives.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanelDrives.ForeColor = System.Drawing.Color.Black;
-            this.flowLayoutPanelDrives.Location = new System.Drawing.Point(3, 56);
+            this.flowLayoutPanelDrives.Location = new System.Drawing.Point(3, 55);
             this.flowLayoutPanelDrives.Name = "flowLayoutPanelDrives";
-            this.flowLayoutPanelDrives.Size = new System.Drawing.Size(1292, 155);
+            this.flowLayoutPanelDrives.Size = new System.Drawing.Size(1292, 150);
             this.flowLayoutPanelDrives.TabIndex = 2;
             // 
             // listViewRecentFiles
@@ -551,10 +551,10 @@ namespace FileGuide
             this.listViewRecentFiles.FullRowSelect = true;
             this.listViewRecentFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewRecentFiles.HideSelection = false;
-            this.listViewRecentFiles.Location = new System.Drawing.Point(3, 270);
+            this.listViewRecentFiles.Location = new System.Drawing.Point(3, 263);
             this.listViewRecentFiles.Name = "listViewRecentFiles";
             this.listViewRecentFiles.OwnerDraw = true;
-            this.listViewRecentFiles.Size = new System.Drawing.Size(1292, 263);
+            this.listViewRecentFiles.Size = new System.Drawing.Size(1292, 255);
             this.listViewRecentFiles.TabIndex = 3;
             this.listViewRecentFiles.UseCompatibleStateImageBehavior = false;
             this.listViewRecentFiles.View = System.Windows.Forms.View.Details;
@@ -594,7 +594,7 @@ namespace FileGuide
             this.listView.Margin = new System.Windows.Forms.Padding(4);
             this.listView.Name = "listView";
             this.listView.OwnerDraw = true;
-            this.listView.Size = new System.Drawing.Size(1298, 558);
+            this.listView.Size = new System.Drawing.Size(1298, 543);
             this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
@@ -634,10 +634,10 @@ namespace FileGuide
             // 
             // tabPlus
             // 
-            this.tabPlus.Location = new System.Drawing.Point(4, 39);
+            this.tabPlus.Location = new System.Drawing.Point(4, 54);
             this.tabPlus.Name = "tabPlus";
             this.tabPlus.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPlus.Size = new System.Drawing.Size(1304, 564);
+            this.tabPlus.Size = new System.Drawing.Size(1304, 549);
             this.tabPlus.TabIndex = 0;
             this.tabPlus.Text = " ";
             this.tabPlus.UseVisualStyleBackColor = true;
@@ -1198,7 +1198,7 @@ namespace FileGuide
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.SplitContainer mainSplitContainer;
         private System.Windows.Forms.ColumnHeader colType;
-        private System.Windows.Forms.TabControl tabControl;
+        private FileGuide.CustomTabControl tabControl;
         private System.Windows.Forms.TabPage tabPlus;
         private System.Windows.Forms.TabPage tabPage1;
         private Guna.UI2.WinForms.Guna2ContextMenuStrip treeViewContextMenuStrip;

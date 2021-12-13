@@ -30,7 +30,7 @@ namespace FileGuide
         public static Color PrimaryThemeColor = Color.FromArgb(9, 119, 199);
         public static Color SecondaryThemeColor = Color.FromArgb(43, 192, 228);
         private Color PrimaryTextColor = Color.Black;
-        private Color SecondaryTextColor = Color.Gray;
+        private Color SecondaryTextColor = Color.DimGray;
 
         private bool isSpecialFolder = false;
         private bool isCopying = false;
@@ -811,56 +811,6 @@ namespace FileGuide
                         break;
                     }
                 }
-            }
-        }
-
-        private void tabControl_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            var tabPage = tabControl.TabPages[e.Index];
-            var tabRect = tabControl.GetTabRect(e.Index);
-            tabRect.Inflate(-2, -2);
-            int imageSize = 16;
-
-            // Change the color of the selected tabs
-            if (e.Index == tabControl.SelectedIndex)
-            {
-                SolidBrush backgroundBrush = new SolidBrush(Color.White);
-                e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
-            }
-            else
-            {
-                SolidBrush backgroundBrush = new SolidBrush(UnfocusedSelectColor);
-                e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
-            }
-
-            // Draw the X sign or Plus sign depending on the tabs
-            if (e.Index == tabControl.TabCount - 1)
-            {
-                Image addImage = Properties.Resources.Sign_Plus;
-                e.Graphics.DrawImage
-                    (addImage,
-                    tabRect.Left + (tabRect.Width - imageSize) / 2,
-                    tabRect.Top + (tabRect.Height - imageSize) / 2,
-                    imageSize,
-                    imageSize);
-            }
-            else
-            {
-                Image closeImage = Properties.Resources.Sign_Close;
-                e.Graphics.DrawImage
-                    (closeImage,
-                    tabRect.Right - imageSize - 5,
-                    tabRect.Top + (tabRect.Height - imageSize) / 2,
-                    imageSize,
-                    imageSize);
-
-                TextFormatFlags textFlags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis;
-                TextRenderer.DrawText
-                   (e.Graphics,
-                   tabPage.Text,
-                   tabPage.Font,
-                   tabRect, tabPage.ForeColor,
-                   textFlags);
             }
         }
 
