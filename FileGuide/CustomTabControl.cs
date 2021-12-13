@@ -64,7 +64,7 @@ namespace FileGuide
             // Draw tabpage area
             Rectangle r = ClientRectangle;
             var top = this.GetTabRect(0).Bottom;
-            using (var br = new SolidBrush(Color.FromKnownColor(KnownColor.Window)))
+            using (var br = new SolidBrush(FrmMain.PrimaryBackgroundColor))
             {
                 e.Graphics.FillRectangle(br, new Rectangle(r.Left, top, r.Width, r.Height - top));
             }
