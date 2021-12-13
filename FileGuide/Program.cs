@@ -16,6 +16,7 @@ namespace FileGuide
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new FClass1());
             Application.Run(new FrmMain());
             //Application.Run(new FormLogin());
         }

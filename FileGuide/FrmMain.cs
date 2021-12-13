@@ -35,6 +35,7 @@ namespace FileGuide
         public static Color PrimaryBackgroundColor = Color.White;
         public static Color SecondaryBackgroundColor = Color.FromArgb(244, 244, 244);
 
+
         private bool isSpecialFolder = false;
         private bool isCopying = false;
         private bool isCutting = false;
@@ -91,6 +92,8 @@ namespace FileGuide
             tabControl.TabPages[0].Text = "My Computer    ";
             tabControl.TabPages[tabControl.TabCount - 1].ToolTipText = "Add a new tab";
             tabControl.Padding = new Point(16, 4);
+            //listView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+            //listView.AutoResizeColumn(listView.Columns.Count - 1, ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
 
@@ -101,6 +104,7 @@ namespace FileGuide
         /// <param name="e"></param>
         private void FrmMain_Resize(object sender, EventArgs e)
         {
+           // listView.Columns[listView.Columns.Count - 1].Width = -1;
             if (Width > 900)
                 tscmbPath.Width = Width - 800;
         }
@@ -1132,6 +1136,9 @@ namespace FileGuide
             // Draw border
             Pen textBorder = new Pen(Color.FromArgb(186, 186, 186), 1.5f);
             e.Graphics.DrawLine(textBorder, new Point(e.Bounds.X + 25, e.Bounds.Y - 5 + e.Bounds.Height), new Point(e.Bounds.X + e.Bounds.Width, e.Bounds.Y - 5 + e.Bounds.Height));
+
+
+            
         }
 
 
@@ -1416,5 +1423,16 @@ namespace FileGuide
 
         #endregion
 
+        private void listView_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+                e.Cancel = true;
+                e.NewWidth = listView.Columns[e.ColumnIndex].Width;
+        }
+
+        private void listViewRecentFiles_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listView.Columns[e.ColumnIndex].Width;
+        }
     }
 }
