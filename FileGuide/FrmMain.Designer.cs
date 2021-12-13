@@ -110,10 +110,10 @@ namespace FileGuide
             this.tableLblDrives = new System.Windows.Forms.Label();
             this.tableLblRecent = new System.Windows.Forms.Label();
             this.flowLayoutPanelDrives = new System.Windows.Forms.FlowLayoutPanel();
-            this.listViewRecentFiles = new System.Windows.Forms.ListView();
+            this.listViewRecentFiles = new FileGuide.DoubleBufferedListView();
             this.listViewColRecentPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Path = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listView = new System.Windows.Forms.ListView();
+            this.listView = new FileGuide.DoubleBufferedListView();
             this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -1141,7 +1141,7 @@ namespace FileGuide
         }
 
         #endregion
-        private System.Windows.Forms.ListView listView;
+        private FileGuide.DoubleBufferedListView listView;
         private System.Windows.Forms.ColumnHeader colName;
         private System.Windows.Forms.ColumnHeader colSize;
         private System.Windows.Forms.ColumnHeader colDateCreated;
@@ -1169,7 +1169,7 @@ namespace FileGuide
         private System.Windows.Forms.Label tableLblDrives;
         private System.Windows.Forms.Label tableLblRecent;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelDrives;
-        private System.Windows.Forms.ListView listViewRecentFiles;
+        private FileGuide.DoubleBufferedListView listViewRecentFiles;
         private System.Windows.Forms.ColumnHeader listViewColRecentPath;
         private System.Windows.Forms.ColumnHeader Path;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;

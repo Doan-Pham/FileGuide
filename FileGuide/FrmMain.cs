@@ -105,12 +105,12 @@ namespace FileGuide
         /// <param name="e"></param>
         private void FrmMain_Resize(object sender, EventArgs e)
         {
-           // listView.Columns[listView.Columns.Count - 1].Width = -1;
-            if (Width > 900)
-                tscmbPath.Width = Width - 800;
+            if (Width > 900) tscmbPath.Width = Width - 800;
+
             toolBar.Width = Width - treeView.Width + 10;
             tsPath.Width = Width - treeView.Width + 10;
             ShortcutKeysPanel.Width = Width - treeView.Width + 10;
+
             listView.ColumnWidthChanging -= listView_ColumnWidthChanging;
             int SumColumnHeadersWidth = 0 ;
             for (int i = 0; i < listView.Columns.Count - 1;i++)
@@ -131,12 +131,11 @@ namespace FileGuide
             ResumeLayout();
             base.OnResizeEnd(e);
         }
-
-        /// <summary>
-        /// Write recent accessed files list and easy access folders to .txt files 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+/// <summary>
+         /// Write recent accessed files list and easy access folders to .txt files 
+         /// </summary>
+         /// <param name="sender"></param>
+         /// <param name="e"></param>
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             // Write recent accessed files list
