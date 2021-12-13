@@ -24,13 +24,16 @@ namespace FileGuide
         string spaceText = "      ";
         List<Guna2Panel> DrivePanelList = new List<Guna2Panel>();
 
-        private Color HoverColor = Color.FromArgb(229, 243, 255);
-        private Color UnfocusedSelectColor = Color.FromArgb(242, 242, 242);
-        private Color FocusedSelectColor = Color.FromArgb(205, 232, 255);
+        public static Color HoverColor = Color.FromArgb(229, 243, 255);
+        public static Color UnfocusedSelectColor = Color.FromArgb(242, 242, 242);
+        public static Color FocusedSelectColor = Color.FromArgb(205, 232, 255);
+        public static Color PrimaryTextColor = Color.Black;
+        public static Color SecondaryTextColor = Color.DimGray;
+
         public static Color PrimaryThemeColor = Color.FromArgb(9, 119, 199);
         public static Color SecondaryThemeColor = Color.FromArgb(43, 192, 228);
-        private Color PrimaryTextColor = Color.Black;
-        private Color SecondaryTextColor = Color.DimGray;
+        public static Color PrimaryBackgroundColor = Color.White;
+        public static Color SecondaryBackgroundColor = Color.FromArgb(244, 244, 244);
 
         private bool isSpecialFolder = false;
         private bool isCopying = false;
@@ -733,11 +736,14 @@ namespace FileGuide
                 HoverColor = Color.FromArgb(50, 50, 50);
                 UnfocusedSelectColor = Color.FromArgb(75, 75, 75);
                 FocusedSelectColor = Color.FromArgb(100, 100, 100);
-                
+                PrimaryBackgroundColor = Color.FromArgb(39, 39, 39);
+                SecondaryBackgroundColor = FocusedSelectColor;
+
                 foreach (Control control in this.Controls)
                 {
-                    UpdateColorControls(control, Color.FromArgb(39, 39, 39),Color.White);
+                    UpdateColorControls(control, PrimaryBackgroundColor, PrimaryTextColor);
                 }
+                treeView.BackColor = HoverColor;
                 this.Refresh();
 
             }
@@ -749,10 +755,12 @@ namespace FileGuide
                 FocusedSelectColor = Color.FromArgb(205, 232, 255);
                 PrimaryTextColor = Color.Black;
                 SecondaryTextColor = Color.Gray;
+                PrimaryBackgroundColor = Color.White;
+                SecondaryBackgroundColor = Color.FromArgb(244, 244, 244);
 
                 foreach (Control control in this.Controls)
                 {
-                    UpdateColorControls(control, Color.White, Color.Black);
+                    UpdateColorControls(control, PrimaryBackgroundColor, PrimaryTextColor);
                 }
                 treeView.BackColor = Color.FromArgb(244, 244, 244);
                 this.Refresh();
@@ -770,6 +778,8 @@ namespace FileGuide
                 UpdateColorControls(subControl, BackColor, ForeColor);
             }
         }
+
+
         #endregion
 
 

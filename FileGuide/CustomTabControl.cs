@@ -38,25 +38,23 @@ namespace FileGuide
             if (index == 0) r = new Rectangle(r.Left - 2, r.Top, r.Width + 2, r.Height);
             if (index != this.SelectedIndex) r = new Rectangle(r.Left, r.Top + 2, r.Width, r.Height - 2);
             Color tabColor;
-            if (index == this.SelectedIndex) tabColor = Color.FromKnownColor(KnownColor.Window);
-            else tabColor = Color.FromArgb(0xf0, 0xf0, 0xf0);
+            if (index == this.SelectedIndex) tabColor = FrmMain.SecondaryBackgroundColor;
+            else tabColor =  FrmMain.HoverColor;
             using (var br = new SolidBrush(tabColor))
             {
                 g.FillRectangle(br, r);
             }
             using (var pen = new Pen(Color.FromArgb(186, 186, 186), 2.0f))
             {
-                //g.DrawLine(pen, r.Left, r.Top, r.Right, r.Top);
                 g.DrawLine(pen, r.Right-1, r.Top+5, r.Right -1, r.Bottom-7);
-            }
-            
+            } 
         }
 
         protected virtual void DrawTabText(Graphics g, int index, Rectangle r)
         {
             r.Inflate(-1, -1);
             TextRenderer.DrawText(g, this.TabPages[index].Text, this.Font,
-                r, Color.FromKnownColor(KnownColor.WindowText),
+                r, FrmMain.PrimaryTextColor,
                 TextFormatFlags.Left | TextFormatFlags.VerticalCenter);
         }
 
