@@ -730,6 +730,10 @@ namespace FileGuide
             {
                 isInDarkMode = true;
                 PrimaryTextColor = Color.White;
+                HoverColor = Color.FromArgb(50, 50, 50);
+                UnfocusedSelectColor = Color.FromArgb(75, 75, 75);
+                FocusedSelectColor = Color.FromArgb(100, 100, 100);
+                
                 foreach (Control control in this.Controls)
                 {
                     UpdateColorControls(control, Color.FromArgb(39, 39, 39),Color.White);
