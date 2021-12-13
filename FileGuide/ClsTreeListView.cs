@@ -365,7 +365,7 @@ namespace FileGuide
         /// Show the listView first page whenever the root node-My Computer is focused
         /// </summary>
         /// <param name="flowLayoutPanelDrives"></param>
-        public void ShowFirstPage(FlowLayoutPanel flowLayoutPanelDrives, ListView RecentFiles, List<Guna2Panel> DrivePanel)
+        public void ShowFirstPage(FlowLayoutPanel flowLayoutPanelDrives, ListView RecentFiles, List<Panel> DrivePanel)
         {
             // For each drive, create a panel with icon, name, and storage information then add to listView first page
             int driveCount = 0;
@@ -379,14 +379,12 @@ namespace FileGuide
                 Label DriveName = new Label();
                 Label DriveStorageInfo = new Label();
                 Guna2ProgressBar DriveStorageBar = new Guna2ProgressBar();
+                Panel EmptySpaceFillPanel = new Panel();
 
-                DrivePanel.Add(new Guna2Panel());
-                DrivePanel[driveCount].BorderRadius = 10;
+                DrivePanel.Add(new Panel());
                 DrivePanel[driveCount].Margin = new Padding(10);
+                DrivePanel[driveCount].BorderStyle = BorderStyle.FixedSingle;
                 DrivePanel[driveCount].Padding = new Padding(10);
-                DrivePanel[driveCount].BorderThickness = 2;
-                DrivePanel[driveCount].BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-                DrivePanel[driveCount].BorderColor = Color.Silver;
                 DrivePanel[driveCount].Width = 390;
                 DrivePanel[driveCount].Height = 125;
                 DrivePanel[driveCount].Margin = new Padding(3, 10, 20, 10);
@@ -450,6 +448,10 @@ namespace FileGuide
                 DrivePicture.Width = 80;
                 DrivePicture.Dock = DockStyle.Left;
                 DrivePanel[driveCount].Controls.Add(DrivePicture);
+
+                EmptySpaceFillPanel.Width = DrivePanel[driveCount].Width - DriveStorageBar.Width - DrivePicture.Width;
+                EmptySpaceFillPanel.Dock = DockStyle.Right;
+                DrivePanel[driveCount].Controls.Add(EmptySpaceFillPanel);
 
                 flowLayoutPanelDrives.Controls.Add(DrivePanel[driveCount]);
                 driveCount++;

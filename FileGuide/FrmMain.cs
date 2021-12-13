@@ -22,7 +22,7 @@ namespace FileGuide
     {
         List<string> tabPathList = new List<string> { "My Computer", "" };
         string spaceText = "      ";
-        List<Guna2Panel> DrivePanelList = new List<Guna2Panel>();
+        List<Panel> DrivePanelList = new List<Panel>();
 
         public static Color HoverColor = Color.FromArgb(229, 243, 255);
         public static Color UnfocusedSelectColor = Color.FromArgb(242, 242, 242);
@@ -131,6 +131,8 @@ namespace FileGuide
             ResumeLayout();
             base.OnResizeEnd(e);
         }
+
+
 /// <summary>
          /// Write recent accessed files list and easy access folders to .txt files 
          /// </summary>
@@ -502,7 +504,7 @@ namespace FileGuide
         #endregion
 
 
-        #region App features: Go to file/folder, refresh, go back, click file/folder, zip files/folders
+        #region App features: Go to file/folder, refresh, go back, click file/folder, zip files/folders, darkmode
 
 
         /// <summary>
@@ -568,6 +570,7 @@ namespace FileGuide
                     clsTreeListView.ShowRecentAccessedFiles(listViewRecentFiles);
                     foreach (Panel DrivePanel in DrivePanelList)
                     {
+                        
                         foreach (Control control in DrivePanel.Controls)
                         {
                             control.MouseEnter += DrivePanel_MouseEnter;
@@ -1365,7 +1368,11 @@ namespace FileGuide
         {
             Control drivePanelChildControls = sender as Control;
             Panel drivePanel = (Panel)drivePanelChildControls.Parent;
-            drivePanel.BackColor = Color.FromArgb(200, 200, 200);
+            foreach (Control child in drivePanel.Controls)
+            {
+                child.BackColor = UnfocusedSelectColor;
+            }
+            drivePanel.BackColor = UnfocusedSelectColor;
             Cursor = Cursors.Hand;
         }
 
@@ -1378,15 +1385,25 @@ namespace FileGuide
         {
             Control drivePanelChildControls = sender as Control;
             Panel drivePanel = (Panel)drivePanelChildControls.Parent;
-            drivePanel.BackColor = Color.White;
+            if (!drivePanel.ClientRectangle.Contains(PointToClient(MousePosition)))
+            {
+                foreach (Control Child in drivePanel.Controls)
+                {
+                    Child.BackColor = PrimaryBackgroundColor;
+                }
+            }
+            drivePanel.BackColor = PrimaryBackgroundColor;
             Cursor = Cursors.Default;
         }
 
-        /// <summary>
-        /// Go to the approriate hard disk when clicking on a drive panel
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
+
+
+         /// <summary>
+         /// Go to the approriate hard disk when clicking on a drive panel
+         /// </summary>
+         /// <param name="sender"></param>
+         /// <param name="e"></param>
         private void DrivePanel_Click(object sender, EventArgs e)
         {
             Control drivePanelChildControls = sender as Control;
@@ -1425,6 +1442,7 @@ namespace FileGuide
             {
                 foreach (Panel DrivePanel in DrivePanelList)
                 {
+                    
                     foreach (Control control in DrivePanel.Controls)
                     {
                         control.MouseEnter += DrivePanel_MouseEnter;
