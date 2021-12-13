@@ -1042,7 +1042,7 @@ namespace FileGuide
             this.listView.HideSelection = false;
             this.listView.LabelEdit = true;
             this.listView.Location = new System.Drawing.Point(3, 3);
-            this.listView.Margin = new System.Windows.Forms.Padding(4);
+            this.listView.Margin = new System.Windows.Forms.Padding(0);
             this.listView.Name = "listView";
             this.listView.OwnerDraw = true;
             this.listView.Size = new System.Drawing.Size(1298, 551);

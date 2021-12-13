@@ -92,6 +92,9 @@ namespace FileGuide
             tabControl.TabPages[0].Text = "My Computer    ";
             tabControl.TabPages[tabControl.TabCount - 1].ToolTipText = "Add a new tab";
             tabControl.Padding = new Point(16, 4);
+
+            //this.ResizeBegin += (s, evt) => { this.SuspendLayout(); };
+            //this.ResizeEnd += (s, evt) => { this.ResumeLayout(true); };
         }
 
 
@@ -108,8 +111,26 @@ namespace FileGuide
             toolBar.Width = Width - treeView.Width + 10;
             tsPath.Width = Width - treeView.Width + 10;
             ShortcutKeysPanel.Width = Width - treeView.Width + 10;
+            listView.ColumnWidthChanging -= listView_ColumnWidthChanging;
+            int SumColumnHeadersWidth = 0 ;
+            for (int i = 0; i < listView.Columns.Count - 1;i++)
+            {
+                SumColumnHeadersWidth += listView.Columns[i].Width;
+            }
+            listView.Columns[listView.Columns.Count - 1].Width = listView.Width - SumColumnHeadersWidth - 26;
+            listView.ColumnWidthChanging += listView_ColumnWidthChanging;
         }
 
+        protected override void OnResizeBegin(EventArgs e)
+        {
+            SuspendLayout();
+            base.OnResizeBegin(e);
+        }
+        protected override void OnResizeEnd(EventArgs e)
+        {
+            ResumeLayout();
+            base.OnResizeEnd(e);
+        }
 
         /// <summary>
         /// Write recent accessed files list and easy access folders to .txt files 
@@ -1446,5 +1467,7 @@ namespace FileGuide
             e.Cancel = true;
             e.NewWidth = listView.Columns[e.ColumnIndex].Width;
         }
+
+
     }
 }
