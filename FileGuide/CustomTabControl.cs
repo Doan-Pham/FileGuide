@@ -44,6 +44,12 @@ namespace FileGuide
             {
                 g.FillRectangle(br, r);
             }
+            using (var pen = new Pen(Color.FromArgb(186, 186, 186), 2.0f))
+            {
+                //g.DrawLine(pen, r.Left, r.Top, r.Right, r.Top);
+                g.DrawLine(pen, r.Right-1, r.Top+5, r.Right -1, r.Bottom-7);
+            }
+            
         }
 
         protected virtual void DrawTabText(Graphics g, int index, Rectangle r)
@@ -93,7 +99,7 @@ namespace FileGuide
                     Image closeImage = Properties.Resources.Sign_Close;
                     e.Graphics.DrawImage
                         (closeImage,
-                        r.Right - imageSize - 5,
+                        r.Right - imageSize - 8,
                         r.Top + (r.Height - imageSize) / 2,
                         imageSize,
                         imageSize);

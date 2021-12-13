@@ -459,7 +459,6 @@ namespace FileGuide
             this.tabControl.ShowToolTips = true;
             this.tabControl.Size = new System.Drawing.Size(1312, 607);
             this.tabControl.TabIndex = 4;
-            this.tabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControl_DrawItem);
             this.tabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl_Selecting);
             this.tabControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabControl_MouseDown);
             // 
