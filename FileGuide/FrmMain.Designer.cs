@@ -59,7 +59,7 @@ namespace FileGuide
             this.zipFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unzipFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
-            this.treeViewContextMenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            this.contextMenuStripTreeView = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unpingFromEasyAccessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsPath = new System.Windows.Forms.ToolStrip();
@@ -127,7 +127,7 @@ namespace FileGuide
             this.mainSplitContainer.Panel1.SuspendLayout();
             this.mainSplitContainer.Panel2.SuspendLayout();
             this.mainSplitContainer.SuspendLayout();
-            this.treeViewContextMenuStrip.SuspendLayout();
+            this.contextMenuStripTreeView.SuspendLayout();
             this.tsPath.SuspendLayout();
             this.toolsPanel.SuspendLayout();
             this.ShortcutKeysPanel.SuspendLayout();
@@ -292,25 +292,27 @@ namespace FileGuide
             this.unzipFileToolStripMenuItem});
             this.contextMenuStripListViewItem.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.contextMenuStripListViewItem.Name = "contextMenuStripListViewItem";
-            this.contextMenuStripListViewItem.Size = new System.Drawing.Size(303, 274);
+            this.contextMenuStripListViewItem.ShowImageMargin = false;
+            this.contextMenuStripListViewItem.Size = new System.Drawing.Size(278, 307);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(302, 36);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(277, 36);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(299, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(274, 6);
             // 
             // cutToolStripMenuItem
             // 
+            this.cutToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cutToolStripMenuItem.Name = "cutToolStripMenuItem";
             this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.cutToolStripMenuItem.Size = new System.Drawing.Size(302, 36);
+            this.cutToolStripMenuItem.Size = new System.Drawing.Size(277, 36);
             this.cutToolStripMenuItem.Text = "Cut";
             this.cutToolStripMenuItem.Click += new System.EventHandler(this.btnCut_Click);
             // 
@@ -318,20 +320,20 @@ namespace FileGuide
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(302, 36);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(277, 36);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.btnCopy_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(299, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(274, 6);
             // 
             // renameToolStripMenuItem
             // 
             this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
             this.renameToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(302, 36);
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(277, 36);
             this.renameToolStripMenuItem.Text = "Rename";
             this.renameToolStripMenuItem.Click += new System.EventHandler(this.menuRename_Click);
             // 
@@ -339,20 +341,20 @@ namespace FileGuide
             // 
             this.delteToolStripMenuItem.Name = "delteToolStripMenuItem";
             this.delteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.delteToolStripMenuItem.Size = new System.Drawing.Size(302, 36);
+            this.delteToolStripMenuItem.Size = new System.Drawing.Size(277, 36);
             this.delteToolStripMenuItem.Text = "Delete";
             this.delteToolStripMenuItem.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(299, 6);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(274, 6);
             // 
             // zipFilesToolStripMenuItem
             // 
             this.zipFilesToolStripMenuItem.Name = "zipFilesToolStripMenuItem";
             this.zipFilesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Z)));
-            this.zipFilesToolStripMenuItem.Size = new System.Drawing.Size(302, 36);
+            this.zipFilesToolStripMenuItem.Size = new System.Drawing.Size(277, 36);
             this.zipFilesToolStripMenuItem.Text = "Zip file(s)/folder(s)";
             this.zipFilesToolStripMenuItem.Click += new System.EventHandler(this.zipFilesToolStripMenuItem_Click);
             // 
@@ -361,7 +363,7 @@ namespace FileGuide
             this.unzipFileToolStripMenuItem.Name = "unzipFileToolStripMenuItem";
             this.unzipFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.Z)));
-            this.unzipFileToolStripMenuItem.Size = new System.Drawing.Size(302, 36);
+            this.unzipFileToolStripMenuItem.Size = new System.Drawing.Size(277, 36);
             this.unzipFileToolStripMenuItem.Text = "Unzip file";
             this.unzipFileToolStripMenuItem.Click += new System.EventHandler(this.unzipFileToolStripMenuItem_Click);
             // 
@@ -387,37 +389,29 @@ namespace FileGuide
             this.mainSplitContainer.SplitterDistance = 373;
             this.mainSplitContainer.TabIndex = 5;
             // 
-            // treeViewContextMenuStrip
+            // contextMenuStripTreeView
             // 
-            this.treeViewContextMenuStrip.BackColor = System.Drawing.Color.White;
-            this.treeViewContextMenuStrip.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeViewContextMenuStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.treeViewContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contextMenuStripTreeView.BackColor = System.Drawing.Color.White;
+            this.contextMenuStripTreeView.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contextMenuStripTreeView.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.contextMenuStripTreeView.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pinToolStripMenuItem,
             this.unpingFromEasyAccessToolStripMenuItem});
-            this.treeViewContextMenuStrip.Name = "treeViewContextMenuStrip";
-            this.treeViewContextMenuStrip.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.treeViewContextMenuStrip.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
-            this.treeViewContextMenuStrip.RenderStyle.ColorTable = null;
-            this.treeViewContextMenuStrip.RenderStyle.RoundedEdges = true;
-            this.treeViewContextMenuStrip.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
-            this.treeViewContextMenuStrip.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.treeViewContextMenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.treeViewContextMenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
-            this.treeViewContextMenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.treeViewContextMenuStrip.Size = new System.Drawing.Size(302, 76);
+            this.contextMenuStripTreeView.Name = "treeViewContextMenuStrip";
+            this.contextMenuStripTreeView.ShowImageMargin = false;
+            this.contextMenuStripTreeView.Size = new System.Drawing.Size(277, 76);
             // 
             // pinToolStripMenuItem
             // 
             this.pinToolStripMenuItem.Name = "pinToolStripMenuItem";
-            this.pinToolStripMenuItem.Size = new System.Drawing.Size(301, 36);
+            this.pinToolStripMenuItem.Size = new System.Drawing.Size(276, 36);
             this.pinToolStripMenuItem.Text = "Pin to Easy Access";
             this.pinToolStripMenuItem.Click += new System.EventHandler(this.pinToolStripMenuItem_Click);
             // 
             // unpingFromEasyAccessToolStripMenuItem
             // 
             this.unpingFromEasyAccessToolStripMenuItem.Name = "unpingFromEasyAccessToolStripMenuItem";
-            this.unpingFromEasyAccessToolStripMenuItem.Size = new System.Drawing.Size(301, 36);
+            this.unpingFromEasyAccessToolStripMenuItem.Size = new System.Drawing.Size(276, 36);
             this.unpingFromEasyAccessToolStripMenuItem.Text = "Unpin from Easy Access";
             this.unpingFromEasyAccessToolStripMenuItem.Click += new System.EventHandler(this.unpingFromEasyAccessToolStripMenuItem_Click);
             // 
@@ -881,7 +875,7 @@ namespace FileGuide
             // 
             this.treeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeView.ContextMenuStrip = this.treeViewContextMenuStrip;
+            this.treeView.ContextMenuStrip = this.contextMenuStripTreeView;
             this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
             this.treeView.Font = new System.Drawing.Font("Questrial", 9.999999F);
@@ -1094,7 +1088,7 @@ namespace FileGuide
             this.tabPlus.Location = new System.Drawing.Point(4, 54);
             this.tabPlus.Name = "tabPlus";
             this.tabPlus.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPlus.Size = new System.Drawing.Size(1304, 554);
+            this.tabPlus.Size = new System.Drawing.Size(1304, 557);
             this.tabPlus.TabIndex = 0;
             this.tabPlus.Text = " ";
             this.tabPlus.UseVisualStyleBackColor = true;
@@ -1129,7 +1123,7 @@ namespace FileGuide
             this.mainSplitContainer.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).EndInit();
             this.mainSplitContainer.ResumeLayout(false);
-            this.treeViewContextMenuStrip.ResumeLayout(false);
+            this.contextMenuStripTreeView.ResumeLayout(false);
             this.tsPath.ResumeLayout(false);
             this.tsPath.PerformLayout();
             this.toolsPanel.ResumeLayout(false);
@@ -1202,7 +1196,7 @@ namespace FileGuide
         private FileGuide.CustomTabControl tabControl;
         private System.Windows.Forms.TabPage tabPlus;
         private System.Windows.Forms.TabPage tabPage1;
-        private Guna.UI2.WinForms.Guna2ContextMenuStrip treeViewContextMenuStrip;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripTreeView;
         private System.Windows.Forms.ToolStripMenuItem pinToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unpingFromEasyAccessToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton btnRefresh;

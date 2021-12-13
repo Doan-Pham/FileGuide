@@ -747,7 +747,13 @@ namespace FileGuide
                 {
                     UpdateColorControls(control, PrimaryBackgroundColor, PrimaryTextColor);
                 }
+
                 treeView.BackColor = HoverColor;
+
+                UpdateColorControls(contextMenuStripListView, PrimaryBackgroundColor, PrimaryTextColor);
+                UpdateColorControls(contextMenuStripListViewItem, PrimaryBackgroundColor, PrimaryTextColor);
+                UpdateColorControls(contextMenuStripTreeView, PrimaryBackgroundColor, PrimaryTextColor);
+
                 this.Refresh();
 
             }
@@ -767,6 +773,11 @@ namespace FileGuide
                     UpdateColorControls(control, PrimaryBackgroundColor, PrimaryTextColor);
                 }
                 treeView.BackColor = Color.FromArgb(244, 244, 244);
+
+                UpdateColorControls(contextMenuStripListView, PrimaryBackgroundColor, PrimaryTextColor);
+                UpdateColorControls(contextMenuStripListViewItem, PrimaryBackgroundColor, PrimaryTextColor);
+                UpdateColorControls(contextMenuStripTreeView, PrimaryBackgroundColor, PrimaryTextColor);
+
                 this.Refresh();
             }
             
@@ -1028,7 +1039,7 @@ namespace FileGuide
             {
                 treeView.SelectedNode = treeView.GetNodeAt(e.Location);
                 if (treeView.SelectedNode != null)
-                    treeViewContextMenuStrip.Show((TreeView)sender, e.Location);
+                    contextMenuStripTreeView.Show((TreeView)sender, e.Location);
             }
         }
 

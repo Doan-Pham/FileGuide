@@ -38,8 +38,9 @@ namespace FileGuide
             if (index == 0) r = new Rectangle(r.Left - 2, r.Top, r.Width + 2, r.Height);
             if (index != this.SelectedIndex) r = new Rectangle(r.Left, r.Top + 2, r.Width, r.Height - 2);
             Color tabColor;
+
             if (index == this.SelectedIndex) tabColor = FrmMain.SecondaryBackgroundColor;
-            else tabColor =  FrmMain.HoverColor;
+            else tabColor =  FrmMain.UnfocusedSelectColor;
             using (var br = new SolidBrush(tabColor))
             {
                 g.FillRectangle(br, r);
