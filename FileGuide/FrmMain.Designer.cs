@@ -293,7 +293,7 @@ namespace FileGuide
             this.contextMenuStripListViewItem.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.contextMenuStripListViewItem.Name = "contextMenuStripListViewItem";
             this.contextMenuStripListViewItem.ShowImageMargin = false;
-            this.contextMenuStripListViewItem.Size = new System.Drawing.Size(278, 307);
+            this.contextMenuStripListViewItem.Size = new System.Drawing.Size(278, 274);
             // 
             // openToolStripMenuItem
             // 
@@ -419,6 +419,7 @@ namespace FileGuide
             // 
             this.tsPath.AutoSize = false;
             this.tsPath.BackColor = System.Drawing.Color.White;
+            this.tsPath.Dock = System.Windows.Forms.DockStyle.None;
             this.tsPath.Font = new System.Drawing.Font("Questrial", 9F);
             this.tsPath.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tsPath.ImageScalingSize = new System.Drawing.Size(24, 24);
@@ -430,7 +431,7 @@ namespace FileGuide
             this.tsPath.Location = new System.Drawing.Point(0, 160);
             this.tsPath.Name = "tsPath";
             this.tsPath.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.tsPath.Size = new System.Drawing.Size(1301, 51);
+            this.tsPath.Size = new System.Drawing.Size(1308, 51);
             this.tsPath.TabIndex = 3;
             // 
             // btnBack
@@ -586,7 +587,7 @@ namespace FileGuide
             this.toolBar.Location = new System.Drawing.Point(0, 0);
             this.toolBar.Name = "toolBar";
             this.toolBar.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.toolBar.Size = new System.Drawing.Size(1301, 148);
+            this.toolBar.Size = new System.Drawing.Size(1308, 148);
             this.toolBar.TabIndex = 2;
             // 
             // tsbtnCopy

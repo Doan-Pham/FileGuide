@@ -92,8 +92,6 @@ namespace FileGuide
             tabControl.TabPages[0].Text = "My Computer    ";
             tabControl.TabPages[tabControl.TabCount - 1].ToolTipText = "Add a new tab";
             tabControl.Padding = new Point(16, 4);
-            //listView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-            //listView.AutoResizeColumn(listView.Columns.Count - 1, ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
 
@@ -107,6 +105,9 @@ namespace FileGuide
            // listView.Columns[listView.Columns.Count - 1].Width = -1;
             if (Width > 900)
                 tscmbPath.Width = Width - 800;
+            toolBar.Width = Width - treeView.Width + 10;
+            tsPath.Width = Width - treeView.Width + 10;
+            ShortcutKeysPanel.Width = Width - treeView.Width + 10;
         }
 
 
