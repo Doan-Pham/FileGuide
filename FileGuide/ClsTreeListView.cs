@@ -244,6 +244,7 @@ namespace FileGuide
                     item = GetListViewItem(file);
                     listView.Items.Add(item);
                 };
+
             }
             catch (Exception e)
             {

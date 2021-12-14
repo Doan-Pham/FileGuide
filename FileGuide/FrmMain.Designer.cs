@@ -54,14 +54,30 @@ namespace FileGuide
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.delteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.zipFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unzipFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
+            this.treeView = new FileGuide.BufferedTreeView();
             this.contextMenuStripTreeView = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unpingFromEasyAccessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabControl = new FileGuide.CustomTabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tableLayoutFirstPage = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLblDrives = new System.Windows.Forms.Label();
+            this.tableLblRecent = new System.Windows.Forms.Label();
+            this.flowLayoutPanelDrives = new System.Windows.Forms.FlowLayoutPanel();
+            this.listViewRecentFiles = new FileGuide.DoubleBufferedListView();
+            this.listViewColRecentPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Path = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listView = new FileGuide.DoubleBufferedListView();
+            this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colDateCreated = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colDateModified = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabPlus = new System.Windows.Forms.TabPage();
             this.tsPath = new System.Windows.Forms.ToolStrip();
             this.btnBack = new System.Windows.Forms.ToolStripButton();
             this.btnRefresh = new System.Windows.Forms.ToolStripButton();
@@ -103,23 +119,13 @@ namespace FileGuide
             this.newFoldẻToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewLargeIconToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.treeView = new FileGuide.BufferedTreeView();
-            this.tabControl = new FileGuide.CustomTabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tableLayoutFirstPage = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLblDrives = new System.Windows.Forms.Label();
-            this.tableLblRecent = new System.Windows.Forms.Label();
-            this.flowLayoutPanelDrives = new System.Windows.Forms.FlowLayoutPanel();
-            this.listViewRecentFiles = new FileGuide.DoubleBufferedListView();
-            this.listViewColRecentPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Path = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listView = new FileGuide.DoubleBufferedListView();
-            this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colDateCreated = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.colDateModified = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tabPlus = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
+            this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.darkModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripButtonZip = new System.Windows.Forms.ToolStripButton();
+            this.label9 = new System.Windows.Forms.Label();
+            this.zipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unzipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
             this.contextMenuStripListView.SuspendLayout();
             this.contextMenuStripListViewItem.SuspendLayout();
@@ -128,14 +134,14 @@ namespace FileGuide
             this.mainSplitContainer.Panel2.SuspendLayout();
             this.mainSplitContainer.SuspendLayout();
             this.contextMenuStripTreeView.SuspendLayout();
+            this.tabControl.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tableLayoutFirstPage.SuspendLayout();
             this.tsPath.SuspendLayout();
             this.toolsPanel.SuspendLayout();
             this.ShortcutKeysPanel.SuspendLayout();
             this.toolBar.SuspendLayout();
             this.ShortcutKeysMenu.SuspendLayout();
-            this.tabControl.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tableLayoutFirstPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -286,10 +292,10 @@ namespace FileGuide
             this.copyToolStripMenuItem,
             this.toolStripMenuItem4,
             this.renameToolStripMenuItem,
-            this.delteToolStripMenuItem,
             this.toolStripMenuItem5,
             this.zipFilesToolStripMenuItem,
-            this.unzipFileToolStripMenuItem});
+            this.unzipFileToolStripMenuItem,
+            this.deleteToolStripMenuItem1});
             this.contextMenuStripListViewItem.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.contextMenuStripListViewItem.Name = "contextMenuStripListViewItem";
             this.contextMenuStripListViewItem.ShowImageMargin = false;
@@ -337,14 +343,6 @@ namespace FileGuide
             this.renameToolStripMenuItem.Text = "Rename";
             this.renameToolStripMenuItem.Click += new System.EventHandler(this.menuRename_Click);
             // 
-            // delteToolStripMenuItem
-            // 
-            this.delteToolStripMenuItem.Name = "delteToolStripMenuItem";
-            this.delteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.delteToolStripMenuItem.Size = new System.Drawing.Size(277, 36);
-            this.delteToolStripMenuItem.Text = "Delete";
-            this.delteToolStripMenuItem.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
@@ -389,6 +387,30 @@ namespace FileGuide
             this.mainSplitContainer.SplitterDistance = 373;
             this.mainSplitContainer.TabIndex = 5;
             // 
+            // treeView
+            // 
+            this.treeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeView.ContextMenuStrip = this.contextMenuStripTreeView;
+            this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
+            this.treeView.Font = new System.Drawing.Font("Questrial", 9.999999F);
+            this.treeView.ForeColor = System.Drawing.Color.Black;
+            this.treeView.FullRowSelect = true;
+            this.treeView.HotTracking = true;
+            this.treeView.Indent = 20;
+            this.treeView.ItemHeight = 46;
+            this.treeView.Location = new System.Drawing.Point(0, 0);
+            this.treeView.Name = "treeView";
+            this.treeView.ShowLines = false;
+            this.treeView.Size = new System.Drawing.Size(373, 807);
+            this.treeView.TabIndex = 1;
+            this.treeView.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView_DrawNode);
+            this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
+            this.treeView.MouseLeave += new System.EventHandler(this.treeView_MouseLeave);
+            this.treeView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseMove);
+            this.treeView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseUp);
+            // 
             // contextMenuStripTreeView
             // 
             this.contextMenuStripTreeView.BackColor = System.Drawing.Color.White;
@@ -414,6 +436,203 @@ namespace FileGuide
             this.unpingFromEasyAccessToolStripMenuItem.Size = new System.Drawing.Size(276, 36);
             this.unpingFromEasyAccessToolStripMenuItem.Text = "Unpin from Easy Access";
             this.unpingFromEasyAccessToolStripMenuItem.Click += new System.EventHandler(this.unpingFromEasyAccessToolStripMenuItem_Click);
+            // 
+            // tabControl
+            // 
+            this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Controls.Add(this.tabPlus);
+            this.tabControl.ItemSize = new System.Drawing.Size(200, 50);
+            this.tabControl.Location = new System.Drawing.Point(0, 206);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.ShowToolTips = true;
+            this.tabControl.Size = new System.Drawing.Size(1312, 615);
+            this.tabControl.TabIndex = 4;
+            this.tabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl_Selecting);
+            this.tabControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabControl_MouseDown);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.Controls.Add(this.tableLayoutFirstPage);
+            this.tabPage1.Controls.Add(this.listView);
+            this.tabPage1.ForeColor = System.Drawing.Color.Black;
+            this.tabPage1.Location = new System.Drawing.Point(4, 54);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1304, 557);
+            this.tabPage1.TabIndex = 1;
+            this.tabPage1.Text = "tabPage1";
+            // 
+            // tableLayoutFirstPage
+            // 
+            this.tableLayoutFirstPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutFirstPage.BackColor = System.Drawing.Color.White;
+            this.tableLayoutFirstPage.ColumnCount = 1;
+            this.tableLayoutFirstPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutFirstPage.Controls.Add(this.tableLblDrives, 0, 0);
+            this.tableLayoutFirstPage.Controls.Add(this.tableLblRecent, 0, 2);
+            this.tableLayoutFirstPage.Controls.Add(this.flowLayoutPanelDrives, 0, 1);
+            this.tableLayoutFirstPage.Controls.Add(this.listViewRecentFiles, 0, 3);
+            this.tableLayoutFirstPage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutFirstPage.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableLayoutFirstPage.ForeColor = System.Drawing.Color.Black;
+            this.tableLayoutFirstPage.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutFirstPage.Name = "tableLayoutFirstPage";
+            this.tableLayoutFirstPage.RowCount = 5;
+            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutFirstPage.Size = new System.Drawing.Size(1298, 551);
+            this.tableLayoutFirstPage.TabIndex = 1;
+            // 
+            // tableLblDrives
+            // 
+            this.tableLblDrives.BackColor = System.Drawing.Color.White;
+            this.tableLblDrives.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLblDrives.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableLblDrives.ForeColor = System.Drawing.Color.Black;
+            this.tableLblDrives.Location = new System.Drawing.Point(3, 0);
+            this.tableLblDrives.Name = "tableLblDrives";
+            this.tableLblDrives.Size = new System.Drawing.Size(1292, 51);
+            this.tableLblDrives.TabIndex = 0;
+            this.tableLblDrives.Text = "Drives";
+            this.tableLblDrives.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // tableLblRecent
+            // 
+            this.tableLblRecent.BackColor = System.Drawing.Color.White;
+            this.tableLblRecent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLblRecent.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tableLblRecent.ForeColor = System.Drawing.Color.Black;
+            this.tableLblRecent.Location = new System.Drawing.Point(3, 212);
+            this.tableLblRecent.Name = "tableLblRecent";
+            this.tableLblRecent.Size = new System.Drawing.Size(1292, 53);
+            this.tableLblRecent.TabIndex = 1;
+            this.tableLblRecent.Text = "Recent files";
+            this.tableLblRecent.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // flowLayoutPanelDrives
+            // 
+            this.flowLayoutPanelDrives.AutoScroll = true;
+            this.flowLayoutPanelDrives.BackColor = System.Drawing.Color.White;
+            this.flowLayoutPanelDrives.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanelDrives.ForeColor = System.Drawing.Color.Black;
+            this.flowLayoutPanelDrives.Location = new System.Drawing.Point(3, 56);
+            this.flowLayoutPanelDrives.Name = "flowLayoutPanelDrives";
+            this.flowLayoutPanelDrives.Size = new System.Drawing.Size(1292, 153);
+            this.flowLayoutPanelDrives.TabIndex = 2;
+            // 
+            // listViewRecentFiles
+            // 
+            this.listViewRecentFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewRecentFiles.BackColor = System.Drawing.Color.White;
+            this.listViewRecentFiles.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listViewRecentFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewColRecentPath,
+            this.Path});
+            this.listViewRecentFiles.ForeColor = System.Drawing.Color.Black;
+            this.listViewRecentFiles.FullRowSelect = true;
+            this.listViewRecentFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listViewRecentFiles.Location = new System.Drawing.Point(3, 268);
+            this.listViewRecentFiles.Name = "listViewRecentFiles";
+            this.listViewRecentFiles.OwnerDraw = true;
+            this.listViewRecentFiles.Size = new System.Drawing.Size(1292, 259);
+            this.listViewRecentFiles.TabIndex = 3;
+            this.listViewRecentFiles.UseCompatibleStateImageBehavior = false;
+            this.listViewRecentFiles.View = System.Windows.Forms.View.Details;
+            this.listViewRecentFiles.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listViewRecentFiles_ColumnWidthChanging);
+            this.listViewRecentFiles.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.listView_DrawColumnHeader);
+            this.listViewRecentFiles.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.listView_DrawItem);
+            this.listViewRecentFiles.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.listView_DrawSubItem);
+            this.listViewRecentFiles.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewRecentFiles_MouseDoubleClick);
+            // 
+            // listViewColRecentPath
+            // 
+            this.listViewColRecentPath.Text = "Name";
+            this.listViewColRecentPath.Width = 692;
+            // 
+            // Path
+            // 
+            this.Path.Text = "Path";
+            this.Path.Width = 600;
+            // 
+            // listView
+            // 
+            this.listView.BackColor = System.Drawing.Color.White;
+            this.listView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colName,
+            this.colType,
+            this.colSize,
+            this.colDateCreated,
+            this.colDateModified});
+            this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView.ForeColor = System.Drawing.Color.Black;
+            this.listView.FullRowSelect = true;
+            this.listView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listView.HideSelection = false;
+            this.listView.LabelEdit = true;
+            this.listView.Location = new System.Drawing.Point(3, 3);
+            this.listView.Margin = new System.Windows.Forms.Padding(0);
+            this.listView.Name = "listView";
+            this.listView.OwnerDraw = true;
+            this.listView.Size = new System.Drawing.Size(1298, 551);
+            this.listView.TabIndex = 0;
+            this.listView.UseCompatibleStateImageBehavior = false;
+            this.listView.View = System.Windows.Forms.View.Details;
+            this.listView.AfterLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.listView_AfterLabelEdit);
+            this.listView.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listView_ColumnWidthChanging);
+            this.listView.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.listView_DrawColumnHeader);
+            this.listView.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.listView_DrawItem);
+            this.listView.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.listView_DrawSubItem);
+            this.listView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView_ItemSelectionChanged);
+            this.listView.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listView_KeyPress);
+            this.listView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView_MouseDoubleClick);
+            this.listView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listView_MouseUp);
+            // 
+            // colName
+            // 
+            this.colName.Text = "Name";
+            this.colName.Width = 290;
+            // 
+            // colType
+            // 
+            this.colType.Text = "Type";
+            this.colType.Width = 155;
+            // 
+            // colSize
+            // 
+            this.colSize.Text = "Size";
+            this.colSize.Width = 161;
+            // 
+            // colDateCreated
+            // 
+            this.colDateCreated.Text = "Date created";
+            this.colDateCreated.Width = 271;
+            // 
+            // colDateModified
+            // 
+            this.colDateModified.Text = "Date modified";
+            this.colDateModified.Width = 395;
+            // 
+            // tabPlus
+            // 
+            this.tabPlus.Location = new System.Drawing.Point(4, 54);
+            this.tabPlus.Name = "tabPlus";
+            this.tabPlus.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPlus.Size = new System.Drawing.Size(1304, 557);
+            this.tabPlus.TabIndex = 0;
+            this.tabPlus.Text = " ";
+            this.tabPlus.UseVisualStyleBackColor = true;
             // 
             // tsPath
             // 
@@ -488,6 +707,8 @@ namespace FileGuide
             // ShortcutKeysPanel
             // 
             this.ShortcutKeysPanel.BackColor = System.Drawing.Color.White;
+            this.ShortcutKeysPanel.Controls.Add(this.label9);
+            this.ShortcutKeysPanel.Controls.Add(this.label8);
             this.ShortcutKeysPanel.Controls.Add(this.label7);
             this.ShortcutKeysPanel.Controls.Add(this.label6);
             this.ShortcutKeysPanel.Controls.Add(this.label5);
@@ -535,7 +756,7 @@ namespace FileGuide
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 34);
             this.label4.TabIndex = 3;
-            this.label4.Text = "(Ctrl+D)";
+            this.label4.Text = "(Delete)";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label3
@@ -582,6 +803,7 @@ namespace FileGuide
             this.toolStripSeparator2,
             this.tsDropView,
             this.tsDropNew,
+            this.toolStripButtonZip,
             this.toolStripButtonDarkMode});
             this.toolBar.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.toolBar.Location = new System.Drawing.Point(0, 0);
@@ -756,7 +978,7 @@ namespace FileGuide
             this.toolStripButtonDarkMode.Image = global::FileGuide.Properties.Resources.Icon_DarkMode;
             this.toolStripButtonDarkMode.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButtonDarkMode.ImageTransparentColor = System.Drawing.Color.White;
-            this.toolStripButtonDarkMode.Margin = new System.Windows.Forms.Padding(8, 2, 0, 3);
+            this.toolStripButtonDarkMode.Margin = new System.Windows.Forms.Padding(20, 2, 0, 3);
             this.toolStripButtonDarkMode.Name = "toolStripButtonDarkMode";
             this.toolStripButtonDarkMode.Size = new System.Drawing.Size(140, 100);
             this.toolStripButtonDarkMode.Text = "Dark Mode";
@@ -791,7 +1013,10 @@ namespace FileGuide
             this.newItemToolStripMenuItem,
             this.newFoldẻToolStripMenuItem,
             this.viewLargeIconToolStripMenuItem,
-            this.viewDetailsToolStripMenuItem});
+            this.viewDetailsToolStripMenuItem,
+            this.darkModeToolStripMenuItem,
+            this.zipToolStripMenuItem,
+            this.unzipToolStripMenuItem});
             this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
             this.copyToolStripMenuItem1.Size = new System.Drawing.Size(70, 6);
             this.copyToolStripMenuItem1.Text = "Copy";
@@ -824,7 +1049,7 @@ namespace FileGuide
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.deleteToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(343, 34);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.btnDelete_Click);
@@ -872,227 +1097,67 @@ namespace FileGuide
             this.viewDetailsToolStripMenuItem.Text = "View Details";
             this.viewDetailsToolStripMenuItem.Click += new System.EventHandler(this.menuDetails_Click);
             // 
-            // treeView
+            // label8
             // 
-            this.treeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeView.ContextMenuStrip = this.contextMenuStripTreeView;
-            this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
-            this.treeView.Font = new System.Drawing.Font("Questrial", 9.999999F);
-            this.treeView.ForeColor = System.Drawing.Color.Black;
-            this.treeView.FullRowSelect = true;
-            this.treeView.HotTracking = true;
-            this.treeView.Indent = 20;
-            this.treeView.ItemHeight = 46;
-            this.treeView.Location = new System.Drawing.Point(0, 0);
-            this.treeView.Name = "treeView";
-            this.treeView.ShowLines = false;
-            this.treeView.Size = new System.Drawing.Size(373, 807);
-            this.treeView.TabIndex = 1;
-            this.treeView.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView_DrawNode);
-            this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
-            this.treeView.MouseLeave += new System.EventHandler(this.treeView_MouseLeave);
-            this.treeView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseMove);
-            this.treeView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseUp);
+            this.label8.Location = new System.Drawing.Point(985, 5);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(137, 34);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "(Ctrl+D)";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // tabControl
+            // deleteToolStripMenuItem1
             // 
-            this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl.Controls.Add(this.tabPage1);
-            this.tabControl.Controls.Add(this.tabPlus);
-            this.tabControl.ItemSize = new System.Drawing.Size(200, 50);
-            this.tabControl.Location = new System.Drawing.Point(0, 206);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.ShowToolTips = true;
-            this.tabControl.Size = new System.Drawing.Size(1312, 615);
-            this.tabControl.TabIndex = 4;
-            this.tabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl_Selecting);
-            this.tabControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabControl_MouseDown);
+            this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
+            this.deleteToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(277, 36);
+            this.deleteToolStripMenuItem1.Text = "Delete";
             // 
-            // tabPage1
+            // darkModeToolStripMenuItem
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.White;
-            this.tabPage1.Controls.Add(this.tableLayoutFirstPage);
-            this.tabPage1.Controls.Add(this.listView);
-            this.tabPage1.ForeColor = System.Drawing.Color.Black;
-            this.tabPage1.Location = new System.Drawing.Point(4, 54);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1304, 557);
-            this.tabPage1.TabIndex = 1;
-            this.tabPage1.Text = "tabPage1";
+            this.darkModeToolStripMenuItem.Name = "darkModeToolStripMenuItem";
+            this.darkModeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.darkModeToolStripMenuItem.Size = new System.Drawing.Size(343, 34);
+            this.darkModeToolStripMenuItem.Text = "DarkMode";
+            this.darkModeToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonDarkMode_Click);
             // 
-            // tableLayoutFirstPage
+            // toolStripButtonZip
             // 
-            this.tableLayoutFirstPage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutFirstPage.BackColor = System.Drawing.Color.White;
-            this.tableLayoutFirstPage.ColumnCount = 1;
-            this.tableLayoutFirstPage.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutFirstPage.Controls.Add(this.tableLblDrives, 0, 0);
-            this.tableLayoutFirstPage.Controls.Add(this.tableLblRecent, 0, 2);
-            this.tableLayoutFirstPage.Controls.Add(this.flowLayoutPanelDrives, 0, 1);
-            this.tableLayoutFirstPage.Controls.Add(this.listViewRecentFiles, 0, 3);
-            this.tableLayoutFirstPage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutFirstPage.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLayoutFirstPage.ForeColor = System.Drawing.Color.Black;
-            this.tableLayoutFirstPage.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutFirstPage.Name = "tableLayoutFirstPage";
-            this.tableLayoutFirstPage.RowCount = 5;
-            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutFirstPage.Size = new System.Drawing.Size(1298, 551);
-            this.tableLayoutFirstPage.TabIndex = 1;
+            this.toolStripButtonZip.AutoSize = false;
+            this.toolStripButtonZip.Image = global::FileGuide.Properties.Resources.Logo_RAR;
+            this.toolStripButtonZip.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripButtonZip.ImageTransparentColor = System.Drawing.Color.White;
+            this.toolStripButtonZip.Margin = new System.Windows.Forms.Padding(20, 2, 0, 3);
+            this.toolStripButtonZip.Name = "toolStripButtonZip";
+            this.toolStripButtonZip.Size = new System.Drawing.Size(140, 100);
+            this.toolStripButtonZip.Text = "Zip/Unzip";
+            this.toolStripButtonZip.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonZip.ToolTipText = "Rename (Ctrl+R)\r\n";
             // 
-            // tableLblDrives
+            // label9
             // 
-            this.tableLblDrives.BackColor = System.Drawing.Color.White;
-            this.tableLblDrives.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLblDrives.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLblDrives.ForeColor = System.Drawing.Color.Black;
-            this.tableLblDrives.Location = new System.Drawing.Point(3, 0);
-            this.tableLblDrives.Name = "tableLblDrives";
-            this.tableLblDrives.Size = new System.Drawing.Size(1292, 51);
-            this.tableLblDrives.TabIndex = 0;
-            this.tableLblDrives.Text = "Drives";
-            this.tableLblDrives.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.label9.Location = new System.Drawing.Point(827, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(137, 34);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "(Alt+(Shift)+Z)";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // tableLblRecent
+            // zipToolStripMenuItem
             // 
-            this.tableLblRecent.BackColor = System.Drawing.Color.White;
-            this.tableLblRecent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLblRecent.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tableLblRecent.ForeColor = System.Drawing.Color.Black;
-            this.tableLblRecent.Location = new System.Drawing.Point(3, 212);
-            this.tableLblRecent.Name = "tableLblRecent";
-            this.tableLblRecent.Size = new System.Drawing.Size(1292, 53);
-            this.tableLblRecent.TabIndex = 1;
-            this.tableLblRecent.Text = "Recent files";
-            this.tableLblRecent.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.zipToolStripMenuItem.Name = "zipToolStripMenuItem";
+            this.zipToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Z)));
+            this.zipToolStripMenuItem.Size = new System.Drawing.Size(343, 34);
+            this.zipToolStripMenuItem.Text = "Zip";
+            this.zipToolStripMenuItem.Click += new System.EventHandler(this.zipFilesToolStripMenuItem_Click);
             // 
-            // flowLayoutPanelDrives
+            // unzipToolStripMenuItem
             // 
-            this.flowLayoutPanelDrives.AutoScroll = true;
-            this.flowLayoutPanelDrives.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanelDrives.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanelDrives.ForeColor = System.Drawing.Color.Black;
-            this.flowLayoutPanelDrives.Location = new System.Drawing.Point(3, 56);
-            this.flowLayoutPanelDrives.Name = "flowLayoutPanelDrives";
-            this.flowLayoutPanelDrives.Size = new System.Drawing.Size(1292, 153);
-            this.flowLayoutPanelDrives.TabIndex = 2;
-            // 
-            // listViewRecentFiles
-            // 
-            this.listViewRecentFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewRecentFiles.BackColor = System.Drawing.Color.White;
-            this.listViewRecentFiles.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listViewRecentFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.listViewColRecentPath,
-            this.Path});
-            this.listViewRecentFiles.ForeColor = System.Drawing.Color.Black;
-            this.listViewRecentFiles.FullRowSelect = true;
-            this.listViewRecentFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listViewRecentFiles.HideSelection = false;
-            this.listViewRecentFiles.Location = new System.Drawing.Point(3, 268);
-            this.listViewRecentFiles.Name = "listViewRecentFiles";
-            this.listViewRecentFiles.OwnerDraw = true;
-            this.listViewRecentFiles.Size = new System.Drawing.Size(1292, 259);
-            this.listViewRecentFiles.TabIndex = 3;
-            this.listViewRecentFiles.UseCompatibleStateImageBehavior = false;
-            this.listViewRecentFiles.View = System.Windows.Forms.View.Details;
-            this.listViewRecentFiles.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listViewRecentFiles_ColumnWidthChanging);
-            this.listViewRecentFiles.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.listView_DrawColumnHeader);
-            this.listViewRecentFiles.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.listView_DrawItem);
-            this.listViewRecentFiles.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.listView_DrawSubItem);
-            this.listViewRecentFiles.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewRecentFiles_MouseDoubleClick);
-            // 
-            // listViewColRecentPath
-            // 
-            this.listViewColRecentPath.Text = "Name";
-            this.listViewColRecentPath.Width = 692;
-            // 
-            // Path
-            // 
-            this.Path.Text = "Path";
-            this.Path.Width = 600;
-            // 
-            // listView
-            // 
-            this.listView.BackColor = System.Drawing.Color.White;
-            this.listView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.colName,
-            this.colType,
-            this.colSize,
-            this.colDateCreated,
-            this.colDateModified});
-            this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView.ForeColor = System.Drawing.Color.Black;
-            this.listView.FullRowSelect = true;
-            this.listView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listView.HideSelection = false;
-            this.listView.LabelEdit = true;
-            this.listView.Location = new System.Drawing.Point(3, 3);
-            this.listView.Margin = new System.Windows.Forms.Padding(0);
-            this.listView.Name = "listView";
-            this.listView.OwnerDraw = true;
-            this.listView.Size = new System.Drawing.Size(1298, 551);
-            this.listView.TabIndex = 0;
-            this.listView.UseCompatibleStateImageBehavior = false;
-            this.listView.View = System.Windows.Forms.View.Details;
-            this.listView.AfterLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.listView_AfterLabelEdit);
-            this.listView.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listView_ColumnWidthChanging);
-            this.listView.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.listView_DrawColumnHeader);
-            this.listView.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.listView_DrawItem);
-            this.listView.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.listView_DrawSubItem);
-            this.listView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView_ItemSelectionChanged);
-            this.listView.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listView_KeyPress);
-            this.listView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView_MouseDoubleClick);
-            this.listView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listView_MouseUp);
-            // 
-            // colName
-            // 
-            this.colName.Text = "Name";
-            this.colName.Width = 290;
-            // 
-            // colType
-            // 
-            this.colType.Text = "Type";
-            this.colType.Width = 155;
-            // 
-            // colSize
-            // 
-            this.colSize.Text = "Size";
-            this.colSize.Width = 161;
-            // 
-            // colDateCreated
-            // 
-            this.colDateCreated.Text = "Date created";
-            this.colDateCreated.Width = 271;
-            // 
-            // colDateModified
-            // 
-            this.colDateModified.Text = "Date modified";
-            this.colDateModified.Width = 395;
-            // 
-            // tabPlus
-            // 
-            this.tabPlus.Location = new System.Drawing.Point(4, 54);
-            this.tabPlus.Name = "tabPlus";
-            this.tabPlus.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPlus.Size = new System.Drawing.Size(1304, 557);
-            this.tabPlus.TabIndex = 0;
-            this.tabPlus.Text = " ";
-            this.tabPlus.UseVisualStyleBackColor = true;
+            this.unzipToolStripMenuItem.Name = "unzipToolStripMenuItem";
+            this.unzipToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.Z)));
+            this.unzipToolStripMenuItem.Size = new System.Drawing.Size(343, 34);
+            this.unzipToolStripMenuItem.Text = "Unzip";
             // 
             // FrmMain
             // 
@@ -1125,6 +1190,9 @@ namespace FileGuide
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).EndInit();
             this.mainSplitContainer.ResumeLayout(false);
             this.contextMenuStripTreeView.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tableLayoutFirstPage.ResumeLayout(false);
             this.tsPath.ResumeLayout(false);
             this.tsPath.PerformLayout();
             this.toolsPanel.ResumeLayout(false);
@@ -1133,9 +1201,6 @@ namespace FileGuide
             this.toolBar.PerformLayout();
             this.ShortcutKeysMenu.ResumeLayout(false);
             this.ShortcutKeysMenu.PerformLayout();
-            this.tabControl.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tableLayoutFirstPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1190,7 +1255,6 @@ namespace FileGuide
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem delteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.SplitContainer mainSplitContainer;
         private System.Windows.Forms.ColumnHeader colType;
@@ -1230,6 +1294,13 @@ namespace FileGuide
         private System.Windows.Forms.ToolStripMenuItem zipFilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unzipFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButtonDarkMode;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ToolStripMenuItem darkModeToolStripMenuItem;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ToolStripButton toolStripButtonZip;
+        private System.Windows.Forms.ToolStripMenuItem zipToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem unzipToolStripMenuItem;
     }
 }
 

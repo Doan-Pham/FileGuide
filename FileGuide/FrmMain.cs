@@ -670,6 +670,7 @@ namespace FileGuide
         {
             try
             {
+                if (listView.SelectedItems.Count == 0) return;
                 string FirstItemName = listView.SelectedItems[0].SubItems[0].Text;
                 string ZipFilePath = currentPath + "\\" + FirstItemName.Split('.').ToList().ElementAt(0) + ".zip";
 
@@ -708,6 +709,7 @@ namespace FileGuide
         {
             try
             {
+                if (listView.SelectedItems.Count == 0) return;
                 string ZipItemName;
                 string ZipItemPath;
 
@@ -758,7 +760,7 @@ namespace FileGuide
             {
                 isInDarkMode = true;
                 PrimaryTextColor = Color.White;
-                HoverColor = Color.FromArgb(50, 50, 50);
+                HoverColor = Color.FromArgb(60, 60, 60);
                 UnfocusedSelectColor = Color.FromArgb(75, 75, 75);
                 FocusedSelectColor = Color.FromArgb(100, 100, 100);
                 PrimaryBackgroundColor = Color.FromArgb(39, 39, 39);
@@ -769,7 +771,7 @@ namespace FileGuide
                     UpdateColorControls(control, PrimaryBackgroundColor, PrimaryTextColor);
                 }
 
-                treeView.BackColor = HoverColor;
+                treeView.BackColor = Color.FromArgb(45, 45, 45);
 
                 UpdateColorControls(contextMenuStripListView, PrimaryBackgroundColor, PrimaryTextColor);
                 UpdateColorControls(contextMenuStripListViewItem, PrimaryBackgroundColor, PrimaryTextColor);
@@ -1284,11 +1286,11 @@ namespace FileGuide
             }
             else
             {
-                g.DrawImage(Properties.Resources.Logo_UnknownFile, e.Item.Bounds.X + 20, e.Item.Bounds.Y, 30, 30);
+                FileInfo itemPath = new FileInfo(e.Item.SubItems[5].Text);
+                g.DrawImage(HelperMethods.GetFileTypeIcon(itemPath), e.Item.Bounds.X + 20, e.Item.Bounds.Y, 30, 30);
             }
 
-            TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis |
-       TextFormatFlags.ExpandTabs | TextFormatFlags.SingleLine | TextFormatFlags.VerticalCenter;
+            TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis | TextFormatFlags.ExpandTabs | TextFormatFlags.SingleLine | TextFormatFlags.VerticalCenter;
 
             Rectangle textRect;
             Color textColor;
@@ -1338,6 +1340,19 @@ namespace FileGuide
         {
             clsTreeListView.ClickItem(listView, listView.SelectedItems[0], tscmbPath, false);
             currentPath = tscmbPath.Text;
+        }
+
+
+        private void listView_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listView.Columns[e.ColumnIndex].Width;
+        }
+
+        private void listViewRecentFiles_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
+        {
+            e.Cancel = true;
+            e.NewWidth = listView.Columns[e.ColumnIndex].Width;
         }
 
         #endregion
@@ -1392,9 +1407,6 @@ namespace FileGuide
             drivePanel.BackColor = PrimaryBackgroundColor;
             Cursor = Cursors.Default;
         }
-
-
-
 
          /// <summary>
          /// Go to the approriate hard disk when clicking on a drive panel
@@ -1468,20 +1480,8 @@ namespace FileGuide
 
 
 
+
+
         #endregion
-
-        private void listView_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
-        {
-                e.Cancel = true;
-                e.NewWidth = listView.Columns[e.ColumnIndex].Width;
-        }
-
-        private void listViewRecentFiles_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
-        {
-            e.Cancel = true;
-            e.NewWidth = listView.Columns[e.ColumnIndex].Width;
-        }
-
-
     }
 }
