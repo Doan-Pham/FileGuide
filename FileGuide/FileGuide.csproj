@@ -189,6 +189,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FileGuide.ico" />
+    <None Include="Resources\Icon\Icon_Refresh_DarkMode.png" />
+    <None Include="Resources\Icon\Icon_Back_DarkMode.png" />
+    <None Include="Resources\Logo\Logo_PPT.png" />
+    <None Include="Resources\Logo\Logo_EXCEL.png" />
+    <None Include="Resources\Logo\Logo_RAR.png" />
     <None Include="Resources\Icon\Icon_DarkMode.png" />
     <None Include="Resources\Logo\Logo_FileGuide.png" />
     <None Include="Resources\Icon\Icon_New.png" />

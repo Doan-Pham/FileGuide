@@ -1158,6 +1158,7 @@ namespace FileGuide
             | System.Windows.Forms.Keys.Z)));
             this.unzipToolStripMenuItem.Size = new System.Drawing.Size(343, 34);
             this.unzipToolStripMenuItem.Text = "Unzip";
+            this.unzipToolStripMenuItem.Click += new System.EventHandler(this.unzipFileToolStripMenuItem_Click);
             // 
             // FrmMain
             // 

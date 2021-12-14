@@ -114,7 +114,7 @@ namespace FileGuide
             {
                 SumColumnHeadersWidth += listView.Columns[i].Width;
             }
-            listView.Columns[listView.Columns.Count - 1].Width = listView.Width - SumColumnHeadersWidth - 26;
+            listView.Columns[listView.Columns.Count - 1].Width = listView.Width - SumColumnHeadersWidth + 100;
             listView.ColumnWidthChanging += listView_ColumnWidthChanging;
         }
 
@@ -777,6 +777,8 @@ namespace FileGuide
                 UpdateColorControls(contextMenuStripListViewItem, PrimaryBackgroundColor, PrimaryTextColor);
                 UpdateColorControls(contextMenuStripTreeView, PrimaryBackgroundColor, PrimaryTextColor);
 
+                btnBack.Image = Properties.Resources.Icon_Back_DarkMode;
+                btnRefresh.Image = Properties.Resources.Icon_Refresh_DarkMode;
                 this.Refresh();
 
             }
@@ -801,6 +803,8 @@ namespace FileGuide
                 UpdateColorControls(contextMenuStripListViewItem, PrimaryBackgroundColor, PrimaryTextColor);
                 UpdateColorControls(contextMenuStripTreeView, PrimaryBackgroundColor, PrimaryTextColor);
 
+                btnBack.Image = Properties.Resources.Icon_Back;
+                btnRefresh.Image = Properties.Resources.Icon_Refresh;
                 this.Refresh();
             }
             

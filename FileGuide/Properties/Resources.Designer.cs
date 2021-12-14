@@ -73,6 +73,16 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Icon_Back_DarkMode {
+            get {
+                object obj = ResourceManager.GetObject("Icon_Back_DarkMode", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Icon_CDDisk {
             get {
                 object obj = ResourceManager.GetObject("Icon_CDDisk", resourceCulture);
@@ -266,6 +276,16 @@ namespace FileGuide.Properties {
         public static System.Drawing.Bitmap Icon_Refresh {
             get {
                 object obj = ResourceManager.GetObject("Icon_Refresh", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Icon_Refresh_DarkMode {
+            get {
+                object obj = ResourceManager.GetObject("Icon_Refresh_DarkMode", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
