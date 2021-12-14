@@ -89,20 +89,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BufferedTreeView.cs">
+    <Compile Include="CustomControls\BufferedTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ClsTreeListView.cs" />
-    <Compile Include="CustomTabControl.cs">
+    <Compile Include="CustomControls\CustomTabControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DoubleBufferedListView.cs">
+    <Compile Include="CustomControls\DoubleBufferedListView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="FormLogin.cs">
+    <Compile Include="FormLogin\FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormLogin.Designer.cs">
+    <Compile Include="FormLogin\FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMain.cs">
@@ -112,16 +112,16 @@
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="HelperMethods.cs" />
-    <Compile Include="InfoPage.cs">
+    <Compile Include="FormLogin\InfoPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="InfoPage.Designer.cs">
+    <Compile Include="FormLogin\InfoPage.Designer.cs">
       <DependentUpon>InfoPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginPage.cs">
+    <Compile Include="FormLogin\LoginPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="LoginPage.Designer.cs">
+    <Compile Include="FormLogin\LoginPage.Designer.cs">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -131,22 +131,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="SignupPage.cs">
+    <Compile Include="FormLogin\SignupPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SignupPage.Designer.cs">
+    <Compile Include="FormLogin\SignupPage.Designer.cs">
       <DependentUpon>SignupPage.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormLogin.resx">
+    <EmbeddedResource Include="FormLogin\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InfoPage.resx">
+    <EmbeddedResource Include="FormLogin\InfoPage.resx">
       <DependentUpon>InfoPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginPage.resx">
+    <EmbeddedResource Include="FormLogin\LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -154,7 +154,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="SignupPage.resx">
+    <EmbeddedResource Include="FormLogin\SignupPage.resx">
       <DependentUpon>SignupPage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
