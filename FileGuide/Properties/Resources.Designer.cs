@@ -333,6 +333,16 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap InfoPageInfoPanel {
+            get {
+                object obj = ResourceManager.GetObject("InfoPageInfoPanel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Logo_Database {
             get {
                 object obj = ResourceManager.GetObject("Logo_Database", resourceCulture);

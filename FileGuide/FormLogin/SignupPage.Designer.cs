@@ -208,7 +208,7 @@ namespace FileGuide
             this.panelBeforeLogined.Controls.Add(this.btnSignup);
             this.panelBeforeLogined.Controls.Add(this.label7);
             this.panelBeforeLogined.Controls.Add(this.labelWarning1);
-            this.panelBeforeLogined.Location = new System.Drawing.Point(632, 0);
+            this.panelBeforeLogined.Location = new System.Drawing.Point(633, 3);
             this.panelBeforeLogined.Name = "panelBeforeLogined";
             this.panelBeforeLogined.Size = new System.Drawing.Size(583, 816);
             this.panelBeforeLogined.TabIndex = 35;

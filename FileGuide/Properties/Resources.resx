@@ -118,71 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Icon_Back" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon\Icon_Back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Logo_PNG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logo\Logo_PNG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Icon_Back_DarkMode" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon\Icon_Back_DarkMode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_CDDisk" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon\Icon_CDDisk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_Copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon\Icon_Copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_Cut" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon\Icon_Cut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_DarkMode" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon\Icon_DarkMode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_Delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon\Icon_Delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_Desktop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon\Icon_Desktop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_Documents" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon\Icon_Documents.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_Downloads" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon\Icon_Downloads.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_EasyAccess" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon\Icon_EasyAccess.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_ExpandChevron" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon\Icon_ExpandChevron.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_FloppyDisk" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon\Icon_FloppyDisk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_Folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon\Icon_Folder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_HardDisk" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon\Icon_HardDisk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_Info" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon_Info.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_MyComputer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon\Icon_MyComputer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_NetworkDrive" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon\Icon_NetworkDrive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_New" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon\Icon_New.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_NormalChevron" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon\Icon_NormalChevron.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_Paste" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon\Icon_Paste.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_Refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon\Icon_Refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Icon_View" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon\Icon_View.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Icon_Refresh_DarkMode" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon\Icon_Refresh_DarkMode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,64 +130,127 @@
   <data name="Icon_Rename" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon\Icon_Rename.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Icon_User" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon_User.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_UserGroup" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon_UserGroup.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon_View" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon\Icon_View.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Logo_Database" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logo\Logo_Database.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Logo_EXCEL" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logo\Logo_EXCEL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Logo_EXE" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Logo\Logo_EXE.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Logo_FileGuide" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logo\Logo_FileGuide.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Icon_HardDisk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon\Icon_HardDisk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Logo_FLASH" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logo\Logo_FLASH.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Icon_Info" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_Info.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_Copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon\Icon_Copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_Cut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon\Icon_Cut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_MyComputer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon\Icon_MyComputer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Logo_HTML" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Logo\Logo_HTML.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Logo_Music" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logo\Logo_Music.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Logo_PDF" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logo\Logo_PDF.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Logo_PNG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logo\Logo_PNG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Logo_PPT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Logo\Logo_PPT.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Logo_RAR" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logo\Logo_RAR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Logo_Text" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logo\Logo_Text.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Logo_UnknownFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logo\Logo_UnknownFile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Logo_WORD" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logo\Logo_WORD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Sign_Close" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Sign\Sign_Close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Logo_PDF" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logo\Logo_PDF.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_Folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon\Icon_Folder.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Logo_EXCEL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logo\Logo_EXCEL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_DarkMode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon\Icon_DarkMode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_Downloads" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon\Icon_Downloads.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_EasyAccess" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon\Icon_EasyAccess.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Logo_FileGuide" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logo\Logo_FileGuide.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Logo_RAR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logo\Logo_RAR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_Refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon\Icon_Refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_FloppyDisk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon\Icon_FloppyDisk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_Delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon\Icon_Delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_Desktop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon\Icon_Desktop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_NormalChevron" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon\Icon_NormalChevron.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_Back" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon\Icon_Back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Logo_Database" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logo\Logo_Database.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_UserGroup" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_UserGroup.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Logo_UnknownFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logo\Logo_UnknownFile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_Back_DarkMode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon\Icon_Back_DarkMode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Sign_Plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Sign\Sign_Plus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Icon_User" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_User.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_New" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon\Icon_New.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Logo_FLASH" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logo\Logo_FLASH.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_NetworkDrive" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon\Icon_NetworkDrive.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_Documents" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon\Icon_Documents.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Logo_Music" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logo\Logo_Music.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_ExpandChevron" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon\Icon_ExpandChevron.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_Paste" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon\Icon_Paste.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="String1" xml:space="preserve">
     <value />
+  </data>
+  <data name="Logo_WORD" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logo\Logo_WORD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon_CDDisk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon\Icon_CDDisk.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Logo_Text" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logo\Logo_Text.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="InfoPageInfoPanel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\InfoPageInfoPanel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

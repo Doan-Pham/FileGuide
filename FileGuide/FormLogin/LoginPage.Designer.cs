@@ -182,7 +182,7 @@ namespace FileGuide
             this.panelAfterLogin.Controls.Add(this.label6);
             this.panelAfterLogin.Controls.Add(this.labelUsername);
             this.panelAfterLogin.Controls.Add(this.label5);
-            this.panelAfterLogin.Location = new System.Drawing.Point(630, 0);
+            this.panelAfterLogin.Location = new System.Drawing.Point(633, 0);
             this.panelAfterLogin.Name = "panelAfterLogin";
             this.panelAfterLogin.Size = new System.Drawing.Size(582, 1062);
             this.panelAfterLogin.TabIndex = 25;
@@ -205,10 +205,10 @@ namespace FileGuide
             this.btnLogout.Font = new System.Drawing.Font("Lexend", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.Color.Black;
             this.btnLogout.HoverState.Parent = this.btnLogout;
-            this.btnLogout.Location = new System.Drawing.Point(149, 330);
+            this.btnLogout.Location = new System.Drawing.Point(150, 354);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.ShadowDecoration.Parent = this.btnLogout;
-            this.btnLogout.Size = new System.Drawing.Size(260, 70);
+            this.btnLogout.Size = new System.Drawing.Size(304, 67);
             this.btnLogout.TabIndex = 6;
             this.btnLogout.Text = "Đăng xuất";
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
@@ -230,10 +230,10 @@ namespace FileGuide
             this.btnStart.Font = new System.Drawing.Font("Lexend", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStart.ForeColor = System.Drawing.Color.White;
             this.btnStart.HoverState.Parent = this.btnStart;
-            this.btnStart.Location = new System.Drawing.Point(149, 457);
+            this.btnStart.Location = new System.Drawing.Point(150, 481);
             this.btnStart.Name = "btnStart";
             this.btnStart.ShadowDecoration.Parent = this.btnStart;
-            this.btnStart.Size = new System.Drawing.Size(260, 70);
+            this.btnStart.Size = new System.Drawing.Size(304, 67);
             this.btnStart.TabIndex = 5;
             this.btnStart.Text = "Khởi động ứng dụng";
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
