@@ -92,9 +92,6 @@ namespace FileGuide
             tabControl.TabPages[0].Text = "My Computer    ";
             tabControl.TabPages[tabControl.TabCount - 1].ToolTipText = "Add a new tab";
             tabControl.Padding = new Point(16, 4);
-
-            //this.ResizeBegin += (s, evt) => { this.SuspendLayout(); };
-            //this.ResizeEnd += (s, evt) => { this.ResumeLayout(true); };
         }
 
 
