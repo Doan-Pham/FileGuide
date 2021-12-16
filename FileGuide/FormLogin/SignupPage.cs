@@ -35,8 +35,8 @@ namespace FileGuide
                     labelAdmin.Visible = true;
                     labelGuest.Visible = false;
 
-                    pictureBoxAdmin.Visible = true;
-                    pictureBoxGuest.Visible = false;
+                    gradientPanelBackgroundAdmin.Visible = true;
+                    gradientPanelBackgroundGuest.Visible = false;
 
                     textBoxUserAfter.Visible = true;
                     textBoxPassAfter.Visible = true;
@@ -53,8 +53,8 @@ namespace FileGuide
                     labelAdmin.Visible = false;
                     labelGuest.Visible = true;
 
-                    pictureBoxAdmin.Visible = false;
-                    pictureBoxGuest.Visible = true;
+                    gradientPanelBackgroundAdmin.Visible = false;
+                    gradientPanelBackgroundGuest.Visible = true;
 
                     textBoxUserAfter.Visible = false;
                     textBoxPassAfter.Visible = false;

@@ -29,7 +29,6 @@ namespace FileGuide
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginPage));
             this.textBoxPass = new Guna.UI2.WinForms.Guna2TextBox();
             this.textBoxUser = new Guna.UI2.WinForms.Guna2TextBox();
             this.panelBeforeLogin = new System.Windows.Forms.Panel();
@@ -42,10 +41,16 @@ namespace FileGuide
             this.label6 = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.gradientPanelBackground = new FileGuide.CustomControls.GradientPanel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panelBeforeLogin.SuspendLayout();
             this.panelAfterLogin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.gradientPanelBackground.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxPass
@@ -267,21 +272,87 @@ namespace FileGuide
             this.label5.TabIndex = 0;
             this.label5.Text = "Xin chào";
             // 
-            // pictureBox1
+            // gradientPanelBackground
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-1, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(628, 1065);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 30;
-            this.pictureBox1.TabStop = false;
+            this.gradientPanelBackground.Angle = 0F;
+            this.gradientPanelBackground.Controls.Add(this.label4);
+            this.gradientPanelBackground.Controls.Add(this.label3);
+            this.gradientPanelBackground.Controls.Add(this.label2);
+            this.gradientPanelBackground.Controls.Add(this.label1);
+            this.gradientPanelBackground.Controls.Add(this.pictureBox2);
+            this.gradientPanelBackground.FirstColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(156)))), ((int)(((byte)(242)))));
+            this.gradientPanelBackground.Location = new System.Drawing.Point(-1, 0);
+            this.gradientPanelBackground.Name = "gradientPanelBackground";
+            this.gradientPanelBackground.SecondColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
+            this.gradientPanelBackground.Size = new System.Drawing.Size(628, 1065);
+            this.gradientPanelBackground.TabIndex = 31;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::FileGuide.Properties.Resources.Logo_FileGuide;
+            this.pictureBox2.ImageLocation = "";
+            this.pictureBox2.Location = new System.Drawing.Point(230, 71);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(137, 136);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Questrial", 16F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(85, 227);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(455, 47);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Đồ án môn Lập trình trực quan";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Merriweather", 26F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(65, 283);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(497, 138);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "ỨNG DỤNG\r\nQUẢN LÝ TẬP TIN\r\n";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Questrial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(85, 443);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(455, 41);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Phạm Trương Hải Đoàn - 20520046";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Questrial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(169, 484);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(286, 41);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Lớp: IT008.M11.PMCL";
             // 
             // LoginPage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.gradientPanelBackground);
             this.Controls.Add(this.panelBeforeLogin);
             this.Controls.Add(this.panelAfterLogin);
             this.Name = "LoginPage";
@@ -290,7 +361,9 @@ namespace FileGuide
             this.panelBeforeLogin.PerformLayout();
             this.panelAfterLogin.ResumeLayout(false);
             this.panelAfterLogin.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.gradientPanelBackground.ResumeLayout(false);
+            this.gradientPanelBackground.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -308,6 +381,11 @@ namespace FileGuide
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label labelWarning;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private CustomControls.GradientPanel gradientPanelBackground;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

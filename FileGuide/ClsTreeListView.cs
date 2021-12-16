@@ -165,7 +165,7 @@ namespace FileGuide
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("An error has occured \n" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return false;
         }
@@ -248,7 +248,7 @@ namespace FileGuide
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("An error has occured  \n" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -279,7 +279,7 @@ namespace FileGuide
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("An error has occured \n" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -533,7 +533,7 @@ namespace FileGuide
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("An error has occured \n" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return false;
         }

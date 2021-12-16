@@ -291,7 +291,7 @@ namespace FileGuide
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("An error has occured while pasting \n" + ex.ToString(),"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
@@ -358,7 +358,7 @@ namespace FileGuide
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("An error has occured \n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -494,7 +494,7 @@ namespace FileGuide
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error has occured while renaming \n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -522,13 +522,14 @@ namespace FileGuide
                         {
                             FileInfo file = new FileInfo(tscmbPath.Text.Trim());
                             Process.Start(tscmbPath.Text.Trim());
-                            DirectoryInfo parent = file.Directory;
-                            tscmbPath.Text = parent.FullName;
+                            tscmbPath.Text = currentPath;
                         }
 
                         // If path points to a folder, open that folder
                         else if (Directory.Exists(tscmbPath.Text.Trim()))
                         {
+                            listView.Visible = true;
+                            tableLayoutFirstPage.Visible = false;
                             clsTreeListView.ShowListView(listView, tscmbPath.Text);
                             currentPath = tscmbPath.Text;
                             tabPathList[tabControl.SelectedIndex] = currentPath;
@@ -544,7 +545,7 @@ namespace FileGuide
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("An error has occured \n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -611,7 +612,7 @@ namespace FileGuide
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error has occured \n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -965,7 +966,7 @@ namespace FileGuide
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString(), "An error has occured", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("An error has occured \n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

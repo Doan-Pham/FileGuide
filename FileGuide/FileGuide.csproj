@@ -99,6 +99,9 @@
     <Compile Include="CustomControls\DoubleBufferedListView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="CustomControls\GradientPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FormLogin\FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
