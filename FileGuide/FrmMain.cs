@@ -1163,7 +1163,6 @@ namespace FileGuide
             listView.View = View.Details;
         }
 
-
         /// <summary>
         /// Customize appearance of listView column headers to developer's need
         /// </summary>
@@ -1317,7 +1316,6 @@ namespace FileGuide
 
         }
 
-
         /// <summary>
         /// Show approriate contextMenuStrip when right clicking on listView
         /// </summary>
@@ -1350,22 +1348,39 @@ namespace FileGuide
             currentPath = tscmbPath.Text;
         }
 
-
+        /// <summary>
+        /// Fix the "listView last column's white area in DarkMode" when resizing a column header
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listView_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
-        {/*
-            e.Cancel = true;
-            e.NewWidth = listView.Columns[e.ColumnIndex].Width;
-            listView.Columns[listView.Columns.Count - 1].Width = -2;
-            listViewRecentFiles.Columns[listViewRecentFiles.Columns.Count - 1].Width = -2;*/
+        {
+            if (e.ColumnIndex == listView.Columns.Count - 1)
+            {
+                e.NewWidth = -2;
+            }
+            else
+            {
+                listView.Columns[listView.Columns.Count - 1].Width = -2;
+            }
         }
 
+
+        /// <summary>
+        /// Fix the "listView last column's white area in DarkMode" when resizing a column header
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void listViewRecentFiles_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
-            /*
-            e.Cancel = true;
-            e.NewWidth = listView.Columns[e.ColumnIndex].Width;
-            listView.Columns[listView.Columns.Count - 1].Width = -2;
-            listViewRecentFiles.Columns[listViewRecentFiles.Columns.Count - 1].Width = -2; */
+            if (e.ColumnIndex == listViewRecentFiles.Columns.Count - 1)
+            {
+                e.NewWidth = -2;
+            }
+            else
+            {
+                listViewRecentFiles.Columns[listViewRecentFiles.Columns.Count - 1].Width = -2;
+            }
         }
 
         #endregion
@@ -1497,14 +1512,5 @@ namespace FileGuide
 
         #endregion
 
-        private void listView_VisibleChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutFirstPage_VisibleChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

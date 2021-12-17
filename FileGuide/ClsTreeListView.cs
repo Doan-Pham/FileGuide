@@ -277,6 +277,8 @@ namespace FileGuide
                     item = GetListViewItem(file);
                     listView.Items.Add(item);
                 };
+
+                listView.Columns[listView.Columns.Count - 1].Width = -2;
             }
             catch (Exception e)
             {
@@ -487,6 +489,8 @@ namespace FileGuide
                 ListViewItem item = new ListViewItem(items);
                 RecentFiles.Items.Add(item);
             }
+
+            RecentFiles.Columns[RecentFiles.Columns.Count - 1].Width = -2;
         }
 
 
