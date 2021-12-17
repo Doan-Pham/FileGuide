@@ -567,14 +567,14 @@ namespace FileGuide
             // Show list view/first page and add mouse events to drive panels
             if (currentPath != "")
             {
+                treeView.Refresh();
                 if (currentPath != "My Computer") clsTreeListView.ShowListView(listView, currentPath);
                 else
                 {
                     listViewRecentFiles.Refresh();
                     clsTreeListView.ShowRecentAccessedFiles(listViewRecentFiles);
                     foreach (Panel DrivePanel in DrivePanelList)
-                    {
-                        
+                    {  
                         foreach (Control control in DrivePanel.Controls)
                         {
                             control.MouseEnter += DrivePanel_MouseEnter;
@@ -945,7 +945,7 @@ namespace FileGuide
                 // If there's an error when showing folder tree, return
                 if (!clsTreeListView.ShowFolderTree(treeView, currentNode, isSpecialFolder, SpecialFolderPath)) return;
 
-                if (currentNode.Text == "My Computer")
+                if (currentNode.Text == "My Computer" && currentNode.Parent == null)
                 {
                     tableLayoutFirstPage.Visible = true;
                     listView.Visible = false;
@@ -957,13 +957,21 @@ namespace FileGuide
                         currentNode.Expand();
                         return;
                     }
-                    if (SpecialFolderPath == "") clsTreeListView.ShowListView(listView, currentNode);
-                    else clsTreeListView.ShowListView(listView, SpecialFolderPath);
+                    if (SpecialFolderPath == "")
+                    {
+                        clsTreeListView.ShowListView(listView, currentNode);
+                        tscmbPath.Text = HelperMethods.GetApproriatePath(currentNode.FullPath);
+                    }
+                    else
+                    {
+                        clsTreeListView.ShowListView(listView, SpecialFolderPath);
+                        tscmbPath.Text = SpecialFolderPath;
+                    }
                     tableLayoutFirstPage.Visible = false;
                     listView.Visible = true;
                 }
 
-                tscmbPath.Text = HelperMethods.GetApproriatePath(currentNode.FullPath);
+
                 pathNode = tscmbPath.Text;
                 currentPath = pathNode;
 
@@ -1085,13 +1093,34 @@ namespace FileGuide
         /// <param name="e"></param>
         private void pinToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (treeView.SelectedNode != null)
+            if (treeView.Focused)
             {
-                clsTreeListView.EasyAccessFolderPathList.Add(HelperMethods.GetApproriatePath(treeView.SelectedNode.FullPath));
-                TreeNode clonedTreeNode = (TreeNode)treeView.SelectedNode.Clone();
-                treeView.Nodes[1].Nodes.Add(treeView.SelectedNode.Text);
+                if (treeView.SelectedNode != null && treeView.SelectedNode.Parent != null && clsTreeListView.GetTreeNodeRoot(treeView.SelectedNode).Text != "Easy Access")
+                {
+                    string NodeToAddPath = HelperMethods.GetApproriatePath(treeView.SelectedNode.FullPath);
+                    if (clsTreeListView.EasyAccessFolderPathList.Any(EasyAccessFolderPath => EasyAccessFolderPath == NodeToAddPath)) return;
+
+                    clsTreeListView.EasyAccessFolderPathList.Add(NodeToAddPath);
+
+                    treeView.Nodes[1].Nodes.Add(treeView.SelectedNode.Text);
+                }
+                treeView.Nodes[1].Expand();
             }
-            treeView.Nodes[1].Expand();
+            else if (listView.Focused)
+            {
+                if (listView.SelectedItems.Count != 0)
+                {
+                    foreach (ListViewItem item in listView.SelectedItems)
+                    {
+                        string itemPath = HelperMethods.GetApproriatePath(item.SubItems[5].Text);
+                        if (item.SubItems[1].Text != "Folder" || clsTreeListView.EasyAccessFolderPathList.Any(EasyAccessFolderPath => EasyAccessFolderPath == itemPath)) return;
+
+                        clsTreeListView.EasyAccessFolderPathList.Add(itemPath);
+                        treeView.Nodes[1].Nodes.Add(item.SubItems[0].Text);
+                    }
+                    treeView.Refresh();
+                }
+            }
         }
 
 

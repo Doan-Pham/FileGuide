@@ -134,6 +134,7 @@ namespace FileGuide
                 }
                 else
                 {
+                    currentNode.Nodes.Clear();
                     // Add all child directories of the current's node to treeView 
                     string[] strDirectories;
                     if (!isSpecialFolder)

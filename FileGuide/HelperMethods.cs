@@ -26,7 +26,7 @@ namespace FileGuide
         /// <returns></returns>
         public static string GetApproriatePath(string strPath)
         {
-            return strPath.Replace("My Computer\\", "").Replace("\\\\", "\\");
+            return strPath.Replace("My Computer\\", "").Replace("\\\\", "\\").Replace("Easy Access\\","");
         }
 
 

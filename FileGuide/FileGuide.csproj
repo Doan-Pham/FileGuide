@@ -192,6 +192,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FileGuide.ico" />
+    <None Include="Resources\Icon\Icon_Pin.png" />
     <None Include="Resources\InfoPageInfoPanel.png" />
     <None Include="Resources\Icon\Icon_Refresh_DarkMode.png" />
     <None Include="Resources\Icon\Icon_Back_DarkMode.png" />

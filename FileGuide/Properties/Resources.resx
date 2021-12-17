@@ -253,4 +253,7 @@
   <data name="InfoPageInfoPanel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\InfoPageInfoPanel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Icon_Pin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon\Icon_Pin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
