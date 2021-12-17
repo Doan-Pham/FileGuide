@@ -57,6 +57,7 @@ namespace FileGuide
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.zipFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unzipFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
             this.treeView = new FileGuide.BufferedTreeView();
             this.contextMenuStripTreeView = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -85,6 +86,8 @@ namespace FileGuide
             this.tscmbPath = new System.Windows.Forms.ToolStripComboBox();
             this.toolsPanel = new System.Windows.Forms.Panel();
             this.ShortcutKeysPanel = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -107,6 +110,7 @@ namespace FileGuide
             this.tsDropNew = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripMenuItemFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripButtonZip = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDarkMode = new System.Windows.Forms.ToolStripButton();
             this.ShortcutKeysMenu = new System.Windows.Forms.MenuStrip();
             this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -119,11 +123,7 @@ namespace FileGuide
             this.newFoldẻToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewLargeIconToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label8 = new System.Windows.Forms.Label();
-            this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.darkModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButtonZip = new System.Windows.Forms.ToolStripButton();
-            this.label9 = new System.Windows.Forms.Label();
             this.zipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unzipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1.SuspendLayout();
@@ -365,6 +365,13 @@ namespace FileGuide
             this.unzipFileToolStripMenuItem.Text = "Unzip file";
             this.unzipFileToolStripMenuItem.Click += new System.EventHandler(this.unzipFileToolStripMenuItem_Click);
             // 
+            // deleteToolStripMenuItem1
+            // 
+            this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
+            this.deleteToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(277, 36);
+            this.deleteToolStripMenuItem1.Text = "Delete";
+            // 
             // mainSplitContainer
             // 
             this.mainSplitContainer.BackColor = System.Drawing.Color.White;
@@ -541,6 +548,7 @@ namespace FileGuide
             this.listViewRecentFiles.ForeColor = System.Drawing.Color.Black;
             this.listViewRecentFiles.FullRowSelect = true;
             this.listViewRecentFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listViewRecentFiles.HideSelection = false;
             this.listViewRecentFiles.Location = new System.Drawing.Point(3, 268);
             this.listViewRecentFiles.Name = "listViewRecentFiles";
             this.listViewRecentFiles.OwnerDraw = true;
@@ -557,12 +565,12 @@ namespace FileGuide
             // listViewColRecentPath
             // 
             this.listViewColRecentPath.Text = "Name";
-            this.listViewColRecentPath.Width = 692;
+            this.listViewColRecentPath.Width = 641;
             // 
             // Path
             // 
             this.Path.Text = "Path";
-            this.Path.Width = 600;
+            this.Path.Width = 650;
             // 
             // listView
             // 
@@ -722,6 +730,24 @@ namespace FileGuide
             this.ShortcutKeysPanel.Name = "ShortcutKeysPanel";
             this.ShortcutKeysPanel.Size = new System.Drawing.Size(1301, 27);
             this.ShortcutKeysPanel.TabIndex = 7;
+            // 
+            // label9
+            // 
+            this.label9.Location = new System.Drawing.Point(827, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(137, 34);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "(Alt+(Shift)+Z)";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(985, 5);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(137, 34);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "(Ctrl+D)";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label7
             // 
@@ -972,6 +998,19 @@ namespace FileGuide
             this.toolStripMenuItemFile.Text = "File";
             this.toolStripMenuItemFile.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
             // 
+            // toolStripButtonZip
+            // 
+            this.toolStripButtonZip.AutoSize = false;
+            this.toolStripButtonZip.Image = global::FileGuide.Properties.Resources.Logo_RAR;
+            this.toolStripButtonZip.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripButtonZip.ImageTransparentColor = System.Drawing.Color.White;
+            this.toolStripButtonZip.Margin = new System.Windows.Forms.Padding(20, 2, 0, 3);
+            this.toolStripButtonZip.Name = "toolStripButtonZip";
+            this.toolStripButtonZip.Size = new System.Drawing.Size(140, 100);
+            this.toolStripButtonZip.Text = "Zip/Unzip";
+            this.toolStripButtonZip.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonZip.ToolTipText = "Rename (Ctrl+R)\r\n";
+            // 
             // toolStripButtonDarkMode
             // 
             this.toolStripButtonDarkMode.AutoSize = false;
@@ -1097,22 +1136,6 @@ namespace FileGuide
             this.viewDetailsToolStripMenuItem.Text = "View Details";
             this.viewDetailsToolStripMenuItem.Click += new System.EventHandler(this.menuDetails_Click);
             // 
-            // label8
-            // 
-            this.label8.Location = new System.Drawing.Point(985, 5);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(137, 34);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "(Ctrl+D)";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // deleteToolStripMenuItem1
-            // 
-            this.deleteToolStripMenuItem1.Name = "deleteToolStripMenuItem1";
-            this.deleteToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(277, 36);
-            this.deleteToolStripMenuItem1.Text = "Delete";
-            // 
             // darkModeToolStripMenuItem
             // 
             this.darkModeToolStripMenuItem.Name = "darkModeToolStripMenuItem";
@@ -1120,28 +1143,6 @@ namespace FileGuide
             this.darkModeToolStripMenuItem.Size = new System.Drawing.Size(343, 34);
             this.darkModeToolStripMenuItem.Text = "DarkMode";
             this.darkModeToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonDarkMode_Click);
-            // 
-            // toolStripButtonZip
-            // 
-            this.toolStripButtonZip.AutoSize = false;
-            this.toolStripButtonZip.Image = global::FileGuide.Properties.Resources.Logo_RAR;
-            this.toolStripButtonZip.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolStripButtonZip.ImageTransparentColor = System.Drawing.Color.White;
-            this.toolStripButtonZip.Margin = new System.Windows.Forms.Padding(20, 2, 0, 3);
-            this.toolStripButtonZip.Name = "toolStripButtonZip";
-            this.toolStripButtonZip.Size = new System.Drawing.Size(140, 100);
-            this.toolStripButtonZip.Text = "Zip/Unzip";
-            this.toolStripButtonZip.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonZip.ToolTipText = "Rename (Ctrl+R)\r\n";
-            // 
-            // label9
-            // 
-            this.label9.Location = new System.Drawing.Point(827, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(137, 34);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "(Alt+(Shift)+Z)";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // zipToolStripMenuItem
             // 

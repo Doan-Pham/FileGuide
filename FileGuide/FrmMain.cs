@@ -115,7 +115,7 @@ namespace FileGuide
                 SumColumnHeadersWidth += listView.Columns[i].Width;
             }
             listView.Columns[listView.Columns.Count - 1].Width = -2;
-            listViewRecentFiles.Columns[listViewRecentFiles.Columns.Count - 1].Width = -2;//listView.Width - SumColumnHeadersWidth + 100;
+            listViewRecentFiles.Columns[listViewRecentFiles.Columns.Count - 1].Width = -2;
             //listView.ColumnWidthChanging += listView_ColumnWidthChanging;
         }
 
@@ -138,6 +138,12 @@ namespace FileGuide
          /// <param name="e"></param>
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
+            if (isInDarkMode)
+            {
+                darkModeToolStripMenuItem.PerformClick();
+            }
+            
+
             // Write recent accessed files list
             string DebugDirectory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string RecentDirectory = System.IO.Path.Combine(DebugDirectory, "RecentAccessesFiles");
@@ -1176,12 +1182,7 @@ namespace FileGuide
             // Draw border
             Pen textBorder = new Pen(Color.FromArgb(186, 186, 186), 1.5f);
             e.Graphics.DrawLine(textBorder, new Point(e.Bounds.X + 25, e.Bounds.Y - 5 + e.Bounds.Height), new Point(e.Bounds.X + e.Bounds.Width, e.Bounds.Y - 5 + e.Bounds.Height));
-
-
-            
         }
-
-
         /// <summary>
         ///  Customize appearance of listView items to developer's need
         /// </summary>
@@ -1313,6 +1314,8 @@ namespace FileGuide
             }
 
             TextRenderer.DrawText(g, e.SubItem.Text, e.Item.ListView.Font, textRect, textColor, flags);
+
+
         }
 
 
@@ -1352,14 +1355,18 @@ namespace FileGuide
         private void listView_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {/*
             e.Cancel = true;
-            e.NewWidth = listView.Columns[e.ColumnIndex].Width;*/
+            e.NewWidth = listView.Columns[e.ColumnIndex].Width;
+            listView.Columns[listView.Columns.Count - 1].Width = -2;
+            listViewRecentFiles.Columns[listViewRecentFiles.Columns.Count - 1].Width = -2;*/
         }
 
         private void listViewRecentFiles_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
             /*
             e.Cancel = true;
-            e.NewWidth = listView.Columns[e.ColumnIndex].Width;*/
+            e.NewWidth = listView.Columns[e.ColumnIndex].Width;
+            listView.Columns[listView.Columns.Count - 1].Width = -2;
+            listViewRecentFiles.Columns[listViewRecentFiles.Columns.Count - 1].Width = -2; */
         }
 
         #endregion
