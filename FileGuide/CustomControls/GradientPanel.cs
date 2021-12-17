@@ -25,6 +25,7 @@ namespace FileGuide.CustomControls
         public float Angle { get; set; }
         protected override void OnPaint(PaintEventArgs e)
         {
+            DoubleBuffered = true;
             LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, this.FirstColor, this.SecondColor, Angle);
             e.Graphics.FillRectangle(brush, this.ClientRectangle);
             base.OnPaint(e);
