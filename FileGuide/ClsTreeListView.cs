@@ -245,6 +245,7 @@ namespace FileGuide
                     listView.Items.Add(item);
                 };
 
+                listView.Columns[listView.Columns.Count - 1].Width = -2;        
             }
             catch (Exception e)
             {
@@ -471,7 +472,11 @@ namespace FileGuide
             string DebugDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string RecentDirectory = Path.Combine(DebugDirectory, "RecentAccessesFiles");
             string RecentFilesTxt = Path.Combine(RecentDirectory, "RecentAccessedFiles.txt");
-            if (File.Exists(RecentFilesTxt)) ListRecentFiles.AddRange(File.ReadAllLines(RecentFilesTxt));
+            if (File.Exists(RecentFilesTxt))
+            {
+                ListRecentFiles.Clear();
+                ListRecentFiles.AddRange(File.ReadAllLines(RecentFilesTxt));
+            }
 
             RecentFiles.Items.Clear();
             foreach (string ItemPath in ListRecentFiles)

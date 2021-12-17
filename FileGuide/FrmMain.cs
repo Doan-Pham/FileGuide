@@ -92,6 +92,9 @@ namespace FileGuide
             tabControl.TabPages[0].Text = "My Computer    ";
             tabControl.TabPages[tabControl.TabCount - 1].ToolTipText = "Add a new tab";
             tabControl.Padding = new Point(16, 4);
+
+            listView.Columns[listView.Columns.Count - 1].Width = -2;
+            listViewRecentFiles.Columns[listViewRecentFiles.Columns.Count - 1].Width = -2;
         }
 
 
@@ -104,16 +107,11 @@ namespace FileGuide
         {
             if (Width > 900) tscmbPath.Width = Width - 800;
 
-            toolBar.Width = Width - treeView.Width + 10;
-            tsPath.Width = Width - treeView.Width + 10;
-            ShortcutKeysPanel.Width = Width - treeView.Width + 10;
+            toolBar.Width = Width - treeView.Width + 50;
+            tsPath.Width = Width - treeView.Width + 50;
+            ShortcutKeysPanel.Width = Width - treeView.Width + 50;
 
             //listView.ColumnWidthChanging -= listView_ColumnWidthChanging;
-            int SumColumnHeadersWidth = 0 ;
-            for (int i = 0; i < listView.Columns.Count - 1;i++)
-            {
-                SumColumnHeadersWidth += listView.Columns[i].Width;
-            }
             listView.Columns[listView.Columns.Count - 1].Width = -2;
             listViewRecentFiles.Columns[listViewRecentFiles.Columns.Count - 1].Width = -2;
             //listView.ColumnWidthChanging += listView_ColumnWidthChanging;
@@ -121,13 +119,13 @@ namespace FileGuide
 
         protected override void OnResizeBegin(EventArgs e)
         {
-            SuspendLayout();
-            base.OnResizeBegin(e);
+            /*SuspendLayout();
+            base.OnResizeBegin(e);*/
         }
         protected override void OnResizeEnd(EventArgs e)
         {
-            ResumeLayout();
-            base.OnResizeEnd(e);
+            /*ResumeLayout();
+            base.OnResizeEnd(e);*/
         }
 
 
@@ -292,7 +290,8 @@ namespace FileGuide
                 if (!isFolder) strNewPath = HelperMethods.GetParentDirectoryPath(pathDest);
                 else strNewPath = pathDest;
                 clsTreeListView.ShowListView(listView, strNewPath);
-
+                tableLayoutFirstPage.Visible = false;
+                listView.Visible = true;
                 pasteToolStripMenuItem.Enabled = true;
                 tsbtnPaste.Enabled = false;
             }
@@ -601,16 +600,16 @@ namespace FileGuide
                 {
                     currentPath = HelperMethods.GetParentDirectoryPath(currentPath);
                     if (currentPath != "My Computer")
-                    {
+                    { 
+                        clsTreeListView.ShowListView(listView, currentPath);
                         tableLayoutFirstPage.Visible = false;
                         listView.Visible = true;
-                        clsTreeListView.ShowListView(listView, currentPath);
                     }
                     else
                     {
+                        clsTreeListView.ShowRecentAccessedFiles(listViewRecentFiles);
                         tableLayoutFirstPage.Visible = true;
                         listView.Visible = false;
-                        clsTreeListView.ShowRecentAccessedFiles(listViewRecentFiles);
                     }
                     tscmbPath.Text = currentPath;
                     tabPathList[tabControl.SelectedIndex] = currentPath;
@@ -885,15 +884,15 @@ namespace FileGuide
                 e.TabPage.Controls.Add(tableLayoutFirstPage);
                 if (tabPath == "My Computer")
                 {
+                    clsTreeListView.ShowRecentAccessedFiles(listViewRecentFiles);
                     tableLayoutFirstPage.Visible = true;
                     listView.Visible = false;
-                    clsTreeListView.ShowRecentAccessedFiles(listViewRecentFiles);
                 }
                 else
                 {
+                    clsTreeListView.ShowListView(listView, tabPathList[e.TabPageIndex]);
                     tableLayoutFirstPage.Visible = false;
                     listView.Visible = true;
-                    clsTreeListView.ShowListView(listView, tabPathList[e.TabPageIndex]);
                 }
                 tscmbPath.Text = tabPath;
             }
@@ -958,10 +957,10 @@ namespace FileGuide
                         currentNode.Expand();
                         return;
                     }
-                    tableLayoutFirstPage.Visible = false;
-                    listView.Visible = true;
                     if (SpecialFolderPath == "") clsTreeListView.ShowListView(listView, currentNode);
                     else clsTreeListView.ShowListView(listView, SpecialFolderPath);
+                    tableLayoutFirstPage.Visible = false;
+                    listView.Visible = true;
                 }
 
                 tscmbPath.Text = HelperMethods.GetApproriatePath(currentNode.FullPath);
@@ -1435,13 +1434,13 @@ namespace FileGuide
             {
                 if (drivePanel.Controls[1].Text.Contains(drive.Name.ToString().Replace("\\", "")))
                 {
-                    tableLayoutFirstPage.Visible = false;
-                    listView.Visible = true;
                     currentPath = drive.Name;
                     tscmbPath.Text = drive.Name;
                     tabPathList[tabControl.SelectedIndex] = currentPath;
                     tabControl.TabPages[tabControl.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
                     clsTreeListView.ShowListView(listView, currentPath);
+                    tableLayoutFirstPage.Visible = false;
+                    listView.Visible = true;
                     return;
                 }
             }
@@ -1497,5 +1496,15 @@ namespace FileGuide
 
 
         #endregion
+
+        private void listView_VisibleChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutFirstPage_VisibleChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

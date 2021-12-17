@@ -630,7 +630,7 @@ namespace FileGuide
             // colDateModified
             // 
             this.colDateModified.Text = "Date modified";
-            this.colDateModified.Width = 395;
+            this.colDateModified.Width = 420;
             // 
             // tabPlus
             // 
@@ -1181,6 +1181,7 @@ namespace FileGuide
             this.Text = "  File Guide";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.ClientSizeChanged += new System.EventHandler(this.FrmMain_Resize);
             this.SizeChanged += new System.EventHandler(this.FrmMain_Resize);
             this.Resize += new System.EventHandler(this.FrmMain_Resize);
             this.statusStrip1.ResumeLayout(false);
