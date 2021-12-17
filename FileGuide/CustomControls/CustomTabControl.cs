@@ -71,7 +71,7 @@ namespace FileGuide
             }
 
             int imageSize = 16;
-            // Draw tabs
+            // Draw tab headers
             for (int index = 0; index < TabCount; index++)
             {
                 r = GetTabRect(index);

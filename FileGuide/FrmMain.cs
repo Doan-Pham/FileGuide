@@ -108,14 +108,15 @@ namespace FileGuide
             tsPath.Width = Width - treeView.Width + 10;
             ShortcutKeysPanel.Width = Width - treeView.Width + 10;
 
-            listView.ColumnWidthChanging -= listView_ColumnWidthChanging;
+            //listView.ColumnWidthChanging -= listView_ColumnWidthChanging;
             int SumColumnHeadersWidth = 0 ;
             for (int i = 0; i < listView.Columns.Count - 1;i++)
             {
                 SumColumnHeadersWidth += listView.Columns[i].Width;
             }
-            listView.Columns[listView.Columns.Count - 1].Width = listView.Width - SumColumnHeadersWidth + 100;
-            listView.ColumnWidthChanging += listView_ColumnWidthChanging;
+            listView.Columns[listView.Columns.Count - 1].Width = -2;
+            listViewRecentFiles.Columns[listViewRecentFiles.Columns.Count - 1].Width = -2;//listView.Width - SumColumnHeadersWidth + 100;
+            //listView.ColumnWidthChanging += listView_ColumnWidthChanging;
         }
 
         protected override void OnResizeBegin(EventArgs e)
@@ -1349,15 +1350,16 @@ namespace FileGuide
 
 
         private void listView_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
-        {
+        {/*
             e.Cancel = true;
-            e.NewWidth = listView.Columns[e.ColumnIndex].Width;
+            e.NewWidth = listView.Columns[e.ColumnIndex].Width;*/
         }
 
         private void listViewRecentFiles_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
         {
+            /*
             e.Cancel = true;
-            e.NewWidth = listView.Columns[e.ColumnIndex].Width;
+            e.NewWidth = listView.Columns[e.ColumnIndex].Width;*/
         }
 
         #endregion
