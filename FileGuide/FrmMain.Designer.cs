@@ -537,14 +537,12 @@ namespace FileGuide
             // 
             // listViewRecentFiles
             // 
-            this.listViewRecentFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewRecentFiles.BackColor = System.Drawing.Color.White;
             this.listViewRecentFiles.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listViewRecentFiles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.listViewColRecentPath,
             this.Path});
+            this.listViewRecentFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewRecentFiles.ForeColor = System.Drawing.Color.Black;
             this.listViewRecentFiles.FullRowSelect = true;
             this.listViewRecentFiles.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
@@ -742,7 +740,7 @@ namespace FileGuide
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(985, 5);
+            this.label8.Location = new System.Drawing.Point(979, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(137, 34);
             this.label8.TabIndex = 7;
@@ -1009,7 +1007,7 @@ namespace FileGuide
             this.toolStripButtonZip.Size = new System.Drawing.Size(140, 100);
             this.toolStripButtonZip.Text = "Zip/Unzip";
             this.toolStripButtonZip.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonZip.ToolTipText = "Rename (Ctrl+R)\r\n";
+            this.toolStripButtonZip.ToolTipText = "Zip/Unzip (Alt+(Shift)+Z)\r\n";
             // 
             // toolStripButtonDarkMode
             // 
@@ -1022,7 +1020,7 @@ namespace FileGuide
             this.toolStripButtonDarkMode.Size = new System.Drawing.Size(140, 100);
             this.toolStripButtonDarkMode.Text = "Dark Mode";
             this.toolStripButtonDarkMode.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonDarkMode.ToolTipText = "Rename (Ctrl+R)\r\n";
+            this.toolStripButtonDarkMode.ToolTipText = "DarkMode (Ctrl+D)\r\n";
             this.toolStripButtonDarkMode.Click += new System.EventHandler(this.toolStripButtonDarkMode_Click);
             // 
             // ShortcutKeysMenu

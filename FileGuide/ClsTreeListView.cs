@@ -244,7 +244,6 @@ namespace FileGuide
                     item = GetListViewItem(file);
                     listView.Items.Add(item);
                 };
-
                 listView.Columns[listView.Columns.Count - 1].Width = -2;        
             }
             catch (Exception e)
@@ -277,9 +276,9 @@ namespace FileGuide
                     item = GetListViewItem(file);
                     listView.Items.Add(item);
                 };
-
                 listView.Columns[listView.Columns.Count - 1].Width = -2;
             }
+
             catch (Exception e)
             {
                 MessageBox.Show("An error has occured \n" + e.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -489,7 +488,6 @@ namespace FileGuide
                 ListViewItem item = new ListViewItem(items);
                 RecentFiles.Items.Add(item);
             }
-
             RecentFiles.Columns[RecentFiles.Columns.Count - 1].Width = -2;
         }
 

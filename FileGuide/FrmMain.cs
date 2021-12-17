@@ -110,11 +110,11 @@ namespace FileGuide
             toolBar.Width = Width - treeView.Width + 50;
             tsPath.Width = Width - treeView.Width + 50;
             ShortcutKeysPanel.Width = Width - treeView.Width + 50;
-
-            //listView.ColumnWidthChanging -= listView_ColumnWidthChanging;
             listView.Columns[listView.Columns.Count - 1].Width = -2;
             listViewRecentFiles.Columns[listViewRecentFiles.Columns.Count - 1].Width = -2;
-            //listView.ColumnWidthChanging += listView_ColumnWidthChanging;
+
+            //listView.Width = Width - treeView.Width;
+            //listViewRecentFiles.Width = Width - treeView.Width;
         }
 
         protected override void OnResizeBegin(EventArgs e)
@@ -1188,9 +1188,10 @@ namespace FileGuide
         /// <param name="e"></param>
         private void listView_DrawItem(object sender, DrawListViewItemEventArgs e)
         {
+
             Rectangle itemRect = e.Item.Bounds;
             Graphics g = e.Graphics;
-
+            
             if (e.State == ListViewItemStates.Hot)
             {
                 Brush hoverBrush = new SolidBrush(HoverColor);
@@ -1283,15 +1284,21 @@ namespace FileGuide
         /// <param name="e"></param>
         private void listView_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
+            ListView listViewIdentifier = sender as ListView;
+            bool isListViewRecentAccessFiles = false;
+            int SubItemPathIndex = 5;
+            if (listViewIdentifier.Columns.Count == 2) isListViewRecentAccessFiles = true;
+
             Rectangle itemRect = e.Item.Bounds;
             Graphics g = e.Graphics;
+            if (isListViewRecentAccessFiles) SubItemPathIndex = 1;
             if (e.Item.SubItems[1].Text == "Folder")
             {
                 g.DrawImage(Properties.Resources.Icon_Folder, e.Item.Bounds.X + 20, e.Item.Bounds.Y, 30, 30);
             }
             else
             {
-                FileInfo itemPath = new FileInfo(e.Item.SubItems[5].Text);
+                FileInfo itemPath = new FileInfo(e.Item.SubItems[SubItemPathIndex].Text);
                 g.DrawImage(HelperMethods.GetFileTypeIcon(itemPath), e.Item.Bounds.X + 20, e.Item.Bounds.Y, 30, 30);
             }
 
