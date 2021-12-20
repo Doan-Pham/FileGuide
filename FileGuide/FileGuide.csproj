@@ -89,7 +89,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomControls\BufferedTreeView.cs">
+    <Compile Include="CustomControls\DoubleBufferedTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ClsTreeListView.cs" />
