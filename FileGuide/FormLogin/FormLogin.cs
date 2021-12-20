@@ -13,6 +13,8 @@ namespace FileGuide
 {
     public partial class FormLogin : Form
     {
+
+        // Set static variables for use among child user controls
         public static int UserPermission;
         public static bool isLogined = false;
         public static string SQLConnectionString = @"Data Source=LAPTOP-MFVT6MG4\MSSQLSERVER01;Initial Catalog = DoAnLTTQ; Integrated Security = True";
@@ -20,6 +22,7 @@ namespace FileGuide
         public FormLogin()
         {
             InitializeComponent();
+            // Set the small blue panel
             sidePanel.Height = LoginButton.Height;
             sidePanel.Top = LoginButton.Top;
 
@@ -30,16 +33,13 @@ namespace FileGuide
             loginPage1.Dock = DockStyle.Fill;
             signupPage1.Dock = DockStyle.None;
             infoPage1.Dock = DockStyle.None;
-
-            loginPage1.AutoSize = false;
-            signupPage1.AutoSize = false;
-            infoPage1.AutoSize = false;
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
             sidePanel.Height = LoginButton.Height;
             sidePanel.Top = LoginButton.Top;
+
             loginPage1.Visible = true;
             signupPage1.Visible = false;
             infoPage1.Visible = false;

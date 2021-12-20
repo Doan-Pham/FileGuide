@@ -15,7 +15,7 @@ using System.Windows;
 using System.Reflection;
 using Guna.UI2.WinForms;
 using System.IO.Compression;
-
+using Plasmoid.Extensions;
 namespace FileGuide.CustomControls
 {
     class GradientPanel : Panel
@@ -23,11 +23,19 @@ namespace FileGuide.CustomControls
         public Color FirstColor { get; set; }
         public Color SecondColor { get; set; }
         public float Angle { get; set; }
+        public int BorderRadius { get; set; }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             DoubleBuffered = true;
+
+            Graphics g = e.Graphics;
             LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, this.FirstColor, this.SecondColor, Angle);
-            e.Graphics.FillRectangle(brush, this.ClientRectangle);
+            g.FillRoundedRectangle(brush, ClientRectangle.X, ClientRectangle.Y, ClientRectangle.Width, ClientRectangle.Height, BorderRadius, RectangleEdgeFilter.All);
+            //g.DrawRoundedRectangle(new Pen(Color.Red, 5.0f), ClientRectangle, 20);
+           // g.FillRoundedRectangle(new SolidBrush(Color.Red), 10, 10, this.Width - 40, this.Height - 60, 10);
+            //e.Graphics.FillRectangle(brush, this.ClientRectangle);
+            //e.Graphics.FillRoundedRectangle(brush, ClientRectangle, BorderRadius, RectangleEdgeFilter.All);
             base.OnPaint(e);
         }
     }

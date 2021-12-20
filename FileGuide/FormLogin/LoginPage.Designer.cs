@@ -42,15 +42,19 @@ namespace FileGuide
             this.labelUsername = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.gradientPanelBackground = new FileGuide.CustomControls.GradientPanel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.gradientPanel2 = new FileGuide.CustomControls.GradientPanel();
+            this.gradientPanel1 = new FileGuide.CustomControls.GradientPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panelBeforeLogin.SuspendLayout();
             this.panelAfterLogin.SuspendLayout();
             this.gradientPanelBackground.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.gradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxPass
@@ -117,6 +121,8 @@ namespace FileGuide
             // 
             // panelBeforeLogin
             // 
+            this.panelBeforeLogin.Controls.Add(this.gradientPanel2);
+            this.panelBeforeLogin.Controls.Add(this.gradientPanel1);
             this.panelBeforeLogin.Controls.Add(this.labelWarning);
             this.panelBeforeLogin.Controls.Add(this.label7);
             this.panelBeforeLogin.Controls.Add(this.btnLogin);
@@ -275,6 +281,7 @@ namespace FileGuide
             // gradientPanelBackground
             // 
             this.gradientPanelBackground.Angle = 0F;
+            this.gradientPanelBackground.BorderRadius = 0;
             this.gradientPanelBackground.Controls.Add(this.label4);
             this.gradientPanelBackground.Controls.Add(this.label3);
             this.gradientPanelBackground.Controls.Add(this.label2);
@@ -287,29 +294,29 @@ namespace FileGuide
             this.gradientPanelBackground.Size = new System.Drawing.Size(628, 1065);
             this.gradientPanelBackground.TabIndex = 31;
             // 
-            // pictureBox2
+            // label4
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::FileGuide.Properties.Resources.Logo_FileGuide;
-            this.pictureBox2.ImageLocation = "";
-            this.pictureBox2.Location = new System.Drawing.Point(230, 71);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(137, 136);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Questrial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(169, 484);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(286, 41);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Lớp: IT008.M11.PMCL";
             // 
-            // label1
+            // label3
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Questrial", 16F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(85, 227);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(455, 47);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Đồ án môn Lập trình trực quan";
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Questrial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(85, 443);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(455, 41);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Phạm Trương Hải Đoàn - 20520046";
             // 
             // label2
             // 
@@ -324,29 +331,69 @@ namespace FileGuide
             this.label2.Text = "ỨNG DỤNG\r\nQUẢN LÝ TẬP TIN\r\n";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
+            // label1
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Questrial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(85, 443);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(455, 41);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Phạm Trương Hải Đoàn - 20520046";
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Questrial", 16F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(85, 227);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(455, 47);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Đồ án môn Lập trình trực quan";
             // 
-            // label4
+            // pictureBox2
             // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Questrial", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(169, 484);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(286, 41);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Lớp: IT008.M11.PMCL";
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::FileGuide.Properties.Resources.Logo_FileGuide;
+            this.pictureBox2.ImageLocation = "";
+            this.pictureBox2.Location = new System.Drawing.Point(230, 71);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(137, 136);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
+            // gradientPanel2
+            // 
+            this.gradientPanel2.Angle = 0F;
+            this.gradientPanel2.BorderRadius = 4;
+            this.gradientPanel2.FirstColor = System.Drawing.Color.Empty;
+            this.gradientPanel2.Location = new System.Drawing.Point(68, 668);
+            this.gradientPanel2.Name = "gradientPanel2";
+            this.gradientPanel2.SecondColor = System.Drawing.Color.Empty;
+            this.gradientPanel2.Size = new System.Drawing.Size(182, 124);
+            this.gradientPanel2.TabIndex = 32;
+            this.gradientPanel2.Visible = false;
+            // 
+            // gradientPanel1
+            // 
+            this.gradientPanel1.Angle = 0F;
+            this.gradientPanel1.BorderRadius = 0;
+            this.gradientPanel1.Controls.Add(this.button1);
+            this.gradientPanel1.FirstColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
+            this.gradientPanel1.Location = new System.Drawing.Point(172, 574);
+            this.gradientPanel1.Name = "gradientPanel1";
+            this.gradientPanel1.SecondColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
+            this.gradientPanel1.Size = new System.Drawing.Size(260, 71);
+            this.gradientPanel1.TabIndex = 32;
+            this.gradientPanel1.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Lexend", 10F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(260, 71);
+            this.button1.TabIndex = 31;
+            this.button1.Text = "Đăng nhập";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // LoginPage
             // 
@@ -364,6 +411,7 @@ namespace FileGuide
             this.gradientPanelBackground.ResumeLayout(false);
             this.gradientPanelBackground.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.gradientPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -387,5 +435,8 @@ namespace FileGuide
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private CustomControls.GradientPanel gradientPanel1;
+        private System.Windows.Forms.Button button1;
+        private CustomControls.GradientPanel gradientPanel2;
     }
 }

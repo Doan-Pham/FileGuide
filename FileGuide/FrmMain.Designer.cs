@@ -305,7 +305,7 @@ namespace FileGuide
             this.contextMenuStripListViewItem.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.contextMenuStripListViewItem.Name = "contextMenuStripListViewItem";
             this.contextMenuStripListViewItem.ShowImageMargin = false;
-            this.contextMenuStripListViewItem.Size = new System.Drawing.Size(278, 343);
+            this.contextMenuStripListViewItem.Size = new System.Drawing.Size(278, 310);
             // 
             // openToolStripMenuItem
             // 
@@ -473,7 +473,7 @@ namespace FileGuide
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.ShowToolTips = true;
-            this.tabControl.Size = new System.Drawing.Size(1857, 615);
+            this.tabControl.Size = new System.Drawing.Size(1391, 615);
             this.tabControl.TabIndex = 4;
             this.tabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl_Selecting);
             this.tabControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabControl_MouseDown);
@@ -487,7 +487,7 @@ namespace FileGuide
             this.tabPage1.Location = new System.Drawing.Point(4, 54);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1849, 557);
+            this.tabPage1.Size = new System.Drawing.Size(1383, 557);
             this.tabPage1.TabIndex = 1;
             this.tabPage1.Text = "tabPage1";
             // 
@@ -512,7 +512,7 @@ namespace FileGuide
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutFirstPage.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutFirstPage.Size = new System.Drawing.Size(1843, 551);
+            this.tableLayoutFirstPage.Size = new System.Drawing.Size(1377, 551);
             this.tableLayoutFirstPage.TabIndex = 1;
             // 
             // tableLblDrives
@@ -523,7 +523,7 @@ namespace FileGuide
             this.tableLblDrives.ForeColor = System.Drawing.Color.Black;
             this.tableLblDrives.Location = new System.Drawing.Point(3, 0);
             this.tableLblDrives.Name = "tableLblDrives";
-            this.tableLblDrives.Size = new System.Drawing.Size(1837, 51);
+            this.tableLblDrives.Size = new System.Drawing.Size(1371, 51);
             this.tableLblDrives.TabIndex = 0;
             this.tableLblDrives.Text = "Drives";
             this.tableLblDrives.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -536,7 +536,7 @@ namespace FileGuide
             this.tableLblRecent.ForeColor = System.Drawing.Color.Black;
             this.tableLblRecent.Location = new System.Drawing.Point(3, 212);
             this.tableLblRecent.Name = "tableLblRecent";
-            this.tableLblRecent.Size = new System.Drawing.Size(1837, 53);
+            this.tableLblRecent.Size = new System.Drawing.Size(1371, 53);
             this.tableLblRecent.TabIndex = 1;
             this.tableLblRecent.Text = "Recent files";
             this.tableLblRecent.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -549,7 +549,7 @@ namespace FileGuide
             this.flowLayoutPanelDrives.ForeColor = System.Drawing.Color.Black;
             this.flowLayoutPanelDrives.Location = new System.Drawing.Point(3, 56);
             this.flowLayoutPanelDrives.Name = "flowLayoutPanelDrives";
-            this.flowLayoutPanelDrives.Size = new System.Drawing.Size(1837, 153);
+            this.flowLayoutPanelDrives.Size = new System.Drawing.Size(1371, 153);
             this.flowLayoutPanelDrives.TabIndex = 2;
             // 
             // listViewRecentFiles
@@ -567,7 +567,7 @@ namespace FileGuide
             this.listViewRecentFiles.Location = new System.Drawing.Point(3, 268);
             this.listViewRecentFiles.Name = "listViewRecentFiles";
             this.listViewRecentFiles.OwnerDraw = true;
-            this.listViewRecentFiles.Size = new System.Drawing.Size(1837, 259);
+            this.listViewRecentFiles.Size = new System.Drawing.Size(1371, 259);
             this.listViewRecentFiles.TabIndex = 3;
             this.listViewRecentFiles.UseCompatibleStateImageBehavior = false;
             this.listViewRecentFiles.View = System.Windows.Forms.View.Details;
@@ -608,7 +608,7 @@ namespace FileGuide
             this.listView.Margin = new System.Windows.Forms.Padding(0);
             this.listView.Name = "listView";
             this.listView.OwnerDraw = true;
-            this.listView.Size = new System.Drawing.Size(1843, 551);
+            this.listView.Size = new System.Drawing.Size(1377, 551);
             this.listView.TabIndex = 0;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
@@ -670,10 +670,10 @@ namespace FileGuide
             this.btnRefresh,
             this.tslbPath,
             this.tscmbPath});
-            this.tsPath.Location = new System.Drawing.Point(0, 160);
+            this.tsPath.Location = new System.Drawing.Point(0, 151);
             this.tsPath.Name = "tsPath";
             this.tsPath.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.tsPath.Size = new System.Drawing.Size(1381, 51);
+            this.tsPath.Size = new System.Drawing.Size(1387, 60);
             this.tsPath.TabIndex = 3;
             // 
             // btnBack
@@ -705,7 +705,7 @@ namespace FileGuide
             // 
             this.tslbPath.Margin = new System.Windows.Forms.Padding(20, 1, 0, 2);
             this.tslbPath.Name = "tslbPath";
-            this.tslbPath.Size = new System.Drawing.Size(54, 48);
+            this.tslbPath.Size = new System.Drawing.Size(54, 57);
             this.tslbPath.Text = "Path:";
             // 
             // tscmbPath
@@ -861,7 +861,7 @@ namespace FileGuide
             this.toolBar.Location = new System.Drawing.Point(0, 0);
             this.toolBar.Name = "toolBar";
             this.toolBar.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.toolBar.Size = new System.Drawing.Size(1381, 148);
+            this.toolBar.Size = new System.Drawing.Size(1387, 148);
             this.toolBar.TabIndex = 2;
             // 
             // tsbtnCopy

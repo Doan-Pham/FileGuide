@@ -93,6 +93,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ClsTreeListView.cs" />
+    <Compile Include="CustomControls\CustomPaintedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CustomControls\CustomTabControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -114,6 +117,7 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="GraphicsExtension.cs" />
     <Compile Include="HelperMethods.cs" />
     <Compile Include="FormLogin\InfoPage.cs">
       <SubType>UserControl</SubType>

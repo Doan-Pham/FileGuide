@@ -696,7 +696,6 @@ namespace FileGuide
                             }
                         }
                     }
-
                 }
                 btnRefresh.PerformClick();
             }
@@ -758,7 +757,6 @@ namespace FileGuide
                 MessageBox.Show("An error has occured while unzipping files \n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
 
         private void toolStripButtonDarkMode_Click(object sender, EventArgs e)
@@ -949,6 +947,7 @@ namespace FileGuide
                 {
                     tableLayoutFirstPage.Visible = true;
                     listView.Visible = false;
+                    tscmbPath.Text = currentNode.Text;
                 }
                 else
                 {

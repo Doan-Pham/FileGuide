@@ -30,13 +30,9 @@ namespace FileGuide
                 {
                     FormLogin.isLogined = true;
                     if (dataTable.Rows[0][0].ToString() == "1")
-                    {
                         FormLogin.UserPermission = 1;
-                    }
                     else
-                    {
                         FormLogin.UserPermission = 0;
-                    }
                     labelUsername.Text = textBoxUser.Text.Trim();
                     panelAfterLogin.BringToFront();
                 }
