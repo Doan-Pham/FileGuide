@@ -40,13 +40,11 @@ namespace FileGuide
         private bool isCopying = false;
         private bool isCutting = false;
         private bool isFolder = false;
-        private bool isListView = false;
         private bool isInDarkMode = false;
 
         private ListViewItem itemPaste;
         private string pathSource;
         private string pathDest;
-        private string pathNode;
         private string currentPath;
 
         private ClsTreeListView clsTreeListView = new ClsTreeListView();
@@ -183,37 +181,17 @@ namespace FileGuide
             {
                 // Set isCopying to true so events for Paste feature know whether to cut paste or copy paste
                 isCopying = true;
-
+                isCutting = false;
                 // If listView is focused, assign initial item's path to a variable and enable Paste feature
-                if (listView.Focused)
-                {
-                    isListView = true;
                     itemPaste = listView.FocusedItem;
                     if (itemPaste == null) return;
 
                     pathSource = itemPaste.SubItems[5].Text;
                     if (itemPaste.SubItems[1].Text.Trim() == "Folder")
-                    {
                         isFolder = true;
-                    }
                     else
-                    {
-                        if (itemPaste.SubItems[1].Text.Trim() == "Image File")
-                        {
-                            string ImagePath = HelperMethods.GetApproriatePath(itemPaste.SubItems[5].Text.Trim());
-                            Image img = Image.FromFile(ImagePath);
-                            Clipboard.SetImage(img);
-                        }
-
                         isFolder = false;
-                    }
-                }
-                else if (treeView.Focused)
-                {
-                    pathSource = pathNode;
-                    isListView = false;
-                    isFolder = true;
-                };
+                
                 pasteToolStripMenuItem.Enabled = true;
                 tsbtnPaste.Enabled = true;
             }
@@ -234,7 +212,6 @@ namespace FileGuide
                 isCopying = false;
                 isCutting = true;
             }
-
         }
 
 
@@ -249,13 +226,9 @@ namespace FileGuide
             {
                 // pathSource and pathDest respectively indicate item-needed-to-copy-cut's path and destination directory's path 
                 if (isFolder)
-                {
                     pathDest = currentPath;
-                }
                 else
-                {
                     pathDest = currentPath + "\\" + itemPaste.Text;
-                }
 
                 // If user is doing copy-paste, copy item to destination
                 if (isCopying)
@@ -276,7 +249,7 @@ namespace FileGuide
                 {
                     if (isFolder)
                     {
-                        Microsoft.VisualBasic.FileIO.FileSystem.MoveDirectory(pathSource, pathDest + "\\" + HelperMethods.GetFileFolderName(pathSource));
+                      Microsoft.VisualBasic.FileIO.FileSystem.MoveDirectory(pathSource, pathDest + "\\" + HelperMethods.GetFileFolderName(pathSource));
                     }
                     else
                     {
@@ -290,8 +263,6 @@ namespace FileGuide
                 if (!isFolder) strNewPath = HelperMethods.GetParentDirectoryPath(pathDest);
                 else strNewPath = pathDest;
                 clsTreeListView.ShowListView(listView, strNewPath);
-                tableLayoutFirstPage.Visible = false;
-                listView.Visible = true;
                 pasteToolStripMenuItem.Enabled = true;
                 tsbtnPaste.Enabled = false;
             }
@@ -393,7 +364,7 @@ namespace FileGuide
                 DirectoryInfo newlyCreatedFolder = Directory.CreateDirectory(System.IO.Path.Combine(currentPath, newFolderName));
                 ListViewItem newlyCreatedItem = clsTreeListView.GetListViewItem(newlyCreatedFolder);
 
-                // Check for the folder with same name and same type as the newly created folder and start renaming
+               /* // Check for the folder with same name and same type as the newly created folder and start renaming
                 int index = 0;
                 clsTreeListView.ShowListView(listView, currentPath);
                 foreach (ListViewItem item in listView.Items)
@@ -404,8 +375,7 @@ namespace FileGuide
                     }
                 }
                 listView.Items[index].Selected = true;
-                menuRename_Click(sender, e);
-
+                menuRename_Click(sender, e);*/
             }
         }
 
@@ -433,7 +403,7 @@ namespace FileGuide
 
                 File.Create(System.IO.Path.Combine(currentPath, newFileName));
 
-                // Go to the created folder and start renaming
+               /* // Go to the created folder and start renaming
                 int index = 0;
                 clsTreeListView.ShowListView(listView, currentPath);
                 foreach (ListViewItem item in listView.Items)
@@ -444,7 +414,7 @@ namespace FileGuide
                     }
                 }
                 listView.Items[index].Selected = true;
-                menuRename_Click(sender, e);
+                menuRename_Click(sender, e);*/
 
             }
         }
@@ -496,6 +466,7 @@ namespace FileGuide
             catch (IOException)
             {
                 MessageBox.Show("File or Folder already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                e.CancelEdit = true;
                 return;
             }
             catch (Exception ex)
@@ -970,9 +941,7 @@ namespace FileGuide
                     listView.Visible = true;
                 }
 
-
-                pathNode = tscmbPath.Text;
-                currentPath = pathNode;
+                currentPath = tscmbPath.Text;
 
                 tabPathList[tabControl.SelectedIndex] = currentPath;
                 tabControl.TabPages[tabControl.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
