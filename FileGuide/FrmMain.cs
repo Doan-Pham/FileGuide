@@ -88,10 +88,10 @@ namespace FileGuide
             if (Width > 900) tscmbPath.Width = Width - 800;
 
             // Initializes first 2 tabs: My Computer and Add
-            tabControl.TabPages[tabControl.TabCount - 1].Text = "";
-            tabControl.TabPages[0].Text = "My Computer    ";
-            tabControl.TabPages[tabControl.TabCount - 1].ToolTipText = "Add a new tab";
-            tabControl.Padding = new Point(16, 4);
+            tabWindow.TabPages[tabWindow.TabCount - 1].Text = "";
+            tabWindow.TabPages[0].Text = "My Computer    ";
+            tabWindow.TabPages[tabWindow.TabCount - 1].ToolTipText = "Add a new tab";
+            tabWindow.Padding = new Point(16, 4);
 
             listViewFolderContent.Columns[listViewFolderContent.Columns.Count - 1].Width = -2;
             listViewRecentFiles.Columns[listViewRecentFiles.Columns.Count - 1].Width = -2;
@@ -538,8 +538,8 @@ namespace FileGuide
                             tableLayoutFirstPage.Visible = false;
                             clsTreeListView.ShowListView(listViewFolderContent, tscmbPath.Text);
                             currentPath = tscmbPath.Text;
-                            tabPathList[tabControl.SelectedIndex] = currentPath;
-                            tabControl.TabPages[tabControl.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
+                            tabPathList[tabWindow.SelectedIndex] = currentPath;
+                            tabWindow.TabPages[tabWindow.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
                         }
 
                         // If path doesn't exist, show error message
@@ -612,8 +612,8 @@ namespace FileGuide
                         listViewFolderContent.Visible = false;
                     }
                     tscmbPath.Text = currentPath;
-                    tabPathList[tabControl.SelectedIndex] = currentPath;
-                    tabControl.TabPages[tabControl.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
+                    tabPathList[tabWindow.SelectedIndex] = currentPath;
+                    tabWindow.TabPages[tabWindow.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
                 }
             }
             catch (Exception ex)
@@ -637,8 +637,8 @@ namespace FileGuide
                 if (item.SubItems[1].Text == "Folder")
                 {
                     currentPath = tscmbPath.Text;
-                    tabPathList[tabControl.SelectedIndex] = currentPath;
-                    tabControl.TabPages[tabControl.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
+                    tabPathList[tabWindow.SelectedIndex] = currentPath;
+                    tabWindow.TabPages[tabWindow.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
                 }
             }
         }
@@ -661,8 +661,8 @@ namespace FileGuide
                     {
                         currentPath = tscmbPath.Text;
                     }
-                    tabPathList[tabControl.SelectedIndex] = currentPath;
-                    tabControl.TabPages[tabControl.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
+                    tabPathList[tabWindow.SelectedIndex] = currentPath;
+                    tabWindow.TabPages[tabWindow.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
                 }
             }
         }
@@ -834,27 +834,27 @@ namespace FileGuide
         private void tabControl_MouseDown(object sender, MouseEventArgs e)
         {
             // If clicked on the last tab (tab with the plus sign), create a new tab
-            var lastIndex = tabControl.TabCount - 1;
-            if (tabControl.GetTabRect(lastIndex).Contains(e.Location))
+            var lastIndex = tabWindow.TabCount - 1;
+            if (tabWindow.GetTabRect(lastIndex).Contains(e.Location))
             {
                 TabPage newTab = new TabPage();
                 newTab.BackColor = Color.White;
                 newTab.BorderStyle = BorderStyle.None;
                 newTab.Size = new Size(200, 10);
-                ControlPaint.DrawBorder(tabControl.CreateGraphics(), newTab.Bounds, Color.AliceBlue, ButtonBorderStyle.Solid);
+                ControlPaint.DrawBorder(tabWindow.CreateGraphics(), newTab.Bounds, Color.AliceBlue, ButtonBorderStyle.Solid);
 
                 newTab.Text = "My Computer" + spaceText;
-                tabControl.TabPages.Insert(lastIndex, newTab);
+                tabWindow.TabPages.Insert(lastIndex, newTab);
                 tabPathList.Insert(tabPathList.Count - 1, "My Computer");
-                tabControl.SelectedIndex = lastIndex;
+                tabWindow.SelectedIndex = lastIndex;
             }
             // If clicked on the X sign of any tab, delete that tab
             else
             {
                 int imageSize = 16;
-                for (var i = 0; i < tabControl.TabPages.Count; i++)
+                for (var i = 0; i < tabWindow.TabPages.Count; i++)
                 {
-                    var tabRect = tabControl.GetTabRect(i);
+                    var tabRect = tabWindow.GetTabRect(i);
                     var imageRect = new Rectangle(
                         (tabRect.Right - imageSize - 4),
                         tabRect.Top + (tabRect.Height - imageSize) / 2,
@@ -863,7 +863,7 @@ namespace FileGuide
 
                     if (imageRect.Contains(e.Location))
                     {
-                        tabControl.TabPages.RemoveAt(i);
+                        tabWindow.TabPages.RemoveAt(i);
                         tabPathList.RemoveAt(i);
                         break;
                     }
@@ -873,7 +873,7 @@ namespace FileGuide
 
         private void tabControl_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            if (e.TabPageIndex == tabControl.TabCount - 1)
+            if (e.TabPageIndex == tabWindow.TabCount - 1)
                 e.Cancel = true;
             else
             {
@@ -974,8 +974,8 @@ namespace FileGuide
                 pathNode = tscmbPath.Text;
                 currentPath = pathNode;
 
-                tabPathList[tabControl.SelectedIndex] = currentPath;
-                tabControl.TabPages[tabControl.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
+                tabPathList[tabWindow.SelectedIndex] = currentPath;
+                tabWindow.TabPages[tabWindow.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
             }
             catch (Exception ex)
             {
@@ -1486,8 +1486,8 @@ namespace FileGuide
                 {
                     currentPath = drive.Name;
                     tscmbPath.Text = drive.Name;
-                    tabPathList[tabControl.SelectedIndex] = currentPath;
-                    tabControl.TabPages[tabControl.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
+                    tabPathList[tabWindow.SelectedIndex] = currentPath;
+                    tabWindow.TabPages[tabWindow.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
                     clsTreeListView.ShowListView(listViewFolderContent, currentPath);
                     tableLayoutFirstPage.Visible = false;
                     listViewFolderContent.Visible = true;
@@ -1524,7 +1524,7 @@ namespace FileGuide
                 }
             }
 
-            tabControl.TabPages[tabControl.SelectedIndex].Text = HelperMethods.GetFileFolderName(tabPathList[tabControl.SelectedIndex]) + spaceText;
+            tabWindow.TabPages[tabWindow.SelectedIndex].Text = HelperMethods.GetFileFolderName(tabPathList[tabWindow.SelectedIndex]) + spaceText;
         }
 
 
