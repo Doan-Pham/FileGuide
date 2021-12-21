@@ -362,20 +362,23 @@ namespace FileGuide
                     }
                 }
                 DirectoryInfo newlyCreatedFolder = Directory.CreateDirectory(System.IO.Path.Combine(currentPath, newFolderName));
-                ListViewItem newlyCreatedItem = clsTreeListView.GetListViewItem(newlyCreatedFolder);
 
-               /* // Check for the folder with same name and same type as the newly created folder and start renaming
-                int index = 0;
                 clsTreeListView.ShowListView(listView, currentPath);
-                foreach (ListViewItem item in listView.Items)
-                {
-                    if (item.SubItems[0].Text == newFolderName && item.SubItems[1].Text == newlyCreatedItem.SubItems[1].Text)
-                    {
-                        index = item.Index;
-                    }
-                }
-                listView.Items[index].Selected = true;
-                menuRename_Click(sender, e);*/
+
+
+                /* // Check for the folder with same name and same type as the newly created folder and start renaming
+                 int index = 0;
+                 ListViewItem newlyCreatedItem = clsTreeListView.GetListViewItem(newlyCreatedFolder);
+                 clsTreeListView.ShowListView(listView, currentPath);
+                 foreach (ListViewItem item in listView.Items)
+                 {
+                     if (item.SubItems[0].Text == newFolderName && item.SubItems[1].Text == newlyCreatedItem.SubItems[1].Text)
+                     {
+                         index = item.Index;
+                     }
+                 }
+                 listView.Items[index].Selected = true;
+                 menuRename_Click(sender, e);*/
             }
         }
 
@@ -402,19 +405,18 @@ namespace FileGuide
                 }
 
                 File.Create(System.IO.Path.Combine(currentPath, newFileName));
-
-               /* // Go to the created folder and start renaming
-                int index = 0;
                 clsTreeListView.ShowListView(listView, currentPath);
-                foreach (ListViewItem item in listView.Items)
-                {
-                    if (item.SubItems[0].Text.ToString() == newFileName)
-                    {
-                        index = item.Index;
-                    }
-                }
-                listView.Items[index].Selected = true;
-                menuRename_Click(sender, e);*/
+                /* // Go to the created folder and start renaming
+                 int index = 0;
+                 foreach (ListViewItem item in listView.Items)
+                 {
+                     if (item.SubItems[0].Text.ToString() == newFileName)
+                     {
+                         index = item.Index;
+                     }
+                 }
+                 listView.Items[index].Selected = true;
+                 menuRename_Click(sender, e);*/
 
             }
         }
