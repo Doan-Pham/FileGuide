@@ -305,7 +305,7 @@ namespace FileGuide
             this.contextMenuStripListViewItem.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.contextMenuStripListViewItem.Name = "contextMenuStripListViewItem";
             this.contextMenuStripListViewItem.ShowImageMargin = false;
-            this.contextMenuStripListViewItem.Size = new System.Drawing.Size(278, 310);
+            this.contextMenuStripListViewItem.Size = new System.Drawing.Size(278, 343);
             // 
             // openToolStripMenuItem
             // 
@@ -377,6 +377,7 @@ namespace FileGuide
             this.deleteToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(277, 36);
             this.deleteToolStripMenuItem1.Text = "Delete";
+            this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // pinToolStripMenuItem1
             // 
@@ -652,7 +653,7 @@ namespace FileGuide
             this.tabPlus.Location = new System.Drawing.Point(4, 54);
             this.tabPlus.Name = "tabPlus";
             this.tabPlus.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPlus.Size = new System.Drawing.Size(1849, 557);
+            this.tabPlus.Size = new System.Drawing.Size(1383, 557);
             this.tabPlus.TabIndex = 0;
             this.tabPlus.Text = " ";
             this.tabPlus.UseVisualStyleBackColor = true;
