@@ -178,29 +178,8 @@ namespace FileGuide
             try
             {
                 if (currentNode.Text == "Easy Access" && GetTreeNodeRoot(currentNode).Text == "Easy Access") return;
-                // Clear listView to show content
-                listView.Items.Clear();
-
-                // Get Directory Info from the current node, if existing, add directory and its children to listView
-                ListViewItem item;
                 DirectoryInfo directory = GetDirectoryInfoFromNode(currentNode);
-                if (!directory.Exists)
-                {
-                    MessageBox.Show("Folder does not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                foreach (DirectoryInfo folder in directory.GetDirectories())
-                {
-                    item = GetListViewItem(folder);
-                    listView.Items.Add(item);
-                }
-
-                foreach (FileInfo file in directory.GetFiles())
-                {
-                    item = GetListViewItem(file);
-                    listView.Items.Add(item);
-                };
-                listView.Columns[listView.Columns.Count - 1].Width = -2;        
+                ShowListView(listView, directory.FullName);
             }
             catch (Exception e)
             {
@@ -218,20 +197,20 @@ namespace FileGuide
         {
             try
             {
-                ListViewItem item;
-                DirectoryInfo directory = new DirectoryInfo(strPath);
                 listView.Items.Clear();
-                foreach (DirectoryInfo folder in directory.GetDirectories())
+                DirectoryInfo directory = new DirectoryInfo(strPath);
+                if (!directory.Exists)
                 {
-                    item = GetListViewItem(folder);
-                    listView.Items.Add(item);
+                    MessageBox.Show("Folder does not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
+                foreach (DirectoryInfo folder in directory.GetDirectories())
+                    listView.Items.Add(GetListViewItem(folder));
 
                 foreach (FileInfo file in directory.GetFiles())
-                {
-                    item = GetListViewItem(file);
-                    listView.Items.Add(item);
-                };
+                    listView.Items.Add(GetListViewItem(file));
+
+                // Reset the last column's width to avoid the last-column-white-area bug in Dark Mode
                 listView.Columns[listView.Columns.Count - 1].Width = -2;
             }
 
