@@ -64,7 +64,7 @@ namespace FileGuide
             this.contextMenuStripTreeView = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unpingFromEasyAccessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabControl = new FileGuide.CustomTabControl();
+            this.tabWindow = new FileGuide.CustomTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutFirstPage = new System.Windows.Forms.TableLayoutPanel();
             this.tableLblDrives = new System.Windows.Forms.Label();
@@ -139,7 +139,7 @@ namespace FileGuide
             this.mainSplitContainer.Panel2.SuspendLayout();
             this.mainSplitContainer.SuspendLayout();
             this.contextMenuStripTreeView.SuspendLayout();
-            this.tabControl.SuspendLayout();
+            this.tabWindow.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutFirstPage.SuspendLayout();
             this.tsPath.SuspendLayout();
@@ -401,7 +401,7 @@ namespace FileGuide
             // mainSplitContainer.Panel2
             // 
             this.mainSplitContainer.Panel2.BackColor = System.Drawing.Color.White;
-            this.mainSplitContainer.Panel2.Controls.Add(this.tabControl);
+            this.mainSplitContainer.Panel2.Controls.Add(this.tabWindow);
             this.mainSplitContainer.Panel2.Controls.Add(this.tsPath);
             this.mainSplitContainer.Panel2.Controls.Add(this.toolsPanel);
             this.mainSplitContainer.Size = new System.Drawing.Size(1778, 807);
@@ -461,22 +461,22 @@ namespace FileGuide
             this.unpingFromEasyAccessToolStripMenuItem.Text = "Unpin from Easy Access";
             this.unpingFromEasyAccessToolStripMenuItem.Click += new System.EventHandler(this.unpingFromEasyAccessToolStripMenuItem_Click);
             // 
-            // tabControl
+            // tabWindow
             // 
-            this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tabWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl.Controls.Add(this.tabPage1);
-            this.tabControl.Controls.Add(this.tabPlus);
-            this.tabControl.ItemSize = new System.Drawing.Size(200, 50);
-            this.tabControl.Location = new System.Drawing.Point(0, 206);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.ShowToolTips = true;
-            this.tabControl.Size = new System.Drawing.Size(1391, 615);
-            this.tabControl.TabIndex = 4;
-            this.tabControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl_Selecting);
-            this.tabControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabControl_MouseDown);
+            this.tabWindow.Controls.Add(this.tabPage1);
+            this.tabWindow.Controls.Add(this.tabPlus);
+            this.tabWindow.ItemSize = new System.Drawing.Size(200, 50);
+            this.tabWindow.Location = new System.Drawing.Point(0, 206);
+            this.tabWindow.Name = "tabWindow";
+            this.tabWindow.SelectedIndex = 0;
+            this.tabWindow.ShowToolTips = true;
+            this.tabWindow.Size = new System.Drawing.Size(1391, 615);
+            this.tabWindow.TabIndex = 4;
+            this.tabWindow.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabWindow_Selecting);
+            this.tabWindow.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabWindow_MouseDown);
             // 
             // tabPage1
             // 
@@ -652,7 +652,7 @@ namespace FileGuide
             this.tabPlus.Location = new System.Drawing.Point(4, 54);
             this.tabPlus.Name = "tabPlus";
             this.tabPlus.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPlus.Size = new System.Drawing.Size(1849, 557);
+            this.tabPlus.Size = new System.Drawing.Size(1383, 557);
             this.tabPlus.TabIndex = 0;
             this.tabPlus.Text = " ";
             this.tabPlus.UseVisualStyleBackColor = true;
@@ -1252,7 +1252,7 @@ namespace FileGuide
             ((System.ComponentModel.ISupportInitialize)(this.mainSplitContainer)).EndInit();
             this.mainSplitContainer.ResumeLayout(false);
             this.contextMenuStripTreeView.ResumeLayout(false);
-            this.tabControl.ResumeLayout(false);
+            this.tabWindow.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tableLayoutFirstPage.ResumeLayout(false);
             this.tsPath.ResumeLayout(false);
@@ -1320,7 +1320,7 @@ namespace FileGuide
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.SplitContainer mainSplitContainer;
         private System.Windows.Forms.ColumnHeader colType;
-        private FileGuide.CustomTabControl tabControl;
+        private FileGuide.CustomTabControl tabWindow;
         private System.Windows.Forms.TabPage tabPlus;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripTreeView;
