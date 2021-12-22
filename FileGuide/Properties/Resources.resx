@@ -259,6 +259,9 @@
   <data name="Icon_Password" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon_Password.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Icon_Permission" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon_Permission.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Icon_Username" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon_Username.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

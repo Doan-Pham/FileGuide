@@ -193,6 +193,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FileGuide.ico" />
+    <None Include="Resources\Icon_Permission.png" />
     <None Include="Resources\Icon_Username.png" />
     <None Include="Resources\Icon_Password.png" />
     <None Include="Resources\Icon\Icon_Pin.png" />

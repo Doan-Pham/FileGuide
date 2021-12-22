@@ -31,44 +31,25 @@ namespace FileGuide
                 if (FormLogin.UserPermission.ToString() == "1")
                 {
                     labelPermis.Text = "admin";
-
-                    labelAdmin.Visible = true;
-                    labelGuest.Visible = false;
-
+                    panelAdmin.Visible = true;
                     gradientPanelBackgroundAdmin.Visible = true;
                     gradientPanelBackgroundGuest.Visible = false;
 
-                    textBoxUserAfter.Visible = true;
-                    textBoxPassAfter.Visible = true;
-                    textBoxPerAfter.Visible = true;
-
-                    btnAdd.Visible = true;
-                    btnDelete.Visible = true;
-                    btnUpdate.Visible = true;
                 }    
                 else
                 {
-                    labelPermis.Text = "guest";
-
-                    labelAdmin.Visible = false;
-                    labelGuest.Visible = true;
-
+                    labelPermis.Text = "guest";;
+                    panelAdmin.Visible = false;
                     gradientPanelBackgroundAdmin.Visible = false;
                     gradientPanelBackgroundGuest.Visible = true;
-
-                    textBoxUserAfter.Visible = false;
-                    textBoxPassAfter.Visible = false;
-                    textBoxPerAfter.Visible = false;
-
-                    btnAdd.Visible = false;
-                    btnDelete.Visible = false;
-                    btnUpdate.Visible = false;
                 }
             }
             else
             {
                 panelBeforeLogined.Visible = true;
                 panelAfterLogin.Visible = false;
+                gradientPanelBackgroundAdmin.Visible = false;
+                gradientPanelBackgroundGuest.Visible = true;
             }
             DataGridViewUserList.DataSource = GetAllUsers().Tables[0];
             foreach (DataGridViewRow row in DataGridViewUserList.Rows)
@@ -154,20 +135,20 @@ namespace FileGuide
         {
             labelNotice.ForeColor = ErrorWarningColor;
             labelNotice.Visible = false;
-            if (textBoxUserAfter.Text.ToString().Trim() == "" || textBoxPassAfter.Text.ToString().Trim() == "" || textBoxPerAfter.Text.ToString().Trim() == "")
+            if (textBoxUsernameAfter.Text.ToString().Trim() == "" || textBoxPasswordAfter.Text.ToString().Trim() == "" || textBoxPermissionAfter.Text.ToString().Trim() == "")
             {
                 labelNotice.Visible = true;
                 labelNotice.Text = "Vui lòng nhập đầy đủ thông tin";
                 return;
             }
-            else if (!(textBoxPerAfter.Text.ToString().Trim() == "0" || textBoxPerAfter.Text.ToString().Trim() == "1"))
+            else if (!(textBoxPermissionAfter.Text.ToString().Trim() == "0" || textBoxPermissionAfter.Text.ToString().Trim() == "1"))
             {
                 labelNotice.Visible = true;
                 labelNotice.Text = "Vui lòng nhập chỉ nhập 0 hoặc 1 vào ô Quyền";
                 return;
             }
 
-            string SelectQuery = "SELECT * FROM USERS WHERE USERNAME = '" + textBoxUserAfter.Text + "'";
+            string SelectQuery = "SELECT * FROM USERS WHERE USERNAME = '" + textBoxUsernameAfter.Text + "'";
             using (SqlConnection connection = new SqlConnection(FormLogin.SQLConnectionString))
             {
                 connection.Open();
@@ -185,9 +166,9 @@ namespace FileGuide
                     string InsertQuery = "INSERT INTO USERS (USERNAME, PASSWORD, PERMISSION) VALUES (@USERNAME, @PASSWORD, @PERMISSION)";
                     using (SqlCommand InsertCommand = new SqlCommand(InsertQuery, connection))
                     {
-                        InsertCommand.Parameters.AddWithValue("@USERNAME", textBoxUserAfter.Text);
-                        InsertCommand.Parameters.AddWithValue("@PASSWORD", textBoxPassAfter.Text);
-                        InsertCommand.Parameters.AddWithValue("@PERMISSION", int.Parse(textBoxPerAfter.Text));
+                        InsertCommand.Parameters.AddWithValue("@USERNAME", textBoxUsernameAfter.Text);
+                        InsertCommand.Parameters.AddWithValue("@PASSWORD", textBoxPasswordAfter.Text);
+                        InsertCommand.Parameters.AddWithValue("@PERMISSION", int.Parse(textBoxPermissionAfter.Text));
                         InsertCommand.ExecuteNonQuery();
                     }
                     labelNotice.Visible = true;
@@ -203,7 +184,7 @@ namespace FileGuide
         {
             labelNotice.ForeColor = ErrorWarningColor;
             labelNotice.Visible = false;
-            if (textBoxUserAfter.Text.ToString().Trim() == "" )
+            if (textBoxUsernameAfter.Text.ToString().Trim() == "" )
             {
                 labelNotice.Visible = true;
                 labelNotice.Text = "Vui lòng nhập tên tài khoản";
@@ -215,7 +196,7 @@ namespace FileGuide
                 connection.Open();
 
                 SqlCommand SelectCommand = new  SqlCommand("SELECT * FROM USERS WHERE USERNAME = @USERNAME", connection);
-                SelectCommand.Parameters.AddWithValue("USERNAME", textBoxUserAfter.Text);
+                SelectCommand.Parameters.AddWithValue("USERNAME", textBoxUsernameAfter.Text);
 
                 SqlDataAdapter adapter = new SqlDataAdapter(SelectCommand);
                 DataTable dataTable = new DataTable();
@@ -230,7 +211,7 @@ namespace FileGuide
                 {
                     using (SqlCommand DeleteCommand = new SqlCommand("DELETE USERS WHERE USERNAME = @USERNAME", connection))
                     {
-                        DeleteCommand.Parameters.AddWithValue("@USERNAME", textBoxUserAfter.Text);
+                        DeleteCommand.Parameters.AddWithValue("@USERNAME", textBoxUsernameAfter.Text);
                         DeleteCommand.ExecuteNonQuery();
                     }
                     labelNotice.Visible = true;
@@ -247,13 +228,13 @@ namespace FileGuide
         {
             labelNotice.ForeColor = ErrorWarningColor;
             labelNotice.Visible = false;
-            if (textBoxUserAfter.Text.ToString().Trim() == "" || textBoxPerAfter.Text.ToString().Trim() == "")
+            if (textBoxUsernameAfter.Text.ToString().Trim() == "" || textBoxPermissionAfter.Text.ToString().Trim() == "")
             {
                 labelNotice.Visible = true;
                 labelNotice.Text = "Vui lòng nhập tên tài khoản và quyền";
                 return;
             }
-            else if (!(textBoxPerAfter.Text.ToString().Trim() == "0" || textBoxPerAfter.Text.ToString().Trim() == "1"))
+            else if (!(textBoxPermissionAfter.Text.ToString().Trim() == "0" || textBoxPermissionAfter.Text.ToString().Trim() == "1"))
             {
                 labelNotice.Visible = true;
                 labelNotice.Text = "Vui lòng nhập chỉ nhập 0 hoặc 1 vào ô Quyền";
@@ -265,7 +246,7 @@ namespace FileGuide
                 connection.Open();
 
                 SqlCommand SelectCommand = new SqlCommand("SELECT * FROM USERS WHERE USERNAME = @USERNAME",connection);
-                SelectCommand.Parameters.AddWithValue("USERNAME", textBoxUserAfter.Text);
+                SelectCommand.Parameters.AddWithValue("USERNAME", textBoxUsernameAfter.Text);
                 SqlDataAdapter adapter = new SqlDataAdapter(SelectCommand);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
@@ -279,8 +260,8 @@ namespace FileGuide
                 {
                     using (SqlCommand UpdateCommand = new SqlCommand("UPDATE USERS SET PERMISSION = @PERMISSION WHERE USERNAME = @USERNAME", connection))
                     {
-                        UpdateCommand.Parameters.AddWithValue("USERNAME", textBoxUserAfter.Text);
-                        UpdateCommand.Parameters.AddWithValue("PERMISSION",int.Parse(textBoxPerAfter.Text));
+                        UpdateCommand.Parameters.AddWithValue("USERNAME", textBoxUsernameAfter.Text);
+                        UpdateCommand.Parameters.AddWithValue("PERMISSION",int.Parse(textBoxPermissionAfter.Text));
 
                         UpdateCommand.ExecuteNonQuery();
                     }

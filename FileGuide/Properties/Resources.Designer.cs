@@ -283,6 +283,16 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Icon_Permission {
+            get {
+                object obj = ResourceManager.GetObject("Icon_Permission", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Icon_Pin {
             get {
                 object obj = ResourceManager.GetObject("Icon_Pin", resourceCulture);
