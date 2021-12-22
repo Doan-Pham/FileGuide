@@ -111,7 +111,7 @@ namespace FileGuide
             listViewFolderContent.Columns[listViewFolderContent.Columns.Count - 1].Width = -2;
             listViewRecentFiles.Columns[listViewRecentFiles.Columns.Count - 1].Width = -2;
 
-            //listView.Width = Width - treeView.Width;
+            //listViewFolderContent.Width = Width - treeView.Width;
             //listViewRecentFiles.Width = Width - treeView.Width;
         }
 
@@ -182,8 +182,8 @@ namespace FileGuide
                 // Set isCopying to true so events for Paste feature know whether to cut paste or copy paste
                 isCopying = true;
                 isCutting = false;
-                // If listView is focused, assign initial item's path to a variable and enable Paste feature
-                    itemPaste = listView.FocusedItem;
+                // If listViewFolderContent is focused, assign initial item's path to a variable and enable Paste feature
+                    itemPaste = listViewFolderContent.FocusedItem;
                     if (itemPaste == null) return;
 
                     pathSource = itemPaste.SubItems[5].Text;
@@ -258,11 +258,11 @@ namespace FileGuide
                     isCutting = false;
                 }
 
-                // After pasting, refresh listView and disable paste feature
+                // After pasting, refresh listViewFolderContent and disable paste feature
                 string strNewPath;
                 if (!isFolder) strNewPath = HelperMethods.GetParentDirectoryPath(pathDest);
                 else strNewPath = pathDest;
-                clsTreeListView.ShowListView(listView, strNewPath);
+                clsTreeListView.ShowListView(listViewFolderContent, strNewPath);
                 pasteToolStripMenuItem.Enabled = true;
                 tsbtnPaste.Enabled = false;
             }
@@ -363,21 +363,21 @@ namespace FileGuide
                 }
                 DirectoryInfo newlyCreatedFolder = Directory.CreateDirectory(System.IO.Path.Combine(currentPath, newFolderName));
 
-                clsTreeListView.ShowListView(listView, currentPath);
+                clsTreeListView.ShowListView(listViewFolderContent, currentPath);
 
 
                 /* // Check for the folder with same name and same type as the newly created folder and start renaming
                  int index = 0;
                  ListViewItem newlyCreatedItem = clsTreeListView.GetListViewItem(newlyCreatedFolder);
-                 clsTreeListView.ShowListView(listView, currentPath);
-                 foreach (ListViewItem item in listView.Items)
+                 clsTreeListView.ShowListView(listViewFolderContent, currentPath);
+                 foreach (ListViewItem item in listViewFolderContent.Items)
                  {
                      if (item.SubItems[0].Text == newFolderName && item.SubItems[1].Text == newlyCreatedItem.SubItems[1].Text)
                      {
                          index = item.Index;
                      }
                  }
-                 listView.Items[index].Selected = true;
+                 listViewFolderContent.Items[index].Selected = true;
                  menuRename_Click(sender, e);*/
             }
         }
@@ -405,17 +405,17 @@ namespace FileGuide
                 }
 
                 File.Create(System.IO.Path.Combine(currentPath, newFileName));
-                clsTreeListView.ShowListView(listView, currentPath);
+                clsTreeListView.ShowListView(listViewFolderContent, currentPath);
                 /* // Go to the created folder and start renaming
                  int index = 0;
-                 foreach (ListViewItem item in listView.Items)
+                 foreach (ListViewItem item in listViewFolderContent.Items)
                  {
                      if (item.SubItems[0].Text.ToString() == newFileName)
                      {
                          index = item.Index;
                      }
                  }
-                 listView.Items[index].Selected = true;
+                 listViewFolderContent.Items[index].Selected = true;
                  menuRename_Click(sender, e);*/
 
             }
@@ -451,7 +451,7 @@ namespace FileGuide
                     return;
                 }
 
-                //Rename item then refresh listView
+                //Rename item then refresh listViewFolderContent
                 string path = listViewFolderContent.FocusedItem.SubItems[5].Text;
                 FileInfo fi = new FileInfo(path);
                 if (fi.Exists)
@@ -531,7 +531,7 @@ namespace FileGuide
 
 
         /// <summary>
-        /// Refresh listView
+        /// Refresh listViewFolderContent
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -844,7 +844,7 @@ namespace FileGuide
             else
             {
                 string tabPath = tabPagePathList[e.TabPageIndex];
-                e.TabPage.Controls.Add(listView);
+                e.TabPage.Controls.Add(listViewFolderContent);
                 e.TabPage.Controls.Add(tableLayoutFirstPage);
                 if (tabPath == "My Computer")
                 {
@@ -854,7 +854,7 @@ namespace FileGuide
                 }
                 else
                 {
-                    clsTreeListView.ShowListView(listView, tabPagePathList[e.TabPageIndex]);
+                    clsTreeListView.ShowListView(listViewFolderContent, tabPagePathList[e.TabPageIndex]);
                     tableLayoutFirstPage.Visible = false;
                     listViewFolderContent.Visible = true;
                 }
@@ -868,7 +868,7 @@ namespace FileGuide
 
 
         /// <summary>
-        /// Load folder tree onto treeView and show listView
+        /// Load folder tree onto treeView and show listViewFolderContent
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1107,7 +1107,7 @@ namespace FileGuide
         #region ListView design
 
         /// <summary>
-        /// Set listView display to large icons
+        /// Set listViewFolderContent display to large icons
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1120,7 +1120,7 @@ namespace FileGuide
 
 
         /// <summary>
-        /// Set listView display to small icons
+        /// Set listViewFolderContent display to small icons
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1133,7 +1133,7 @@ namespace FileGuide
 
 
         /// <summary>
-        /// Set listView display to list
+        /// Set listViewFolderContent display to list
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1145,7 +1145,7 @@ namespace FileGuide
 
 
         /// <summary>
-        /// Set listView display to details
+        /// Set listViewFolderContent display to details
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1156,7 +1156,7 @@ namespace FileGuide
         }
 
         /// <summary>
-        /// Customize appearance of listView column headers to developer's need
+        /// Customize appearance of listViewFolderContent column headers to developer's need
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1174,7 +1174,7 @@ namespace FileGuide
             e.Graphics.DrawLine(textBorder, new Point(e.Bounds.X + 25, e.Bounds.Y - 5 + e.Bounds.Height), new Point(e.Bounds.X + e.Bounds.Width, e.Bounds.Y - 5 + e.Bounds.Height));
         }
         /// <summary>
-        ///  Customize appearance of listView items to developer's need
+        ///  Customize appearance of listViewFolderContent items to developer's need
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1205,7 +1205,7 @@ namespace FileGuide
                 g.FillRectangle(selectBrush, itemRect);
             }
 
-            // Specify how to draw listView items in each view mode
+            // Specify how to draw listViewFolderContent items in each view mode
             if (e.Item.ListView.View == View.LargeIcon)
             {
                 float ImageSize = 80.0f;
@@ -1270,7 +1270,7 @@ namespace FileGuide
 
 
         /// <summary>
-        /// Customize appearance of listView subitems to developer's need
+        /// Customize appearance of listViewFolderContent subitems to developer's need
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1316,7 +1316,7 @@ namespace FileGuide
         }
 
         /// <summary>
-        /// Show approriate contextMenuStrip when right clicking on listView
+        /// Show approriate contextMenuStrip when right clicking on listViewFolderContent
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1348,7 +1348,7 @@ namespace FileGuide
         }
 
         /// <summary>
-        /// Fix the "listView last column's white area in DarkMode" when resizing a column header
+        /// Fix the "listViewFolderContent last column's white area in DarkMode" when resizing a column header
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1366,7 +1366,7 @@ namespace FileGuide
 
 
         /// <summary>
-        /// Fix the "listView last column's white area in DarkMode" when resizing a column header
+        /// Fix the "listViewFolderContent last column's white area in DarkMode" when resizing a column header
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1452,7 +1452,7 @@ namespace FileGuide
                     tscmbPath.Text = drive.Name;
                     tabPagePathList[tabWindow.SelectedIndex] = currentPath;
                     tabWindow.TabPages[tabWindow.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
-                    clsTreeListView.ShowListView(listView, currentPath);
+                    clsTreeListView.ShowListView(listViewFolderContent, currentPath);
                     tableLayoutFirstPage.Visible = false;
                     listViewFolderContent.Visible = true;
                     return;
@@ -1493,7 +1493,7 @@ namespace FileGuide
 
 
         /// <summary>
-        /// Show number of selected listView items on status strip
+        /// Show number of selected listViewFolderContent items on status strip
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

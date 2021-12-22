@@ -111,6 +111,41 @@ namespace FileGuide
             }
         }
 
+        /// <summary>
+        /// Return icon image respective to a drive's type
+        /// </summary>
+        /// <returns></returns>
+        public static Image GetDriveTypeIcon(DriveInfo drive)
+        {
+            switch (drive.DriveType.ToString())
+            {
+                case "Removable":
+                    {
+                        return Properties.Resources.Icon_FloppyDisk;
+                    }
+
+                case "Fixed":
+                    {
+                        return Properties.Resources.Icon_HardDisk;
+                    }
+
+                case "CDRom":
+                    {
+                        return Properties.Resources.Icon_CDDisk;
+                    }
+
+                case "Network":
+                    {
+                        return Properties.Resources.Icon_NetworkDrive;
+                    }
+
+                default:
+                    {
+                        return Properties.Resources.Icon_HardDisk;
+                    }
+
+            }
+        }
         public static Image GetNodeTypeIcon(TreeNode node)
         {
             if (node.Parent == null)

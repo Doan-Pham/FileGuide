@@ -316,7 +316,7 @@ namespace FileGuide
                 PictureBox DrivePicture = new PictureBox();
                 Label DriveName = new Label();
                 Label DriveStorageInfo = new Label();
-                Guna2ProgressBar DriveStorageBar = new Guna2ProgressBar();
+                FileGuide.CustomControls.CustomProgressBar DriveStorageBar = new FileGuide.CustomControls.CustomProgressBar();
                 Panel EmptySpaceFillPanel = new Panel();
 
                 DrivePanel.Add(new Panel());
@@ -325,48 +325,14 @@ namespace FileGuide
                 DrivePanel[driveCount].Padding = new Padding(10);
                 DrivePanel[driveCount].Width = 390;
                 DrivePanel[driveCount].Height = 125;
-                DrivePanel[driveCount].Margin = new Padding(3, 10, 20, 10);
-
-                switch (drive.DriveType.ToString())
-                {
-                    case "Removable":
-                        {
-                            DrivePicture.Image = Properties.Resources.Icon_FloppyDisk;
-                        }
-                        break;
-
-                    case "Fixed":
-                        {
-                            DrivePicture.Image = Properties.Resources.Icon_HardDisk;
-                        }
-                        break;
-
-                    case "CDRom":
-                        {
-                            DrivePicture.Image = Properties.Resources.Icon_CDDisk;
-                        }
-                        break;
-
-                    case "Network":
-                        {
-                            DrivePicture.Image = Properties.Resources.Icon_NetworkDrive;
-                        }
-                        break;
-
-                    default:
-                        {
-                            DrivePicture.Image = Properties.Resources.Icon_HardDisk;
-                        }
-                        break;
-                }
-
+               
                 DriveStorageBar.Dock = DockStyle.Left;
-                DriveStorageBar.BorderRadius = 5;
+                //DriveStorageBar.BorderRadius = 5;
                 DriveStorageBar.Width = 250;
                 DriveStorageBar.Height = 15;
                 DriveStorageBar.Style = ProgressBarStyle.Continuous;
-                DriveStorageBar.ProgressColor = FrmMain.PrimaryThemeColor;
-                DriveStorageBar.ProgressColor2 = FrmMain.SecondaryThemeColor;
+                DriveStorageBar.FirstColor = FrmMain.PrimaryThemeColor;
+                DriveStorageBar.SecondColor = FrmMain.SecondaryThemeColor;
                 DriveStorageBar.Value = 100 - (int)percentFree;
                 DrivePanel[driveCount].Controls.Add(DriveStorageBar);
 
@@ -382,6 +348,7 @@ namespace FileGuide
                 DriveStorageInfo.Text = HelperMethods.FormatStorageLengthBytes(freeSpace) + " free of " + HelperMethods.FormatStorageLengthBytes(totalSpace);
                 DrivePanel[driveCount].Controls.Add(DriveStorageInfo);
 
+                DrivePicture.Image = HelperMethods.GetDriveTypeIcon(drive);
                 DrivePicture.SizeMode = PictureBoxSizeMode.Zoom;
                 DrivePicture.Width = 80;
                 DrivePicture.Dock = DockStyle.Left;
