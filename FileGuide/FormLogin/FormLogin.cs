@@ -27,7 +27,9 @@ namespace FileGuide
         public FormLogin()
         {
             InitializeComponent();
-            LoginButton.PerformClick();
+            loginPage1.Visible = true;
+            managementPage1.Visible = false;
+            infoPage1.Visible = false;
         }
 
         // Switch to LoginPage
@@ -38,27 +40,26 @@ namespace FileGuide
             sidePanel.Top = LoginButton.Top;
 
             loginPage1.Visible = true;
-            signupPage1.Visible = false;
+            managementPage1.Visible = false;
             infoPage1.Visible = false;
 
             loginPage1.Dock = DockStyle.Fill;
-            signupPage1.Dock = DockStyle.None;
+            managementPage1.Dock = DockStyle.None;
             infoPage1.Dock = DockStyle.None;
         }
 
         // Switch to ManagementPage
         private void ManagementButton_Click(object sender, EventArgs e)
         {
-            //
             sidePanel.Height = ManagementButton.Height;
             sidePanel.Top = ManagementButton.Top;
 
             loginPage1.Visible = false;
-            signupPage1.Visible = true;
+            managementPage1.Visible = true;
             infoPage1.Visible = false;
 
             loginPage1.Dock = DockStyle.None;
-            signupPage1.Dock = DockStyle.Fill;
+            managementPage1.Dock = DockStyle.Fill;
             infoPage1.Dock = DockStyle.None;
         }
 
@@ -69,11 +70,11 @@ namespace FileGuide
             sidePanel.Top = InfoButton.Top;
             infoPage1.BringToFront();
             loginPage1.Visible = false;
-            signupPage1.Visible = false;
+            managementPage1.Visible = false;
             infoPage1.Visible = true;
 
             loginPage1.Dock = DockStyle.None;
-            signupPage1.Dock = DockStyle.None;
+            managementPage1.Dock = DockStyle.None;
             infoPage1.Dock = DockStyle.Fill;
         }
     }

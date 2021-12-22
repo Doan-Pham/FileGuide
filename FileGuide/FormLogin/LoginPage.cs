@@ -58,7 +58,6 @@ namespace FileGuide
             this.Parent.Focus();
             FrmMain newForm = new FrmMain();
             newForm.Show();
-           
         }
 
         /// <summary>

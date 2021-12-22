@@ -21,11 +21,11 @@ namespace FileGuide
 
         }
 
-        private void SignupPage_Load(object sender, EventArgs e)
+        private void ManagementPage_Load(object sender, EventArgs e)
         { 
             if (FormLogin.isLogined)
             {
-                SignupPanel.Visible = false;
+                panelBeforeLogin.Visible = false;
                 panelAfterLogin.Visible = true;
                 
                 if (FormLogin.UserPermission.ToString() == "1")
@@ -34,7 +34,6 @@ namespace FileGuide
                     panelAdmin.Visible = true;
                     gradientPanelBackgroundAdmin.Visible = true;
                     gradientPanelBackgroundGuest.Visible = false;
-
                 }    
                 else
                 {
@@ -46,7 +45,7 @@ namespace FileGuide
             }
             else
             {
-                SignupPanel.Visible = true;
+                panelBeforeLogin.Visible = true;
                 panelAfterLogin.Visible = false;
                 gradientPanelBackgroundAdmin.Visible = false;
                 gradientPanelBackgroundGuest.Visible = true;
@@ -118,7 +117,7 @@ namespace FileGuide
                         labelWarning2.Visible = true;
                         labelWarning2.Text = "Đăng ký thành công";
                         labelWarning2.ForeColor = Color.FromArgb(0, 200, 0);
-                        SignupPage_Load(sender, e);
+                        ManagementPage_Load(sender, e);
                     }
                 };
 
@@ -126,9 +125,9 @@ namespace FileGuide
             }
         }
 
-        private void SignupPage_VisibleChanged(object sender, EventArgs e)
+        private void ManagementPage_VisibleChanged(object sender, EventArgs e)
         {
-            SignupPage_Load(sender, e);
+            ManagementPage_Load(sender, e);
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -174,7 +173,7 @@ namespace FileGuide
                     labelNotice.Visible = true;
                     labelNotice.Text = "Thêm mới thành công";
                     labelNotice.ForeColor = SuccessNoticeColor;
-                    SignupPage_Load(sender, e);
+                    ManagementPage_Load(sender, e);
                 }
                 connection.Close();
             }
@@ -217,7 +216,7 @@ namespace FileGuide
                     labelNotice.Visible = true;
                     labelNotice.Text = "Xóa TK thành công";
                     labelNotice.ForeColor = SuccessNoticeColor;
-                    SignupPage_Load(sender, e);
+                    ManagementPage_Load(sender, e);
                 }
                 connection.Close();
             }
@@ -269,7 +268,7 @@ namespace FileGuide
                     labelNotice.Visible = true;
                     labelNotice.ForeColor = SuccessNoticeColor;
                     labelNotice.Text = "Sửa thông tin thành công";
-                    SignupPage_Load(sender, e);
+                    ManagementPage_Load(sender, e);
                 }
                 connection.Close();
             }    

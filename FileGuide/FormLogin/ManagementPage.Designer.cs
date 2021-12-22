@@ -36,7 +36,7 @@ namespace FileGuide
             this.label7 = new System.Windows.Forms.Label();
             this.labelWarning2 = new System.Windows.Forms.Label();
             this.labelWarning1 = new System.Windows.Forms.Label();
-            this.SignupPanel = new System.Windows.Forms.Panel();
+            this.panelBeforeLogin = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.gradientPanel2 = new FileGuide.CustomControls.CustomPanel();
@@ -78,7 +78,7 @@ namespace FileGuide
             this.gradientPanelBackgroundAdmin = new FileGuide.CustomControls.CustomPanel();
             this.labelDSTK = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewUserList)).BeginInit();
-            this.SignupPanel.SuspendLayout();
+            this.panelBeforeLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gradientPanelBtnLogin.SuspendLayout();
@@ -188,24 +188,24 @@ namespace FileGuide
             this.labelWarning1.Text = "Warning";
             this.labelWarning1.Visible = false;
             // 
-            // SignupPanel
+            // panelBeforeLogin
             // 
-            this.SignupPanel.Controls.Add(this.label9);
-            this.SignupPanel.Controls.Add(this.pictureBox3);
-            this.SignupPanel.Controls.Add(this.gradientPanel2);
-            this.SignupPanel.Controls.Add(this.label8);
-            this.SignupPanel.Controls.Add(this.pictureBox1);
-            this.SignupPanel.Controls.Add(this.customPanel1);
-            this.SignupPanel.Controls.Add(this.gradientPanelBtnLogin);
-            this.SignupPanel.Controls.Add(this.textBoxPass);
-            this.SignupPanel.Controls.Add(this.textBoxUser);
-            this.SignupPanel.Controls.Add(this.labelWarning2);
-            this.SignupPanel.Controls.Add(this.label7);
-            this.SignupPanel.Controls.Add(this.labelWarning1);
-            this.SignupPanel.Location = new System.Drawing.Point(633, 0);
-            this.SignupPanel.Name = "SignupPanel";
-            this.SignupPanel.Size = new System.Drawing.Size(583, 816);
-            this.SignupPanel.TabIndex = 35;
+            this.panelBeforeLogin.Controls.Add(this.label9);
+            this.panelBeforeLogin.Controls.Add(this.pictureBox3);
+            this.panelBeforeLogin.Controls.Add(this.gradientPanel2);
+            this.panelBeforeLogin.Controls.Add(this.label8);
+            this.panelBeforeLogin.Controls.Add(this.pictureBox1);
+            this.panelBeforeLogin.Controls.Add(this.customPanel1);
+            this.panelBeforeLogin.Controls.Add(this.gradientPanelBtnLogin);
+            this.panelBeforeLogin.Controls.Add(this.textBoxPass);
+            this.panelBeforeLogin.Controls.Add(this.textBoxUser);
+            this.panelBeforeLogin.Controls.Add(this.labelWarning2);
+            this.panelBeforeLogin.Controls.Add(this.label7);
+            this.panelBeforeLogin.Controls.Add(this.labelWarning1);
+            this.panelBeforeLogin.Location = new System.Drawing.Point(633, 0);
+            this.panelBeforeLogin.Name = "panelBeforeLogin";
+            this.panelBeforeLogin.Size = new System.Drawing.Size(583, 816);
+            this.panelBeforeLogin.TabIndex = 35;
             // 
             // label9
             // 
@@ -720,16 +720,16 @@ namespace FileGuide
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.gradientPanelBackgroundGuest);
-            this.Controls.Add(this.SignupPanel);
+            this.Controls.Add(this.panelBeforeLogin);
             this.Controls.Add(this.panelAfterLogin);
             this.Controls.Add(this.gradientPanelBackgroundAdmin);
             this.Name = "ManagementPage";
             this.Size = new System.Drawing.Size(1218, 816);
-            this.Load += new System.EventHandler(this.SignupPage_Load);
-            this.VisibleChanged += new System.EventHandler(this.SignupPage_VisibleChanged);
+            this.Load += new System.EventHandler(this.ManagementPage_Load);
+            this.VisibleChanged += new System.EventHandler(this.ManagementPage_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewUserList)).EndInit();
-            this.SignupPanel.ResumeLayout(false);
-            this.SignupPanel.PerformLayout();
+            this.panelBeforeLogin.ResumeLayout(false);
+            this.panelBeforeLogin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.gradientPanelBtnLogin.ResumeLayout(false);
@@ -759,7 +759,7 @@ namespace FileGuide
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label labelWarning2;
         private System.Windows.Forms.Label labelWarning1;
-        private System.Windows.Forms.Panel SignupPanel;
+        private System.Windows.Forms.Panel panelBeforeLogin;
         private System.Windows.Forms.Panel panelAfterLogin;
         private System.Windows.Forms.Label labelGuest;
         private System.Windows.Forms.Label labelAdmin;

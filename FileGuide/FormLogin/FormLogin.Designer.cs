@@ -40,7 +40,7 @@ namespace FileGuide
             this.LoginButton = new System.Windows.Forms.Button();
             this.PanelMain = new System.Windows.Forms.Panel();
             this.loginPage1 = new FileGuide.LoginPage();
-            this.signupPage1 = new FileGuide.ManagementPage();
+            this.managementPage1 = new FileGuide.ManagementPage();
             this.infoPage1 = new FileGuide.InfoPage();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInfo)).BeginInit();
@@ -166,7 +166,7 @@ namespace FileGuide
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelMain.Controls.Add(this.loginPage1);
-            this.PanelMain.Controls.Add(this.signupPage1);
+            this.PanelMain.Controls.Add(this.managementPage1);
             this.PanelMain.Controls.Add(this.infoPage1);
             this.PanelMain.Location = new System.Drawing.Point(0, 0);
             this.PanelMain.Name = "PanelMain";
@@ -181,13 +181,13 @@ namespace FileGuide
             this.loginPage1.Size = new System.Drawing.Size(1218, 1068);
             this.loginPage1.TabIndex = 3;
             // 
-            // signupPage1
+            // managementPage1
             // 
-            this.signupPage1.BackColor = System.Drawing.Color.White;
-            this.signupPage1.Location = new System.Drawing.Point(0, 0);
-            this.signupPage1.Name = "signupPage1";
-            this.signupPage1.Size = new System.Drawing.Size(1218, 1068);
-            this.signupPage1.TabIndex = 4;
+            this.managementPage1.BackColor = System.Drawing.Color.White;
+            this.managementPage1.Location = new System.Drawing.Point(0, 0);
+            this.managementPage1.Name = "managementPage1";
+            this.managementPage1.Size = new System.Drawing.Size(1218, 1068);
+            this.managementPage1.TabIndex = 4;
             // 
             // infoPage1
             // 
@@ -230,7 +230,7 @@ namespace FileGuide
         private System.Windows.Forms.Panel PanelMain;
         private InfoPage infoPage1;
         private LoginPage loginPage1;
-        private ManagementPage signupPage1;
+        private ManagementPage managementPage1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBoxManagement;
         private System.Windows.Forms.PictureBox pictureBoxInfo;
