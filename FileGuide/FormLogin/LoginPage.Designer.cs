@@ -32,12 +32,15 @@ namespace FileGuide
             this.textBoxPass = new Guna.UI2.WinForms.Guna2TextBox();
             this.textBoxUser = new Guna.UI2.WinForms.Guna2TextBox();
             this.panelBeforeLogin = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.gradientPanel2 = new FileGuide.CustomControls.GradientPanel();
+            this.gradientPanelBtnLogin = new FileGuide.CustomControls.GradientPanel();
+            this.btnLogin = new System.Windows.Forms.Button();
             this.labelWarning = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.btnLogin = new Guna.UI2.WinForms.Guna2GradientButton();
             this.panelAfterLogin = new System.Windows.Forms.Panel();
-            this.btnLogout = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.btnStart = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.btnStart = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -47,14 +50,11 @@ namespace FileGuide
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.gradientPanel2 = new FileGuide.CustomControls.GradientPanel();
-            this.gradientPanel1 = new FileGuide.CustomControls.GradientPanel();
-            this.button1 = new System.Windows.Forms.Button();
             this.panelBeforeLogin.SuspendLayout();
+            this.gradientPanelBtnLogin.SuspendLayout();
             this.panelAfterLogin.SuspendLayout();
             this.gradientPanelBackground.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.gradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxPass
@@ -121,17 +121,73 @@ namespace FileGuide
             // 
             // panelBeforeLogin
             // 
+            this.panelBeforeLogin.Controls.Add(this.textBox1);
             this.panelBeforeLogin.Controls.Add(this.gradientPanel2);
-            this.panelBeforeLogin.Controls.Add(this.gradientPanel1);
+            this.panelBeforeLogin.Controls.Add(this.gradientPanelBtnLogin);
             this.panelBeforeLogin.Controls.Add(this.labelWarning);
             this.panelBeforeLogin.Controls.Add(this.label7);
-            this.panelBeforeLogin.Controls.Add(this.btnLogin);
             this.panelBeforeLogin.Controls.Add(this.textBoxPass);
             this.panelBeforeLogin.Controls.Add(this.textBoxUser);
             this.panelBeforeLogin.Location = new System.Drawing.Point(633, 3);
             this.panelBeforeLogin.Name = "panelBeforeLogin";
             this.panelBeforeLogin.Size = new System.Drawing.Size(582, 1062);
             this.panelBeforeLogin.TabIndex = 29;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Questrial", 11F);
+            this.textBox1.Location = new System.Drawing.Point(102, 498);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(304, 62);
+            this.textBox1.TabIndex = 33;
+            this.textBox1.WordWrap = false;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
+            // gradientPanel2
+            // 
+            this.gradientPanel2.Angle = 0F;
+            this.gradientPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.gradientPanel2.BorderRadius = 0;
+            this.gradientPanel2.FirstColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
+            this.gradientPanel2.ForeColor = System.Drawing.Color.White;
+            this.gradientPanel2.Location = new System.Drawing.Point(102, 577);
+            this.gradientPanel2.Name = "gradientPanel2";
+            this.gradientPanel2.SecondColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
+            this.gradientPanel2.Size = new System.Drawing.Size(304, 3);
+            this.gradientPanel2.TabIndex = 35;
+            // 
+            // gradientPanelBtnLogin
+            // 
+            this.gradientPanelBtnLogin.Angle = 0F;
+            this.gradientPanelBtnLogin.BackColor = System.Drawing.Color.Transparent;
+            this.gradientPanelBtnLogin.BorderRadius = 0;
+            this.gradientPanelBtnLogin.Controls.Add(this.btnLogin);
+            this.gradientPanelBtnLogin.FirstColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
+            this.gradientPanelBtnLogin.ForeColor = System.Drawing.Color.White;
+            this.gradientPanelBtnLogin.Location = new System.Drawing.Point(178, 669);
+            this.gradientPanelBtnLogin.Name = "gradientPanelBtnLogin";
+            this.gradientPanelBtnLogin.SecondColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
+            this.gradientPanelBtnLogin.Size = new System.Drawing.Size(260, 71);
+            this.gradientPanelBtnLogin.TabIndex = 32;
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnLogin.FlatAppearance.BorderSize = 0;
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogin.Font = new System.Drawing.Font("Lexend", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.ForeColor = System.Drawing.Color.Transparent;
+            this.btnLogin.Location = new System.Drawing.Point(0, 0);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(260, 71);
+            this.btnLogin.TabIndex = 25;
+            this.btnLogin.Text = "Đăng nhập";
+            this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // labelWarning
             // 
@@ -157,34 +213,6 @@ namespace FileGuide
             this.label7.Text = "ĐĂNG NHẬP";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnLogin
-            // 
-            this.btnLogin.BorderColor = System.Drawing.Color.Transparent;
-            this.btnLogin.BorderRadius = 30;
-            this.btnLogin.CheckedState.Parent = this.btnLogin;
-            this.btnLogin.CustomImages.Parent = this.btnLogin;
-            this.btnLogin.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLogin.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLogin.DisabledState.Parent = this.btnLogin;
-            this.btnLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
-            this.btnLogin.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
-            this.btnLogin.Font = new System.Drawing.Font("Lexend", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(119)))), ((int)(((byte)(199)))));
-            this.btnLogin.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(192)))), ((int)(((byte)(228)))));
-            this.btnLogin.HoverState.Parent = this.btnLogin;
-            this.btnLogin.Location = new System.Drawing.Point(172, 481);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.ShadowDecoration.BorderRadius = 10;
-            this.btnLogin.ShadowDecoration.Parent = this.btnLogin;
-            this.btnLogin.Size = new System.Drawing.Size(260, 70);
-            this.btnLogin.TabIndex = 25;
-            this.btnLogin.Text = "Đăng nhập";
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-            // 
             // panelAfterLogin
             // 
             this.panelAfterLogin.BackColor = System.Drawing.Color.White;
@@ -200,25 +228,10 @@ namespace FileGuide
             // 
             // btnLogout
             // 
-            this.btnLogout.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(192)))), ((int)(((byte)(228)))));
-            this.btnLogout.BorderRadius = 30;
-            this.btnLogout.BorderThickness = 3;
-            this.btnLogout.CheckedState.Parent = this.btnLogout;
-            this.btnLogout.CustomImages.Parent = this.btnLogout;
-            this.btnLogout.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogout.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogout.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLogout.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLogout.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLogout.DisabledState.Parent = this.btnLogout;
-            this.btnLogout.FillColor = System.Drawing.Color.Transparent;
-            this.btnLogout.FillColor2 = System.Drawing.Color.Transparent;
             this.btnLogout.Font = new System.Drawing.Font("Lexend", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.Color.Black;
-            this.btnLogout.HoverState.Parent = this.btnLogout;
             this.btnLogout.Location = new System.Drawing.Point(150, 354);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.ShadowDecoration.Parent = this.btnLogout;
             this.btnLogout.Size = new System.Drawing.Size(304, 67);
             this.btnLogout.TabIndex = 6;
             this.btnLogout.Text = "Đăng xuất";
@@ -226,24 +239,10 @@ namespace FileGuide
             // 
             // btnStart
             // 
-            this.btnStart.BorderColor = System.Drawing.Color.Transparent;
-            this.btnStart.BorderRadius = 30;
-            this.btnStart.CheckedState.Parent = this.btnStart;
-            this.btnStart.CustomImages.Parent = this.btnStart;
-            this.btnStart.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnStart.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnStart.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnStart.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnStart.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnStart.DisabledState.Parent = this.btnStart;
-            this.btnStart.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(119)))), ((int)(((byte)(199)))));
-            this.btnStart.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(192)))), ((int)(((byte)(228)))));
             this.btnStart.Font = new System.Drawing.Font("Lexend", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStart.ForeColor = System.Drawing.Color.White;
-            this.btnStart.HoverState.Parent = this.btnStart;
             this.btnStart.Location = new System.Drawing.Point(150, 481);
             this.btnStart.Name = "btnStart";
-            this.btnStart.ShadowDecoration.Parent = this.btnStart;
             this.btnStart.Size = new System.Drawing.Size(304, 67);
             this.btnStart.TabIndex = 5;
             this.btnStart.Text = "Khởi động ứng dụng";
@@ -355,46 +354,6 @@ namespace FileGuide
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
-            // gradientPanel2
-            // 
-            this.gradientPanel2.Angle = 0F;
-            this.gradientPanel2.BorderRadius = 4;
-            this.gradientPanel2.FirstColor = System.Drawing.Color.Empty;
-            this.gradientPanel2.Location = new System.Drawing.Point(68, 668);
-            this.gradientPanel2.Name = "gradientPanel2";
-            this.gradientPanel2.SecondColor = System.Drawing.Color.Empty;
-            this.gradientPanel2.Size = new System.Drawing.Size(182, 124);
-            this.gradientPanel2.TabIndex = 32;
-            this.gradientPanel2.Visible = false;
-            // 
-            // gradientPanel1
-            // 
-            this.gradientPanel1.Angle = 0F;
-            this.gradientPanel1.BorderRadius = 0;
-            this.gradientPanel1.Controls.Add(this.button1);
-            this.gradientPanel1.FirstColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
-            this.gradientPanel1.Location = new System.Drawing.Point(172, 574);
-            this.gradientPanel1.Name = "gradientPanel1";
-            this.gradientPanel1.SecondColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
-            this.gradientPanel1.Size = new System.Drawing.Size(260, 71);
-            this.gradientPanel1.TabIndex = 32;
-            this.gradientPanel1.Visible = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Lexend", 10F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(260, 71);
-            this.button1.TabIndex = 31;
-            this.button1.Text = "Đăng nhập";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // LoginPage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -406,12 +365,12 @@ namespace FileGuide
             this.Size = new System.Drawing.Size(1218, 816);
             this.panelBeforeLogin.ResumeLayout(false);
             this.panelBeforeLogin.PerformLayout();
+            this.gradientPanelBtnLogin.ResumeLayout(false);
             this.panelAfterLogin.ResumeLayout(false);
             this.panelAfterLogin.PerformLayout();
             this.gradientPanelBackground.ResumeLayout(false);
             this.gradientPanelBackground.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.gradientPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -421,9 +380,9 @@ namespace FileGuide
         private Guna.UI2.WinForms.Guna2TextBox textBoxUser;
         private System.Windows.Forms.Panel panelBeforeLogin;
         private System.Windows.Forms.Panel panelAfterLogin;
-        private Guna.UI2.WinForms.Guna2GradientButton btnLogin;
-        private Guna.UI2.WinForms.Guna2GradientButton btnLogout;
-        private Guna.UI2.WinForms.Guna2GradientButton btnStart;
+        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label labelUsername;
         private System.Windows.Forms.Label label5;
@@ -435,8 +394,8 @@ namespace FileGuide
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private CustomControls.GradientPanel gradientPanel1;
-        private System.Windows.Forms.Button button1;
+        private CustomControls.GradientPanel gradientPanelBtnLogin;
         private CustomControls.GradientPanel gradientPanel2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
