@@ -12,7 +12,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows;
 using System.Reflection;
-using Guna.UI2.WinForms;
+
 using System.IO.Compression;
 namespace FileGuide
 {

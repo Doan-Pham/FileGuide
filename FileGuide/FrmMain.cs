@@ -13,7 +13,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Syroot.Windows.IO;
-using Guna.UI2.WinForms;
+
 using System.IO.Compression;
 
 namespace FileGuide
@@ -262,7 +262,7 @@ namespace FileGuide
                 string strNewPath;
                 if (!isFolder) strNewPath = HelperMethods.GetParentDirectoryPath(pathDest);
                 else strNewPath = pathDest;
-                clsTreeListView.ShowListView(listViewFolderContent, strNewPath);
+                clsTreeListView.ShowFolderContent(listViewFolderContent, strNewPath);
                 pasteToolStripMenuItem.Enabled = true;
                 tsbtnPaste.Enabled = false;
             }
@@ -306,7 +306,7 @@ namespace FileGuide
                             else return;
 
                             string pathFolder = HelperMethods.GetParentDirectoryPath(path);
-                            clsTreeListView.ShowListView(listViewFolderContent, pathFolder);
+                            clsTreeListView.ShowFolderContent(listViewFolderContent, pathFolder);
                         }
                     }
                     else
@@ -328,7 +328,7 @@ namespace FileGuide
                             else return;
 
                             string pathFolder = HelperMethods.GetParentDirectoryPath(path);
-                            clsTreeListView.ShowListView(listViewFolderContent, pathFolder);
+                            clsTreeListView.ShowFolderContent(listViewFolderContent, pathFolder);
                         }
 
                     }
@@ -363,7 +363,7 @@ namespace FileGuide
                 }
                 DirectoryInfo newlyCreatedFolder = Directory.CreateDirectory(System.IO.Path.Combine(currentPath, newFolderName));
 
-                clsTreeListView.ShowListView(listViewFolderContent, currentPath);
+                clsTreeListView.ShowFolderContent(listViewFolderContent, currentPath);
 
 
                 /* // Check for the folder with same name and same type as the newly created folder and start renaming
@@ -405,7 +405,7 @@ namespace FileGuide
                 }
 
                 File.Create(System.IO.Path.Combine(currentPath, newFileName));
-                clsTreeListView.ShowListView(listViewFolderContent, currentPath);
+                clsTreeListView.ShowFolderContent(listViewFolderContent, currentPath);
                 /* // Go to the created folder and start renaming
                  int index = 0;
                  foreach (ListViewItem item in listViewFolderContent.Items)
@@ -462,7 +462,7 @@ namespace FileGuide
                 {
                     Microsoft.VisualBasic.FileIO.FileSystem.RenameDirectory(path, e.Label);
                 }
-                clsTreeListView.ShowListView(listViewFolderContent, HelperMethods.GetParentDirectoryPath(path));
+                clsTreeListView.ShowFolderContent(listViewFolderContent, HelperMethods.GetParentDirectoryPath(path));
                 e.CancelEdit = true;
             }
             catch (IOException)
@@ -509,7 +509,7 @@ namespace FileGuide
                         {
                             listViewFolderContent.Visible = true;
                             tableLayoutFirstPage.Visible = false;
-                            clsTreeListView.ShowListView(listViewFolderContent, tscmbPath.Text);
+                            clsTreeListView.ShowFolderContent(listViewFolderContent, tscmbPath.Text);
                             currentPath = tscmbPath.Text;
                             tabPagePathList[tabWindow.SelectedIndex] = currentPath;
                             tabWindow.TabPages[tabWindow.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
@@ -541,7 +541,7 @@ namespace FileGuide
             if (currentPath != "")
             {
                 treeViewFolderTree.Refresh();
-                if (currentPath != "My Computer") clsTreeListView.ShowListView(listViewFolderContent, currentPath);
+                if (currentPath != "My Computer") clsTreeListView.ShowFolderContent(listViewFolderContent, currentPath);
                 else
                 {
                     listViewRecentFiles.Refresh();
@@ -574,7 +574,7 @@ namespace FileGuide
                     currentPath = HelperMethods.GetParentDirectoryPath(currentPath);
                     if (currentPath != "My Computer")
                     { 
-                        clsTreeListView.ShowListView(listViewFolderContent, currentPath);
+                        clsTreeListView.ShowFolderContent(listViewFolderContent, currentPath);
                         tableLayoutFirstPage.Visible = false;
                         listViewFolderContent.Visible = true;
                     }
@@ -854,7 +854,7 @@ namespace FileGuide
                 }
                 else
                 {
-                    clsTreeListView.ShowListView(listViewFolderContent, tabPagePathList[e.TabPageIndex]);
+                    clsTreeListView.ShowFolderContent(listViewFolderContent, tabPagePathList[e.TabPageIndex]);
                     tableLayoutFirstPage.Visible = false;
                     listViewFolderContent.Visible = true;
                 }
@@ -924,12 +924,12 @@ namespace FileGuide
                     }
                     if (SpecialFolderPath == "")
                     {
-                        clsTreeListView.ShowListView(listViewFolderContent, currentNode);
+                        clsTreeListView.ShowFolderContent(listViewFolderContent, currentNode);
                         tscmbPath.Text = HelperMethods.GetApproriatePath(currentNode.FullPath);
                     }
                     else
                     {
-                        clsTreeListView.ShowListView(listViewFolderContent, SpecialFolderPath);
+                        clsTreeListView.ShowFolderContent(listViewFolderContent, SpecialFolderPath);
                         tscmbPath.Text = SpecialFolderPath;
                     }
                     tableLayoutFirstPage.Visible = false;
@@ -1452,7 +1452,7 @@ namespace FileGuide
                     tscmbPath.Text = drive.Name;
                     tabPagePathList[tabWindow.SelectedIndex] = currentPath;
                     tabWindow.TabPages[tabWindow.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
-                    clsTreeListView.ShowListView(listViewFolderContent, currentPath);
+                    clsTreeListView.ShowFolderContent(listViewFolderContent, currentPath);
                     tableLayoutFirstPage.Visible = false;
                     listViewFolderContent.Visible = true;
                     return;

@@ -13,9 +13,9 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows;
 using System.Reflection;
-using Guna.UI2.WinForms;
 using System.IO.Compression;
 using Plasmoid.Extensions;
+
 namespace FileGuide.CustomControls
 {
     class CustomPanel : Panel

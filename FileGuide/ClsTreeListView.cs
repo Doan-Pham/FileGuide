@@ -12,7 +12,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows;
 using System.Reflection;
-using Guna.UI2.WinForms;
+
 using System.IO.Compression;
 
 namespace FileGuide
@@ -173,13 +173,13 @@ namespace FileGuide
         /// </summary>
         /// <param name="listView"></param>
         /// <param name="currentNode">The treeNode at which to show content</param>
-        public void ShowListView(ListView listView, TreeNode currentNode)
+        public void ShowFolderContent(ListView listView, TreeNode currentNode)
         {
             try
             {
                 if (currentNode.Text == "Easy Access" && GetTreeNodeRoot(currentNode).Text == "Easy Access") return;
                 DirectoryInfo directory = GetDirectoryInfoFromNode(currentNode);
-                ShowListView(listView, directory.FullName);
+                ShowFolderContent(listView, directory.FullName);
             }
             catch (Exception e)
             {
@@ -193,7 +193,7 @@ namespace FileGuide
         /// </summary>
         /// <param name="listView"></param>
         /// <param name="strPath">The directory's path at which to show content</param>
-        public void ShowListView(ListView listView, string strPath)
+        public void ShowFolderContent(ListView listView, string strPath)
         {
             try
             {
@@ -434,7 +434,7 @@ namespace FileGuide
                 {
                     if (!isRecenFilesListView)
                     {
-                        ShowListView(listView, path);
+                        ShowFolderContent(listView, path);
                         tscmbPath.Text = HelperMethods.GetApproriatePath(path);
                     }
                 }

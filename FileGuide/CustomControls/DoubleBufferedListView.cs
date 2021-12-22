@@ -13,7 +13,6 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Syroot.Windows.IO;
-using Guna.UI2.WinForms;
 using System.IO.Compression;
 
 namespace FileGuide
