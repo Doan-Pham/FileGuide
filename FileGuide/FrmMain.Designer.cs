@@ -60,7 +60,7 @@ namespace FileGuide
             this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pinToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mainSplitContainer = new System.Windows.Forms.SplitContainer();
-            this.treeView = new FileGuide.BufferedTreeView();
+            this.treeViewFolderTree = new FileGuide.BufferedTreeView();
             this.contextMenuStripTreeView = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unpingFromEasyAccessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,7 +73,7 @@ namespace FileGuide
             this.listViewRecentFiles = new FileGuide.DoubleBufferedListView();
             this.listViewColRecentPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Path = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.listView = new FileGuide.DoubleBufferedListView();
+            this.listViewFolderContent = new FileGuide.DoubleBufferedListView();
             this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colSize = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -397,7 +397,7 @@ namespace FileGuide
             // 
             // mainSplitContainer.Panel1
             // 
-            this.mainSplitContainer.Panel1.Controls.Add(this.treeView);
+            this.mainSplitContainer.Panel1.Controls.Add(this.treeViewFolderTree);
             // 
             // mainSplitContainer.Panel2
             // 
@@ -409,29 +409,29 @@ namespace FileGuide
             this.mainSplitContainer.SplitterDistance = 392;
             this.mainSplitContainer.TabIndex = 5;
             // 
-            // treeView
+            // treeViewFolderTree
             // 
-            this.treeView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeView.ContextMenuStrip = this.contextMenuStripTreeView;
-            this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
-            this.treeView.Font = new System.Drawing.Font("Questrial", 9.999999F);
-            this.treeView.ForeColor = System.Drawing.Color.Black;
-            this.treeView.FullRowSelect = true;
-            this.treeView.HotTracking = true;
-            this.treeView.Indent = 20;
-            this.treeView.ItemHeight = 46;
-            this.treeView.Location = new System.Drawing.Point(0, 0);
-            this.treeView.Name = "treeView";
-            this.treeView.ShowLines = false;
-            this.treeView.Size = new System.Drawing.Size(392, 807);
-            this.treeView.TabIndex = 1;
-            this.treeView.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView_DrawNode);
-            this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
-            this.treeView.MouseLeave += new System.EventHandler(this.treeView_MouseLeave);
-            this.treeView.MouseMove += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseMove);
-            this.treeView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseUp);
+            this.treeViewFolderTree.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.treeViewFolderTree.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeViewFolderTree.ContextMenuStrip = this.contextMenuStripTreeView;
+            this.treeViewFolderTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewFolderTree.DrawMode = System.Windows.Forms.TreeViewDrawMode.OwnerDrawAll;
+            this.treeViewFolderTree.Font = new System.Drawing.Font("Questrial", 9.999999F);
+            this.treeViewFolderTree.ForeColor = System.Drawing.Color.Black;
+            this.treeViewFolderTree.FullRowSelect = true;
+            this.treeViewFolderTree.HotTracking = true;
+            this.treeViewFolderTree.Indent = 20;
+            this.treeViewFolderTree.ItemHeight = 46;
+            this.treeViewFolderTree.Location = new System.Drawing.Point(0, 0);
+            this.treeViewFolderTree.Name = "treeViewFolderTree";
+            this.treeViewFolderTree.ShowLines = false;
+            this.treeViewFolderTree.Size = new System.Drawing.Size(392, 807);
+            this.treeViewFolderTree.TabIndex = 1;
+            this.treeViewFolderTree.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView_DrawNode);
+            this.treeViewFolderTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_AfterSelect);
+            this.treeViewFolderTree.MouseLeave += new System.EventHandler(this.treeView_MouseLeave);
+            this.treeViewFolderTree.MouseMove += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseMove);
+            this.treeViewFolderTree.MouseUp += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseUp);
             // 
             // contextMenuStripTreeView
             // 
@@ -483,7 +483,7 @@ namespace FileGuide
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
             this.tabPage1.Controls.Add(this.tableLayoutFirstPage);
-            this.tabPage1.Controls.Add(this.listView);
+            this.tabPage1.Controls.Add(this.listViewFolderContent);
             this.tabPage1.ForeColor = System.Drawing.Color.Black;
             this.tabPage1.Location = new System.Drawing.Point(4, 54);
             this.tabPage1.Name = "tabPage1";
@@ -588,40 +588,40 @@ namespace FileGuide
             this.Path.Text = "Path";
             this.Path.Width = 650;
             // 
-            // listView
+            // listViewFolderContent
             // 
-            this.listView.BackColor = System.Drawing.Color.White;
-            this.listView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewFolderContent.BackColor = System.Drawing.Color.White;
+            this.listViewFolderContent.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listViewFolderContent.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colName,
             this.colType,
             this.colSize,
             this.colDateCreated,
             this.colDateModified});
-            this.listView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView.ForeColor = System.Drawing.Color.Black;
-            this.listView.FullRowSelect = true;
-            this.listView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.listView.HideSelection = false;
-            this.listView.LabelEdit = true;
-            this.listView.Location = new System.Drawing.Point(3, 3);
-            this.listView.Margin = new System.Windows.Forms.Padding(0);
-            this.listView.Name = "listView";
-            this.listView.OwnerDraw = true;
-            this.listView.Size = new System.Drawing.Size(1377, 551);
-            this.listView.TabIndex = 0;
-            this.listView.UseCompatibleStateImageBehavior = false;
-            this.listView.View = System.Windows.Forms.View.Details;
-            this.listView.AfterLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.listView_AfterLabelEdit);
-            this.listView.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listView_ColumnWidthChanging);
-            this.listView.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.listView_DrawColumnHeader);
-            this.listView.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.listView_DrawItem);
-            this.listView.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.listView_DrawSubItem);
-            this.listView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView_ItemSelectionChanged);
-            this.listView.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listView_KeyPress);
-            this.listView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView_MouseDoubleClick);
-            this.listView.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listView_MouseUp);
+            this.listViewFolderContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewFolderContent.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listViewFolderContent.ForeColor = System.Drawing.Color.Black;
+            this.listViewFolderContent.FullRowSelect = true;
+            this.listViewFolderContent.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.listViewFolderContent.HideSelection = false;
+            this.listViewFolderContent.LabelEdit = true;
+            this.listViewFolderContent.Location = new System.Drawing.Point(3, 3);
+            this.listViewFolderContent.Margin = new System.Windows.Forms.Padding(0);
+            this.listViewFolderContent.Name = "listViewFolderContent";
+            this.listViewFolderContent.OwnerDraw = true;
+            this.listViewFolderContent.Size = new System.Drawing.Size(1377, 551);
+            this.listViewFolderContent.TabIndex = 0;
+            this.listViewFolderContent.UseCompatibleStateImageBehavior = false;
+            this.listViewFolderContent.View = System.Windows.Forms.View.Details;
+            this.listViewFolderContent.AfterLabelEdit += new System.Windows.Forms.LabelEditEventHandler(this.listView_AfterLabelEdit);
+            this.listViewFolderContent.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.listView_ColumnWidthChanging);
+            this.listViewFolderContent.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.listView_DrawColumnHeader);
+            this.listViewFolderContent.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.listView_DrawItem);
+            this.listViewFolderContent.DrawSubItem += new System.Windows.Forms.DrawListViewSubItemEventHandler(this.listView_DrawSubItem);
+            this.listViewFolderContent.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView_ItemSelectionChanged);
+            this.listViewFolderContent.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listView_KeyPress);
+            this.listViewFolderContent.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView_MouseDoubleClick);
+            this.listViewFolderContent.MouseUp += new System.Windows.Forms.MouseEventHandler(this.listView_MouseUp);
             // 
             // colName
             // 
@@ -1269,7 +1269,7 @@ namespace FileGuide
         }
 
         #endregion
-        private FileGuide.DoubleBufferedListView listView;
+        private FileGuide.DoubleBufferedListView listViewFolderContent;
         private System.Windows.Forms.ColumnHeader colName;
         private System.Windows.Forms.ColumnHeader colSize;
         private System.Windows.Forms.ColumnHeader colDateCreated;
@@ -1292,7 +1292,7 @@ namespace FileGuide
         private System.Windows.Forms.ToolStripStatusLabel statusLblItemNum;
         private System.Windows.Forms.ToolStripStatusLabel statusLblNumSelect;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripListView;
-        private BufferedTreeView treeView;
+        private BufferedTreeView treeViewFolderTree;
         private System.Windows.Forms.TableLayoutPanel tableLayoutFirstPage;
         private System.Windows.Forms.Label tableLblDrives;
         private System.Windows.Forms.Label tableLblRecent;

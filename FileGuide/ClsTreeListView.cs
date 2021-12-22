@@ -32,96 +32,51 @@ namespace FileGuide
         #region TreeView Main Methods
 
         /// <summary>
-        /// Initialize treeView
+        /// Initialize treeViewFolderTree
         /// </summary>
-        /// <param name="treeView"></param>
-        public void CreateTreeView(TreeView treeView)
+        /// <param name="treeViewFolderTree"></param>
+        public void CreateTreeView(TreeView treeViewFolderTree)
         {
-            treeView.Nodes.Clear();
+            treeViewFolderTree.Nodes.Clear();
 
-            // Create root treenode: My Computer and add to treeView
-            TreeNode tnMyComputer = new TreeNode("My Computer", 0, 0);
-            treeView.Nodes.Add(tnMyComputer);
+            // Create root treeNode - My Computer and add to treeViewFolderTree
+            TreeNode tnMyComputer = new TreeNode("My Computer");
+            treeViewFolderTree.Nodes.Add(tnMyComputer);
 
-            // Select all drives into a collection then create a treenode for each drive
-            ManagementObjectSearcher query = new ManagementObjectSearcher("Select * From Win32_LogicalDisk");
-            ManagementObjectCollection queryCollection = query.Get();
+            // Create a treeNode for each drive on computer then add to root treeNode
+            foreach (var drive in DriveInfo.GetDrives())
+                tnMyComputer.Nodes.Add(new TreeNode(drive.Name, 0, 0));
 
-            foreach (ManagementObject mo in queryCollection)
-            {
-                int DiskImageIndex, DiskSelectIndex;
-
-                switch (int.Parse(mo["DriveType"].ToString()))
-                {
-                    case RemovableDisk:
-                        {
-                            DiskImageIndex = 1;
-                            DiskSelectIndex = 1;
-                        }
-                        break;
-
-                    case LocalDisk:
-                        {
-                            DiskImageIndex = 2;
-                            DiskSelectIndex = 2;
-                        }
-                        break;
-
-                    case CDDisk:
-                        {
-                            DiskImageIndex = 3;
-                            DiskSelectIndex = 3;
-                        }
-                        break;
-
-                    case NetworkDisk:
-                        {
-                            DiskImageIndex = 4;
-                            DiskSelectIndex = 4;
-                        }
-                        break;
-
-                    default:
-                        {
-                            DiskImageIndex = 5;
-                            DiskSelectIndex = 6;
-                        }
-                        break;
-
-                }
-
-                TreeNode diskTreeNode = new TreeNode(mo["Name"].ToString() + "\\", DiskImageIndex, DiskSelectIndex);
-                tnMyComputer.Nodes.Add(diskTreeNode);
-            }
-
-            // Add all the special folders to treeView
+            // Add all the special folders to treeViewFolderTree
             TreeNode tnEasyAccess = new TreeNode("Easy Access");
-            treeView.Nodes.Add(tnEasyAccess);
-            treeView.Nodes.Add("Desktop");
-            treeView.Nodes.Add("Downloads");
-            treeView.Nodes.Add("Documents");
+            treeViewFolderTree.Nodes.Add(tnEasyAccess);
+            treeViewFolderTree.Nodes.Add("Desktop");
+            treeViewFolderTree.Nodes.Add("Downloads");
+            treeViewFolderTree.Nodes.Add("Documents");
 
             //Read list of folders in easy access into a list, then foreach of these, add a node to easy access
             string DebugDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string EasyAccessDirectory = Path.Combine(DebugDirectory, "EasyAccess");
             string EasyAccessFoldersTxt = Path.Combine(EasyAccessDirectory, "EasyAccessFolders.txt");
+
             if (File.Exists(EasyAccessFoldersTxt))
+            {
+                EasyAccessFolderPathList.Clear();
                 EasyAccessFolderPathList.AddRange(File.ReadAllLines(EasyAccessFoldersTxt));
+            }
 
             foreach (string folderPath in EasyAccessFolderPathList)
-            {
                 tnEasyAccess.Nodes.Add(HelperMethods.GetFileFolderName(folderPath));
-            }
         }
 
 
         /// <summary>
-        /// Show computer's folder tree onto treeView
+        /// Show computer's folder tree onto treeViewFolderTree
         /// </summary>
-        /// <param name="treeView"></param>
-        /// <param name="currentNode">The treenode at which to show folder tree</param>
+        /// <param name="treeViewFolderTree"></param>
+        /// <param name="currentNode">The treeNode at which to show folder tree</param>
         /// <returns></returns>
-        public bool ShowFolderTree(TreeView treeView, TreeNode currentNode, bool isSpecialFolder, string SpecialFolderPath)
+        public bool ShowFolderTree(TreeView treeViewFolderTree, TreeNode currentNode, bool isSpecialFolder, string SpecialFolderPath)
         {
             // My Computer and its children are already created in CreatTreeView func, recreating will cause an error
             if (currentNode.Text == GetTreeNodeRoot(currentNode).Text || GetTreeNodeRoot(currentNode).Text == "Easy Access") return true;
@@ -135,7 +90,7 @@ namespace FileGuide
                 else
                 {
                     currentNode.Nodes.Clear();
-                    // Add all child directories of the current's node to treeView 
+                    // Add all child directories of the current's node to treeViewFolderTree 
                     string[] strDirectories;
                     if (!isSpecialFolder)
                     {
@@ -177,7 +132,7 @@ namespace FileGuide
         #region TreeView Helper Methods
 
         /// <summary>
-        /// Return the root node of a treeView node
+        /// Return the root node of a treeViewFolderTree node
         /// </summary>
         /// <param name="treeNode"></param>
         /// <returns></returns>
@@ -192,7 +147,7 @@ namespace FileGuide
 
 
         /// <summary>
-        /// Return a DirectoryInfo from a treeView node
+        /// Return a DirectoryInfo from a treeViewFolderTree node
         /// </summary>
         /// <param name="currentNode"></param>
         /// <returns></returns>
@@ -217,35 +172,14 @@ namespace FileGuide
         /// Show a folder's content onto listView
         /// </summary>
         /// <param name="listView"></param>
-        /// <param name="currentNode">The treenode at which to show content</param>
+        /// <param name="currentNode">The treeNode at which to show content</param>
         public void ShowListView(ListView listView, TreeNode currentNode)
         {
             try
             {
                 if (currentNode.Text == "Easy Access" && GetTreeNodeRoot(currentNode).Text == "Easy Access") return;
-                // Clear listView to show content
-                listView.Items.Clear();
-
-                // Get Directory Info from the current node, if existing, add directory and its children to listView
-                ListViewItem item;
                 DirectoryInfo directory = GetDirectoryInfoFromNode(currentNode);
-                if (!directory.Exists)
-                {
-                    MessageBox.Show("Folder does not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                foreach (DirectoryInfo folder in directory.GetDirectories())
-                {
-                    item = GetListViewItem(folder);
-                    listView.Items.Add(item);
-                }
-
-                foreach (FileInfo file in directory.GetFiles())
-                {
-                    item = GetListViewItem(file);
-                    listView.Items.Add(item);
-                };
-                listView.Columns[listView.Columns.Count - 1].Width = -2;        
+                ShowListView(listView, directory.FullName);
             }
             catch (Exception e)
             {
@@ -263,20 +197,20 @@ namespace FileGuide
         {
             try
             {
-                ListViewItem item;
-                DirectoryInfo directory = new DirectoryInfo(strPath);
                 listView.Items.Clear();
-                foreach (DirectoryInfo folder in directory.GetDirectories())
+                DirectoryInfo directory = new DirectoryInfo(strPath);
+                if (!directory.Exists)
                 {
-                    item = GetListViewItem(folder);
-                    listView.Items.Add(item);
+                    MessageBox.Show("Folder does not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
+                foreach (DirectoryInfo folder in directory.GetDirectories())
+                    listView.Items.Add(GetListViewItem(folder));
 
                 foreach (FileInfo file in directory.GetFiles())
-                {
-                    item = GetListViewItem(file);
-                    listView.Items.Add(item);
-                };
+                    listView.Items.Add(GetListViewItem(file));
+
+                // Reset the last column's width to avoid the last-column-white-area bug in Dark Mode
                 listView.Columns[listView.Columns.Count - 1].Width = -2;
             }
 
