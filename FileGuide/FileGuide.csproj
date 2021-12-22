@@ -93,16 +93,13 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ClsTreeListView.cs" />
-    <Compile Include="CustomControls\CustomPaintedButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="CustomControls\CustomTabControl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CustomControls\DoubleBufferedListView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="CustomControls\GradientPanel.cs">
+    <Compile Include="CustomControls\CustomPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="FormLogin\FormLogin.cs">
@@ -196,6 +193,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FileGuide.ico" />
+    <None Include="Resources\Icon_Username.png" />
+    <None Include="Resources\Icon_Password.png" />
     <None Include="Resources\Icon\Icon_Pin.png" />
     <None Include="Resources\InfoPageInfoPanel.png" />
     <None Include="Resources\Icon\Icon_Refresh_DarkMode.png" />

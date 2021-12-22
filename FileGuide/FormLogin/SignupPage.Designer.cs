@@ -49,13 +49,13 @@ namespace FileGuide
             this.labelAdmin = new System.Windows.Forms.Label();
             this.labelPermis = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.gradientPanelBackgroundGuest = new FileGuide.CustomControls.GradientPanel();
+            this.gradientPanelBackgroundGuest = new FileGuide.CustomControls.CustomPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.gradientPanelBackgroundAdmin = new FileGuide.CustomControls.GradientPanel();
+            this.gradientPanelBackgroundAdmin = new FileGuide.CustomControls.CustomPanel();
             this.labelDSTK = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewUserList)).BeginInit();
             this.panelBeforeLogined.SuspendLayout();
@@ -467,6 +467,7 @@ namespace FileGuide
             // gradientPanelBackgroundGuest
             // 
             this.gradientPanelBackgroundGuest.Angle = 0F;
+            this.gradientPanelBackgroundGuest.BorderRadius = 0;
             this.gradientPanelBackgroundGuest.Controls.Add(this.label4);
             this.gradientPanelBackgroundGuest.Controls.Add(this.label3);
             this.gradientPanelBackgroundGuest.Controls.Add(this.label2);
@@ -543,6 +544,7 @@ namespace FileGuide
             // gradientPanelBackgroundAdmin
             // 
             this.gradientPanelBackgroundAdmin.Angle = 0F;
+            this.gradientPanelBackgroundAdmin.BorderRadius = 0;
             this.gradientPanelBackgroundAdmin.Controls.Add(this.DataGridViewUserList);
             this.gradientPanelBackgroundAdmin.Controls.Add(this.labelDSTK);
             this.gradientPanelBackgroundAdmin.FirstColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(156)))), ((int)(((byte)(242)))));
@@ -612,13 +614,13 @@ namespace FileGuide
         private Guna.UI2.WinForms.Guna2GradientButton btnDelete;
         private Guna.UI2.WinForms.Guna2GradientButton btnAdd;
         private System.Windows.Forms.Label labelNotice;
-        private CustomControls.GradientPanel gradientPanelBackgroundGuest;
+        private CustomControls.CustomPanel gradientPanelBackgroundGuest;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private CustomControls.GradientPanel gradientPanelBackgroundAdmin;
+        private CustomControls.CustomPanel gradientPanelBackgroundAdmin;
         private System.Windows.Forms.Label labelDSTK;
     }
 }

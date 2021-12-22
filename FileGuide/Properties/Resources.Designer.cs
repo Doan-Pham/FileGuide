@@ -263,6 +263,16 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Icon_Password {
+            get {
+                object obj = ResourceManager.GetObject("Icon_Password", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Icon_Paste {
             get {
                 object obj = ResourceManager.GetObject("Icon_Paste", resourceCulture);
@@ -326,6 +336,16 @@ namespace FileGuide.Properties {
         public static System.Drawing.Bitmap Icon_UserGroup {
             get {
                 object obj = ResourceManager.GetObject("Icon_UserGroup", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Icon_Username {
+            get {
+                object obj = ResourceManager.GetObject("Icon_Username", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
