@@ -61,7 +61,11 @@ namespace FileGuide
            
         }
 
-
+        /// <summary>
+        /// Prevent user from clicking "Enter" key which breaks line in textBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)13)

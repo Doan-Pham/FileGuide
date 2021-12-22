@@ -135,11 +135,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="FormLogin\SignupPage.cs">
+    <Compile Include="FormLogin\ManagementPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FormLogin\SignupPage.Designer.cs">
-      <DependentUpon>SignupPage.cs</DependentUpon>
+    <Compile Include="FormLogin\ManagementPage.Designer.cs">
+      <DependentUpon>ManagementPage.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FormLogin\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
@@ -158,8 +158,8 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormLogin\SignupPage.resx">
-      <DependentUpon>SignupPage.cs</DependentUpon>
+    <EmbeddedResource Include="FormLogin\ManagementPage.resx">
+      <DependentUpon>ManagementPage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />

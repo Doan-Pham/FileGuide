@@ -39,9 +39,9 @@ namespace FileGuide
             this.ManagementButton = new System.Windows.Forms.Button();
             this.LoginButton = new System.Windows.Forms.Button();
             this.PanelMain = new System.Windows.Forms.Panel();
-            this.infoPage1 = new FileGuide.InfoPage();
-            this.signupPage1 = new FileGuide.SignupPage();
             this.loginPage1 = new FileGuide.LoginPage();
+            this.signupPage1 = new FileGuide.ManagementPage();
+            this.infoPage1 = new FileGuide.InfoPage();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxManagement)).BeginInit();
@@ -140,7 +140,7 @@ namespace FileGuide
             this.ManagementButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ManagementButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ManagementButton.UseVisualStyleBackColor = true;
-            this.ManagementButton.Click += new System.EventHandler(this.SignupButton_Click);
+            this.ManagementButton.Click += new System.EventHandler(this.ManagementButton_Click);
             // 
             // LoginButton
             // 
@@ -165,13 +165,29 @@ namespace FileGuide
             this.PanelMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PanelMain.Controls.Add(this.infoPage1);
-            this.PanelMain.Controls.Add(this.signupPage1);
             this.PanelMain.Controls.Add(this.loginPage1);
+            this.PanelMain.Controls.Add(this.signupPage1);
+            this.PanelMain.Controls.Add(this.infoPage1);
             this.PanelMain.Location = new System.Drawing.Point(0, 0);
             this.PanelMain.Name = "PanelMain";
             this.PanelMain.Size = new System.Drawing.Size(1204, 760);
             this.PanelMain.TabIndex = 0;
+            // 
+            // loginPage1
+            // 
+            this.loginPage1.BackColor = System.Drawing.Color.White;
+            this.loginPage1.Location = new System.Drawing.Point(0, 0);
+            this.loginPage1.Name = "loginPage1";
+            this.loginPage1.Size = new System.Drawing.Size(1218, 1068);
+            this.loginPage1.TabIndex = 3;
+            // 
+            // signupPage1
+            // 
+            this.signupPage1.BackColor = System.Drawing.Color.White;
+            this.signupPage1.Location = new System.Drawing.Point(0, 0);
+            this.signupPage1.Name = "signupPage1";
+            this.signupPage1.Size = new System.Drawing.Size(1218, 1068);
+            this.signupPage1.TabIndex = 4;
             // 
             // infoPage1
             // 
@@ -181,22 +197,6 @@ namespace FileGuide
             this.infoPage1.Name = "infoPage1";
             this.infoPage1.Size = new System.Drawing.Size(1204, 760);
             this.infoPage1.TabIndex = 0;
-            // 
-            // signupPage1
-            // 
-            this.signupPage1.BackColor = System.Drawing.Color.White;
-            this.signupPage1.Location = new System.Drawing.Point(-3, 0);
-            this.signupPage1.Name = "signupPage1";
-            this.signupPage1.Size = new System.Drawing.Size(1218, 1068);
-            this.signupPage1.TabIndex = 4;
-            // 
-            // loginPage1
-            // 
-            this.loginPage1.BackColor = System.Drawing.Color.White;
-            this.loginPage1.Location = new System.Drawing.Point(-3, 0);
-            this.loginPage1.Name = "loginPage1";
-            this.loginPage1.Size = new System.Drawing.Size(1218, 1068);
-            this.loginPage1.TabIndex = 3;
             // 
             // FormLogin
             // 
@@ -230,7 +230,7 @@ namespace FileGuide
         private System.Windows.Forms.Panel PanelMain;
         private InfoPage infoPage1;
         private LoginPage loginPage1;
-        private SignupPage signupPage1;
+        private ManagementPage signupPage1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBoxManagement;
         private System.Windows.Forms.PictureBox pictureBoxInfo;

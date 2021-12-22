@@ -11,11 +11,11 @@ using System.Data.SqlClient;
 
 namespace FileGuide
 {
-    public partial class SignupPage : UserControl
+    public partial class ManagementPage : UserControl
     {
         public Color SuccessNoticeColor = Color.FromArgb(0,200,0);
         public Color ErrorWarningColor = Color.FromArgb(200, 0, 0);
-        public SignupPage()
+        public ManagementPage()
         {
             InitializeComponent();
 
@@ -25,7 +25,7 @@ namespace FileGuide
         { 
             if (FormLogin.isLogined)
             {
-                panelBeforeLogined.Visible = false;
+                SignupPanel.Visible = false;
                 panelAfterLogin.Visible = true;
                 
                 if (FormLogin.UserPermission.ToString() == "1")
@@ -46,7 +46,7 @@ namespace FileGuide
             }
             else
             {
-                panelBeforeLogined.Visible = true;
+                SignupPanel.Visible = true;
                 panelAfterLogin.Visible = false;
                 gradientPanelBackgroundAdmin.Visible = false;
                 gradientPanelBackgroundGuest.Visible = true;

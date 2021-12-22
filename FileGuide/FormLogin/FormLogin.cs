@@ -14,7 +14,6 @@ namespace FileGuide
     public partial class FormLogin : Form
     {
 
-        
         private void FormLogin_Load(object sender, EventArgs e)
         {
             //This fixes the issue: clicking on button creates weird border around it
@@ -28,6 +27,12 @@ namespace FileGuide
         public FormLogin()
         {
             InitializeComponent();
+            LoginButton.PerformClick();
+        }
+
+        // Switch to LoginPage
+        private void LoginButton_Click(object sender, EventArgs e)
+        {
             // Set the small blue panel
             sidePanel.Height = LoginButton.Height;
             sidePanel.Top = LoginButton.Top;
@@ -41,24 +46,13 @@ namespace FileGuide
             infoPage1.Dock = DockStyle.None;
         }
 
-        private void LoginButton_Click(object sender, EventArgs e)
+        // Switch to ManagementPage
+        private void ManagementButton_Click(object sender, EventArgs e)
         {
-            sidePanel.Height = LoginButton.Height;
-            sidePanel.Top = LoginButton.Top;
-
-            loginPage1.Visible = true;
-            signupPage1.Visible = false;
-            infoPage1.Visible = false;
-
-            loginPage1.Dock = DockStyle.Fill;
-            signupPage1.Dock = DockStyle.None;
-            infoPage1.Dock = DockStyle.None;
-        }
-
-        private void SignupButton_Click(object sender, EventArgs e)
-        {
+            //
             sidePanel.Height = ManagementButton.Height;
             sidePanel.Top = ManagementButton.Top;
+
             loginPage1.Visible = false;
             signupPage1.Visible = true;
             infoPage1.Visible = false;
@@ -68,10 +62,12 @@ namespace FileGuide
             infoPage1.Dock = DockStyle.None;
         }
 
+        // Same as InfoButton_Click
         private void InfoButton_Click(object sender, EventArgs e)
         {
             sidePanel.Height = InfoButton.Height;
             sidePanel.Top = InfoButton.Top;
+            infoPage1.BringToFront();
             loginPage1.Visible = false;
             signupPage1.Visible = false;
             infoPage1.Visible = true;
@@ -80,6 +76,5 @@ namespace FileGuide
             signupPage1.Dock = DockStyle.None;
             infoPage1.Dock = DockStyle.Fill;
         }
-
     }
 }
