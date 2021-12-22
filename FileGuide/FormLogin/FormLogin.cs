@@ -14,6 +14,12 @@ namespace FileGuide
     public partial class FormLogin : Form
     {
 
+        
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+            //This fixes the issue: clicking on button creates weird border around it
+            this.Select();
+        }
         // Set static variables for use among child user controls
         public static int UserPermission;
         public static bool isLogined = false;
@@ -74,5 +80,6 @@ namespace FileGuide
             signupPage1.Dock = DockStyle.None;
             infoPage1.Dock = DockStyle.Fill;
         }
+
     }
 }

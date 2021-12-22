@@ -32,6 +32,8 @@ namespace FileGuide
             this.textBoxPass = new System.Windows.Forms.TextBox();
             this.textBoxUser = new System.Windows.Forms.TextBox();
             this.panelBeforeLogin = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.customPanel1 = new FileGuide.CustomControls.CustomPanel();
@@ -41,8 +43,11 @@ namespace FileGuide
             this.labelWarning = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.panelAfterLogin = new System.Windows.Forms.Panel();
-            this.btnLogout = new System.Windows.Forms.Button();
+            this.customPanel3 = new FileGuide.CustomControls.CustomPanel();
             this.btnStart = new System.Windows.Forms.Button();
+            this.customPanel2 = new FileGuide.CustomControls.CustomPanel();
+            this.customPanel4 = new FileGuide.CustomControls.CustomPanel();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -52,21 +57,16 @@ namespace FileGuide
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.customPanel2 = new FileGuide.CustomControls.CustomPanel();
-            this.customPanel4 = new FileGuide.CustomControls.CustomPanel();
-            this.customPanel3 = new FileGuide.CustomControls.CustomPanel();
             this.panelBeforeLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.gradientPanelBtnLogin.SuspendLayout();
             this.panelAfterLogin.SuspendLayout();
-            this.gradientPanelBackground.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.customPanel3.SuspendLayout();
             this.customPanel2.SuspendLayout();
             this.customPanel4.SuspendLayout();
-            this.customPanel3.SuspendLayout();
+            this.gradientPanelBackground.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxPass
@@ -114,6 +114,28 @@ namespace FileGuide
             this.panelBeforeLogin.Size = new System.Drawing.Size(582, 1062);
             this.panelBeforeLogin.TabIndex = 29;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Lexend SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.label9.Location = new System.Drawing.Point(153, 367);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(112, 29);
+            this.label9.TabIndex = 40;
+            this.label9.Text = "MẬT KHẨU";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Lexend SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.label8.Location = new System.Drawing.Point(148, 224);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(120, 29);
+            this.label8.TabIndex = 39;
+            this.label8.Text = "TÀI KHOẢN";
+            // 
             // pictureBox3
             // 
             this.pictureBox3.Image = global::FileGuide.Properties.Resources.Icon_Password;
@@ -141,6 +163,7 @@ namespace FileGuide
             this.customPanel1.BorderRadius = 0;
             this.customPanel1.FirstColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
             this.customPanel1.ForeColor = System.Drawing.Color.White;
+            this.customPanel1.HoverColor = System.Drawing.Color.Empty;
             this.customPanel1.Location = new System.Drawing.Point(150, 307);
             this.customPanel1.Name = "customPanel1";
             this.customPanel1.SecondColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
@@ -154,6 +177,7 @@ namespace FileGuide
             this.gradientPanel2.BorderRadius = 0;
             this.gradientPanel2.FirstColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
             this.gradientPanel2.ForeColor = System.Drawing.Color.White;
+            this.gradientPanel2.HoverColor = System.Drawing.Color.Empty;
             this.gradientPanel2.Location = new System.Drawing.Point(153, 454);
             this.gradientPanel2.Name = "gradientPanel2";
             this.gradientPanel2.SecondColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
@@ -168,6 +192,7 @@ namespace FileGuide
             this.gradientPanelBtnLogin.Controls.Add(this.btnLogin);
             this.gradientPanelBtnLogin.FirstColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
             this.gradientPanelBtnLogin.ForeColor = System.Drawing.Color.White;
+            this.gradientPanelBtnLogin.HoverColor = System.Drawing.Color.Empty;
             this.gradientPanelBtnLogin.Location = new System.Drawing.Point(180, 555);
             this.gradientPanelBtnLogin.Name = "gradientPanelBtnLogin";
             this.gradientPanelBtnLogin.SecondColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
@@ -177,6 +202,7 @@ namespace FileGuide
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnLogin.FlatAppearance.BorderSize = 0;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -227,9 +253,70 @@ namespace FileGuide
             this.panelAfterLogin.Size = new System.Drawing.Size(582, 1062);
             this.panelAfterLogin.TabIndex = 25;
             // 
+            // customPanel3
+            // 
+            this.customPanel3.Angle = 0F;
+            this.customPanel3.BackColor = System.Drawing.Color.Transparent;
+            this.customPanel3.BorderRadius = 30;
+            this.customPanel3.Controls.Add(this.btnStart);
+            this.customPanel3.FirstColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
+            this.customPanel3.ForeColor = System.Drawing.Color.White;
+            this.customPanel3.HoverColor = System.Drawing.Color.Empty;
+            this.customPanel3.Location = new System.Drawing.Point(180, 460);
+            this.customPanel3.Name = "customPanel3";
+            this.customPanel3.SecondColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
+            this.customPanel3.Size = new System.Drawing.Size(260, 71);
+            this.customPanel3.TabIndex = 34;
+            // 
+            // btnStart
+            // 
+            this.btnStart.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnStart.FlatAppearance.BorderSize = 0;
+            this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStart.Font = new System.Drawing.Font("Lexend", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStart.ForeColor = System.Drawing.Color.Transparent;
+            this.btnStart.Location = new System.Drawing.Point(0, 0);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(260, 71);
+            this.btnStart.TabIndex = 5;
+            this.btnStart.Text = "Khởi động ứng dụng";
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // customPanel2
+            // 
+            this.customPanel2.Angle = 0F;
+            this.customPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.customPanel2.BorderRadius = 30;
+            this.customPanel2.Controls.Add(this.customPanel4);
+            this.customPanel2.FirstColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
+            this.customPanel2.ForeColor = System.Drawing.Color.White;
+            this.customPanel2.HoverColor = System.Drawing.Color.Empty;
+            this.customPanel2.Location = new System.Drawing.Point(180, 300);
+            this.customPanel2.Name = "customPanel2";
+            this.customPanel2.SecondColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
+            this.customPanel2.Size = new System.Drawing.Size(260, 70);
+            this.customPanel2.TabIndex = 33;
+            // 
+            // customPanel4
+            // 
+            this.customPanel4.Angle = 0F;
+            this.customPanel4.BackColor = System.Drawing.Color.Transparent;
+            this.customPanel4.BorderRadius = 25;
+            this.customPanel4.Controls.Add(this.btnLogout);
+            this.customPanel4.FirstColor = System.Drawing.Color.White;
+            this.customPanel4.ForeColor = System.Drawing.Color.White;
+            this.customPanel4.HoverColor = System.Drawing.Color.Empty;
+            this.customPanel4.Location = new System.Drawing.Point(6, 6);
+            this.customPanel4.Name = "customPanel4";
+            this.customPanel4.SecondColor = System.Drawing.Color.White;
+            this.customPanel4.Size = new System.Drawing.Size(247, 58);
+            this.customPanel4.TabIndex = 34;
+            // 
             // btnLogout
             // 
             this.btnLogout.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogout.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnLogout.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnLogout.FlatAppearance.BorderSize = 0;
@@ -245,20 +332,6 @@ namespace FileGuide
             this.btnLogout.Text = "Đăng xuất";
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            // 
-            // btnStart
-            // 
-            this.btnStart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnStart.FlatAppearance.BorderSize = 0;
-            this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStart.Font = new System.Drawing.Font("Lexend", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStart.ForeColor = System.Drawing.Color.Transparent;
-            this.btnStart.Location = new System.Drawing.Point(0, 0);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(260, 71);
-            this.btnStart.TabIndex = 5;
-            this.btnStart.Text = "Khởi động ứng dụng";
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // label6
             // 
@@ -299,6 +372,7 @@ namespace FileGuide
             this.gradientPanelBackground.Controls.Add(this.label1);
             this.gradientPanelBackground.Controls.Add(this.pictureBox2);
             this.gradientPanelBackground.FirstColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(156)))), ((int)(((byte)(242)))));
+            this.gradientPanelBackground.HoverColor = System.Drawing.Color.Empty;
             this.gradientPanelBackground.Location = new System.Drawing.Point(-1, 0);
             this.gradientPanelBackground.Name = "gradientPanelBackground";
             this.gradientPanelBackground.SecondColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
@@ -366,73 +440,6 @@ namespace FileGuide
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Lexend SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.label8.Location = new System.Drawing.Point(148, 224);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(120, 29);
-            this.label8.TabIndex = 39;
-            this.label8.Text = "TÀI KHOẢN";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Lexend SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.label9.Location = new System.Drawing.Point(153, 367);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(112, 29);
-            this.label9.TabIndex = 40;
-            this.label9.Text = "MẬT KHẨU";
-            // 
-            // customPanel2
-            // 
-            this.customPanel2.Angle = 0F;
-            this.customPanel2.BackColor = System.Drawing.Color.Transparent;
-            this.customPanel2.BorderRadius = 30;
-            this.customPanel2.Controls.Add(this.customPanel4);
-            this.customPanel2.FirstColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
-            this.customPanel2.ForeColor = System.Drawing.Color.White;
-            this.customPanel2.HoverColor = System.Drawing.Color.Empty;
-            this.customPanel2.Location = new System.Drawing.Point(180, 300);
-            this.customPanel2.Name = "customPanel2";
-            this.customPanel2.SecondColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
-            this.customPanel2.Size = new System.Drawing.Size(260, 70);
-            this.customPanel2.TabIndex = 33;
-            // 
-            // customPanel4
-            // 
-            this.customPanel4.Angle = 0F;
-            this.customPanel4.BackColor = System.Drawing.Color.Transparent;
-            this.customPanel4.BorderRadius = 25;
-            this.customPanel4.Controls.Add(this.btnLogout);
-            this.customPanel4.FirstColor = System.Drawing.Color.White;
-            this.customPanel4.ForeColor = System.Drawing.Color.White;
-            this.customPanel4.HoverColor = System.Drawing.Color.Empty;
-            this.customPanel4.Location = new System.Drawing.Point(6, 6);
-            this.customPanel4.Name = "customPanel4";
-            this.customPanel4.SecondColor = System.Drawing.Color.White;
-            this.customPanel4.Size = new System.Drawing.Size(247, 58);
-            this.customPanel4.TabIndex = 34;
-            // 
-            // customPanel3
-            // 
-            this.customPanel3.Angle = 0F;
-            this.customPanel3.BackColor = System.Drawing.Color.Transparent;
-            this.customPanel3.BorderRadius = 30;
-            this.customPanel3.Controls.Add(this.btnStart);
-            this.customPanel3.FirstColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
-            this.customPanel3.ForeColor = System.Drawing.Color.White;
-            this.customPanel3.HoverColor = System.Drawing.Color.Empty;
-            this.customPanel3.Location = new System.Drawing.Point(180, 460);
-            this.customPanel3.Name = "customPanel3";
-            this.customPanel3.SecondColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
-            this.customPanel3.Size = new System.Drawing.Size(260, 71);
-            this.customPanel3.TabIndex = 34;
-            // 
             // LoginPage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -449,12 +456,12 @@ namespace FileGuide
             this.gradientPanelBtnLogin.ResumeLayout(false);
             this.panelAfterLogin.ResumeLayout(false);
             this.panelAfterLogin.PerformLayout();
+            this.customPanel3.ResumeLayout(false);
+            this.customPanel2.ResumeLayout(false);
+            this.customPanel4.ResumeLayout(false);
             this.gradientPanelBackground.ResumeLayout(false);
             this.gradientPanelBackground.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.customPanel2.ResumeLayout(false);
-            this.customPanel4.ResumeLayout(false);
-            this.customPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

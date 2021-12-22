@@ -283,5 +283,10 @@ namespace FileGuide
                 return;
             }
         }
+
+        private void btnSignup_MouseEnter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

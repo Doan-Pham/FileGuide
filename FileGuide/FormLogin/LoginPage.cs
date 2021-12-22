@@ -42,25 +42,28 @@ namespace FileGuide
                 }
                 connection.Close();
             }
+            this.Parent.Focus();
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            this.Parent.Focus();
             FormLogin.isLogined = false;
             labelWarning.Visible = false;
-            panelBeforeLogin.BringToFront();
+            panelBeforeLogin.BringToFront();   
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            this.Parent.Focus();
             FrmMain newForm = new FrmMain();
             newForm.Show();
+           
         }
 
 
         public void textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-
             if (e.KeyChar == (char)13)
             {
                 e.Handled = true;

@@ -150,6 +150,7 @@ namespace FileGuide
             this.btnSignup.TabIndex = 31;
             this.btnSignup.Text = "Đăng ký";
             this.btnSignup.Click += new System.EventHandler(this.btnSignup_Click);
+            this.btnSignup.MouseEnter += new System.EventHandler(this.btnSignup_MouseEnter);
             // 
             // label7
             // 
@@ -356,6 +357,7 @@ namespace FileGuide
             // 
             // btnAdd
             // 
+            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAdd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAdd.FlatAppearance.BorderSize = 0;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -385,6 +387,7 @@ namespace FileGuide
             // 
             // btnUpdate
             // 
+            this.btnUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnUpdate.FlatAppearance.BorderSize = 0;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -414,6 +417,7 @@ namespace FileGuide
             // 
             // btnDelete
             // 
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDelete.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

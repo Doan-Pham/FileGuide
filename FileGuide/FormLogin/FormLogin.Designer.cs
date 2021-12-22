@@ -210,6 +210,7 @@ namespace FileGuide
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.FormLogin_Load);
             this.panelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInfo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxManagement)).EndInit();
