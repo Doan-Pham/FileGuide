@@ -58,7 +58,7 @@ namespace FileGuide
         }
 
 
-        private void textBox_KeyPress(object sender, KeyPressEventArgs e)
+        public void textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
 
             if (e.KeyChar == (char)13)
@@ -66,13 +66,6 @@ namespace FileGuide
                 e.Handled = true;
                 return;
             }
-        }
-
-        private void textBoxUser_Click(object sender, EventArgs e)
-        {
-            TextBox txtBox = (TextBox)sender;
-            txtBox.Clear();
-            txtBox.Focus();
         }
     }
 }

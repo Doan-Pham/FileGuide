@@ -293,5 +293,14 @@ namespace FileGuide
                 connection.Close();
             }    
         }
+
+        public void textBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                e.Handled = true;
+                return;
+            }
+        }
     }
 }

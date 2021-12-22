@@ -74,7 +74,7 @@ namespace FileGuide
             this.textBoxPass.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxPass.Font = new System.Drawing.Font("Questrial", 11F);
             this.textBoxPass.ForeColor = System.Drawing.Color.Black;
-            this.textBoxPass.Location = new System.Drawing.Point(204, 398);
+            this.textBoxPass.Location = new System.Drawing.Point(204, 414);
             this.textBoxPass.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPass.Multiline = true;
             this.textBoxPass.Name = "textBoxPass";
@@ -117,7 +117,7 @@ namespace FileGuide
             // pictureBox3
             // 
             this.pictureBox3.Image = global::FileGuide.Properties.Resources.Icon_Password;
-            this.pictureBox3.Location = new System.Drawing.Point(152, 395);
+            this.pictureBox3.Location = new System.Drawing.Point(152, 411);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(35, 35);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -154,7 +154,7 @@ namespace FileGuide
             this.gradientPanel2.BorderRadius = 0;
             this.gradientPanel2.FirstColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
             this.gradientPanel2.ForeColor = System.Drawing.Color.White;
-            this.gradientPanel2.Location = new System.Drawing.Point(153, 438);
+            this.gradientPanel2.Location = new System.Drawing.Point(153, 454);
             this.gradientPanel2.Name = "gradientPanel2";
             this.gradientPanel2.SecondColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
             this.gradientPanel2.Size = new System.Drawing.Size(303, 4);
@@ -168,7 +168,7 @@ namespace FileGuide
             this.gradientPanelBtnLogin.Controls.Add(this.btnLogin);
             this.gradientPanelBtnLogin.FirstColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
             this.gradientPanelBtnLogin.ForeColor = System.Drawing.Color.White;
-            this.gradientPanelBtnLogin.Location = new System.Drawing.Point(180, 513);
+            this.gradientPanelBtnLogin.Location = new System.Drawing.Point(180, 555);
             this.gradientPanelBtnLogin.Name = "gradientPanelBtnLogin";
             this.gradientPanelBtnLogin.SecondColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
             this.gradientPanelBtnLogin.Size = new System.Drawing.Size(260, 71);
@@ -195,7 +195,7 @@ namespace FileGuide
             this.labelWarning.AutoSize = true;
             this.labelWarning.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelWarning.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.labelWarning.Location = new System.Drawing.Point(147, 457);
+            this.labelWarning.Location = new System.Drawing.Point(147, 473);
             this.labelWarning.Name = "labelWarning";
             this.labelWarning.Size = new System.Drawing.Size(341, 30);
             this.labelWarning.TabIndex = 30;
@@ -231,10 +231,10 @@ namespace FileGuide
             // 
             this.btnLogout.BackColor = System.Drawing.Color.Transparent;
             this.btnLogout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnLogout.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
+            this.btnLogout.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnLogout.FlatAppearance.BorderSize = 0;
-            this.btnLogout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
-            this.btnLogout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
+            this.btnLogout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnLogout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogout.Font = new System.Drawing.Font("Lexend", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.Color.Black;
@@ -382,7 +382,7 @@ namespace FileGuide
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Lexend SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.label9.Location = new System.Drawing.Point(153, 351);
+            this.label9.Location = new System.Drawing.Point(153, 367);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(112, 29);
             this.label9.TabIndex = 40;

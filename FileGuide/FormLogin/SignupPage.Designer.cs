@@ -29,22 +29,23 @@ namespace FileGuide
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBoxPass = new Guna.UI2.WinForms.Guna2TextBox();
-            this.textBoxUser = new Guna.UI2.WinForms.Guna2TextBox();
+            this.textBoxPass = new System.Windows.Forms.TextBox();
+            this.textBoxUser = new System.Windows.Forms.TextBox();
             this.DataGridViewUserList = new System.Windows.Forms.DataGridView();
-            this.btnSignup = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.btnSignup = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.labelWarning2 = new System.Windows.Forms.Label();
             this.labelWarning1 = new System.Windows.Forms.Label();
             this.panelBeforeLogined = new System.Windows.Forms.Panel();
+            this.gradientPanelBtnLogin = new FileGuide.CustomControls.CustomPanel();
             this.labelNotice = new System.Windows.Forms.Label();
             this.panelAfterLogin = new System.Windows.Forms.Panel();
-            this.btnUpdate = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.btnDelete = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.btnAdd = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.textBoxPerAfter = new Guna.UI2.WinForms.Guna2TextBox();
-            this.textBoxPassAfter = new Guna.UI2.WinForms.Guna2TextBox();
-            this.textBoxUserAfter = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.textBoxPerAfter = new System.Windows.Forms.TextBox();
+            this.textBoxPassAfter = new System.Windows.Forms.TextBox();
+            this.textBoxUserAfter = new System.Windows.Forms.TextBox();
             this.labelGuest = new System.Windows.Forms.Label();
             this.labelAdmin = new System.Windows.Forms.Label();
             this.labelPermis = new System.Windows.Forms.Label();
@@ -57,75 +58,49 @@ namespace FileGuide
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.gradientPanelBackgroundAdmin = new FileGuide.CustomControls.CustomPanel();
             this.labelDSTK = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.customPanel1 = new FileGuide.CustomControls.CustomPanel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.gradientPanel2 = new FileGuide.CustomControls.CustomPanel();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewUserList)).BeginInit();
             this.panelBeforeLogined.SuspendLayout();
+            this.gradientPanelBtnLogin.SuspendLayout();
             this.panelAfterLogin.SuspendLayout();
             this.gradientPanelBackgroundGuest.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.gradientPanelBackgroundAdmin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxPass
             // 
-            this.textBoxPass.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(192)))), ((int)(((byte)(228)))));
-            this.textBoxPass.BorderRadius = 10;
-            this.textBoxPass.BorderThickness = 2;
+            this.textBoxPass.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxPass.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBoxPass.DefaultText = "";
-            this.textBoxPass.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.textBoxPass.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.textBoxPass.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.textBoxPass.DisabledState.Parent = this.textBoxPass;
-            this.textBoxPass.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.textBoxPass.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBoxPass.FocusedState.Parent = this.textBoxPass;
             this.textBoxPass.Font = new System.Drawing.Font("Questrial", 11F);
             this.textBoxPass.ForeColor = System.Drawing.Color.Black;
-            this.textBoxPass.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBoxPass.HoverState.Parent = this.textBoxPass;
-            this.textBoxPass.Location = new System.Drawing.Point(150, 351);
-            this.textBoxPass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxPass.Location = new System.Drawing.Point(204, 414);
+            this.textBoxPass.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPass.Multiline = true;
             this.textBoxPass.Name = "textBoxPass";
             this.textBoxPass.PasswordChar = '*';
-            this.textBoxPass.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.textBoxPass.PlaceholderText = "Mật khẩu";
-            this.textBoxPass.SelectedText = "";
-            this.textBoxPass.ShadowDecoration.Parent = this.textBoxPass;
-            this.textBoxPass.Size = new System.Drawing.Size(304, 70);
+            this.textBoxPass.Size = new System.Drawing.Size(249, 47);
             this.textBoxPass.TabIndex = 26;
-            this.textBoxPass.TextOffset = new System.Drawing.Point(0, 5);
             // 
             // textBoxUser
             // 
-            this.textBoxUser.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(192)))), ((int)(((byte)(228)))));
-            this.textBoxUser.BorderRadius = 10;
-            this.textBoxUser.BorderThickness = 2;
-            this.textBoxUser.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBoxUser.DefaultText = "";
-            this.textBoxUser.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.textBoxUser.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.textBoxUser.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.textBoxUser.DisabledState.Parent = this.textBoxUser;
-            this.textBoxUser.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.textBoxUser.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBoxUser.FocusedState.Parent = this.textBoxUser;
+            this.textBoxUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxUser.Font = new System.Drawing.Font("Questrial", 11F);
             this.textBoxUser.ForeColor = System.Drawing.Color.Black;
-            this.textBoxUser.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBoxUser.HoverState.Parent = this.textBoxUser;
-            this.textBoxUser.Location = new System.Drawing.Point(150, 245);
-            this.textBoxUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxUser.Location = new System.Drawing.Point(204, 267);
+            this.textBoxUser.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxUser.Multiline = true;
             this.textBoxUser.Name = "textBoxUser";
-            this.textBoxUser.PasswordChar = '\0';
-            this.textBoxUser.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.textBoxUser.PlaceholderText = "Tên tài khoản";
-            this.textBoxUser.SelectedText = "";
-            this.textBoxUser.ShadowDecoration.Parent = this.textBoxUser;
-            this.textBoxUser.Size = new System.Drawing.Size(304, 70);
+            this.textBoxUser.Size = new System.Drawing.Size(249, 47);
             this.textBoxUser.TabIndex = 25;
-            this.textBoxUser.TextOffset = new System.Drawing.Point(0, 5);
+            this.textBoxUser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // DataGridViewUserList
             // 
@@ -143,29 +118,15 @@ namespace FileGuide
             // 
             // btnSignup
             // 
-            this.btnSignup.BorderColor = System.Drawing.Color.Transparent;
-            this.btnSignup.BorderRadius = 30;
-            this.btnSignup.CheckedState.Parent = this.btnSignup;
             this.btnSignup.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSignup.CustomImages.Parent = this.btnSignup;
-            this.btnSignup.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnSignup.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnSignup.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSignup.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnSignup.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnSignup.DisabledState.Parent = this.btnSignup;
-            this.btnSignup.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
-            this.btnSignup.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
+            this.btnSignup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSignup.FlatAppearance.BorderSize = 0;
+            this.btnSignup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignup.Font = new System.Drawing.Font("Lexend", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSignup.ForeColor = System.Drawing.Color.White;
-            this.btnSignup.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(119)))), ((int)(((byte)(199)))));
-            this.btnSignup.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(192)))), ((int)(((byte)(228)))));
-            this.btnSignup.HoverState.Parent = this.btnSignup;
-            this.btnSignup.Location = new System.Drawing.Point(172, 481);
+            this.btnSignup.ForeColor = System.Drawing.Color.Transparent;
+            this.btnSignup.Location = new System.Drawing.Point(0, 0);
             this.btnSignup.Name = "btnSignup";
-            this.btnSignup.ShadowDecoration.BorderRadius = 10;
-            this.btnSignup.ShadowDecoration.Parent = this.btnSignup;
-            this.btnSignup.Size = new System.Drawing.Size(260, 70);
+            this.btnSignup.Size = new System.Drawing.Size(260, 71);
             this.btnSignup.TabIndex = 31;
             this.btnSignup.Text = "Đăng ký";
             this.btnSignup.Click += new System.EventHandler(this.btnSignup_Click);
@@ -187,7 +148,7 @@ namespace FileGuide
             this.labelWarning2.AutoSize = true;
             this.labelWarning2.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelWarning2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.labelWarning2.Location = new System.Drawing.Point(153, 425);
+            this.labelWarning2.Location = new System.Drawing.Point(153, 462);
             this.labelWarning2.Name = "labelWarning2";
             this.labelWarning2.Size = new System.Drawing.Size(88, 30);
             this.labelWarning2.TabIndex = 33;
@@ -208,16 +169,37 @@ namespace FileGuide
             // 
             // panelBeforeLogined
             // 
+            this.panelBeforeLogined.Controls.Add(this.label9);
+            this.panelBeforeLogined.Controls.Add(this.pictureBox3);
+            this.panelBeforeLogined.Controls.Add(this.gradientPanel2);
+            this.panelBeforeLogined.Controls.Add(this.label8);
+            this.panelBeforeLogined.Controls.Add(this.pictureBox1);
+            this.panelBeforeLogined.Controls.Add(this.customPanel1);
+            this.panelBeforeLogined.Controls.Add(this.gradientPanelBtnLogin);
             this.panelBeforeLogined.Controls.Add(this.textBoxPass);
             this.panelBeforeLogined.Controls.Add(this.textBoxUser);
             this.panelBeforeLogined.Controls.Add(this.labelWarning2);
-            this.panelBeforeLogined.Controls.Add(this.btnSignup);
             this.panelBeforeLogined.Controls.Add(this.label7);
             this.panelBeforeLogined.Controls.Add(this.labelWarning1);
-            this.panelBeforeLogined.Location = new System.Drawing.Point(633, 3);
+            this.panelBeforeLogined.Location = new System.Drawing.Point(633, 0);
             this.panelBeforeLogined.Name = "panelBeforeLogined";
             this.panelBeforeLogined.Size = new System.Drawing.Size(583, 816);
             this.panelBeforeLogined.TabIndex = 35;
+            // 
+            // gradientPanelBtnLogin
+            // 
+            this.gradientPanelBtnLogin.Angle = 0F;
+            this.gradientPanelBtnLogin.BackColor = System.Drawing.Color.Transparent;
+            this.gradientPanelBtnLogin.BorderRadius = 30;
+            this.gradientPanelBtnLogin.Controls.Add(this.btnSignup);
+            this.gradientPanelBtnLogin.FirstColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
+            this.gradientPanelBtnLogin.ForeColor = System.Drawing.Color.White;
+            this.gradientPanelBtnLogin.HoverColor = System.Drawing.Color.Empty;
+            this.gradientPanelBtnLogin.Location = new System.Drawing.Point(180, 555);
+            this.gradientPanelBtnLogin.Name = "gradientPanelBtnLogin";
+            this.gradientPanelBtnLogin.SecondColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
+            this.gradientPanelBtnLogin.Size = new System.Drawing.Size(260, 71);
+            this.gradientPanelBtnLogin.TabIndex = 35;
             // 
             // labelNotice
             // 
@@ -251,27 +233,10 @@ namespace FileGuide
             // 
             // btnUpdate
             // 
-            this.btnUpdate.BorderColor = System.Drawing.Color.Transparent;
-            this.btnUpdate.BorderRadius = 30;
-            this.btnUpdate.CheckedState.Parent = this.btnUpdate;
-            this.btnUpdate.CustomImages.Parent = this.btnUpdate;
-            this.btnUpdate.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnUpdate.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnUpdate.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnUpdate.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnUpdate.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnUpdate.DisabledState.Parent = this.btnUpdate;
-            this.btnUpdate.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
-            this.btnUpdate.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
             this.btnUpdate.Font = new System.Drawing.Font("Lexend", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(119)))), ((int)(((byte)(199)))));
-            this.btnUpdate.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(192)))), ((int)(((byte)(228)))));
-            this.btnUpdate.HoverState.Parent = this.btnUpdate;
             this.btnUpdate.Location = new System.Drawing.Point(405, 593);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.ShadowDecoration.BorderRadius = 10;
-            this.btnUpdate.ShadowDecoration.Parent = this.btnUpdate;
             this.btnUpdate.Size = new System.Drawing.Size(120, 71);
             this.btnUpdate.TabIndex = 29;
             this.btnUpdate.Text = "Sửa";
@@ -279,27 +244,10 @@ namespace FileGuide
             // 
             // btnDelete
             // 
-            this.btnDelete.BorderColor = System.Drawing.Color.Transparent;
-            this.btnDelete.BorderRadius = 30;
-            this.btnDelete.CheckedState.Parent = this.btnDelete;
-            this.btnDelete.CustomImages.Parent = this.btnDelete;
-            this.btnDelete.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnDelete.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnDelete.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnDelete.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnDelete.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnDelete.DisabledState.Parent = this.btnDelete;
-            this.btnDelete.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
-            this.btnDelete.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
             this.btnDelete.Font = new System.Drawing.Font("Lexend", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(119)))), ((int)(((byte)(199)))));
-            this.btnDelete.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(192)))), ((int)(((byte)(228)))));
-            this.btnDelete.HoverState.Parent = this.btnDelete;
             this.btnDelete.Location = new System.Drawing.Point(240, 593);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.ShadowDecoration.BorderRadius = 10;
-            this.btnDelete.ShadowDecoration.Parent = this.btnDelete;
             this.btnDelete.Size = new System.Drawing.Size(129, 71);
             this.btnDelete.TabIndex = 28;
             this.btnDelete.Text = "Xóa";
@@ -307,27 +255,10 @@ namespace FileGuide
             // 
             // btnAdd
             // 
-            this.btnAdd.BorderColor = System.Drawing.Color.Transparent;
-            this.btnAdd.BorderRadius = 30;
-            this.btnAdd.CheckedState.Parent = this.btnAdd;
-            this.btnAdd.CustomImages.Parent = this.btnAdd;
-            this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnAdd.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAdd.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAdd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnAdd.DisabledState.Parent = this.btnAdd;
-            this.btnAdd.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
-            this.btnAdd.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
             this.btnAdd.Font = new System.Drawing.Font("Lexend", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(119)))), ((int)(((byte)(199)))));
-            this.btnAdd.HoverState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(192)))), ((int)(((byte)(228)))));
-            this.btnAdd.HoverState.Parent = this.btnAdd;
             this.btnAdd.Location = new System.Drawing.Point(76, 593);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.ShadowDecoration.BorderRadius = 10;
-            this.btnAdd.ShadowDecoration.Parent = this.btnAdd;
             this.btnAdd.Size = new System.Drawing.Size(128, 71);
             this.btnAdd.TabIndex = 27;
             this.btnAdd.Text = "Thêm";
@@ -335,96 +266,40 @@ namespace FileGuide
             // 
             // textBoxPerAfter
             // 
-            this.textBoxPerAfter.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
-            this.textBoxPerAfter.BorderRadius = 10;
-            this.textBoxPerAfter.BorderThickness = 3;
             this.textBoxPerAfter.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBoxPerAfter.DefaultText = "";
-            this.textBoxPerAfter.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.textBoxPerAfter.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.textBoxPerAfter.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.textBoxPerAfter.DisabledState.Parent = this.textBoxPerAfter;
-            this.textBoxPerAfter.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.textBoxPerAfter.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBoxPerAfter.FocusedState.Parent = this.textBoxPerAfter;
             this.textBoxPerAfter.Font = new System.Drawing.Font("Questrial", 11F);
             this.textBoxPerAfter.ForeColor = System.Drawing.Color.Black;
-            this.textBoxPerAfter.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBoxPerAfter.HoverState.Parent = this.textBoxPerAfter;
             this.textBoxPerAfter.Location = new System.Drawing.Point(150, 457);
-            this.textBoxPerAfter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxPerAfter.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPerAfter.Multiline = true;
             this.textBoxPerAfter.Name = "textBoxPerAfter";
-            this.textBoxPerAfter.PasswordChar = '\0';
-            this.textBoxPerAfter.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.textBoxPerAfter.PlaceholderText = "Quyền";
-            this.textBoxPerAfter.SelectedText = "";
-            this.textBoxPerAfter.ShadowDecoration.Parent = this.textBoxPerAfter;
             this.textBoxPerAfter.Size = new System.Drawing.Size(304, 70);
             this.textBoxPerAfter.TabIndex = 26;
-            this.textBoxPerAfter.TextOffset = new System.Drawing.Point(0, 5);
             // 
             // textBoxPassAfter
             // 
-            this.textBoxPassAfter.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
-            this.textBoxPassAfter.BorderRadius = 10;
-            this.textBoxPassAfter.BorderThickness = 3;
             this.textBoxPassAfter.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBoxPassAfter.DefaultText = "";
-            this.textBoxPassAfter.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.textBoxPassAfter.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.textBoxPassAfter.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.textBoxPassAfter.DisabledState.Parent = this.textBoxPassAfter;
-            this.textBoxPassAfter.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.textBoxPassAfter.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBoxPassAfter.FocusedState.Parent = this.textBoxPassAfter;
             this.textBoxPassAfter.Font = new System.Drawing.Font("Questrial", 11F);
             this.textBoxPassAfter.ForeColor = System.Drawing.Color.Black;
-            this.textBoxPassAfter.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBoxPassAfter.HoverState.Parent = this.textBoxPassAfter;
             this.textBoxPassAfter.Location = new System.Drawing.Point(147, 369);
-            this.textBoxPassAfter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxPassAfter.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPassAfter.Multiline = true;
             this.textBoxPassAfter.Name = "textBoxPassAfter";
             this.textBoxPassAfter.PasswordChar = '*';
-            this.textBoxPassAfter.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.textBoxPassAfter.PlaceholderText = "Mật khẩu";
-            this.textBoxPassAfter.SelectedText = "";
-            this.textBoxPassAfter.ShadowDecoration.Parent = this.textBoxPassAfter;
             this.textBoxPassAfter.Size = new System.Drawing.Size(304, 70);
             this.textBoxPassAfter.TabIndex = 25;
-            this.textBoxPassAfter.TextOffset = new System.Drawing.Point(0, 5);
             // 
             // textBoxUserAfter
             // 
-            this.textBoxUserAfter.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
-            this.textBoxUserAfter.BorderRadius = 10;
-            this.textBoxUserAfter.BorderThickness = 3;
             this.textBoxUserAfter.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textBoxUserAfter.DefaultText = "";
-            this.textBoxUserAfter.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.textBoxUserAfter.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.textBoxUserAfter.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.textBoxUserAfter.DisabledState.Parent = this.textBoxUserAfter;
-            this.textBoxUserAfter.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.textBoxUserAfter.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBoxUserAfter.FocusedState.Parent = this.textBoxUserAfter;
             this.textBoxUserAfter.Font = new System.Drawing.Font("Questrial", 11F);
             this.textBoxUserAfter.ForeColor = System.Drawing.Color.Black;
-            this.textBoxUserAfter.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBoxUserAfter.HoverState.Parent = this.textBoxUserAfter;
             this.textBoxUserAfter.Location = new System.Drawing.Point(147, 280);
-            this.textBoxUserAfter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxUserAfter.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxUserAfter.Multiline = true;
             this.textBoxUserAfter.Name = "textBoxUserAfter";
-            this.textBoxUserAfter.PasswordChar = '\0';
-            this.textBoxUserAfter.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.textBoxUserAfter.PlaceholderText = "Tên tài khoản";
-            this.textBoxUserAfter.SelectedText = "";
-            this.textBoxUserAfter.ShadowDecoration.Parent = this.textBoxUserAfter;
             this.textBoxUserAfter.Size = new System.Drawing.Size(304, 70);
             this.textBoxUserAfter.TabIndex = 24;
-            this.textBoxUserAfter.TextOffset = new System.Drawing.Point(0, 5);
             // 
             // labelGuest
             // 
@@ -474,7 +349,8 @@ namespace FileGuide
             this.gradientPanelBackgroundGuest.Controls.Add(this.label1);
             this.gradientPanelBackgroundGuest.Controls.Add(this.pictureBox2);
             this.gradientPanelBackgroundGuest.FirstColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(156)))), ((int)(((byte)(242)))));
-            this.gradientPanelBackgroundGuest.Location = new System.Drawing.Point(0, 0);
+            this.gradientPanelBackgroundGuest.HoverColor = System.Drawing.Color.Empty;
+            this.gradientPanelBackgroundGuest.Location = new System.Drawing.Point(-1, 0);
             this.gradientPanelBackgroundGuest.Name = "gradientPanelBackgroundGuest";
             this.gradientPanelBackgroundGuest.SecondColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
             this.gradientPanelBackgroundGuest.Size = new System.Drawing.Size(628, 1065);
@@ -548,6 +424,7 @@ namespace FileGuide
             this.gradientPanelBackgroundAdmin.Controls.Add(this.DataGridViewUserList);
             this.gradientPanelBackgroundAdmin.Controls.Add(this.labelDSTK);
             this.gradientPanelBackgroundAdmin.FirstColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(156)))), ((int)(((byte)(242)))));
+            this.gradientPanelBackgroundAdmin.HoverColor = System.Drawing.Color.Empty;
             this.gradientPanelBackgroundAdmin.Location = new System.Drawing.Point(0, 0);
             this.gradientPanelBackgroundAdmin.Name = "gradientPanelBackgroundAdmin";
             this.gradientPanelBackgroundAdmin.SecondColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
@@ -567,6 +444,76 @@ namespace FileGuide
             this.labelDSTK.Text = "Danh sách TK";
             this.labelDSTK.Visible = false;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Lexend SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.label8.Location = new System.Drawing.Point(148, 224);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(120, 29);
+            this.label8.TabIndex = 42;
+            this.label8.Text = "TÀI KHOẢN";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::FileGuide.Properties.Resources.Icon_Username;
+            this.pictureBox1.Location = new System.Drawing.Point(151, 265);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(35, 35);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 41;
+            this.pictureBox1.TabStop = false;
+            // 
+            // customPanel1
+            // 
+            this.customPanel1.Angle = 0F;
+            this.customPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.customPanel1.BorderRadius = 0;
+            this.customPanel1.FirstColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
+            this.customPanel1.ForeColor = System.Drawing.Color.White;
+            this.customPanel1.HoverColor = System.Drawing.Color.Empty;
+            this.customPanel1.Location = new System.Drawing.Point(150, 307);
+            this.customPanel1.Name = "customPanel1";
+            this.customPanel1.SecondColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
+            this.customPanel1.Size = new System.Drawing.Size(303, 4);
+            this.customPanel1.TabIndex = 40;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Lexend SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.label9.Location = new System.Drawing.Point(153, 367);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(112, 29);
+            this.label9.TabIndex = 45;
+            this.label9.Text = "MẬT KHẨU";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::FileGuide.Properties.Resources.Icon_Password;
+            this.pictureBox3.Location = new System.Drawing.Point(152, 411);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(35, 35);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 44;
+            this.pictureBox3.TabStop = false;
+            // 
+            // gradientPanel2
+            // 
+            this.gradientPanel2.Angle = 0F;
+            this.gradientPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.gradientPanel2.BorderRadius = 0;
+            this.gradientPanel2.FirstColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(149)))), ((int)(((byte)(242)))));
+            this.gradientPanel2.ForeColor = System.Drawing.Color.White;
+            this.gradientPanel2.HoverColor = System.Drawing.Color.Empty;
+            this.gradientPanel2.Location = new System.Drawing.Point(153, 454);
+            this.gradientPanel2.Name = "gradientPanel2";
+            this.gradientPanel2.SecondColor = System.Drawing.Color.FromArgb(((int)(((byte)(81)))), ((int)(((byte)(204)))), ((int)(((byte)(233)))));
+            this.gradientPanel2.Size = new System.Drawing.Size(303, 4);
+            this.gradientPanel2.TabIndex = 43;
+            // 
             // SignupPage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -582,6 +529,7 @@ namespace FileGuide
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewUserList)).EndInit();
             this.panelBeforeLogined.ResumeLayout(false);
             this.panelBeforeLogined.PerformLayout();
+            this.gradientPanelBtnLogin.ResumeLayout(false);
             this.panelAfterLogin.ResumeLayout(false);
             this.panelAfterLogin.PerformLayout();
             this.gradientPanelBackgroundGuest.ResumeLayout(false);
@@ -589,15 +537,17 @@ namespace FileGuide
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.gradientPanelBackgroundAdmin.ResumeLayout(false);
             this.gradientPanelBackgroundAdmin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private Guna.UI2.WinForms.Guna2TextBox textBoxPass;
-        private Guna.UI2.WinForms.Guna2TextBox textBoxUser;
+        private System.Windows.Forms.TextBox textBoxPass;
+        private System.Windows.Forms.TextBox textBoxUser;
         private System.Windows.Forms.DataGridView DataGridViewUserList;
-        private Guna.UI2.WinForms.Guna2GradientButton btnSignup;
+        private System.Windows.Forms.Button btnSignup;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label labelWarning2;
         private System.Windows.Forms.Label labelWarning1;
@@ -607,12 +557,12 @@ namespace FileGuide
         private System.Windows.Forms.Label labelAdmin;
         private System.Windows.Forms.Label labelPermis;
         private System.Windows.Forms.Label label5;
-        private Guna.UI2.WinForms.Guna2TextBox textBoxPerAfter;
-        private Guna.UI2.WinForms.Guna2TextBox textBoxPassAfter;
-        private Guna.UI2.WinForms.Guna2TextBox textBoxUserAfter;
-        private Guna.UI2.WinForms.Guna2GradientButton btnUpdate;
-        private Guna.UI2.WinForms.Guna2GradientButton btnDelete;
-        private Guna.UI2.WinForms.Guna2GradientButton btnAdd;
+        private System.Windows.Forms.TextBox textBoxPerAfter;
+        private System.Windows.Forms.TextBox textBoxPassAfter;
+        private System.Windows.Forms.TextBox textBoxUserAfter;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label labelNotice;
         private CustomControls.CustomPanel gradientPanelBackgroundGuest;
         private System.Windows.Forms.Label label4;
@@ -622,5 +572,12 @@ namespace FileGuide
         private System.Windows.Forms.PictureBox pictureBox2;
         private CustomControls.CustomPanel gradientPanelBackgroundAdmin;
         private System.Windows.Forms.Label labelDSTK;
+        private CustomControls.CustomPanel gradientPanelBtnLogin;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private CustomControls.CustomPanel customPanel1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private CustomControls.CustomPanel gradientPanel2;
     }
 }
