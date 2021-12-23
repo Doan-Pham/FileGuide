@@ -86,17 +86,6 @@ namespace FileGuide
             this.tslbPath = new System.Windows.Forms.ToolStripLabel();
             this.tscmbPath = new System.Windows.Forms.ToolStripComboBox();
             this.toolsPanel = new System.Windows.Forms.Panel();
-            this.ShortcutKeysPanel = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.toolBar = new System.Windows.Forms.ToolStrip();
             this.tsbtnCopy = new System.Windows.Forms.ToolStripButton();
             this.tsbtnCut = new System.Windows.Forms.ToolStripButton();
@@ -144,7 +133,6 @@ namespace FileGuide
             this.tableLayoutFirstPage.SuspendLayout();
             this.tsPath.SuspendLayout();
             this.toolsPanel.SuspendLayout();
-            this.ShortcutKeysPanel.SuspendLayout();
             this.toolBar.SuspendLayout();
             this.ShortcutKeysMenu.SuspendLayout();
             this.SuspendLayout();
@@ -255,7 +243,7 @@ namespace FileGuide
             | System.Windows.Forms.Keys.N)));
             this.folderToolStripMenuItem.Size = new System.Drawing.Size(295, 38);
             this.folderToolStripMenuItem.Text = "Folder";
-            this.folderToolStripMenuItem.Click += new System.EventHandler(this.folderToolStripMenuItem_Click);
+            this.folderToolStripMenuItem.Click += new System.EventHandler(this.NewFolderEvent_Cliick);
             // 
             // fileToolStripMenuItem
             // 
@@ -264,7 +252,7 @@ namespace FileGuide
             this.fileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(295, 38);
             this.fileToolStripMenuItem.Text = "File";
-            this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
+            this.fileToolStripMenuItem.Click += new System.EventHandler(this.NewFileEvent_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -305,7 +293,7 @@ namespace FileGuide
             this.contextMenuStripListViewItem.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.contextMenuStripListViewItem.Name = "contextMenuStripListViewItem";
             this.contextMenuStripListViewItem.ShowImageMargin = false;
-            this.contextMenuStripListViewItem.Size = new System.Drawing.Size(278, 343);
+            this.contextMenuStripListViewItem.Size = new System.Drawing.Size(278, 310);
             // 
             // openToolStripMenuItem
             // 
@@ -671,10 +659,10 @@ namespace FileGuide
             this.btnRefresh,
             this.tslbPath,
             this.tscmbPath});
-            this.tsPath.Location = new System.Drawing.Point(0, 151);
+            this.tsPath.Location = new System.Drawing.Point(0, 142);
             this.tsPath.Name = "tsPath";
             this.tsPath.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.tsPath.Size = new System.Drawing.Size(1387, 60);
+            this.tsPath.Size = new System.Drawing.Size(1387, 69);
             this.tsPath.TabIndex = 3;
             // 
             // btnBack
@@ -706,7 +694,7 @@ namespace FileGuide
             // 
             this.tslbPath.Margin = new System.Windows.Forms.Padding(20, 1, 0, 2);
             this.tslbPath.Name = "tslbPath";
-            this.tslbPath.Size = new System.Drawing.Size(54, 57);
+            this.tslbPath.Size = new System.Drawing.Size(54, 66);
             this.tslbPath.Text = "Path:";
             // 
             // tscmbPath
@@ -720,123 +708,12 @@ namespace FileGuide
             // toolsPanel
             // 
             this.toolsPanel.BackColor = System.Drawing.Color.White;
-            this.toolsPanel.Controls.Add(this.ShortcutKeysPanel);
             this.toolsPanel.Controls.Add(this.toolBar);
             this.toolsPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.toolsPanel.Location = new System.Drawing.Point(0, 0);
             this.toolsPanel.Name = "toolsPanel";
             this.toolsPanel.Size = new System.Drawing.Size(1382, 160);
             this.toolsPanel.TabIndex = 8;
-            // 
-            // ShortcutKeysPanel
-            // 
-            this.ShortcutKeysPanel.BackColor = System.Drawing.Color.White;
-            this.ShortcutKeysPanel.Controls.Add(this.label10);
-            this.ShortcutKeysPanel.Controls.Add(this.label9);
-            this.ShortcutKeysPanel.Controls.Add(this.label8);
-            this.ShortcutKeysPanel.Controls.Add(this.label7);
-            this.ShortcutKeysPanel.Controls.Add(this.label6);
-            this.ShortcutKeysPanel.Controls.Add(this.label5);
-            this.ShortcutKeysPanel.Controls.Add(this.label4);
-            this.ShortcutKeysPanel.Controls.Add(this.label3);
-            this.ShortcutKeysPanel.Controls.Add(this.label2);
-            this.ShortcutKeysPanel.Controls.Add(this.label1);
-            this.ShortcutKeysPanel.Font = new System.Drawing.Font("Be Vietnam", 8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ShortcutKeysPanel.ForeColor = System.Drawing.Color.DimGray;
-            this.ShortcutKeysPanel.Location = new System.Drawing.Point(0, 121);
-            this.ShortcutKeysPanel.Name = "ShortcutKeysPanel";
-            this.ShortcutKeysPanel.Size = new System.Drawing.Size(1301, 27);
-            this.ShortcutKeysPanel.TabIndex = 7;
-            // 
-            // label10
-            // 
-            this.label10.Location = new System.Drawing.Point(980, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(137, 34);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "(Ctrl+(Shift)+P)";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label9
-            // 
-            this.label9.Location = new System.Drawing.Point(827, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(137, 34);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "(Alt+(Shift)+Z)";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label8
-            // 
-            this.label8.Location = new System.Drawing.Point(1150, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(137, 34);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "(Ctrl+D)";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label7
-            // 
-            this.label7.Location = new System.Drawing.Point(684, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(137, 34);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "(Ctrl+(Shift)+N)";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label6
-            // 
-            this.label6.Location = new System.Drawing.Point(541, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(137, 34);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "(Alt+(Shift)+V)";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label5
-            // 
-            this.label5.Location = new System.Drawing.Point(448, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 34);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "(Ctrl+R)";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(337, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(75, 34);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "(Delete)";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label3
-            // 
-            this.label3.Location = new System.Drawing.Point(230, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 34);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "(Ctrl+V)";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(125, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 34);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "(Ctrl+X)";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(10, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 34);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "(Ctrl+C)";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // toolBar
             // 
@@ -919,7 +796,7 @@ namespace FileGuide
             this.tsbtnDelete.Size = new System.Drawing.Size(100, 100);
             this.tsbtnDelete.Text = "Delete";
             this.tsbtnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.tsbtnDelete.ToolTipText = "Delete (Ctrl+D)\r\n";
+            this.tsbtnDelete.ToolTipText = "Delete (Del)\r\n";
             this.tsbtnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // tsbtnRename
@@ -1015,7 +892,7 @@ namespace FileGuide
             | System.Windows.Forms.Keys.N)));
             this.toolStripMenuItemFolder.Size = new System.Drawing.Size(295, 38);
             this.toolStripMenuItemFolder.Text = "Folder";
-            this.toolStripMenuItemFolder.Click += new System.EventHandler(this.folderToolStripMenuItem_Click);
+            this.toolStripMenuItemFolder.Click += new System.EventHandler(this.NewFolderEvent_Cliick);
             // 
             // toolStripMenuItemFile
             // 
@@ -1023,7 +900,7 @@ namespace FileGuide
             this.toolStripMenuItemFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.toolStripMenuItemFile.Size = new System.Drawing.Size(295, 38);
             this.toolStripMenuItemFile.Text = "File";
-            this.toolStripMenuItemFile.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
+            this.toolStripMenuItemFile.Click += new System.EventHandler(this.NewFileEvent_Click);
             // 
             // toolStripButtonZip
             // 
@@ -1150,7 +1027,7 @@ namespace FileGuide
             this.newItemToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.newItemToolStripMenuItem.Size = new System.Drawing.Size(343, 34);
             this.newItemToolStripMenuItem.Text = "New Item";
-            this.newItemToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
+            this.newItemToolStripMenuItem.Click += new System.EventHandler(this.NewFileEvent_Click);
             // 
             // newFoldẻToolStripMenuItem
             // 
@@ -1159,7 +1036,7 @@ namespace FileGuide
             | System.Windows.Forms.Keys.N)));
             this.newFoldẻToolStripMenuItem.Size = new System.Drawing.Size(343, 34);
             this.newFoldẻToolStripMenuItem.Text = "New folder ";
-            this.newFoldẻToolStripMenuItem.Click += new System.EventHandler(this.folderToolStripMenuItem_Click);
+            this.newFoldẻToolStripMenuItem.Click += new System.EventHandler(this.NewFolderEvent_Cliick);
             // 
             // viewLargeIconToolStripMenuItem
             // 
@@ -1259,7 +1136,6 @@ namespace FileGuide
             this.tsPath.ResumeLayout(false);
             this.tsPath.PerformLayout();
             this.toolsPanel.ResumeLayout(false);
-            this.ShortcutKeysPanel.ResumeLayout(false);
             this.toolBar.ResumeLayout(false);
             this.toolBar.PerformLayout();
             this.ShortcutKeysMenu.ResumeLayout(false);
@@ -1344,28 +1220,17 @@ namespace FileGuide
         private System.Windows.Forms.ToolStripMenuItem newFoldẻToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewLargeIconToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewDetailsToolStripMenuItem;
-        private System.Windows.Forms.Panel ShortcutKeysPanel;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel toolsPanel;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem zipFilesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unzipFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButtonDarkMode;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem1;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ToolStripMenuItem darkModeToolStripMenuItem;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ToolStripButton toolStripButtonZip;
         private System.Windows.Forms.ToolStripMenuItem zipToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem unzipToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButtonPin;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ToolStripMenuItem pinToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem pinToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem unpinToolStripMenuItem;

@@ -107,7 +107,6 @@ namespace FileGuide
 
             toolBar.Width = Width - treeViewFolderTree.Width + 50;
             tsPath.Width = Width - treeViewFolderTree.Width + 50;
-            ShortcutKeysPanel.Width = Width - treeViewFolderTree.Width + 50;
             listViewFolderContent.Columns[listViewFolderContent.Columns.Count - 1].Width = -2;
             listViewRecentFiles.Columns[listViewRecentFiles.Columns.Count - 1].Width = -2;
 
@@ -284,7 +283,30 @@ namespace FileGuide
             {
                 try
                 {
-                    ListViewItem deleteItem = listViewFolderContent.FocusedItem;
+                    if (listViewFolderContent.SelectedItems.Count > 0)
+                    {
+                        DialogResult dialog = MessageBox.Show("Are you sure you want to delete these " + listViewFolderContent.SelectedItems.Count + " items ? \n" , "Delete file", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+                        if (dialog == DialogResult.Yes)
+                        {
+                            foreach(ListViewItem item in listViewFolderContent.SelectedItems)
+                            {
+                                string ItemDeletePath = item.SubItems[5].Text;
+                                if (item.SubItems[1].Text == "Folder")
+                                {
+                                    DirectoryInfo DeleteDirectory = new DirectoryInfo(ItemDeletePath);
+                                    DeleteDirectory.Delete(true);
+                                }
+                                else
+                                {
+                                    FileInfo DeleteFile = new FileInfo(ItemDeletePath);
+                                    DeleteFile.Delete();
+                                }
+                            }
+                        }
+                        clsTreeListView.ShowFolderContent(listViewFolderContent, currentPath);
+                    }
+                    /*ListViewItem deleteItem = listViewFolderContent.FocusedItem;
                     string path = deleteItem.SubItems[5].Text;
 
                     if (deleteItem.SubItems[1].Text == "Folder")
@@ -331,7 +353,7 @@ namespace FileGuide
                             clsTreeListView.ShowFolderContent(listViewFolderContent, pathFolder);
                         }
 
-                    }
+                    }*/
                 }
                 catch (Exception ex)
                 {
@@ -346,7 +368,7 @@ namespace FileGuide
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void folderToolStripMenuItem_Click(object sender, EventArgs e)
+        private void NewFolderEvent_Cliick(object sender, EventArgs e)
         {
             if (listViewFolderContent.Focused)
             {
@@ -388,7 +410,7 @@ namespace FileGuide
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void NewFileEvent_Click(object sender, EventArgs e)
         {
             if (listViewFolderContent.Focused)
             {
