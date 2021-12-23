@@ -174,7 +174,7 @@ namespace FileGuide
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnCopy_Click(object sender, EventArgs e)
+        private void CopyEvent(object sender, EventArgs e)
         {
             if (listViewFolderContent.SelectedItems.Count >= 0)
             {
@@ -202,10 +202,10 @@ namespace FileGuide
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnCut_Click(object sender, EventArgs e)
+        private void CutEvent(object sender, EventArgs e)
         {
             // The same as btnCopy_Click event but set isCutting to true and isCopying to false
-            btnCopy_Click(sender, e);
+            CopyEvent(sender, e);
             if (listViewFolderContent.SelectedItems.Count >= 0)
             {
                 isCopying = false;
@@ -219,7 +219,7 @@ namespace FileGuide
         /// </summary>GetParentDirectoryPath
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnPaste_Click(object sender, EventArgs e)
+        private void PasteEvent(object sender, EventArgs e)
         {
             try
             {
@@ -277,7 +277,7 @@ namespace FileGuide
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void DeleteEvent(object sender, EventArgs e)
         {
             if (listViewFolderContent.Focused)
             {
@@ -368,7 +368,7 @@ namespace FileGuide
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void NewFolderEvent_Cliick(object sender, EventArgs e)
+        private void NewFolderEvent(object sender, EventArgs e)
         {
             if (listViewFolderContent.Focused)
             {
@@ -410,7 +410,7 @@ namespace FileGuide
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void NewFileEvent_Click(object sender, EventArgs e)
+        private void NewFileEvent(object sender, EventArgs e)
         {
             if (listViewFolderContent.Focused)
             {
@@ -428,6 +428,7 @@ namespace FileGuide
 
                 File.Create(System.IO.Path.Combine(currentPath, newFileName));
                 clsTreeListView.ShowFolderContent(listViewFolderContent, currentPath);
+
                 /* // Go to the created folder and start renaming
                  int index = 0;
                  foreach (ListViewItem item in listViewFolderContent.Items)
@@ -449,7 +450,7 @@ namespace FileGuide
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void menuRename_Click(object sender, EventArgs e)
+        private void RenameEvent(object sender, EventArgs e)
         {
             if (listViewFolderContent.Focused)
                 listViewFolderContent.SelectedItems[0].BeginEdit();
@@ -668,7 +669,7 @@ namespace FileGuide
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void zipFilesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ZipEvent(object sender, EventArgs e)
         {
             try
             {
@@ -706,7 +707,7 @@ namespace FileGuide
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void unzipFileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void UnzipEvent(object sender, EventArgs e)
         {
             try
             {
@@ -754,7 +755,7 @@ namespace FileGuide
         }
 
 
-        private void toolStripButtonDarkMode_Click(object sender, EventArgs e)
+        private void DarkModeEvent(object sender, EventArgs e)
         {
             if (!isInDarkMode)
             {
@@ -768,14 +769,14 @@ namespace FileGuide
 
                 foreach (Control control in this.Controls)
                 {
-                    UpdateColorControls(control, PrimaryBackgroundColor, PrimaryTextColor);
+                    UpdateControlsColor(control, PrimaryBackgroundColor, PrimaryTextColor);
                 }
 
                 treeViewFolderTree.BackColor = Color.FromArgb(45, 45, 45);
 
-                UpdateColorControls(contextMenuStripListView, PrimaryBackgroundColor, PrimaryTextColor);
-                UpdateColorControls(contextMenuStripListViewItem, PrimaryBackgroundColor, PrimaryTextColor);
-                UpdateColorControls(contextMenuStripTreeView, PrimaryBackgroundColor, PrimaryTextColor);
+                UpdateControlsColor(contextMenuStripListView, PrimaryBackgroundColor, PrimaryTextColor);
+                UpdateControlsColor(contextMenuStripListViewItem, PrimaryBackgroundColor, PrimaryTextColor);
+                UpdateControlsColor(contextMenuStripTreeView, PrimaryBackgroundColor, PrimaryTextColor);
 
                 btnBack.Image = Properties.Resources.Icon_Back_DarkMode;
                 btnRefresh.Image = Properties.Resources.Icon_Refresh_DarkMode;
@@ -795,13 +796,13 @@ namespace FileGuide
 
                 foreach (Control control in this.Controls)
                 {
-                    UpdateColorControls(control, PrimaryBackgroundColor, PrimaryTextColor);
+                    UpdateControlsColor(control, PrimaryBackgroundColor, PrimaryTextColor);
                 }
                 treeViewFolderTree.BackColor = Color.FromArgb(244, 244, 244);
 
-                UpdateColorControls(contextMenuStripListView, PrimaryBackgroundColor, PrimaryTextColor);
-                UpdateColorControls(contextMenuStripListViewItem, PrimaryBackgroundColor, PrimaryTextColor);
-                UpdateColorControls(contextMenuStripTreeView, PrimaryBackgroundColor, PrimaryTextColor);
+                UpdateControlsColor(contextMenuStripListView, PrimaryBackgroundColor, PrimaryTextColor);
+                UpdateControlsColor(contextMenuStripListViewItem, PrimaryBackgroundColor, PrimaryTextColor);
+                UpdateControlsColor(contextMenuStripTreeView, PrimaryBackgroundColor, PrimaryTextColor);
 
                 btnBack.Image = Properties.Resources.Icon_Back;
                 btnRefresh.Image = Properties.Resources.Icon_Refresh;
@@ -810,14 +811,19 @@ namespace FileGuide
             
         }
 
-
-        public void UpdateColorControls(Control control, Color BackColor, Color ForeColor)
+        /// <summary>
+        /// Recursively change the background and foreground color of a control and its sub-controls
+        /// </summary>
+        /// <param name="control"></param>
+        /// <param name="BackColor"></param>
+        /// <param name="ForeColor"></param>
+        public void UpdateControlsColor(Control control, Color BackColor, Color ForeColor)
         {
             control.BackColor = BackColor;
             control.ForeColor = ForeColor;
             foreach (Control subControl in control.Controls)
             {
-                UpdateColorControls(subControl, BackColor, ForeColor);
+                UpdateControlsColor(subControl, BackColor, ForeColor);
             }
         }
 
@@ -1076,7 +1082,7 @@ namespace FileGuide
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void pinToolStripMenuItem_Click(object sender, EventArgs e)
+        private void PinFolderEvent(object sender, EventArgs e)
         {
             if (treeViewFolderTree.Focused)
             {
@@ -1114,7 +1120,7 @@ namespace FileGuide
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void unpingFromEasyAccessToolStripMenuItem_Click(object sender, EventArgs e)
+        private void UnpinFolderEvent(object sender, EventArgs e)
         {
             if (treeViewFolderTree.SelectedNode != null && clsTreeListView.GetTreeNodeRoot(treeViewFolderTree.SelectedNode).Text == "Easy Access")
             {

@@ -243,7 +243,7 @@ namespace FileGuide
             | System.Windows.Forms.Keys.N)));
             this.folderToolStripMenuItem.Size = new System.Drawing.Size(295, 38);
             this.folderToolStripMenuItem.Text = "Folder";
-            this.folderToolStripMenuItem.Click += new System.EventHandler(this.NewFolderEvent_Cliick);
+            this.folderToolStripMenuItem.Click += new System.EventHandler(this.NewFolderEvent);
             // 
             // fileToolStripMenuItem
             // 
@@ -252,7 +252,7 @@ namespace FileGuide
             this.fileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(295, 38);
             this.fileToolStripMenuItem.Text = "File";
-            this.fileToolStripMenuItem.Click += new System.EventHandler(this.NewFileEvent_Click);
+            this.fileToolStripMenuItem.Click += new System.EventHandler(this.NewFileEvent);
             // 
             // toolStripMenuItem2
             // 
@@ -272,7 +272,7 @@ namespace FileGuide
             this.pasteToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
             this.pasteToolStripMenuItem.Size = new System.Drawing.Size(208, 36);
             this.pasteToolStripMenuItem.Text = "Paste";
-            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.btnPaste_Click);
+            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.PasteEvent);
             // 
             // contextMenuStripListViewItem
             // 
@@ -314,7 +314,7 @@ namespace FileGuide
             this.cutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
             this.cutToolStripMenuItem.Size = new System.Drawing.Size(277, 36);
             this.cutToolStripMenuItem.Text = "Cut";
-            this.cutToolStripMenuItem.Click += new System.EventHandler(this.btnCut_Click);
+            this.cutToolStripMenuItem.Click += new System.EventHandler(this.CutEvent);
             // 
             // copyToolStripMenuItem
             // 
@@ -322,7 +322,7 @@ namespace FileGuide
             this.copyToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.copyToolStripMenuItem.Size = new System.Drawing.Size(277, 36);
             this.copyToolStripMenuItem.Text = "Copy";
-            this.copyToolStripMenuItem.Click += new System.EventHandler(this.btnCopy_Click);
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.CopyEvent);
             // 
             // toolStripMenuItem4
             // 
@@ -335,7 +335,7 @@ namespace FileGuide
             this.renameToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
             this.renameToolStripMenuItem.Size = new System.Drawing.Size(277, 36);
             this.renameToolStripMenuItem.Text = "Rename";
-            this.renameToolStripMenuItem.Click += new System.EventHandler(this.menuRename_Click);
+            this.renameToolStripMenuItem.Click += new System.EventHandler(this.RenameEvent);
             // 
             // toolStripMenuItem5
             // 
@@ -348,7 +348,7 @@ namespace FileGuide
             this.zipFilesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Z)));
             this.zipFilesToolStripMenuItem.Size = new System.Drawing.Size(277, 36);
             this.zipFilesToolStripMenuItem.Text = "Zip file(s)/folder(s)";
-            this.zipFilesToolStripMenuItem.Click += new System.EventHandler(this.zipFilesToolStripMenuItem_Click);
+            this.zipFilesToolStripMenuItem.Click += new System.EventHandler(this.ZipEvent);
             // 
             // unzipFileToolStripMenuItem
             // 
@@ -357,7 +357,7 @@ namespace FileGuide
             | System.Windows.Forms.Keys.Z)));
             this.unzipFileToolStripMenuItem.Size = new System.Drawing.Size(277, 36);
             this.unzipFileToolStripMenuItem.Text = "Unzip file";
-            this.unzipFileToolStripMenuItem.Click += new System.EventHandler(this.unzipFileToolStripMenuItem_Click);
+            this.unzipFileToolStripMenuItem.Click += new System.EventHandler(this.UnzipEvent);
             // 
             // deleteToolStripMenuItem1
             // 
@@ -365,7 +365,7 @@ namespace FileGuide
             this.deleteToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(277, 36);
             this.deleteToolStripMenuItem1.Text = "Delete";
-            this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.btnDelete_Click);
+            this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.DeleteEvent);
             // 
             // pinToolStripMenuItem1
             // 
@@ -373,7 +373,7 @@ namespace FileGuide
             this.pinToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
             this.pinToolStripMenuItem1.Size = new System.Drawing.Size(277, 36);
             this.pinToolStripMenuItem1.Text = "Pin";
-            this.pinToolStripMenuItem1.Click += new System.EventHandler(this.pinToolStripMenuItem_Click);
+            this.pinToolStripMenuItem1.Click += new System.EventHandler(this.PinFolderEvent);
             // 
             // mainSplitContainer
             // 
@@ -439,7 +439,7 @@ namespace FileGuide
             this.pinToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
             this.pinToolStripMenuItem.Size = new System.Drawing.Size(396, 36);
             this.pinToolStripMenuItem.Text = "Pin to Easy Access";
-            this.pinToolStripMenuItem.Click += new System.EventHandler(this.pinToolStripMenuItem_Click);
+            this.pinToolStripMenuItem.Click += new System.EventHandler(this.PinFolderEvent);
             // 
             // unpingFromEasyAccessToolStripMenuItem
             // 
@@ -448,7 +448,7 @@ namespace FileGuide
             | System.Windows.Forms.Keys.P)));
             this.unpingFromEasyAccessToolStripMenuItem.Size = new System.Drawing.Size(396, 36);
             this.unpingFromEasyAccessToolStripMenuItem.Text = "Unpin from Easy Access";
-            this.unpingFromEasyAccessToolStripMenuItem.Click += new System.EventHandler(this.unpingFromEasyAccessToolStripMenuItem_Click);
+            this.unpingFromEasyAccessToolStripMenuItem.Click += new System.EventHandler(this.UnpinFolderEvent);
             // 
             // tabWindow
             // 
@@ -754,7 +754,7 @@ namespace FileGuide
             this.tsbtnCopy.Text = "Copy ";
             this.tsbtnCopy.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbtnCopy.ToolTipText = "Copy (Ctrl+C)\r\n ";
-            this.tsbtnCopy.Click += new System.EventHandler(this.btnCopy_Click);
+            this.tsbtnCopy.Click += new System.EventHandler(this.CopyEvent);
             // 
             // tsbtnCut
             // 
@@ -768,7 +768,7 @@ namespace FileGuide
             this.tsbtnCut.Text = "Cut";
             this.tsbtnCut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbtnCut.ToolTipText = "Cut (Ctrl+X)\r\n";
-            this.tsbtnCut.Click += new System.EventHandler(this.btnCut_Click);
+            this.tsbtnCut.Click += new System.EventHandler(this.CutEvent);
             // 
             // tsbtnPaste
             // 
@@ -783,7 +783,7 @@ namespace FileGuide
             this.tsbtnPaste.Text = "Paste";
             this.tsbtnPaste.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbtnPaste.ToolTipText = "Paste (Ctrl+V)\r\n\r\n";
-            this.tsbtnPaste.Click += new System.EventHandler(this.btnPaste_Click);
+            this.tsbtnPaste.Click += new System.EventHandler(this.PasteEvent);
             // 
             // tsbtnDelete
             // 
@@ -797,7 +797,7 @@ namespace FileGuide
             this.tsbtnDelete.Text = "Delete";
             this.tsbtnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbtnDelete.ToolTipText = "Delete (Del)\r\n";
-            this.tsbtnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.tsbtnDelete.Click += new System.EventHandler(this.DeleteEvent);
             // 
             // tsbtnRename
             // 
@@ -811,7 +811,7 @@ namespace FileGuide
             this.tsbtnRename.Text = "Rename";
             this.tsbtnRename.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbtnRename.ToolTipText = "Rename (Ctrl+R)\r\n";
-            this.tsbtnRename.Click += new System.EventHandler(this.menuRename_Click);
+            this.tsbtnRename.Click += new System.EventHandler(this.RenameEvent);
             // 
             // toolStripSeparator2
             // 
@@ -892,7 +892,7 @@ namespace FileGuide
             | System.Windows.Forms.Keys.N)));
             this.toolStripMenuItemFolder.Size = new System.Drawing.Size(295, 38);
             this.toolStripMenuItemFolder.Text = "Folder";
-            this.toolStripMenuItemFolder.Click += new System.EventHandler(this.NewFolderEvent_Cliick);
+            this.toolStripMenuItemFolder.Click += new System.EventHandler(this.NewFolderEvent);
             // 
             // toolStripMenuItemFile
             // 
@@ -900,7 +900,7 @@ namespace FileGuide
             this.toolStripMenuItemFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.toolStripMenuItemFile.Size = new System.Drawing.Size(295, 38);
             this.toolStripMenuItemFile.Text = "File";
-            this.toolStripMenuItemFile.Click += new System.EventHandler(this.NewFileEvent_Click);
+            this.toolStripMenuItemFile.Click += new System.EventHandler(this.NewFileEvent);
             // 
             // toolStripButtonZip
             // 
@@ -927,7 +927,7 @@ namespace FileGuide
             this.toolStripButtonPin.Text = "Pin";
             this.toolStripButtonPin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonPin.ToolTipText = "Pin (Ctrl+P)\r\n";
-            this.toolStripButtonPin.Click += new System.EventHandler(this.pinToolStripMenuItem_Click);
+            this.toolStripButtonPin.Click += new System.EventHandler(this.PinFolderEvent);
             // 
             // toolStripButtonDarkMode
             // 
@@ -941,7 +941,7 @@ namespace FileGuide
             this.toolStripButtonDarkMode.Text = "Dark Mode";
             this.toolStripButtonDarkMode.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButtonDarkMode.ToolTipText = "DarkMode (Ctrl+D)\r\n";
-            this.toolStripButtonDarkMode.Click += new System.EventHandler(this.toolStripButtonDarkMode_Click);
+            this.toolStripButtonDarkMode.Click += new System.EventHandler(this.DarkModeEvent);
             // 
             // ShortcutKeysMenu
             // 
@@ -987,7 +987,7 @@ namespace FileGuide
             this.cutToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
             this.cutToolStripMenuItem1.Size = new System.Drawing.Size(343, 34);
             this.cutToolStripMenuItem1.Text = "Cut";
-            this.cutToolStripMenuItem1.Click += new System.EventHandler(this.btnCut_Click);
+            this.cutToolStripMenuItem1.Click += new System.EventHandler(this.CutEvent);
             // 
             // pasteToolStripMenuItem1
             // 
@@ -995,7 +995,7 @@ namespace FileGuide
             this.pasteToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
             this.pasteToolStripMenuItem1.Size = new System.Drawing.Size(343, 34);
             this.pasteToolStripMenuItem1.Text = "Paste";
-            this.pasteToolStripMenuItem1.Click += new System.EventHandler(this.btnPaste_Click);
+            this.pasteToolStripMenuItem1.Click += new System.EventHandler(this.PasteEvent);
             // 
             // copyToolStripMenuItem2
             // 
@@ -1003,7 +1003,7 @@ namespace FileGuide
             this.copyToolStripMenuItem2.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.copyToolStripMenuItem2.Size = new System.Drawing.Size(343, 34);
             this.copyToolStripMenuItem2.Text = "Copy";
-            this.copyToolStripMenuItem2.Click += new System.EventHandler(this.btnCopy_Click);
+            this.copyToolStripMenuItem2.Click += new System.EventHandler(this.CopyEvent);
             // 
             // deleteToolStripMenuItem
             // 
@@ -1011,7 +1011,7 @@ namespace FileGuide
             this.deleteToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(343, 34);
             this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.btnDelete_Click);
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteEvent);
             // 
             // renameToolStripMenuItem1
             // 
@@ -1019,7 +1019,7 @@ namespace FileGuide
             this.renameToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
             this.renameToolStripMenuItem1.Size = new System.Drawing.Size(343, 34);
             this.renameToolStripMenuItem1.Text = "Rename";
-            this.renameToolStripMenuItem1.Click += new System.EventHandler(this.menuRename_Click);
+            this.renameToolStripMenuItem1.Click += new System.EventHandler(this.RenameEvent);
             // 
             // newItemToolStripMenuItem
             // 
@@ -1027,7 +1027,7 @@ namespace FileGuide
             this.newItemToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.newItemToolStripMenuItem.Size = new System.Drawing.Size(343, 34);
             this.newItemToolStripMenuItem.Text = "New Item";
-            this.newItemToolStripMenuItem.Click += new System.EventHandler(this.NewFileEvent_Click);
+            this.newItemToolStripMenuItem.Click += new System.EventHandler(this.NewFileEvent);
             // 
             // newFoldẻToolStripMenuItem
             // 
@@ -1036,7 +1036,7 @@ namespace FileGuide
             | System.Windows.Forms.Keys.N)));
             this.newFoldẻToolStripMenuItem.Size = new System.Drawing.Size(343, 34);
             this.newFoldẻToolStripMenuItem.Text = "New folder ";
-            this.newFoldẻToolStripMenuItem.Click += new System.EventHandler(this.NewFolderEvent_Cliick);
+            this.newFoldẻToolStripMenuItem.Click += new System.EventHandler(this.NewFolderEvent);
             // 
             // viewLargeIconToolStripMenuItem
             // 
@@ -1062,7 +1062,7 @@ namespace FileGuide
             this.darkModeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
             this.darkModeToolStripMenuItem.Size = new System.Drawing.Size(343, 34);
             this.darkModeToolStripMenuItem.Text = "DarkMode";
-            this.darkModeToolStripMenuItem.Click += new System.EventHandler(this.toolStripButtonDarkMode_Click);
+            this.darkModeToolStripMenuItem.Click += new System.EventHandler(this.DarkModeEvent);
             // 
             // zipToolStripMenuItem
             // 
@@ -1070,7 +1070,7 @@ namespace FileGuide
             this.zipToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Z)));
             this.zipToolStripMenuItem.Size = new System.Drawing.Size(343, 34);
             this.zipToolStripMenuItem.Text = "Zip";
-            this.zipToolStripMenuItem.Click += new System.EventHandler(this.zipFilesToolStripMenuItem_Click);
+            this.zipToolStripMenuItem.Click += new System.EventHandler(this.ZipEvent);
             // 
             // unzipToolStripMenuItem
             // 
@@ -1079,7 +1079,7 @@ namespace FileGuide
             | System.Windows.Forms.Keys.Z)));
             this.unzipToolStripMenuItem.Size = new System.Drawing.Size(343, 34);
             this.unzipToolStripMenuItem.Text = "Unzip";
-            this.unzipToolStripMenuItem.Click += new System.EventHandler(this.unzipFileToolStripMenuItem_Click);
+            this.unzipToolStripMenuItem.Click += new System.EventHandler(this.UnzipEvent);
             // 
             // pinToolStripMenuItem2
             // 
@@ -1087,7 +1087,7 @@ namespace FileGuide
             this.pinToolStripMenuItem2.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
             this.pinToolStripMenuItem2.Size = new System.Drawing.Size(343, 34);
             this.pinToolStripMenuItem2.Text = "Pin";
-            this.pinToolStripMenuItem2.Click += new System.EventHandler(this.pinToolStripMenuItem_Click);
+            this.pinToolStripMenuItem2.Click += new System.EventHandler(this.PinFolderEvent);
             // 
             // unpinToolStripMenuItem
             // 
@@ -1096,7 +1096,7 @@ namespace FileGuide
             | System.Windows.Forms.Keys.P)));
             this.unpinToolStripMenuItem.Size = new System.Drawing.Size(343, 34);
             this.unpinToolStripMenuItem.Text = "Unpin";
-            this.unpinToolStripMenuItem.Click += new System.EventHandler(this.unpingFromEasyAccessToolStripMenuItem_Click);
+            this.unpinToolStripMenuItem.Click += new System.EventHandler(this.UnpinFolderEvent);
             // 
             // FrmMain
             // 
