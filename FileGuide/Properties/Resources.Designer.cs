@@ -533,9 +533,29 @@ namespace FileGuide.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Sign_Close_DarkMode {
+            get {
+                object obj = ResourceManager.GetObject("Sign_Close_DarkMode", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Sign_Plus {
             get {
                 object obj = ResourceManager.GetObject("Sign_Plus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Sign_Plus_DarkMode {
+            get {
+                object obj = ResourceManager.GetObject("Sign_Plus_DarkMode", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -45,7 +45,11 @@ namespace FileGuide
                 // Draw tab icon (plus sign/close sign)
                 if (index == TabCount - 1)
                 {
-                    Image addImage = Properties.Resources.Sign_Plus;
+                    Image addImage;
+                    if (FrmMain.isInDarkMode)
+                        addImage = Properties.Resources.Sign_Plus_DarkMode;
+                    else
+                        addImage = Properties.Resources.Sign_Plus;
                     e.Graphics.DrawImage
                         (addImage,
                         tabPageRect.Left + (tabPageRect.Width - imageSize) / 2,
@@ -55,7 +59,11 @@ namespace FileGuide
                 }
                 else
                 {
-                    Image closeImage = Properties.Resources.Sign_Close;
+                    Image closeImage;
+                    if (FrmMain.isInDarkMode)
+                        closeImage = Properties.Resources.Sign_Close_DarkMode;
+                    else
+                        closeImage = Properties.Resources.Sign_Close;
                     e.Graphics.DrawImage
                         (closeImage,
                         tabPageRect.Right - imageSize - 8,

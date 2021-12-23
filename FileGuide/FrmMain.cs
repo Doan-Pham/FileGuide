@@ -40,7 +40,7 @@ namespace FileGuide
         private bool isCopying = false;
         private bool isCutting = false;
         private bool isFolder = false;
-        private bool isInDarkMode = false;
+        public static bool isInDarkMode = false;
 
         private ListViewItem itemPaste;
         private string pathSource;
@@ -780,6 +780,7 @@ namespace FileGuide
 
                 btnBack.Image = Properties.Resources.Icon_Back_DarkMode;
                 btnRefresh.Image = Properties.Resources.Icon_Refresh_DarkMode;
+ 
                 this.Refresh();
 
             }

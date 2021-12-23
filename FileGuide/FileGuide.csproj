@@ -193,6 +193,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FileGuide.ico" />
+    <None Include="Resources\Sign\Sign_Plus_DarkMode.png" />
+    <None Include="Resources\Sign\Sign_Close_DarkMode.png" />
     <None Include="Resources\Icon_Permission.png" />
     <None Include="Resources\Icon_Username.png" />
     <None Include="Resources\Icon_Password.png" />
