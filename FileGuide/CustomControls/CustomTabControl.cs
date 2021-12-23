@@ -20,74 +20,36 @@ namespace FileGuide
     {
         public CustomTabControl()
         {
-            // Take over the painting completely, we want transparency and double-buffering
-            this.SetStyle(ControlStyles.UserPaint | ControlStyles.SupportsTransparentBackColor, true);
-            this.DoubleBuffered = this.ResizeRedraw = true;
-        }
-
-        public override Color BackColor
-        {
-            get { return Color.Transparent; }
-            set { base.BackColor = Color.Transparent; }
-        }
-
-        protected virtual void DrawTabBackgroundRectangle(Graphics g, int index, Rectangle r)
-        {
-            if (index == 0) r = new Rectangle(r.Left - 2, r.Top, r.Width + 2, r.Height);
-            if (index != this.SelectedIndex) r = new Rectangle(r.Left, r.Top + 2, r.Width, r.Height - 2);
-            Color tabColor;
-
-            if (index == this.SelectedIndex) tabColor = FrmMain.SecondaryBackgroundColor;
-            else tabColor =  FrmMain.UnfocusedSelectColor;
-            using (var br = new SolidBrush(tabColor))
-            {
-                g.FillRectangle(br, r);
-            }
-            using (var pen = new Pen(Color.FromArgb(186, 186, 186), 2.0f))
-            {
-                g.DrawLine(pen, r.Right-1, r.Top+5, r.Right -1, r.Bottom-7);
-            } 
-        }
-
-        protected virtual void DrawTabText(Graphics g, int index, Rectangle r)
-        {
-            r.Inflate(-1, -1);
-            TextRenderer.DrawText(g, this.TabPages[index].Text, this.Font,
-                r, FrmMain.PrimaryTextColor,
-                TextFormatFlags.Left | TextFormatFlags.VerticalCenter);
+            this.SetStyle(ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
             if (TabCount <= 0) return;
             // Draw tabpage area
-            Rectangle r = ClientRectangle;
-            var top = this.GetTabRect(0).Bottom;
+            Rectangle tabPageRect = ClientRectangle;
             using (var br = new SolidBrush(FrmMain.PrimaryBackgroundColor))
             {
-                e.Graphics.FillRectangle(br, new Rectangle(r.Left, top, r.Width, r.Height - top));
+                e.Graphics.FillRectangle(br, 
+                    new Rectangle(tabPageRect.Left, tabPageRect.Y, tabPageRect.Width, tabPageRect.Height ));
             }
 
-            int imageSize = 16;
             // Draw tab headers
+            int imageSize = 16;
             for (int index = 0; index < TabCount; index++)
             {
-                r = GetTabRect(index);
-                DrawTabBackgroundRectangle(e.Graphics, index, r);
-                DrawTabText(e.Graphics, index, r);
-                if (index == this.SelectedIndex)
-                {
-                    r.Inflate(-1, -1);
-                    ControlPaint.DrawFocusRectangle(e.Graphics, r);
-                }
+                tabPageRect = GetTabRect(index);
+                DrawTabBackgroundRectangle(e.Graphics, index, tabPageRect);
+                DrawTabText(e.Graphics, index, tabPageRect);
 
+                // Draw tab icon (plus sign/close sign)
                 if (index == TabCount - 1)
                 {
                     Image addImage = Properties.Resources.Sign_Plus;
                     e.Graphics.DrawImage
                         (addImage,
-                        r.Left + (r.Width - imageSize) / 2,
-                        r.Top + (r.Height - imageSize) / 2,
+                        tabPageRect.Left + (tabPageRect.Width - imageSize) / 2,
+                        tabPageRect.Top + (tabPageRect.Height - imageSize) / 2,
                         imageSize,
                         imageSize);
                 }
@@ -96,12 +58,41 @@ namespace FileGuide
                     Image closeImage = Properties.Resources.Sign_Close;
                     e.Graphics.DrawImage
                         (closeImage,
-                        r.Right - imageSize - 8,
-                        r.Top + (r.Height - imageSize) / 2,
+                        tabPageRect.Right - imageSize - 8,
+                        tabPageRect.Top + (tabPageRect.Height - imageSize) / 2,
                         imageSize,
                         imageSize);
                 }
             }
         }
+
+
+        protected void DrawTabBackgroundRectangle(Graphics g, int index, Rectangle tabHeaderRect)
+        {
+            if (index == 0) tabHeaderRect = new Rectangle(tabHeaderRect.Left - 2, tabHeaderRect.Top, tabHeaderRect.Width + 2, tabHeaderRect.Height);
+            if (index != this.SelectedIndex)
+                tabHeaderRect = new Rectangle(tabHeaderRect.Left, tabHeaderRect.Top + 2, tabHeaderRect.Width, tabHeaderRect.Height - 2);
+            Color tabColor;
+
+            if (index == this.SelectedIndex) tabColor = FrmMain.FocusedSelectColor;
+            else tabColor = FrmMain.UnfocusedSelectColor;
+            using (var br = new SolidBrush(tabColor))
+            {
+                g.FillRectangle(br, tabHeaderRect);
+            }
+            // Draw the separator line on the right side of tab header
+            using (var pen = new Pen(Color.FromArgb(186, 186, 186), 2.0f))
+            {
+                g.DrawLine(pen, tabHeaderRect.Right - 1, tabHeaderRect.Top + 5, tabHeaderRect.Right - 1, tabHeaderRect.Bottom - 7);
+            }
+        }
+
+        protected void DrawTabText(Graphics g, int index, Rectangle rect)
+        {
+            TextRenderer.DrawText(g, this.TabPages[index].Text, this.Font,
+                rect, FrmMain.PrimaryTextColor,
+                TextFormatFlags.Left | TextFormatFlags.VerticalCenter);
+        }
+
     }
 }

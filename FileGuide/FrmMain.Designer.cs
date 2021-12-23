@@ -650,7 +650,6 @@ namespace FileGuide
             // 
             this.tsPath.AutoSize = false;
             this.tsPath.BackColor = System.Drawing.Color.White;
-            this.tsPath.Dock = System.Windows.Forms.DockStyle.None;
             this.tsPath.Font = new System.Drawing.Font("Questrial", 9F);
             this.tsPath.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tsPath.ImageScalingSize = new System.Drawing.Size(24, 24);
@@ -659,10 +658,10 @@ namespace FileGuide
             this.btnRefresh,
             this.tslbPath,
             this.tscmbPath});
-            this.tsPath.Location = new System.Drawing.Point(0, 142);
+            this.tsPath.Location = new System.Drawing.Point(0, 160);
             this.tsPath.Name = "tsPath";
             this.tsPath.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.tsPath.Size = new System.Drawing.Size(1387, 69);
+            this.tsPath.Size = new System.Drawing.Size(1382, 52);
             this.tsPath.TabIndex = 3;
             // 
             // btnBack
@@ -694,7 +693,7 @@ namespace FileGuide
             // 
             this.tslbPath.Margin = new System.Windows.Forms.Padding(20, 1, 0, 2);
             this.tslbPath.Name = "tslbPath";
-            this.tslbPath.Size = new System.Drawing.Size(54, 66);
+            this.tslbPath.Size = new System.Drawing.Size(54, 49);
             this.tslbPath.Text = "Path:";
             // 
             // tscmbPath
@@ -719,7 +718,6 @@ namespace FileGuide
             // 
             this.toolBar.AutoSize = false;
             this.toolBar.BackColor = System.Drawing.Color.White;
-            this.toolBar.Dock = System.Windows.Forms.DockStyle.None;
             this.toolBar.Font = new System.Drawing.Font("Questrial", 9.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolBar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolBar.ImageScalingSize = new System.Drawing.Size(60, 60);
@@ -739,7 +737,7 @@ namespace FileGuide
             this.toolBar.Location = new System.Drawing.Point(0, 0);
             this.toolBar.Name = "toolBar";
             this.toolBar.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.toolBar.Size = new System.Drawing.Size(1387, 148);
+            this.toolBar.Size = new System.Drawing.Size(1382, 148);
             this.toolBar.TabIndex = 2;
             // 
             // tsbtnCopy

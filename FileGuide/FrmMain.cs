@@ -126,18 +126,18 @@ namespace FileGuide
         }
 
 
-/// <summary>
-         /// Write recent accessed files list and easy access folders to .txt files 
-         /// </summary>
-         /// <param name="sender"></param>
-         /// <param name="e"></param>
+        /// <summary>
+        /// Write recent accessed files list and easy access folders to .txt files 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (isInDarkMode)
             {
                 darkModeToolStripMenuItem.PerformClick();
             }
-            
+
 
             // Write recent accessed files list
             string DebugDirectory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -182,15 +182,15 @@ namespace FileGuide
                 isCopying = true;
                 isCutting = false;
                 // If listViewFolderContent is focused, assign initial item's path to a variable and enable Paste feature
-                    itemPaste = listViewFolderContent.FocusedItem;
-                    if (itemPaste == null) return;
+                itemPaste = listViewFolderContent.FocusedItem;
+                if (itemPaste == null) return;
 
-                    pathSource = itemPaste.SubItems[5].Text;
-                    if (itemPaste.SubItems[1].Text.Trim() == "Folder")
-                        isFolder = true;
-                    else
-                        isFolder = false;
-                
+                pathSource = itemPaste.SubItems[5].Text;
+                if (itemPaste.SubItems[1].Text.Trim() == "Folder")
+                    isFolder = true;
+                else
+                    isFolder = false;
+
                 pasteToolStripMenuItem.Enabled = true;
                 tsbtnPaste.Enabled = true;
             }
@@ -248,7 +248,7 @@ namespace FileGuide
                 {
                     if (isFolder)
                     {
-                      Microsoft.VisualBasic.FileIO.FileSystem.MoveDirectory(pathSource, pathDest + "\\" + HelperMethods.GetFileFolderName(pathSource));
+                        Microsoft.VisualBasic.FileIO.FileSystem.MoveDirectory(pathSource, pathDest + "\\" + HelperMethods.GetFileFolderName(pathSource));
                     }
                     else
                     {
@@ -267,7 +267,7 @@ namespace FileGuide
             }
             catch (Exception ex)
             {
-                MessageBox.Show("An error has occured while pasting \n" + ex.ToString(),"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("An error has occured while pasting \n" + ex.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -285,11 +285,11 @@ namespace FileGuide
                 {
                     if (listViewFolderContent.SelectedItems.Count > 0)
                     {
-                        DialogResult dialog = MessageBox.Show("Are you sure you want to delete these " + listViewFolderContent.SelectedItems.Count + " items ? \n" , "Delete file", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                        DialogResult dialog = MessageBox.Show("Are you sure you want to delete these " + listViewFolderContent.SelectedItems.Count + " items ? \n", "Delete file", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
                         if (dialog == DialogResult.Yes)
                         {
-                            foreach(ListViewItem item in listViewFolderContent.SelectedItems)
+                            foreach (ListViewItem item in listViewFolderContent.SelectedItems)
                             {
                                 string ItemDeletePath = item.SubItems[5].Text;
                                 if (item.SubItems[1].Text == "Folder")
@@ -570,7 +570,7 @@ namespace FileGuide
                     listViewRecentFiles.Refresh();
                     clsTreeListView.ShowRecentAccessedFiles(listViewRecentFiles);
                     foreach (Panel DrivePanel in DrivePanelList)
-                    {  
+                    {
                         foreach (Control control in DrivePanel.Controls)
                         {
                             control.MouseEnter += DrivePanel_MouseEnter;
@@ -596,7 +596,7 @@ namespace FileGuide
                 {
                     currentPath = HelperMethods.GetParentDirectoryPath(currentPath);
                     if (currentPath != "My Computer")
-                    { 
+                    {
                         clsTreeListView.ShowFolderContent(listViewFolderContent, currentPath);
                         tableLayoutFirstPage.Visible = false;
                         listViewFolderContent.Visible = true;
@@ -765,14 +765,14 @@ namespace FileGuide
                 UnfocusedSelectColor = Color.FromArgb(75, 75, 75);
                 FocusedSelectColor = Color.FromArgb(100, 100, 100);
                 PrimaryBackgroundColor = Color.FromArgb(39, 39, 39);
-                SecondaryBackgroundColor = FocusedSelectColor;
+                SecondaryBackgroundColor = Color.FromArgb(45, 45, 45);
 
                 foreach (Control control in this.Controls)
                 {
                     UpdateControlsColor(control, PrimaryBackgroundColor, PrimaryTextColor);
                 }
 
-                treeViewFolderTree.BackColor = Color.FromArgb(45, 45, 45);
+                treeViewFolderTree.BackColor = SecondaryBackgroundColor;
 
                 UpdateControlsColor(contextMenuStripListView, PrimaryBackgroundColor, PrimaryTextColor);
                 UpdateControlsColor(contextMenuStripListViewItem, PrimaryBackgroundColor, PrimaryTextColor);
@@ -793,12 +793,11 @@ namespace FileGuide
                 SecondaryTextColor = Color.Gray;
                 PrimaryBackgroundColor = Color.White;
                 SecondaryBackgroundColor = Color.FromArgb(244, 244, 244);
-
                 foreach (Control control in this.Controls)
                 {
                     UpdateControlsColor(control, PrimaryBackgroundColor, PrimaryTextColor);
                 }
-                treeViewFolderTree.BackColor = Color.FromArgb(244, 244, 244);
+                treeViewFolderTree.BackColor = SecondaryBackgroundColor;
 
                 UpdateControlsColor(contextMenuStripListView, PrimaryBackgroundColor, PrimaryTextColor);
                 UpdateControlsColor(contextMenuStripListViewItem, PrimaryBackgroundColor, PrimaryTextColor);
@@ -808,7 +807,7 @@ namespace FileGuide
                 btnRefresh.Image = Properties.Resources.Icon_Refresh;
                 this.Refresh();
             }
-            
+
         }
 
         /// <summary>
@@ -832,25 +831,31 @@ namespace FileGuide
 
 
         #region App feature: Tabs control
+
+        /// <summary>
+        /// Delete tab page if user has clicked the close sign on tab header
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tabWindow_MouseDown(object sender, MouseEventArgs e)
         {
-                int closeSignSize = 16;
-                for (var i = 0; i < tabWindow.TabPages.Count; i++)
-                {
-                    var tabRect = tabWindow.GetTabRect(i);
-                    var imageRect = new Rectangle(
-                        (tabRect.Right - closeSignSize - 4),
-                        tabRect.Top + (tabRect.Height - closeSignSize) / 2,
-                        closeSignSize,
-                        closeSignSize);
+            int imageSize = 16;
+            for (var i = 0; i < tabWindow.TabPages.Count; i++)
+            {
+                var tabHeaderRect = tabWindow.GetTabRect(i);
+                var imageRect = new Rectangle(
+                    (tabHeaderRect.Right - imageSize - 4),
+                    tabHeaderRect.Top + (tabHeaderRect.Height - imageSize) / 2,
+                    imageSize,
+                    imageSize);
 
-                    if (imageRect.Contains(e.Location))
-                    {
-                        tabWindow.TabPages.RemoveAt(i);
-                        tabPagePathList.RemoveAt(i);
-                        break;
-                    }
+                if (imageRect.Contains(e.Location))
+                {
+                    tabWindow.TabPages.RemoveAt(i);
+                    tabPagePathList.RemoveAt(i);
+                    break;
                 }
+            }
         }
 
         private void tabWindow_Selecting(object sender, TabControlCancelEventArgs e)
@@ -858,17 +863,11 @@ namespace FileGuide
             // If clicked on the last tab (tab with the plus sign), create a new tab
             if (e.TabPageIndex == tabWindow.TabCount - 1)
             {
-                int lastIndex = tabWindow.TabCount - 1;
-                TabPage newTab = new TabPage();
-                newTab.BackColor = Color.White;
-                newTab.BorderStyle = BorderStyle.None;
-                newTab.Size = new Size(200, 10);
-                newTab.Text = "My Computer" + spaceText;
-
-                tabWindow.TabPages.Insert(lastIndex, newTab);
-                tabPagePathList.Insert(tabPagePathList.Count - 1, "My Computer");
-                tabWindow.SelectedIndex = lastIndex;
-            }      
+                int lastTabIndex = tabWindow.TabCount - 1;
+                tabWindow.TabPages.Insert(lastTabIndex, new TabPage("My Computer" + spaceText));
+                tabPagePathList.Insert(lastTabIndex, "My Computer");
+                tabWindow.SelectedIndex = lastTabIndex;
+            }
             else
             {
                 string tabPath = tabPagePathList[e.TabPageIndex];
@@ -876,13 +875,13 @@ namespace FileGuide
                 e.TabPage.Controls.Add(tableLayoutFirstPage);
                 if (tabPath == "My Computer")
                 {
-                    clsTreeListView.ShowRecentAccessedFiles(listViewRecentFiles);
                     tableLayoutFirstPage.Visible = true;
                     listViewFolderContent.Visible = false;
                 }
                 else
                 {
-                    clsTreeListView.ShowFolderContent(listViewFolderContent, tabPagePathList[e.TabPageIndex]);
+                    clsTreeListView.ShowFolderContent(
+                        listViewFolderContent, tabPagePathList[e.TabPageIndex]);
                     tableLayoutFirstPage.Visible = false;
                     listViewFolderContent.Visible = true;
                 }
@@ -1211,7 +1210,7 @@ namespace FileGuide
 
             Rectangle itemRect = e.Item.Bounds;
             Graphics g = e.Graphics;
-            
+
             if (e.State == ListViewItemStates.Hot)
             {
                 Brush hoverBrush = new SolidBrush(HoverColor);
@@ -1463,11 +1462,11 @@ namespace FileGuide
             Cursor = Cursors.Default;
         }
 
-         /// <summary>
-         /// Go to the approriate hard disk when clicking on a drive panel
-         /// </summary>
-         /// <param name="sender"></param>
-         /// <param name="e"></param>
+        /// <summary>
+        /// Go to the approriate hard disk when clicking on a drive panel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DrivePanel_Click(object sender, EventArgs e)
         {
             Control drivePanelChildControls = sender as Control;
@@ -1506,7 +1505,7 @@ namespace FileGuide
             {
                 foreach (Panel DrivePanel in DrivePanelList)
                 {
-                    
+
                     foreach (Control control in DrivePanel.Controls)
                     {
                         control.MouseEnter += DrivePanel_MouseEnter;
