@@ -21,6 +21,7 @@ namespace FileGuide
     public partial class FrmMain : Form
     {
         List<string> tabPagePathList = new List<string> { "My Computer", "" };
+        // Add spaceText to tab header's text to have space for "X" icon
         string spaceText = "      ";
         List<Panel> DrivePanelList = new List<Panel>();
 
@@ -608,6 +609,7 @@ namespace FileGuide
                         listViewFolderContent.Visible = false;
                     }
                     tscmbPath.Text = currentPath;
+
                     tabPagePathList[tabWindow.SelectedIndex] = currentPath;
                     tabWindow.TabPages[tabWindow.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
                 }
@@ -634,7 +636,8 @@ namespace FileGuide
                 {
                     currentPath = tscmbPath.Text;
                     tabPagePathList[tabWindow.SelectedIndex] = currentPath;
-                    tabWindow.TabPages[tabWindow.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
+                    tabWindow.TabPages[tabWindow.SelectedIndex].Text 
+                        = HelperMethods.GetFileFolderName(currentPath) + spaceText;
                 }
             }
         }
@@ -834,7 +837,7 @@ namespace FileGuide
         #region App feature: Tabs control
 
         /// <summary>
-        /// Delete tab page if user has clicked the close sign on tab header
+        /// Delete tab if user has clicked the close sign on tab header
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -861,7 +864,7 @@ namespace FileGuide
 
         private void tabWindow_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            // If clicked on the last tab (tab with the plus sign), create a new tab
+            // If clicked on the last tab header (tab with the plus sign), create a new tab
             if (e.TabPageIndex == tabWindow.TabCount - 1)
             {
                 int lastTabIndex = tabWindow.TabCount - 1;
@@ -967,7 +970,8 @@ namespace FileGuide
                 currentPath = tscmbPath.Text;
 
                 tabPagePathList[tabWindow.SelectedIndex] = currentPath;
-                tabWindow.TabPages[tabWindow.SelectedIndex].Text = HelperMethods.GetFileFolderName(currentPath) + spaceText;
+                tabWindow.TabPages[tabWindow.SelectedIndex].Text =
+                    HelperMethods.GetFileFolderName(currentPath) + spaceText;
             }
             catch (Exception ex)
             {
@@ -991,49 +995,47 @@ namespace FileGuide
 
             // Change node's background color on hovering
             if (e.State == TreeNodeStates.Hot)
-            {
-                Brush hoverBrush = new SolidBrush(HoverColor);
-                g.FillRectangle(hoverBrush, e.Bounds);
-            }
+                g.FillRectangle(new SolidBrush(HoverColor), e.Bounds);
 
-            // Change node's background color when selected
+            // Change node's background color and move the small purple panel when selected
             if (e.Node.IsSelected)
             {
                 Brush selectBrush;
                 if (e.Node.TreeView.Focused)
-                {
                     selectBrush = new SolidBrush(FocusedSelectColor);
-                }
                 else
-                {
                     selectBrush = new SolidBrush(UnfocusedSelectColor);
-                }
                 g.FillRectangle(selectBrush, e.Bounds);
-                Rectangle flags = new Rectangle(e.Bounds.Right - 10, e.Bounds.Y, 10, e.Bounds.Height);
-                g.FillRectangle(new SolidBrush(Color.BlueViolet), flags);
+
+                Rectangle smallPanel = new Rectangle(e.Bounds.Right - 10, e.Bounds.Y, 10, e.Bounds.Height);
+                g.FillRectangle(new SolidBrush(Color.BlueViolet), smallPanel);
             }
 
             // Draw expand/collapse chevrons
             if (e.Node.Nodes.Count > 0)
             {
                 if (e.Node.IsExpanded)
-                {
-                    g.DrawImage(Properties.Resources.Icon_ExpandChevron, nodeRect.Location.X - 40, nodeRect.Location.Y + 16, 16, 16);
-                }
+                    g.DrawImage(
+                        Properties.Resources.Icon_ExpandChevron, 
+                        nodeRect.X - 40, 
+                        nodeRect.Y + 16, 16, 16);
                 else
-                {
-                    g.DrawImage(Properties.Resources.Icon_NormalChevron, nodeRect.Location.X - 40, nodeRect.Location.Y + 16, 16, 16);
-                }
+                    g.DrawImage(
+                        Properties.Resources.Icon_NormalChevron, 
+                        nodeRect.X - 40, 
+                        nodeRect.Y + 16, 16, 16);
             }
 
             //Draw node icon
-            g.DrawImage(HelperMethods.GetNodeTypeIcon(e.Node), nodeRect.Location.X - 14, nodeRect.Location.Y + 8, 30, 30);
+            g.DrawImage(
+                HelperMethods.GetNodeTypeIcon(e.Node), 
+                nodeRect.Location.X - 14, 
+                nodeRect.Location.Y + 8, 30, 30);
 
             //Draw text
             if (e.Node.Bounds.X != 0)
-            {
-                TextRenderer.DrawText(g, e.Node.Text, ((TreeView)sender).Font, new Point(nodeRect.Location.X + 20, nodeRect.Location.Y + 8), PrimaryTextColor);
-            }
+                TextRenderer.DrawText(g, e.Node.Text, 
+                    ((TreeView)sender).Font, new Point(nodeRect.Location.X + 20, nodeRect.Location.Y + 8), PrimaryTextColor);
         }
 
 
