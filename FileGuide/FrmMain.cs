@@ -62,7 +62,7 @@ namespace FileGuide
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Form1_Load(object sender, EventArgs e)
+        private void FrmMain_Load(object sender, EventArgs e)
         {
             currentPath = "My Computer";
 
@@ -71,7 +71,7 @@ namespace FileGuide
             treeViewFolderTree.ExpandAll();
 
             // Show first page and add event handlers for drive panels' mouses events
-            clsTreeListView.ShowFirstPage(flowLayoutPanelDrives, listViewRecentFiles, drivePanelList);
+            clsTreeListView.CreateFirstPage(flowLayoutDrivePanels, listViewRecentFiles, drivePanelList);
 
             foreach (Panel drivePanel in drivePanelList)
             {
@@ -134,11 +134,6 @@ namespace FileGuide
         /// <param name="e"></param>
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (isInDarkMode)
-            {
-                darkModeToolStripMenuItem.PerformClick();
-            }
-
 
             // Write recent accessed files list
             string DebugDirectory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -149,7 +144,7 @@ namespace FileGuide
 
             using (StreamWriter OutputFile = new StreamWriter(RecentFilesTxt))
             {
-                foreach (string filePath in clsTreeListView.ListRecentFiles) OutputFile.WriteLine(filePath);
+                foreach (string filePath in clsTreeListView.RecentFilesPathList) OutputFile.WriteLine(filePath);
             }
 
             // Write easy access folders list
@@ -162,6 +157,12 @@ namespace FileGuide
             {
                 foreach (string filePath in clsTreeListView.EasyAccessFolderPathList) OutputFile.WriteLine(filePath);
             }
+
+            if (isInDarkMode)
+            {
+                darkModeToolStripMenuItem.PerformClick();
+            }
+
         }
 
         #endregion
@@ -182,6 +183,7 @@ namespace FileGuide
                 // Set isCopying to true so events for Paste feature know whether to cut paste or copy paste
                 isCopying = true;
                 isCutting = false;
+
                 // If listViewFolderContent is focused, assign initial item's path to a variable and enable Paste feature
                 itemPaste = listViewFolderContent.FocusedItem;
                 if (itemPaste == null) return;
@@ -234,9 +236,7 @@ namespace FileGuide
                 if (isCopying)
                 {
                     if (isFolder)
-                    {
                         Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory(pathSource, pathDest + "\\" + HelperMethods.GetFileFolderName(pathSource));
-                    }
                     else
                     {
                         Microsoft.VisualBasic.FileIO.FileSystem.CopyFile(pathSource, pathDest);
@@ -631,6 +631,7 @@ namespace FileGuide
             ListViewItem item = listViewFolderContent.FocusedItem;
             if (clsTreeListView.ClickItem(listViewFolderContent, item, tscmbPath, false))
             {
+                clsTreeListView.ShowRecentAccessedFiles(listViewRecentFiles);
                 //If item is a folder, assign the current directory to currentPath
                 if (item.SubItems[1].Text == "Folder")
                 {
@@ -655,6 +656,7 @@ namespace FileGuide
                 ListViewItem item = listViewFolderContent.FocusedItem;
                 if (clsTreeListView.ClickItem(listViewFolderContent, item, tscmbPath, false))
                 {
+                    clsTreeListView.ShowRecentAccessedFiles(listViewRecentFiles);
                     //If item is a folder, assign the current directory to currentPath and show on tscmbPath
                     if (item.SubItems[1].Text == "Folder")
                     {
@@ -1379,6 +1381,7 @@ namespace FileGuide
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             clsTreeListView.ClickItem(listViewFolderContent, listViewFolderContent.SelectedItems[0], tscmbPath, false);
+            clsTreeListView.ShowRecentAccessedFiles(listViewRecentFiles);
             currentPath = tscmbPath.Text;
         }
 
@@ -1430,6 +1433,7 @@ namespace FileGuide
         private void listViewRecentFiles_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             clsTreeListView.ClickItem(listViewRecentFiles, listViewRecentFiles.FocusedItem, tscmbPath, true);
+            clsTreeListView.ShowRecentAccessedFiles(listViewRecentFiles);
             btnRefresh.PerformClick();
         }
 

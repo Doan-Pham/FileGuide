@@ -25,7 +25,7 @@ namespace FileGuide
         const int NetworkDisk = 4;
         const int CDDisk = 5;
         const int MaxRecentFilesShown = 10;
-        public List<string> ListRecentFiles = new List<string>();
+        public List<string> RecentFilesPathList = new List<string>();
         public List<string> EasyAccessFolderPathList = new List<string>();
 
 
@@ -300,10 +300,38 @@ namespace FileGuide
         #region FirstPage Main Methods
 
         /// <summary>
-        /// Show the listView first page whenever the root node-My Computer is focused
+        /// Initialize first page
         /// </summary>
         /// <param name="flowLayoutPanelDrives"></param>
-        public void ShowFirstPage(FlowLayoutPanel flowLayoutPanelDrives, ListView RecentFiles, List<Panel> drivePanel)
+        /// <param name="listViewRecentFiles"></param>
+        /// <param name="drivePanelList"></param>
+        public void CreateFirstPage(FlowLayoutPanel flowLayoutPanelDrives, ListView listViewRecentFiles, List<Panel> drivePanelList)
+        {     
+            // Read list of recent accessed files from .txt file into a list
+            string DebugDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string RecentDirectory = Path.Combine(DebugDirectory, "RecentAccessesFiles");
+            string RecentFilesTxt = Path.Combine(RecentDirectory, "RecentAccessedFiles.txt");
+            if (File.Exists(RecentFilesTxt))
+            {
+                RecentFilesPathList.Clear();
+                RecentFilesPathList.AddRange(File.ReadAllLines(RecentFilesTxt));
+            }
+
+            ShowDrivePanels(flowLayoutPanelDrives, drivePanelList);
+            ShowRecentAccessedFiles(listViewRecentFiles);
+        }
+
+        /// <summary>
+        /// Show the listView first page whenever the root node-My Computer is focused
+        /// </summary>
+        /// <param name="flowLayoutDrivePanels"></param>
+        public void ShowFirstPage(FlowLayoutPanel flowLayoutDrivePanels, ListView listViewRecentFiles, List<Panel> drivePanelList)
+        {
+            ShowDrivePanels(flowLayoutDrivePanels, drivePanelList);
+            ShowRecentAccessedFiles(listViewRecentFiles);
+        }
+
+        public void ShowDrivePanels(FlowLayoutPanel flowLayoutDrivePanels, List<Panel> drivePanelList)
         {
             // For each drive, create a panel with icon, name, and storage information then add to listView first page
             int driveCount = 0;
@@ -316,83 +344,70 @@ namespace FileGuide
                 PictureBox DrivePicture = new PictureBox();
                 Label DriveName = new Label();
                 Label DriveStorageInfo = new Label();
-                FileGuide.CustomControls.CustomProgressBar DriveStorageBar = new FileGuide.CustomControls.CustomProgressBar();
+                FileGuide.CustomControls.CustomProgressBar DriveStorageBar 
+                    = new FileGuide.CustomControls.CustomProgressBar();
                 Panel EmptySpaceFillPanel = new Panel();
 
-                drivePanel.Add(new Panel());
-                drivePanel[driveCount].Margin = new Padding(10);
-                drivePanel[driveCount].BorderStyle = BorderStyle.FixedSingle;
-                drivePanel[driveCount].Padding = new Padding(10);
-                drivePanel[driveCount].Width = 390;
-                drivePanel[driveCount].Height = 125;
-               
+                drivePanelList.Add(new Panel());
+                drivePanelList[driveCount].Margin = new Padding(10);
+                drivePanelList[driveCount].BorderStyle = BorderStyle.FixedSingle;
+                drivePanelList[driveCount].Padding = new Padding(10);
+                drivePanelList[driveCount].Width = 390;
+                drivePanelList[driveCount].Height = 125;
+
                 DriveStorageBar.Dock = DockStyle.Left;
-                //DriveStorageBar.BorderRadius = 5;
                 DriveStorageBar.Width = 250;
                 DriveStorageBar.Height = 15;
                 DriveStorageBar.Style = ProgressBarStyle.Continuous;
                 DriveStorageBar.FirstColor = FrmMain.PrimaryThemeColor;
                 DriveStorageBar.SecondColor = FrmMain.SecondaryThemeColor;
                 DriveStorageBar.Value = 100 - (int)percentFree;
-                drivePanel[driveCount].Controls.Add(DriveStorageBar);
+                drivePanelList[driveCount].Controls.Add(DriveStorageBar);
 
                 DriveName.Dock = DockStyle.Top;
                 DriveName.Height = 40;
                 DriveName.TextAlign = ContentAlignment.MiddleLeft;
                 DriveName.Text = drive.VolumeLabel.ToString() + " (" + drive.Name.ToString() + ")";
-                drivePanel[driveCount].Controls.Add(DriveName);
+                drivePanelList[driveCount].Controls.Add(DriveName);
 
                 DriveStorageInfo.Dock = DockStyle.Bottom;
                 DriveStorageInfo.TextAlign = ContentAlignment.MiddleLeft;
                 DriveStorageInfo.Height = 45;
                 DriveStorageInfo.Text = HelperMethods.FormatStorageLengthBytes(freeSpace) + " free of " + HelperMethods.FormatStorageLengthBytes(totalSpace);
-                drivePanel[driveCount].Controls.Add(DriveStorageInfo);
+                drivePanelList[driveCount].Controls.Add(DriveStorageInfo);
 
                 DrivePicture.Image = HelperMethods.GetDriveTypeIcon(drive);
                 DrivePicture.SizeMode = PictureBoxSizeMode.Zoom;
                 DrivePicture.Width = 80;
                 DrivePicture.Dock = DockStyle.Left;
-                drivePanel[driveCount].Controls.Add(DrivePicture);
+                drivePanelList[driveCount].Controls.Add(DrivePicture);
 
-                EmptySpaceFillPanel.Width = drivePanel[driveCount].Width - DriveStorageBar.Width - DrivePicture.Width;
+                EmptySpaceFillPanel.Width = drivePanelList[driveCount].Width - DriveStorageBar.Width - DrivePicture.Width;
                 EmptySpaceFillPanel.Dock = DockStyle.Right;
-                drivePanel[driveCount].Controls.Add(EmptySpaceFillPanel);
+                drivePanelList[driveCount].Controls.Add(EmptySpaceFillPanel);
 
-                flowLayoutPanelDrives.Controls.Add(drivePanel[driveCount]);
+                flowLayoutDrivePanels.Controls.Add(drivePanelList[driveCount]);
                 driveCount++;
             }
-            ShowRecentAccessedFiles(RecentFiles);
         }
-
 
         /// <summary>
         /// Show list of recent accessed files onto listView first page
         /// </summary>
         /// <param name="RecentFiles"></param>
-        public void ShowRecentAccessedFiles(ListView RecentFiles)
+        public void ShowRecentAccessedFiles(ListView listViewRecentFiles)
         {
-            // Read list of recent accessed files into a list
-            string DebugDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string RecentDirectory = Path.Combine(DebugDirectory, "RecentAccessesFiles");
-            string RecentFilesTxt = Path.Combine(RecentDirectory, "RecentAccessedFiles.txt");
-            if (File.Exists(RecentFilesTxt))
-            {
-                ListRecentFiles.Clear();
-                ListRecentFiles.AddRange(File.ReadAllLines(RecentFilesTxt));
-            }
-
-            RecentFiles.Items.Clear();
-            foreach (string ItemPath in ListRecentFiles)
+            listViewRecentFiles.Items.Clear();
+            foreach (string ItemPath in RecentFilesPathList)
             {
                 string[] items = new string[2];
                 items[0] = HelperMethods.GetFileFolderName(ItemPath);
                 items[1] = ItemPath;
                 ListViewItem item = new ListViewItem(items);
-                RecentFiles.Items.Add(item);
+                listViewRecentFiles.Items.Add(item);
             }
-            RecentFiles.Columns[RecentFiles.Columns.Count - 1].Width = -2;
+            listViewRecentFiles.Columns[listViewRecentFiles.Columns.Count - 1].Width = -2;
         }
-
 
         #endregion
 
@@ -416,19 +431,11 @@ namespace FileGuide
                 if (fi.Exists)
                 {
                     Process.Start(path);
-                    if (ListRecentFiles.Count != 0 && path == ListRecentFiles[0]) return true;
-                    if (ListRecentFiles.Count >= MaxRecentFilesShown) ListRecentFiles.RemoveAt(ListRecentFiles.Count - 1);
-                    ListRecentFiles.Insert(0, path);
+                    RecentFilesPathList.Insert(0, path);
 
-                    string DebugDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                    string RecentDirectory = Path.Combine(DebugDirectory, "RecentAccessesFiles");
-                    if (!Directory.Exists(RecentDirectory))
-                        Directory.CreateDirectory(RecentDirectory);
-                    using (StreamWriter OutputFile = new StreamWriter(RecentDirectory + @"RecentAccessedFiles.txt"))
-                    {
-                        foreach (string filePath in ListRecentFiles)
-                            OutputFile.WriteLine(filePath);
-                    }
+
+                    if (RecentFilesPathList.Count != 0 && path == RecentFilesPathList[0]) return true;
+                    if (RecentFilesPathList.Count >= MaxRecentFilesShown) RecentFilesPathList.RemoveAt(RecentFilesPathList.Count - 1);
                 }
                 else
                 {
