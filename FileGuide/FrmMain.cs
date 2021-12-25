@@ -13,7 +13,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Syroot.Windows.IO;
-
+using Microsoft.VisualBasic.FileIO;
 using System.IO.Compression;
 
 namespace FileGuide
@@ -227,34 +227,21 @@ namespace FileGuide
             try
             {
                 // pathSource and pathDest respectively indicate item-needed-to-copy-cut's path and destination directory's path 
-                if (isFolder)
-                    pathDest = currentPath;
-                else
-                    pathDest = currentPath + "\\" + itemPaste.Text;
+                if (isFolder) pathDest = currentPath + "\\" + HelperMethods.GetFileFolderName(pathSource);
+                else pathDest = currentPath + "\\" + itemPaste.Text;
 
                 // If user is doing copy-paste, copy item to destination
                 if (isCopying)
                 {
-                    if (isFolder)
-                        Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory(pathSource, pathDest + "\\" + HelperMethods.GetFileFolderName(pathSource));
-                    else
-                    {
-                        Microsoft.VisualBasic.FileIO.FileSystem.CopyFile(pathSource, pathDest);
-                    }
+                    if (isFolder) FileSystem.CopyDirectory(pathSource, pathDest);
+                    else FileSystem.CopyFile(pathSource, pathDest);
                     isCopying = false;
                 }
-
                 // If user is doing cut-paste, move item to new destination
-                if (isCutting)
+                else if (isCutting)
                 {
-                    if (isFolder)
-                    {
-                        Microsoft.VisualBasic.FileIO.FileSystem.MoveDirectory(pathSource, pathDest + "\\" + HelperMethods.GetFileFolderName(pathSource));
-                    }
-                    else
-                    {
-                        Microsoft.VisualBasic.FileIO.FileSystem.MoveFile(pathSource, pathDest);
-                    }
+                    if (isFolder) FileSystem.MoveDirectory(pathSource, pathDest);
+                    else FileSystem.MoveFile(pathSource, pathDest);
                     isCutting = false;
                 }
 
@@ -286,7 +273,7 @@ namespace FileGuide
                 {
                     if (listViewFolderContent.SelectedItems.Count > 0)
                     {
-                        DialogResult dialog = MessageBox.Show("Are you sure you want to delete these " + listViewFolderContent.SelectedItems.Count + " items ? \n", "Delete file", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                        DialogResult dialog = MessageBox.Show("Are you sure you want to delete these " + listViewFolderContent.SelectedItems.Count + " items ? \n", "Delete file/folder", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
 
                         if (dialog == DialogResult.Yes)
                         {
@@ -307,54 +294,6 @@ namespace FileGuide
                         }
                         clsTreeListView.ShowFolderContent(listViewFolderContent, currentPath);
                     }
-                    /*ListViewItem deleteItem = listViewFolderContent.FocusedItem;
-                    string path = deleteItem.SubItems[5].Text;
-
-                    if (deleteItem.SubItems[1].Text == "Folder")
-                    {
-                        DirectoryInfo directory = new DirectoryInfo(path);
-                        if (!directory.Exists)
-                        {
-                            MessageBox.Show("Folder might not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                        else
-                        {
-                            DialogResult dialog = MessageBox.Show("Are you sure you want to delete this folder ? \n" + deleteItem.Text.ToString(), "Delete folder", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-
-                            if (dialog == DialogResult.Yes)
-                            {
-                                directory.Delete(true);
-                            }
-                            else return;
-
-                            string pathFolder = HelperMethods.GetParentDirectoryPath(path);
-                            clsTreeListView.ShowFolderContent(listViewFolderContent, pathFolder);
-                        }
-                    }
-                    else
-                    {
-                        FileInfo file = new FileInfo(path);
-                        if (!file.Exists)
-                        {
-                            MessageBox.Show("File might not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
-                        else
-                        {
-                            DialogResult dialog = MessageBox.Show("Are you sure you want to delete this file ? \n" + deleteItem.Text.ToString(), "Delete file", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-
-                            if (dialog == DialogResult.Yes)
-                            {
-                                file.Delete();
-                            }
-                            else return;
-
-                            string pathFolder = HelperMethods.GetParentDirectoryPath(path);
-                            clsTreeListView.ShowFolderContent(listViewFolderContent, pathFolder);
-                        }
-
-                    }*/
                 }
                 catch (Exception ex)
                 {
@@ -384,7 +323,8 @@ namespace FileGuide
                         SameNameCount++;
                     }
                 }
-                DirectoryInfo newlyCreatedFolder = Directory.CreateDirectory(System.IO.Path.Combine(currentPath, newFolderName));
+                DirectoryInfo newlyCreatedFolder = 
+                    Directory.CreateDirectory(System.IO.Path.Combine(currentPath, newFolderName));
 
                 clsTreeListView.ShowFolderContent(listViewFolderContent, currentPath);
 
@@ -441,7 +381,6 @@ namespace FileGuide
                  }
                  listViewFolderContent.Items[index].Selected = true;
                  menuRename_Click(sender, e);*/
-
             }
         }
 
@@ -478,20 +417,15 @@ namespace FileGuide
                 //Rename item then refresh listViewFolderContent
                 string path = listViewFolderContent.FocusedItem.SubItems[5].Text;
                 FileInfo fi = new FileInfo(path);
-                if (fi.Exists)
-                {
-                    Microsoft.VisualBasic.FileIO.FileSystem.RenameFile(path, e.Label);
-                }
-                else
-                {
-                    Microsoft.VisualBasic.FileIO.FileSystem.RenameDirectory(path, e.Label);
-                }
-                clsTreeListView.ShowFolderContent(listViewFolderContent, HelperMethods.GetParentDirectoryPath(path));
-                e.CancelEdit = true;
+                if (fi.Exists) FileSystem.RenameFile(path, e.Label);
+                else FileSystem.RenameDirectory(path, e.Label);
+                clsTreeListView.ShowFolderContent
+                    (listViewFolderContent, HelperMethods.GetParentDirectoryPath(path));
             }
             catch (IOException)
             {
-                MessageBox.Show("File or Folder already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("File or Folder already exists", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.CancelEdit = true;
                 return;
             }
@@ -681,7 +615,6 @@ namespace FileGuide
                 if (listViewFolderContent.SelectedItems.Count == 0) return;
                 string FirstItemName = listViewFolderContent.SelectedItems[0].SubItems[0].Text;
                 string ZipFilePath = currentPath + "\\" + FirstItemName.Split('.').ToList().ElementAt(0) + ".zip";
-
 
                 foreach (ListViewItem item in listViewFolderContent.SelectedItems)
                 {
