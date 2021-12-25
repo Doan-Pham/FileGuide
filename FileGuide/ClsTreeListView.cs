@@ -189,7 +189,7 @@ namespace FileGuide
 
 
         /// <summary>
-        /// Show a folder's content onto listView 
+        /// Show a folder's content onto listViewFolderContent 
         /// </summary>
         /// <param name="listView"></param>
         /// <param name="strPath">The directory's path at which to show content</param>
@@ -303,7 +303,7 @@ namespace FileGuide
         /// Show the listView first page whenever the root node-My Computer is focused
         /// </summary>
         /// <param name="flowLayoutPanelDrives"></param>
-        public void ShowFirstPage(FlowLayoutPanel flowLayoutPanelDrives, ListView RecentFiles, List<Panel> DrivePanel)
+        public void ShowFirstPage(FlowLayoutPanel flowLayoutPanelDrives, ListView RecentFiles, List<Panel> drivePanel)
         {
             // For each drive, create a panel with icon, name, and storage information then add to listView first page
             int driveCount = 0;
@@ -319,12 +319,12 @@ namespace FileGuide
                 FileGuide.CustomControls.CustomProgressBar DriveStorageBar = new FileGuide.CustomControls.CustomProgressBar();
                 Panel EmptySpaceFillPanel = new Panel();
 
-                DrivePanel.Add(new Panel());
-                DrivePanel[driveCount].Margin = new Padding(10);
-                DrivePanel[driveCount].BorderStyle = BorderStyle.FixedSingle;
-                DrivePanel[driveCount].Padding = new Padding(10);
-                DrivePanel[driveCount].Width = 390;
-                DrivePanel[driveCount].Height = 125;
+                drivePanel.Add(new Panel());
+                drivePanel[driveCount].Margin = new Padding(10);
+                drivePanel[driveCount].BorderStyle = BorderStyle.FixedSingle;
+                drivePanel[driveCount].Padding = new Padding(10);
+                drivePanel[driveCount].Width = 390;
+                drivePanel[driveCount].Height = 125;
                
                 DriveStorageBar.Dock = DockStyle.Left;
                 //DriveStorageBar.BorderRadius = 5;
@@ -334,31 +334,31 @@ namespace FileGuide
                 DriveStorageBar.FirstColor = FrmMain.PrimaryThemeColor;
                 DriveStorageBar.SecondColor = FrmMain.SecondaryThemeColor;
                 DriveStorageBar.Value = 100 - (int)percentFree;
-                DrivePanel[driveCount].Controls.Add(DriveStorageBar);
+                drivePanel[driveCount].Controls.Add(DriveStorageBar);
 
                 DriveName.Dock = DockStyle.Top;
                 DriveName.Height = 40;
                 DriveName.TextAlign = ContentAlignment.MiddleLeft;
                 DriveName.Text = drive.VolumeLabel.ToString() + " (" + drive.Name.ToString() + ")";
-                DrivePanel[driveCount].Controls.Add(DriveName);
+                drivePanel[driveCount].Controls.Add(DriveName);
 
                 DriveStorageInfo.Dock = DockStyle.Bottom;
                 DriveStorageInfo.TextAlign = ContentAlignment.MiddleLeft;
                 DriveStorageInfo.Height = 45;
                 DriveStorageInfo.Text = HelperMethods.FormatStorageLengthBytes(freeSpace) + " free of " + HelperMethods.FormatStorageLengthBytes(totalSpace);
-                DrivePanel[driveCount].Controls.Add(DriveStorageInfo);
+                drivePanel[driveCount].Controls.Add(DriveStorageInfo);
 
                 DrivePicture.Image = HelperMethods.GetDriveTypeIcon(drive);
                 DrivePicture.SizeMode = PictureBoxSizeMode.Zoom;
                 DrivePicture.Width = 80;
                 DrivePicture.Dock = DockStyle.Left;
-                DrivePanel[driveCount].Controls.Add(DrivePicture);
+                drivePanel[driveCount].Controls.Add(DrivePicture);
 
-                EmptySpaceFillPanel.Width = DrivePanel[driveCount].Width - DriveStorageBar.Width - DrivePicture.Width;
+                EmptySpaceFillPanel.Width = drivePanel[driveCount].Width - DriveStorageBar.Width - DrivePicture.Width;
                 EmptySpaceFillPanel.Dock = DockStyle.Right;
-                DrivePanel[driveCount].Controls.Add(EmptySpaceFillPanel);
+                drivePanel[driveCount].Controls.Add(EmptySpaceFillPanel);
 
-                flowLayoutPanelDrives.Controls.Add(DrivePanel[driveCount]);
+                flowLayoutPanelDrives.Controls.Add(drivePanel[driveCount]);
                 driveCount++;
             }
             ShowRecentAccessedFiles(RecentFiles);

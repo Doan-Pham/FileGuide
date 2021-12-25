@@ -23,7 +23,7 @@ namespace FileGuide
         List<string> tabPagePathList = new List<string> { "My Computer", "" };
         // Add spaceText to tab header's text to have space for "X" icon
         string spaceText = "      ";
-        List<Panel> DrivePanelList = new List<Panel>();
+        List<Panel> drivePanelList = new List<Panel>();
 
         public static Color HoverColor = Color.FromArgb(229, 243, 255);
         public static Color UnfocusedSelectColor = Color.FromArgb(242, 242, 242);
@@ -71,15 +71,15 @@ namespace FileGuide
             treeViewFolderTree.ExpandAll();
 
             // Show first page and add event handlers for drive panels' mouses events
-            clsTreeListView.ShowFirstPage(flowLayoutPanelDrives, listViewRecentFiles, DrivePanelList);
+            clsTreeListView.ShowFirstPage(flowLayoutPanelDrives, listViewRecentFiles, drivePanelList);
 
-            foreach (Panel DrivePanel in DrivePanelList)
+            foreach (Panel drivePanel in drivePanelList)
             {
-                foreach (Control control in DrivePanel.Controls)
+                foreach (Control control in drivePanel.Controls)
                 {
-                    control.MouseEnter += DrivePanel_MouseEnter;
-                    control.MouseLeave += DrivePanel_MouseLeave;
-                    control.Click += DrivePanel_Click;
+                    control.MouseEnter += drivePanel_MouseEnter;
+                    control.MouseLeave += drivePanel_MouseLeave;
+                    control.Click += drivePanel_Click;
                 }
             }
 
@@ -570,13 +570,13 @@ namespace FileGuide
                 {
                     listViewRecentFiles.Refresh();
                     clsTreeListView.ShowRecentAccessedFiles(listViewRecentFiles);
-                    foreach (Panel DrivePanel in DrivePanelList)
+                    foreach (Panel drivePanel in drivePanelList)
                     {
-                        foreach (Control control in DrivePanel.Controls)
+                        foreach (Control control in drivePanel.Controls)
                         {
-                            control.MouseEnter += DrivePanel_MouseEnter;
-                            control.MouseLeave += DrivePanel_MouseLeave;
-                            control.Click += DrivePanel_Click;
+                            control.MouseEnter += drivePanel_MouseEnter;
+                            control.MouseLeave += drivePanel_MouseLeave;
+                            control.Click += drivePanel_Click;
                         }
                     }
                 }
@@ -1185,6 +1185,7 @@ namespace FileGuide
             listViewFolderContent.View = View.Details;
         }
 
+
         /// <summary>
         /// Customize appearance of listViewFolderContent column headers to developer's need
         /// </summary>
@@ -1200,9 +1201,11 @@ namespace FileGuide
             TextRenderer.DrawText(e.Graphics, e.Header.Text, e.Header.ListView.Font, textRect, SecondaryTextColor, flags);
 
             // Draw border
-            Pen textBorder = new Pen(Color.FromArgb(186, 186, 186), 1.5f);
-            e.Graphics.DrawLine(textBorder, new Point(e.Bounds.X + 25, e.Bounds.Y - 5 + e.Bounds.Height), new Point(e.Bounds.X + e.Bounds.Width, e.Bounds.Y - 5 + e.Bounds.Height));
+            Pen BorderPen = new Pen(Color.FromArgb(186, 186, 186), 1.5f);
+            e.Graphics.DrawLine(BorderPen, new Point(e.Bounds.X + 25, e.Bounds.Y - 5 + e.Bounds.Height), new Point(e.Bounds.X + e.Bounds.Width, e.Bounds.Y - 5 + e.Bounds.Height));
         }
+
+
         /// <summary>
         ///  Customize appearance of listViewFolderContent items to developer's need
         /// </summary>
@@ -1210,15 +1213,8 @@ namespace FileGuide
         /// <param name="e"></param>
         private void listView_DrawItem(object sender, DrawListViewItemEventArgs e)
         {
-
             Rectangle itemRect = e.Item.Bounds;
             Graphics g = e.Graphics;
-
-            if (e.State == ListViewItemStates.Hot)
-            {
-                Brush hoverBrush = new SolidBrush(HoverColor);
-                g.FillRectangle(hoverBrush, e.Bounds);
-            }
 
             // Change item's background color when selected
             if (e.Item.Selected)
@@ -1296,9 +1292,15 @@ namespace FileGuide
 
                 TextRenderer.DrawText(g, e.Item.Text, e.Item.ListView.Font, textRect, PrimaryTextColor, flags);
             }
+            
         }
 
-
+        /*            if (e.State == ListViewItemStates.Hot)
+            {
+                Brush hoverBrush = new SolidBrush(HoverColor);
+                g.FillRectangle(hoverBrush, e.Bounds);
+            }
+        */
         /// <summary>
         /// Customize appearance of listViewFolderContent subitems to developer's need
         /// </summary>
@@ -1306,6 +1308,7 @@ namespace FileGuide
         /// <param name="e"></param>
         private void listView_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
+            
             ListView listViewIdentifier = sender as ListView;
             bool isListViewRecentAccessFiles = false;
             int SubItemPathIndex = 5;
@@ -1324,7 +1327,9 @@ namespace FileGuide
                 g.DrawImage(HelperMethods.GetFileTypeIcon(itemPath), e.Item.Bounds.X + 20, e.Item.Bounds.Y, 30, 30);
             }
 
-            TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis | TextFormatFlags.ExpandTabs | TextFormatFlags.SingleLine | TextFormatFlags.VerticalCenter;
+            TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis 
+                | TextFormatFlags.ExpandTabs | TextFormatFlags.SingleLine 
+                | TextFormatFlags.VerticalCenter;
 
             Rectangle textRect;
             Color textColor;
@@ -1341,9 +1346,9 @@ namespace FileGuide
             }
 
             TextRenderer.DrawText(g, e.SubItem.Text, e.Item.ListView.Font, textRect, textColor, flags);
-
-
+            
         }
+
 
         /// <summary>
         /// Show approriate contextMenuStrip when right clicking on listViewFolderContent
@@ -1433,7 +1438,7 @@ namespace FileGuide
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DrivePanel_MouseEnter(object sender, EventArgs e)
+        private void drivePanel_MouseEnter(object sender, EventArgs e)
         {
             Control drivePanelChildControls = sender as Control;
             Panel drivePanel = (Panel)drivePanelChildControls.Parent;
@@ -1450,7 +1455,7 @@ namespace FileGuide
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DrivePanel_MouseLeave(object sender, EventArgs e)
+        private void drivePanel_MouseLeave(object sender, EventArgs e)
         {
             Control drivePanelChildControls = sender as Control;
             Panel drivePanel = (Panel)drivePanelChildControls.Parent;
@@ -1470,7 +1475,7 @@ namespace FileGuide
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DrivePanel_Click(object sender, EventArgs e)
+        private void drivePanel_Click(object sender, EventArgs e)
         {
             Control drivePanelChildControls = sender as Control;
             Panel drivePanel = (Panel)drivePanelChildControls.Parent;
@@ -1506,14 +1511,14 @@ namespace FileGuide
             statusLblItemNum.Text = listViewFolderContent.Items.Count.ToString() + " items";
             if (currentPath == "My Computer")
             {
-                foreach (Panel DrivePanel in DrivePanelList)
+                foreach (Panel drivePanel in drivePanelList)
                 {
 
-                    foreach (Control control in DrivePanel.Controls)
+                    foreach (Control control in drivePanel.Controls)
                     {
-                        control.MouseEnter += DrivePanel_MouseEnter;
-                        control.MouseLeave += DrivePanel_MouseLeave;
-                        control.Click += DrivePanel_Click;
+                        control.MouseEnter += drivePanel_MouseEnter;
+                        control.MouseLeave += drivePanel_MouseLeave;
+                        control.Click += drivePanel_Click;
                     }
                 }
             }
