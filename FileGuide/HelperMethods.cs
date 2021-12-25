@@ -305,31 +305,20 @@ namespace FileGuide
         /// <param name="entryName"></param>
         public static void CreateEntryFromAny(ZipArchive archive, string sourceName, string entryName = "")
         {
-            var fileName = Path.GetFileName(sourceName);
+            string itemName = Path.GetFileName(sourceName);
             if (File.GetAttributes(sourceName).HasFlag(FileAttributes.Directory))
             {
-                CreateEntryFromDirectory(archive, sourceName, Path.Combine(entryName, fileName));
+                archive.CreateEntry(entryName + "\\" + itemName + "\\");
+                
+                string[] ChildFileFolderArray = 
+                    Directory.GetFiles(sourceName).Concat(Directory.GetDirectories(sourceName)).ToArray();
+                foreach (string ChildFileFolderPath in ChildFileFolderArray)
+                    CreateEntryFromAny(archive, ChildFileFolderPath, Path.Combine(entryName, itemName));
             }
             else
             {
-                archive.CreateEntryFromFile(sourceName, Path.Combine(entryName, fileName), CompressionLevel.Fastest);
-            }
-        }
-
-        /// <summary>
-        /// Create a zip archive entry from folder
-        /// </summary>
-        /// <param name="archive"></param>
-        /// <param name="sourceDirName"></param>
-        /// <param name="entryName"></param>
-        public static void CreateEntryFromDirectory(ZipArchive archive, string sourceDirName, string entryName = "")
-        {
-            string[] ChildFileFolderArray = Directory.GetFiles(sourceDirName).Concat(Directory.GetDirectories(sourceDirName)).ToArray();
-            if (entryName != Path.GetFileName(sourceDirName))
-                archive.CreateEntry(entryName + "\\");
-            foreach (var ChildFileFolderPath in ChildFileFolderArray)
-            {
-                CreateEntryFromAny(archive, ChildFileFolderPath, entryName);
+                archive.CreateEntryFromFile(
+                    sourceName, Path.Combine(entryName, itemName), CompressionLevel.Fastest);
             }
         }
 

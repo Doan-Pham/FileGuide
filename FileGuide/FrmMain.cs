@@ -323,7 +323,7 @@ namespace FileGuide
                         SameNameCount++;
                     }
                 }
-                DirectoryInfo newlyCreatedFolder = 
+                DirectoryInfo newlyCreatedFolder =
                     Directory.CreateDirectory(System.IO.Path.Combine(currentPath, newFolderName));
 
                 clsTreeListView.ShowFolderContent(listViewFolderContent, currentPath);
@@ -424,7 +424,7 @@ namespace FileGuide
             }
             catch (IOException)
             {
-                MessageBox.Show("File or Folder already exists", "Error", 
+                MessageBox.Show("File or Folder already exists", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.CancelEdit = true;
                 return;
@@ -571,7 +571,7 @@ namespace FileGuide
                 {
                     currentPath = tscmbPath.Text;
                     tabPagePathList[tabWindow.SelectedIndex] = currentPath;
-                    tabWindow.TabPages[tabWindow.SelectedIndex].Text 
+                    tabWindow.TabPages[tabWindow.SelectedIndex].Text
                         = HelperMethods.GetFileFolderName(currentPath) + spaceText;
                 }
             }
@@ -614,20 +614,17 @@ namespace FileGuide
             {
                 if (listViewFolderContent.SelectedItems.Count == 0) return;
                 string FirstItemName = listViewFolderContent.SelectedItems[0].SubItems[0].Text;
-                string ZipFilePath = currentPath + "\\" + FirstItemName.Split('.').ToList().ElementAt(0) + ".zip";
+                string ZipFilePath = 
+                    currentPath + "\\" + FirstItemName.Split('.').ToList().ElementAt(0) + ".zip";
 
-                foreach (ListViewItem item in listViewFolderContent.SelectedItems)
+                using (FileStream fs = new FileStream(ZipFilePath, FileMode.Create))
                 {
-                    string itemName = item.SubItems[0].Text;
-                    string itemPath = currentPath + "\\" + itemName;
-                    if (!System.IO.Path.GetExtension(itemPath).Equals(".zip"))
+                    using (ZipArchive newZipFile = new ZipArchive(fs, ZipArchiveMode.Update))
                     {
-                        using (FileStream fs = new FileStream(ZipFilePath, FileMode.Create))
+                        foreach (ListViewItem item in listViewFolderContent.SelectedItems)
                         {
-                            using (ZipArchive newZipFile = new ZipArchive(fs, ZipArchiveMode.Update))
-                            {
-                                HelperMethods.CreateEntryFromAny(newZipFile, itemPath);
-                            }
+                            string itemPath = currentPath + "\\" + item.SubItems[0].Text;
+                            HelperMethods.CreateEntryFromAny(newZipFile, itemPath);
                         }
                     }
                 }
@@ -652,34 +649,28 @@ namespace FileGuide
                 if (listViewFolderContent.SelectedItems.Count == 0) return;
                 string ZipItemName;
                 string ZipItemPath;
-
                 foreach (ListViewItem item in listViewFolderContent.SelectedItems)
                 {
-
                     ZipItemName = item.SubItems[0].Text;
                     ZipItemPath = currentPath + "\\" + ZipItemName;
-
                     if (System.IO.Path.GetExtension(ZipItemPath).Equals(".zip"))
                     {
                         string destinationPath = currentPath + "\\" + ZipItemName.Replace(".zip", "");
-
                         if (!File.Exists(destinationPath) && !Directory.Exists(destinationPath))
-                        {
                             ZipFile.ExtractToDirectory(ZipItemPath, destinationPath);
-                        }
+
                         else
                         {
                             int SameNameCount = 1;
-                            string OriginalItemName = ZipItemName.Replace(".zip", "");
+                            string OriginalItemName = ZipItemName.Replace(".zip","");
                             string newItemName = OriginalItemName;
                             foreach (ListViewItem LVitem in listViewFolderContent.Items)
-                            {
                                 if (LVitem.SubItems[0].Text.ToString().Contains(OriginalItemName))
                                 {
                                     newItemName = OriginalItemName + SameNameCount.ToString();
                                     SameNameCount++;
                                 }
-                            }
+
                             ZipFile.ExtractToDirectory(ZipItemPath, currentPath + "\\" + newItemName);
                         }
                     }
@@ -718,7 +709,7 @@ namespace FileGuide
 
                 btnBack.Image = Properties.Resources.Icon_Back_DarkMode;
                 btnRefresh.Image = Properties.Resources.Icon_Refresh_DarkMode;
- 
+
                 this.Refresh();
 
             }
@@ -951,25 +942,25 @@ namespace FileGuide
             {
                 if (e.Node.IsExpanded)
                     g.DrawImage(
-                        Properties.Resources.Icon_ExpandChevron, 
-                        nodeRect.X - 40, 
+                        Properties.Resources.Icon_ExpandChevron,
+                        nodeRect.X - 40,
                         nodeRect.Y + 16, 16, 16);
                 else
                     g.DrawImage(
-                        Properties.Resources.Icon_NormalChevron, 
-                        nodeRect.X - 40, 
+                        Properties.Resources.Icon_NormalChevron,
+                        nodeRect.X - 40,
                         nodeRect.Y + 16, 16, 16);
             }
 
             //Draw node icon
             g.DrawImage(
-                HelperMethods.GetNodeTypeIcon(e.Node), 
-                nodeRect.Location.X - 14, 
+                HelperMethods.GetNodeTypeIcon(e.Node),
+                nodeRect.Location.X - 14,
                 nodeRect.Location.Y + 8, 30, 30);
 
             //Draw text
             if (e.Node.Bounds.X != 0)
-                TextRenderer.DrawText(g, e.Node.Text, 
+                TextRenderer.DrawText(g, e.Node.Text,
                     ((TreeView)sender).Font, new Point(nodeRect.Location.X + 20, nodeRect.Location.Y + 8), PrimaryTextColor);
         }
 
@@ -1227,7 +1218,7 @@ namespace FileGuide
 
                 TextRenderer.DrawText(g, e.Item.Text, e.Item.ListView.Font, textRect, PrimaryTextColor, flags);
             }
-            
+
         }
 
         /*            if (e.State == ListViewItemStates.Hot)
@@ -1243,7 +1234,7 @@ namespace FileGuide
         /// <param name="e"></param>
         private void listView_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
-            
+
             ListView listViewIdentifier = sender as ListView;
             bool isListViewRecentAccessFiles = false;
             int SubItemPathIndex = 5;
@@ -1262,8 +1253,8 @@ namespace FileGuide
                 g.DrawImage(HelperMethods.GetFileTypeIcon(itemPath), e.Item.Bounds.X + 20, e.Item.Bounds.Y, 30, 30);
             }
 
-            TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis 
-                | TextFormatFlags.ExpandTabs | TextFormatFlags.SingleLine 
+            TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis
+                | TextFormatFlags.ExpandTabs | TextFormatFlags.SingleLine
                 | TextFormatFlags.VerticalCenter;
 
             Rectangle textRect;
@@ -1281,7 +1272,7 @@ namespace FileGuide
             }
 
             TextRenderer.DrawText(g, e.SubItem.Text, e.Item.ListView.Font, textRect, textColor, flags);
-            
+
         }
 
 
