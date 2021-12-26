@@ -22,7 +22,7 @@ namespace FileGuide
         // Set static variables for use among child user controls
         public static int UserPermission;
         public static bool isLogined = false;
-        public static string SQLConnectionString = @"Data Source=LAPTOP-MFVT6MG4\MSSQLSERVER01;Initial Catalog = DoAnLTTQ; Integrated Security = True";
+        public static string SQLConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\UsersDatabase.mdf;Integrated Security=True";//@"Data Source=LAPTOP-MFVT6MG4\MSSQLSERVER01;Initial Catalog = DoAnLTTQ; Integrated Security = True";
 
         public FormLogin()
         {
@@ -30,6 +30,11 @@ namespace FileGuide
             loginPage1.Visible = true;
             managementPage1.Visible = false;
             infoPage1.Visible = false;
+            string executable = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            string path1 = System.IO.Path.GetDirectoryName(executable);
+            string path2 = System.IO.Path.GetDirectoryName(path1);
+            string path3 = System.IO.Path.GetDirectoryName(path2);
+            AppDomain.CurrentDomain.SetData("DataDirectory", path3);
         }
 
         // Switch to LoginPage
