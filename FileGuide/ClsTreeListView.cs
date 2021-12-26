@@ -78,8 +78,9 @@ namespace FileGuide
         /// <returns></returns>
         public bool ShowFolderTree(TreeView treeViewFolderTree, TreeNode currentNode, bool isSpecialFolder, string SpecialFolderPath)
         {
-            // My Computer and its children are already created in CreatTreeView func, recreating will cause an error
-            if (currentNode.Text == GetTreeNodeRoot(currentNode).Text || GetTreeNodeRoot(currentNode).Text == "Easy Access") return true;
+            // My Computer and its children are already created in
+            // CreateTreeView method, recreating will cause an error
+            if (currentNode.Parent == null) return true;
             try
             {
                 if (!Directory.Exists(HelperMethods.GetApproriatePath(currentNode.FullPath)) && !isSpecialFolder)
@@ -93,20 +94,15 @@ namespace FileGuide
                     // Add all child directories of the current's node to treeViewFolderTree 
                     string[] strDirectories;
                     if (!isSpecialFolder)
-                    {
                         strDirectories = Directory.GetDirectories(HelperMethods.GetApproriatePath(currentNode.FullPath));
-                    }
                     else
-                    {
                         strDirectories = Directory.GetDirectories(SpecialFolderPath);
-                    }
                     foreach (string stringDir in strDirectories)
                     {
                         string strName = HelperMethods.GetFileFolderName(stringDir);
                         TreeNode nodeDir = new TreeNode(strName, 5, 6);
                         currentNode.Nodes.Add(nodeDir);
                     }
-
                 }
                 return true;
             }

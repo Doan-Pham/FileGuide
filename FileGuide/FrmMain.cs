@@ -1032,6 +1032,7 @@ namespace FileGuide
                     foreach (ListViewItem item in listViewFolderContent.SelectedItems)
                     {
                         string itemPath = HelperMethods.GetApproriatePath(item.SubItems[5].Text);
+                        // If a folder already exists in "easy access" node then return
                         if (item.SubItems[1].Text != "Folder" || clsTreeListView.EasyAccessFolderPathList.Any(EasyAccessFolderPath => EasyAccessFolderPath == itemPath)) return;
 
                         clsTreeListView.EasyAccessFolderPathList.Add(itemPath);
