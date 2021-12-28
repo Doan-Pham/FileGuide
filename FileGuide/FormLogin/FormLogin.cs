@@ -28,13 +28,14 @@ namespace FileGuide
         {
             InitializeComponent();
             loginPage1.Visible = true;
-            managementPage1.Visible = false;
-            infoPage1.Visible = false;
             string executable = System.Reflection.Assembly.GetExecutingAssembly().Location;
             string path1 = System.IO.Path.GetDirectoryName(executable);
             string path2 = System.IO.Path.GetDirectoryName(path1);
             string path3 = System.IO.Path.GetDirectoryName(path2);
             AppDomain.CurrentDomain.SetData("DataDirectory", path3);
+            managementPage1.Visible = true;
+            managementPage1.Visible = false;
+            infoPage1.Visible = false;
         }
 
         // Switch to LoginPage

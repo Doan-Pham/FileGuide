@@ -22,11 +22,13 @@ namespace FileGuide.CustomControls
     {
         public Color FirstColor { get; set; }
         public Color SecondColor { get; set; }
+        public Color HoverColor { get; set; }
         public float Angle { get; set; }
         public int BorderRadius { get; set; }
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            this.DoubleBuffered = true;
             Graphics g = e.Graphics;
 
             // Create gradient brush 

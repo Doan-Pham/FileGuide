@@ -76,16 +76,18 @@ namespace FileGuide
         /// <param name="treeViewFolderTree"></param>
         /// <param name="currentNode">The treeNode at which to show folder tree</param>
         /// <returns></returns>
-        public bool ShowFolderTree(TreeView treeViewFolderTree, TreeNode currentNode, bool isSpecialFolder, string SpecialFolderPath)
+        public bool ShowFolderTree(TreeView treeViewFolderTree, TreeNode currentNode, 
+            bool isSpecialFolder, string SpecialFolderPath)
         {
-            // My Computer and its children are already created in
-            // CreateTreeView method, recreating will cause an error
+            // My Computer and its children are already created in CreateTreeView method, recreating will cause an error
             if (currentNode.Parent == null) return true;
             try
             {
-                if (!Directory.Exists(HelperMethods.GetApproriatePath(currentNode.FullPath)) && !isSpecialFolder)
+                if (!Directory.Exists(HelperMethods.GetApproriatePath
+                    (currentNode.FullPath)) && !isSpecialFolder)
                 {
-                    MessageBox.Show("Directory not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Directory not found", "Error", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
                 else
@@ -94,7 +96,8 @@ namespace FileGuide
                     // Add all child directories of the current's node to treeViewFolderTree 
                     string[] strDirectories;
                     if (!isSpecialFolder)
-                        strDirectories = Directory.GetDirectories(HelperMethods.GetApproriatePath(currentNode.FullPath));
+                        strDirectories = Directory.GetDirectories
+                            (HelperMethods.GetApproriatePath(currentNode.FullPath));
                     else
                         strDirectories = Directory.GetDirectories(SpecialFolderPath);
                     foreach (string stringDir in strDirectories)
