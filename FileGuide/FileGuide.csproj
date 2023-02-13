@@ -224,6 +224,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\logo_book.png" />
+    <Content Include="Assets\UI_main.PNG" />
     <Content Include="FileGuide.ico" />
     <Content Include="UsersDatabase.mdf" />
     <Content Include="UsersDatabase_log.ldf">
