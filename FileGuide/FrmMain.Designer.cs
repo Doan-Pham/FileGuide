@@ -103,7 +103,7 @@ namespace FileGuide
             this.unzipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pinToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.unpinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.treeViewFolderTree = new FileGuide.BufferedTreeView();
+            this.treeViewFolderTree = new FileGuide.DoubleBufferedTreeView();
             this.tabWindow = new FileGuide.CustomTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutFirstPage = new System.Windows.Forms.TableLayoutPanel();
@@ -1166,7 +1166,7 @@ namespace FileGuide
         private System.Windows.Forms.ToolStripStatusLabel statusLblItemNum;
         private System.Windows.Forms.ToolStripStatusLabel statusLblNumSelect;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripListView;
-        private BufferedTreeView treeViewFolderTree;
+        private DoubleBufferedTreeView treeViewFolderTree;
         private System.Windows.Forms.TableLayoutPanel tableLayoutFirstPage;
         private System.Windows.Forms.Label tableLblDrives;
         private System.Windows.Forms.Label tableLblRecent;

@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 
 namespace FileGuide
 {
-    class BufferedTreeView : TreeView
+    class DoubleBufferedTreeView : TreeView
     {
         protected override void OnHandleCreated(EventArgs e)
         {
