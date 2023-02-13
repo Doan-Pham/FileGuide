@@ -56,4 +56,4 @@ This software uses the following resources and packages:
   - [**Pham Truong Hai Doan**](https://github.com/Doan-Pham)
   
 ## Acknowledgements
-  - This software takes inspiration from several different products: File Explorer (Windows 10), [Files](https://files.community/), [XYPlorer](https://www.xyplorer.com/)
+  - This software takes inspiration from the following products: File Explorer (Windows 10), [Files](https://files.community/), [XYPlorer](https://www.xyplorer.com/)
