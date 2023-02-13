@@ -141,16 +141,6 @@
     <Compile Include="FormLogin\ManagementPage.Designer.cs">
       <DependentUpon>ManagementPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="UsersDatabaseDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UsersDatabaseDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="UsersDatabaseDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UsersDatabaseDataSet1.xsd</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="FormLogin\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -182,28 +172,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="UsersDatabaseDataSet.xsc">
-      <DependentUpon>UsersDatabaseDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="UsersDatabaseDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>UsersDatabaseDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="UsersDatabaseDataSet.xss">
-      <DependentUpon>UsersDatabaseDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="UsersDatabaseDataSet1.xsc">
-      <DependentUpon>UsersDatabaseDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="UsersDatabaseDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>UsersDatabaseDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="UsersDatabaseDataSet1.xss">
-      <DependentUpon>UsersDatabaseDataSet1.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

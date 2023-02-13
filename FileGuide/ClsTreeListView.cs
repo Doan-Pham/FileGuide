@@ -95,16 +95,13 @@ namespace FileGuide
                     currentNode.Nodes.Clear();
                     // Add all child directories of the current's node to treeViewFolderTree 
                     string[] strDirectories;
-                    if (!isSpecialFolder)
-                        strDirectories = Directory.GetDirectories
+                    if (!isSpecialFolder) strDirectories = Directory.GetDirectories
                             (HelperMethods.GetApproriatePath(currentNode.FullPath));
-                    else
-                        strDirectories = Directory.GetDirectories(SpecialFolderPath);
+                    else strDirectories = Directory.GetDirectories(SpecialFolderPath);
                     foreach (string stringDir in strDirectories)
                     {
                         string strName = HelperMethods.GetFileFolderName(stringDir);
-                        TreeNode nodeDir = new TreeNode(strName, 5, 6);
-                        currentNode.Nodes.Add(nodeDir);
+                        currentNode.Nodes.Add(new TreeNode(strName));
                     }
                 }
                 return true;
@@ -332,7 +329,8 @@ namespace FileGuide
 
         public void ShowDrivePanels(FlowLayoutPanel flowLayoutDrivePanels, List<Panel> drivePanelList)
         {
-            // For each drive, create a panel with icon, name, and storage information then add to listView first page
+            // For each drive, create a panel with icon, name, and storage information
+            // then add to  first page
             int driveCount = 0;
             foreach (var drive in DriveInfo.GetDrives())
             {

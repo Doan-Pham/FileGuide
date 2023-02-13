@@ -913,15 +913,15 @@ namespace FileGuide
         /// <param name="e"></param>
         private void treeView_DrawNode(object sender, DrawTreeNodeEventArgs e)
         {
-            // Reduce the unnecessary DrawNode calls. Without this, some icons are drawn in weird places
+            // Reduce the unnecessary DrawNode calls. Without this,
+            // some icons are drawn in weird places
             if (e.Bounds.Height < 1 || e.Bounds.Width < 1) return;
 
             Graphics g = e.Graphics;
             Rectangle nodeRect = e.Node.Bounds;
 
             // Change node's background color on hovering
-            if (e.State == TreeNodeStates.Hot)
-                g.FillRectangle(new SolidBrush(HoverColor), e.Bounds);
+            if (e.State == TreeNodeStates.Hot) g.FillRectangle(new SolidBrush(HoverColor), e.Bounds);
 
             // Change node's background color and move the small purple panel when selected
             if (e.Node.IsSelected)
@@ -933,7 +933,8 @@ namespace FileGuide
                     selectBrush = new SolidBrush(UnfocusedSelectColor);
                 g.FillRectangle(selectBrush, e.Bounds);
 
-                Rectangle smallPanel = new Rectangle(e.Bounds.Right - 10, e.Bounds.Y, 10, e.Bounds.Height);
+                Rectangle smallPanel = new Rectangle
+                    (e.Bounds.Right - 10, e.Bounds.Y, 10, e.Bounds.Height);
                 g.FillRectangle(new SolidBrush(Color.BlueViolet), smallPanel);
             }
 
@@ -960,8 +961,8 @@ namespace FileGuide
 
             //Draw text
             if (e.Node.Bounds.X != 0)
-                TextRenderer.DrawText(g, e.Node.Text,
-                    ((TreeView)sender).Font, new Point(nodeRect.Location.X + 20, nodeRect.Location.Y + 8), PrimaryTextColor);
+                TextRenderer.DrawText(g, e.Node.Text,((TreeView)sender).Font, 
+                    new Point(nodeRect.Location.X + 20, nodeRect.Location.Y + 8), PrimaryTextColor);
         }
 
 
@@ -1124,12 +1125,16 @@ namespace FileGuide
             TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis |
        TextFormatFlags.ExpandTabs | TextFormatFlags.SingleLine;
 
-            Rectangle textRect = new Rectangle(e.Bounds.X + 20, e.Bounds.Y, e.Bounds.Width - 20, e.Bounds.Height);
-            TextRenderer.DrawText(e.Graphics, e.Header.Text, e.Header.ListView.Font, textRect, SecondaryTextColor, flags);
+            Rectangle textRect = new Rectangle
+                (e.Bounds.X + 20, e.Bounds.Y, e.Bounds.Width - 20, e.Bounds.Height);
+            TextRenderer.DrawText
+                (e.Graphics, e.Header.Text, e.Header.ListView.Font, 
+                textRect, SecondaryTextColor, flags);
 
             // Draw border
             Pen BorderPen = new Pen(Color.FromArgb(186, 186, 186), 1.5f);
-            e.Graphics.DrawLine(BorderPen, new Point(e.Bounds.X + 25, e.Bounds.Y - 5 + e.Bounds.Height), new Point(e.Bounds.X + e.Bounds.Width, e.Bounds.Y - 5 + e.Bounds.Height));
+            e.Graphics.DrawLine(BorderPen, new Point(e.Bounds.X + 25, e.Bounds.Y - 5 + e.Bounds.Height), 
+                new Point(e.Bounds.X + e.Bounds.Width, e.Bounds.Y - 5 + e.Bounds.Height));
         }
 
 
